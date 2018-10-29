@@ -59,7 +59,7 @@ export  const clinicial_trial = [
         image : '',
         side_effect :
             [
-                
+
             ],
         clinical_trial_data : '',
         drug_company : {
@@ -69,4 +69,29 @@ export  const clinicial_trial = [
             email : '',
         }
     }
+]
+
+export const side_effects = [
+    "side_effect", 
+    "side_effect", 
+    "side_effect", 
+    "side_effect",
+    "side_effect",
+    "side_effect", 
+    "side_effect",
+    "side_effect",
+    "side_effect", 
+]
+
+export const symptoms = [
+    "symptom",
+    "symptom",
+    "symptom",
+    "symptom",
+    "symptom",
+    "symptom",
+    "symptom",
+    "symptom",
+    "symptom",
+    "symptom",
 ]
