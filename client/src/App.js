@@ -10,7 +10,10 @@ class App extends Component {
     return (
       <div className="App">
         <AppBar />
-        <Routes {...this.props} />
+        <div className='content-holder'>
+          <Routes {...this.props} />
+        </div>
+        
       </div>
     );
   }
