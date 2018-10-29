@@ -16,8 +16,8 @@ import FormText from '../components/forms/FormText'
         const { handleSubmit } = this.props
 
         return (
-            <div>
-                <h1>Prior Treatment</h1>
+            <div style={{padding: "20px"}}>
+                <h1>Tell us about your current Parkinson's disease treatments.</h1>
 
                 <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
 
