@@ -12,7 +12,7 @@ import NotFound from './pages/notFound';
 class Routes extends Component {
     render() {
         return (
-            <div className="App">
+            <div>
                 <Switch>
                     
                     <Route path='/side_effect' render={props => <SideEffect {...this.props}></SideEffect>} />
