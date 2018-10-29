@@ -6,15 +6,24 @@ import Grid from '@material-ui/core/Grid';
 import { submitUserInfo } from '../actions/UserInfoAction'
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
+import Select from '../components/forms/FormSelect';
+import TextBox from '../components/forms/FormText';
+import Radio from '../components/forms/FormRadio';
 
 class UserInfo extends Component {
     componentDidMount() {
-        
+        this.setState({
+            age : this.props.user.age
+        })
     }
     submit(values){
 
     }
-    
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        });
+    };
     render() {
         const { handleSubmit, classes } = this.props;
         return (
@@ -28,7 +37,7 @@ class UserInfo extends Component {
                             id="filled-name"
                             label="Name"
                             className={classes.textField}
-                            value={this.props.user.age}
+                            value={this.state.age}
                             onChange={this.handleChange('age')}
                             margin="normal"
                             variant="filled"
