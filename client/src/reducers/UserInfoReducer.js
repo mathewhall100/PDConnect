@@ -6,9 +6,11 @@ const INITIAL_STATE = {
     age: 55,
     sex: '',
     race : '',
-    PYears : 0,
-    firstYearSymptoms : {},
-    startPTreatments : 0
+    yearDiagnosed : '',
+    yearFirstSymptoms : '',
+    startPDTreatment : '',
+    performDailyActivities : '',
+
 }
 
 export default (state = INITIAL_STATE, action) => {

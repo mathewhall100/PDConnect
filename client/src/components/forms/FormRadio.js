@@ -21,7 +21,7 @@ class FormRadio extends Component {
                     {...input}
                     {...children}
                     onChange={(event, value) => input.onChange(value)}
-                    style={{ display: 'flex', flexDirection: 'row'}}
+                    style={{ display: 'flex', flexDirection: 'row', width: '100%'}}
                 >
                     {children.map(child => 
                         <FormControlLabel 

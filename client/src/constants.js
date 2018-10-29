@@ -95,3 +95,31 @@ export const symptoms = [
     "symptom",
     "symptom",
 ]
+
+export const activity_level = [
+    {
+        "value" : "no problem" , 
+        "label" : "no problem" ,
+        "text" : "no problem"
+    },
+    {
+        "value": "mild difficulty",
+        "label": "mild difficulty",
+        "text": "mild difficulty"
+    },
+    {
+        "value": "severe difficulty",
+        "label": "severe difficulty",
+        "text": "severe difficulty"
+    },
+    {
+        "value": "wheelchair",
+        "label": "wheelchair",
+        "text": "wheelchair"
+    },
+    {
+        "value": "require assitances all time",
+        "label": "require assitances all time",
+        "text": "require assitances all time"
+    },
+]

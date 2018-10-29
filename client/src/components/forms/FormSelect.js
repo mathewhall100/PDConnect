@@ -19,7 +19,7 @@ class FormSelect extends Component {
                 <span>
                     <FormControl variant="outlined"  style={{width: `${width}`}}>
                         <InputLabel>
-                            select
+                            {label}
                         </InputLabel>
                     
                         <Select
@@ -29,7 +29,7 @@ class FormSelect extends Component {
                             {...custom}
                             input={
                                 <OutlinedInput
-                                    labelWidth={`${labelWidth}`}
+                                    labelWidth={labelWidth}
                                     name="age"
                                     id="select"
                                 />
