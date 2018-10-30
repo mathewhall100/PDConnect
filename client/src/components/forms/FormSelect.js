@@ -19,7 +19,7 @@ class FormSelect extends Component {
                 <span>
                     <FormControl variant="outlined"  style={{width: `${width}`}}>
                         <InputLabel>
-                            select
+                            {label}
                         </InputLabel>
                     
                         <Select

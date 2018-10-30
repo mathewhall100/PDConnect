@@ -13,27 +13,18 @@ const styles = theme => ({
     textBox: {
         textAlign: "center"
     },
-    startBtn: {
-        width: "400px",
-        height: "70px",
+    Btn: {
+        width: "50%",
+        minHeight: "100px",
         backgroundColor: "white",
         border: "4px solid grey",
         borderRadius: "30px",
-        fontSize: "40px"
+        fontSize: "24px",
+        lineHeight: "34px" 
     },
-    loginBtn: {
-        width: "150px",
-        height: "30px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "14px"
-    }
+
 });
 
-const subTitleArray= ["find out about Parkinson disease treatments individualised for you",
-        "discover Parkinson disease clinical trials you can participate in", 
-        "take away new knowledge about your condition to share with your doctor" ]
 
 class Home extends Component {
     state = {
@@ -42,32 +33,36 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.rotateText()
+       
     }
 
-    DirectToIntroInfo(){
-        console.log("redirect to intro info...")
+    handleNav(choice){
+        console.log("redirect to user info: ", choice)
+        switch (choice) {
+            case "1": 
+            // save choice in store
+                break ;
+            case "2": 
+            // save choice in store
+                break ;
+            case "3": 
+            //save choice in store
+                break ;
+            default:
+            // save 'both' as choice in store
+        }
         this.setState({
             redirect : true
         })
         
     } 
     
-    rotateText() {
-        for (let i=0; i<3; i++) {
-            setTimeout(() => {
-                this.setState({subtitle: subTitleArray[i]}) 
-            }, i*3000 );
-        }
-    } 
-
-
     render() {
         const { classes } = this.props;
         const { redirect, subtitle } = this.state;
 
         if (redirect) { 
-            const url = `/intro_info`;
+            const url = `/user_info`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
@@ -76,26 +71,26 @@ class Home extends Component {
             <React.Fragment>
                 <div className={classes.textBox}> 
 
-                    <div style={{marginTop: "200px"}}> 
-                        <span style={{fontSize: "44px"}}>Parkinson's Disease</span>
-                        <br />
-                        <span style={{fontSize: "92px"}}>Navigator</span>
+                    <div style={{marginTop: "100px"}}> 
+                        <h2>What are you most interested in?</h2>
                     </div>
 
-                        
+                
                     <div style={{marginTop: "100px"}}>
-                        <h3>{subtitle}</h3>
-                    </div>
-
-                    <div style={{marginTop: "100px"}}>
-                        <Button variant='contained' className={classes.startBtn} onClick={() => this.DirectToIntroInfo()}>
-                            Get Started
+                        <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(1)}>
+                            Up to date treatments for Parkinson's disease
                         </Button>
                     </div>
 
                     <div style={{marginTop: "100px"}}>
-                        <Button variant='contained' className={classes.loginBtn} onClick={() => this.DirectToIntroInfo()}>
-                            login
+                        <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(2)}>
+                            Clinical trials for new Parkinson's disease treatments
+                        </Button>
+                    </div>
+
+                    <div style={{marginTop: "100px"}}>
+                        <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(3)}>
+                            Treatments and trials
                         </Button>
                     </div>
 

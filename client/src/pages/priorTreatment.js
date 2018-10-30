@@ -35,7 +35,7 @@ import FormRadio from '../components/forms/FormRadio'
 
         return (
             <div>
-                <h1>Tell us about your current Parkinson's disease treatments.</h1>
+                <h3>Tell us about your current Parkinson's disease treatments.</h3>
 
                 <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
 
@@ -52,9 +52,9 @@ import FormRadio from '../components/forms/FormRadio'
                         <Grid item xs={12}>
                             <FormSelect
                                 name="select"
-                                label="select"
+                                label="Select box"
                                 width="90%"
-                                labelWidth="45px"
+                                labelWidth="83"
                                 items={selectItems}
                             />
                         </Grid>
