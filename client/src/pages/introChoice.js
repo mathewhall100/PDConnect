@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { withRouter, Link, Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { bindActionCreators } from 'redux';
 
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+
+import { submitUserChoice } from '../actions/index'
 
 const styles = theme => ({
     root: {
@@ -26,7 +29,7 @@ const styles = theme => ({
 });
 
 
-class Home extends Component {
+class IntroChoice extends Component {
     state = {
         redirect: false,
         subtitle: ""
@@ -39,17 +42,17 @@ class Home extends Component {
     handleNav(choice){
         console.log("redirect to user info: ", choice)
         switch (choice) {
-            case "1": 
-            // save choice in store
+            case 1: 
+            this.props.submitUserChoice({choice: "treatments"})
                 break ;
-            case "2": 
-            // save choice in store
+            case 2: 
+            this.props.submitUserChoice({choice: "trials"})
                 break ;
-            case "3": 
-            //save choice in store
+            case 3: 
+            this.props.submitUserChoice({choice: "both"})
                 break ;
             default:
-            // save 'both' as choice in store
+            this.props.submitUserChoice({choice: "both"})
         }
         this.setState({
             redirect : true
@@ -100,15 +103,11 @@ class Home extends Component {
     }
 }
 
-Home.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ submitUserChoice }, dispatch);
+}
 
-function mapStateToProps(state) {
-    console.log("state in homepage : ", state);
-    return state;
-};
-
-Home = connect(mapStateToProps)(Home)
-Home = withStyles(styles)(Home)
-export default Home;
+IntroChoice = withRouter(IntroChoice)
+IntroChoice = withStyles(styles)(IntroChoice)
+IntroChoice = connect(null, mapDispatchToProps)(IntroChoice)
+export default IntroChoice

@@ -36,6 +36,7 @@ const subTitleArray= ["find out about Parkinson disease treatments individualise
         "take away new knowledge about your condition to share with your doctor" ]
 
 class Home extends Component {
+    
     state = {
         redirect: false,
         subtitle: ""
@@ -54,9 +55,12 @@ class Home extends Component {
     } 
     
     rotateText() {
-        for (let i=0; i<3; i++) {
+        let x=0
+        for (let i=0; i<500; i++) {
             setTimeout(() => {
-                this.setState({subtitle: subTitleArray[i]}) 
+                this.setState({subtitle: subTitleArray[x]}) 
+                x++
+                if (x == 3) {x = 0}
             }, i*3000 );
         }
     } 
@@ -67,7 +71,7 @@ class Home extends Component {
         const { redirect, subtitle } = this.state;
 
         if (redirect) { 
-            const url = `/intro_info`;
+            const url = `/intro_choice`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
