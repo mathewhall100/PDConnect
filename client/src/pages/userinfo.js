@@ -4,51 +4,183 @@ import { withStyles } from '@material-ui/core/styles';
 import { reduxForm } from 'redux-form';
 import Grid from '@material-ui/core/Grid';
 import { submitUserInfo } from '../actions/UserInfoAction'
-import TextField from '@material-ui/core/TextField';
+import FormLabel from '@material-ui/core/FormLabel';
 import { connect } from 'react-redux';
 import Select from '../components/forms/FormSelect';
 import TextBox from '../components/forms/FormText';
 import Radio from '../components/forms/FormRadio';
+import Button from '@material-ui/core/Button';
+import { activity_level } from '../constants';
+import { withRouter, Redirect } from 'react-router-dom';
+
+const arrRace = [
+    {
+        "value" : "American Indian or Alaska Native",
+        "text" : "American Indian or Alaska Native",
+    },
+    {
+        "value": "Asian",
+        "text": "Asian",
+    },
+    {
+        "value": "Black or African American",
+        "text": "Black or African American",
+    },
+    {
+        "value": "Native Hawaiian or Other Pacific Islander",
+        "text": "Native Hawaiian or Other Pacific Islander",
+    },
+    {
+        "value": "White",
+        "text": "White",
+    },
+    {
+        "value": "Hispanic or Latino or Spanish Origin",
+        "text": "Hispanic or Latino or Spanish Origin"
+    },
+    {
+        "value" : "Not Hispanic or Latino or Spansih Origin",
+        "text": "Not Hispanic or Latino or Spansih Origin"
+    }
+]
+
+let arrYearsDescending = [
+    {
+        "value" : "2018",
+        "text" : "2018"
+    },
+    {
+        "value": "2017",
+        "text": "2017"
+    },
+    {
+        "value": "2016",
+        "text": "2016"
+    },
+    {
+        "value": "2015",
+        "text": "2015"
+    },
+    {
+        "value": "2014",
+        "text": "2014"
+    },
+    {
+        "value": "2013",
+        "text": "2013"
+    },
+    {
+        "value": "2012",
+        "text": "2012"
+    }
+];
+
 
 class UserInfo extends Component {
+    state = {
+        redirect : false,
+    }
     componentDidMount() {
+        console.log("age is : " , this.props.user.age);
         this.setState({
             age : this.props.user.age
         })
     }
     submit(values){
-
+        console.log("props : ", this.props);
+        console.log("values : " , values);
+        this.props.submitUserInfo(values)
+        
+        
+        
     }
-    handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value,
-        });
-    };
+    
     render() {
-        const { handleSubmit, classes } = this.props;
+        const { handleSubmit, classes, pristine, submitting } = this.props;
+        const { redirect } = this.state;
+        if(redirect){
+            return(
+                <Redirect to='/current_treatment' />
+            )
+        }else{ 
+
+        }
         return (
-            <Grid container className={classes.root} spacing={16}>
+                <div>
                 <Grid item xs={12}>
-                    <h1>User Info</h1>
+                    <h3>Tell us a bit about yourself so we can individualize the information provides to you</h3>
                 </Grid>
-                <Grid item xs={12}>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
-                        <TextField
-                            id="filled-name"
-                            label="Name"
-                            className={classes.textField}
-                            value={this.state.age}
-                            onChange={this.handleChange('age')}
-                            margin="normal"
-                            variant="filled"
+                    <Grid container spacing={24}>
+                        <Grid item xs={12}>
+                        <Select
+                            label='Age'
+                            name='age'
+                            labelWidth='90'
+                            items={[{ "value": 55, "text": 55 }, { "value": 56, "text": 56 }]}
                         />
+                        </Grid>
+                        <Grid item xs={12}>
+                        <Radio
+                            label='Sex'
+                            name='sex'
+                            labelWidth='90'
+                            items={[{ "value": "male", "label": "male" }, { "value": "female", "label": "female" }]}
+                        />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Select 
+                                name='race'
+                                label='Race'
+                                width='90%'
+                                labelWidth='90'
+                                items={arrRace}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                        <Select
+                            name='yearDiagnosed'
+                            width='90%'
+                            labelWidth='90'
+                            label='Years diagnosed with Parkinsons'
+                            items = {arrYearsDescending}
+                        />
+                        </Grid>
+                        <Grid item xs={12}>
+                        <Select
+                            name='yearFirstSymptoms'
+                            width='90%'
+                            labelWidth='500'
+                            label='Year first diagnosed with Parkinsons'
+                            items={arrYearsDescending}
+                        />
+                        </Grid>
+                        <Grid item xs={12}>
+                        <Select
+                            name='startPDTreatment'
+                            width='90%'
+                            labelWidth='500'
+                            label='When did you start treatment for Parkinsons'
+                            items={arrYearsDescending}
+                        />
+                        </Grid>
+                        <Grid item xs={12}>
+                        <Select
+                            name='performDailyActivities'
+                            label='How do you rate your current ability to perform daily activities?'
+                            width='90%'
+                            labelWidth='500'
+                            items= {activity_level}
+                        />
+                        </Grid>
+                        <Grid xs={12} item>
+                        <Button type="submit" className={styles.Button} disabled={pristine || submitting}>
+                            Next
+                        </Button>
+                        </Grid>
+                    </Grid>
                     </form>
-                </Grid>
-
-
-                
-
-            </Grid>
+            </div>
         );
     }
 }
@@ -62,6 +194,10 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
     },
+    button: {
+        margin: theme.spacing.unit,
+    },
+    
 });
 const formData = {
     form: 'user_info_form', //unique identifier for this form 
@@ -82,7 +218,7 @@ UserInfo.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-UserInfo = connect(mapStatsToProps, { submitUserInfo })(UserInfo);
 UserInfo = reduxForm(formData)(UserInfo);
 UserInfo = withStyles(styles)(UserInfo);
-export default UserInfo;
+UserInfo = withRouter(UserInfo);
+export default connect(mapStatsToProps, { submitUserInfo })(UserInfo);

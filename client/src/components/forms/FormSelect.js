@@ -29,7 +29,7 @@ class FormSelect extends Component {
                             {...custom}
                             input={
                                 <OutlinedInput
-                                    labelWidth={`${labelWidth}`}
+                                    labelWidth={labelWidth}
                                     name="age"
                                     id="select"
                                 />
