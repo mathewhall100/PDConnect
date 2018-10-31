@@ -90,6 +90,7 @@ class UserInfo extends Component {
         console.log("props : ", this.props);
         console.log("values : " , values);
         this.props.submitUserInfo(values)
+        this.setState({redirect : true})
         
         
         
@@ -209,7 +210,7 @@ const styles = theme => ({
     
 });
 const formData = {
-    form: 'user_info_form', //unique identifier for this form 
+    form: 'user_info', //unique identifier for this form 
     validate,
 }
 
@@ -220,7 +221,14 @@ function validate(values) {
 }
 function mapStatsToProps(state) {
     console.log(state);
-    return (state);
+    return {
+        currentTreatments : state.currentTreatments,
+        previousTreatments: state.previousTreatments,
+        user: state.user,
+        userChoice : state.userChoice,
+        symptom : state.symptom,
+        sideEffect : state.sideEffect,
+    }
 }
 
 UserInfo.propTypes = {

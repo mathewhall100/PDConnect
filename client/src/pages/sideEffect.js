@@ -5,14 +5,12 @@ import { withStyles } from '@material-ui/core/styles';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-import Switch from '../components/forms/FormSwitch';
 import Select from '../components/forms/FormSelect';
+import Switch from '../components/forms/FormSwitch';
 import { withRouter, Redirect } from 'react-router-dom';
-import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import { side_effects } from '../constants';
-import _ from 'lodash';
 
 const arrSideEffects = populateSideEffectObj(side_effects);
 
@@ -31,7 +29,7 @@ function populateSideEffectObj (items) {
 class SideEffect extends Component {
     state={
         numSideEffect : 0,
-        selectInput: [<Grid item xs={12}><Select name={`side-effect0`} value={`side-effect0`} label={`side effect0`} items={arrSideEffects} /></Grid>],
+        selectInput: [<Grid item xs={12}><Select width={'90%'} labelWidth='90' name={`side-effect0`} value={`side-effect0`} label={`side effect0`} items={arrSideEffects} /></Grid>],
         redirect : false,
         displayQuestionBox: false,
         displaySEBox: false
@@ -49,7 +47,7 @@ class SideEffect extends Component {
     addNewSelectLine(classes) {
         let currNumSideEffect = this.state.numSideEffect+1;
 
-        const selectInput = this.state.selectInput.concat(<Grid item xs={12}><Select name={`side-effect${currNumSideEffect}`} value={`side-effect${currNumSideEffect}`} label={`side effect${currNumSideEffect}`} items={arrSideEffects} /></Grid>)
+        const selectInput = this.state.selectInput.concat(<Grid item xs={12}><Select width={'90%'} labelWidth='90' name={`side-effect${currNumSideEffect}`} value={`side-effect${currNumSideEffect}`} label={`side effect${currNumSideEffect}`} items={arrSideEffects} /></Grid>)
         this.setState({
             numSideEffect : currNumSideEffect +1,
             selectInput : selectInput
@@ -69,7 +67,10 @@ class SideEffect extends Component {
         })
 
         if( redirect ) {
-            <Redirect to='/symptoms' />
+            console.log("proceed to redirect..");
+            return(
+                <Redirect to='/symptom' />
+            )
         }
         return (
             <div>
@@ -106,9 +107,9 @@ class SideEffect extends Component {
                     
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <Grid container spacing={24}>
-                            {/* <Grid item xs={12}>
+                            <Grid item xs={12}>
                                 <Switch name='benefitFromSinemet' label='Do you receive positive benefits from Sinemet?' value={this.props.sideEffect.benefitFromSinemet} />
-                            </Grid> */}
+                            </Grid>
                             {selectInput}
                             <Grid item xs={12}>
                                 <Button variant="fab" mini color="secondary" aria-label="Add" onClick={()=>this.addNewSelectLine(classes)} className={classes.button}>
@@ -135,10 +136,7 @@ class SideEffect extends Component {
 
 
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
+
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
@@ -161,7 +159,15 @@ function validate(values) {
     return errors;
 }
 function mapStatsToProps(state) {
-    return (state);
+    console.log(state);
+    return {
+        currentTreatments: state.currentTreatments,
+        previousTreatments: state.previousTreatments,
+        user: state.user,
+        userChoice: state.userChoice,
+        symptom: state.symptom,
+        sideEffect: state.sideEffect,
+    }
 }
 
 SideEffect.propTypes = {
