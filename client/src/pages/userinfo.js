@@ -109,7 +109,7 @@ class UserInfo extends Component {
                 <div>
 
                     <div style={{marginTop: "50px", textAlign: "center"}}>
-                        <h1>About Youself</h1>
+                        <h1>About Yourself</h1>
                     </div>
 
                     <div style={{marginTop: "40px", paddingLeft: "20px"}}>
