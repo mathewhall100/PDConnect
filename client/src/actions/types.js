@@ -1,3 +1,5 @@
 export const USER_INFO = 'USER_INFO';
 
 export const INTERESTED_TREATMENT = 'INTERESTED_TREATMENT';
+
+export const SIDE_EFFECT_INFO = 'SIDE_EFFECT_INFO';
