@@ -85,41 +85,71 @@ export const side_effects = [
 
 export const symptoms = [
     {
+        id : 1,
+        short_name : 'dyskinesia',
         name : 'bothersome dsykinesia',
         description: 'abnormality or impairment of voluntary movement.'
     },
     {
+        id: 2,
+        short_name : 'suddenoff',
         name : 'sudden unpredictable wearing off',
         description: 'medication wear off in abnormal rate.'
     },
     {
+        id: 3,
+        short_name: 'freezing',
         name : 'sudden freezing',
         description: 'sudden freeze.'
     },
     {
+        id: 4,
+        short_name: 'earlyoff',
         name : 'medication wear off before next dose',
         description: 'abnormality or impairment of voluntary movement.'
     },
     {
+        id: 5,
+        short_name: 'swallow',
         name: 'trouble swallowing foods or pills',
         description: 'choking hazard.'
     },
     {
+        id: 6,
+        short_name: 'nausea',
         name: 'nausea or easy bloating',
         description: 'abnormality or impairment of voluntary movement.'
     },
     {
+        id: 7,
+        short_name : 'hallucinations',
         name: 'bothersome visual hallucinations',
         description: 'seeing things that is not there.'
     },
     {
-        name: 'diziness / lightheaded',
+        id: 8,
+        short_name : 'dizziness',
+        name: 'dizziness / lightheaded',
         description: 'passing out related to low blood pressure.'
     },
     {
+        id: 9,
+        short_name : 'memory',
         name: 'significant memory impairment',
         description: 'unusual forgetfulness. You may not be able to remember new events, recall one or more memories of the past, or both.'
-    }
+    },
+    {
+        id: 10,
+        short_name : 'drooling',
+        name: 'bothersome drooling',
+        description: 'bothersome drooling'
+    },
+    {
+        id: 11,
+        short_name : 'toe curl',
+        name: 'painful toe curling',
+        description: 'painful toe curling and twited foot'
+    },
 ]
 
 export const activity_level = [

@@ -107,8 +107,11 @@ class SideEffect extends Component {
                     
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <Grid container spacing={24}>
-                            <Grid item xs={12}>
+                            <Grid item xs={10}>
                                 <Switch name='benefitFromSinemet' label='Do you receive positive benefits from Sinemet?' value={this.props.sideEffect.benefitFromSinemet} />
+                            </Grid>
+                            <Grid item xs={2}>
+                                
                             </Grid>
                             {selectInput}
                             <Grid item xs={12}>
