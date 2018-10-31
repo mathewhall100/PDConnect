@@ -72,7 +72,8 @@ const styles = theme => ({
 
     state = {
         displayBox: null,
-        medIndex: 1
+        medIndex: 1,
+        redirect: false
     }
 
     submit(values) {
@@ -97,9 +98,12 @@ const styles = theme => ({
 
         this.props.submitCurrentTreatment(currentTreatment)
 
+        this.setState({redirect : true})
+
     }
 
     handleClearForm() {
+        this.setState({medIndex: 1})
         this.props.reset()
     }
 
@@ -108,10 +112,11 @@ const styles = theme => ({
         this.setState({medIndex: this.state.medIndex + 1})
     }
 
+
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { displayBox, medIndex } = this.state
+        const { redirect, displayBox, medIndex } = this.state
 
         const medList = [
             {value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)"},
@@ -136,6 +141,12 @@ const styles = theme => ({
             {value: "Comtan (entacopone)", text: "Comtan (entacopone)"}, 
             {value: "Stalevo (carbidopa/levodopa/entacapone)", text: "Stalevo (carbidopa/levodopa/entacapone)"}
          ]
+
+         if (redirect) { 
+            const url = `/previous_treatment`;
+            console.log("redirect to .. " + url);
+            return<Redirect to={url} />;
+        }
         
 
         class MedEntryBox extends Component {
@@ -192,7 +203,7 @@ const styles = theme => ({
                             <Button variant='contained' className={classes.Btn} onClick={() => this.setState({displayBox: true})}>Yes</Button>
                     </span>
                     <span>
-                        <Button variant='contained' className={classes.Btn} onClick={() => this.setState({displayBox: false})}>No</Button>
+                        <Button variant='contained' className={classes.Btn} onClick={() =>  this.setState({redirect : true})}>No</Button>
                     </span>
                 </div>
 

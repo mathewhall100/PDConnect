@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Homepage from './pages/home';
 import CurrentTreatment from './pages/currentTreatment';
 import PreviousTreatment from './pages/previousTreatment';
-import Result from './pages/result';
+import Result from './pages/results';
 import SideEffect from './pages/sideEffect';
 import Treatment from './pages/treatment';
 import TreatmentInfo from './pages/treatmentInfo';
@@ -25,7 +25,7 @@ class Routes extends Component {
                     <Route path='/treatment_details' render={props => <TreatmentInfo {...this.props}></TreatmentInfo>} />
                     <Route path='/current_treatment' render={props => <CurrentTreatment></CurrentTreatment>} />
                     <Route path='/previous_treatment' render={props => <PreviousTreatment></PreviousTreatment>} />
-                    <Route path="/result" render={props => <Result {...this.props}></Result>} />
+                    <Route path="/result_treatment" render={props => <Result {...this.props}></Result>} />
                     <Route path="/notfound" component={NotFound} />
                     <Route exact path='/' render={props => <Homepage {...this.props}></Homepage>} />
                     <Route component={NotFound} />
