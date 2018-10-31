@@ -180,11 +180,12 @@ const styles = theme => ({
 
             return (
                 <Grid container spacing={24}>
-                    <Grid item xs={2}></Grid>
-                    <Grid item xs={10}>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={9}>
                         <Button className={classes.iconBtn} onClick={() => this.setState({medIndex: this.state.medIndex + 1})}>
                             <AddCircle color="primary" className={classes.iconHover}/>
                         </Button>
+                        <span>Add medication></span>
                     </Grid>
                 </Grid> 
             )

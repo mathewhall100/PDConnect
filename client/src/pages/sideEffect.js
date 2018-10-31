@@ -32,8 +32,11 @@ class SideEffect extends Component {
     state={
         numSideEffect : 0,
         selectInput: [<Grid item xs={12}><Select name={`side-effect0`} value={`side-effect0`} label={`side effect0`} items={arrSideEffects} /></Grid>],
-        redirect : false
+        redirect : false,
+        displayQuestionBox: false,
+        displaySEBox: false
     }
+
     submit(values) {
         console.log("props : ", this.props);
         console.log("values : ", values);
@@ -53,10 +56,14 @@ class SideEffect extends Component {
         })
         
     }
+
+    handleResponse(response) {
+        this.setState({displayQuestionBox: true})
+    }
     
     render() {
         const { handleSubmit, classes, pristine, submitting } = this.props;
-        const { redirect } = this.state;
+        const { redirect, displayQuestionBox, displaySEBox } = this.state;
         const selectInput = this.state.selectInput.map(( i, index) => {
             return (i);
         })
@@ -66,33 +73,60 @@ class SideEffect extends Component {
         }
         return (
             <div>
-                <Grid item xs={12}>
-                    <h3>Tell us about how these medications help you or any side effects they caused </h3>
-                </Grid>
-                
-                <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
-                    <Grid container spacing={24}>
-                        <Grid item xs={12}>
-                            <Switch name='benefitFromSinemet' label='Do you receive positive benefits from Sinemet?' value={this.props.sideEffect.benefitFromSinemet} />
-                        </Grid>
-                        {selectInput}
-                        <Grid item xs={12}>
-                            <Button variant="fab" mini color="secondary" aria-label="Add" onClick={()=>this.addNewSelectLine(classes)} className={classes.button}>
-                                <AddIcon />
-                            </Button>
-                            Add a new side effect
-                        </Grid>
-                        <Grid xs={12} item>
-                            <Button type="submit" className={styles.Button} disabled={pristine || submitting}>
-                                Next
-                            </Button>
-                        </Grid>
-                    </Grid>
+                <div style={{marginTop: "50px", textAlign: "center"}}>
+                        <h1>Treatment responses & side effects</h1>
+                </div>
+
+                <div  style={{marginTop: "50px", textAlign: "center"}}>
+                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>When you take sinemet, do your symptoms improve ?</h3>
+                    <br />
+                    <br />
                     
-                </form>
-                
+                    <span style={{marginRight: "50px"}}>
+                            <Button variant='contained' className={classes.Btn} onClick={() => this.handleResponse(true)}>Yes</Button>
+                    </span>
+                    <span>
+                        <Button variant='contained' className={classes.Btn} onClick={() =>  this.handleResponse(false)}>No</Button>
+                    </span>
+                </div>
+
+                { displayQuestionBox && <div  style={{marginTop: "50px", textAlign: "center"}}>
+                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Have you ever experienced any side effects from your Parkinson's disease medications?</h3>
+                    <br />
+                    <br />
+                    <span style={{marginRight: "50px"}}>
+                            <Button variant='contained' className={classes.Btn} onClick={() => this.setState({displaySEBox: true})}>Yes</Button>
+                    </span>
+                    <span>
+                        <Button variant='contained' className={classes.Btn} onClick={() => this.setState({redirect: true})}>No</Button>
+                    </span>
+                </div> }
+
+                { displaySEBox && <div style={{marginTop: "40px", padding: "20px"}}>
+                    
+                    <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
+                        <Grid container spacing={24}>
+                            {/* <Grid item xs={12}>
+                                <Switch name='benefitFromSinemet' label='Do you receive positive benefits from Sinemet?' value={this.props.sideEffect.benefitFromSinemet} />
+                            </Grid> */}
+                            {selectInput}
+                            <Grid item xs={12}>
+                                <Button variant="fab" mini color="secondary" aria-label="Add" onClick={()=>this.addNewSelectLine(classes)} className={classes.button}>
+                                    <AddIcon />
+                                </Button>
+                                Add a new side effect
+                            </Grid>
+                            <Grid xs={12} item>
+                                <Button type="submit" className={styles.Button} disabled={pristine || submitting}>
+                                    Next
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </form>
+                 </div> }
 
             </div>
+
         );
     }
 }
