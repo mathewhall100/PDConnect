@@ -92,16 +92,25 @@ const styles = theme => ({
      }
      submitSymptom = () => {
         let used_symptoms_pool = this.state.used_symptoms_pool;
-        this.props.submitSymptom();
+        this.props.submitSymptoms(used_symptoms_pool);
+        this.setState({
+            redirect : true
+        })
      }
     render() {
         const { classes } = this.props;
+        const { redirect } = this.state;
         const unused_symptoms_pool = this.state.unused_symptoms_pool.map((i, index) => {
             return (<Chip key={i.name} label={i.name} clickable deleteIcon={<DoneIcon />} onClick={()=> this.moveToUsedPool(`${i.name}`)} className={classes.chip} />);
         })
         const used_symptoms_pool = this.state.used_symptoms_pool.map((i, index) => {
             return (<Chip key={i.name} label={i.name} clickable onDelete={this.handleDelete} onClick={() => this.moveToUnusedPool(`${i.name}`)} className={classes.chip} />);
         })
+        if(redirect){
+            return(
+                <Redirect to='/result' />
+            )
+        }
         return (
             <Grid container spacing={24}>
                 <h3>Pick the problems that you experience</h3>

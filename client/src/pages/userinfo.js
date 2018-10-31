@@ -89,6 +89,7 @@ class UserInfo extends Component {
         console.log("props : ", this.props);
         console.log("values : " , values);
         this.props.submitUserInfo(values)
+        this.setState({redirect : true})
         
         
         
@@ -115,7 +116,8 @@ class UserInfo extends Component {
                                 <Select
                                     label='Age'
                                     name='age'
-                                    labelWidth='90'
+                                    width='90%'
+                                    labelWidth={90}
                                     items={[{ "value": 55, "text": 55 }, { "value": 56, "text": 56 }]}
                                 />
                             </Grid>
@@ -123,7 +125,7 @@ class UserInfo extends Component {
                                 <Radio
                                     label='Sex'
                                     name='sex'
-                                    labelWidth='90'
+                                    labelWidth={90}
                                     items={[{ "value": "male", "label": "male" }, { "value": "female", "label": "female" }]}
                                 />
                             </Grid>
@@ -132,7 +134,7 @@ class UserInfo extends Component {
                                     name='race'
                                     label='Race'
                                     width='90%'
-                                    labelWidth='90'
+                                    labelWidth={90}
                                     items={arrRace}
                                 />
                             </Grid>
@@ -140,7 +142,7 @@ class UserInfo extends Component {
                                 <Select
                                     name='yearDiagnosed'
                                     width='90%'
-                                    labelWidth='90'
+                                    labelWidth={90}
                                     label='Years diagnosed with Parkinsons'
                                     items = {arrYearsDescending}
                                 />
@@ -199,7 +201,7 @@ const styles = theme => ({
     
 });
 const formData = {
-    form: 'user_info_form', //unique identifier for this form 
+    form: 'user_info', //unique identifier for this form 
     validate,
 }
 
@@ -210,7 +212,14 @@ function validate(values) {
 }
 function mapStatsToProps(state) {
     console.log(state);
-    return (state);
+    return {
+        currentTreatments : state.currentTreatments,
+        previousTreatments: state.previousTreatments,
+        user: state.user,
+        userChoice : state.userChoice,
+        symptom : state.symptom,
+        sideEffect : state.sideEffect,
+    }
 }
 
 UserInfo.propTypes = {

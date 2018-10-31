@@ -62,7 +62,10 @@ class SideEffect extends Component {
         })
 
         if( redirect ) {
-            <Redirect to='/symptoms' />
+            console.log("proceed to redirect..");
+            return(
+                <Redirect to='/symptom' />
+            )
         }
         return (
             <div>
@@ -127,7 +130,15 @@ function validate(values) {
     return errors;
 }
 function mapStatsToProps(state) {
-    return (state);
+    console.log(state);
+    return {
+        currentTreatments: state.currentTreatments,
+        previousTreatments: state.previousTreatments,
+        user: state.user,
+        userChoice: state.userChoice,
+        symptom: state.symptom,
+        sideEffect: state.sideEffect,
+    }
 }
 
 SideEffect.propTypes = {

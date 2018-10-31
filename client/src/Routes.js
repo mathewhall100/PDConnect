@@ -19,11 +19,11 @@ class Routes extends Component {
         return (
             <div>
                 <Switch>
-                    <Route path='/side_effect' render={props => <SideEffect {...this.props}></SideEffect>} />
+                    <Route path='/side_effect' render={props => <SideEffect ></SideEffect>} />
                     <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
                     <Route path='/intro_choice' render={props => <IntroChoice {...this.props}></IntroChoice>} />
                     <Route path='/treatment'  render={props => <Treatment {...this.props}></Treatment>} />
-                    <Route path='/user_info' render={props => <UserInfo {...this.props}></UserInfo>} />
+                    <Route path='/user_info' render={props => <UserInfo ></UserInfo>} />
                     <Route path='/treatment_details' render={props => <TreatmentInfo {...this.props}></TreatmentInfo>} />
                     <Route path='/current_treatment' render={props => <CurrentTreatment></CurrentTreatment>} />
                     <Route path='/previous_treatment' render={props => <PreviousTreatment></PreviousTreatment>} />
