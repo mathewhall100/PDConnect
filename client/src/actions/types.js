@@ -1,5 +1,7 @@
 export const USER_INFO = 'USER_INFO';
 
+export const SIDE_EFFECT_INFO = 'SIDE_EFFECT_INFO';
+
 export const USER_CHOICE = 'USER_CHOICE';
 
 export const INTERESTED_TREATMENT = 'INTERESTED_TREATMENT';

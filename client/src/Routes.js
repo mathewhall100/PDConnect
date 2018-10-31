@@ -10,6 +10,7 @@ import TreatmentInfo from './pages/treatmentInfo';
 import UserInfo from './pages/userinfo';
 import IntroChoice from './pages/introChoice';
 import NotFound from './pages/notFound';
+import Symptom from './pages/symptom';
 
 class Routes extends Component {
 
@@ -19,6 +20,7 @@ class Routes extends Component {
                 <Switch>
                     
                     <Route path='/side_effect' render={props => <SideEffect {...this.props}></SideEffect>} />
+                    <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
                     <Route path='/intro_choice' render={props => <IntroChoice {...this.props}></IntroChoice>} />
                     <Route path='/treatment'  render={props => <Treatment {...this.props}></Treatment>} />
                     <Route path='/user_info' render={props => <UserInfo {...this.props}></UserInfo>} />
