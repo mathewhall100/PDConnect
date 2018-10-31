@@ -18,7 +18,6 @@ class Routes extends Component {
         return (
             <div>
                 <Switch>
-                    
                     <Route path='/side_effect' render={props => <SideEffect {...this.props}></SideEffect>} />
                     <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
                     <Route path='/intro_choice' render={props => <IntroChoice {...this.props}></IntroChoice>} />
