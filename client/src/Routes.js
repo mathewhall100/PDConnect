@@ -4,6 +4,7 @@ import Homepage from './pages/home';
 import CurrentTreatment from './pages/currentTreatment';
 import PreviousTreatment from './pages/previousTreatment';
 import Result from './pages/results';
+import Response from './pages/response';
 import SideEffect from './pages/sideEffect';
 import Treatment from './pages/treatment';
 import TreatmentInfo from './pages/treatmentInfo';
@@ -20,6 +21,8 @@ class Routes extends Component {
             <div>
                 <Switch>
                     <Route path='/side_effect' render={props => <SideEffect ></SideEffect>} />
+                    {/* <Route path='/side_effect' render={props => <SideEffect {...this.props}></SideEffect>} /> */}
+                    <Route path='/response' render={props => <Response {...this.props}></Response>} />
                     <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
                     <Route path='/intro_choice' render={props => <IntroChoice {...this.props}></IntroChoice>} />
                     <Route path='/treatment'  render={props => <Treatment {...this.props}></Treatment>} />

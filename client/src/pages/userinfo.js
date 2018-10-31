@@ -77,6 +77,7 @@ let arrYearsDescending = [
 
 
 class UserInfo extends Component {
+
     state = {
         redirect : false,
     }
@@ -107,80 +108,88 @@ class UserInfo extends Component {
         }
         return (
                 <div>
-                    <Grid item xs={12}>
-                        <h3>Tell us a bit about yourself so we can individualize the information provides to you</h3>
-                    </Grid>
-                    <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
-                        <Grid container spacing={24}>
-                            <Grid item xs={12}>
-                                <Select
-                                    label='Age'
-                                    name='age'
-                                    width='90%'
-                                    labelWidth={90}
-                                    items={[{ "value": 55, "text": 55 }, { "value": 56, "text": 56 }]}
-                                />
+
+                    <div style={{marginTop: "50px", textAlign: "center"}}>
+                        <h1>About Youself</h1>
+                    </div>
+
+                    <div style={{marginTop: "40px", paddingLeft: "20px"}}>
+                        <h3>Tell us a bit about yourself so we can individualize the information we give you.</h3>
+                    </div>
+
+                    <div style={{marginTop: "40px", padding: "20px"}}>
+
+                        <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
+                            <Grid container spacing={24}>
+                                <Grid item xs={12}>
+                                    <Select
+                                        label='Age'
+                                        name='age'
+                                        labelWidth='90'
+                                        items={[{ "value": 55, "text": 55 }, { "value": 56, "text": 56 }]}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Radio
+                                        label='Sex'
+                                        name='sex'
+                                        labelWidth='90'
+                                        items={[{ "value": "male", "label": "male" }, { "value": "female", "label": "female" }]}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Select 
+                                        name='race'
+                                        label='Race'
+                                        width='90%'
+                                        labelWidth='90'
+                                        items={arrRace}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Select
+                                        name='yearDiagnosed'
+                                        width='90%'
+                                        labelWidth='90'
+                                        label='Years diagnosed with Parkinsons'
+                                        items = {arrYearsDescending}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Select
+                                        name='yearFirstSymptoms'
+                                        width='90%'
+                                        labelWidth='500'
+                                        label='Year first diagnosed with Parkinsons'
+                                        items={arrYearsDescending}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Select
+                                        name='startPDTreatment'
+                                        width='90%'
+                                        labelWidth='500'
+                                        label='When did you start treatment for Parkinsons'
+                                        items={arrYearsDescending}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Select
+                                        name='performDailyActivities'
+                                        label='How do you rate your current ability to perform daily activities?'
+                                        width='90%'
+                                        labelWidth='500'
+                                        items= {activity_level}
+                                    />
+                                </Grid>
+                                <Grid xs={12} item>
+                                    <Button type="submit" className={styles.Button} disabled={pristine || submitting}>
+                                        Next
+                                    </Button>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={12}>
-                                <Radio
-                                    label='Sex'
-                                    name='sex'
-                                    labelWidth={90}
-                                    items={[{ "value": "male", "label": "male" }, { "value": "female", "label": "female" }]}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Select 
-                                    name='race'
-                                    label='Race'
-                                    width='90%'
-                                    labelWidth={90}
-                                    items={arrRace}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Select
-                                    name='yearDiagnosed'
-                                    width='90%'
-                                    labelWidth={90}
-                                    label='Years diagnosed with Parkinsons'
-                                    items = {arrYearsDescending}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Select
-                                    name='yearFirstSymptoms'
-                                    width='90%'
-                                    labelWidth='500'
-                                    label='Year first diagnosed with Parkinsons'
-                                    items={arrYearsDescending}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Select
-                                    name='startPDTreatment'
-                                    width='90%'
-                                    labelWidth='500'
-                                    label='When did you start treatment for Parkinsons'
-                                    items={arrYearsDescending}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Select
-                                    name='performDailyActivities'
-                                    label='How do you rate your current ability to perform daily activities?'
-                                    width='90%'
-                                    labelWidth='500'
-                                    items= {activity_level}
-                                />
-                            </Grid>
-                            <Grid xs={12} item>
-                                <Button type="submit" className={styles.Button} disabled={pristine || submitting}>
-                                    Next
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </form>
+                        </form>
+                    </div>
             </div>
         );
     }
