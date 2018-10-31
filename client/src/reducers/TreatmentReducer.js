@@ -12,14 +12,10 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CURRENT_TREATMENT:
         console.log("Current Treatment reducer: ", action.payload)
-            return { 
-                currenttTreatment:  action.payload.currentTreatment
-            }
+            return action.payload
         case PREVIOUS_TREATMENT:
         console.log("Previous Treatment reducer: ", action.payload)
-            return {
-                previousTreatment:  action.payload.previousTreatment
-             }
+            return action.payload
         default:
             return state;
     }
