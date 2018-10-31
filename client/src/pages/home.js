@@ -7,41 +7,102 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
-    button: {
-        margin: theme.spacing.unit,
+    root: {
+
     },
+    textBox: {
+        textAlign: "center"
+    },
+    startBtn: {
+        width: "400px",
+        height: "70px",
+        backgroundColor: "white",
+        border: "4px solid grey",
+        borderRadius: "30px",
+        fontSize: "40px"
+    },
+    loginBtn: {
+        width: "150px",
+        height: "30px",
+        backgroundColor: "white",
+        border: "2px solid grey",
+        borderRadius: "10px",
+        fontSize: "14px"
+    }
 });
 
+const subTitleArray= ["find out about Parkinson disease treatments individualised for you",
+        "discover Parkinson disease clinical trials you can participate in", 
+        "take away new knowledge about your condition to share with your doctor" ]
+
 class Home extends Component {
+    
     state = {
-        redirect : false
-    }
-    componentDidMount() {
+        redirect: false,
+        subtitle: ""
     }
 
-    DirectToUserInfo(){
-        console.log("redirect to user info...")
+    componentDidMount() {
+        this.rotateText()
+    }
+
+    DirectToIntroInfo(){
+        console.log("redirect to intro info...")
         this.setState({
             redirect : true
         })
         
-    }
+    } 
+    
+    rotateText() {
+        let x=0
+        for (let i=0; i<500; i++) {
+            setTimeout(() => {
+                this.setState({subtitle: subTitleArray[x]}) 
+                x++
+                if (x == 3) {x = 0}
+            }, i*3000 );
+        }
+    } 
+
 
     render() {
         const { classes } = this.props;
-        const { redirect } = this.state;
+        const { redirect, subtitle } = this.state;
+
         if (redirect) { 
-            const url = `/user_info`;
+            const url = `/intro_choice`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
+
         return (
             <React.Fragment>
-                <div>
-                    <h1>Homepage</h1>
-                    <Button variant='contained' color='primary' className={classes.button} onClick={() => this.DirectToUserInfo()}>
-                        Get Started
-                    </Button>
+                <div className={classes.textBox}> 
+
+                    <div style={{marginTop: "200px"}}> 
+                        <span style={{fontSize: "44px"}}>Parkinson's Disease</span>
+                        <br />
+                        <span style={{fontSize: "92px"}}>Navigator</span>
+                    </div>
+
+                        
+                    <div style={{marginTop: "100px"}}>
+                        <h3>{subtitle}</h3>
+                    </div>
+
+                    <div style={{marginTop: "100px"}}>
+                        <Button variant='contained' className={classes.startBtn} onClick={() => this.DirectToIntroInfo()}>
+                            Get Started
+                        </Button>
+                    </div>
+
+                    <div style={{marginTop: "100px"}}>
+                        <Button variant='contained' className={classes.loginBtn} onClick={() => this.DirectToIntroInfo()}>
+                            login
+                        </Button>
+                    </div>
+
                 </div>
             </React.Fragment>
         );
