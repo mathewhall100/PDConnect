@@ -25,10 +25,13 @@ const styles = theme => ({
         unused_symptoms_pool : symptoms,
         used_symptoms_pool : []
     }
-     moveToUsedPool = (name) => {
-         console.log("here");
-         let used_symptoms_pool = this.state.used_symptoms_pool;
-         let unused_symptoms_pool = this.state.unused_symptoms_pool;
+    handleDelete = () => {
+        alert('You clicked the delete icon.'); // eslint-disable-line no-alert
+    }
+    moveToUsedPool = (name) => {
+        console.log("here");
+        let used_symptoms_pool = this.state.used_symptoms_pool;
+        let unused_symptoms_pool = this.state.unused_symptoms_pool;
         console.log("used and unused : ", used_symptoms_pool, unused_symptoms_pool);
         _.forEach(unused_symptoms_pool, function(unused) {
             if(unused.name === name){
@@ -48,11 +51,24 @@ const styles = theme => ({
         const unused_symptoms_pool = this.state.unused_symptoms_pool.map((i, index) => {
             return (<Chip key={i.name} label={i.name} clickable deleteIcon={<DoneIcon />} onClick={()=> this.moveToUsedPool(`${i.name}`)} className={classes.chip} />);
         })
+        const used_symptoms_pool = this.state.used_symptoms_pool.map((i, index) => {
+            return (<Chip key={i} label={i} clickable onDelete={this.handleDelete} onClick={() => this.moveToUsedPool(`${i}`)} className={classes.chip} />);
+        })
         return (
             <Grid container spacing={24}>
                 <h3>Pick the problems that you experience</h3>
                 <Grid container spacing={24}>
-                    {unused_symptoms_pool}
+                    <Grid item xs={12}>
+                        {unused_symptoms_pool}
+                    </Grid>
+                </Grid>
+                <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                        These are some most common symptoms that Parkinsons patient suffer from. 
+                    </Grid>
+                    <Grid item xs={12}>
+                    {used_symptoms_pool}
+                    </Grid>
                 </Grid>
             </Grid>
         );
