@@ -143,7 +143,7 @@ const styles = theme => ({
          ]
 
          if (redirect) { 
-            const url = `/side_effect`;
+            const url = `/response`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
