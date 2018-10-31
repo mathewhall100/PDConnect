@@ -173,7 +173,7 @@ class Results extends Component {
 }
 
 const mapStateToProps = (state) => {
-    //console.log("State : ", state);
+    console.log("State : ", state);
     return {
 
     }

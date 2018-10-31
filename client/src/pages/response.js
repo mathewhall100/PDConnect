@@ -134,7 +134,7 @@ const styles = theme => ({
          ]
 
          if (redirect) { 
-            const url = `/result`;
+            const url = `/symptom`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
