@@ -43,7 +43,7 @@ class Results extends Component {
     handleTreatmentInfo(entry) {
         switch (entry) {
             case 0:
-                this.setState({page: "info_dbs"})
+                this.setState({page: "info_apomorphine"})
                 break;
         }
         this.setState({redirect: true})

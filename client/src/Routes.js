@@ -13,6 +13,7 @@ import IntroChoice from './pages/introChoice';
 import NotFound from './pages/notFound';
 import Symptom from './pages/symptom';
 import InfoDBS from './infoFiles/DBS'
+import InfoApomorphine from './infoFiles/Apomorphine.js'
 
 class Routes extends Component {
 
@@ -32,6 +33,7 @@ class Routes extends Component {
                     <Route path='/previous_treatment' render={props => <PreviousTreatment></PreviousTreatment>} />
                     <Route path="/result" render={props => <Result ></Result>} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
+                    <Route path="/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
                     <Route path="/notfound" component={NotFound} />
                     <Route exact path='/' render={props => <Homepage {...this.props}></Homepage>} />
                     <Route component={NotFound} />
