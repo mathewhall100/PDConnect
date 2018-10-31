@@ -77,10 +77,6 @@ const styles = theme => ({
         redirect: false
     }
 
-    submit(values) {
-        console.log("submitCurrent: ", values)
-
-    }
 
     submit(values) {
         console.log("submitPrevious: ", values)
@@ -103,6 +99,8 @@ const styles = theme => ({
         console.log(previousTreatment)
 
         this.props.submitPreviousTreatment(previousTreatment)
+
+        this.setState({redirect: true})
 
     }
 
@@ -145,7 +143,7 @@ const styles = theme => ({
          ]
 
          if (redirect) { 
-            const url = `/current_treatment`;
+            const url = `/side_effect`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
@@ -157,12 +155,12 @@ const styles = theme => ({
         
                     <div style={{marginTop: "40px"}}>
                         <Grid container spacing={24} >
-                            <Grid item xs={2}>
+                            <Grid item xs={3}>
                                 <div style={{ position: "relative", top: "18px", fontSize: "20px", }}>
                                     Medication {this.props.index}
                                 </div>
                             </Grid>
-                            <Grid item xs={10}>
+                            <Grid item xs={9}>
                             {console.log(this.props.name)}
                                 <FormSelect
                                     name={this.props.name}
@@ -197,9 +195,14 @@ const styles = theme => ({
         return (
             <div>
 
-                <div className={classes.textBox} style={{marginTop: "100px"}}>
+                <div className={classes.textBox} style={{marginTop: "50px"}}>
 
-                    <h3 className={classes.textStyle}>Are there any medications that you have taken in the past for your Parkinson's disease but now no longer take?</h3>
+
+                 <div className={classes.textBox}>
+                    <h1>Previous Treatments</h1>
+                </div>
+
+                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Are there any medications that you have taken in the past for your Parkinson's disease but now no longer take?</h3>
                     <br />
                     <br />
                     <span style={{marginRight: "50px"}}>

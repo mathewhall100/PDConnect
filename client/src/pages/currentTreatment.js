@@ -155,12 +155,12 @@ const styles = theme => ({
         
                     <div style={{marginTop: "40px"}}>
                         <Grid container spacing={24} >
-                            <Grid item xs={2}>
+                            <Grid item xs={3}>
                                 <div style={{ position: "relative", top: "18px", fontSize: "20px", }}>
                                     Medication {this.props.index}
                                 </div>
                             </Grid>
-                            <Grid item xs={10}>
+                            <Grid item xs={9}>
                                 <FormSelect
                                     name={this.props.name}
                                     label="Medication Name"
@@ -194,9 +194,13 @@ const styles = theme => ({
         return (
             <div>
 
-                <div className={classes.textBox} style={{marginTop: "100px"}}>
+                <div className={classes.textBox} style={{marginTop: "50px"}}>
 
-                    <h3 className={classes.textStyle}>Are you currently taking medications specifically for your Parkinson's disease?</h3>
+                 <div className={classes.textBox} >
+                    <h1>Current Treatments</h1>
+                </div>
+
+                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Are you currently taking medications specifically for your Parkinson's disease?</h3>
                     <br />
                     <br />
                     <span style={{marginRight: "50px"}}>

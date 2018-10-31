@@ -11,6 +11,7 @@ import UserInfo from './pages/userinfo';
 import IntroChoice from './pages/introChoice';
 import NotFound from './pages/notFound';
 import Symptom from './pages/symptom';
+import InfoDBS from './infoFiles/DBS'
 
 class Routes extends Component {
 
@@ -18,7 +19,6 @@ class Routes extends Component {
         return (
             <div>
                 <Switch>
-                    
                     <Route path='/side_effect' render={props => <SideEffect {...this.props}></SideEffect>} />
                     <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
                     <Route path='/intro_choice' render={props => <IntroChoice {...this.props}></IntroChoice>} />
@@ -27,7 +27,8 @@ class Routes extends Component {
                     <Route path='/treatment_details' render={props => <TreatmentInfo {...this.props}></TreatmentInfo>} />
                     <Route path='/current_treatment' render={props => <CurrentTreatment></CurrentTreatment>} />
                     <Route path='/previous_treatment' render={props => <PreviousTreatment></PreviousTreatment>} />
-                    <Route path="/result_treatment" render={props => <Result {...this.props}></Result>} />
+                    <Route path="/result" render={props => <Result {...this.props}></Result>} />
+                    <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                     <Route path="/notfound" component={NotFound} />
                     <Route exact path='/' render={props => <Homepage {...this.props}></Homepage>} />
                     <Route component={NotFound} />

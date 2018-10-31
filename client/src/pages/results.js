@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { withRouter, Link, Redirect} from 'react-router-dom';
 import { reset, reduxForm } from 'redux-form';
 
@@ -35,8 +36,20 @@ const styles = theme => ({
 
 class Results extends Component {
 
+    state = {
+        redirect: false
+    }
 
+    handleTreatmentInfo(entry) {
+        switch (entry) {
+            case 0:
+                this.setState({page: "info_dbs"})
+                break;
+        }
+        this.setState({redirect: true})
+    }
 
+    
    submit(values) {
        console.log("submit: ", values)
    }
@@ -46,9 +59,16 @@ class Results extends Component {
     render() {
 
         const { handleSubmit, classes } = this.props
+        const { page, redirect } = this.state
 
-        const treatmentResultList = ["duopoda", "rytary", "droxidopa"]
+        const treatmentResultList = ["deep brain surgery", "rytary", "droxidopa"]
         const trialResultList = ["Spark", "NYLO"]
+
+        if (redirect) { 
+            const url = "/info_dbs";
+            console.log("redirect to: " + url);
+            return<Redirect to={url} />;
+        }
         
         return (
 
@@ -97,7 +117,7 @@ class Results extends Component {
                     {trialResultList.map((trial, index) => {
 
                         return (
-                            <div style={{border: "1px solid grey", borderRadius: "5px", margin: "20px"}}>
+                            <div key={index} style={{border: "1px solid grey", borderRadius: "5px", margin: "20px"}}>
                                 <div style={{margin: "20px", fontSize: "20px"}}>
                                     {index+1} {trial}
                                 </div>
@@ -138,6 +158,9 @@ class Results extends Component {
                             label="Password"
                             width="350px"
                         />
+                        <br />
+                        <br />
+                        <Button type="submit" className={classes.Btn}>Submit</Button>
                     </form>
 
                 </div>
@@ -156,15 +179,12 @@ const mapStateToProps = (state) => {
     }
   };
 
-  const formData = {
-    form: 'CreateAccountForm', //unique identifier for this form 
-   // validate,      
+const formData = {
+    form: "CreateAccountForm" //unique identifier for this form 
 }
 
-Results = reduxForm(formData)(Results)
-
-
 Results = withRouter(Results)
+Results = reduxForm(formData)(Results)
 Results = withStyles(styles)(Results)
 Results = connect(mapStateToProps)(Results)
 export default Results
