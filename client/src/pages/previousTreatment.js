@@ -73,7 +73,8 @@ const styles = theme => ({
 
     state = {
         displayBox: null,
-        medIndex: 1
+        medIndex: 1,
+        redirect: false
     }
 
     submit(values) {
@@ -117,7 +118,7 @@ const styles = theme => ({
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { displayBox, medIndex } = this.state
+        const { redirect, displayBox, medIndex } = this.state
 
         const medList = [
             {value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)"},
@@ -142,6 +143,12 @@ const styles = theme => ({
             {value: "Comtan (entacopone)", text: "Comtan (entacopone)"}, 
             {value: "Stalevo (carbidopa/levodopa/entacapone)", text: "Stalevo (carbidopa/levodopa/entacapone)"}
          ]
+
+         if (redirect) { 
+            const url = `/current_treatment`;
+            console.log("redirect to .. " + url);
+            return<Redirect to={url} />;
+        }
 
 
         class MedEntryBox extends Component {
@@ -199,13 +206,13 @@ const styles = theme => ({
                             <Button variant='contained' className={classes.Btn} onClick={() => this.setState({displayBox: true})}>Yes</Button>
                     </span>
                     <span>
-                        <Button variant='contained' className={classes.Btn} onClick={() => this.setState({displayBox: false})}>No</Button>
+                        <Button variant='contained' className={classes.Btn} onClick={() => this.setState({redirect: true})}>No</Button>
                     </span>
                 </div>
 
                 { displayBox && <div className={classes.entryBox}>
 
-                    <h3 className={classes.textStyle} style={{marginTop: "20px"}}>OK, tell us about the medications you currently take for your Parkinson's disease.</h3>
+                    <h3 className={classes.textStyle} style={{marginTop: "20px"}}>OK, tell us about the medications you have taken in the past for your Parkinson's disease.</h3>
 
                     <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
                         
