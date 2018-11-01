@@ -73,7 +73,8 @@ const styles = theme => ({
     state = {
         displayBox: null,
         medIndex: 1,
-        redirect: false
+        redirect: false,
+        redirectAddress : '',
     }
 
     submit(values) {
@@ -98,7 +99,10 @@ const styles = theme => ({
 
         this.props.submitCurrentTreatment(currentTreatment)
 
-        this.setState({redirect : true})
+        this.setState({
+            redirect : true,
+            redirectAddress: 'previous_treatment'
+        })
 
     }
 
@@ -111,12 +115,17 @@ const styles = theme => ({
         console.log("add medication: ", this.state.medIndex)
         this.setState({medIndex: this.state.medIndex + 1})
     }
-
+    handleBack = () => {
+        this.setState({
+            redirect: true,
+            redirectAddress: '/user_info'
+        })
+    }
 
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, displayBox, medIndex } = this.state
+        const { redirect, displayBox, medIndex, redirectAddress } = this.state
 
         const medList = [
             {value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)"},
@@ -143,7 +152,7 @@ const styles = theme => ({
          ]
 
          if (redirect) { 
-            const url = `/previous_treatment`;
+            const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
@@ -185,7 +194,7 @@ const styles = theme => ({
                         <Button className={classes.iconBtn} onClick={() => this.setState({medIndex: this.state.medIndex + 1})}>
                             <AddCircle color="primary" className={classes.iconHover}/>
                         </Button>
-                        <span>Add medication></span>
+                        <span>Add medication</span>
                     </Grid>
                 </Grid> 
             )
@@ -243,6 +252,15 @@ const styles = theme => ({
                     </form>
                    
                 </div> }
+                <div>
+                    <Grid xs={12} item style={{ marginTop: '50px', textAlign: 'center' }}>
+                        <span style={{ marginRight: '50px'}}>
+                            <Button variant='contained' color='secondary' className={classes.Btn} onClick={() => { this.handleBack() }} className={classes.button}>
+                                Back
+                            </Button>
+                        </span>
+                    </Grid>
+                </div>
 
             </div>
 

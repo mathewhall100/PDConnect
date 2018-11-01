@@ -60,7 +60,7 @@ class FormRadio extends Component {
         const { input, meta: { pristine, touched, error }, children } = field
         console.log("Input in form switch : " , input)
         return (
-            <div>
+            <span>
                 <FormControlLabel
                     control={
                         <Switch
@@ -76,9 +76,9 @@ class FormRadio extends Component {
                             }}
                         />
                     }
-                    label={`${field.label}`}
+                    
                 />
-            </div>
+            </span>
         )
 
     };

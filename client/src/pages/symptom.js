@@ -23,8 +23,14 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
         width: "150px",
-        height: "30px",
-        backgroundColor: "white",
+        height: "30px", 
+        border: "2px solid grey",
+        borderRadius: "10px",
+        fontSize: "14px"
+    },
+    Btn: {
+        width: "150px",
+        height: "30px", 
         border: "2px solid grey",
         borderRadius: "10px",
         fontSize: "14px"
@@ -100,12 +106,20 @@ const styles = theme => ({
         let used_symptoms_pool = this.state.used_symptoms_pool;
         this.props.submitSymptoms(used_symptoms_pool);
         this.setState({
-            redirect : true
+            redirect : true,
+            redirectAddress : 'result'
         })
+     }
+
+     handleBack = () => {
+         this.setState({
+             redirect: true,
+             redirectAddress: '/response'
+         })
      }
     render() {
         const { classes } = this.props;
-        const { redirect } = this.state;
+        const { redirect, redirectAddress } = this.state;
         const unused_symptoms_pool = this.state.unused_symptoms_pool.map((i, index) => {
             return (<Chip key={i.name} label={i.name} clickable deleteIcon={<DoneIcon />} onClick={()=> this.moveToUsedPool(`${i.name}`)} className={classes.chip} />);
         })
@@ -114,7 +128,7 @@ const styles = theme => ({
         })
         if(redirect){
             return(
-                <Redirect to='/result' />
+                <Redirect to={`${redirectAddress}`} />
             )
         }
         return (
@@ -131,7 +145,14 @@ const styles = theme => ({
                     <Grid item xs={12}>
                         {unused_symptoms_pool}
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={6}>
+                        <span style={{ marginRight: '50px' }}>
+                            <Button variant='contained' color='secondary' className={classes.Btn} onClick={() => { this.handleBack() }} className={classes.button}>
+                                Back
+                            </Button>
+                        </span>
+                    </Grid>
+                    <Grid item xs={6}>
                         <span style={{ marginRight: '50px' }}>
                         <Button type="submit" variant="outlined" className={classes.button} onClick={()=> this.submitSymptom()}>
                             See Results

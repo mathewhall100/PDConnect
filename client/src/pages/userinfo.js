@@ -80,7 +80,18 @@ class UserInfo extends Component {
 
     state = {
         redirect : false,
+        redirectAddress : '',
     }
+    componentWillMount() {
+        this.handleInitialize();
+    }
+
+    handleInitialize() {
+        const initData = this.props.user
+        console.log("in handle init, init data is : ", initData);
+        this.props.initialize(initData);
+    }
+
     componentDidMount() {
         this.setState({
             age : this.props.user.age
@@ -90,18 +101,24 @@ class UserInfo extends Component {
         console.log("props : ", this.props);
         console.log("values : " , values);
         this.props.submitUserInfo(values)
-        this.setState({redirect : true})
-        
-        
-        
+        this.setState({
+            redirect : true,
+            redirectAddress : '/current_treatment'
+        })
+    }
+    handleBack=() => {
+        this.setState({
+            redirect : true,
+            redirectAddress : '/intro_choice'
+        })
     }
     
     render() {
         const { handleSubmit, classes, pristine, submitting } = this.props;
-        const { redirect } = this.state;
+        const { redirect, redirectAddress } = this.state;
         if(redirect){
             return(
-                <Redirect to='/current_treatment' />
+                <Redirect to={redirectAddress} />
             )
         }else{ 
 
@@ -150,7 +167,7 @@ class UserInfo extends Component {
                                     <Select
                                         name='yearDiagnosed'
                                         width='90%'
-                                        labelWidth='90'
+                                        labelWidth='300'
                                         label='Years diagnosed with Parkinsons'
                                         items = {arrYearsDescending}
                                     />
@@ -159,7 +176,7 @@ class UserInfo extends Component {
                                     <Select
                                         name='yearFirstSymptoms'
                                         width='90%'
-                                        labelWidth='500'
+                                        labelWidth='300'
                                         label='Year first diagnosed with Parkinsons'
                                         items={arrYearsDescending}
                                     />
@@ -168,7 +185,7 @@ class UserInfo extends Component {
                                     <Select
                                         name='startPDTreatment'
                                         width='90%'
-                                        labelWidth='500'
+                                        labelWidth='320'
                                         label='When did you start treatment for Parkinsons'
                                         items={arrYearsDescending}
                                     />
@@ -178,13 +195,20 @@ class UserInfo extends Component {
                                         name='performDailyActivities'
                                         label='How do you rate your current ability to perform daily activities?'
                                         width='90%'
-                                        labelWidth='500'
+                                        labelWidth='440'
                                         items= {activity_level}
                                     />
                                 </Grid>
-                                <Grid xs={12} item>
-                                    <span style={{marginRight : '50px'}}>
-                                        <Button type="submit" className={classes.button} disabled={pristine || submitting}>
+                                <Grid xs={6} item style={{textAlign: 'center'}}>
+                                    <span style={{ marginRight: '50px', textAlign : 'center' }}>
+                                        <Button variant='contained' color='secondary' className={classes.Btn} onClick={()=> {this.handleBack()}} className={classes.button}>
+                                            Back
+                                        </Button>
+                                    </span>
+                                </Grid>
+                                <Grid xs={6} item style={{ textAlign: 'center' }}>
+                                    <span style={{ marginRight: '50px', textAlign: 'center' }}>
+                                        <Button type="submit" className={classes.button} >
                                             Next
                                         </Button>
                                     </span>
@@ -210,7 +234,6 @@ const styles = theme => ({
         margin: theme.spacing.unit,
         width: "150px",
         height: "30px",
-        backgroundColor: "white",
         border: "2px solid grey",
         borderRadius: "10px",
         fontSize: "14px"

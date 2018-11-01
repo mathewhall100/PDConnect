@@ -114,7 +114,8 @@ class SideEffect extends Component {
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <Grid container spacing={24}>
                             <Grid item xs={10}>
-                                <Switch name='benefitFromSinemet' label='Do you receive positive benefits from Sinemet?' value={this.props.sideEffect.benefitFromSinemet} onClick={()=> this.setState({sinemet: !this.state.sinemet})} />
+                                <span>Do you receive positive benefits from Sinemet?</span>
+                                <Switch name='benefitFromSinemet'value={this.props.sideEffect.benefitFromSinemet} onClick={()=> this.setState({sinemet: !this.state.sinemet})} />
                                 {this.props.form.side_effect_form  && this.props.form.side_effect_form.values.benefitFromSinemet ? this.renderLabel(this.props.form.side_effect_form.values.benefitFromSinemet) : null}
                             </Grid>
                             <Grid item xs={2}>

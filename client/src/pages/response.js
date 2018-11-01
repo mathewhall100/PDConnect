@@ -75,7 +75,8 @@ const styles = theme => ({
         displayQuestionBox: false,
         displayBox: null,
         seIndex: 1,
-        redirect: false
+        redirect: false,
+        redirectAddress : '',
     }
 
     submit(values) {
@@ -100,7 +101,10 @@ const styles = theme => ({
 
         this.props.submitSideEffects(sideEffect)
 
-        this.setState({redirect : true})
+        this.setState({
+            redirect : true,
+            redirectAddress : '/symptom'
+        })
 
     }
 
@@ -117,12 +121,18 @@ const styles = theme => ({
     handleResponse(response) {
         this.setState({displayQuestionBox: true})
     }
-
+    
+    handleBack = () => {
+        this.setState({
+            redirect: true,
+            redirectAddress: '/previous_treatment'
+        })
+    }
 
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, displayBox, displayQuestionBox, seIndex } = this.state
+        const { redirect, redirectAddress, displayBox, displayQuestionBox, seIndex } = this.state
 
         const SEList = [
             {value: "nausea and sickness", text: "nausea and sickness"},
@@ -134,7 +144,7 @@ const styles = theme => ({
          ]
 
          if (redirect) { 
-            const url = `/symptom`;
+            const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
@@ -201,7 +211,7 @@ const styles = theme => ({
                         <span>
                             <Button variant='contained' className={classes.Btn} onClick={() =>  this.handleResponse(false)}>No</Button>
                         </span>
-                        {/* <Switch name='benefitFromSinemet' label='Do you receive positive benefits from Sinemet?' value={this.props.sideEffect.benefitFromSinemet} /> */}
+                        {/* <Switch name='benefitFromSinemet' value={this.props.sideEffect.benefitFromSinemet} /> */}
                     </div>
                 </div>
 
@@ -248,9 +258,13 @@ const styles = theme => ({
                             <span><Button variant='contained' className={classes.Btn} onClick={() => this.handleClearForm()}>Clear Form</Button></span>
                         </div>
                     </form>
-                   
+                    
                 </div> }
-
+                <div style={{ marginTop: '50px', textAlign: 'center' }}>
+                    <Button variant='contained' color='secondary' className={classes.Btn} onClick={() => { this.handleBack() }} className={classes.button}>
+                        Back
+                    </Button>
+                </div>
             </div>
 
         );

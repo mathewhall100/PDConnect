@@ -74,7 +74,8 @@ const styles = theme => ({
     state = {
         displayBox: null,
         medIndex: 1,
-        redirect: false
+        redirect: false,
+        redirectAddress : '',
     }
 
 
@@ -100,7 +101,10 @@ const styles = theme => ({
 
         this.props.submitPreviousTreatment(previousTreatment)
 
-        this.setState({redirect: true})
+        this.setState({
+            redirect: true,
+            redirectAddress: '/response',
+        })
 
     }
 
@@ -113,10 +117,16 @@ const styles = theme => ({
         this.setState({medIndex: this.state.medIndex + 1})
     }
 
+    handleBack = () => {
+        this.setState({
+            redirect: true,
+            redirectAddress: '/current_treatment'
+        })
+    }
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, displayBox, medIndex } = this.state
+        const { redirect, displayBox, medIndex, redirectAddress } = this.state
 
         const medList = [
             {value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)"},
@@ -143,7 +153,7 @@ const styles = theme => ({
          ]
 
          if (redirect) { 
-            const url = `/response`;
+            const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
@@ -244,7 +254,11 @@ const styles = theme => ({
                         </div>
                     </form>
                 </div> }
-
+                <div style={{ marginTop: '50px', textAlign: 'center' }}>
+                    <Button variant='contained' color='secondary' className={classes.Btn} onClick={() => { this.handleBack() }} className={classes.button}>
+                        Back
+                    </Button>
+                </div>
             </div>
 
         );
