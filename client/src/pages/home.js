@@ -92,7 +92,14 @@ class Home extends Component {
 
                         
                     <div style={{marginTop: "100px"}}>
-                        <h3 className={classes.fadeIn}>{subtitle}</h3>
+
+                        <h3 id="hero" className={classes.fadeIn}>
+                            <span className="rotating">
+                                find out about Parkinson disease treatments individualised for you,
+                                discover Parkinson disease clinical trials you can participate in, 
+                                take away new knowledge about your condition to share with your doctor
+                            </span>
+                        </h3>
                     </div>
 
                     <div style={{marginTop: "100px"}}>

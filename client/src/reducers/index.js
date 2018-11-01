@@ -7,6 +7,7 @@ import UserChoiceReducer from './UserChoiceReducer';
 import SideEffectReducer from './SideEffectReducer';
 import SymptomsReducer from './SymptomsReducer';
 import TreatmentReducer from './TreatmentReducer';
+import ResultReducer from './ResultReducer';
 
 export default combineReducers({
     form: formReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
     sideEffect: SideEffectReducer,
     symptom: SymptomsReducer,
     treatments: TreatmentReducer,
+    results: ResultReducer
 });
