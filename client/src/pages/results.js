@@ -41,10 +41,19 @@ class Results extends Component {
     }
 
     handleTreatmentInfo(entry) {
+        console.log(entry)
         switch (entry) {
             case 0:
+                this.setState({page: "info_dbs"})
+                break;
+            case 1:
+                this.setState({page: "info_duopa"})
+                break;
+            case 2: 
                 this.setState({page: "info_apomorphine"})
                 break;
+            default: 
+                this.setState({page: "result"})
         }
         this.setState({redirect: true})
     }
@@ -61,11 +70,12 @@ class Results extends Component {
         const { handleSubmit, classes } = this.props
         const { page, redirect } = this.state
 
-        const treatmentResultList = ["deep brain surgery", "rytary", "droxidopa"]
+        const treatmentResultList = ["deep brain surgery", "duopa", "apomorphine"]
         const trialResultList = ["Spark", "NYLO"]
 
         if (redirect) { 
-            const url = "/info_dbs";
+            const url = `/${page}`;
+            console.log("URL: ", url)
             console.log("redirect to: " + url);
             return<Redirect to={url} />;
         }

@@ -14,6 +14,7 @@ import NotFound from './pages/notFound';
 import Symptom from './pages/symptom';
 import InfoDBS from './infoFiles/DBS'
 import InfoApomorphine from './infoFiles/Apomorphine.js'
+import InfoDuopa from './infoFiles/Duopa.js'
 
 class Routes extends Component {
 
@@ -34,6 +35,7 @@ class Routes extends Component {
                     <Route path="/result" render={props => <Result ></Result>} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                     <Route path="/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
+                    <Route path="/info_duopa" render={props => <InfoDuopa {...this.props}></InfoDuopa>} />
                     <Route path="/notfound" component={NotFound} />
                     <Route exact path='/' render={props => <Homepage {...this.props}></Homepage>} />
                     <Route component={NotFound} />
