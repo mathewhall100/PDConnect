@@ -70,8 +70,8 @@ class Results extends Component {
         const { handleSubmit, classes } = this.props
         const { page, redirect } = this.state
 
-        const treatmentResultList = ["deep brain surgery", "duopa", "apomorphine"]
-        const trialResultList = ["Spark", "NYLO"]
+        const treatmentResults = ["deep brain surgery", "duopa", "apomorphine"]
+        const trialResults = ["Spark", "NYLO"]
 
         if (redirect) { 
             const url = `/${page}`;
@@ -93,7 +93,7 @@ class Results extends Component {
 
                 <div style={{marginTop: "35px"}}> 
                     
-                    {treatmentResultList.map((treatment, index) => {
+                    {treatmentResults.map((treatment, index) => {
 
                         return (
                             <div style={{border: "1px solid grey", borderRadius: "5px", margin: "20px"}}>
@@ -124,7 +124,7 @@ class Results extends Component {
 
                 <div style={{marginTop: "35px"}}> 
                     
-                    {trialResultList.map((trial, index) => {
+                    {trialResults.map((trial, index) => {
 
                         return (
                             <div key={index} style={{border: "1px solid grey", borderRadius: "5px", margin: "20px"}}>
