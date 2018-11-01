@@ -15,6 +15,5 @@ export default combineReducers({
     userChoice: UserChoiceReducer,
     sideEffect: SideEffectReducer,
     symptom: SymptomsReducer,
-    currrentTreatments: TreatmentReducer,
-    previousTreatments: TreatmentReducer
+    treatments: TreatmentReducer,
 });

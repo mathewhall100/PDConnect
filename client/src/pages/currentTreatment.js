@@ -12,7 +12,7 @@ import FormRadio from '../components/forms/FormRadio'
 import { withStyles } from '@material-ui/core/styles';
 import AddCircle from '@material-ui/icons/AddCircle';
 
-import { submitCurrentTreatment } from '../actions/index'
+import { submitCurrentTreatment } from '../actions/CurrentTreatmentAction'
 
 
 const styles = theme => ({
