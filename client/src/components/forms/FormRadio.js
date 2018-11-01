@@ -15,7 +15,9 @@ class FormRadio extends Component {
         console.log(field)
         return (
             <div>
-                <br />
+                <div style={{ fontSize: "13px", color: "red", position: "relative", top: "16px", left: "40px" }}>
+                    {touched ? error : ''}
+                </div>
                 <FormLabel component="legend" >{input.name}</FormLabel>
                 <RadioGroup
                     {...input}
@@ -33,7 +35,11 @@ class FormRadio extends Component {
                         />
                     )}
                 </RadioGroup>
-
+                <span style={{ fontSize: "13px", color: "green", position: "relative", top: "20px", left: "10px" }}>
+                    {!pristine ? <DoneIcon /> : ''}
+                </span>
+                
+                
             </div> 
         )
         

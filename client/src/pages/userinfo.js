@@ -183,9 +183,11 @@ class UserInfo extends Component {
                                     />
                                 </Grid>
                                 <Grid xs={12} item>
-                                    <Button type="submit" className={styles.Button} disabled={pristine || submitting}>
-                                        Next
-                                    </Button>
+                                    <span style={{marginRight : '50px'}}>
+                                        <Button type="submit" className={classes.button} disabled={pristine || submitting}>
+                                            Next
+                                        </Button>
+                                    </span>
                                 </Grid>
                             </Grid>
                         </form>
@@ -206,6 +208,12 @@ const styles = theme => ({
     },
     button: {
         margin: theme.spacing.unit,
+        width: "150px",
+        height: "30px",
+        backgroundColor: "white",
+        border: "2px solid grey",
+        borderRadius: "10px",
+        fontSize: "14px"
     },
     
 });
@@ -215,9 +223,29 @@ const formData = {
 }
 
 function validate(values) {
-    //console.log("Error values: ", values) 
-    const errors = {};
-    return errors;
+    const errors = {}
+    if (!values.age) {
+        errors.age = 'Age cannot be empty'
+    }
+    if (!values.sex) {
+        errors.sex = 'Please select a value'
+    } 
+    if (!values.race) {
+        errors.race = 'Please select a race'
+    }
+    if(!values.yearDiagnosed) {
+        errors.yearDiagnosed = 'Please select a value here'
+    }
+    if (!values.yearFirstSymptoms) {
+        errors.yearFirstSymptoms = 'Please select a value here'
+    }
+    if (!values.startPDTreatment) {
+        errors.startPDTreatment = 'Please select a value here'
+    }
+    if (!values.performDailyActivities) {
+        errors.performDailyActivities = 'Please select a value here'
+    }
+    return errors
 }
 function mapStatsToProps(state) {
     console.log(state);
