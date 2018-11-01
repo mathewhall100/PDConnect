@@ -17,6 +17,9 @@ class FormSelect extends Component {
 
             <div> 
                 <span>
+                    <div style={{ fontSize: "13px", color: "red", position: "relative", top: "20px", left: "10px" }}>
+                        {touched ? error : ''}
+                    </div>
                     <FormControl variant="outlined"  style={{width: `${width}`}}>
                         <InputLabel>
                             {label}
@@ -39,12 +42,11 @@ class FormSelect extends Component {
         
                     </FormControl> 
                 </span>
-                <span style={{fontSize: "13px", color: "red", position: "relative", top: "20px", left: "10px"}}> 
-                        {touched ? error : ''}
-                </span>
-                <span style={{fontSize: "13px", color: "green", position: "relative", top: "20px", left: "10px"}}> 
+                <span style={{ fontSize: "13px", color: "green", position: "relative", top: "20px", left: "10px" }}>
                     {!pristine ? <DoneIcon /> : ''}
                 </span>
+                
+                
             </div>
         )
         

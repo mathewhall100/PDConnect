@@ -28,6 +28,10 @@ const styles = theme => ({
         border: "2px solid grey",
         borderRadius: "10px",
         fontSize: "14px"
+    },
+    fadeIn : {
+        transition: 'opacity 0.5s',
+        opacity: '1',
     }
 });
 
@@ -88,7 +92,7 @@ class Home extends Component {
 
                         
                     <div style={{marginTop: "100px"}}>
-                        <h3>{subtitle}</h3>
+                        <h3 className={classes.fadeIn}>{subtitle}</h3>
                     </div>
 
                     <div style={{marginTop: "100px"}}>

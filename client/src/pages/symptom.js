@@ -22,6 +22,12 @@ const styles = theme => ({
     },
     button: {
         margin: theme.spacing.unit,
+        width: "150px",
+        height: "30px",
+        backgroundColor: "white",
+        border: "2px solid grey",
+        borderRadius: "10px",
+        fontSize: "14px"
     },
 });
 
@@ -104,7 +110,7 @@ const styles = theme => ({
             return (<Chip key={i.name} label={i.name} clickable deleteIcon={<DoneIcon />} onClick={()=> this.moveToUsedPool(`${i.name}`)} className={classes.chip} />);
         })
         const used_symptoms_pool = this.state.used_symptoms_pool.map((i, index) => {
-            return (<Chip key={i.name} label={i.name} clickable onDelete={this.handleDelete} onClick={() => this.moveToUnusedPool(`${i.name}`)} className={classes.chip} />);
+            return (<Chip key={i.name} label={i.name} color="primary" clickable onDelete={this.handleDelete} onClick={() => this.moveToUnusedPool(`${i.name}`)} className={classes.chip} />);
         })
         if(redirect){
             return(
@@ -126,9 +132,11 @@ const styles = theme => ({
                         {unused_symptoms_pool}
                     </Grid>
                     <Grid item xs={12}>
-                        <Button type="submit" variant="outlined" onClick={()=> this.submitSymptom()} className={styles.Button}>
+                        <span style={{ marginRight: '50px' }}>
+                        <Button type="submit" variant="outlined" className={classes.button} onClick={()=> this.submitSymptom()}>
                             See Results
                         </Button>
+                        </span>
                     </Grid>
                 </Grid>
             </Grid>
