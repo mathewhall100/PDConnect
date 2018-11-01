@@ -85,7 +85,7 @@ class InfoDuodopa extends Component {
                     <br />
                     <div style={{width: "490px", border: "1px solid grey", padding: "20px", margin: "0 auto"}}>
                         <iframe width="480" height="350"
-                            src="https://www.youtube.com/embed/7FnhEQdzmX3s">
+                            src="https://www.youtube.com/embed/FnhEQdzmX3s">
                         </iframe>
                     </div>
 
