@@ -32,7 +32,8 @@ class SideEffect extends Component {
         selectInput: [<Grid item xs={12}><Select width={'90%'} labelWidth='90' name={`side-effect0`} value={`side-effect0`} label={`side effect0`} items={arrSideEffects} /></Grid>],
         redirect : false,
         displayQuestionBox: false,
-        displaySEBox: false
+        displaySEBox: false,
+        sinemet : false,
     }
 
     submit(values) {
@@ -57,6 +58,11 @@ class SideEffect extends Component {
 
     handleResponse(response) {
         this.setState({displayQuestionBox: true})
+    }
+
+    renderLabel(sinemet){
+        console.log("sinemet : ", sinemet);
+
     }
     
     render() {
@@ -108,7 +114,8 @@ class SideEffect extends Component {
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <Grid container spacing={24}>
                             <Grid item xs={10}>
-                                <Switch name='benefitFromSinemet' label='Do you receive positive benefits from Sinemet?' value={this.props.sideEffect.benefitFromSinemet} />
+                                <Switch name='benefitFromSinemet' label='Do you receive positive benefits from Sinemet?' value={this.props.sideEffect.benefitFromSinemet} onClick={()=> this.setState({sinemet: !this.state.sinemet})} />
+                                {this.props.form.side_effect_form  && this.props.form.side_effect_form.values.benefitFromSinemet ? this.renderLabel(this.props.form.side_effect_form.values.benefitFromSinemet) : null}
                             </Grid>
                             <Grid item xs={2}>
                                 
