@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import FormText from '../components/forms/FormText';
 import FormTextPassword from '../components/forms/FormTextPassword';
-;
+import { submitTrialResult, submitMedicalResult } from '../actions/ResultAction';
 
 const styles = theme => ({
     root: {
@@ -24,7 +24,7 @@ const styles = theme => ({
         marginBottom: '40px'
     },
     Btn: {
-        width: "150px",
+        width: "190px",
         height: "30px",
         backgroundColor: "white",
         border: "2px solid grey",
@@ -39,7 +39,23 @@ class Results extends Component {
     state = {
         redirect: false
     }
-
+    componentDidMount() {
+        // Mathew : use  submitTrialResult(array), submitMedicalResult(array) to send results to store, 
+        /* note array can be an array of object  i.e : 
+            [ 
+                {
+                    medication_name : 'duopa',
+                    summary : 'summary text',
+                    link : 'link address',
+                },
+                {
+                    medication_name : 'duopa',
+                    summary : 'summary text',
+                    link : 'link address',
+                },
+            ]
+        */
+    }
     handleTreatmentInfo(entry) {
         console.log(entry)
         switch (entry) {
@@ -144,6 +160,7 @@ class Results extends Component {
                 </div>
                 <br />
                 <br />
+                
 
                 <div className={classes.textBox} style={{marginTop: "50px"}}>
                     <h1>Create an account</h1>
@@ -156,6 +173,10 @@ class Results extends Component {
                 <div style={{border: "1px solid grey", borderRadius: "5px", margin: "20px", padding: "20px"}}>
 
                     <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
+
+                        <div className={classes.textBox} style={{ marginTop: '50px' }}>
+                            <Button variant='contained' color='primary' className={classes.Email}>Email Me This Result</Button>
+                        </div>
                         <FormText
                           name="email"
                           label="Email (john.doe@you.com"
@@ -170,7 +191,7 @@ class Results extends Component {
                         />
                         <br />
                         <br />
-                        <Button type="submit" className={classes.Btn}>Submit</Button>
+                        <Button type="submit" className={classes.Btn}>Create Account</Button>
                     </form>
 
                 </div>
@@ -196,5 +217,5 @@ const formData = {
 Results = withRouter(Results)
 Results = reduxForm(formData)(Results)
 Results = withStyles(styles)(Results)
-Results = connect(mapStateToProps)(Results)
+Results = connect(mapStateToProps, { submitTrialResult, submitMedicalResult })(Results)
 export default Results
