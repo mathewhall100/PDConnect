@@ -26,11 +26,7 @@ function getModalStyle() {
 }
 
 const styles = theme => ({
-    root: {
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-    },
+    
     chip: {
         margin: theme.spacing.unit,
         fontSize : '22px',
@@ -138,7 +134,7 @@ const styles = theme => ({
          if(this.state.used_symptoms_pool.length > 0){
              return(
                  <Grid item xs={12}>
-                    You have selected : 
+                     <h3>You have selected : </h3>
                  </Grid>
              )
          }
@@ -173,18 +169,18 @@ const styles = theme => ({
             )
         }
         return (
-            <Grid container spacing={24}>                
+            <div>             
                 <div className={classes.textBox} style={{ marginTop: "60px" }}>
-                    <h3>Which of the Parkinson symptoms are you most bothered by? (You may pick more than one)</h3>    
+                    <h1>Which of the Parkinson symptoms are you most bothered by? (You may pick more than one)</h1>    
                 </div>
                 
-                <Grid container spacing={24}>
+                <Grid container >
                     {this.renderMessage()}
                     <Grid item xs={12}>
                         {used_symptoms_pool}
                     </Grid>
                     <Grid item xs={12}>
-                        These are some most common symptoms that Parkinson patient suffer from.
+                        <h3>These are some most common symptoms that Parkinson patient suffer from.</h3>
                     </Grid>
                     <Grid item xs={12}>
                         {unused_symptoms_pool}
@@ -223,7 +219,7 @@ const styles = theme => ({
                         </div>
                     </Modal>
                 </div>
-            </Grid>
+            </div>
         );
     }
 }
