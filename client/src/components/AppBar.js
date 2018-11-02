@@ -1,12 +1,36 @@
 import React, {Component } from 'react';
+import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = theme => ({
+    AppBar : {
+        backgroundColor: '#2D404b',
+        height: '80px',
+        position: 'relative',
+        color: 'white',
+        marginTop: '- 22px'
+    },
+    AppTitle: {
+        paddingTop: '20px',
+        textAlign: 'left',
+        paddingLeft: '20px',
+        marginTop : '0',
+        '&$visited': {
+            textDecoration: 'none',
+        },
+    }
+});
 
-export default class AppBar extends Component {
+class AppBar extends Component {
     render () {
+        const { classes } = this.props
         return(
-            <div className="AppBar">
-                <h1 className='AppTitle'>PD Navigator</h1>
+            <div className={classes.AppBar}>
+                <h1 className={classes.AppTitle}><Link style={{textDecoration : 'none', color : 'white'}} to='/'>PD Navigator</Link></h1>
             </div>
         )
     }
 }
+
+AppBar = withStyles(styles)(AppBar)
+export default  AppBar

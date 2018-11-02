@@ -30,7 +30,7 @@ const styles = theme => ({
         fontSize: "14px"
     },
     fadeIn : {
-        transition: 'opacity 0.5s',
+        transition: 'opacity 1s',
         opacity: '1',
     }
 });
@@ -85,7 +85,7 @@ class Home extends Component {
                 <div className={classes.textBox}> 
 
                     <div style={{marginTop: "200px"}}> 
-                        <span style={{fontSize: "44px"}}>Parkinson's Disease</span>
+                        <span style={{fontSize: "44px"}}>The PD</span>
                         <br />
                         <span style={{fontSize: "92px"}}>Navigator</span>
                     </div>
