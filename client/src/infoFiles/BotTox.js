@@ -8,16 +8,24 @@ import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';    
 
 
+
 const styles = theme => ({
     root: {
 
     },
-    textBox: {
-        textAlign: "center"
+    textTitle: {
+        textAlign: "center",
+        paddingTop: "20px"
     },
     TextStyle: {
         marginTop: '40px',
         marginBottom: '40px'
+    },
+    text: {
+        fontSize: "20px",
+        lineHeight: "32px",
+        textAlign: "justify", 
+        padding: "20px"
     },
     Btn: {
         width: "150px",
@@ -42,32 +50,77 @@ class InfoBotTox extends Component {
         return (
             <div>
 
-                <div className={classes.textBox}>
-                    <h1>Botulinum toxin</h1>
+                <div className={classes.textTitle} style={{paddingBottom: "20px"}}>
+                    <h1>Botulinum Toxin</h1>
                 </div>
 
-                <div style={{height: "250px", border: "1px solid grey"}}>
-                    image or video
-                </div>
-
-                <div>
-                    <h3>Description</h3>
-                </div>
-
-                <div>
-                    <h3>Who benefits most?</h3>
+                 <div style={{width: "490px", border: "1px solid grey", padding: "20px", margin: "0 auto"}}>
+                    <iframe width="480" height="350" 
+                        src="https://www.youtube.com/embed/">
+                    </iframe>
                 </div>
 
                 <div>
-                    <h3>Side effects</h3>
-                </div>
+                    <h3 className={classes.textTitle}>Description</h3>
+                    <p className={classes.text}> </p>
+                </div> 
+
+                <hr />
 
                 <div>
-                    <h3>Clinical trial information</h3>
+                <h3 className={classes.textTitle}>How Is It taken?</h3>
+                    <p className={classes.text}>  </p>
                 </div>
 
+                <hr />
+
                 <div>
-                    <h3>More information from manufacturer</h3>
+                    <h3 className={classes.textTitle}>Who Benefits Most ?</h3>
+                    <p className={classes.text}> </p>
+                </div>
+
+                <hr />
+
+                <div>
+                    <h3 className={classes.textTitle}>Patient Experiences</h3>
+                    <br />
+                    <div style={{width: "490px", border: "1px solid grey", padding: "20px", margin: "0 auto"}}>
+                    {/* <img src={patientImg} width="480" height="350" /> */}
+                        <iframe width="480" height="350"
+                            src="https://www.youtube.com/embed/">
+                        </iframe>
+                    </div>
+
+                    <br />
+                    <br />       
+                </div>
+
+                <hr />
+
+                <div>
+                    <h3 className={classes.textTitle}>Unwanted Effects</h3>
+                    <p className={classes.text}>Most common unwanted effects are headache, nausea and hypertension when lying down(supine hypertension).      </p>
+                </div>
+
+                <hr />
+
+                <div>
+                    <h3 className={classes.textTitle}>What To Ask Your Doctor</h3>
+                    <p className={classes.text}> </p>
+                </div>
+
+                <hr />
+
+                <div>
+                    <h3 className={classes.textTitle}>Clinical Evidence Summary</h3>
+                    <p className={classes.text}></p>
+                </div>
+
+                <hr />
+
+                <div>
+                    <h3 className={classes.textTitle}>More information</h3>
+                    <p className={classes.text}></p>
                 </div>
             </div>
         )

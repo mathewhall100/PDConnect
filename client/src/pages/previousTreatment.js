@@ -102,8 +102,8 @@ const styles = theme => ({
         this.props.submitPreviousTreatment(previousTreatment)
 
         this.setState({
-            redirect: true,
             redirectAddress: '/response',
+            redirect: true
         })
 
     }

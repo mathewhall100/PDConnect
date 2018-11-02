@@ -40,6 +40,10 @@ class Results extends Component {
         redirect: false
     }
     componentDidMount() {
+
+        this.treatmentResults()
+        this.trialResults()
+        
         // Mathew : use  submitTrialResult(array), submitMedicalResult(array) to send results to store, 
         /* note array can be an array of object  i.e : 
             [ 
@@ -56,21 +60,28 @@ class Results extends Component {
             ]
         */
     }
-    handleTreatmentInfo(entry) {
-        console.log(entry)
-        switch (entry) {
-            case 0:
-                this.setState({page: "info_dbs"})
-                break;
-            case 1:
-                this.setState({page: "info_duopa"})
-                break;
-            case 2: 
-                this.setState({page: "info_apomorphine"})
-                break;
-            default: 
-                this.setState({page: "result"})
-        }
+
+    treatmentResults() {
+        let treatmentResults = [];
+        this.testBotTox ? treatmentResults.push({
+            medication_name: "Botulinum Toxin",
+            summary: "Injections of a muscle paralysing agent (botulinum toxin) used to treat troublesome drooling and pedal dystonia",
+            link: "info_bottox"
+        }) : null
+    }
+
+    trialResults() {
+            
+    }
+
+    testBotTox() {
+        if ( ) {return true}
+    }
+
+
+    handleMoreInfo(link) {
+        console.log(link)
+        this.setState({page: link})
         this.setState({redirect: true})
     }
 
@@ -120,7 +131,7 @@ class Results extends Component {
                                     summary
                                 </div>
                                 <div style={{margin: "20px", fontSize: "20px"}}>
-                                    <Button type="button" className={classes.Btn} onClick={() => this.handleTreatmentInfo(index)}>Find Out More</Button>
+                                    <Button type="button" className={classes.Btn} onClick={() => this.handleMoreInfo(treatment.link)}>Find Out More</Button>
                                 </div>
                             </div>
                         ) 
