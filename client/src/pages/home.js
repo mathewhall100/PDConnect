@@ -85,8 +85,6 @@ class Home extends Component {
                 <div className={classes.textBox}> 
 
                     <div style={{marginTop: "50px"}}> 
-                        <span style={{ fontSize: "82px" }}>The</span>
-                        <br />
                         <span style={{fontSize: "82px"}}>PD</span>
                         <br />
                         <span style={{fontSize: "82px"}}>Navigator</span>
@@ -104,13 +102,13 @@ class Home extends Component {
                         </h3>
                     </div>
 
-                    <div style={{marginTop: "100px"}}>
+                    <div style={{marginTop: "80px"}}>
                         <Button variant='contained' className={classes.startBtn} onClick={() => this.DirectToIntroInfo()}>
                             Get Started
                         </Button>
                     </div>
 
-                    <div style={{marginTop: "100px"}}>
+                    <div style={{marginTop: "80px"}}>
                         <Button variant='contained' className={classes.loginBtn} onClick={() => this.DirectToIntroInfo()}>
                             login
                         </Button>

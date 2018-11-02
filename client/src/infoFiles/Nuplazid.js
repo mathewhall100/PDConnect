@@ -111,7 +111,7 @@ class InfoNuplazid extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Unwanted Effects</h3>
-                    <p className={classes.text}>Nuplazid hs been linkd to an increase in death for patients with psychosis realted to cognitive impairment (dementia) and should be avoided in patints with dementia-related psychosis unrelated Parkinson's hallucinations and delusions. Nuplazid may also increase the risk of certain heart rhythm chnages, limb swelling and confusion.  </p>
+                    <p className={classes.text}>Nuplazid hs been linkd to an increase in death for patients with psychosis realted to cognitive impairment (dementia) and should be avoided in patints with dementia-related psychosis unrelated Parkinsons hallucinations and delusions. Nuplazid may also increase the risk of certain heart rhythm chnages, limb swelling and confusion.  </p>
                 </div>
 
                 <hr />

@@ -123,7 +123,7 @@ class InfoApomorphine extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Clinical Evidence Summary</h3>
-                    <p className={classes.text}>Since apomorphine was introduced for Parkinson disease in 2005, a number of clinical trials have been carried out investigating the effect of apomorphine on patients with uncontrolled wearing 'off' symptoms. These trials have shown a positive benefit in symptom control in those patienst taking apomorphine in addition to other Parkinson's medications. A summary of the most recent trials can be seen at xyz.apomorphine.com.</p>
+                    <p className={classes.text}>Since apomorphine was introduced for Parkinson disease in 2005, a number of clinical trials have been carried out investigating the effect of apomorphine on patients with uncontrolled wearing 'off' symptoms. These trials have shown a positive benefit in symptom control in those patienst taking apomorphine in addition to other Parkinsons medications. A summary of the most recent trials can be seen at xyz.apomorphine.com.</p>
                 </div>
 
                 <hr />

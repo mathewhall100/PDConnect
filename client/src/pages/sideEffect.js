@@ -98,7 +98,7 @@ class SideEffect extends Component {
                 </div>
 
                 { displayQuestionBox && <div  style={{marginTop: "50px", textAlign: "center"}}>
-                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Have you ever experienced any side effects from your Parkinson's disease medications?</h3>
+                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Have you ever experienced any side effects from your Parkinsons disease medications?</h3>
                     <br />
                     <br />
                     <span style={{marginRight: "50px"}}>

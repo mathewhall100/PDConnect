@@ -227,7 +227,7 @@ const styles = theme => ({
 
                 { displayBox && <div className={classes.entryBox}>
 
-                    <h3 className={classes.textStyle} style={{marginTop: "20px"}}>OK, tell us about the medications you have taken in the past for your Parkinson's disease.</h3>
+                    <h3 className={classes.textStyle} style={{marginTop: "20px"}}>OK, tell us about the medications you have taken in the past for your Parkinsons disease.</h3>
 
                     <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
                         

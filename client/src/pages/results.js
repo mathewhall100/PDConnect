@@ -306,7 +306,7 @@ class Results extends Component {
                     </div>
 
                     <div style={{margin: "25px"}}>
-                        <h3>Based on the information you have entered you may benefit from discussing the following treatments with the doctor that looks after you for your Parkinson's disease.</h3>
+                        <h3>Based on the information you have entered you may benefit from discussing the following treatments with the doctor that looks after you for your Parkinsons disease.</h3>
                     </div>
 
                     <div style={{marginTop: "35px"}}> 
@@ -342,7 +342,7 @@ class Results extends Component {
                     </div>
 
                     <div style={{margin: "25px"}}>
-                        <h3>You may be eligable to paticipate in the following Parkinson's disease clinical trials</h3>
+                        <h3>You may be eligable to paticipate in the following Parkinsons disease clinical trials</h3>
                     </div>
 
                     <div style={{marginTop: "35px"}}> 
