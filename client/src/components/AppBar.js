@@ -26,7 +26,7 @@ class AppBar extends Component {
         const { classes } = this.props
         return(
             <div className={classes.AppBar}>
-                <h1 className={classes.AppTitle}><Link style={{textDecoration : 'none', color : 'white'}} to='/'>PD Navigator</Link></h1>
+                <h1 className={classes.AppTitle}><a href='/' style={{ textDecoration: 'none', color: 'white' }} >PD Navigator</a></h1>
             </div>
         )
     }

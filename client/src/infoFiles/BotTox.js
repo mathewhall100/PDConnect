@@ -36,22 +36,26 @@ const styles = theme => ({
         fontSize: "14px"
     },
 
-});
-
-
-class InfoBotTox extends Component {
-
-
-
     render() {
 
         const { classes } = this.props
-
+        const { redirect } = this.state
+        if (redirect) {
+            return (
+                <Redirect to={`/result`} />
+            )
+        }
         return (
             <div>
-
-                <div className={classes.textTitle} style={{paddingBottom: "20px"}}>
-                    <h1>Botulinum Toxin</h1>
+                <span style={{
+                    marginRight: '50px', textAlign: 'center', position: "fixed", top: "10%", left: "5%",
+                }}>
+                    <Button variant='contained' color='secondary' className={classes.Btn} onClick={() => this.setState({ redirect: true })} className={classes.button}>
+                        Back to result
+                    </Button>
+                </span>
+                <div className={classes.textBox}>
+                    <h1>Botulinum toxin</h1>
                 </div>
 
                  <div style={{width: "490px", border: "1px solid grey", padding: "20px", margin: "0 auto"}}>

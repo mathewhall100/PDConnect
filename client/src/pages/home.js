@@ -85,7 +85,9 @@ class Home extends Component {
                 <div className={classes.textBox}> 
 
                     <div style={{marginTop: "200px"}}> 
-                        <span style={{fontSize: "44px"}}>The PD</span>
+                        <span style={{ fontSize: "92px" }}>The</span>
+                        <br />
+                        <span style={{fontSize: "92px"}}>PD</span>
                         <br />
                         <span style={{fontSize: "92px"}}>Navigator</span>
                     </div>

@@ -39,16 +39,28 @@ const styles = theme => ({
 
 
 class InfoNILO extends Component {
-
-
+    state = {
+        redirect: false
+    }
 
     render() {
 
         const { classes } = this.props
-
+        const { redirect } = this.state
+        if (redirect) {
+            return (
+                <Redirect to={`/result`} />
+            )
+        }
         return (
             <div>
-
+                <span style={{
+                    marginRight: '50px', textAlign: 'center', position: "fixed", top: "10%", left: "5%",
+                }}>
+                    <Button variant='contained' color='secondary' className={classes.Btn} onClick={() => this.setState({ redirect: true })} className={classes.button}>
+                        Back to result
+                    </Button>
+                </span>
                 <div className={classes.textTitle} style={{paddingBottom: "20px"}}>
                     <h1>The NILO-PD Study</h1>
                 </div>

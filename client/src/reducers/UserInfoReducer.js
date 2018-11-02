@@ -3,7 +3,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    age: 55,
+    age: '',
     sex: '',
     race : '',
     yearDiagnosed : '',

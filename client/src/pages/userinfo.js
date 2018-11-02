@@ -12,7 +12,7 @@ import Radio from '../components/forms/FormRadio';
 import Button from '@material-ui/core/Button';
 import { activity_level } from '../constants';
 import { withRouter, Redirect } from 'react-router-dom';
-
+import { age, years } from '../constants';
 const arrRace = [
     {
         "value" : "American Indian or Alaska Native",
@@ -120,8 +120,6 @@ class UserInfo extends Component {
             return(
                 <Redirect to={redirectAddress} />
             )
-        }else{ 
-
         }
         return (
                 <div>
@@ -143,7 +141,7 @@ class UserInfo extends Component {
                                         label='Age'
                                         name='age'
                                         labelWidth='90'
-                                        items={[{ "value": 55, "text": 55 }, { "value": 56, "text": 56 }]}
+                                        items={age}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -169,7 +167,7 @@ class UserInfo extends Component {
                                         width='90%'
                                         labelWidth='300'
                                         label='When were you diagnosed with Parkinson disease?'
-                                        items = {arrYearsDescending}
+                                        items = {years}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -178,7 +176,7 @@ class UserInfo extends Component {
                                         width='90%'
                                         labelWidth='300'
                                         label='When did your symptoms first start?'
-                                        items={arrYearsDescending}
+                                        items={years}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -187,7 +185,7 @@ class UserInfo extends Component {
                                         width='90%'
                                         labelWidth='320'
                                         label='When did you start treatment for Parkinson?'
-                                        items={arrYearsDescending}
+                                        items={years}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -196,7 +194,7 @@ class UserInfo extends Component {
                                         label='How do you rate your current ability to perform daily activities?'
                                         width='90%'
                                         labelWidth='440'
-                                        items= {activity_level}
+                                        items={years}
                                     />
                                 </Grid>
                                 <Grid xs={6} item style={{textAlign: 'center'}}>
