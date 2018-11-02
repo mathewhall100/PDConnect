@@ -30,7 +30,7 @@ const styles = theme => ({
         fontSize: "14px"
     },
     fadeIn : {
-        transition: 'opacity 0.5s',
+        transition: 'opacity 1s',
         opacity: '1',
     }
 });

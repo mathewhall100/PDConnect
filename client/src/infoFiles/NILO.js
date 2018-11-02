@@ -6,7 +6,6 @@ import { reset, reduxForm } from 'redux-form';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';    
-import patientImg from '../img/trials_spark1.PNG'
 
 
 const styles = theme => ({
@@ -39,7 +38,7 @@ const styles = theme => ({
 });
 
 
-class InfoSPARK extends Component {
+class InfoNILO extends Component {
 
 
 
@@ -51,36 +50,39 @@ class InfoSPARK extends Component {
             <div>
 
                 <div className={classes.textTitle} style={{paddingBottom: "20px"}}>
-                    <h1>The SPARK Study</h1>
+                    <h1>The NILO-PD Study</h1>
                 </div>
 
                 <div>
                     <h3 className={classes.textTitle}>Description</h3>
-                    <p className={classes.text}>The SPARK study is for people who have been recently diagnosed with Parkinson’s disease and are looking to take a proactive step in their care. The study is designed to evaluate a potential new drug treatment for Parkinson’s disease which may slow or reduce disease progression from its earliest stages. Some participants in the trial will recieve the study drug and others will recieve a placebo. The trial is blinded, which means that participants and doctors do not know whether any one participant is receiving the study drug or a placebo. This allows for comparison btween the two groups without bias. </p>
+                    <p className={classes.text}> The NILO-PD study will investigate the safety and tolerability of nilotinib. Nilotiniab is an existing treatment cancer, but a small scale clinicakl study showed it may have benfit in slowing the progression of parkinson's disease as well. The Parkinson Study Group (PSG) is conducting this clinical trial in approximately 25 research institutions across the United States. It aims to enroll enroll 75 participants</p>
                 </div> 
 
                 <hr />
 
                 <div>
-                <h3 className={classes.textTitle}>What is involved?</h3>
-                <br />
-                <div style={{width: "560px", margin: "0 auto"}}>
-                        <img src={patientImg} width="550" />
-                        
+                    <h3 className={classes.textTitle}>What is involved?</h3>
+                    <div className={classes.text}>
+                        <p>There will be two cohorts of trial participants, the first will be in the study for 9 months, the second cohort for 15 months. For both cohorts participation will involve: </p>
+                        <ul>
+                            <li>11 in person visits over the duration of the study</li> 
+                            <li>clinical assessments and completion of study questinnaires</li> 
+                            <li>several blood samples will need to be taken</li>
+                            <li>certain clinic visits will involve a lumbar puncture</li>
+                        </ul>
                     </div>
                 </div>
-                <br />
-                <br />
+                
                 <hr />
 
                 <div>
                     <h3 className={classes.textTitle}>Am I eligable?</h3>
                     <div className={classes.text}>
-                        <p>You may be eligable to participate in the SPARK trial if: </p>
+                        <p>You may be eligable for enrollment in the NILO trial if: </p>
                         <ul>
-                            <li>you are between 40 and 80 years of age</li> 
-                            <li>habe been diagnosed with parkinson disease in the last three years</li> 
-                            <li>Have not recieved levodopa or any other parkinson disease mediaction in the last 12 weeks.</li>
+                            <li>you are aged between 40 and 79 years </li> 
+                            <li>have been diagnosed with Parkinson disease for more than 5 years</li> 
+                            <li>Are on stable Parkinson's disease medications, which must include levodopa, for at least 30 days pror to enrollment. .</li>
                         </ul>
                     </div>
                 </div>
@@ -92,7 +94,8 @@ class InfoSPARK extends Component {
                     <div className={classes.text}>
                     <p> Study participants will receive: </p>
                         <ul>
-                            <li>the study drug (new potential treatment) or a placebo at no cost. Currently, any benefit from receiving the study drug is unknown but your participation in the study will increase the growing body of knowedge about Parkinson's disease.</li> 
+                            <li>either the study drug (new potential treatment) or a placebo at no cost.</li> 
+                            <li>at present the benefit of receiving the study drug are unknown , but by paticipating in the trial you will be contributing to the growing body of knowledge about parkinson's disease. </li> 
                             <li>study realted acre and consultation with a study doctor.</li> 
                             <li>study office visits and health assessments.</li>
                             <li>travel costs and re-imbursement of any other costs incurred related to the study.</li>
@@ -104,7 +107,7 @@ class InfoSPARK extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Who is running the study?</h3>
-                    <p className={classes.text}>The study is being sponsored by the pharmaceutical companyy Biogen. </p>
+                    <p className={classes.text}>The Parkinson Study Group (PSG) is conducting this clinical trial with funding from the Michael J Fox Foundation. </p>
                 </div>
 
                 <hr />
@@ -120,12 +123,12 @@ class InfoSPARK extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>More information</h3>
-                    <p className={classes.text}>More information on the NILO_PD trial as well as how to contact a trial physician can be found on the trial website, www.thesparkstudy.com. </p>
+                    <p className={classes.text}>More information on the NILO trial as well as how to contact a trial physician can be found on the trial website, www.nilopd.org. </p>
                 </div>
             </div>
         )
     }
 }
 
-InfoSPARK = withStyles(styles)(InfoSPARK)
-export default InfoSPARK
+InfoNILO = withStyles(styles)(InfoNILO)
+export default InfoNILO

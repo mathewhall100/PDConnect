@@ -18,6 +18,8 @@ import InfoDuopa from './infoFiles/Duopa.js'
 import InfoRytary from './infoFiles/Rytary.js'
 import InfoNuplazid from './infoFiles/Nuplazid.js'
 import InfoDroxidopa from './infoFiles/Droxidopa.js'
+import InfoSpark from './infoFiles/SPARK.js'
+import InfoNilo from './infoFiles/NILO.js'
 
 class Routes extends Component {
 
@@ -42,6 +44,8 @@ class Routes extends Component {
                     <Route path="/info_rytary" render={props => <InfoRytary {...this.props}></InfoRytary>} />
                     <Route path="/info_nuplazid" render={props => <InfoNuplazid {...this.props}></InfoNuplazid>} />
                     <Route path="/info_droxidopa" render={props => <InfoDroxidopa {...this.props}></InfoDroxidopa>} />
+                    <Route path="/info_spark" render={props => <InfoSpark{...this.props}></InfoSpark>} />
+                    <Route path="/info_nilo" render={props => <InfoNilo{...this.props}></InfoNilo>} />
                     <Route path="/notfound" component={NotFound} />
                     <Route exact path='/' render={props => <Homepage {...this.props}></Homepage>} />
                     <Route component={NotFound} />
