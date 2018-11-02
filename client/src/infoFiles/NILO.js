@@ -67,7 +67,7 @@ class InfoNILO extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Description</h3>
-                    <p className={classes.text}> The NILO-PD study will investigate the safety and tolerability of nilotinib. Nilotiniab is an existing treatment cancer, but a small scale clinicakl study showed it may have benfit in slowing the progression of parkinson's disease as well. The Parkinson Study Group (PSG) is conducting this clinical trial in approximately 25 research institutions across the United States. It aims to enroll enroll 75 participants</p>
+                    <p className={classes.text}> The NILO-PD study will investigate the safety and tolerability of nilotinib. Nilotiniab is an existing treatment cancer, but a small scale clinical study has shown that it may have benfit in slowing the progression of Parkinson disease as well. The Parkinson Study Group (PSG) is conducting this clinical trial in approximately 25 research institutions across the United States. It aims to enroll enroll 75 participants</p>
                 </div> 
 
                 <hr />
@@ -78,9 +78,9 @@ class InfoNILO extends Component {
                         <p>There will be two cohorts of trial participants, the first will be in the study for 9 months, the second cohort for 15 months. For both cohorts participation will involve: </p>
                         <ul>
                             <li>11 in person visits over the duration of the study</li> 
-                            <li>clinical assessments and completion of study questinnaires</li> 
-                            <li>several blood samples will need to be taken</li>
-                            <li>certain clinic visits will involve a lumbar puncture</li>
+                            <li>Clinical assessments and completion of study questinnaires</li> 
+                            <li>Several blood samples will need to be taken</li>
+                            <li>Certain clinic visits will involve a lumbar puncture</li>
                         </ul>
                     </div>
                 </div>
@@ -92,9 +92,9 @@ class InfoNILO extends Component {
                     <div className={classes.text}>
                         <p>You may be eligable for enrollment in the NILO trial if: </p>
                         <ul>
-                            <li>you are aged between 40 and 79 years </li> 
-                            <li>have been diagnosed with Parkinson disease for more than 5 years</li> 
-                            <li>Are on stable Parkinson's disease medications, which must include levodopa, for at least 30 days pror to enrollment. .</li>
+                            <li>You are aged between 40 and 79 years </li> 
+                            <li>Have been diagnosed with Parkinson disease for more than 5 years</li> 
+                            <li>Are on stable Parkinson disease medications, which must include levodopa, for at least 30 days pror to enrollment. </li>
                         </ul>
                     </div>
                 </div>
@@ -106,11 +106,11 @@ class InfoNILO extends Component {
                     <div className={classes.text}>
                     <p> Study participants will receive: </p>
                         <ul>
-                            <li>either the study drug (new potential treatment) or a placebo at no cost.</li> 
-                            <li>at present the benefit of receiving the study drug are unknown , but by paticipating in the trial you will be contributing to the growing body of knowledge about parkinson's disease. </li> 
-                            <li>study realted acre and consultation with a study doctor.</li> 
-                            <li>study office visits and health assessments.</li>
-                            <li>travel costs and re-imbursement of any other costs incurred related to the study.</li>
+                            <li>Either the study drug (new potential treatment) or a placebo at no cost.</li> 
+                            <li>At present the benefit of receiving the study drug are unknown , but by participating in the trial you will be contributing to the growing body of knowledge about Parkinson disease. </li> 
+                            <li>Study related care and consultation with a study doctor.</li> 
+                            <li>Study office visits and health assessments.</li>
+                            <li>Travel costs and re-imbursement of any other costs incurred relating to the study.</li>
                         </ul> 
                     </div>    
                 </div>
@@ -126,7 +126,7 @@ class InfoNILO extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Should I discuss this trial with my doctor?</h3>
-                    <p className={classes.text}>If you have an interest in participating in this this clinical trial, by all means talk to the doctor who normally looks fater you for Parkinson's disease. Your doctor can refer you to participate in the trial, and if you do participate they will certainly need to know. There are also dedicated study physicians who you can contact directly to discuss participating in this trial and they can help with more specific questions about the trial such as what is involved, the benefits and the risks.   </p>
+                    <p className={classes.text}>If you have an interest in participating in this this clinical trial, by all means talk to the doctor who normally looks fater you for Parkinson disease. Your doctor can refer you to participate in the trial, and if you do participate they will certainly need to know. There are also dedicated study physicians who you can contact directly to discuss participating in this trial and they can help with more specific questions about the trial such as what is involved, the benefits and the risks.   </p>
                 </div>
 
                 <hr />

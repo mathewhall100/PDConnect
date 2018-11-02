@@ -81,14 +81,14 @@ class InfoDroxidopa extends Component {
 
                 <div>
                 <h3 className={classes.textTitle}>How Is It taken?</h3>
-                    <p className={classes.text}> Droxidopa is a tablet that is usually taken three times a day. Initially patinest are started on a low dose but this is increased until an improvement in symptoms is achieved or a maximum dose is reached. Patienst taking droxidopa also need their blood pressure checking regularly to ensure it does not get to high.  </p>
+                    <p className={classes.text}> Droxidopa is a tablet that is usually taken three times a day. Initially patients are started on a low dose but this is increased until an improvement in symptoms is achieved or a maximum dose is reached. Patients taking droxidopa also need their blood pressure checked regularly to ensure it does not get too high.  </p>
                 </div>
 
                 <hr />
 
                 <div>
-                    <h3 className={classes.textTitle}>Who Benefits Most ?</h3>
-                    <p className={classes.text}>Droxidopa treats patienst with dizziness, lightheadedness or feeling they may faint (black out) when changing position and standing up where this is thought to be caused by their Parkinson disease. It does not treat any of the motor symptoms of Parkinson disease.  </p>
+                    <h3 className={classes.textTitle}>Who Benefits Most?</h3>
+                    <p className={classes.text}>Droxidopa treats patienst with dizziness, lightheadedness or feeling they may faint (black out) when changing position and standing up and where this is thought to be caused by their Parkinson disease. It does not treat any of the motor or other symptoms of Parkinson disease.  </p>
                 </div>
 
                 <hr />
@@ -111,14 +111,14 @@ class InfoDroxidopa extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Unwanted Effects</h3>
-                    <p className={classes.text}>Most common unwanted effects are headache, nausea and hypertension when lying down(supine hypertension).      </p>
+                    <p className={classes.text}>Most common unwanted effects are headache, nausea and hypertension when lying down (supine hypertension).      </p>
                 </div>
 
                 <hr />
 
                 <div>
                     <h3 className={classes.textTitle}>What To Ask Your Doctor</h3>
-                    <p className={classes.text}>If you experince symptoms of dizziness, lightheadedness or feeling faint on standing talk to your doctor about whether these are due to your Parkinson's diseas or whether you need investigation for another cause. If these symptoms are thought to be caused by your Parkinson's then discuss with your doctor whether Droxidopa may be a suitable drug for you. If Droxidopa is being considered you will need to discuss monitoring of your blood pressure to ensure it does not become too high. </p>
+                    <p className={classes.text}>If you experience symptoms of dizziness, lightheadedness or feeling faint on standing talk to your doctor about whether these are due to your Parkinson disease or whether you need investigation for another cause. If these symptoms are thought to be caused by your Parkinson disease then discuss with your doctor whether Droxidopa may be a suitable drug for you. If Droxidopa is being considered you will need to discuss a strategy monitoring of your blood pressure to ensure it does not become too high. </p>
                 </div>
 
                 <hr />

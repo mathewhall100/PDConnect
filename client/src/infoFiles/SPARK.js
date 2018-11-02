@@ -68,7 +68,7 @@ class InfoSPARK extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Description</h3>
-                    <p className={classes.text}>The SPARK study is for people who have been recently diagnosed with Parkinson’s disease and are looking to take a proactive step in their care. The study is designed to evaluate a potential new drug treatment for Parkinson’s disease which may slow or reduce disease progression from its earliest stages. Some participants in the trial will recieve the study drug and others will recieve a placebo. The trial is blinded, which means that participants and doctors do not know whether any one participant is receiving the study drug or a placebo. This allows for comparison btween the two groups without bias. </p>
+                    <p className={classes.text}>The SPARK study is for people who have been recently diagnosed with Parkinson disease and are looking to take a proactive step in their care. The study is designed to evaluate a potential new drug treatment for Parkinson disease which may slow or reduce disease progression from its earliest stages. Some participants in the trial will recieve the study drug and others will recieve a placebo. The trial is blinded, which means that participants and doctors do not know whether any one participant is receiving the study drug or a placebo. This allows for comparison btween the two groups without bias. </p>
                 </div> 
 
                 <hr />
@@ -90,9 +90,9 @@ class InfoSPARK extends Component {
                     <div className={classes.text}>
                         <p>You may be eligable to participate in the SPARK trial if: </p>
                         <ul>
-                            <li>you are between 40 and 80 years of age</li> 
-                            <li>have been diagnosed with parkinson disease in the last three years</li> 
-                            <li>Have not recieved levodopa or any other parkinson disease medication in the last 12 weeks.</li>
+                            <li>You are between 40 and 80 years of age</li> 
+                            <li>Have been diagnosed with parkinson disease in the last three years</li> 
+                            <li>Have not received levodopa or any other Parkinson disease medication in the last 12 weeks.</li>
                         </ul>
                     </div>
                 </div>
@@ -104,10 +104,10 @@ class InfoSPARK extends Component {
                     <div className={classes.text}>
                     <p> Study participants will receive: </p>
                         <ul>
-                            <li>the study drug (new potential treatment) or a placebo at no cost. Currently, any benefit from receiving the study drug is unknown but your participation in the study will increase the growing body of knowedge about Parkinson's disease.</li> 
-                            <li>study realted acre and consultation with a study doctor.</li> 
-                            <li>study office visits and health assessments.</li>
-                            <li>travel costs and re-imbursement of any other costs incurred related to the study.</li>
+                            <li>The study drug (new potential treatment) or a placebo at no cost. Currently, any benefit from receiving the study drug is unknown but your participation in the study will increase the growing body of knowedge about Parkinson disease.</li> 
+                            <li>Study related care and consultation with a study doctor.</li> 
+                            <li>Study office visits and health assessments.</li>
+                            <li>Travel costs and re-imbursement of any other costs incurred related to the study.</li>
                         </ul> 
                     </div>    
                 </div>
@@ -116,14 +116,14 @@ class InfoSPARK extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Who is running the study?</h3>
-                    <p className={classes.text}>The study is being sponsored by the pharmaceutical companyy Biogen. </p>
+                    <p className={classes.text}>The study is being sponsored by the pharmaceutical company Biogen. </p>
                 </div>
 
                 <hr />
 
                 <div>
                     <h3 className={classes.textTitle}>Should I discuss this trial with my doctor?</h3>
-                    <p className={classes.text}>If you have an interest in participating in this this clinical trial, by all means talk to the doctor who normally looks fater you for Parkinson's disease. Your doctor can refer you to participate in the trial, and if you do participate they will certainly need to know. There are also dedicated study physicians who you can contact directly to discuss participating in this trial and they can help with more specific questions about the trial such as what is involved, the benefits and the risks.   </p>
+                    <p className={classes.text}>If you have an interest in participating in this this clinical trial, by all means talk to the doctor who normally looks fater you for Parkinson disease. Your doctor can refer you to participate in the trial, and if you do participate they will certainly need to know. There are also dedicated study physicians who you can contact directly to discuss participating in this trial and they can help with more specific questions about the trial such as what is involved, the benefits and the risks.   </p>
                 </div>
 
                 <hr />
@@ -132,7 +132,7 @@ class InfoSPARK extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>More information</h3>
-                    <p className={classes.text}>More information on the NILO_PD trial as well as how to contact a trial physician can be found on the trial website, www.thesparkstudy.com. </p>
+                    <p className={classes.text}>More information on the SPARK trial as well as how to contact a trial physician can be found on the trial website, www.thesparkstudy.com. </p>
                 </div>
             </div>
         )

@@ -81,7 +81,7 @@ class InfoNuplazid extends Component {
 
                 <div>
                 <h3 className={classes.textTitle}>How Is It taken?</h3>
-                    <p className={classes.text}> Nuplazid is a once a day tablet. It does not work immediatekly, usuallytaking 4-6 weeks to reach full effect of reducing hallucinations and delusions. </p>
+                    <p className={classes.text}> Nuplazid is a once a day tablet. It does not work immediatekly, usually taking 4-6 weeks to reach full effect of reducing hallucinations and delusions. </p>
                 </div>
 
                 <hr />

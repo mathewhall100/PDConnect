@@ -62,7 +62,7 @@ class InfoDuodopa extends Component {
                     </Button>
                 </span>
                 <div className={classes.textTitle} style={{paddingBottom: "20px"}}>
-                    <h1>Duopa</h1>
+                    <h1>Duopa Therapy</h1>
                 </div>
 
                  <div style={{width: "490px", border: "1px solid grey", padding: "20px", margin: "0 auto"}}>
@@ -73,21 +73,21 @@ class InfoDuodopa extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Description</h3>
-                    <p className={classes.text}>Duopa is the same type of medication as sinemet (carbidopa/levodopa) but instead of being taken as a pill, duopa is a liquid gel that is delivered directly into the intestine via a tube placed through the stomach wall. This allows duopa to be delivered continuosly to the body using an external pump. Advantages include better absoprtion, more even delivery of drug over time and reduction in 'off' times experienced by the patient.  </p>
+                    <p className={classes.text}>Duopa is the same type of medication as sinemet (carbidopa/levodopa) but instead of being taken as a pill, duopa is a liquid gel that is delivered directly into the intestine via a tube placed through the stomach wall. This allows duopa to be delivered continuosly to the body using an external pump. Advantages include better absoprtion, more even delivery of drug over time and reduction in 'off' times..  </p>
                 </div> 
 
                 <hr />
 
                 <div>
                 <h3 className={classes.textTitle}>How Is It Done?</h3>
-                    <p className={classes.text}> Duopa therapy requires a short surgical procedure to make a small hole ion the abdominal wall (a stoma) through which a thin tube is passed into the intestine (a PEG-J tube). An external pump loaded with duopa gel cartridges is connected to the tube and is worn by the patient at their side. The pump weighs about 3 lbs and requires daily cartridge changes. The pump is programmed to continously deliver duopa to the intestine at doses tailored to individual needs and symptoms. For example it is common to deliver a higher dose in the mornings to quickly achieve an ideal 'on state' then taper to a lower dose for the rest of the day. </p>
+                    <p className={classes.text}> Duopa therapy requires a short surgical procedure to make a small hole ion the abdominal wall (a stoma) through which a thin tube is passed into the intestine (a PEG-J tube). An external pump loaded with Duopa gel cartridges is connected to the tube and is worn by the patient at their side. The pump weighs about 3 lbs and requires daily cartridge changes. The pump is programmed to continously deliver Duopa to the intestine at doses tailored to individual needs and symptoms. For example it is common to deliver a higher dose in the mornings to quickly achieve an ideal 'on state' then taper to a lower dose for the rest of the day. </p>
                 </div>
 
                 <hr />
 
                 <div>
-                    <h3 className={classes.textTitle}>Who Benefits Most ?</h3>
-                    <p className={classes.text}>Duopa therapy is approved for patienst with advanced parkinson's disease who respond well to levodopa. You may be a good candidate for Duopa if your motor symptoms fluctuate during the day with 3 or more  hours of 'off' time per day and you have tried but failed to control these symptoms with other oral Parkinson's disease medications. Duopa is not a cure, but does offer any patinest better more even control over their motor symptoms. </p>
+                    <h3 className={classes.textTitle}>Who Benefits Most?</h3>
+                    <p className={classes.text}>Duopa therapy is approved for patients with advanced Parkinson disease who respond well to levodopa. You may be a good candidate for Duopa if your motor symptoms fluctuate during the day with 3 or more  hours of 'off' time per day and you have tried but failed to control these symptoms with other oral Parkinson disease medications. Duopa is not a cure, but does offer any patients better, more even control over their motor symptoms. </p>
                 </div>
 
                 <hr />
@@ -109,14 +109,14 @@ class InfoDuodopa extends Component {
 
                 <div>
                     <h3 className={classes.textTitle}>Unwanted Effects</h3>
-                    <p className={classes.text}>Similar to other carbidopa/levodopa preparations (e.g. sinemet) duopa can cause nausea, dizziness and faintin of standing (orthostatic hypotension) dyskinesi especially at higher doses, dry mouth, constipation and hallucinations. In addition, although placing such tubes directly into the stomach is a low risk surgical procedure, it can cause infection and pain around the PEG tube insertion site and rarely infection in the abdomen.    </p>
+                    <p className={classes.text}>Similar to other carbidopa/levodopa preparations (e.g. sinemet) duopa can cause nausea, dizziness and feeling faint on standing (orthostatic hypotension), dyskinesia especially at higher doses, dry mouth, constipation and hallucinations. In addition, although placing such tubes directly into the stomach is a low risk surgical procedure, it can cause infection and pain around the tube insertion site and rarely infection in the abdomen.    </p>
                 </div>
 
                 <hr />
 
                 <div>
                     <h3 className={classes.textTitle}>What To Ask Your Doctor</h3>
-                    <p className={classes.text}>In general duopa is only appropriate for patients with advanced Parkinson's disease and and poorly controlled motor symptoms depite oral mediaction. Discuss with your doctor whether you fit this patient dec=scription and inparticular whether it would be better to try to improve your symptoms with furtehr oral medication before considering Duopa. To be considered for Duopa therapy a full assessment by a movement disoder specialist is required and your doctor can refer you for this if necessary.  </p>
+                    <p className={classes.text}>In general Duopa is only appropriate for patients with advanced Parkinson disease and and poorly controlled motor symptoms depite oral medication. Discuss with your doctor whether you fit this patient description and in particular whether it would be better to try to improve your symptoms with further oral medication before considering Duopa. To be considered for Duopa therapy a full assessment by a movement disoder specialist is required and your doctor can refer you for this if necessary.  </p>
                 </div>
 
                 <hr />
