@@ -10,9 +10,8 @@ import Select from '../components/forms/FormSelect';
 import TextBox from '../components/forms/FormText';
 import Radio from '../components/forms/FormRadio';
 import Button from '@material-ui/core/Button';
-import { activity_level } from '../constants';
 import { withRouter, Redirect } from 'react-router-dom';
-import { age, years } from '../constants';
+import { age, years, activity_level } from '../constants';
 const arrRace = [
     {
         "value" : "American Indian or Alaska Native",
@@ -194,7 +193,7 @@ class UserInfo extends Component {
                                         label='How do you rate your current ability to perform daily activities?'
                                         width='90%'
                                         labelWidth='440'
-                                        items={years}
+                                        items={activity_level}
                                     />
                                 </Grid>
                                 <Grid xs={6} item style={{textAlign: 'center'}}>

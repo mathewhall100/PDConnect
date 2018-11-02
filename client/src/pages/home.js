@@ -84,16 +84,16 @@ class Home extends Component {
             <React.Fragment>
                 <div className={classes.textBox}> 
 
-                    <div style={{marginTop: "200px"}}> 
-                        <span style={{ fontSize: "92px" }}>The</span>
+                    <div style={{marginTop: "50px"}}> 
+                        <span style={{ fontSize: "82px" }}>The</span>
                         <br />
-                        <span style={{fontSize: "92px"}}>PD</span>
+                        <span style={{fontSize: "82px"}}>PD</span>
                         <br />
-                        <span style={{fontSize: "92px"}}>Navigator</span>
+                        <span style={{fontSize: "82px"}}>Navigator</span>
                     </div>
 
                         
-                    <div style={{marginTop: "100px"}}>
+                    <div style={{marginTop: "50px"}}>
 
                         <h3 id="hero" className={classes.fadeIn}>
                             <span className="rotating">

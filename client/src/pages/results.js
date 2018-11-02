@@ -120,6 +120,7 @@ class Results extends Component {
             })
         }
         console.log("treatmentResults: ", treatmentResults)
+        this.props.submitMedicalResult(treatmentResults);
         this.setState({treatmentResults: treatmentResults})
     }
 
@@ -143,6 +144,7 @@ class Results extends Component {
             }) 
         }
         console.log("trialResults: ", trialResults)
+        this.props.submitTrialResult(trialResults);
         this.setState({trialResults: trialResults})
     }
 
@@ -319,7 +321,7 @@ class Results extends Component {
                                     <div style={{margin: "20px", fontSize: "20px"}}>
                                         {treatment.summary}
                                     </div>
-                                    <div style={{margin: "20px", fontSize: "20px"}}>
+                                    <div style={{margin: "20px", fontSize: "20px", textAlign : 'right'}}>
                                         <Button type="button" className={classes.Btn} onClick={() => this.handleMoreInfo(treatment.link)}>Find Out More</Button>
                                     </div>
                                 </div>
@@ -355,7 +357,7 @@ class Results extends Component {
                                     <div style={{margin: "20px", fontSize: "20px"}}>
                                         {trial.summary}
                                     </div>
-                                    <div style={{margin: "20px", fontSize: "20px"}}>
+                                    <div style={{margin: "20px", fontSize: "20px", textAlign : 'right'}}>
                                         <Button type="button" className={classes.Btn} onClick={() => this.handleMoreInfo(trial.link)}>Find Out More</Button>
                                     </div>
                                 </div>
@@ -369,17 +371,12 @@ class Results extends Component {
 
                 </div> }
                 
-
-                <div className={classes.textBox} style={{marginTop: "50px"}}>
-                    <h1>Create an account</h1>
-                </div>
-
                 <div style={{border: "1px solid grey", borderRadius: "5px", margin: "20px", padding: "20px"}}>
 
                     <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
 
                         <div className={classes.textBox} style={{ marginTop: '50px' }}>
-                            <Button variant='contained' color='primary' className={classes.Email}>Email Me This Result</Button>
+                            <Button variant='contained' color='primary' className={classes.Email}>Email Me The Results</Button>
                         </div>
                         <FormText
                           name="email"
@@ -389,7 +386,7 @@ class Results extends Component {
                         <br />
                         <div style={{ margin: "25px" }}>
                             <h3>
-                                Create an account to keep track of your symptoms and stay up to date with the latest Parkinsons treatment!
+                                Create an account to keep track of your symptoms and stay up-to-date with the latest Parkinsons treatment!
                             </h3>
                         </div>
                         <FormTextPassword

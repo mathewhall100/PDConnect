@@ -17,7 +17,7 @@ const styles = theme => ({
         textAlign: "center"
     },
     Btn: {
-        width: "50%",
+        width: "65%",
         minHeight: "100px",
         backgroundColor: "white",
         border: "4px solid grey",
@@ -74,24 +74,24 @@ class IntroChoice extends Component {
             <React.Fragment>
                 <div className={classes.textBox}> 
 
-                    <div style={{marginTop: "100px"}}> 
+                    <div style={{marginTop: "80px"}}> 
                         <h2>What are you most interested in?</h2>
                     </div>
 
                 
-                    <div style={{marginTop: "100px"}}>
+                    <div style={{marginTop: "50px"}}>
                         <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(1)}>
                             Up-to-date treatments for Parkinson
                         </Button>
                     </div>
 
-                    <div style={{marginTop: "100px"}}>
+                    <div style={{marginTop: "50px"}}>
                         <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(2)}>
                             Clinical trials for Parkinson 
                         </Button>
                     </div>
 
-                    <div style={{marginTop: "100px"}}>
+                    <div style={{marginTop: "50px"}}>
                         <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(3)}>
                              OR Both
                         </Button>
