@@ -110,7 +110,7 @@ class InfoDBS extends Component {
 
                 <div>
                 <h3 className={classes.textTitle}>Clinical Evidence Summary</h3>
-                    <p className={classes.text}>Since introduction in 1997 to treat Parkinson's tremor, successive clnical trials have shown benefit of DBS to broader groups  of Parkinsons patients until in 2016 DBS surgery was approved for patients in the earlier stages of disease but who still had uncontrolled symptoms.  </p>
+                    <p className={classes.text}>Since introduction in 1997 to treat Parkinson's tremor, successive clnical trials have shown benefit of DBS to broader groups  of Parkinson patients until in 2016 DBS surgery was approved for patients in the earlier stages of disease but who still had uncontrolled symptoms.  </p>
                 </div>
 
                 <hr />

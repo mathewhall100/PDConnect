@@ -205,13 +205,12 @@ const styles = theme => ({
                     <h1>Treatment Responses and Side Effects</h1>
                 </div>
                 
-                <h3 className={classes.textStyle} style={{marginTop: "20px"}}>OK, tell us about the side effects you have experienced.</h3>
-                <hr />
+                {/*<h3 className={classes.textStyle} style={{marginTop: "20px"}}>Are there any side effects with your Parkinson medication?</h3>*/}
                 <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
                     
                         <Grid container xs={12}>
                             <Grid item sm={8} xs={9}>
-                                <b>When you take sinemet, does it help with your symptoms (even if only for a short time)?</b>
+                                <b>Did you find any benefit with sinemet (carbidopa-levodopa)?</b>
                             </Grid>
                             <Grid style={{textAlign: "right"}} item sm={4} xs={3}>
                                 <Switch name='benefitFromSinemet' value={this.props.sideEffect.benefitFromSinemet} />
@@ -219,11 +218,11 @@ const styles = theme => ({
                         </Grid>
                         <Grid container xs={12}>
                             <Grid item xs={9}>
-                                <b>Have you ever experienced any side effects from your Parkinson's disease medications?</b>
+                                <b>List any side effects that you have/had with your Parkinson medications</b>
                             </Grid>
-                            <Grid style={{ textAlign: "right"}} item xs={3}>
+                           {/*  <Grid style={{ textAlign: "right"}} item xs={3}>
                                 <Switch name='hasSideEffect' value={this.props.sideEffect.hasSideEffect} />
-                            </Grid>
+                            </Grid>*/}
                         </Grid>
                         { seIndex > 0 && <SeEntryBox index={1} name="one"/> }
                         { seIndex > 1 && <SeEntryBox index={2} name="two"/> }

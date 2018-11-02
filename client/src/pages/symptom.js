@@ -175,16 +175,16 @@ const styles = theme => ({
         return (
             <Grid container spacing={24}>                
                 <div className={classes.textBox} style={{ marginTop: "60px" }}>
-                    <h1>Symptoms</h1>
+                    <h3>Which of the Parkinson symptoms are you most bothered by? (You may pick more than one)</h3>    
                 </div>
-                <h3>Pick the problems that you experience</h3>
+                
                 <Grid container spacing={24}>
                     {this.renderMessage()}
                     <Grid item xs={12}>
                         {used_symptoms_pool}
                     </Grid>
                     <Grid item xs={12}>
-                        These are some most common symptoms that Parkinsons patient suffer from.
+                        These are some most common symptoms that Parkinson patient suffer from.
                     </Grid>
                     <Grid item xs={12}>
                         {unused_symptoms_pool}

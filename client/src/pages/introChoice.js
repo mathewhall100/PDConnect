@@ -81,19 +81,19 @@ class IntroChoice extends Component {
                 
                     <div style={{marginTop: "100px"}}>
                         <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(1)}>
-                            Up to date treatments for Parkinson's disease
+                            Up-to-date treatments for Parkinson disease
                         </Button>
                     </div>
 
                     <div style={{marginTop: "100px"}}>
                         <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(2)}>
-                            Clinical trials for new Parkinson's disease treatments
+                            Clinical trials for Parkinson 
                         </Button>
                     </div>
 
                     <div style={{marginTop: "100px"}}>
                         <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(3)}>
-                            Treatments and trials
+                             OR Both
                         </Button>
                     </div>
 

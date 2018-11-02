@@ -130,14 +130,15 @@ const styles = theme => ({
 
         const medList = [
             {value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)"},
-            {value: "Sinemet CR extended release (carbidopa/levodopa)", text: "Sinemet CR extended release (carbidopa/levodopa)"},
+            {value: "Sinemet CR (carbidopa/levodopa)", text: "Sinemet CR (carbidopa/levodopa)"},
             {value: "Parcopa (carbidopa/levodopa)", text: "Parcopa (carbidopa/levodopa)"},
-            {value: "Rytary extended release (carbidopa/levodopa)", text: "Rytary extended release (carbidopa/levodopa)"},
-            {value: "Duopa extended release (carbidopa/levodopa)", text: "Duopa extended release (carbidopa/levodopa)"},
+            {value: "Rytary (carbidopa/levodopa)", text: "Rytary (carbidopa/levodopa)"},
+            {value: "Duopa (carbidopa/levodopa)", text: "Duopa (carbidopa/levodopa)"},
             {value: "Mirapex (pramipexole)", text: "Mirapex (pramipexole)"},
-            {value: "Mirapex ER extended release (pramipexole)", text: "Mirapex ER extended release (pramipexole)"},
+            {value: "Mirapex ER (pramipexole)", text: "Mirapex ER (pramipexole)"},
             {value: "Requip (ropinirole)", text: "Requip (ropinirole)"},
-            {value: "Requip XL extended release (ropinirole)", text: "Requip XL extended release (ropinirole)"},
+            {value: "Requip XL (ropinirole)", text: "Requip XL (ropinirole)"},
+            {value: "Symmetrel (amantadine)", text: "Symmetrel (amantadine)" },    
             {value: "Gocovri  (amantadine)", text: "Gocovri  (amantadine)"},
             {value: "Neupro (rotigotine)", text: "Neupro (rotigotine)"},
             {value: "Apokyn(Apomorphine)", text: "Apokyn(Apomorphine)"},
@@ -213,7 +214,7 @@ const styles = theme => ({
                     <h1>Previous Treatments</h1>
                 </div>
 
-                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Are there any medications that you have taken in the past for your Parkinson's disease but now no longer take?</h3>
+                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Are there any Parkinson medications that you took in the past but no longer take now?</h3>
                     <br />
                     <br />
                     <span style={{marginRight: "50px"}}>
