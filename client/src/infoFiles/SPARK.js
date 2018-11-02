@@ -79,8 +79,8 @@ class InfoSPARK extends Component {
                         <p>You may be eligable to participate in the SPARK trial if: </p>
                         <ul>
                             <li>you are between 40 and 80 years of age</li> 
-                            <li>habe been diagnosed with parkinson disease in the last three years</li> 
-                            <li>Have not recieved levodopa or any other parkinson disease mediaction in the last 12 weeks.</li>
+                            <li>have been diagnosed with parkinson disease in the last three years</li> 
+                            <li>Have not recieved levodopa or any other parkinson disease medication in the last 12 weeks.</li>
                         </ul>
                     </div>
                 </div>

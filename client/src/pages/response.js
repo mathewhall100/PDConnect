@@ -76,7 +76,7 @@ const styles = theme => ({
         displayBox: null,
         seIndex: 1,
         redirect: false,
-        redirectAddress : '',
+        redirectAddress : '/symptom',
     }
      componentWillMount() {
          this.handleInitialize();
@@ -218,7 +218,7 @@ const styles = theme => ({
                         </Grid>
                         <Grid container xs={12}>
                             <Grid item xs={9}>
-                                <b>List any side effects that you have/had with your Parkinson medications</b>
+                                <b>Can you tell us about any side effects that you have/have had with your Parkinson medications</b>
                             </Grid>
                            {/*  <Grid style={{ textAlign: "right"}} item xs={3}>
                                 <Switch name='hasSideEffect' value={this.props.sideEffect.hasSideEffect} />

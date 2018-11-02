@@ -74,7 +74,7 @@ const styles = theme => ({
         displayBox: null,
         medIndex: 1,
         redirect: false,
-        redirectAddress : '',
+        redirectAddress : 'previous_treatment',
     }
 
     submit(values) {
