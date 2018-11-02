@@ -120,8 +120,6 @@ class UserInfo extends Component {
             return(
                 <Redirect to={redirectAddress} />
             )
-        }else{ 
-
         }
         return (
                 <div>
