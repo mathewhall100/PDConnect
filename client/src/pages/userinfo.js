@@ -131,7 +131,7 @@ class UserInfo extends Component {
                     </div>
 
                     <div style={{marginTop: "40px", paddingLeft: "20px"}}>
-                        <h3>Tell us a bit about yourself so we can individualize the information we give you.</h3>
+                        <h3>Tell us about yourself so we can provide individualized information.</h3>
                     </div>
 
                     <div style={{marginTop: "40px", padding: "20px"}}>
@@ -168,7 +168,7 @@ class UserInfo extends Component {
                                         name='yearDiagnosed'
                                         width='90%'
                                         labelWidth='300'
-                                        label='Years diagnosed with Parkinsons'
+                                        label='When were you diagnosed with Parkinson disease?'
                                         items = {arrYearsDescending}
                                     />
                                 </Grid>
@@ -177,7 +177,7 @@ class UserInfo extends Component {
                                         name='yearFirstSymptoms'
                                         width='90%'
                                         labelWidth='300'
-                                        label='Year first diagnosed with Parkinsons'
+                                        label='When did your symptoms first start?'
                                         items={arrYearsDescending}
                                     />
                                 </Grid>
@@ -186,7 +186,7 @@ class UserInfo extends Component {
                                         name='startPDTreatment'
                                         width='90%'
                                         labelWidth='320'
-                                        label='When did you start treatment for Parkinsons'
+                                        label='When did you start treatment for Parkinson?'
                                         items={arrYearsDescending}
                                     />
                                 </Grid>

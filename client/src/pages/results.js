@@ -166,10 +166,6 @@ class Results extends Component {
                     <h1>Create an account</h1>
                 </div>
 
-                <div style={{margin: "25px"}}>
-                    <h3>Creating an account allows us to keep you informed of latest Parkinson's treatments and trials and also allows you to save your questionnaire responses so there is no need to re-enter your information everytime you use the application. </h3>
-                </div>
-
                 <div style={{border: "1px solid grey", borderRadius: "5px", margin: "20px", padding: "20px"}}>
 
                     <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
@@ -180,16 +176,19 @@ class Results extends Component {
                         <FormText
                           name="email"
                           label="Email (john.doe@you.com"
-                          width="350px"
+                          width="90%"
                         />
                         <br />
-                        <br />
+                        <div style={{ margin: "25px" }}>
+                            <h3>
+                                Create an account to keep track of your symptoms and stay up to date with the latest Parkinsons treatment!
+                            </h3>
+                        </div>
                         <FormTextPassword
                             name="password1"
                             label="Password"
-                            width="350px"
+                            width="90%"
                         />
-                        <br />
                         <br />
                         <Button type="submit" className={classes.Btn}>Create Account</Button>
                     </form>

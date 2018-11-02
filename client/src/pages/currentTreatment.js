@@ -128,28 +128,29 @@ const styles = theme => ({
         const { redirect, displayBox, medIndex, redirectAddress } = this.state
 
         const medList = [
-            {value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)"},
-            {value: "Sinemet CR extended release (carbidopa/levodopa)", text: "Sinemet CR extended release (carbidopa/levodopa)"},
-            {value: "Parcopa (carbidopa/levodopa)", text: "Parcopa (carbidopa/levodopa)"},
-            {value: "Rytary extended release (carbidopa/levodopa)", text: "Rytary extended release (carbidopa/levodopa)"},
-            {value: "Duopa extended release (carbidopa/levodopa)", text: "Duopa extended release (carbidopa/levodopa)"},
-            {value: "Mirapex (pramipexole)", text: "Mirapex (pramipexole)"},
-            {value: "Mirapex ER extended release (pramipexole)", text: "Mirapex ER extended release (pramipexole)"},
-            {value: "Requip (ropinirole)", text: "Requip (ropinirole)"},
-            {value: "Requip XL extended release (ropinirole)", text: "Requip XL extended release (ropinirole)"},
-            {value: "Gocovri  (amantadine)", text: "Gocovri  (amantadine)"},
-            {value: "Neupro (rotigotine)", text: "Neupro (rotigotine)"},
-            {value: "Apokyn(Apomorphine)", text: "Apokyn(Apomorphine)"},
-            {value: "Cogentin (benztropine)", text: "Cogentin (benztropine)"},
-            {value: "Zelapar (selegiline)", text: "Zelapar (selegiline)"},
-            {value: "Azilect (rasagiline)", text: "Azilect (rasagiline)"},
-            {value: "Aricept (donepezil)", text: "Aricept (donepezil)"},
-            {value: "Exelon (rivastigmine)", text: "Exelon (rivastigmine)"},
-            {value: "Razadyne (galantamine)", text: "Razadyne (galantamine)"}, 
-            {value: "Namenda (Memantine)", text: "Namenda (Memantine)"},
-            {value: "Comtan (entacopone)", text: "Comtan (entacopone)"}, 
-            {value: "Stalevo (carbidopa/levodopa/entacapone)", text: "Stalevo (carbidopa/levodopa/entacapone)"}
-         ]
+            { value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)" },
+            { value: "Sinemet CR (carbidopa/levodopa)", text: "Sinemet CR (carbidopa/levodopa)" },
+            { value: "Parcopa (carbidopa/levodopa)", text: "Parcopa (carbidopa/levodopa)" },
+            { value: "Rytary (carbidopa/levodopa)", text: "Rytary (carbidopa/levodopa)" },
+            { value: "Duopa (carbidopa/levodopa)", text: "Duopa (carbidopa/levodopa)" },
+            { value: "Mirapex (pramipexole)", text: "Mirapex (pramipexole)" },
+            { value: "Mirapex ER (pramipexole)", text: "Mirapex ER (pramipexole)" },
+            { value: "Requip (ropinirole)", text: "Requip (ropinirole)" },
+            { value: "Requip XL (ropinirole)", text: "Requip XL (ropinirole)" },
+            { value: "Symmetrel (amantadine)", text: "Symmetrel (amantadine)"},
+            { value: "Gocovri  (amantadine)", text: "Gocovri  (amantadine)" },
+            { value: "Neupro (rotigotine)", text: "Neupro (rotigotine)" },
+            { value: "Apokyn(Apomorphine)", text: "Apokyn(Apomorphine)" },
+            { value: "Cogentin (benztropine)", text: "Cogentin (benztropine)" },
+            { value: "Zelapar (selegiline)", text: "Zelapar (selegiline)" },
+            { value: "Azilect (rasagiline)", text: "Azilect (rasagiline)" },
+            { value: "Aricept (donepezil)", text: "Aricept (donepezil)" },
+            { value: "Exelon (rivastigmine)", text: "Exelon (rivastigmine)" },
+            { value: "Razadyne (galantamine)", text: "Razadyne (galantamine)" },
+            { value: "Namenda (Memantine)", text: "Namenda (Memantine)" },
+            { value: "Comtan (entacopone)", text: "Comtan (entacopone)" },
+            { value: "Stalevo (carbidopa/levodopa/entacapone)", text: "Stalevo (carbidopa/levodopa/entacapone)" }
+        ]
 
          if (redirect) { 
             const url = `${redirectAddress}`;
@@ -210,7 +211,7 @@ const styles = theme => ({
                     <h1>Current Treatments</h1>
                 </div>
 
-                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Are you currently taking medications specifically for your Parkinson's disease?</h3>
+                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Are you currently on Parkinson medication?</h3>
                     <br />
                     <br />
                     <span style={{marginRight: "50px"}}>
@@ -223,7 +224,7 @@ const styles = theme => ({
 
                 { displayBox && <div className={classes.entryBox}>
 
-                    <h3 className={classes.textStyle} style={{marginTop: "20px"}}>OK, tell us about the medications you currently take for your Parkinson's disease.</h3>
+                    <h3 className={classes.textStyle} style={{marginTop: "20px"}}>Tell us about the medications you currently take for your Parkinson disease.</h3>
 
                     <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
                         
