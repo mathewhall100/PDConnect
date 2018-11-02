@@ -129,7 +129,7 @@ class Results extends Component {
 
         if (this.testSPARK() === true)  {
             trialResults.push({
-                medication_name: "SPARK",
+                trial_name: "SPARK",
                 summary: "The SPARK study is for people who have been recently diagnosed with Parkinson’s disease and are looking to take a proactive step in their care.",
                 link: "info_SPARK"
             })
@@ -137,7 +137,7 @@ class Results extends Component {
 
         if (this.testNILO() === true) {
             trialResults.push({
-                medication_name: "NILO-PD",
+                trial_name: "NILO-PD",
                 summary: "The NILO-PD study will investigate the safety and tolerability of nilotinib in stable patienst diagnosed with Parkinson disease for more than 5 years",
                 link: "info_NILO"
             }) 
@@ -340,7 +340,7 @@ class Results extends Component {
                     </div>
 
                     <div style={{margin: "25px"}}>
-                        <h3>You may also be eligable to paticipate in the following Parkinson's disease clinical trials</h3>
+                        <h3>You may be eligable to paticipate in the following Parkinson's disease clinical trials</h3>
                     </div>
 
                     <div style={{marginTop: "35px"}}> 
@@ -350,7 +350,7 @@ class Results extends Component {
                             return (
                                 <div key={index} style={{border: "1px solid grey", borderRadius: "5px", margin: "20px"}}>
                                     <div style={{margin: "20px", fontSize: "20px"}}>
-                                        {index+1} {trial.trial_name}
+                                        {trial.trial_name}
                                     </div>
                                     <div style={{margin: "20px", fontSize: "20px"}}>
                                         {trial.summary}
