@@ -81,7 +81,7 @@ class IntroChoice extends Component {
                 
                     <div style={{marginTop: "100px"}}>
                         <Button variant='contained' className={classes.Btn} onClick={() => this.handleNav(1)}>
-                            Up-to-date treatments for Parkinson disease
+                            Up-to-date treatments for Parkinson
                         </Button>
                     </div>
 
