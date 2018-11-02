@@ -115,8 +115,7 @@ class SideEffect extends Component {
                         <Grid container spacing={24}>
                             <Grid item xs={10}>
                                 <span>Do you receive positive benefits from Sinemet?</span>
-                                <Switch name='benefitFromSinemet'value={this.props.sideEffect.benefitFromSinemet} onClick={()=> this.setState({sinemet: !this.state.sinemet})} />
-                                {this.props.form.side_effect_form  && this.props.form.side_effect_form.values.benefitFromSinemet ? this.renderLabel(this.props.form.side_effect_form.values.benefitFromSinemet) : null}
+                                <Switch name='benefitFromSinemet' value={this.props.sideEffect.benefitFromSinemet} onClick={()=> this.setState({sinemet: !this.state.sinemet})} />
                             </Grid>
                             <Grid item xs={2}>
                                 

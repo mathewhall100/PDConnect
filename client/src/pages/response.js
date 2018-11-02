@@ -78,7 +78,15 @@ const styles = theme => ({
         redirect: false,
         redirectAddress : '',
     }
+     componentWillMount() {
+         this.handleInitialize();
+     }
 
+     handleInitialize() {
+         const initData = this.props.sideEffect
+         console.log("in handle init, init data is : ", initData);
+         this.props.initialize(initData);
+     }
     submit(values) {
         console.log("submitSideeffects: ", values)
 
@@ -191,50 +199,32 @@ const styles = theme => ({
                 </Grid> 
             )
         }
-
-
         return (
             <div>
-
                 <div className={classes.textBox} style={{marginTop: "60px"}}>
                     <h1>Treatment Responses and Side Effects</h1>
                 </div>
                 
-                <div className={classes.textBox} style={{marginTop: "50px"}}>
-
-                    <h3 className={classes.textStyle}>When you take sinemet, does it help with your symptoms (even if only for a short time)?</h3>
-
-                    <div style={{marginTop: "50px"}}>
-                        <span style={{marginRight: "50px"}}>
-                            <Button variant='contained' className={classes.Btn} onClick={() => this.handleResponse(true)}>Yes</Button>
-                        </span>
-                        <span>
-                            <Button variant='contained' className={classes.Btn} onClick={() =>  this.handleResponse(false)}>No</Button>
-                        </span>
-                        {/* <Switch name='benefitFromSinemet' value={this.props.sideEffect.benefitFromSinemet} /> */}
-                    </div>
-                </div>
-
-                { displayQuestionBox && <div className={classes.textBox} style={{marginTop: "50px"}}>
+                <h3 className={classes.textStyle} style={{marginTop: "20px"}}>OK, tell us about the side effects you have experienced.</h3>
+                <hr />
+                <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
                     
-                    <h3 className={classes.textStyle} style={{marginTop: "40px"}}>Have you ever experienced any side effects from your Parkinson's disease medications?</h3>
-
-                    <div style={{marginTop: "50px"}}>
-                        <span style={{marginRight: "50px"}}>
-                            <Button variant='contained' className={classes.Btn} onClick={() => this.setState({displayBox: true})}>Yes</Button>
-                        </span>
-                        <span>
-                            <Button variant='contained' className={classes.Btn} onClick={() =>  this.setState({redirect : true})}>No</Button>
-                        </span>
-                    </div>
-                </div> }
-                
-                { displayBox && <div className={classes.entryBox}>
-
-                    <h3 className={classes.textStyle} style={{marginTop: "20px"}}>OK, tell us about the side effects you have experienced.</h3>
-
-                    <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                        
+                        <Grid container xs={12}>
+                            <Grid item sm={8} xs={9}>
+                                <b>When you take sinemet, does it help with your symptoms (even if only for a short time)?</b>
+                            </Grid>
+                            <Grid style={{textAlign: "right"}} item sm={4} xs={3}>
+                                <Switch name='benefitFromSinemet' value={this.props.sideEffect.benefitFromSinemet} />
+                            </Grid>
+                        </Grid>
+                        <Grid container xs={12}>
+                            <Grid item xs={9}>
+                                <b>Have you ever experienced any side effects from your Parkinson's disease medications?</b>
+                            </Grid>
+                            <Grid style={{ textAlign: "right"}} item xs={3}>
+                                <Switch name='hasSideEffect' value={this.props.sideEffect.hasSideEffect} />
+                            </Grid>
+                        </Grid>
                         { seIndex > 0 && <SeEntryBox index={1} name="one"/> }
                         { seIndex > 1 && <SeEntryBox index={2} name="two"/> }
                         { seIndex > 2 && <SeEntryBox index={3} name="three"/> }
@@ -247,19 +237,15 @@ const styles = theme => ({
                         { seIndex > 9 && <SeEntryBox index={10} name="ten"/> }
                         { seIndex > 10 && <SeEntryBox index={11} name="eleven"/> }
                         { seIndex > 11 && <SeEntryBox index={12} name="twelve"/> }
-
                         <AddIcon />
-
                         <br />
-                        <br />
-
+                    
                         <div className={classes.textBox}>
                             <span style={{marginRight: "50px"}}><Button type="submit" variant='contained' className={classes.Btn} disabled={submitting || pristine} >Submit</Button></span>
                             <span><Button variant='contained' className={classes.Btn} onClick={() => this.handleClearForm()}>Clear Form</Button></span>
                         </div>
-                    </form>
-                    
-                </div> }
+                </form>
+                 
                 <div style={{ marginTop: '50px', textAlign: 'center' }}>
                     <Button variant='contained' color='secondary' className={classes.Btn} onClick={() => { this.handleBack() }} className={classes.button}>
                         Back
@@ -268,6 +254,18 @@ const styles = theme => ({
             </div>
 
         );
+    }
+}
+
+function mapStatsToProps(state) {
+    console.log(state);
+    return {
+        currentTreatments: state.currentTreatments,
+        previousTreatments: state.previousTreatments,
+        user: state.user,
+        userChoice: state.userChoice,
+        symptom: state.symptom,
+        sideEffect: state.sideEffect,
     }
 }
 
@@ -283,5 +281,5 @@ const formData = {
 Response = reduxForm(formData)(Response)
 Response = withRouter(Response)
 Response = withStyles(styles)(Response)
-Response = connect(null, mapDispatchToProps)(Response)
+Response = connect(mapStatsToProps, mapDispatchToProps)(Response)
 export default Response
