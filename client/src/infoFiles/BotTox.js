@@ -36,6 +36,14 @@ const styles = theme => ({
         fontSize: "14px"
     },
 
+});
+
+
+class InfoBotTox extends Component {
+    state = {
+        redirect: false
+    }
+
     render() {
 
         const { classes } = this.props
