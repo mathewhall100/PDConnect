@@ -74,7 +74,7 @@ const styles = theme => ({
         displayBox: null,
         medIndex: 1,
         redirect: false,
-        redirectAddress : 'previous_treatment',
+        redirectAddress : 'response',
     }
 
     submit(values) {
@@ -101,7 +101,7 @@ const styles = theme => ({
 
         this.setState({
             redirect : true,
-            redirectAddress: 'previous_treatment'
+            redirectAddress: 'response'
         })
 
     }

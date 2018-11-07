@@ -133,7 +133,7 @@ const styles = theme => ({
     handleBack = () => {
         this.setState({
             redirect: true,
-            redirectAddress: '/previous_treatment'
+            redirectAddress: '/current_treatment'
         })
     }
 
