@@ -1,87 +1,5 @@
-export const medications = [
-    {
-        name : 'Botox',
-        description: 'drooling dyskinesia',
-        image : '',
-        side_effect : 
-            [
-                'side effect 1',
-                'side effect 2',
-            ],
-        clinical_trial_data : '',
-        drug_company : {
-            name : '',
-            phone : '',
-            website : '',
-            email : '',
-        }
-    },
-    {
-        name : 'Rytary',
-        description : 'Post Sinemet',
-        image : '',
-        side_effect :
-            [
-                'side effect 1',
-                'side effect 2',
-            ],
-        clinical_trial_data : '',
-        drug_company: {
-            name : '',
-            phone : '',
-            website : '',
-            email : '',
-        }   
-    }
-];
 
-
-export  const clinicial_trial = [
-    {
-        name : 'Spark',
-        description : '',
-        image : '',
-        side_effect : 
-            [
-
-            ],
-        clinical_trial_data : '',
-        drug_company : {
-            name : '',
-            phone : '',
-            website : '',
-            email : '',
-        }
-    },
-    {
-        name : 'Nylo',
-        description : '40-79 years old patient',
-        image : '',
-        side_effect :
-            [
-
-            ],
-        clinical_trial_data : '',
-        drug_company : {
-            name : '',
-            phone : '',
-            website : '',
-            email : '',
-        }
-    }
-]
-
-export const side_effects = [
-    "side_effect1", 
-    "side_effect2", 
-    "side_effect3", 
-    "side_effect4",
-    "side_effect5",
-    "side_effect6", 
-    "side_effect7",
-    "side_effect8",
-    "side_effect9", 
-]
+// constants for select boxes
 
 export const age = [
     { "value": '', "text": '' },
@@ -156,6 +74,37 @@ export const age = [
     { "value": 98, "text": 98 },
     { "value": 99, "text": 99 },
     { "value": 100, "text": 100 },
+]
+
+export const raceEthnicity = [
+    {
+        "value" : "American Indian or Alaska Native",
+        "text" : "American Indian or Alaska Native",
+    },
+    {
+        "value": "Asian",
+        "text": "Asian",
+    },
+    {
+        "value": "Black or African American",
+        "text": "Black or African American",
+    },
+    {
+        "value": "Pacific Islander",
+        "text": "Pacific Islander",
+    },
+    {
+        "value": "White",
+        "text": "White",
+    },
+    {
+        "value": "Hispanic or Latino or Spanish Origin",
+        "text": "Hispanic or Latino or Spanish Origin"
+    },
+    {
+        "value" : "Other",
+        "text": "Other"
+    }
 ]
 
 export const years = [

@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Homepage from './pages/home';
-import CurrentTreatment from './pages/currentTreatment';
-import TestComponent from './pages/testComponent';
+import CurrentTreatment from './pages/treatment';
+import TestComponent from './components/testComponent';
 import Result from './pages/results';
-import Response from './pages/response';
-import SideEffect from './pages/sideEffect';
-import Treatment from './pages/treatment';
 import TreatmentInfo from './pages/treatmentInfo';
 import UserInfo from './pages/userinfo';
-import IntroChoice from './pages/introChoice';
 import NotFound from './pages/notFound';
 import Symptom from './pages/symptom';
+
 import InfoDBS from './infoFiles/DBS'
 import InfoApomorphine from './infoFiles/Apomorphine.js'
 import InfoDuopa from './infoFiles/Duopa.js'
@@ -28,15 +25,9 @@ class Routes extends Component {
         return (
             <div>
                 <Switch>
-                    <Route path='/side_effect' render={props => <SideEffect ></SideEffect>} />
-                    {/* <Route path='/side_effect' render={props => <SideEffect {...this.props}></SideEffect>} /> */}
-                    <Route path='/response' render={props => <Response ></Response>} />
                     <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
-                    <Route path='/intro_choice' render={props => <IntroChoice {...this.props}></IntroChoice>} />
-                    <Route path='/treatment'  render={props => <Treatment {...this.props}></Treatment>} />
                     <Route path='/user_info' render={props => <UserInfo ></UserInfo>} />
-                    <Route path='/treatment_details' render={props => <TreatmentInfo {...this.props}></TreatmentInfo>} />
-                    <Route path='/current_treatment' render={props => <CurrentTreatment></CurrentTreatment>} />
+                    <Route path='/treatment' render={props => <CurrentTreatment></CurrentTreatment>} />
                     <Route path='/test' render={props => <TestComponent></TestComponent>} />
                     <Route path="/result" render={props => <Result ></Result>} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
