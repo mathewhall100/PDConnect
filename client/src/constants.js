@@ -2,7 +2,6 @@
 // constants for select boxes
 
 export const age = [
-    { "value": '', "text": '' },
     { "value": 30, "text": 30 },
     { "value": 31, "text": 31 },
     { "value": 32, "text": 32 },
@@ -76,6 +75,17 @@ export const age = [
     { "value": 100, "text": 100 },
 ]
 
+export const sex = [
+    {
+        "value" : "male", 
+        "text" : "Male"
+    },
+    {
+        "value" : "female", 
+        "text" : "Female"
+    }
+]
+
 export const raceEthnicity = [
     {
         "value" : "American Indian or Alaska Native",
@@ -108,6 +118,10 @@ export const raceEthnicity = [
 ]
 
 export const years = [
+    {
+        "value": "ns",
+        "text": "not sureyarn start"
+    },
     {
         "value": "2018",
         "text": "2018"

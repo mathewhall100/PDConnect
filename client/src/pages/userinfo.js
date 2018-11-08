@@ -96,6 +96,7 @@ class UserInfo extends Component {
             age : this.props.user.age
         })
     }
+
     submit(values){
         console.log("props : ", this.props);
         console.log("values : " , values);
@@ -105,6 +106,7 @@ class UserInfo extends Component {
             redirectAddress : '/current_treatment'
         })
     }
+    
     handleBack=() => {
         this.setState({
             redirect : true,

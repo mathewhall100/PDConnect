@@ -15,15 +15,14 @@ class FormRadio extends Component {
         console.log(field)
         return (
             <div>
-                <div style={{ fontSize: "13px", color: "red", position: "relative", top: "16px", left: "40px" }}>
-                    {touched ? error : ''}
-                </div>
-                <FormLabel component="legend" >{input.name}</FormLabel>
+              
+                <FormLabel style={{marginRight: "20px", color: "black"}}>{input.name}</FormLabel>
+                <span style={{fontWeight: "bold"}}>
                 <RadioGroup
                     {...input}
                     {...children}
                     onChange={(event, value) => input.onChange(value)}
-                    style={{ display: 'inline-block', flexDirection: 'row', width: '90%'}}
+                    style={{display: 'inline-block', flexDirection: 'row'}}
                 >
                     {children.map(child => 
                         <FormControlLabel 
@@ -34,9 +33,12 @@ class FormRadio extends Component {
                             checked={input.checked}
                         />
                     )}
-                </RadioGroup>
-                <span style={{ fontSize: "13px", color: "green", position: "relative", top: "20px", left: "10px" }}>
+                </RadioGroup></span>
+                <span style={{ fontSize: "13px", color: "green", position: "relative", top: "10px", left: "10px" }}>
                     {!pristine ? <DoneIcon /> : ''}
+                </span>  
+                <span style={{ fontSize: "13px", color: "red", position: "relative", left: "20px" }}>
+                    {touched ? error : ''}
                 </span>
                 
                 
