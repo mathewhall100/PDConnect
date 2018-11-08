@@ -42,7 +42,6 @@ const styles = theme => ({
         float: "right",
         width: "110px",
         height: "30px",
-        marginTop: "5px",
         marginLeft: "25px",
         backgroundColor: "white",
         border: "2px solid grey",
@@ -51,6 +50,9 @@ const styles = theme => ({
         '&:hover': {
             backgroundColor: "lightgrey",
         },
+        '&:active': {
+            backgroundColor: "lightgrey",
+        }
     },
     hr: {
         height: "1px", 
@@ -64,22 +66,11 @@ const styles = theme => ({
         fontSize: "18px",
         color: "black"
     },
-    helpIcon: {
-        Top: "10px",
-        paddingBottom: 0,
-        marginBottom: 0,
+    iconBtn: {
+        marginTop: "-7px",
         '&:hover': {
             backgroundColor: "white",
         },
-    },
-    doneIcon: {
-        fontSize: "32px",
-        fontWeight: "bold",
-        position: "relative",
-        top: "-10px"
-    },
-    helpButton: {
-        paddingTop: "15px",
     },
     iconHover: {
         fontSize: "28px",
@@ -90,6 +81,13 @@ const styles = theme => ({
     selectLabel: {
         fontSize: "20px",
         fontWeight: "bold"
+    },
+    doneIcon: {
+        fontSize: "14px", 
+        color: "green", 
+        position: "relative", 
+        top: "20px", 
+        left: "10px"
     },
     errorText: {
         fontSize: "15px", 
@@ -112,7 +110,7 @@ const styles = theme => ({
     },
     paper: {
         position: 'absolute',
-        width: theme.spacing.unit * 80,
+        width: theme.spacing.unit * 40,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 4,
@@ -125,40 +123,21 @@ const styles = theme => ({
  class UserLife extends Component {
 
     state = {
-        activeBtn: [],
-        open: false,
-        modalWarning: false,
+        open : false,
         modalTitle : '',
         modalDescription : '',
         redirect: false,
         redirectAddress : 'test',
     }  
 
-    handleQuestionBtn = (index) => {
-        console.log("here : ",  index)
-        let tempArray = [0, 0, 0, 0, 0,]
-        tempArray[index] = 1
-        this.setState({activeBtn: tempArray})
-    }
-
-    handleSubmit = () => {
-        const { activeBtn } = this.state
-        const ADL = activeBtn.indexOf(1)
-        console.log("submit - ADL:, ", ADL)
-        if (ADL >= 0) {
-            // this.submitUserLife( {
-            //     ADL: this.state.activeBtn.indexOf("1"),
-            // })
-        } else {
-            this.setState({modalWarning: true})
-            this.handleOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
-        }
+    handleQuestionBtn = (ans, index) => {
+        console.log("here : ",  ans, index)
     }
     
 
     handleClearForm() {
         console.log("clear form")
-        this.setState({activeBtn: []})
+        this.props.reset()
     }
 
     handleBack = () => {
@@ -166,6 +145,10 @@ const styles = theme => ({
             redirect: true,
             redirectAddress: '/'
         })
+    }
+
+    handleInfoClick = (info) => {
+        console.log(info)
     }
 
     getModalStyle = () => {
@@ -179,12 +162,12 @@ const styles = theme => ({
         };
     }
 
-    handleOpen = (text, modalText) => { 
-        console.log(modalText);
+    handleOpen = (modalItem) => { 
+        console.log(modalItem);
          this.setState({ 
              open: true, 
-             modalTitle : text,
-             modalDescription : modalText
+             modalTitle : modalItem.modal,
+             modalDescription : modalItem.modal
         });
      };
 
@@ -196,14 +179,17 @@ const styles = theme => ({
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, activeBtn, modalWarning  } = this.state
+        const { redirect, redirectAddress } = this.state
 
-        const PDADLs = [
-            {text: "1) No difﬁculties with day-to-day activities.",modalText: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
-            {text: "2) Mild difﬁculties with day-to-day activities.",modalText: "For example: Slowness with some aspects of housework, gardening or shopping. Able to dress and manage personal hygiene completely independently but rate is slower. You may feel that your medication is not quite effective as it was."},
-            {text: "3) Moderate difﬁculties with day-to-day activities.",modalText: "For example: Your Parkinson’s disease is interfering with your daily activities. It is increasinglydifﬁcult to do simple activities without some help such as rising from a chair, washing, dressing,shopping, housework. You may have some difﬁculties walking and may require assistance. Difﬁcultieswith recreational activities or the ability to drive a car. The medication is now less effective."},
-            {text: "4) High levels of difﬁculties with day-to-day activities.",modalText: "For example: You now require much more assistance with activities of daily living such as washing,dressing, housework or feeding yourself. You may have greater difﬁculties with mobility and ﬁnd youare becoming more dependent for assistance from others or aids and appliances. Your medicationappears to be signiﬁcantly less effective."},
-            {text: "5) Extreme difﬁculties with day-to-day activities.", modalText: "For example: You require assistance in all daily activities. These may include dressing, washing,feeding yourself or walking unaided. You may now be housebound and obtain little or no beneﬁtfrom your medication."} 
+        const activities = [
+            {text: "I can carry out my usual activities and look after myself wothout help"},
+            {text: "I can walk unaided"},
+            {text: "I need some help to look after myself"},
+            {text: "I require a walking aid to walk safely"},
+            {text: "I need help with most daily activities"},
+            {text: "I can't walk independently"},
+            {text: "I need constant care"},
+            {text: "I can no longer walk"}
         ]
 
 
@@ -225,12 +211,26 @@ const styles = theme => ({
             )
         }
 
+        const RenderButton = (props) => {
+
+            
+
+            return (
+    
+                <div> 
+
+                    
+                
+                </div>
+            )
+        };
+
         const BottomNav= (props) => {
             return (
                 <div>
                     <br />
                     <br />
-                    <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleSubmit()}>NEXT</Button>
+                    <Button type="submit" color="primary" className={classes.basicBtn}>NEXT</Button>
                     <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleClearForm()}>CLEAR</Button>  
                     <br />
                 </div> 
@@ -242,34 +242,29 @@ const styles = theme => ({
             <section className={classes.root}>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Ok, that's great! Now tell us a little about how Parkinson disease affects you" />
+                    <TopTitle title="Ok, that's great! Now tell us a little about your life." />
 
-                    <h3>Please tick <span style={{fontWeight: "bold"}}>one</span> of the descriptions that best describes how your Parkinson disease has affected your day-to-day activities in the last month.</h3>
+                    <h3>Please click all that apply to you:</h3>
                     <br />
                     <hr className={classes.hr}/>
                     <br />
                          
-                         {PDADLs.map((activity, index) => {
+                         {activities.map((activity, index) => {
                             return (
                                 <div>
                                     <Grid container spacing={24}>
-                                        <Grid item xs={12} sm={8} md={8}>
-                                            <div className={classes.questionText}>{activity.text}</div>
-                                                <Button className={classes.helpBtn} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
-                                                    <HelpIcon color="primary" className={classes.iconHover}/>
-                                                    More Details and examples
-                                                </Button> 
+                                        <Grid item xs={12} sm={12} md={5}>
+                                            <span className={classes.questionText}>{activity.text}</span>
                                         </Grid>
-                                       
-                                        <Grid item xs={12} sm={3} md={3}>
+                                        <Grid item xs={12} sm={12} md={7}>
                                             <div >
-                                                <Button type="button" className={classes.questionBtn} style={{backgroundColor: activeBtn[index] === 1 ? "lightgrey" : "white"}} onClick={() => this.handleQuestionBtn(index)}> 
-                                                    <DoneIcon className={classes.doneIcon} style={{color: activeBtn[index] === 1 ? "green" : "white"}}/>
-                                                </Button>
-
+                                                <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("ns", index)}>Not sure</Button>
+                                                <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("no", index)}>No</Button>
+                                              <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("yes", index)}>Yes</Button>
                                             </div>
                                         </Grid>
                                     </Grid>
+                                    <br />
                                     <hr className={classes.hr}/>
                                     <br />
                                     
@@ -290,7 +285,7 @@ const styles = theme => ({
                         onClose={this.handleClose}
                     >
                         <div style={this.getModalStyle()}  className={classes.paper}>
-                            <Typography variant="h6" id="modal-title" style={{color: modalWarning ? "red" : "grey"}}>
+                            <Typography variant="h6" id="modal-title">
                                 {this.state.modalTitle}
                             </Typography>
                             <hr />
