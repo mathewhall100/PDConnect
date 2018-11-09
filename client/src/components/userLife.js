@@ -14,7 +14,7 @@ import DoneIcon from '@material-ui/icons/Done';
 
 
 import { activity_level } from '../constants';
-//import { submitUserLife} from '../actions/UserAboutLifeAction'
+//import { submitUserLife} from '../actions/UserLifeAction'
 
 
 const styles = theme => ({
@@ -34,6 +34,9 @@ const styles = theme => ({
     textStyle: {
         marginTop: '40px',
         marginBottom: '40px'
+    },
+    subtitleStyle: {
+        lineHeight: "30px"
     },
     questionText: {
         fontSize: "20px",
@@ -64,25 +67,18 @@ const styles = theme => ({
         fontSize: "18px",
         color: "black"
     },
-    helpIcon: {
-        Top: "10px",
-        paddingBottom: 0,
-        marginBottom: 0,
-        '&:hover': {
-            backgroundColor: "white",
-        },
-    },
     doneIcon: {
-        fontSize: "32px",
+        fontSize: "36px",
         fontWeight: "bold",
         position: "relative",
         top: "-10px"
     },
-    helpButton: {
-        paddingTop: "15px",
+    helpBtn: {
+        marginTop: "2px",
+        paddingTop: "10px",
     },
     iconHover: {
-        fontSize: "28px",
+        fontSize: "24px",
         '&:hover': {
             color: "darkblue",
         },
@@ -225,6 +221,17 @@ const styles = theme => ({
             )
         }
 
+        const SubTitle = (props) => {
+            return (
+                <div>
+                    <h3 className={classes.subtitleStyle}>{props.subtitle}</h3>
+                    <br />
+                    <hr className={classes.hr}/>
+                    <br />
+                </div>
+            )
+        }
+
         const BottomNav= (props) => {
             return (
                 <div>
@@ -244,41 +251,35 @@ const styles = theme => ({
                     
                     <TopTitle title="Ok, that's great! Now tell us a little about how Parkinson disease affects you" />
 
-                    <h3>Please tick <span style={{fontWeight: "bold"}}>one</span> of the descriptions that best describes how your Parkinson disease has affected your day-to-day activities in the last month.</h3>
-                    <br />
-                    <hr className={classes.hr}/>
-                    <br />
-                         
-                         {PDADLs.map((activity, index) => {
-                            return (
-                                <div>
-                                    <Grid container spacing={24}>
-                                        <Grid item xs={12} sm={8} md={8}>
-                                            <div className={classes.questionText}>{activity.text}</div>
-                                                <Button className={classes.helpBtn} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
-                                                    <HelpIcon color="primary" className={classes.iconHover}/>
-                                                    More Details and examples
-                                                </Button> 
-                                        </Grid>
-                                       
-                                        <Grid item xs={12} sm={3} md={3}>
-                                            <div >
-                                                <Button type="button" className={classes.questionBtn} style={{backgroundColor: activeBtn[index] === 1 ? "lightgrey" : "white"}} onClick={() => this.handleQuestionBtn(index)}> 
-                                                    <DoneIcon className={classes.doneIcon} style={{color: activeBtn[index] === 1 ? "green" : "white"}}/>
-                                                </Button>
+                    <SubTitle subtitle="Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month." />
 
-                                            </div>
-                                        </Grid>
+                    {PDADLs.map((activity, index) => {
+                        return (
+                            <div>
+                                <Grid container spacing={24}>
+                                    <Grid item xs={12} sm={8} md={8}>
+                                        <div className={classes.questionText}>{activity.text}</div>
+                                            <Button className={classes.helpBtn} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
+                                                <HelpIcon color="primary" className={classes.iconHover}/>
+                                                 &nbsp;&nbsp;More Details and examples
+                                            </Button> 
                                     </Grid>
-                                    <hr className={classes.hr}/>
-                                    <br />
                                     
-                                </div>
-                            )
-                        }) }
+                                    <Grid item xs={12} sm={3} md={3}>
+                                        <div >
+                                            <Button type="button" className={classes.questionBtn} style={{backgroundColor: activeBtn[index] === 1 ? "lightgrey" : null}} onClick={() => this.handleQuestionBtn(index)}> 
+                                                <DoneIcon className={classes.doneIcon} style={{color: activeBtn[index] === 1 ? "green" : "white"}}/>
+                                            </Button>
+
+                                        </div>
+                                    </Grid>
+                                </Grid>
+                                <hr className={classes.hr}/>
+                                <br />
+                            </div>
+                        )
+                    }) }
                     
-
-
                     <BottomNav />
 
                 </div>
@@ -308,7 +309,7 @@ const styles = theme => ({
 
 
 // function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserAboutLife }, dispatch);
+//     return bindActionCreators({ submitUserLife }, dispatch);
 // }
 
 
