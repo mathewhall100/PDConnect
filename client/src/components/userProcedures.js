@@ -14,7 +14,7 @@ import DoneIcon from '@material-ui/icons/Done';
 
 
 import { activity_level } from '../constants';
-//import { submitUserLife} from '../actions/UserAboutLifeAction'
+//import { submitUserProcs} from '../actions/UserProcsAction'
 
 
 const styles = theme => ({
@@ -28,20 +28,24 @@ const styles = theme => ({
         border: "1px solid lightgrey",
         padding: "30px 30px 30px 30px"
     },
-    textCenter: {
-        textAlign: "center"
+    titleStyle: {
+        textAlign: "center",
+        lineHeight: "40px"
     },
     textStyle: {
         marginTop: '40px',
         marginBottom: '40px'
+    },
+    subtitleStyle: {
+        lineHeight: "30px"
     },
     questionText: {
         fontSize: "20px",
     },
     questionBtn: {
         float: "right",
-        width: "110px",
-        height: "30px",
+        width: "150px",
+        height: "60px",
         marginLeft: "25px",
         backgroundColor: "white",
         border: "2px solid grey",
@@ -119,8 +123,7 @@ const styles = theme => ({
 });
 
 
-
- class UserLife extends Component {
+ class UserProcs extends Component {
 
     state = {
         open : false,
@@ -133,8 +136,21 @@ const styles = theme => ({
     handleQuestionBtn = (ans, index) => {
         console.log("here : ",  ans, index)
     }
-    
 
+    handleSubmit = () => {
+        // const { activeBtn } = this.state
+        // const ADL = activeBtn.indexOf(1)
+        // console.log("submit - ADL:, ", ADL)
+        // if (ADL >= 0) {
+        //     // this.submitUserLife( {
+        //     //     ADL: this.state.activeBtn.indexOf("1"),
+        //     // })
+        // } else {
+        //     this.setState({modalWarning: true})
+        //     this.handleOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
+        // }
+    }
+    
     handleClearForm() {
         console.log("clear form")
         this.props.reset()
@@ -181,15 +197,15 @@ const styles = theme => ({
         const { handleSubmit, pristine, submitting, classes } = this.props
         const { redirect, redirectAddress } = this.state
 
-        const activities = [
-            {text: "I can carry out my usual activities and look after myself wothout help"},
-            {text: "I can walk unaided"},
-            {text: "I need some help to look after myself"},
-            {text: "I require a walking aid to walk safely"},
-            {text: "I need help with most daily activities"},
-            {text: "I can't walk independently"},
-            {text: "I need constant care"},
-            {text: "I can no longer walk"}
+        const meds= [
+            {name: "", class: "", description: ""},
+            {name: "", class: "", description: ""},
+            {name: "", class: "", description: ""},
+            {name: "", class: "", description: ""},
+            {name: "", class: "", description: ""},
+            {name: "", class: "", description: ""},
+            {name: "", class: "", description: ""},
+            {name: "", class: "", description: ""}
         ]
 
 
@@ -202,7 +218,7 @@ const styles = theme => ({
         const TopTitle = (props) => {
             return (
                 <div>
-                    <h1 className={classes.textCenter}>{props.title}</h1>
+                    <h1 className={classes.titleStyle}>{props.title}</h1>
                     <br />
                     <hr className={classes.hr} />
                     <br />
@@ -211,19 +227,16 @@ const styles = theme => ({
             )
         }
 
-        const RenderButton = (props) => {
-
-            
-
+        const SubTitle = (props) => {
             return (
-    
-                <div> 
-
-                    
-                
+                <div>
+                    <h3 className={classes.subtitleStyle}>{props.subtitle}</h3>
+                    <br />
+                    <hr className={classes.hr}/>
+                    <br />
                 </div>
             )
-        };
+        }
 
         const BottomNav= (props) => {
             return (
@@ -242,39 +255,36 @@ const styles = theme => ({
             <section className={classes.root}>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Ok, that's great! Now tell us a little about your life." />
+                    <TopTitle title="Congratulations, your half way through the questions! Now tell us about the medications you take for Parkinson Disease. " />
 
-                    <h3>Please click all that apply to you:</h3>
-                    <br />
-                    <hr className={classes.hr}/>
-                    <br />
+                    <SubTitle subtitle="Select 'yes' for each medication you take. Click the info icon for more information to help decide if you take this medication or not. " />
                          
-                         {activities.map((activity, index) => {
-                            return (
-                                <div>
-                                    <Grid container spacing={24}>
-                                        <Grid item xs={12} sm={12} md={5}>
-                                            <span className={classes.questionText}>{activity.text}</span>
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={7}>
-                                            <div >
-                                                <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("ns", index)}>Not sure</Button>
-                                                <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("no", index)}>No</Button>
-                                              <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("yes", index)}>Yes</Button>
-                                            </div>
-                                        </Grid>
-                                    </Grid>
-                                    <br />
-                                    <hr className={classes.hr}/>
-                                    <br />
-                                    
-                                </div>
-                            )
-                        }) }
+                    {meds.map((activity, index) => {
+                    return (
+                        <div>
+                            <Grid container spacing={24}>
+                                <Grid item xs={12} sm={12} md={5}>
+                                    <span className={classes.questionText}>{activity.text}</span>
+                                </Grid>
+                                <Grid item xs={12} sm={12} md={7}>
+                                    <div >
+                                        <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("ns", index)}>No or not sure</Button>
+                                        {/* <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("no", index)}>No</Button> */}
+                                        <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("yes", index)}>Yes, I take this medication</Button>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                            <br />
+                            <hr className={classes.hr}/>
+                            <br />
+                            
+                        </div>
+                    )
+                }) }
                     
 
 
-                    <BottomNav />
+                <BottomNav />
 
                 </div>
 
@@ -303,11 +313,11 @@ const styles = theme => ({
 
 
 // function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserAboutLife }, dispatch);
+//     return bindActionCreators({ submitUserMeds }, dispatch);
 // }
 
 
-UserLife = withRouter(UserLife)
-UserLife = withStyles(styles)(UserLife)
-// UserLife = connect(null, mapDispatchToProps)(UserLife)
-export default UserLife
+UserProcs = withRouter(UserProcs)
+UserProcs = withStyles(styles)(UserProcs)
+// UserProcs = connect(null, mapDispatchToProps)(UserProcs)
+export default UserProcs

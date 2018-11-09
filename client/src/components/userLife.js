@@ -28,8 +28,9 @@ const styles = theme => ({
         border: "1px solid lightgrey",
         padding: "30px 30px 30px 30px"
     },
-    textCenter: {
-        textAlign: "center"
+    titleStyle: {
+        textAlign: "center",
+        lineHeight: "40px"
     },
     textStyle: {
         marginTop: '40px',
@@ -149,6 +150,7 @@ const styles = theme => ({
             this.setState({modalWarning: true})
             this.handleOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
         }
+        //this.setState({redirect: true})
     }
     
 
@@ -212,7 +214,7 @@ const styles = theme => ({
         const TopTitle = (props) => {
             return (
                 <div>
-                    <h1 className={classes.textCenter}>{props.title}</h1>
+                    <h1 className={classes.titleStyle}>{props.title}</h1>
                     <br />
                     <hr className={classes.hr} />
                     <br />
@@ -249,7 +251,7 @@ const styles = theme => ({
             <section className={classes.root}>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Ok, that's great! Now tell us a little about how Parkinson disease affects you" />
+                    <TopTitle title="Now tell us a little about how Parkinson disease affects you" />
 
                     <SubTitle subtitle="Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month." />
 

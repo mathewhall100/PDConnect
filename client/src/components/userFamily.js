@@ -28,8 +28,9 @@ const styles = theme => ({
         border: "1px solid lightgrey",
         padding: "30px 30px 30px 30px"
     },
-    textCenter: {
-        textAlign: "center"
+    titleStyle: {
+        textAlign: "center",
+        lineHeight: "40px"
     },
     textStyle: {
         marginTop: '40px',
@@ -132,14 +133,12 @@ const styles = theme => ({
     },
     treeLinkHorizontal: {
         width: "120px",
-        height: "5px",
         backgroundColor: "lightgrey",
         position: "absolute",
         zIndex: -100
     },
     treeLinkVertical: {
         width: "5px",
-        height: "400px",
         backgroundColor: "lightgrey",
         position: "absolute",
         zIndex: -100
@@ -205,7 +204,7 @@ const styles = theme => ({
         const TopTitle = (props) => {
             return (
                 <div>
-                    <h1 className={classes.textCenter}>{props.title}</h1>
+                    <h1 className={classes.titleStyle}>{props.title}</h1>
                     <br />
                     <hr className={classes.hr} />
                     <br />
@@ -247,7 +246,7 @@ const styles = theme => ({
         const TreeLink = (props) => {
             console.log(props)
             return (
-                <div className={props.class} style={{top: props.top, left: props.left}}>
+                <div className={props.class} style={{top: props.top, left: props.left, height: props.height, }}>
                 </div>
             )
         }
@@ -258,7 +257,7 @@ const styles = theme => ({
                     
                     <TopTitle title="Tell us about any relatives you may have with Parkinson disease?" />
 
-                    <SubTitle subtitle="Please click the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. Just click NEXT if there is no Parkinson disease in your family that you know of." />
+                    <SubTitle subtitle="Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. When you are done, or if noone in your family has ever been diagnosed with Parkinson disease, click NEXT to go to the next question." />
 
                     <div className={classes.treeContainer}>
 
@@ -271,10 +270,10 @@ const styles = theme => ({
                         <TreeButton relative="uncle / aunt" top={spacingV+25} left={spacingH*4} color={familyResult.indexOf("uncle / aunt") >=0 ? "lightgreen" : "white"} />
                         <TreeButton relative="niece / nephew" top={spacingV*3+25} left={spacingH*4} color={familyResult.indexOf("niece / nephew") >=0 ? "lightgreen" : "white"} />
 
-                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV+25+25} left={spacingH+150} />
-                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV*2+25+25} left={spacingH+150} />
-                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV*3+25+25} left={spacingH+150} />
-                        <TreeLink class={classes.treeLinkVertical} top={25} left={spacingH+75} />
+                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV+25+25} left={spacingH+150} height="5px"/>
+                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV*2+25+25} left={spacingH+150} height="5px"/>
+                        <TreeLink class={classes.treeLinkVertical} top={25} left={spacingH+75} height="400px"/>
+                        <TreeLink class={classes.treeLinkVertical} top={spacingV*2+25+25} left={spacingH*4+75} height="100px"/>
                         </div>
 
                     <BottomNav />

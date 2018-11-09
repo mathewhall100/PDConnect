@@ -5,6 +5,7 @@ import CurrentTreatment from './pages/treatment';
 import UserAbout from './components/userAbout';
 import UserLife from './components/userLife';
 import UserFamily from './components/userFamily';
+import UserMeds from './components/userMeds';
 import Result from './pages/results';
 import TreatmentInfo from './pages/treatmentInfo';
 import UserInfo from './pages/userinfo';
@@ -33,6 +34,7 @@ class Routes extends Component {
                     <Route path='/user_about' render={props => <UserAbout></UserAbout>} />
                     <Route path='/user_life' render={props => <UserLife></UserLife>} />
                     <Route path='/user_family' render={props => <UserFamily></UserFamily>} />
+                    <Route path='/user_meds' render={props => <UserMeds></UserMeds>} />
                     <Route path="/result" render={props => <Result ></Result>} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                     <Route path="/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />

@@ -40,9 +40,9 @@ const styles = theme => ({
     textCenter: {
         textAlign: "center"
     },
-    textStyle: {
-        marginTop: '40px',
-        marginBottom: '40px'
+    titleStyle: {
+        textAlign: "center",
+        lineHeight: "40px"
     },
     hr: {
         height: "1px", 
@@ -200,7 +200,7 @@ const styles = theme => ({
         const TopTitle = (props) => {
             return (
                 <div>
-                    <h1 className={classes.textCenter}>{props.title}</h1>
+                    <h1 className={classes.titleStyle}>{props.title}</h1>
                     <br />
                     <hr className={classes.hr} />
                     <br />
