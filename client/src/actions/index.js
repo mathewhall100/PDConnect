@@ -6,3 +6,4 @@ export * from './TreatmentAction';
 export * from './CurrentTreatmentAction';
 export * from './PreviousTreatmentAction';
 export * from './ResultAction';
+export * from './Stepper'

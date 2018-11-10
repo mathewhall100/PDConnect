@@ -4,16 +4,20 @@ import "./App.css";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import  AppBar from './components/AppBar';
+import Footer from './components/home/footer';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <AppBar />
-        <div className='content-holder'>
-          <Routes {...this.props} />
-        </div>
-        
+        <ParallaxProvider>
+          <div className='content-holder'>
+            <Routes {...this.props} />
+          </div>
+        </ParallaxProvider>
+        <Footer />
       </div>
     );
   }

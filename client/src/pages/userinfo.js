@@ -12,6 +12,7 @@ import Radio from '../components/forms/FormRadio';
 import Button from '@material-ui/core/Button';
 import { withRouter, Redirect } from 'react-router-dom';
 import { age, years, activity_level } from '../constants';
+import { updateStepperCount } from '../actions/Stepper';
 const arrRace = [
     {
         "value" : "American Indian or Alaska Native",
@@ -122,7 +123,6 @@ class UserInfo extends Component {
         }
         return (
                 <div>
-
                     <div style={{marginTop: "50px", textAlign: "center"}}>
                         <h1>About Yourself</h1>
                     </div>
@@ -276,6 +276,7 @@ function mapStatsToProps(state) {
         userChoice : state.userChoice,
         symptom : state.symptom,
         sideEffect : state.sideEffect,
+        stepper : state.stepper,
     }
 }
 
@@ -286,4 +287,4 @@ UserInfo.propTypes = {
 UserInfo = reduxForm(formData)(UserInfo);
 UserInfo = withStyles(styles)(UserInfo);
 UserInfo = withRouter(UserInfo);
-export default connect(mapStatsToProps, { submitUserInfo })(UserInfo);
+export default connect(mapStatsToProps, { submitUserInfo, updateStepperCount })(UserInfo);

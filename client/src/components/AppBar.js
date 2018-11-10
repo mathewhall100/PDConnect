@@ -2,35 +2,29 @@ import React, {Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
-    AppBar : {
-        backgroundColor: '#2D404b',
-        height: '80px',
-        position: 'relative',
-        color: 'white',
-        marginTop: '- 22px'
-    },
-    AppTitle: {
-        paddingTop: '20px',
-        textAlign: 'left',
-        paddingLeft: '20px',
-        marginTop : '0',
-        '&$visited': {
-            textDecoration: 'none',
-        },
-    }
-});
 
 class AppBar extends Component {
     render () {
-        const { classes } = this.props
         return(
-            <div className={classes.AppBar}>
-                <h1 className={classes.AppTitle}><a href='/' style={{ textDecoration: 'none', color: 'white' }} >PD Navigator</a></h1>
-            </div>
+            <nav>
+                <div className="nav-fostrap">
+                    <ul>
+                        <li><a href="/">PD Connect</a></li>
+                        <li><a href="/">Connect</a></li>
+                        <li><a href="/">Our Promises</a></li>
+                        <li><a href="/">Endorsements</a></li>
+                        <li><a href="/">Featured Treatments</a></li>
+                        <li className='li-right'><a href="">Sign In</a></li>
+                        
+                    </ul>
+                </div>
+                <div className="nav-bg-fostrap">
+                    <div className="navbar-fostrap"> <span></span> <span></span> <span></span> </div>
+                    <a href="" className="title-mobile">PD Connect</a>
+                </div>
+            </nav>
         )
     }
 }
 
-AppBar = withStyles(styles)(AppBar)
 export default  AppBar

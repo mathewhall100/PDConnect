@@ -13,6 +13,7 @@ import { withStyles } from '@material-ui/core/styles';
 import AddCircle from '@material-ui/icons/AddCircle';
 
 import { submitCurrentTreatment } from '../actions/CurrentTreatmentAction'
+import { updateStepperCount } from '../actions/Stepper';
 
 
 const styles = theme => ({
@@ -75,6 +76,9 @@ const styles = theme => ({
         medIndex: 1,
         redirect: false,
         redirectAddress : 'previous_treatment',
+    }
+    componentDidMount(){
+        this.props.updateStepperCount();
     }
 
     submit(values) {
@@ -270,7 +274,7 @@ const styles = theme => ({
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ submitCurrentTreatment }, dispatch);
+    return bindActionCreators({ submitCurrentTreatment, updateStepperCount }, dispatch);
 }
 
 const formData = {
