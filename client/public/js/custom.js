@@ -9,7 +9,4 @@ jQuery(document).ready(function ($) {
         separator: ",",
         speed: 3000
     });
-    
-    $('.parallax').parallax();
-
 });
