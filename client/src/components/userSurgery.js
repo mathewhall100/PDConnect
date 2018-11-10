@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { withRouter, Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { startCase } from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -11,10 +12,12 @@ import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal';
 import HelpIcon from '@material-ui/icons/Help';
 import DoneIcon from '@material-ui/icons/Done';
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../constants';
-//import { submitUserProcs} from '../actions/UserProcsAction'
+import { relative } from 'upath';
+//import { submitUserMeds} from '../actions/UserAboutLifeAction'
 
 
 const styles = theme => ({
@@ -39,24 +42,45 @@ const styles = theme => ({
     subtitleStyle: {
         lineHeight: "30px"
     },
-    questionText: {
+    medText: {
         fontSize: "20px",
+        position: "relative",
+        top: "10px"
     },
-    questionBtn: {
-        float: "right",
-        width: "150px",
-        height: "60px",
-        marginLeft: "25px",
+    medGeneric: {
+        fontSize: "18px", 
+        fontWeight: "bold"
+    }, 
+    medTrade: {
+        paddingLeft: "10px",
+        lineHeight: "30px",
+        fontSize: "18px"
+    },
+    medSelectBtn: {
+        width: "440px",
+        height: "30px",
         backgroundColor: "white",
         border: "2px solid grey",
         borderRadius: "5px",
-        fontSize: "14px",
+        fontSize: "16px",
         '&:hover': {
             backgroundColor: "lightgrey",
         },
-        '&:active': {
-            backgroundColor: "lightgrey",
-        }
+    },
+    medSelectBtn2: {
+        float: "right",
+        width: "50px",
+        height: "60px",
+        // marginLeft: "25px",
+        backgroundColor: "white",
+        border: "4px solid grey",
+        borderRadius: "50%",
+        position: "relative",
+        top: "-15px",
+        // fontSize: "14px",
+         '&:hover': {
+             backgroundColor: "white",
+         },
     },
     hr: {
         height: "1px", 
@@ -71,6 +95,7 @@ const styles = theme => ({
         color: "black"
     },
     iconBtn: {
+        float: "right",
         marginTop: "-7px",
         '&:hover': {
             backgroundColor: "white",
@@ -87,11 +112,17 @@ const styles = theme => ({
         fontWeight: "bold"
     },
     doneIcon: {
-        fontSize: "14px", 
+        fontSize: "48px", 
         color: "green", 
-        position: "relative", 
-        top: "20px", 
-        left: "10px"
+        padding: 0,
+        margin: -6
+    },
+    doneOutlineIcon: {
+        fontSize: "36px",
+        color: "#eeeeee",
+        '&:hover': {
+            color: "green"
+        },
     },
     errorText: {
         fontSize: "15px", 
@@ -123,9 +154,12 @@ const styles = theme => ({
 });
 
 
- class UserProcs extends Component {
+ class UserSurgery extends Component {
 
     state = {
+        medsArray: [],
+        medsSelected: [],
+        noMeds: false,
         open : false,
         modalTitle : '',
         modalDescription : '',
@@ -133,27 +167,36 @@ const styles = theme => ({
         redirectAddress : 'test',
     }  
 
-    handleQuestionBtn = (ans, index) => {
-        console.log("here : ",  ans, index)
+    handleSubmit = () => {
+        console.log("submit - meds:, ", this.state.medsArray)
+
+        // this.submitUserSurgeries(this.state.medsArray)
+        // this.setState({
+        //     redirect: true
+        // })
+       
     }
 
-    handleSubmit = () => {
-        // const { activeBtn } = this.state
-        // const ADL = activeBtn.indexOf(1)
-        // console.log("submit - ADL:, ", ADL)
-        // if (ADL >= 0) {
-        //     // this.submitUserLife( {
-        //     //     ADL: this.state.activeBtn.indexOf("1"),
-        //     // })
-        // } else {
-        //     this.setState({modalWarning: true})
-        //     this.handleOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
-        // }
+    handleMedSelect = (index, name) => {
+        console.log("handlemedselect : ", name)
+        let tempArray = this.state.medsSelected
+        let tempMeds = this.state.medsArray
+        tempArray[index] = !tempArray[index]
+        tempMeds.push(name)
+        this.setState({
+            noMeds: false,
+            medsSelected: tempArray, 
+            medsArray: tempMeds
+        })
     }
-    
+
     handleClearForm() {
         console.log("clear form")
-        this.props.reset()
+        this.setState({
+            noMeds: false,
+            medsSelected: [],
+            medsArray: []
+        })
     }
 
     handleBack = () => {
@@ -182,8 +225,8 @@ const styles = theme => ({
         console.log(modalItem);
          this.setState({ 
              open: true, 
-             modalTitle : modalItem.modal,
-             modalDescription : modalItem.modal
+             modalTitle : modalItem.title,
+             modalDescription : modalItem.description
         });
      };
 
@@ -195,17 +238,12 @@ const styles = theme => ({
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress } = this.state
+        const { redirect, redirectAddress, medsSelected, noMeds } = this.state
 
-        const meds= [
-            {name: "", class: "", description: ""},
-            {name: "", class: "", description: ""},
-            {name: "", class: "", description: ""},
-            {name: "", class: "", description: ""},
-            {name: "", class: "", description: ""},
-            {name: "", class: "", description: ""},
-            {name: "", class: "", description: ""},
-            {name: "", class: "", description: ""}
+
+        const procedures= [
+            {procedure: "Deep Brain Stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
+            {procedure: "PEG-J tube insertion for Duopa", shortDescription: "Placement of a feeding tube throuigh the stomach wall", description: ""},
         ]
 
 
@@ -227,65 +265,55 @@ const styles = theme => ({
             )
         }
 
-        const SubTitle = (props) => {
-            return (
-                <div>
-                    <h3 className={classes.subtitleStyle}>{props.subtitle}</h3>
-                    <br />
-                    <hr className={classes.hr}/>
-                    <br />
-                </div>
-            )
-        }
-
         const BottomNav= (props) => {
             return (
                 <div>
                     <br />
                     <br />
-                    <Button type="submit" color="primary" className={classes.basicBtn}>NEXT</Button>
+                    <Button type="submit" color="primary" className={classes.basicBtn} onClick={() => this.handleSubmit()}>NEXT</Button>
                     <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleClearForm()}>CLEAR</Button>  
                     <br />
                 </div> 
             )
         }
 
-
         return (
             <section className={classes.root}>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Congratulations, your half way through the questions! Now tell us about the medications you take for Parkinson Disease. " />
+                    <TopTitle title="Have you ever had any of the following procedures or surgeries to treat Parkinson disease? " />
 
-                    <SubTitle subtitle="Select 'yes' for each medication you take. Click the info icon for more information to help decide if you take this medication or not. " />
-                         
-                    {meds.map((activity, index) => {
-                    return (
-                        <div>
-                            <Grid container spacing={24}>
-                                <Grid item xs={12} sm={12} md={5}>
-                                    <span className={classes.questionText}>{activity.text}</span>
+                    <br />
+
+                    {procedures.map((proc, index) => {
+
+                        return (
+                            <div key={index}>
+                                <Grid container spacing={24}>
+                                    <Grid item xs={12} sm={8}>
+                                            <span className={classes.medGeneric}>{proc.procedure}</span>  
+                                            <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: proc.procedure, description: proc.shortDescription}) }>
+                                                <HelpIcon color="primary" className={classes.iconHover}/>
+                                                </Button>
+                                            <br />
+                                            <span className={classes.medTrade}> 
+                                                {proc.shortDescription}
+                                            </span> 
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                            <Button type="button" className={classes.medSelectBtn2} onClick={() => this.handleMedSelect(index, proc.procedure)}>
+                                                {medsSelected[index] && <DoneIcon className={classes.doneIcon} /> }
+                                                {!medsSelected[index] && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
+                                            </Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12} sm={12} md={7}>
-                                    <div >
-                                        <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("ns", index)}>No or not sure</Button>
-                                        {/* <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("no", index)}>No</Button> */}
-                                        <Button type="button" className={classes.questionBtn} onClick={() => this.handleQuestionBtn("yes", index)}>Yes, I take this medication</Button>
-                                    </div>
-                                </Grid>
-                            </Grid>
-                            <br />
-                            <hr className={classes.hr}/>
-                            <br />
-                            
-                        </div>
-                    )
-                }) }
-                    
-
-
-                <BottomNav />
-
+                                <br />
+                            </div>
+                        )
+                    }) }
+   
+                    <BottomNav />            
+            
                 </div>
 
                 <Modal
@@ -317,7 +345,7 @@ const styles = theme => ({
 // }
 
 
-UserProcs = withRouter(UserProcs)
-UserProcs = withStyles(styles)(UserProcs)
-// UserProcs = connect(null, mapDispatchToProps)(UserProcs)
-export default UserProcs
+UserSurgery = withRouter(UserSurgery)
+UserSurgery = withStyles(styles)(UserSurgery)
+// UserSurgery = connect(null, mapDispatchToProps)(UserSurgery)
+export default UserSurgery
