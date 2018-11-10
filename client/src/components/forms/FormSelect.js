@@ -21,7 +21,11 @@ class FormSelect extends Component {
                         {touched ? error : ''}
                     </div>
                     <FormControl variant="outlined"  style={{width: `${width}`}}>
-                        <InputLabel>
+                        <InputLabel>ref={ref => {
+                            this.InputLabelRef = ref;
+                            }}
+                            htmlFor="outlined-age-simple"
+                        >
                             {label}
                         </InputLabel>
                     
