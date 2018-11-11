@@ -71,13 +71,24 @@ const styles = theme => ({
         float: "right",
         width: "50px",
         height: "60px",
-        // marginLeft: "25px",
         backgroundColor: "white",
         border: "4px solid grey",
         borderRadius: "50%",
         position: "relative",
-        top: "-15px",
-        // fontSize: "14px",
+        top: "-10px",
+         '&:hover': {
+             backgroundColor: "white",
+         },
+    },
+    medSelectBtnActive: {
+        float: "right",
+        width: "50px",
+        height: "60px",
+        backgroundColor: "white",
+        border: "8px solid grey",
+        borderRadius: "50%",
+        position: "relative",
+        top: "-10px",
          '&:hover': {
              backgroundColor: "white",
          },
@@ -96,7 +107,6 @@ const styles = theme => ({
     },
     iconBtn: {
         float: "right",
-        marginTop: "-7px",
         '&:hover': {
             backgroundColor: "white",
         },
@@ -115,7 +125,7 @@ const styles = theme => ({
         fontSize: "48px", 
         color: "green", 
         padding: 0,
-        margin: -6
+        marginTop: "-10px"
     },
     doneOutlineIcon: {
         fontSize: "36px",
@@ -123,6 +133,12 @@ const styles = theme => ({
         '&:hover': {
             color: "green"
         },
+    },
+    radioMock: {
+        width: "18px",
+        height:  "18px",
+        borderRadius: "50%",
+        backgroundColor: "green"
     },
     errorText: {
         fontSize: "15px", 
@@ -157,9 +173,9 @@ const styles = theme => ({
  class UserMeds extends Component {
 
     state = {
-        medsArray: [],
-        medsSelected: [],
-        noMeds: false,
+        answerArray: [],
+        answerTrack: [],
+        noAnswer: false,
         open : false,
         modalTitle : '',
         modalDescription : '',
@@ -168,42 +184,42 @@ const styles = theme => ({
     }  
 
     handleSubmit = () => {
-        console.log("submit - meds:, ", this.state.medsArray)
+        console.log("submit - meds:, ", this.state.answerArray)
 
-        // this.submitUserMeds(this.state.medsArray)
+        // this.submitUserMeds(this.state.answerArray)
         // this.setState({
         //     redirect: true
         // })
        
     }
 
-    handleMedSelect = (index, name) => {
-        console.log("handlemedselect2 : ", index,)
-        let tempArray = this.state.medsSelected
-        let tempMeds = this.state.medsArray
+    handleAnswerSelect = (index, name) => {
+        console.log("answer selected : ", index, " ", name)
+        let tempArray = this.state.answerTrack
+        let tempMeds = this.state.answerArray
         tempArray[index] = !tempArray[index]
         tempMeds.push(name)
         this.setState({
-            noMeds: false,
-            medsSelected: tempArray, 
-            medsArray: tempMeds
+            noAnswer: false,
+            answerTrack: tempArray, 
+            answerArray: tempMeds
         })
     }
 
-    handleNoMedSelect = () => {
-        console.log('NoMedsSelected')
+    handleNoAnswerelect = () => {
+        console.log('NoanswerTrack')
         this.setState({
-            noMeds: true,
-            medsSelected: [],
-            medsArray: []}) 
+            noAnswer: true,
+            answerTrack: [],
+            answerArray: []}) 
     }
 
     handleClearForm() {
         console.log("clear form")
         this.setState({
-            noMeds: false,
-            medsSelected: [],
-            medsArray: []
+            noAnswer: false,
+            answerTrack: [],
+            answerArray: []
         })
     }
 
@@ -246,7 +262,7 @@ const styles = theme => ({
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, medsSelected, noMeds } = this.state
+        const { redirect, redirectAddress, answerTrack, noAnswer } = this.state
 
         const medGroups = [
             {class: "dopamine agonist", target: "motor symptoms"},
@@ -307,11 +323,16 @@ const styles = theme => ({
                     <br />
                     <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        <div className={classes.medGeneric}>I take no medications for Parkinson disease: </div>
+                        <div className={classes.medGeneric}>I don't take any medications for Parkinson disease: </div>
                         <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                            <Button type="button" className={classes.medSelectBtn2} style={{backgroundColor: noMeds ? "green" : "white"}} onClick={() => this.handleNoMedSelect()}>
+                            <Button type="button" className={classes.medSelectBtn2} style={{borderColor: noAnswer ? "green" : null}}onClick={() => this.handleNoAnswerelect()}>
+                                    {noAnswer && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "9px"}} /> }
+                                    {noAnswer && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "10px"}} /> }
+                                    {noAnswer && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "11px"}} /> }
+                                    {noAnswer && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "12px"}} /> } 
+                                    {!noAnswer && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
                             </Button>
                         </Grid>
                     </Grid>
@@ -326,15 +347,13 @@ const styles = theme => ({
                                 <br />
 
                                 {meds.filter(med => med.class === group.class).map((med, index) => {
-                                    const medIndex = meds.findIndex(medication => medication.generic == med.generic)
-
-                                   
+                                    const answerIndex = meds.findIndex(medication => medication.generic == med.generic)
 
                                     return (
                                         
                                         <div key={index}>
                                             <Grid container spacing={24}>
-                                                <Grid item xs={12} sm={8}>
+                                                <Grid item xs={12} sm={8} >
                                                         <span className={classes.medGeneric}>{med.generic}</span>  
                                                         <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: med.generic, description: med.description}) }>
                                                             <HelpIcon color="primary" className={classes.iconHover}/>
@@ -352,10 +371,17 @@ const styles = theme => ({
                                                              }) }
                                                         </span> }
                                                 </Grid>
-                                                <Grid item xs={12} sm={4}>
-                                                        <Button type="button" className={classes.medSelectBtn2} onClick={() => this.handleMedSelect(medIndex, med.generic)}>
-                                                            {medsSelected[medIndex] && <DoneIcon className={classes.doneIcon} /> }
-                                                            {!medsSelected[medIndex] && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
+                                                <Grid item xs={12} sm={4} >
+                                                         <Button type="button" className={classes.medSelectBtn2}  style={{borderColor: answerTrack[answerIndex] ? "green" : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.generic)}>
+                                                            {/* {answerTrack[answerIndex] && <DoneIcon className={classes.doneIcon} /> } */}
+
+                                                {answerTrack[answerIndex]  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "9px"}} /> }
+                                                {answerTrack[answerIndex]  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "10px"}} /> }
+                                                {answerTrack[answerIndex]  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "11px"}} /> }
+                                                {answerTrack[answerIndex]  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "12px"}} /> } 
+                                                {!answerTrack[answerIndex]  && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
+                                       
+
                                                         </Button>
                                                 </Grid>
                                             </Grid>
