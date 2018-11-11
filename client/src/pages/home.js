@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-
+import Hero from '../components/home/hero';
+import Promise from '../components/home/promise';
+import Connects from '../components/home/connect';
+import Endorsement from '../components/home/endorsement';
+import About from '../components/home/about';
 import Button from '@material-ui/core/Button';
+import background1 from '../images/andy-kelly-402111-unsplash.jpg';
 
 const styles = theme => ({
     root: {
@@ -82,15 +87,12 @@ class Home extends Component {
 
         return (
             <React.Fragment>
-                <div className={classes.textBox}> 
-
-                    <div style={{marginTop: "50px"}}> 
-                        <span style={{fontSize: "82px"}}>PD</span>
-                        <br />
-                        <span style={{fontSize: "82px"}}>Navigator</span>
-                    </div>
-
-                        
+                <Hero />
+                <Connects />
+                <Promise />
+                <Endorsement />
+                <About />
+                {/*<div style={{position : 'relative'}} className={classes.textBox}> 
                     <div style={{marginTop: "50px"}}>
 
                         <h3 id="hero" className={classes.fadeIn}>
@@ -101,6 +103,7 @@ class Home extends Component {
                             </span>
                         </h3>
                     </div>
+                    
 
                     <div style={{marginTop: "80px"}}>
                         <Button variant='contained' className={classes.startBtn} onClick={() => this.DirectToIntroInfo()}>
@@ -114,7 +117,7 @@ class Home extends Component {
                         </Button>
                     </div>
 
-                </div>
+                </div>*/}
             </React.Fragment>
         );
     }

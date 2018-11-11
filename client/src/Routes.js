@@ -24,12 +24,17 @@ import InfoDroxidopa from './infoFiles/Droxidopa.js'
 import InfoBotTox from './infoFiles/BotTox.js'
 import InfoSpark from './infoFiles/SPARK.js'
 import InfoNilo from './infoFiles/NILO.js'
+import Stepper from './components/stepper';
 
+import { connect } from 'react-redux';
+import { updateStepperCount } from './actions/Stepper';
 class Routes extends Component {
-
+    
     render() {
         return (
             <div>
+
+                <Stepper onPage={this.props.stepper.stepperCount}/>
                 <Switch>
                     <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
                     <Route path='/user_info' render={props => <UserInfo ></UserInfo>} />
@@ -60,4 +65,17 @@ class Routes extends Component {
     }
 
 }
-export default (Routes);
+function mapStatsToProps(state) {
+    console.log(state);
+    return {
+        currentTreatments: state.currentTreatments,
+        previousTreatments: state.previousTreatments,
+        user: state.user,
+        userChoice: state.userChoice,
+        symptom: state.symptom,
+        sideEffect: state.sideEffect,
+        stepper : state.stepper,
+    }
+}
+
+export default connect(mapStatsToProps, {updateStepperCount})(Routes);
