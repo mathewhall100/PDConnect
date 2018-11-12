@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Homepage from './pages/home';
 import CurrentTreatment from './pages/treatment';
+import User from './pages/user';
 import UserAbout from './components/userAbout';
 import UserLife from './components/userLife';
 import UserFamily from './components/userFamily';
@@ -32,9 +33,9 @@ class Routes extends Component {
         return (
             <div>
 
-                <Stepper onPage={this.props.stepper.stepperCount}/>
                 <Switch>
                     <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
+                    <Route path='/user' render={props => <User></User>} />
                     <Route path='/user_info' render={props => <UserInfo ></UserInfo>} />
                     <Route path='/treatment' render={props => <CurrentTreatment></CurrentTreatment>} />
                     <Route path='/user_about' render={props => <UserAbout></UserAbout>} />

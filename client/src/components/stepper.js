@@ -95,7 +95,7 @@ class VerticalLinearStepper extends React.Component {
                                     <StepLabel>{label}</StepLabel>
                                     <StepContent>
                                         <Typography>{getStepContent(index)}</Typography>
-                                        <div className={classes.actionsContainer}>
+                                        {/*<div className={classes.actionsContainer}>
                                             <div>
                                                 <Button
                                                     disabled={activeStep === 0}
@@ -113,7 +113,7 @@ class VerticalLinearStepper extends React.Component {
                                                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                                 </Button>
                                             </div>
-                                        </div>
+                                        </div>*/}
                                     </StepContent>
                                 </Step>
                             );
