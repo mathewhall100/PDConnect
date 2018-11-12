@@ -11,13 +11,14 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal';
 import HelpIcon from '@material-ui/icons/Help';
+import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../constants';
 import { relative } from 'upath';
-//import { submitUserMeds} from '../actions/UserAboutLifeAction'
+//import { submitUserMotorSy} from '../actions/UserMotorSyAction'
 
 
 const styles = theme => ({
@@ -49,12 +50,15 @@ const styles = theme => ({
     },
     medGeneric: {
         fontSize: "18px", 
-        fontWeight: "bold"
+        fontWeight: "bold",
+        lineHeight: "30px"
     }, 
     medTrade: {
-        paddingLeft: "10px",
-        lineHeight: "30px",
+        lineHeight: "20px",
         fontSize: "18px"
+    },
+    medTitleText: {
+        marginBottom: "10px"
     },
     medSelectBtn: {
         width: "440px",
@@ -69,23 +73,45 @@ const styles = theme => ({
     },
     medSelectBtn2: {
         float: "right",
-        width: "50px",
+        width: "40px",
         height: "60px",
-        // marginLeft: "25px",
+        marginTop: "4px",
+        marginLeft: "25px",
         backgroundColor: "white",
         border: "4px solid grey",
         borderRadius: "50%",
         position: "relative",
-        top: "-15px",
-        // fontSize: "14px",
          '&:hover': {
              backgroundColor: "white",
          },
+    },
+    medSelectBtnActive: {
+        float: "right",
+        width: "40px",
+        height: "60px",
+        marginTop: "4px",
+        marginLeft: "25px",
+        backgroundColor: "white",
+        border: "8px solid grey",
+        borderRadius: "50%",
+        position: "relative",
+         '&:hover': {
+             backgroundColor: "white",
+         },
+    },
+    btnText: {
+        fontWeight:"bold",
+        color: "grey"
     },
     hr: {
         height: "1px", 
         color:  "lightgrey",
         opacity: 0.5
+    },
+    columnHeader: {
+        float: "right",
+        fontSize: "20px",
+        fontWeight: "bold"
     },
     labelText: {
         fontSize: "18px"
@@ -96,7 +122,6 @@ const styles = theme => ({
     },
     iconBtn: {
         float: "right",
-        marginTop: "-7px",
         '&:hover': {
             backgroundColor: "white",
         },
@@ -112,13 +137,19 @@ const styles = theme => ({
         fontWeight: "bold"
     },
     doneIcon: {
-        fontSize: "48px", 
-        color: "green", 
+        fontSize: "44px", 
+        color: "green",
         padding: 0,
-        margin: -6
+        marginTop: -6
+    },
+    closeIcon: {
+        fontSize: "44px", 
+        color: "black",
+        padding: 0,
+        marginTop: -6
     },
     doneOutlineIcon: {
-        fontSize: "36px",
+        fontSize: "32px",
         color: "#eeeeee",
         '&:hover': {
             color: "green"
@@ -150,15 +181,14 @@ const styles = theme => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 4,
     },
-
 });
 
 
- class UserSurgery extends Component {
+ class UserMotorSy extends Component {
 
     state = {
         medsArray: [],
-        medsSelected: [],
+        answers: [],
         noMeds: false,
         open : false,
         modalTitle : '',
@@ -170,22 +200,30 @@ const styles = theme => ({
     handleSubmit = () => {
         console.log("submit - meds:, ", this.state.medsArray)
 
-        // this.submitUserSurgeries(this.state.medsArray)
+        // this.submitUserMotorSy(this.state.medsArray)
         // this.setState({
         //     redirect: true
         // })
        
     }
 
-    handleMedSelect = (index, name) => {
-        console.log("handlemedselect : ", name)
-        let tempArray = this.state.medsSelected
+    handleMedSelect = (index, choice, name) => {
+        //console.log("handlemedselect : ", index, " + ", name)
+        let tempArray = this.state.answers
         let tempMeds = this.state.medsArray
-        tempArray[index] = !tempArray[index]
-        tempMeds.push(name)
+        if (choice === "ns" || choice === "no") {
+            tempArray[index] = choice
+            let ind = tempMeds.indexOf(name)
+            ind >= 0 ? tempMeds[ind] = null : null
+
+        } 
+        else {
+            tempArray[index] = choice
+            tempMeds.indexOf(name) < 0 ? tempMeds.push(name) : null
+        }
         this.setState({
             noMeds: false,
-            medsSelected: tempArray, 
+            answers: tempArray, 
             medsArray: tempMeds
         })
     }
@@ -194,7 +232,7 @@ const styles = theme => ({
         console.log("clear form")
         this.setState({
             noMeds: false,
-            medsSelected: [],
+            answers: [],
             medsArray: []
         })
     }
@@ -238,12 +276,14 @@ const styles = theme => ({
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, medsSelected, noMeds } = this.state
+        const { redirect, redirectAddress, answers, noMeds } = this.state
 
 
-        const procedures= [
-            {procedure: "Deep Brain Stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
-            {procedure: "PEG-J tube insertion for Duopa", shortDescription: "Placement of a feeding tube throuigh the stomach wall", description: ""},
+        const motorSy= [
+            {motorSy: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
+            {motorSy: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
+            {motorSy: "Sudden, unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
+            {motorSy: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
         ]
 
 
@@ -265,6 +305,17 @@ const styles = theme => ({
             )
         }
 
+        const SubTitle = (props) => {
+            return (
+                <div>
+                    <h3 className={classes.subtitleStyle}>{props.subtitle}</h3>
+                    <br />
+                    <hr className={classes.hr}/>
+                    <br />
+                </div>
+            )
+        }
+
         const BottomNav= (props) => {
             return (
                 <div>
@@ -281,34 +332,51 @@ const styles = theme => ({
             <section className={classes.root}>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Have you ever had any of the following procedures or surgeries to treat Parkinson disease? " />
+                    <TopTitle title="Almost done! Lastly, about your symptoms" />
 
+                    <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may haveb expreinced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom." />
+
+                    <span><em>Let's start with motor symptoms</em></span>
+                    <br />
+                    <br />
                     <br />
 
-                    {procedures.map((proc, index) => {
+                    {motorSy.map((sy, index) => {
 
                         return (
                             <div key={index}>
                                 <Grid container spacing={24}>
-                                    <Grid item xs={12} sm={8}>
-                                            <span className={classes.medGeneric}>{proc.procedure}</span>  
-                                            <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: proc.procedure, description: proc.shortDescription}) }>
-                                                <HelpIcon color="primary" className={classes.iconHover}/>
-                                                </Button>
-                                            <br />
-                                            <span className={classes.medTrade}> 
-                                                {proc.shortDescription}
-                                            </span> 
+
+                                    <Grid item xs={12} sm={12} md={7} >
+                                    <span className={classes.medTitleText}>
+                                        <span className={classes.medGeneric}>{sy.motorSy}</span>  
+                                        <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: sy.motorSy, description: sy.shortDescription}) }>
+                                            <HelpIcon color="primary" className={classes.iconHover}/>
+                                        </Button>
+                                    </span>
+                                    <br />
+                                    <span className={classes.medTrade} > 
+                                        {sy.shortDescription}
+                                    </span> 
                                     </Grid>
-                                    <Grid item xs={12} sm={4}>
-                                            <Button type="button" className={classes.medSelectBtn2} style={{borderColor: medsSelected[index] ? "green" : null}} onClick={() => this.handleMedSelect(index, proc.procedure)}>
-                                                {medsSelected[index] && <DoneIcon className={classes.doneIcon} /> }
-                                                {medsSelected[index] && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
-                                                {medsSelected[index] && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
-                                                {medsSelected[index] && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> }
-                                                {!medsSelected[index] && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
-                                            </Button>
+
+                                    <Grid item xs={12} sm={12} md={5}>
+                                        <Button type="button" className={classes.medSelectBtn2} style={{borderColor: answers[index] === "ns" ? "black" : null}} onClick={() => this.handleMedSelect(index, "ns", sy.motorSy)}>
+                                            <span className={classes.btnText}  style={{color: answers[index] === "ns" ? "black" : null}}>not sure</span>
+                                        </Button>
+                                        <Button type="button" className={classes.medSelectBtn2}  style={{borderColor: answers[index] === "ns" ? "black" : null}} style={{borderColor: answers[index] === "no" ? "black" : null}} onClick={() => this.handleMedSelect(index, "no", sy.motorSy)}>
+                                            {answers[index] !== "no" && <span className={classes.btnText}>no</span> }
+                                            {answers[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
+                                        </Button>
+                                        <Button type="button" className={classes.medSelectBtn2}  style={{borderColor: answers[index] === "yes" ? "green" : null}} onClick={() => this.handleMedSelect(index, "yes", sy.motorSy)}>
+                                            {answers[index] !== "yes" && <span className={classes.btnText}>yes</span> }
+                                            {answers[index] === "yes" && <DoneIcon className={classes.doneIcon} /> }
+                                            {answers[index] === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "7px"}} /> }
+                                            {answers[index] === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "9px"}} /> }
+                                            {answers[index] === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "10px"}} /> } 
+                                        </Button>
                                     </Grid>
+
                                 </Grid>
                                 <br />
                             </div>
@@ -344,11 +412,11 @@ const styles = theme => ({
 
 
 // function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserMeds }, dispatch);
+//     return bindActionCreators({ submitUserMotorSy }, dispatch);
 // }
 
 
-UserSurgery = withRouter(UserSurgery)
-UserSurgery = withStyles(styles)(UserSurgery)
-// UserSurgery = connect(null, mapDispatchToProps)(UserSurgery)
-export default UserSurgery
+UserMotorSy = withRouter(UserMotorSy)
+UserMotorSy = withStyles(styles)(UserMotorSy)
+// UserMotorSy = connect(null, mapDispatchToProps)(UserMotorSy)
+export default UserMotorSy

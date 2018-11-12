@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal';
 import HelpIcon from '@material-ui/icons/Help';
 import DoneIcon from '@material-ui/icons/Done';
+import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../constants';
@@ -56,6 +57,34 @@ const styles = theme => ({
             backgroundColor: "lightgrey",
         },
     },
+    medSelectBtn2: {
+        float: "right",
+        width: "50px",
+        height: "60px",
+        // marginLeft: "25px",
+        backgroundColor: "white",
+        border: "4px solid grey",
+        borderRadius: "50%",
+        position: "relative",
+        top: "-15px",
+        // fontSize: "14px",
+         '&:hover': {
+             backgroundColor: "white",
+         },
+    },
+    medSelectBtnActive: {
+        float: "right",
+        width: "50px",
+        height: "60px",
+        backgroundColor: "white",
+        border: "8px solid grey",
+        borderRadius: "50%",
+        position: "relative",
+        top: "-10px",
+         '&:hover': {
+             backgroundColor: "white",
+         },
+    },
     hr: {
         height: "1px", 
         color:  "lightgrey",
@@ -69,10 +98,17 @@ const styles = theme => ({
         color: "black"
     },
     doneIcon: {
+        fontSize: "48px", 
+        color: "green", 
+        padding: 0,
+        margin: -6
+    },
+    doneOutlineIcon: {
         fontSize: "36px",
-        fontWeight: "bold",
-        position: "relative",
-        top: "-10px"
+        color: "#eeeeee",
+        '&:hover': {
+            color: "green"
+        },
     },
     helpBtn: {
         marginTop: "2px",
@@ -131,7 +167,7 @@ const styles = theme => ({
         redirectAddress : 'test',
     }  
 
-    handleQuestionBtn = (index) => {
+    handleAnswerSelect = (index) => {
         console.log("here : ",  index)
         let tempArray = [0, 0, 0, 0, 0,]
         tempArray[index] = 1
@@ -261,22 +297,26 @@ const styles = theme => ({
                                 <Grid container spacing={24}>
                                     <Grid item xs={12} sm={8} md={8}>
                                         <div className={classes.questionText}>{activity.text}</div>
-                                            <Button className={classes.helpBtn} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
-                                                <HelpIcon color="primary" className={classes.iconHover}/>
-                                                 &nbsp;&nbsp;More Details and examples
-                                            </Button> 
-                                    </Grid>
-                                    
-                                    <Grid item xs={12} sm={3} md={3}>
-                                        <div >
-                                            <Button type="button" className={classes.questionBtn} style={{backgroundColor: activeBtn[index] === 1 ? "lightgrey" : null}} onClick={() => this.handleQuestionBtn(index)}> 
-                                                <DoneIcon className={classes.doneIcon} style={{color: activeBtn[index] === 1 ? "green" : "white"}}/>
-                                            </Button>
 
-                                        </div>
+                                        <Button className={classes.helpBtn} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
+                                            <HelpIcon color="primary" className={classes.iconHover}/>
+                                                &nbsp;&nbsp;More Details and examples
+                                        </Button> 
                                     </Grid>
+
+
+                                    <Grid item xs={12} sm={4} md={4}>
+                                        <Button type="button" className={classes.medSelectBtn2}  style={{borderColor: activeBtn[index] ? "green" : null}} onClick={() => this.handleAnswerSelect(index)}>
+                                            {activeBtn[index] === 1 && <DoneIcon className={classes.doneIcon} /> }
+                                            {activeBtn[index] === 1 && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
+                                            {activeBtn[index] === 1  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
+                                            {activeBtn[index] === 1 && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
+                                            {!activeBtn[index] && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
+                                        </Button>
+                                    </Grid>
+
                                 </Grid>
-                                <hr className={classes.hr}/>
+                                <br />
                                 <br />
                             </div>
                         )
