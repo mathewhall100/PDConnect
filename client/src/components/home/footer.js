@@ -8,7 +8,7 @@ class Footer extends Component {
 
         return(
             <footer className={classes.footerContainer}>
-                <div class="container">
+                <div className="container">
                     © 2018 PD Connect. All Rights Reserved. 
                 </div>
             </footer>

@@ -57,6 +57,9 @@ a {
   outline: 0;
   font-weight: 400;
 }
+.nav-fostrap li a:hover {
+  text-decoration: none;
+}
 
 .nav-fostrap li:hover ul.dropdown {
   display: block;

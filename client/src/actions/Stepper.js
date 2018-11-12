@@ -16,27 +16,27 @@ export const updateStepperCount = (stepper) => {
 }
 function getStepContent(){
     switch (window.location.pathname) {
-        case '/user_about':
+        case '/user/user_about':
             return 0;
-        case '/user_life':
+        case '/user/user_life':
             return 1;
-        case '/user_family':
+        case '/user/user_family':
             return 2;
-        case '/user_meds':
+        case '/user/user_meds':
             return 3;
-        case '/user_surgery':
+        case '/user/user_surgery':
             return 4;
-        case '/user_motor':
+        case '/user/user_motor':
             return 5;
-        case '/user_non_motor':
+        case '/user/user_non_motor':
             return 6;
-        case '/result':
+        case '/user/result':
             return 7;
-        case '/user_info' :
+        case '/user/user_info' :
             return 0;
-        case '/current_treatment' :
+        case '/user/current_treatment' :
             return 1;
-        case '/previous_treatment' :
+        case '/user/previous_treatment' :
             return 2;
         default:
             return 'Unknown step';

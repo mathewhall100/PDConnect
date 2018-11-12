@@ -20,6 +20,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import HelpIcon from '@material-ui/icons/Help';
 import DoneIcon from '@material-ui/icons/Done';
+import {userStylesheet } from '../styles';
 
 
 import { age, sex, raceEthnicity, years, activity_level } from '../constants';
@@ -27,9 +28,7 @@ import { age, sex, raceEthnicity, years, activity_level } from '../constants';
 
 
 const styles = theme => ({
-    root: {
-        paddingTop: "20px",
-    },
+    
     componentBox: {
         maxWidth: "800px",
         height: "auto",
@@ -199,14 +198,13 @@ const styles = theme => ({
 
         const TopTitle = (props) => {
             return (
-                <div>
-                    <h1 className={classes.titleStyle}>{props.title}</h1>
-                    <br />
-                    <hr className={classes.hr} />
-                    <br />
-                    <br />
-
-                </div>
+                <Grid container spacing={24}>
+                    <div className={classes.title}>
+                        {props.title}
+                        <hr className={classes.hr} />
+                    </div>
+                    
+                </Grid>
             )
         }
 
@@ -259,24 +257,27 @@ const styles = theme => ({
 
         const BottomNav= (props) => {
             return (
-                <div>
-                    <br />
-                    <br />
-                    <hr className={classes.hr} />
-                    <br />
-                    <Button type="submit" color="primary" className={classes.basicBtn}>NEXT</Button>
-                    <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleClearForm()}>CLEAR</Button>  
-                    <br />
-                </div> 
+                <Grid container spacing={24} className={classes.buttonContainer}>
+                    <Grid xs={12}>
+                        <hr className={classes.hr} />
+                    </Grid>
+                    <Grid xs={3}>
+                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                    </Grid>
+                    <Grid xs={3}></Grid>
+                    <Grid xs={3}></Grid>
+                    <Grid xs={3} className={classes.nextButtonContainer}>
+                        <Button type="submit" variant='outlined' className={classes.nextButton}>NEXT</Button>
+                    </Grid>
+                </Grid>
             )
         }
 
 
         return (
-            <section className={classes.root}>
-                <div className={classes.componentBox}>
-                    
-                    <TopTitle title="Let's get started! Tell us a bit about you."/>
+            <div className={classes.componentBox} >
+                <div>
+                    <TopTitle title={`Let's get started! \n Tell us a bit about you.`} />
 
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
@@ -379,7 +380,7 @@ const styles = theme => ({
                         </div>
                 </Modal>
 
-            </section>
+            </div>
 
         );
     }
@@ -419,6 +420,6 @@ const formData = {
 
 UserAbout = reduxForm(formData)(UserAbout)
 UserAbout = withRouter(UserAbout)
-UserAbout = withStyles(styles)(UserAbout)
+UserAbout = withStyles(userStylesheet)(UserAbout)
 // UserAbout = connect(null, mapDispatchToProps)(UserAbout)
 export default UserAbout

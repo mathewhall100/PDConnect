@@ -7,6 +7,75 @@ const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%,
 const SECONDARY_COLOR = '#BF9000';
 const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
 
+export const userStylesheet = theme => ({
+    title: {
+        fontSize: '35px',
+        fontWeight: 'bold',
+        color : PRIMARY_COLOR,
+        lineHeight: '2',
+    },
+    componentBox : {
+        height: "auto",
+        margin: "20px auto",
+        border: "1px solid lightgrey",
+        padding: "30px 30px 30px 30px",
+        fontFamily : 'Muli'
+    },
+    buttonContainer : {
+        width : "100%",
+        paddingTop : '5%'
+    },
+    backButton : {
+        backgroundColor : 'white',
+        width: '80%',
+        color: 'rgb(225, 0, 80)',
+        '&:hover': {
+            color: 'white',
+            backgroundColor:'rgb(225, 0, 80)',
+        }
+    },
+    nextButton : {
+        backgroundColor: PRIMARY_COLOR,
+        width: '80%',
+        color: 'white',
+        '&:hover': {
+            color: PRIMARY_COLOR
+        }
+    },
+    doneIcon: {
+        fontSize: "14px",
+        color: "green",
+        position: "relative",
+        top: "20px",
+        left: "10px"
+    },
+    iconHover : {
+        fontSize: "28px",
+        '&:hover': {
+            color: "darkblue",
+            backgroundColor : 'initial !important',
+        },
+    },
+    hr: {
+        height: "1px",
+        color: "lightgrey",
+        opacity: 0.5
+    },
+    errorText: {
+        fontSize: "15px",
+        color: "red",
+        position: "relative",
+        left: "-45px",
+        top: "32px"
+    },
+    paper: {
+        position: 'absolute',
+        width: theme.spacing.unit * 40,
+            backgroundColor: theme.palette.background.paper,
+                boxShadow: theme.shadows[5],
+                    padding: theme.spacing.unit * 4,
+    },
+})
 export const stylesheet = theme => ({
     loginBtn: {
         width: "550px",
