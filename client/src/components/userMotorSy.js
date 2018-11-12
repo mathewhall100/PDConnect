@@ -284,6 +284,14 @@ const styles = theme => ({
             {motorSy: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
             {motorSy: "Sudden, unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
             {motorSy: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
+            {motorSy: "Tremor", shortDescription: "Shaking of the hands and arms that bothers you or prevents you doing things with your hands", description: ""},
+            {motorSy: "Bothersome dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
+            {motorSy: "Small handwriting", shortDescription: "Very small handwriting, which is not usual for you", description: ""},
+            {motorSy: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling walk. ", description: ""},
+            {motorSy: "Falls", shortDescription: "Falling over due to increased difficulty moving and walking", description: ""},
+            {motorSy: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
+            {motorSy: "Difficulty swallowing", shortDescription: "Difficulty swallowing food or fluids. Choking episodes. ", description: ""},
+            {motorSy: "Foot curling", shortDescription: "Involuntary curling of the foot and toes which can be painful and makes walking difficult.", description: ""},
         ]
 
 

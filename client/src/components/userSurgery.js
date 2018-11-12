@@ -52,7 +52,6 @@ const styles = theme => ({
         fontWeight: "bold"
     }, 
     medTrade: {
-        paddingLeft: "10px",
         lineHeight: "30px",
         fontSize: "18px"
     },
@@ -243,7 +242,7 @@ const styles = theme => ({
 
         const procedures= [
             {procedure: "Deep Brain Stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
-            {procedure: "PEG-J tube insertion for Duopa", shortDescription: "Placement of a feeding tube throuigh the stomach wall", description: ""},
+            {procedure: "Feeding tube placement", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
         ]
 
 

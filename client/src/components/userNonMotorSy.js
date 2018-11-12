@@ -282,10 +282,13 @@ const styles = theme => ({
 
 
         const motorSy= [
-            {motorSy: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
-            {motorSy: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
-            {motorSy: "Sudden, unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
-            {motorSy: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
+            {motorSy: "Hallucinations or delusions", shortDescription: "Seeying things that you know are not really there or firmly beleiving seomething despite good evidence that it is not real or true.", description: ""},
+            {motorSy: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or even feeling you may faint, particularly just after you have got up from sitting down or changed position ", description: ""},
+            {motorSy: "Constipation", shortDescription: "Infrequent and or difficuklty opening your bowels.", description: ""},
+            {motorSy: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep", description: ""},
+            {motorSy: "Depression", shortDescription: "Low mood and feeling sof hopelessness", description: ""},
+            {motorSy: "Poor cognition", shortDescription: "Difficulty thinking or remembering things to a point where it affects your life and others notice it.", description: ""},
+            
         ]
 
 
@@ -334,11 +337,11 @@ const styles = theme => ({
             <section className={classes.root}>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Almost done! Lastly, about your symptoms" />
+                    <TopTitle title="Last question! About any non-motor symptoms" />
 
-                    <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may haveb expreinced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom." />
+                    <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms that aren't just related to movement, though this varies a lot from person to person. tell us if you have had any of the following problems in the past month. " />
 
-                    <span><em>Let's start with motor symptoms</em></span>
+                    <span><em>Non-motor symptoms</em></span>
                     <br />
                     <br />
                     <br />
