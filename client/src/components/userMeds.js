@@ -234,7 +234,7 @@ import {userStylesheet } from '../styles';
                                                         {med.trade.length > 0 && <span className={classes.questionText}>Examples:&nbsp;&nbsp;
                                                             {med.trade.map((trade, index) => {
                                                                 return (
-                                                                    <span className={classes.questionText}>
+                                                                    <span key={index} className={classes.questionText}>
                                                                        {trade}
                                                                         {index === med.trade.length-1 ? "" : ", "} 
 

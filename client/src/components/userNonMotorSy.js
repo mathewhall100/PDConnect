@@ -196,7 +196,7 @@ import {userStylesheet } from '../styles';
 
                     <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms that aren't just related to movement, though this varies a lot from person to person. tell us if you have had any of the following problems in the past month. " />
 
-                    <p className={classes.sectionHead}>Non-motor symptoms</p>
+                    <p className={classes.sectionTitle}>Non-motor symptoms</p>
                     <br />
                     <br />
                     <br />
@@ -208,28 +208,28 @@ import {userStylesheet } from '../styles';
                                 <Grid container spacing={24}>
 
                                     <Grid item xs={12} sm={12} md={7} >
-                                    <span>
-                                        <span className={classes.questionHead}>{sy.motorSy}</span>  
-                                        <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: sy.motorSy, description: sy.shortDescription }) }>
-                                            <HelpIcon color="primary" className={classes.iconHover}/>
-                                        </Button>
-                                    </span>
-                                    <br />
-                                    <span className={classes.questionText} > 
-                                        {sy.shortDescription}
-                                    </span> 
+                                        <span>
+                                            <span className={classes.questionHead}>{sy.motorSy}</span>  
+                                            <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: sy.motorSy, description: sy.shortDescription }) }>
+                                                <HelpIcon color="primary" className={classes.iconHover}/>
+                                            </Button>
+                                        </span>
+                                        <br />
+                                        <span className={classes.questionText} > 
+                                            {sy.shortDescription}
+                                        </span> 
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={5}>
-                                        <Button type="button" className={classes.multiQuestionButton} style={{marginLeft: "25px", margintopborderColor: answerTrack[index] === "ns" ? "black" : null}} onClick={() => this.handleMedSelect(index, "ns", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", margintopborderColor: answerTrack[index] === "ns" ? "black" : null}} onClick={() => this.handleMedSelect(index, "ns", sy.motorSy)}>
                                             <span className={classes.btnText} style={{color: answerTrack[index] === "ns" ? "black" : null}} >not sure</span>
 
                                         </Button>
-                                        <Button type="button" className={classes.multiQuestionButton}  style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? "black" : null}} onClick={() => this.handleMedSelect(index, "no", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton}  style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? "black" : null}} onClick={() => this.handleMedSelect(index, "no", sy.motorSy)}>
                                             {answerTrack[index] !== "no" && <span className={classes.btnText}>no</span> }
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>
-                                        <Button type="button" className={classes.multiQuestionButton}  style={{borderColor: answerTrack[index] === "yes" ? "green" : null}} onClick={() => this.handleMedSelect(index, "yes", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? "green" : null}} onClick={() => this.handleMedSelect(index, "yes", sy.motorSy)}>
                                             <QuestionButtonIcons answerConditional={answerTrack[index]} />      
                                         </Button>
                                     </Grid>

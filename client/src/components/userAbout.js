@@ -107,9 +107,9 @@ import {userStylesheet } from '../styles';
 
 
         if (redirect) { 
-            const url = redirectAddress;
+            const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
-            return<Redirect to={url} />;
+            return<Redirect to={"/user/user_life"} />;
         }
 
         const TopTitle = (props) => {

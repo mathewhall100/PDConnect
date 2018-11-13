@@ -29,7 +29,6 @@ import InfoSpark from '../infoFiles/SPARK.js'
 import InfoNilo from '../infoFiles/NILO.js'
 
 import Stepper from '../components/stepper';
-
 import { updateStepperCount } from '../actions/Stepper';
 
 const styles = theme => ({

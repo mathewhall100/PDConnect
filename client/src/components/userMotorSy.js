@@ -225,14 +225,14 @@ import {userStylesheet } from '../styles';
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={5}>
-                                        <Button type="button" className={classes.multiQuestionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? "black" : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? "black" : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.motorSy)}>
                                             <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? "black" : null}}>not sure</span>
                                         </Button>
-                                        <Button type="button" className={classes.multiQuestionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? "black" : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? "black" : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.motorSy)}>
                                             {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>
-                                        <Button type="button" className={classes.multiQuestionButton}  style={{borderColor: answerTrack[index] === "yes" ? "green" : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? "green" : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.motorSy)}>
                                             <QuestionButtonIcons answerConditional={answerTrack[index]} />
                                         </Button>
                                     </Grid>

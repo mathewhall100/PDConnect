@@ -41,22 +41,9 @@ export const userStylesheet = theme => ({
         height: "60px",
         backgroundColor: "white",
         border: "4px solid grey",
+        marginLeft: "25px",
         borderRadius: "50%",
         position: "relative",
-        top: "-15px",
-         '&:hover': {
-             backgroundColor: "white",
-         },
-    },
-    multiQuestionButton: {
-        float: "right",
-        width: "50px",
-        height: "60px",
-        backgroundColor: "white",
-        border: "4px solid grey",
-        borderRadius: "50%",
-        marginLeft: "25px",
-        position: "relative", 
         top: "5px",
          '&:hover': {
              backgroundColor: "white",
