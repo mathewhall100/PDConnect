@@ -10,6 +10,7 @@ import Endorsement from '../components/home/endorsement';
 import About from '../components/home/about';
 import Button from '@material-ui/core/Button';
 import background1 from '../images/andy-kelly-402111-unsplash.jpg';
+import { stylesheet } from '../styles';
 
 const styles = theme => ({
     root: {
@@ -92,32 +93,6 @@ class Home extends Component {
                 <Promise />
                 <Endorsement />
                 <About />
-                {/*<div style={{position : 'relative'}} className={classes.textBox}> 
-                    <div style={{marginTop: "50px"}}>
-
-                        <h3 id="hero" className={classes.fadeIn}>
-                            <span className="rotating">
-                                find out about Parkinson disease treatments individualised for you,
-                                discover Parkinson disease clinical trials you can participate in, 
-                                take away new knowledge about your condition to share with your doctor
-                            </span>
-                        </h3>
-                    </div>
-                    
-
-                    <div style={{marginTop: "80px"}}>
-                        <Button variant='contained' className={classes.startBtn} onClick={() => this.DirectToIntroInfo()}>
-                            Get Started
-                        </Button>
-                    </div>
-
-                    <div style={{marginTop: "80px"}}>
-                        <Button variant='contained' className={classes.loginBtn} onClick={() => this.DirectToIntroInfo()}>
-                            login
-                        </Button>
-                    </div>
-
-                </div>*/}
             </React.Fragment>
         );
     }
@@ -133,5 +108,5 @@ function mapStateToProps(state) {
 };
 
 Home = connect(mapStateToProps)(Home)
-Home = withStyles(styles)(Home)
+Home = withStyles(stylesheet)(Home)
 export default Home;

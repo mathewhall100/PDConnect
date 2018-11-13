@@ -1,4 +1,5 @@
 import Jumbotron from './images/rawpixel-600792-unsplash.jpg';
+import image from './images/jess-watters-701054-unsplash.jpg';
 import { white } from 'ansi-colors';
 
 const PRIMARY_COLOR = '#2F5597';
@@ -6,8 +7,13 @@ const PRIMARY_COLOR_HOVER = '#4d6591';
 const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%, #ffffff 100%)'
 const SECONDARY_COLOR = '#BF9000';
 const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
+const MAXWIDTH = '1480px';
 
 export const userStylesheet = theme => ({
+    root: {
+        maxWidth: MAXWIDTH,
+        margin: 'auto',
+    },
     title: {
         fontSize: '35px',
         fontWeight: 'bold',
@@ -49,6 +55,12 @@ export const userStylesheet = theme => ({
         top: "20px",
         left: "10px"
     },
+    iconBtn : {
+        '&:hover': {
+            color: "darkblue",
+            backgroundColor: 'initial !important',
+        },
+    },
     iconHover : {
         fontSize: "28px",
         '&:hover': {
@@ -77,6 +89,31 @@ export const userStylesheet = theme => ({
     },
 })
 export const stylesheet = theme => ({
+    parallax : {
+        backgroundImage: `url(${image})`,
+        backgroundAttachment : 'fixed',
+        backgroundPosition : 'center',
+        backgroundRepeat : 'no-repeat',
+        backgroundSize : 'cover',
+        minHeight : '500px',
+        maxHeight : '500px',
+        maxWidth : '100vw !immportant',
+    },
+    parallaxPromise : {
+        backgroundImage: `url(${Jumbotron})`,
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        minHeight: '500px',
+        maxHeight: '500px',
+        maxWidth: '100vw !immportant',
+        
+    },
+    homepageFixedWidthContent : {
+        maxWidth : MAXWIDTH,
+        margin : 'auto',
+    },
     loginBtn: {
         width: "550px",
         height: "30px",
@@ -107,7 +144,6 @@ export const stylesheet = theme => ({
     },
     heroImg: {
         width: '100%',
-        height: '550px',
     },
     heroTitle: {
         position: 'absolute',
@@ -125,13 +161,21 @@ export const stylesheet = theme => ({
         fontSize: '18px',
         verticalAlign: 'middle',
     },
+    
     promise: {
         paddingTop: '20px',
         paddingBottom: '20px',
-        position: 'absolute',
         display: 'contents',
-        textAlign: 'center',
-        backgroundColor: PRIMARY_COLOR_HOVER,
+        position: 'absolute',
+    },
+    promiseContainer : {
+        position: 'absolute',
+        marginLeft: 'auto',
+        marginRight : 'auto',
+        maxWidth : MAXWIDTH,
+        top: "12%",
+        left : 0,
+        right : 0,
     },
     promiseHeader: {
         color: PRIMARY_COLOR,
@@ -139,15 +183,16 @@ export const stylesheet = theme => ({
     promiseSecondHeader: {
         color: SECONDARY_COLOR,
     },
-    promiseList: {
-        position: 'relative',
-    },
-    promiseListItem: {
+    promiseListItem : {
         display: 'block',
+        textAlign : 'center',
     },
+   
+    
     promiseDescription: {
         display: 'block',
-        padding: '15px 50px 0px 50px'
+        padding: '15px 50px 0px 50px',
+        display: 'block',
     },
     connect: {
         paddingTop: '50px',

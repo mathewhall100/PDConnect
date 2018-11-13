@@ -17,12 +17,9 @@ class Hero extends Component {
     render(){
         const { classes } = this.props;
         return(
-            <Parallax
-                className={classes.heroParallax}
-                offsetYMax={15}
-                slowerScrollRate
-                tag="figure"
-            >
+            <div>
+                <div className={classes.parallax}></div>
+            
                 <Grid container spacing={24} className={classes.hero}>
                     <Card className={classes.card}>
                         
@@ -42,8 +39,8 @@ class Hero extends Component {
                     </Card>
                         
                 </Grid> 
-                <img src={image} className={classes.heroImg}/>
-            </Parallax>
+                
+            </div>
         )
     }
 } 

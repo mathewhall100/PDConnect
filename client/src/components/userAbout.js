@@ -240,7 +240,7 @@ const styles = theme => ({
                     </span>
 
                     { (pristine || error) && <Button className={classes.iconBtn} onClick={() => this.handleOpen({modal})}>
-                        <HelpIcon color="primary" className={classes.iconHover}/>
+                        <HelpIcon color="primary" disableRipple className={classes.iconHover}/>
                     </Button> }
 
                     <span className={classes.doneIcon}>

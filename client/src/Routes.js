@@ -38,16 +38,6 @@ class Routes extends Component {
                 <Switch>
                     <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
                     <Route path='/user' render={props => <User></User>} />
-                    <Route path='/user_info' render={props => <UserInfo ></UserInfo>} />
-                    <Route path='/treatment' render={props => <CurrentTreatment></CurrentTreatment>} />
-                    <Route path='/user_about' render={props => <UserAbout></UserAbout>} />
-                    <Route path='/user_life' render={props => <UserLife></UserLife>} />
-                    <Route path='/user_family' render={props => <UserFamily></UserFamily>} />
-                    <Route path='/user_meds' render={props => <UserMeds></UserMeds>} />
-                    <Route path='/user_surgery' render={props => <UserSurgery></UserSurgery>} />
-                    <Route path='/user_motorSy' render={props => <UserMotorSy></UserMotorSy>} />
-                    <Route path='/user_nonmotorSy' render={props => <UserNonMotorSy></UserNonMotorSy>} />
-                    <Route path="/result" render={props => <Result ></Result>} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                     <Route path="/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
                     <Route path="/info_duopa" render={props => <InfoDuopa {...this.props}></InfoDuopa>} />
