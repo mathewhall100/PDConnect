@@ -30,35 +30,8 @@ import InfoNilo from '../infoFiles/NILO.js'
 
 import Stepper from '../components/stepper';
 import { updateStepperCount } from '../actions/Stepper';
+import { userStylesheet } from '../styles';
 
-const styles = theme => ({
-    root: {
-
-    },
-    textBox: {
-        textAlign: "center"
-    },
-    startBtn: {
-        width: "400px",
-        height: "70px",
-        backgroundColor: "white",
-        border: "4px solid grey",
-        borderRadius: "30px",
-        fontSize: "40px"
-    },
-    loginBtn: {
-        width: "150px",
-        height: "30px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "14px"
-    },
-    fadeIn: {
-        transition: 'opacity 1s',
-        opacity: '1',
-    }
-});
 
 const subTitleArray = ["find out about Parkinson disease treatments individualised for you",
     "discover Parkinson disease clinical trials you can participate in",
@@ -82,7 +55,7 @@ class User extends Component {
         }
 
         return (
-            <React.Fragment>
+            <div className={classes.root}>
                 <Grid container spacing={24}>
                     <Grid item xs={3}>
                         <Stepper onPage={this.props.stepper.stepperCount} />
@@ -113,7 +86,7 @@ class User extends Component {
                         </Switch>
                     </Grid>
                 </Grid>
-            </React.Fragment>
+            </div>
         );
     }
 }
@@ -137,5 +110,5 @@ function mapStatsToProps(state) {
 };
 
 User = connect(mapStatsToProps, { updateStepperCount })(User)
-User = withStyles(styles)(User)
+User = withStyles(userStylesheet)(User)
 export default User;

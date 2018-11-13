@@ -20,7 +20,7 @@ class Connects extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <Grid container spacing={24} className={classes.connect} cols={3}>
+            <Grid container spacing={24} className={classes.homepageFixedWidthContent} cols={3}>
                 <Grid item xs={4} className={classes.connectItem}>
                     <div className={classes.connectHeader}>Download mobile app today!</div>
                     <div className={classes.connectImgContainer}>

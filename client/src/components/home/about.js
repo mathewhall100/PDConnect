@@ -25,7 +25,7 @@ class Connects extends Component {
         const { classes, theme } = this.props;
 
         return (
-            <div>
+            <div className={classes.homepageFixedWidthContent}>
                 <Grid item xs={12}>
                     <h2 className={classes.homepageHeader}>Featured Treatments</h2>
                     <hr />

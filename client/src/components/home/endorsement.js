@@ -20,7 +20,7 @@ class Endorse extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <Grid container spacing={24}>
+            <Grid container spacing={24} className={classes.homepageFixedWidthContent}>
                 <Grid item xs={12}>
                     <h2 className={classes.homepageHeader}>Endorsements</h2>
                     <hr />
