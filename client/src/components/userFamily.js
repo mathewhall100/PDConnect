@@ -14,7 +14,7 @@ import DoneIcon from '@material-ui/icons/Done';
 
 
 import { activity_level } from '../constants';
-import {userStylesheet } from '../styles';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 //import { submitUserFamily} from '../actions/UserFamilyAction'
 
 
@@ -133,7 +133,7 @@ import {userStylesheet } from '../styles';
 
                     <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? "lightgreen" : "white"}/>
                     <TreeButton relative="parent" top={spacingV+25} left={spacingH} color={familyResult.indexOf("parent") >=0 ? "lightgreen" : "white"}/>
-                    <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color="green" bold="bold"/>
+                    <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color={QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR} bold="bold"/>
                     <TreeButton relative="child" top={spacingV*3+25} left={spacingH} color={familyResult.indexOf("child") >=0 ? "lightgreen" : "white"} />
                     <TreeButton relative="grandchild" top={spacingV*4+25} left={spacingH} color={familyResult.indexOf("grandchild") >=0 ? "lightgreen" : "white"} />
                     <TreeButton relative="brother / sister" top={spacingV*2+25} left={spacingH*4} color={familyResult.indexOf("brother / sister") >=0 ? "lightgreen" : "white"} />

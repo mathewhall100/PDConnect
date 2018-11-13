@@ -7,6 +7,11 @@ const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%,
 const SECONDARY_COLOR = '#BF9000';
 const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
 
+export const QUESTION_BUTTON_DEFAULT_COLOR = 'grey'
+export const QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR = 'green'
+export const QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR = "black"
+
+
 export const userStylesheet = theme => ({
     componentBox : {
         height: "auto",
@@ -48,7 +53,8 @@ export const userStylesheet = theme => ({
         width: "50px",
         height: "60px",
         backgroundColor: "white",
-        border: "4px solid grey",
+        border: "4px solid",
+        borderColor: QUESTION_BUTTON_DEFAULT_COLOR,
         marginLeft: "25px",
         borderRadius: "50%",
         position: "relative",
@@ -59,7 +65,7 @@ export const userStylesheet = theme => ({
     },
     questionButtonText: {
         fontWeight:"bold",
-        color: "grey"
+        color: QUESTION_BUTTON_DEFAULT_COLOR
     },
     helpButton: {
         position: "relative",
@@ -95,12 +101,12 @@ export const userStylesheet = theme => ({
         fontSize: "36px",
         color: "#eeeeee",
         '&:hover': {
-            color: "green"
+            color: QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR
         },
     },
     doneIcon: {
         fontSize: "48px",
-        color: "green",
+        color: QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR,
         padding: 0,
         margin: -6
     },
@@ -113,7 +119,7 @@ export const userStylesheet = theme => ({
     },
     closeIcon: {
         fontSize: "44px", 
-        color: "black",
+        color: QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR,
         padding: 0,
         marginTop: -6
     },

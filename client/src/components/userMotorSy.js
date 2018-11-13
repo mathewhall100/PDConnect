@@ -17,7 +17,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../constants';
-import {userStylesheet } from '../styles';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 //import { submitUserMotorSy} from '../actions/UserMotorSyAction'
 
 
@@ -180,9 +180,9 @@ import {userStylesheet } from '../styles';
                 <span>
                     {props.answerConditional !== "yes" && <span className={classes.questionButtonText}>yes</span> }
                     {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} /> }
-                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "7px"}} /> }
-                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "9px"}} /> }
-                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "10px"}} /> } 
+                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
+                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
+                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
                 </span>
             )
         }
@@ -219,14 +219,14 @@ import {userStylesheet } from '../styles';
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={5}>
-                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? "black" : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.motorSy)}>
-                                            <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? "black" : null}}>not sure</span>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.motorSy)}>
+                                            <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}}>not sure</span>
                                         </Button>
-                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? "black" : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.motorSy)}>
                                             {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>
-                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? "green" : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.motorSy)}>
                                             <QuestionButtonIcons answerConditional={answerTrack[index]} />
                                         </Button>
                                     </Grid>

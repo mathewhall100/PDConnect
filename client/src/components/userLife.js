@@ -15,7 +15,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../constants';
-import {userStylesheet } from '../styles';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 //import { submitUserLife} from '../actions/UserLifeAction'
 
 
@@ -187,7 +187,7 @@ import {userStylesheet } from '../styles';
 
 
                                     <Grid item xs={12} sm={4} md={4}>
-                                        <Button type="button" className={classes.questionButton}  style={{borderColor: activeBtn[index] ? "green" : null}} onClick={() => this.handleAnswerSelect(index)}>
+                                        <Button type="button" className={classes.questionButton}  style={{borderColor: activeBtn[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index)}>
 
                                         <QuestionButtonIcons answerConditional={activeBtn[index]} />
                                            
