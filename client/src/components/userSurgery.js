@@ -17,7 +17,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
-//import { submitUserMeds} from '../actions/UserAboutLifeAction'
+//import { submitUserSurgery} from '../actions/UserSurgeryAction'
 
 
  class UserSurgery extends Component {

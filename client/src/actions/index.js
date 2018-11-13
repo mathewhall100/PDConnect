@@ -6,4 +6,11 @@ export * from './TreatmentAction';
 export * from './CurrentTreatmentAction';
 export * from './PreviousTreatmentAction';
 export * from './ResultAction';
-export * from './Stepper'
+export * from './Stepper';
+export * from './UserAboutAction';
+export * from './UserLifeAction';
+export * from './UserFamilyAction';
+export * from './UserMedsAction';
+export * from './UserSurgeryAction';
+export * from './UserMotorSyAction';
+export * from './UserNonMotorSyAction';
