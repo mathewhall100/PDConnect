@@ -111,15 +111,10 @@ export const userStylesheet = theme => ({
         margin: -6
     },
     iconBtn : {
-        '&:hover': {
-            color: "darkblue",
-            backgroundColor: 'initial !important',
-        },
-    },
         fontSize: "28px",
         '&:hover': {
             color: "darkblue",
-            backgroundColor : 'initial !important',
+            backgroundColor: 'initial !important',
         },
     },
     closeIcon: {
