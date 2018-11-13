@@ -16,7 +16,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../constants';
-import {userStylesheet } from '../styles';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 //import { submitUserMeds} from '../actions/UserAboutLifeAction'
 
 
@@ -156,9 +156,9 @@ import {userStylesheet } from '../styles';
             return (
                 <span>
                     {props.answerConditional  && <DoneIcon className={classes.doneIcon} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "7px"}} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "8px"}} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "8px", top: "9px"}} /> } 
+                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
+                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
+                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
                     {!props.answerConditional && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
                 </span>
             )
@@ -190,7 +190,7 @@ import {userStylesheet } from '../styles';
                                         </div>
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
-                                            <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? "green" : null}} onClick={() => this.handleAnswerSelect(index, proc.procedure)}>
+                                            <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, proc.procedure)}>
                                                 <QuestionButtonIcons answerConditional = {answerTrack[index]} />
                                             </Button>
                                     </Grid>
