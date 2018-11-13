@@ -216,6 +216,7 @@ export const stylesheet = theme => ({
         textAlign : 'center',
         fontWeight : 'bold',
         fontFamily : 'Helvetica',
+        opacity : '1',
     },
     heroParallax : {
         minHeight: '650px',
@@ -262,9 +263,11 @@ export const stylesheet = theme => ({
         top: "12%",
         left : 0,
         right : 0,
+        backgroundColor: 'rgba(164, 164, 164, 0.2) !important',
     },
     promiseHeader: {
         color: PRIMARY_COLOR,
+        opacity : '1',
     },
     promiseSecondHeader: {
         color: SECONDARY_COLOR,

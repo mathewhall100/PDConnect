@@ -15,7 +15,7 @@ class Promises extends Component {
             <div style={{position: "relative", height: "auto"}}>
                 <div className={classes.parallaxPromise}></div>
                 <Grid className={classes.promiseContainer}>
-                    <Card className={classes.card}>
+                    <div className={classes.card}>
                         <div className={classes.content}>
                             <h2 className={classes.homepageHeader}>Our Promise To You</h2>
                             <hr />
@@ -40,8 +40,7 @@ class Promises extends Component {
                                 </ListItem>
                             </List>
                         </div>
-                        
-                    </Card>
+                    </div>
                 </Grid>
             </div>
             
