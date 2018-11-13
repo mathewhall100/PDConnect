@@ -16,158 +16,8 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../constants';
-import { relative } from 'upath';
+import {userStylesheet } from '../styles';
 //import { submitUserMeds} from '../actions/UserAboutLifeAction'
-
-
-const styles = theme => ({
-    root: {
-        paddingTop: "20px",
-    },
-    componentBox: {
-        maxWidth: "800px",
-        height: "auto",
-        margin: "20px auto",
-        border: "1px solid lightgrey",
-        padding: "30px 30px 30px 30px"
-    },
-    titleStyle: {
-        textAlign: "center",
-        lineHeight: "40px"
-    },
-    textStyle: {
-        marginTop: '40px',
-        marginBottom: '40px'
-    },
-    subtitleStyle: {
-        lineHeight: "30px"
-    },
-    medText: {
-        fontSize: "20px",
-        position: "relative",
-        top: "10px"
-    },
-    medGeneric: {
-        fontSize: "18px", 
-        fontWeight: "bold"
-    }, 
-    medTrade: {
-        paddingLeft: "10px",
-        lineHeight: "30px",
-        fontSize: "18px"
-    },
-    medSelectBtn: {
-        width: "440px",
-        height: "30px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "5px",
-        fontSize: "16px",
-        '&:hover': {
-            backgroundColor: "lightgrey",
-        },
-    },
-    medSelectBtn2: {
-        float: "right",
-        width: "50px",
-        height: "60px",
-        backgroundColor: "white",
-        border: "4px solid grey",
-        borderRadius: "50%",
-        position: "relative",
-        top: "-10px",
-         '&:hover': {
-             backgroundColor: "white",
-         },
-    },
-    medSelectBtnActive: {
-        float: "right",
-        width: "50px",
-        height: "60px",
-        backgroundColor: "white",
-        border: "8px solid grey",
-        borderRadius: "50%",
-        position: "relative",
-        top: "-10px",
-         '&:hover': {
-             backgroundColor: "white",
-         },
-    },
-    hr: {
-        height: "1px", 
-        color:  "lightgrey",
-        opacity: 0.5
-    },
-    labelText: {
-        fontSize: "18px"
-    },
-    inputLabel: {
-        fontSize: "18px",
-        color: "black"
-    },
-    iconBtn: {
-        float: "right",
-        '&:hover': {
-            backgroundColor: "white",
-        },
-    },
-    iconHover: {
-        fontSize: "28px",
-        '&:hover': {
-            color: "darkblue",
-        },
-    },
-    selectLabel: {
-        fontSize: "20px",
-        fontWeight: "bold"
-    },
-    doneIcon: {
-        fontSize: "48px", 
-        color: "green", 
-        padding: 0,
-        marginTop: "-10px"
-    },
-    doneOutlineIcon: {
-        fontSize: "36px",
-        color: "#eeeeee",
-        '&:hover': {
-            color: "green"
-        },
-    },
-    radioMock: {
-        width: "18px",
-        height:  "18px",
-        borderRadius: "50%",
-        backgroundColor: "green"
-    },
-    errorText: {
-        fontSize: "15px", 
-        color: "red", 
-        position: "relative", 
-        left: "-45px", 
-        top: "32px"
-    },
-    basicBtn: {
-        width: "150px",
-        height: "30px",
-        marginRight: "25px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "14px",
-        '&:hover': {
-            backgroundColor: "lightgrey",
-        },
-    },
-    paper: {
-        position: 'absolute',
-        width: theme.spacing.unit * 40,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-    },
-
-});
 
 
  class UserMeds extends Component {
@@ -190,19 +40,25 @@ const styles = theme => ({
         // this.setState({
         //     redirect: true
         // })
-       
     }
 
     handleAnswerSelect = (index, name) => {
-        console.log("answer selected : ", index, " ", name)
-        let tempArray = this.state.answerTrack
-        let tempMeds = this.state.answerArray
-        tempArray[index] = !tempArray[index]
-        tempMeds.push(name)
+        console.log("handleAnswerselect : ", name)
+        let tempTrack = this.state.answerTrack
+        let tempArray = this.state.answerArray
+        const tempIndex = tempArray.indexOf(name)
+
+        if (tempIndex < 0) {tempArray.push(name)}
+        else if (tempTrack[index] === true && tempIndex >= 0) {
+            tempArray[tempIndex] = ""
+        }
+
+        tempTrack[index] = !tempTrack[index]
+
         this.setState({
             noAnswer: false,
-            answerTrack: tempArray, 
-            answerArray: tempMeds
+            answerTrack: tempTrack, 
+            answerArray: tempArray
         })
     }
 
@@ -293,47 +149,58 @@ const styles = theme => ({
         const TopTitle = (props) => {
             return (
                 <div>
-                    <h1 className={classes.titleStyle}>{props.title}</h1>
-                    <br />
+                    <h1 className={classes.title}>{props.title}</h1>
                     <hr className={classes.hr} />
-                    <br />
-
                 </div>
             )
         }
 
         const BottomNav= (props) => {
             return (
-                <div>
-                    <br />
-                    <br />
-                    <Button type="submit" color="primary" className={classes.basicBtn} onClick={() => this.handleSubmit()}>NEXT</Button>
-                    <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleClearForm()}>CLEAR</Button>  
-                    <br />
-                </div> 
+                <Grid container spacing={24} className={classes.buttonContainer}>
+                    <Grid item xs={12}>
+                        <hr className={classes.hr} />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                    </Grid>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={3} className={classes.nextButtonContainer}>
+                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()} >NEXT</Button>
+                    </Grid>
+                </Grid>
             )
         }
 
+        const QuestionButtonIcons = (props) => {
+            return (
+                <span>
+                    {props.answerConditional  && <DoneIcon className={classes.doneIcon} /> }
+                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "7px"}} /> }
+                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "8px"}} /> }
+                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "9px"}} /> } 
+                    {!props.answerConditional && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
+                </span>
+            )
+        }
+
+
+
         return (
-            <section className={classes.root}>
+            <section >
                 <div className={classes.componentBox}>
                     
                     <TopTitle title="Congratulations, you're half way through! Now tell us about the medications you take for Parkinson Disease. " />
 
-                    <br />
                     <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        <div className={classes.medGeneric}>I don't take any medications for Parkinson disease: </div>
-                        <br />
+                        <div className={classes.headerQuestion}>I don't take any medications for Parkinson disease: </div>
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                            <Button type="button" className={classes.medSelectBtn2} style={{borderColor: noAnswer ? "green" : null}}onClick={() => this.handleNoAnswerelect()}>
-                                    {noAnswer && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "9px"}} /> }
-                                    {noAnswer && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "10px"}} /> }
-                                    {noAnswer && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "11px"}} /> }
-                                    {noAnswer && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "12px"}} /> } 
-                                    {!noAnswer && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
-                            </Button>
+                             <Button type="button" className={classes.questionButton} style={{borderColor: noAnswer ? "green" : null}}onClick={() => this.handleNoAnswerelect()}>
+                                <QuestionButtonIcons answerConditional={noAnswer} />
+                            </Button> 
                         </Grid>
                     </Grid>
 
@@ -343,7 +210,7 @@ const styles = theme => ({
                             <div key={index}>
 
                                 <hr className={classes.hr}/>
-                                <p><em>{startCase(group.class)} preparations for {group.target}</em></p>
+                                <p className={classes.sectionTitle}> {startCase(group.class)} preparations for {group.target}</p>
                                 <br />
 
                                 {meds.filter(med => med.class === group.class).map((med, index) => {
@@ -354,34 +221,27 @@ const styles = theme => ({
                                         <div key={index}>
                                             <Grid container spacing={24}>
                                                 <Grid item xs={12} sm={8} >
-                                                        <span className={classes.medGeneric}>{med.generic}</span>  
-                                                        <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: med.generic, description: med.description}) }>
-                                                            <HelpIcon color="primary" className={classes.iconHover}/>
+                                                    <div style={{minHeight: "60px"}}>
+                                                        <span className={classes.questionHead}>{med.generic}</span>  
+                                                        <Button className={classes.helpButton} onClick={() => this.handleOpen({title: med.generic, description: med.description}) }>
+                                                            <HelpIcon color="primary" className={classes.helpIcon}/>
                                                          </Button>
                                                         <br />
-                                                        {med.trade.length > 0 && <span className={classes.medTrade}> Examples: 
+                                                        {med.trade.length > 0 && <span className={classes.questionText}>Examples:&nbsp;&nbsp;
                                                             {med.trade.map((trade, index) => {
                                                                 return (
-                                                                    <span className={classes.medTrade}>
-                                                                       {trade}
+                                                                    <span key={index} className={classes.questionText}>
+                                                                        {trade}
                                                                         {index === med.trade.length-1 ? "" : ", "} 
-
                                                                     </span> 
                                                                 )
                                                              }) }
                                                         </span> }
+                                                    </div>
                                                 </Grid>
                                                 <Grid item xs={12} sm={4} >
-                                                         <Button type="button" className={classes.medSelectBtn2}  style={{borderColor: answerTrack[answerIndex] ? "green" : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.generic)}>
-                                                            {/* {answerTrack[answerIndex] && <DoneIcon className={classes.doneIcon} /> } */}
-
-                                                {answerTrack[answerIndex]  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "9px"}} /> }
-                                                {answerTrack[answerIndex]  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "10px"}} /> }
-                                                {answerTrack[answerIndex]  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "11px"}} /> }
-                                                {answerTrack[answerIndex]  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "5px", top: "12px"}} /> } 
-                                                {!answerTrack[answerIndex]  && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
-                                       
-
+                                                         <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[answerIndex] ? "green" : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.generic)}>
+                                                            <QuestionButtonIcons answerConditional={answerTrack[answerIndex]} />
                                                         </Button>
                                                 </Grid>
                                             </Grid>
@@ -430,6 +290,6 @@ const styles = theme => ({
 
 
 UserMeds = withRouter(UserMeds)
-UserMeds = withStyles(styles)(UserMeds)
+UserMeds = withStyles(userStylesheet)(UserMeds)
 // UserMeds = connect(null, mapDispatchToProps)(UserMeds)
 export default UserMeds

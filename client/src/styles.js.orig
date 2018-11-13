@@ -10,10 +10,19 @@ const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0
 const MAXWIDTH = '1480px';
 
 export const userStylesheet = theme => ({
+<<<<<<< HEAD
     root: {
         maxWidth: MAXWIDTH,
         margin: 'auto',
     },
+    title: {
+        fontSize: '35px',
+        fontWeight: 'bold',
+        color : PRIMARY_COLOR,
+        lineHeight: '2',
+    },
+=======
+>>>>>>> 2f8c32dd02c530ced205f177b7d00a1d819cc0f1
     componentBox : {
         height: "auto",
         margin: "20px auto",
@@ -110,12 +119,17 @@ export const userStylesheet = theme => ({
         padding: 0,
         margin: -6
     },
+<<<<<<< HEAD
     iconBtn : {
         '&:hover': {
             color: "darkblue",
             backgroundColor: 'initial !important',
         },
     },
+    iconHover : {
+=======
+    helpIcon: {
+>>>>>>> 2f8c32dd02c530ced205f177b7d00a1d819cc0f1
         fontSize: "28px",
         '&:hover': {
             color: "darkblue",
