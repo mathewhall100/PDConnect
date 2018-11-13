@@ -8,11 +8,13 @@ const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%,
 const SECONDARY_COLOR = '#BF9000';
 const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
 const MAXWIDTH = '1480px';
+const MINHEIGHT = '1060px';
 
 export const userStylesheet = theme => ({
     root: {
         maxWidth: MAXWIDTH,
         margin: 'auto',
+        minHeight : MINHEIGHT,
     },
     componentBox : {
         height: "auto",
@@ -259,10 +261,11 @@ export const stylesheet = theme => ({
         position: 'absolute',
         marginLeft: 'auto',
         marginRight : 'auto',
-        maxWidth : MAXWIDTH,
+        maxWidth : '1200px',
         top: "12%",
         left : 0,
         right : 0,
+        borderRadius : '22px',
         backgroundColor: 'rgba(164, 164, 164, 0.2) !important',
     },
     promiseHeader: {
@@ -286,7 +289,7 @@ export const stylesheet = theme => ({
     connect: {
         paddingTop: '50px',
         paddingBottom: '20px',
-        textAlign: 'center'
+        textAlign: 'center !important',
     },
     connectItem: {
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -16,9 +17,25 @@ import PatientImg from '../../images/patient.jpg';
 import Button from '@material-ui/core/Button';
 
 class Connects extends Component {
-
+    state={
+        redirect : false,
+        redirectTo : '',
+    }
+    handleRedirect = (page)=>{
+        this.setState({
+            redirect : true,
+            redirectTo : `${page}`
+        })
+    }
     render() {
+        const { redirect, redirectTo } = this.state;
         const { classes } = this.props;
+        if(redirect){
+            const url = `${redirectTo}`;
+            return(
+                <Redirect exact to={url} />
+            )
+        }
         return (
             <Grid container spacing={24} className={classes.homepageFixedWidthContent} cols={3}>
                 <Grid item xs={4} className={classes.connectItem}>
@@ -42,7 +59,7 @@ class Connects extends Component {
                         <img src={PhysicianImg} className={classes.connectImg} alt="Create Account" />
                     </div>
                     <Grid item xs={12} className={classes.buttonContainer}>
-                        <Button variant="outlined" color='primary' size='large' className={classes.buttonStyle}>Get Started</Button>
+                        <Button variant="outlined" color='primary' size='large' className={classes.buttonStyle} onClick={()=>{this.handleRedirect('/user/user_about')}}>Get Started</Button>
                     </Grid>
                     
                 </Grid>
