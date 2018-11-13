@@ -3,12 +3,12 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    hallucinations : 0,
-    dizziness : 0,
-    constipation : 0,
-    poorSleep : 0,
-    depression : 0,
-    poorCognition : 0,
+    hallucinations : -1,
+    dizziness : -1,
+    constipation : -1,
+    poorSleep : -1,
+    depression : -1,
+    poorCognition : -1,
 }
 
 export default (state = INITIAL_STATE, action) => {

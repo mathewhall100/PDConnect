@@ -3,17 +3,17 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    motorFluctuations : 0,
-    earlyWearOff : 0,
-    suddenWearOff : 0,
-    freezing : 0,
-    tremor : 0,
-    dsykinesia : 0,
-    smallHandwriting : 0,
-    slowness : 0,
-    falls : 0,
-    swallow : 0,
-    footCurling : 0
+    motorFluctuations : -1,
+    earlyWearOff : -1,
+    suddenWearOff : -1,
+    freezing : -1,
+    tremor : -1,
+    dsykinesia : -1,
+    smallHandwriting : -1,
+    slowness : -1,
+    falls : -1,
+    swallow : -1,
+    footCurling : -1
 }
 
 export default (state = INITIAL_STATE, action) => {
