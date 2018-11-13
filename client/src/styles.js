@@ -16,24 +16,32 @@ export const userStylesheet = theme => ({
         fontFamily : 'Muli'
     },
     title: {
-        fontSize: '35px',
+        fontSize: '32px',
         fontWeight: 'bold',
         color : PRIMARY_COLOR,
-        lineHeight: '2',
+        lineHeight: '1.6',
     },
     subtitle: {
-        fontSize: '22px', 
+        fontSize: '20px', 
+        margin: "20px 0 20px 0",
     },
     sectionTitle: {
         fontStyle: "italic",
+    },
+    questionContainer: {
+        minHeight: "80px"
     },
     questionHead: {
         fontSize: "18px", 
         fontWeight: "bold"
     }, 
     questionText: {
-        lineHeight: "30px",
-        fontSize: "18px"
+        fontSize: "18px",
+    },
+    headerQuestion: {
+        marginTop: "15px",
+        fontSize: "18px", 
+        fontWeight: "bold"
     },
     questionButton: {
         float: "right",
@@ -52,6 +60,15 @@ export const userStylesheet = theme => ({
     questionButtonText: {
         fontWeight:"bold",
         color: "grey"
+    },
+    helpButton: {
+        position: "relative",
+        top: "-5px",
+        marginBottom: 0,
+        paddingBottom: 0,
+        '&:hover': {
+            backgroundColor: "white"
+        },
     },
     buttonContainer : {
         width : "100%",
@@ -87,7 +104,7 @@ export const userStylesheet = theme => ({
         padding: 0,
         margin: -6
     },
-    iconHover : {
+    helpIcon: {
         fontSize: "28px",
         '&:hover': {
             color: "darkblue",

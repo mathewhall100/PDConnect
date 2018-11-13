@@ -129,10 +129,7 @@ import {userStylesheet } from '../styles';
             return (
                 <div>
                     <h1 className={classes.title}>{props.title}</h1>
-                    <br />
                     <hr className={classes.hr} />
-                    <br />
-
                 </div>
             )
         }
@@ -161,7 +158,7 @@ import {userStylesheet } from '../styles';
                     {props.answerConditional  && <DoneIcon className={classes.doneIcon} /> }
                     {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "7px"}} /> }
                     {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "8px"}} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "7px", top: "9px"}} /> } 
+                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "8px", top: "9px"}} /> } 
                     {!props.answerConditional && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
                 </span>
             )
@@ -181,14 +178,16 @@ import {userStylesheet } from '../styles';
                             <div key={index}>
                                 <Grid container spacing={24}>
                                     <Grid item xs={12} sm={8}>
+                                        <div className={classes.questionContainer}>
                                             <span className={classes.questionHead}>{proc.procedure}</span>  
-                                            <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: proc.procedure, description: proc.shortDescription}) }>
-                                                <HelpIcon color="primary" className={classes.iconHover}/>
+                                            <Button className={classes.helpButton} onClick={() => this.handleOpen({title: proc.procedure, description: proc.shortDescription}) }>
+                                                <HelpIcon color="primary" className={classes.helpIcon}/>
                                                 </Button>
                                             <br />
                                             <span className={classes.questionText}> 
                                                 {proc.shortDescription}
                                             </span> 
+                                        </div>
                                     </Grid>
                                     <Grid item xs={12} sm={4}>
                                             <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? "green" : null}} onClick={() => this.handleAnswerSelect(index, proc.procedure)}>

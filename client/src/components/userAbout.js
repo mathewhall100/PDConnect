@@ -119,7 +119,6 @@ import {userStylesheet } from '../styles';
                         {props.title}
                         <hr className={classes.hr} />
                     </div>
-                    
                 </Grid>
             )
         }

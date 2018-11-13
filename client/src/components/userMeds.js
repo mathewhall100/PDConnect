@@ -150,10 +150,7 @@ import {userStylesheet } from '../styles';
             return (
                 <div>
                     <h1 className={classes.title}>{props.title}</h1>
-                    <br />
                     <hr className={classes.hr} />
-                    <br />
-
                 </div>
             )
         }
@@ -196,11 +193,9 @@ import {userStylesheet } from '../styles';
                     
                     <TopTitle title="Congratulations, you're half way through! Now tell us about the medications you take for Parkinson Disease. " />
 
-                    <br />
                     <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        <div className={classes.questionHead}>I don't take any medications for Parkinson disease: </div>
-                        <br />
+                        <div className={classes.headerQuestion}>I don't take any medications for Parkinson disease: </div>
                     </Grid>
                         <Grid item xs={12} sm={4}>
                              <Button type="button" className={classes.questionButton} style={{borderColor: noAnswer ? "green" : null}}onClick={() => this.handleNoAnswerelect()}>
@@ -226,22 +221,23 @@ import {userStylesheet } from '../styles';
                                         <div key={index}>
                                             <Grid container spacing={24}>
                                                 <Grid item xs={12} sm={8} >
+                                                    <div style={{minHeight: "60px"}}>
                                                         <span className={classes.questionHead}>{med.generic}</span>  
-                                                        <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: med.generic, description: med.description}) }>
-                                                            <HelpIcon color="primary" className={classes.iconHover}/>
+                                                        <Button className={classes.helpButton} onClick={() => this.handleOpen({title: med.generic, description: med.description}) }>
+                                                            <HelpIcon color="primary" className={classes.helpIcon}/>
                                                          </Button>
                                                         <br />
                                                         {med.trade.length > 0 && <span className={classes.questionText}>Examples:&nbsp;&nbsp;
                                                             {med.trade.map((trade, index) => {
                                                                 return (
                                                                     <span key={index} className={classes.questionText}>
-                                                                       {trade}
+                                                                        {trade}
                                                                         {index === med.trade.length-1 ? "" : ", "} 
-
                                                                     </span> 
                                                                 )
                                                              }) }
                                                         </span> }
+                                                    </div>
                                                 </Grid>
                                                 <Grid item xs={12} sm={4} >
                                                          <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[answerIndex] ? "green" : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.generic)}>

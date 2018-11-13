@@ -115,10 +115,7 @@ import {userStylesheet } from '../styles';
             return (
                 <div>
                     <h1 className={classes.title}>{props.title}</h1>
-                    <br />
                     <hr className={classes.hr} />
-                    <br />
-
                 </div>
             )
         }
@@ -127,9 +124,7 @@ import {userStylesheet } from '../styles';
             return (
                 <div>
                     <h3 className={classes.subtitle}>{props.subtitle}</h3>
-                    <br />
                     <hr className={classes.hr}/>
-                    <br />
                 </div>
             )
         }
@@ -173,17 +168,21 @@ import {userStylesheet } from '../styles';
 
                     <SubTitle subtitle="Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month." />
 
+                    <br />
+
                     {PDADLs.map((question, index) => {
                         return (
                             <div>
                                 <Grid container spacing={24}>
                                     <Grid item xs={12} sm={8} md={8}>
-                                        <span className={classes.questionHead}>{question.text}</span>
-                                        <br />
-                                        <Button className={classes.helpBtn} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
-                                            <HelpIcon color="primary" className={classes.iconHover}/>
-                                                &nbsp;&nbsp;More Details and examples
-                                        </Button> 
+                                        <div className={classes.questionContainer} >
+                                            <span className={classes.questionHead}>{question.text}</span>
+                                            <br />
+                                            <Button className={classes.helpButtton} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
+                                                <HelpIcon color="primary" className={classes.helpIcon}/>
+                                                    &nbsp;&nbsp;More Details and examples
+                                            </Button>
+                                        </div>
                                     </Grid>
 
 
@@ -196,8 +195,6 @@ import {userStylesheet } from '../styles';
                                     </Grid>
 
                                 </Grid>
-                                <br />
-                                <br />
                             </div>
                         )
                     }) }

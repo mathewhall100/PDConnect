@@ -76,10 +76,7 @@ import {userStylesheet } from '../styles';
             return (
                 <div>
                     <h1 className={classes.title}>{props.title}</h1>
-                    <br />
                     <hr className={classes.hr} />
-                    <br />
-
                 </div>
             )
         }
@@ -88,9 +85,7 @@ import {userStylesheet } from '../styles';
             return (
                 <div>
                     <h3 className={classes.subtitle}>{props.subtitle}</h3>
-                    <br />
                     <hr className={classes.hr}/>
-                    <br />
                 </div>
             )
         }

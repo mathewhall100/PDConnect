@@ -139,10 +139,7 @@ import {userStylesheet } from '../styles';
             return (
                 <div>
                     <h1 className={classes.title}>{props.title}</h1>
-                    <br />
                     <hr className={classes.hr} />
-                    <br />
-
                 </div>
             )
         }
@@ -151,9 +148,7 @@ import {userStylesheet } from '../styles';
             return (
                 <div>
                     <h3 className={classes.subtitle}>{props.subtitle}</h3>
-                    <br />
                     <hr className={classes.hr}/>
-                    <br />
                 </div>
             )
         }
@@ -197,9 +192,6 @@ import {userStylesheet } from '../styles';
                     <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms that aren't just related to movement, though this varies a lot from person to person. tell us if you have had any of the following problems in the past month. " />
 
                     <p className={classes.sectionTitle}>Non-motor symptoms</p>
-                    <br />
-                    <br />
-                    <br />
 
                     {motorSy.map((sy, index) => {
 
@@ -208,16 +200,17 @@ import {userStylesheet } from '../styles';
                                 <Grid container spacing={24}>
 
                                     <Grid item xs={12} sm={12} md={7} >
-                                        <span>
-                                            <span className={classes.questionHead}>{sy.motorSy}</span>  
-                                            <Button className={classes.iconBtn} onClick={() => this.handleOpen({title: sy.motorSy, description: sy.shortDescription }) }>
-                                                <HelpIcon color="primary" className={classes.iconHover}/>
-                                            </Button>
-                                        </span>
-                                        <br />
-                                        <span className={classes.questionText} > 
-                                            {sy.shortDescription}
-                                        </span> 
+                                        <div className={classes.questionContainer}>
+                                           
+                                                <span className={classes.questionHead}>{sy.motorSy}</span>  
+                                                <Button className={classes.helpButton} onClick={() => this.handleOpen({title: sy.motorSy, description: sy.shortDescription }) }>
+                                                    <HelpIcon color="primary" className={classes.helpIcon}/>
+                                                </Button>
+                                            <br />
+                                            <span className={classes.questionText} > 
+                                                {sy.shortDescription}
+                                            </span> 
+                                        </div>
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={5}>
