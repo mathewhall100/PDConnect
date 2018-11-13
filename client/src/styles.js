@@ -8,18 +8,63 @@ const SECONDARY_COLOR = '#BF9000';
 const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
 
 export const userStylesheet = theme => ({
-    title: {
-        fontSize: '35px',
-        fontWeight: 'bold',
-        color : PRIMARY_COLOR,
-        lineHeight: '2',
-    },
     componentBox : {
         height: "auto",
         margin: "20px auto",
         border: "1px solid lightgrey",
         padding: "30px 30px 30px 30px",
         fontFamily : 'Muli'
+    },
+    title: {
+        fontSize: '35px',
+        fontWeight: 'bold',
+        color : PRIMARY_COLOR,
+        lineHeight: '2',
+    },
+    subtitle: {
+        fontSize: '22px', 
+    },
+    sectionTitle: {
+        fontStyle: "italic",
+    },
+    questionHead: {
+        fontSize: "18px", 
+        fontWeight: "bold"
+    }, 
+    questionText: {
+        lineHeight: "30px",
+        fontSize: "18px"
+    },
+    questionButton: {
+        float: "right",
+        width: "50px",
+        height: "60px",
+        backgroundColor: "white",
+        border: "4px solid grey",
+        borderRadius: "50%",
+        position: "relative",
+        top: "-15px",
+         '&:hover': {
+             backgroundColor: "white",
+         },
+    },
+    multiQuestionButton: {
+        float: "right",
+        width: "50px",
+        height: "60px",
+        backgroundColor: "white",
+        border: "4px solid grey",
+        borderRadius: "50%",
+        marginLeft: "25px",
+        position: "relative", 
+        top: "5px",
+         '&:hover': {
+             backgroundColor: "white",
+         },
+    },
+    questionButtonText: {
+        fontWeight:"bold",
+        color: "grey"
     },
     buttonContainer : {
         width : "100%",
@@ -42,12 +87,18 @@ export const userStylesheet = theme => ({
             color: PRIMARY_COLOR
         }
     },
+    doneOutlineIcon: {
+        fontSize: "36px",
+        color: "#eeeeee",
+        '&:hover': {
+            color: "green"
+        },
+    },
     doneIcon: {
-        fontSize: "14px",
+        fontSize: "48px",
         color: "green",
-        position: "relative",
-        top: "20px",
-        left: "10px"
+        padding: 0,
+        margin: -6
     },
     iconHover : {
         fontSize: "28px",
@@ -55,6 +106,12 @@ export const userStylesheet = theme => ({
             color: "darkblue",
             backgroundColor : 'initial !important',
         },
+    },
+    closeIcon: {
+        fontSize: "44px", 
+        color: "black",
+        padding: 0,
+        marginTop: -6
     },
     hr: {
         height: "1px",
@@ -71,11 +128,42 @@ export const userStylesheet = theme => ({
     paper: {
         position: 'absolute',
         width: theme.spacing.unit * 40,
-            backgroundColor: theme.palette.background.paper,
-                boxShadow: theme.shadows[5],
-                    padding: theme.spacing.unit * 4,
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
+    },
+    treeContainer: {
+        width: "800px",
+        height: "500px",
+        position: "relative",
+     },
+    treeBtn: {
+        width: "150px",
+        height: "60px",
+        backgroundColor: "white",
+        border: "2px solid grey",
+        borderRadius: "10px",
+        fontSize: "15px",
+        position: "absolute",
+        '&:hover': {
+            backgroundColor: "lightgrey",
+        },
+     },
+    treeLinkHorizontal: {
+        width: "120px",
+        backgroundColor: "lightgrey",
+        position: "absolute",
+        zIndex: -100
+    },
+    treeLinkVertical: {
+        width: "5px",
+        backgroundColor: "lightgrey",
+        position: "absolute",
+        zIndex: -100
     },
 })
+
+
 export const stylesheet = theme => ({
     loginBtn: {
         width: "550px",

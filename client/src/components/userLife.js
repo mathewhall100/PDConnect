@@ -15,144 +15,8 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../constants';
+import {userStylesheet } from '../styles';
 //import { submitUserLife} from '../actions/UserLifeAction'
-
-
-const styles = theme => ({
-    root: {
-        paddingTop: "20px",
-    },
-    componentBox: {
-        maxWidth: "800px",
-        height: "auto",
-        margin: "20px auto",
-        border: "1px solid lightgrey",
-        padding: "30px 30px 30px 30px"
-    },
-    titleStyle: {
-        textAlign: "center",
-        lineHeight: "40px"
-    },
-    textStyle: {
-        marginTop: '40px',
-        marginBottom: '40px'
-    },
-    subtitleStyle: {
-        lineHeight: "30px"
-    },
-    questionText: {
-        fontSize: "20px",
-    },
-    questionBtn: {
-        float: "right",
-        width: "110px",
-        height: "30px",
-        marginTop: "5px",
-        marginLeft: "25px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "5px",
-        fontSize: "14px",
-        '&:hover': {
-            backgroundColor: "lightgrey",
-        },
-    },
-    medSelectBtn2: {
-        float: "right",
-        width: "50px",
-        height: "60px",
-        // marginLeft: "25px",
-        backgroundColor: "white",
-        border: "4px solid grey",
-        borderRadius: "50%",
-        position: "relative",
-        top: "-15px",
-        // fontSize: "14px",
-         '&:hover': {
-             backgroundColor: "white",
-         },
-    },
-    medSelectBtnActive: {
-        float: "right",
-        width: "50px",
-        height: "60px",
-        backgroundColor: "white",
-        border: "8px solid grey",
-        borderRadius: "50%",
-        position: "relative",
-        top: "-10px",
-         '&:hover': {
-             backgroundColor: "white",
-         },
-    },
-    hr: {
-        height: "1px", 
-        color:  "lightgrey",
-        opacity: 0.5
-    },
-    labelText: {
-        fontSize: "18px"
-    },
-    inputLabel: {
-        fontSize: "18px",
-        color: "black"
-    },
-    doneIcon: {
-        fontSize: "48px", 
-        color: "green", 
-        padding: 0,
-        margin: -6
-    },
-    doneOutlineIcon: {
-        fontSize: "36px",
-        color: "#eeeeee",
-        '&:hover': {
-            color: "green"
-        },
-    },
-    helpBtn: {
-        marginTop: "2px",
-        paddingTop: "10px",
-    },
-    iconHover: {
-        fontSize: "24px",
-        '&:hover': {
-            color: "darkblue",
-        },
-    },
-    selectLabel: {
-        fontSize: "20px",
-        fontWeight: "bold"
-    },
-    errorText: {
-        fontSize: "15px", 
-        color: "red", 
-        position: "relative", 
-        left: "-45px", 
-        top: "32px"
-    },
-    basicBtn: {
-        width: "150px",
-        height: "30px",
-        marginRight: "25px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "14px",
-        '&:hover': {
-            backgroundColor: "lightgrey",
-        },
-    },
-    paper: {
-        position: 'absolute',
-        width: theme.spacing.unit * 80,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-    },
-
-});
-
 
 
  class UserLife extends Component {
@@ -164,7 +28,7 @@ const styles = theme => ({
         modalTitle : '',
         modalDescription : '',
         redirect: false,
-        redirectAddress : 'test',
+        redirectAddress : '/user/user_family',
     }  
 
     handleAnswerSelect = (index) => {
@@ -186,7 +50,7 @@ const styles = theme => ({
             this.setState({modalWarning: true})
             this.handleOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
         }
-        //this.setState({redirect: true})
+        this.setState({redirect: true})
     }
     
 
@@ -250,7 +114,7 @@ const styles = theme => ({
         const TopTitle = (props) => {
             return (
                 <div>
-                    <h1 className={classes.titleStyle}>{props.title}</h1>
+                    <h1 className={classes.title}>{props.title}</h1>
                     <br />
                     <hr className={classes.hr} />
                     <br />
@@ -262,7 +126,7 @@ const styles = theme => ({
         const SubTitle = (props) => {
             return (
                 <div>
-                    <h3 className={classes.subtitleStyle}>{props.subtitle}</h3>
+                    <h3 className={classes.subtitle}>{props.subtitle}</h3>
                     <br />
                     <hr className={classes.hr}/>
                     <br />
@@ -272,32 +136,50 @@ const styles = theme => ({
 
         const BottomNav= (props) => {
             return (
-                <div>
-                    <br />
-                    <br />
-                    <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleSubmit()}>NEXT</Button>
-                    <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleClearForm()}>CLEAR</Button>  
-                    <br />
-                </div> 
+                <Grid container spacing={24} className={classes.buttonContainer}>
+                    <Grid item xs={12}>
+                        <hr className={classes.hr} />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                    </Grid>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={3} className={classes.nextButtonContainer}>
+                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()}>NEXT</Button>
+                    </Grid>
+                </Grid>
+            )
+        }
+
+        const QuestionButtonIcons = (props) => {
+            return (
+                <span>
+                    {props.answerConditional === 1 && <DoneIcon className={classes.doneIcon} /> }
+                    {props.answerConditional === 1 && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
+                    {props.answerConditional === 1  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
+                    {props.answerConditional === 1 && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
+                    {!props.answerConditional && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
+                </span>
             )
         }
 
 
         return (
-            <section className={classes.root}>
+            <section>
                 <div className={classes.componentBox}>
                     
                     <TopTitle title="Now tell us a little about how Parkinson disease affects you" />
 
                     <SubTitle subtitle="Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month." />
 
-                    {PDADLs.map((activity, index) => {
+                    {PDADLs.map((question, index) => {
                         return (
                             <div>
                                 <Grid container spacing={24}>
                                     <Grid item xs={12} sm={8} md={8}>
-                                        <div className={classes.questionText}>{activity.text}</div>
-
+                                        <span className={classes.questionHead}>{question.text}</span>
+                                        <br />
                                         <Button className={classes.helpBtn} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
                                             <HelpIcon color="primary" className={classes.iconHover}/>
                                                 &nbsp;&nbsp;More Details and examples
@@ -306,12 +188,10 @@ const styles = theme => ({
 
 
                                     <Grid item xs={12} sm={4} md={4}>
-                                        <Button type="button" className={classes.medSelectBtn2}  style={{borderColor: activeBtn[index] ? "green" : null}} onClick={() => this.handleAnswerSelect(index)}>
-                                            {activeBtn[index] === 1 && <DoneIcon className={classes.doneIcon} /> }
-                                            {activeBtn[index] === 1 && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
-                                            {activeBtn[index] === 1  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
-                                            {activeBtn[index] === 1 && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
-                                            {!activeBtn[index] && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
+                                        <Button type="button" className={classes.questionButton}  style={{borderColor: activeBtn[index] ? "green" : null}} onClick={() => this.handleAnswerSelect(index)}>
+
+                                        <QuestionButtonIcons answerConditional={activeBtn[index]} />
+                                           
                                         </Button>
                                     </Grid>
 
@@ -356,6 +236,6 @@ const styles = theme => ({
 
 
 UserLife = withRouter(UserLife)
-UserLife = withStyles(styles)(UserLife)
+UserLife = withStyles(userStylesheet)(UserLife)
 // UserLife = connect(null, mapDispatchToProps)(UserLife)
 export default UserLife

@@ -20,93 +20,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import HelpIcon from '@material-ui/icons/Help';
 import DoneIcon from '@material-ui/icons/Done';
-import {userStylesheet } from '../styles';
-
 
 import { age, sex, raceEthnicity, years, activity_level } from '../constants';
+import {userStylesheet } from '../styles';
 //import { submitUserAbout } from '../actions/UserAboutAction'
-
-
-const styles = theme => ({
-    
-    componentBox: {
-        maxWidth: "800px",
-        height: "auto",
-        margin: "20px auto",
-        border: "1px solid lightgrey",
-        padding: "30px 30px 30px 30px"
-    },
-    textCenter: {
-        textAlign: "center"
-    },
-    titleStyle: {
-        textAlign: "center",
-        lineHeight: "40px"
-    },
-    hr: {
-        height: "1px", 
-        color:  "lightgrey",
-        opacity: 0.5
-    },
-    labelText: {
-        fontSize: "18px"
-    },
-    inputLabel: {
-        fontSize: "18px",
-        color: "black"
-    },
-    iconBtn: {
-        marginTop: "-7px",
-        '&:hover': {
-            backgroundColor: "white",
-        },
-    },
-    iconHover: {
-        fontSize: "28px",
-        '&:hover': {
-            color: "darkblue",
-        },
-    },
-    selectLabel: {
-        fontSize: "20px",
-        fontWeight: "bold"
-    },
-    doneIcon: {
-        fontSize: "14px", 
-        color: "green", 
-        position: "relative", 
-        top: "20px", 
-        left: "10px"
-    },
-    errorText: {
-        fontSize: "15px", 
-        color: "red", 
-        position: "relative", 
-        left: "-45px", 
-        top: "32px"
-    },
-    basicBtn: {
-        width: "150px",
-        height: "30px",
-        marginRight: "60px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "14px",
-        '&:hover': {
-            backgroundColor: "lightgrey",
-        },
-    },
-    paper: {
-        position: 'absolute',
-        width: theme.spacing.unit * 40,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-    },
-
-});
-
 
 
  class UserAbout extends Component {
@@ -116,7 +33,7 @@ const styles = theme => ({
         modalTitle : '',
         modalDescription : '',
         redirect: false,
-        redirectAddress : 'test',
+        redirectAddress : '/user/user_life',
     }  
     
 
@@ -139,7 +56,6 @@ const styles = theme => ({
 
         this.setState({
             redirect : true,
-            redirectAddress : '/test'
         })
     }
 
@@ -191,7 +107,7 @@ const styles = theme => ({
 
 
         if (redirect) { 
-            const url = `${redirectAddress}`;
+            const url = redirectAddress;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
@@ -258,15 +174,15 @@ const styles = theme => ({
         const BottomNav= (props) => {
             return (
                 <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid xs={12}>
+                    <Grid item xs={12}>
                         <hr className={classes.hr} />
                     </Grid>
-                    <Grid xs={3}>
+                    <Grid item xs={3}>
                         <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
                     </Grid>
-                    <Grid xs={3}></Grid>
-                    <Grid xs={3}></Grid>
-                    <Grid xs={3} className={classes.nextButtonContainer}>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={3} className={classes.nextButtonContainer}>
                         <Button type="submit" variant='outlined' className={classes.nextButton}>NEXT</Button>
                     </Grid>
                 </Grid>
@@ -415,7 +331,7 @@ function validate(values) {
 
 const formData = {
     form: 'userAboutForm', //unique identifier for this form 
-    validate,      
+    //validate,      
 }
 
 UserAbout = reduxForm(formData)(UserAbout)

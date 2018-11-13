@@ -14,137 +14,8 @@ import DoneIcon from '@material-ui/icons/Done';
 
 
 import { activity_level } from '../constants';
+import {userStylesheet } from '../styles';
 //import { submitUserFamily} from '../actions/UserFamilyAction'
-
-
-const styles = theme => ({
-    root: {
-        paddingTop: "20px",
-    },
-    componentBox: {
-        maxWidth: "800px",
-        height: "auto",
-        margin: "20px auto",
-        border: "1px solid lightgrey",
-        padding: "30px 30px 30px 30px"
-    },
-    titleStyle: {
-        textAlign: "center",
-        lineHeight: "40px"
-    },
-    textStyle: {
-        marginTop: '40px',
-        marginBottom: '40px'
-    },
-    subtitleStyle: {
-        lineHeight: "30px"
-    },
-    questionText: {
-        fontSize: "20px",
-    },
-    treeContainer: {
-        width: "100%",
-        height: "500px",
-        position: "relative",
-    },
-    questionBtn: {
-        float: "right",
-        width: "110px",
-        height: "30px",
-        marginTop: "5px",
-        marginLeft: "25px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "5px",
-        fontSize: "14px",
-        '&:hover': {
-            backgroundColor: "lightgrey",
-        },
-    },
-    hr: {
-        height: "1px", 
-        color:  "lightgrey",
-        opacity: 0.5
-    },
-    labelText: {
-        fontSize: "18px"
-    },
-    inputLabel: {
-        fontSize: "18px",
-        color: "black"
-    },
-    helpIcon: {
-        Top: "10px",
-        paddingBottom: 0,
-        marginBottom: 0,
-        '&:hover': {
-            backgroundColor: "white",
-        },
-    },
-    doneIcon: {
-        fontSize: "32px",
-        fontWeight: "bold",
-        position: "relative",
-        top: "-10px"
-    },
-    helpButton: {
-        paddingTop: "15px",
-    },
-    iconHover: {
-        fontSize: "28px",
-        '&:hover': {
-            color: "darkblue",
-        },
-    },
-    selectLabel: {
-        fontSize: "20px",
-        fontWeight: "bold"
-    },
-    errorText: {
-        fontSize: "15px", 
-        color: "red", 
-        position: "relative", 
-        left: "-45px", 
-        top: "32px"
-    },
-    treeBtn: {
-        width: "150px",
-        height: "60px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "15px",
-        position: "absolute",
-        '&:hover': {
-            backgroundColor: "lightgrey",
-        },
-    },
-    basicBtn: {
-        width: "150px",
-        height: "30px",
-        marginRight: "25px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "14px",
-        '&:hover': {
-            backgroundColor: "lightgrey",
-        },
-    },
-    treeLinkHorizontal: {
-        width: "120px",
-        backgroundColor: "lightgrey",
-        position: "absolute",
-        zIndex: -100
-    },
-    treeLinkVertical: {
-        width: "5px",
-        backgroundColor: "lightgrey",
-        position: "absolute",
-        zIndex: -100
-    },
-});
-
 
 
  class UserFamily extends Component {
@@ -152,7 +23,7 @@ const styles = theme => ({
     state = {
         familyResult: [],
         redirect: false,
-        redirectAddress : 'test',
+        redirectAddress : '/user/user_meds',
     }  
 
     handleTreeBtnClicked = (rel) => {
@@ -183,7 +54,7 @@ const styles = theme => ({
     handleBack = () => {
         this.setState({
             redirect: true,
-            redirectAddress: '/'
+            redirectAddress: 'user_meds'
         })
     }
 
@@ -204,7 +75,7 @@ const styles = theme => ({
         const TopTitle = (props) => {
             return (
                 <div>
-                    <h1 className={classes.titleStyle}>{props.title}</h1>
+                    <h1 className={classes.title}>{props.title}</h1>
                     <br />
                     <hr className={classes.hr} />
                     <br />
@@ -216,7 +87,7 @@ const styles = theme => ({
         const SubTitle = (props) => {
             return (
                 <div>
-                    <h3 className={classes.subtitleStyle}>{props.subtitle}</h3>
+                    <h3 className={classes.subtitle}>{props.subtitle}</h3>
                     <br />
                     <hr className={classes.hr}/>
                     <br />
@@ -224,16 +95,21 @@ const styles = theme => ({
             )
         }
 
-        const BottomNav = (props) => {
+        const BottomNav= (props) => {
             return (
-                <div>
-                    <br />
-                    <hr />
-                    <br />
-                    <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleSubmit()}>NEXT</Button>
-                    <Button type="button" color="primary" className={classes.basicBtn} onClick={() => this.handleClearForm()}>CLEAR</Button>  
-                    <br />
-                </div> 
+                <Grid container spacing={24} className={classes.buttonContainer}>
+                    <Grid item xs={12}>
+                        <hr className={classes.hr} />
+                    </Grid>
+                    <Grid item xs={3}>
+                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                    </Grid>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={3}></Grid>
+                    <Grid item xs={3} className={classes.nextButtonContainer}>
+                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()} >NEXT</Button>
+                    </Grid>
+                </Grid>
             )
         }
 
@@ -252,34 +128,32 @@ const styles = theme => ({
         }
 
         return (
-            <section className={classes.root}>
-                <div className={classes.componentBox}>
-                    
-                    <TopTitle title="Tell us about any relatives you may have with Parkinson disease?" />
+            <div className={classes.componentBox} >
+                
+                <TopTitle title="Tell us about any relatives you may have with Parkinson disease?" />
 
-                    <SubTitle subtitle="Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. When you are done, or if noone in your family has ever been diagnosed with Parkinson disease, click NEXT to go to the next question." />
+                <SubTitle subtitle="Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. When you are done, or if noone in your family has ever been diagnosed with Parkinson disease, click NEXT to go to the next question." />
 
-                    <div className={classes.treeContainer}>
+                <div className={classes.treeContainer}>
 
-                        <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? "lightgreen" : "white"}/>
-                        <TreeButton relative="parent" top={spacingV+25}left={spacingH} color={familyResult.indexOf("parent") >=0 ? "lightgreen" : "white"}/>
-                        <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color="green" bold="bold"/>
-                        <TreeButton relative="child" top={spacingV*3+25} left={spacingH} color={familyResult.indexOf("child") >=0 ? "lightgreen" : "white"} />
-                        <TreeButton relative="grandchild" top={spacingV*4+25} left={spacingH} color={familyResult.indexOf("grandchild") >=0 ? "lightgreen" : "white"} />
-                        <TreeButton relative="brother / sister" top={spacingV*2+25} left={spacingH*4} color={familyResult.indexOf("brother / sister") >=0 ? "lightgreen" : "white"} />
-                        <TreeButton relative="uncle / aunt" top={spacingV+25} left={spacingH*4} color={familyResult.indexOf("uncle / aunt") >=0 ? "lightgreen" : "white"} />
-                        <TreeButton relative="niece / nephew" top={spacingV*3+25} left={spacingH*4} color={familyResult.indexOf("niece / nephew") >=0 ? "lightgreen" : "white"} />
+                    <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? "lightgreen" : "white"}/>
+                    <TreeButton relative="parent" top={spacingV+25} left={spacingH} color={familyResult.indexOf("parent") >=0 ? "lightgreen" : "white"}/>
+                    <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color="green" bold="bold"/>
+                    <TreeButton relative="child" top={spacingV*3+25} left={spacingH} color={familyResult.indexOf("child") >=0 ? "lightgreen" : "white"} />
+                    <TreeButton relative="grandchild" top={spacingV*4+25} left={spacingH} color={familyResult.indexOf("grandchild") >=0 ? "lightgreen" : "white"} />
+                    <TreeButton relative="brother / sister" top={spacingV*2+25} left={spacingH*4} color={familyResult.indexOf("brother / sister") >=0 ? "lightgreen" : "white"} />
+                    <TreeButton relative="uncle / aunt" top={spacingV+25} left={spacingH*4} color={familyResult.indexOf("uncle / aunt") >=0 ? "lightgreen" : "white"} />
+                    <TreeButton relative="niece / nephew" top={spacingV*3+25} left={spacingH*4} color={familyResult.indexOf("niece / nephew") >=0 ? "lightgreen" : "white"} />
 
-                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV+25+25} left={spacingH+150} height="5px"/>
-                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV*2+25+25} left={spacingH+150} height="5px"/>
-                        <TreeLink class={classes.treeLinkVertical} top={25} left={spacingH+75} height="400px"/>
-                        <TreeLink class={classes.treeLinkVertical} top={spacingV*2+25+25} left={spacingH*4+75} height="100px"/>
-                        </div>
+                    <TreeLink class={classes.treeLinkHorizontal} top={spacingV+25+25} left={spacingH+150} height="5px"/>
+                    <TreeLink class={classes.treeLinkHorizontal} top={spacingV*2+25+25} left={spacingH+150} height="5px"/>
+                    <TreeLink class={classes.treeLinkVertical} top={25} left={spacingH+75} height="400px"/>
+                    <TreeLink class={classes.treeLinkVertical} top={spacingV*2+25+25} left={spacingH*4+75} height="100px"/>
+                    </div>
 
-                    <BottomNav />
+                <BottomNav />
 
-                </div>
-            </section>
+            </div>
 
         );
     }
@@ -292,6 +166,6 @@ const styles = theme => ({
 
 
 UserFamily = withRouter(UserFamily)
-UserFamily = withStyles(styles)(UserFamily)
+UserFamily = withStyles(userStylesheet)(UserFamily)
 // UserFamily = connect(null, mapDispatchToProps)(UserFamily)
 export default UserFamily

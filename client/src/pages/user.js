@@ -11,6 +11,8 @@ import UserLife from '../components/userLife';
 import UserFamily from '../components/userFamily';
 import UserMeds from '../components/userMeds';
 import UserSurgery from '../components/userSurgery';
+import UserMotorSy from '../components/userMotorSy';
+import UserNonMotorSy from '../components/userNonMotorSy';
 import Result from './results'; 
 import UserInfo from './userinfo';
 import NotFound from './notFound';
@@ -95,6 +97,8 @@ class User extends Component {
                             <Route path='/user/user_family' render={props => <UserFamily></UserFamily>} />
                             <Route path='/user/user_meds' render={props => <UserMeds></UserMeds>} />
                             <Route path='/user/user_surgery' render={props => <UserSurgery></UserSurgery>} />
+                            <Route path='/user/user_motorsy' render={props => <UserMotorSy></UserMotorSy>} />
+                            <Route path='/user/user_nonmotorsy' render={props => <UserNonMotorSy></UserNonMotorSy>} />
                             <Route path="/user/result" render={props => <Result ></Result>} />
                             <Route path="/user/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                             <Route path="/user/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
