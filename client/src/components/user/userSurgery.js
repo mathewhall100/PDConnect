@@ -15,12 +15,12 @@ import DoneIcon from '@material-ui/icons/Done';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
-import { activity_level } from '../constants';
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
-//import { submitUserMeds} from '../actions/UserMedsAction'
+import { activity_level } from '../../constants';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
+//import { submitUserSurgery} from '../actions/UserSurgeryAction'
 
 
- class UserMeds extends Component {
+ class UserSurgery extends Component {
 
     state = {
         answerArray: [],
@@ -36,7 +36,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
     handleSubmit = () => {
         console.log("submit - meds:, ", this.state.answerArray)
 
-        // this.submitUserMeds(this.state.answerArray)
+        // this.submitUserSurgeries(this.state.answerArray)
         // this.setState({
         //     redirect: true
         // })
@@ -60,14 +60,6 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
             answerTrack: tempTrack, 
             answerArray: tempArray
         })
-    }
-
-    handleNoAnswerelect = () => {
-        console.log('NoanswerTrack')
-        this.setState({
-            noAnswer: true,
-            answerTrack: [],
-            answerArray: []}) 
     }
 
     handleClearForm() {
@@ -118,25 +110,12 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, answerTrack, noAnswer } = this.state
+        const { redirect, redirectAddress, answerTrack,noAnswer } = this.state
 
-        const medGroups = [
-            {class: "dopamine agonist", target: "motor symptoms"},
-            {class: "carbidopa/levodopa", target: "motor symptoms"},
-            {class: "other", target: "motor symptoms"}
-        ]
 
-        const meds= [
-            {generic: "Ropinirole", trade: ["Requip", "Ralnea", "Adartrel"], class: "dopamine agonist", description: ""},
-            {generic: "Pramipixole", trade: ["Mirapex"], class: "dopamine agonist", description: ""},
-            {generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", description: ""},
-
-            {generic: "Sinemet", trade: [], class: "carbidopa/levodopa", description: ""},
-            {generic: "Sinemet CR",  trade: [], class: "carbidopa/levodopa", description: ""},
-            {generic: "Rytary",  trade: [], class: "carbidopa/levodopa", description: ""},
-            {generic: "Doupa",  trade: [], class: "carbidopa/levodopa", description: ""},
-
-            {generic: "Amantadine", trade: ["Amantadine"], class: "other", description: ""}
+        const procedures= [
+            {procedure: "Deep Brain Stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
+            {procedure: "Feeding tube placement", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
         ]
 
 
@@ -185,79 +164,44 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
             )
         }
 
-
-
         return (
-            <section >
+            <section className={classes.root}>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Congratulations, you're half way through! Now tell us about the medications you take for Parkinson Disease. " />
+                    <TopTitle title="Have you ever had any of the following procedures or surgeries to treat Parkinson disease? " />
 
-                    <Grid container spacing={24}>
-                    <Grid item xs={12} sm={8}>
-                        <div className={classes.headerQuestion}>I don't take any medications for Parkinson disease: </div>
-                    </Grid>
-                        <Grid item xs={12} sm={4}>
-                             <Button type="button" className={classes.questionButton} style={{borderColor: noAnswer ? "green" : null}}onClick={() => this.handleNoAnswerelect()}>
-                                <QuestionButtonIcons answerConditional={noAnswer} />
-                            </Button> 
-                        </Grid>
-                    </Grid>
+                    <br />
 
-                    {medGroups.map((group, index) => {
+                    {procedures.map((proc, index) => {
 
                         return (
                             <div key={index}>
-
-                                <hr className={classes.hr}/>
-                                <p className={classes.sectionTitle}> {startCase(group.class)} preparations for {group.target}</p>
-                                <br />
-
-                                {meds.filter(med => med.class === group.class).map((med, index) => {
-                                    const answerIndex = meds.findIndex(medication => medication.generic == med.generic)
-
-                                    return (
-                                        
-                                        <div key={index}>
-                                            <Grid container spacing={24}>
-                                                <Grid item xs={12} sm={8} >
-                                                    <div style={{minHeight: "60px"}}>
-                                                        <span className={classes.questionHead}>{med.generic}</span>  
-                                                        <Button className={classes.helpButton} onClick={() => this.handleOpen({title: med.generic, description: med.description}) }>
-                                                            <HelpIcon color="primary" className={classes.helpIcon}/>
-                                                         </Button>
-                                                        <br />
-                                                        {med.trade.length > 0 && <span className={classes.questionText}>Examples:&nbsp;&nbsp;
-                                                            {med.trade.map((trade, index) => {
-                                                                return (
-                                                                    <span key={index} className={classes.questionText}>
-                                                                        {trade}
-                                                                        {index === med.trade.length-1 ? "" : ", "} 
-                                                                    </span> 
-                                                                )
-                                                             }) }
-                                                        </span> }
-                                                    </div>
-                                                </Grid>
-                                                <Grid item xs={12} sm={4} >
-                                                         <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[answerIndex] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.generic)}>
-                                                            <QuestionButtonIcons answerConditional={answerTrack[answerIndex]} />
-                                                        </Button>
-                                                </Grid>
-                                            </Grid>
+                                <Grid container spacing={24}>
+                                    <Grid item xs={12} sm={8}>
+                                        <div className={classes.questionContainer}>
+                                            <span className={classes.questionHead}>{proc.procedure}</span>  
+                                            <Button className={classes.helpButton} onClick={() => this.handleOpen({title: proc.procedure, description: proc.shortDescription}) }>
+                                                <HelpIcon color="primary" className={classes.helpIcon}/>
+                                                </Button>
                                             <br />
+                                            <span className={classes.questionText}> 
+                                                {proc.shortDescription}
+                                            </span> 
                                         </div>
-                                    )
-                                }) }
+                                    </Grid>
+                                    <Grid item xs={12} sm={4}>
+                                            <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, proc.procedure)}>
+                                                <QuestionButtonIcons answerConditional = {answerTrack[index]} />
+                                            </Button>
+                                    </Grid>
+                                </Grid>
+                                <br />
                             </div>
                         )
-                        
-                }) }
-                    
-
-
-                <BottomNav />
-
+                    }) }
+   
+                    <BottomNav />            
+            
                 </div>
 
                 <Modal
@@ -289,7 +233,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 // }
 
 
-UserMeds = withRouter(UserMeds)
-UserMeds = withStyles(userStylesheet)(UserMeds)
-// UserMeds = connect(null, mapDispatchToProps)(UserMeds)
-export default UserMeds
+UserSurgery = withRouter(UserSurgery)
+UserSurgery = withStyles(userStylesheet)(UserSurgery)
+// UserSurgery = connect(null, mapDispatchToProps)(UserSurgery)
+export default UserSurgery

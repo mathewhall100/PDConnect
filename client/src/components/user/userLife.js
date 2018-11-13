@@ -14,8 +14,8 @@ import DoneIcon from '@material-ui/icons/Done';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
-import { activity_level } from '../constants';
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
+import { activity_level } from '../../constants';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 //import { submitUserLife} from '../actions/UserLifeAction'
 
 
