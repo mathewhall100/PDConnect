@@ -19,10 +19,10 @@ class Hero extends Component {
                     <div className={classes.card}>
                         
                         <Grid container className={classes.content}>
-                            <Grid item xs={12} className={classes.heroTitle}>
+                            <Grid item lg={12} md={12} xs={12} className={classes.heroTitle}>
                                 Use this application to find your next best and latest Parkinsons disease treatments and clinical trials.
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item lg={12} md={12} xs={12}>
                                 <div className={classes.description}>
                                     Want to know what is the next best treatments or clinical trial out there waiting for you?
                                 </div>
@@ -38,10 +38,10 @@ class Hero extends Component {
                 </div> 
                 <Grid container  className={classes.heroAppStore}>
                     <Grid item xs={12}>
-                        <span className={classes.connectImgContainer}>
+                        <span className={classes.heroImgContainer}>
                             <a href='/'><img src={AppleDownload} className={classes.heroDownloadImg} alt="Download from Apple Store" /></a>
                         </span>
-                        <span className={classes.connectImgContainer}>
+                        <span className={classes.heroImgContainer}>
                             <a href='/'><img src={GoogleDownload} className={classes.heroDownloadImg} alt="Download from Google Store" /></a>
                         </span>
                     </Grid>

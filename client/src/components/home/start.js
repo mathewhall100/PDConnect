@@ -13,7 +13,7 @@ class Start extends Component {
         const { classes } = this.props;
         return (
                 <Grid container spacing={24} className={classes.startContainer}>
-                    <Grid item xs={12} className={classes.heroTitle}>
+                    <Grid item xs={12} className={classes.homepageHeader}>
                         Our Goal
                         <hr />
                     </Grid>

@@ -10,7 +10,6 @@ import pillsImg from './images/pills.jpg';
 import reportImg from './images/report.jpg';
 import stethoscopeImg from './images/stethoscope.jpg';
 import tabletReportHandsImg from './images/tablet_report_hands.jpg';
-import { white } from 'ansi-colors';
 
 const PRIMARY_COLOR = '#2F5597';
 const PRIMARY_COLOR_HOVER = '#4d6591';
@@ -220,6 +219,9 @@ export const stylesheet = theme => ({
         minHeight: '800px',
         maxHeight: '800px',
         maxWidth: '100vw !immportant',
+        [theme.breakpoints.down('xs')]: {
+            display : 'none',
+        },
     },
     topBarBtn : {
         backgroundColor: PRIMARY_COLOR,
@@ -231,10 +233,16 @@ export const stylesheet = theme => ({
     topNav : {
         maxWidth : `${MAXWIDTH} !important `,
         margin : 'auto',
+        [theme.breakpoints.down('xs')]: {
+            marginTop: '50px',
+        },
     },
     topNavLogo : {
-        height : '100px',
-        width : '100px',
+        height : '145px',
+        width : '145px',
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+        },
     },
     leftTopNav : {
         textAlign : 'left',
@@ -314,6 +322,9 @@ export const stylesheet = theme => ({
         color: PRIMARY_COLOR,
         fontFamily : 'lato, open_sans, Arial, san-serif',
         textAlign : 'center',
+        [theme.breakpoints.down('xs')] : {
+            fontSize: '20px',
+        },
     },
     heroList: {
         color: PRIMARY_COLOR,
@@ -322,8 +333,12 @@ export const stylesheet = theme => ({
         textShadow: 'initial',
     },
     heroDownloadImg: {
-        width: '25%',
-        padding: '30px',
+        width: '200px',
+        margin: '30px',
+        [theme.breakpoints.down('xs')]: {
+            width: '140px',
+            margin: '12px',
+        },
     },
     promise: {
         paddingTop: '20px',
@@ -339,6 +354,10 @@ export const stylesheet = theme => ({
         left : 0,
         right : 0,
         top: "3%",
+        [theme.breakpoints.down('xs')]: {
+            position: 'relative',
+            marginBottom : '25px',
+        },
     },
     promiseTitle : {
         fontSize : '25px',
@@ -354,21 +373,30 @@ export const stylesheet = theme => ({
         top: "12%",
         left : 0,
         right : 0,
+        [theme.breakpoints.down('xs')]: {
+            position: 'relative'
+        },
     },
     promiseContainer2: {
         position: 'absolute',
         marginLeft: 'auto',
         marginRight: 'auto',
         maxWidth: MAXWIDTH,
-        top: "55%",
+        top: "58%",
         left: 0,
         right: 0,
+        [theme.breakpoints.down('xs')]: {
+            position: 'relative'
+        },
     },
     promiseCube : {
         border : 'gray 1px solid',
         borderRadius : '22px',
         backgroundColor: 'rgba(164, 164, 164, 0.6) !important',
-        minHeight : '250px',
+        minHeight : '290px',
+        [theme.breakpoints.down('xs')]: {
+            margin : '15px',
+        },
     },
     promiseIconContainer : {
         textAlign : 'center',
@@ -386,6 +414,7 @@ export const stylesheet = theme => ({
         color : PRIMARY_COLOR_HOVER,
         fontSize : '18px',
         textAlign : 'center',
+        
     },
     promiseSecondHeader: {
         color: SECONDARY_COLOR,
@@ -415,7 +444,7 @@ export const stylesheet = theme => ({
     connectDescription: {
         paddingTop: '5px',
     },
-    connectImgContainer: {
+    heroImgContainer: {
         width: '100%',
     },
     connectImg: {
@@ -493,10 +522,14 @@ export const stylesheet = theme => ({
     startButtonContainer : {
         margin: 'auto 0 auto 0',
         textAlign : 'right',
+        
     },
     description : {
         textAlign : 'center',
         fontSize : '20px',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '17px',
+        },
     },
     startButton : {
         backgroundColor: PRIMARY_COLOR,
@@ -507,7 +540,10 @@ export const stylesheet = theme => ({
             color: `white`,
             backgroundColor: PRIMARY_COLOR,
             borderColor : 'white'
-        }
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: '100% !important',
+        },
     },
     footerContainer : {
         paddingTop : '40px',

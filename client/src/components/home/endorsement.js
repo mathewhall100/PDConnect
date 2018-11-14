@@ -25,25 +25,25 @@ class Endorse extends Component {
                     <hr />
                 </Grid>
                 
-                <Grid item xs={3} className={classes.avatarContainer}>
+                <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
                     <Avatar alt='User1' src={physician1Img} className={classes.bigAvatar} />
                     <h2>Gilbert	Reese</h2>
                     <p>Neurologist</p>
                     <p>A great way to learn about the new treatments out there from the mouth of patient! </p>
                 </Grid>
-                <Grid item xs={3} className={classes.avatarContainer}>
+                <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
                     <Avatar alt='User1' src={physician2Img} className={classes.bigAvatar} />
                     <h2>Shaun Perez</h2>
                     <p>Pharmaceutical Rep</p>
                     <p>Platform to promote and introduce new treatments to the world, what not to like? </p>
                 </Grid>
-                <Grid item xs={3} className={classes.avatarContainer}>
+                <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
                     <Avatar alt='User1' src={patient1Img} className={classes.bigAvatar} />
                     <h2>Daryl Reid</h2>
                     <p>Parkinsons Patient</p>
                     <p>Pin point my Parkinsons symptoms and recommened me treatments that I never tried before.</p>
                 </Grid>
-                <Grid item xs={3} className={classes.avatarContainer}>
+                <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
                     <Avatar alt='User1' src={patient2Img} className={classes.bigAvatar} />
                     <h2>Johnnie	Watson</h2>
                     <p>Parkinsons Patient's Relatives</p>
