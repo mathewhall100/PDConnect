@@ -9,6 +9,13 @@ import SymptomsReducer from './SymptomsReducer';
 import TreatmentReducer from './TreatmentReducer';
 import ResultReducer from './ResultReducer';
 import StepperReducer from './stepperReducer';
+import UserAboutReducer from './UserAboutReducer';
+import UserLifeReducer from './UserLifeReducer';
+import UserFamilyReducer from './UserFamilyReducer';
+import UserMedsReducer from './UserMedsReducer';
+import UserSurgeryReducer from './UserSurgeryReducer';
+import UserMotorSyReducer from './UserMotorSyReducer';
+import UserNonMotorSyReducer from './UserNonMotorSyReducer';
 
 export default combineReducers({
     form: formReducer,
@@ -20,4 +27,11 @@ export default combineReducers({
     treatments: TreatmentReducer,
     results: ResultReducer,
     stepper: StepperReducer,
+    about : UserAboutReducer,
+    life : UserLifeReducer,
+    family : UserFamilyReducer,
+    meds : UserMedsReducer,
+    surgery : UserSurgeryReducer,
+    motorSy : UserMotorSyReducer,
+    nonMotorSy : UserNonMotorSyReducer
 });

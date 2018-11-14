@@ -13,8 +13,8 @@ import HelpIcon from '@material-ui/icons/Help';
 import DoneIcon from '@material-ui/icons/Done';
 
 
-import { activity_level } from '../constants';
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
+import { activity_level } from '../../constants';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 //import { submitUserFamily} from '../actions/UserFamilyAction'
 
 

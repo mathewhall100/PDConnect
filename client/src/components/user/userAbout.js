@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import FormLabel from '@material-ui/core/FormLabel';
-import TextBox from './forms/FormText';
+import TextBox from '../forms/FormText';
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
 import Modal from '@material-ui/core/Modal';
@@ -21,9 +21,8 @@ import Select from '@material-ui/core/Select';
 import HelpIcon from '@material-ui/icons/Help';
 import DoneIcon from '@material-ui/icons/Done';
 
-import { age, sex, raceEthnicity, years, activity_level } from '../constants';
-import {userStylesheet } from '../styles';
-import { updateStepperCount } from '../actions/index.js'
+import { age, sex, raceEthnicity, years, activity_level } from '../../constants';
+import {userStylesheet } from '../../styles';
 //import { submitUserAbout } from '../actions/UserAboutAction'
 
 

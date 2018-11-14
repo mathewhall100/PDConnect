@@ -16,12 +16,12 @@ import DoneIcon from '@material-ui/icons/Done';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
-import { activity_level } from '../constants';
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
-//import { submitUserNonMotorSy} from '../actions/UserNonMotorSyAction'
+import { activity_level } from '../../constants';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
+//import { submitUserMotorSy} from '../actions/UserMotorSyAction'
 
 
- class UserNonMotorSy extends Component {
+ class UserMotorSy extends Component {
 
     state = {
         answerArray: [],
@@ -31,37 +31,36 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
         modalTitle : '',
         modalDescription : '',
         redirect: false,
-        redirectAddress : 'results',
+        redirectAddress : '/user/user_nonmotorsy',
     }  
 
     handleSubmit = () => {
         console.log("submit - meds:, ", this.state.answerArray)
 
-        // this.submitUserNonMotorSy(this.state.answerArray)
+        // this.submitUserMotorSy(this.state.answerArray)
 
-        this.setState({redirect: true })
+        this.setState({redirect: true})
     }
 
-    handleMedSelect = (index, choice, name) => {
-        //console.log("handlemedselect : ", index, " + ", name)
-        let tempTrack = this.state.answerTrack
-        let tempArray = this.state.answerArray
+    handleAnswerSelect = (index, choice, name) => {
+        //console.log("handleanswerselect : ", index, " + ", name)
+        let tempArray = this.state.answerTrack
+        let tempTrack = this.state.answerArray
         if (choice === "ns" || choice === "no") {
-            tempTrack[index] = choice
-            let ind = tempArray.indexOf(name)
-            ind >= 0 ? tempArray[ind] = null : null
+            tempArray[index] = choice
+            let ind = tempTrack.indexOf(name)
+            ind >= 0 ? tempTrack[ind] = null : null
             if (choice === "ns") {this.handleOpen({title: name}) }
-          
 
         } 
         else {
-            tempTrack[index] = choice
-            tempArray.indexOf(name) < 0 ? tempArray.push(name) : null
+            tempArray[index] = choice
+            tempTrack.indexOf(name) < 0 ? tempTrack.push(name) : null
         }
         this.setState({
             noAnswer: false,
-            answerTrack: tempTrack, 
-            answerArray: tempArray
+            answerTrack: tempArray, 
+            answerArray: tempTrack
         })
     }
 
@@ -75,7 +74,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
     }
 
     handleBack = () => {
-        this.setState({ redirectAddress: '/user/user_motorsy'}, () => this.setState({  redirect: true}) )
+        this.setState({redirectAddress: '/user/user_surgery'}, () => this.setState({redirect: true}) )
     }
 
     handleInfoClick = (info) => {
@@ -114,13 +113,18 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
 
 
         const motorSy= [
-            {motorSy: "Hallucinations or delusions", shortDescription: "Seeying things that you know are not really there or firmly beleiving seomething despite good evidence that it is not real or true.", description: ""},
-            {motorSy: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or even feeling you may faint, particularly just after you have got up from sitting down or changed position ", description: ""},
-            {motorSy: "Constipation", shortDescription: "Infrequent and or difficuklty opening your bowels.", description: ""},
-            {motorSy: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep", description: ""},
-            {motorSy: "Depression", shortDescription: "Low mood and feeling sof hopelessness", description: ""},
-            {motorSy: "Poor cognition", shortDescription: "Difficulty thinking or remembering things to a point where it affects your life and others notice it.", description: ""},
-            
+            {motorSy: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
+            {motorSy: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
+            {motorSy: "Sudden, unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
+            {motorSy: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
+            {motorSy: "Tremor", shortDescription: "Shaking of the hands and arms that bothers you or prevents you doing things with your hands", description: ""},
+            {motorSy: "Bothersome dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
+            {motorSy: "Small handwriting", shortDescription: "Very small handwriting, which is not usual for you", description: ""},
+            {motorSy: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling walk. ", description: ""},
+            {motorSy: "Falls", shortDescription: "Falling over due to increased difficulty moving and walking", description: ""},
+            {motorSy: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
+            {motorSy: "Difficulty swallowing", shortDescription: "Difficulty swallowing food or fluids. Choking episodes. ", description: ""},
+            {motorSy: "Foot curling", shortDescription: "Involuntary curling of the foot and toes which can be painful and makes walking difficult.", description: ""},
         ]
 
 
@@ -180,14 +184,15 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
         }
 
         return (
-            <section className={classes.root}>
+            <section>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Last question! About any non-motor symptoms" />
+                    <TopTitle title="Almost done! Lastly, about your symptoms" />
 
-                    <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms that aren't just related to movement, though this varies a lot from person to person. tell us if you have had any of the following problems in the past month. " />
+                    <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may haveb experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom." />
 
-                    <p className={classes.sectionTitle}>Non-motor symptoms</p>
+                    <p className={classes.sectionTitle}>Let's start with motor symptoms</p>
+                    <br />
 
                     {motorSy.map((sy, index) => {
 
@@ -196,32 +201,32 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
                                 <Grid container spacing={24}>
 
                                     <Grid item xs={12} sm={12} md={7} >
-                                        <div className={classes.questionContainer}>
-                                           
-                                                <span className={classes.questionHead}>{sy.motorSy}</span>  
-                                                <Button className={classes.helpButton} onClick={() => this.handleOpen({title: sy.motorSy, description: sy.shortDescription }) }>
-                                                    <HelpIcon color="primary" className={classes.helpIcon}/>
-                                                </Button>
-                                            <br />
-                                            <span className={classes.questionText} > 
-                                                {sy.shortDescription}
-                                            </span> 
-                                        </div>
+                                   
+                                    <div className={classes.questionContainer}>
+                                            <span className={classes.questionHead}>{sy.motorSy}</span>  
+                                            <Button className={classes.helpButton} onClick={() => this.handleOpen({title: sy.motorSy, description: sy.shortDescription}) }>
+                                                <HelpIcon color="primary" className={classes.helpIcon}/>
+                                            </Button>
+                                        <br />
+                                        <span className={classes.questionText} > 
+                                            {sy.shortDescription}
+                                        </span>  
+                                    </div>
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={5}>
-                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleMedSelect(index, "ns", sy.motorSy)}>
-                                            <span className={classes.questionButtonText} style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} >not sure</span>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.motorSy)}>
+                                            <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}}>not sure</span>
                                         </Button>
-                                        <Button type="button" className={classes.questionButton}  style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleMedSelect(index, "no", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.motorSy)}>
                                             {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>
-                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleMedSelect(index, "yes", sy.motorSy)}>
-                                            <QuestionButtonIcons answerConditional={answerTrack[index]} />      
+                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.motorSy)}>
+                                            <QuestionButtonIcons answerConditional={answerTrack[index]} />
                                         </Button>
                                     </Grid>
-
+                                    
                                 </Grid>
                                 <br />
                             </div>
@@ -257,11 +262,11 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
 
 
 // function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserNonMotorSy }, dispatch);
+//     return bindActionCreators({ submitUserMotorSy }, dispatch);
 // }
 
 
-UserNonMotorSy = withRouter(UserNonMotorSy)
-UserNonMotorSy = withStyles(userStylesheet)(UserNonMotorSy)
-// UserNonMotorSy = connect(null, mapDispatchToProps)(UserNonMotorSy)
-export default UserNonMotorSy
+UserMotorSy = withRouter(UserMotorSy)
+UserMotorSy = withStyles(userStylesheet)(UserMotorSy)
+// UserMotorSy = connect(null, mapDispatchToProps)(UserMotorSy)
+export default UserMotorSy

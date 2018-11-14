@@ -1,0 +1,16 @@
+import { push } from 'react-router-dom';
+import {
+    USER_SURGERY
+} from './types';
+
+
+export const submitUserSurgery = (objUserSurgery) => {
+    console.log("submitting user surgery : ", objUserSurgery);
+
+    return (dispatch) => {
+        dispatch({
+            type: USER_SURGERY,
+            payload: objUserSurgery
+        })
+    }
+}

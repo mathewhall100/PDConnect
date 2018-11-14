@@ -27,18 +27,12 @@ function getStepContent(){
             return 3;
         case '/user/user_surgery':
             return 4;
-        case '/user/user_motor':
+        case '/user/user_motorsy':
             return 5;
-        case '/user/user_non_motor':
+        case '/user/user_nonmotorsy':
             return 6;
         case '/user/result':
             return 7;
-        case '/user/user_info' :
-            return 0;
-        case '/user/current_treatment' :
-            return 1;
-        case '/user/previous_treatment' :
-            return 2;
         default:
             return 'Unknown step';
     }
