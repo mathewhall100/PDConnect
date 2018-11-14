@@ -26,6 +26,7 @@ class Routes extends Component {
             <div>
                 <Switch>
                     <Route path='/user' component={User} />
+                    <Route path='/results' component={Result} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                     <Route path="/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
                     <Route path="/info_duopa" render={props => <InfoDuopa {...this.props}></InfoDuopa>} />

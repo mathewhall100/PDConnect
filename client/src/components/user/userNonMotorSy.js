@@ -38,7 +38,7 @@ import { nonMotorSy } from '../../constants'
         modalText : '',
         modalWarning: "",
         redirect: false,
-        redirectAddress : 'results',
+        redirectAddress : '/results',
     }  
 
 
