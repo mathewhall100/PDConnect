@@ -49,7 +49,7 @@ import UserModal from '../commons/userModal'
     }
 
     handleInitialize() {
-        const initData = this.props.userInfo
+        const initData = this.props.userAbout
         console.log("in handle init, init data is : ", initData);
         this.props.initialize(initData);
     }
@@ -68,10 +68,6 @@ import UserModal from '../commons/userModal'
     handleBack = () => {
         this.setState({
             redirectAddress: '/'}, () => this.setState({redirect: true}) )
-    }
-
-    handleInfoClick = (info) => {
-        console.log(info)
     }
 
     handleModalOpen = (title, text) => { 
@@ -292,6 +288,13 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ updateStepperCount, submitUserAbout }, dispatch);
 }
 
+const mapStateToProps = (state) => {
+    console.log("state ", state)
+    return {
+        userAbout: state.about
+    }
+}
+
 const formData = {
     form: 'userAboutForm', //unique identifier for this form 
     validate,      
@@ -300,5 +303,5 @@ const formData = {
 UserAbout = reduxForm(formData)(UserAbout)
 UserAbout = withRouter(UserAbout)
 UserAbout = withStyles(userStylesheet)(UserAbout)
-UserAbout = connect(null, mapDispatchToProps)(UserAbout)
+UserAbout = connect(mapStateToProps, mapDispatchToProps)(UserAbout)
 export default UserAbout

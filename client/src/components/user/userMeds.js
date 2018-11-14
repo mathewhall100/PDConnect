@@ -40,11 +40,19 @@ class UserMeds extends Component {
 
     componentDidMount() {
         this.props.updateStepperCount()
+        const index = this.props.userTrack
+        if (index) {
+            console.log(index)
+            this.setState({
+                answerTrack: index,
+                answerArray: this.props.userMeds
+            })
+        }
     }
 
     handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
-        this.props.submitUserMeds(this.state.answerArray)
+        this.props.submitUserMeds(this.state.answerArray, this.state.answerTrack)
         this.setState({redirect: true})
     }
 
@@ -208,8 +216,16 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ updateStepperCount, submitUserMeds }, dispatch);
 }
 
+const mapStateToProps = (state) => {
+    console.log("state: ", state)
+    return {
+        userMeds: state.meds.meds,
+        userTrack: state.meds.track
+
+    }
+}
 
 UserMeds = withRouter(UserMeds)
 UserMeds = withStyles(userStylesheet)(UserMeds)
-UserMeds = connect(null, mapDispatchToProps)(UserMeds)
+UserMeds = connect(mapStateToProps, mapDispatchToProps)(UserMeds)
 export default UserMeds

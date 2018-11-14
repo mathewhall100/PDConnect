@@ -40,11 +40,19 @@ import { procedures } from '../../constants'
 
     componentDidMount() {
         this.props.updateStepperCount()
+        const index = this.props.userTrack
+        if (index) {
+            console.log(index)
+            this.setState({
+                answerTrack: index,
+                answerArray: this.props.userSurgery
+            })
+        }
     }
 
     handleNext= () => {
         console.log("submit - meds:, ", this.state.answerArray)
-        this.props.submitUserSurgery(this.state.answerArray)
+        this.props.submitUserSurgery(this.state.answerArray, this.state.answerTrack)
         this.setState({redirect: true})
     }
 
@@ -165,8 +173,16 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ submitUserSurgery, updateStepperCount }, dispatch);
 }
 
+const mapStateToProps = (state) => {
+    console.log("state: ", state)
+    return {
+        userSurgery: state.surgery.surgery,
+        userTrack: state.surgery.track
+    }
+}
+
 
 UserSurgery = withRouter(UserSurgery)
 UserSurgery = withStyles(userStylesheet)(UserSurgery)
-UserSurgery = connect(null, mapDispatchToProps)(UserSurgery)
+UserSurgery = connect(mapStateToProps, mapDispatchToProps)(UserSurgery)
 export default UserSurgery

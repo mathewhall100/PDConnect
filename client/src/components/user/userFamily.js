@@ -31,6 +31,11 @@ import SubTitle from '../commons/userSubTitle'
 
     componentDidMount() {
         this.props.updateStepperCount()
+        const index=this.props.userFamily
+        console.log("userFamily: ", index)
+        if (index) {
+            this.setState({familyResult: index})
+        }
     }
 
     handleTreeBtnClicked = (rel) => {
@@ -85,7 +90,6 @@ import SubTitle from '../commons/userSubTitle'
         }
         
         const TreeLink = (props) => {
-            console.log(props)
             return (
                 <div className={props.class} style={{top: props.top, left: props.left, height: props.height, }}>
                 </div>
@@ -129,8 +133,15 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ submitUserFamily, updateStepperCount }, dispatch);
 }
 
+const mapStateToProps = (state) => {
+    console.log("state: ", state)
+    return {
+        userFamily: state.family.family
+    }
+}
+
 
 UserFamily = withRouter(UserFamily)
 UserFamily = withStyles(userStylesheet)(UserFamily)
-UserFamily = connect(null, mapDispatchToProps)(UserFamily)
+UserFamily = connect(mapStateToProps, mapDispatchToProps)(UserFamily)
 export default UserFamily

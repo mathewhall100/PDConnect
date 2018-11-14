@@ -29,6 +29,9 @@ import { PDADLs } from '../../constants'
 
     componentDidMount() {
         this.props.updateStepperCount()
+        console.log("CWRP: ", this.props.userADL)
+        const index = this.props.userADL
+        if (index) {this.handleAnswerSelect(index)}
     }
 
     state = {
@@ -155,7 +158,14 @@ function mapDispatchToProps(dispatch) {
      return bindActionCreators({ updateStepperCount, submitUserLife }, dispatch);
 }
 
+const mapStateToProps = (state =>{
+    console.log("state: ", state)
+    return {
+        userADL: state.life.ADL
+    }
+})
+
 UserLife = withRouter(UserLife)
 UserLife = withStyles(userStylesheet)(UserLife)
-UserLife = connect(null, mapDispatchToProps)(UserLife)
+UserLife = connect(mapStateToProps, mapDispatchToProps)(UserLife)
 export default UserLife

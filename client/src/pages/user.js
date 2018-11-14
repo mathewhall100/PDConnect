@@ -93,7 +93,7 @@ User.propTypes = {
 };
 
 function mapStateToProps(state) {
-    console.log(state);
+    //console.log(state);
     return {
         currentTreatments: state.currentTreatments,
         previousTreatments: state.previousTreatments,

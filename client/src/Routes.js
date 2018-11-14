@@ -45,7 +45,7 @@ class Routes extends Component {
 }
 
 function mapStatsToProps(state) {
-    console.log(state);
+    //console.log(state);
     return {
         currentTreatments: state.currentTreatments,
         previousTreatments: state.previousTreatments,

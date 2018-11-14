@@ -43,11 +43,17 @@ import { motorSy } from '../../constants'
 
     componentDidMount() {
         this.props.updateStepperCount()
+        const index = this.props.userTrack
+        if (index) {this.setState({
+            answerTrack: index,
+            answerArray: this.props.userMotorSy
+            })
+        }
     }
 
     handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
-        this.props.submitUserMotorSy(this.state.answerArray)
+        this.props.submitUserMotorSy(this.state.answerArray, this.state.answerTrack)
         this.setState({redirect: true})
     }
 
@@ -196,8 +202,16 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({ submitUserMotorSy, updateStepperCount }, dispatch);
 }
 
+const mapStateToProps = (state) => {
+    console.log("state: ", state)
+    return {
+        userMotorSy: state.motorSy.motorSy,
+        userTrack: state.motorSy.track
+    }
+}
+
 
 UserMotorSy = withRouter(UserMotorSy)
 UserMotorSy = withStyles(userStylesheet)(UserMotorSy)
-UserMotorSy = connect(null, mapDispatchToProps)(UserMotorSy)
+UserMotorSy = connect(mapStateToProps, mapDispatchToProps)(UserMotorSy)
 export default UserMotorSy
