@@ -23,6 +23,7 @@ const MINHEIGHT = '1060px';
 export const QUESTION_BUTTON_DEFAULT_COLOR = 'grey'
 export const QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR = 'green'
 export const QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR = "black"
+export const WARNING_COLOR = "red"
 
 
 export const userStylesheet = theme => ({
@@ -135,7 +136,7 @@ export const userStylesheet = theme => ({
         padding: 0,
         margin: -6
     },
-    iconBtn : {
+    helpIcon : {
         fontSize: "28px",
         '&:hover': {
             color: "darkblue",
@@ -157,8 +158,8 @@ export const userStylesheet = theme => ({
         fontSize: "15px",
         color: "red",
         position: "relative",
-        left: "-45px",
-        top: "32px"
+        left: "-40px",
+        top: "-5px"
     },
     paper: {
         position: 'absolute',

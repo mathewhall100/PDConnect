@@ -374,3 +374,85 @@ export const activity_level = [
         "text": "severe disability, require constant care"
     },
 ]
+
+const medList = [
+    { value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)" },
+    { value: "Sinemet CR (carbidopa/levodopa)", text: "Sinemet CR (carbidopa/levodopa)" },
+    { value: "Parcopa (carbidopa/levodopa)", text: "Parcopa (carbidopa/levodopa)" },
+    { value: "Rytary (carbidopa/levodopa)", text: "Rytary (carbidopa/levodopa)" },
+    { value: "Duopa (carbidopa/levodopa)", text: "Duopa (carbidopa/levodopa)" },
+    { value: "Mirapex (pramipexole)", text: "Mirapex (pramipexole)" },
+    { value: "Mirapex ER (pramipexole)", text: "Mirapex ER (pramipexole)" },
+    { value: "Requip (ropinirole)", text: "Requip (ropinirole)" },
+    { value: "Requip XL (ropinirole)", text: "Requip XL (ropinirole)" },
+    { value: "Symmetrel (amantadine)", text: "Symmetrel (amantadine)"},
+    { value: "Gocovri  (amantadine)", text: "Gocovri  (amantadine)" },
+    { value: "Neupro (rotigotine)", text: "Neupro (rotigotine)" },
+    { value: "Apokyn(Apomorphine)", text: "Apokyn(Apomorphine)" },
+    { value: "Cogentin (benztropine)", text: "Cogentin (benztropine)" },
+    { value: "Zelapar (selegiline)", text: "Zelapar (selegiline)" },
+    { value: "Azilect (rasagiline)", text: "Azilect (rasagiline)" },
+    { value: "Aricept (donepezil)", text: "Aricept (donepezil)" },
+    { value: "Exelon (rivastigmine)", text: "Exelon (rivastigmine)" },
+    { value: "Razadyne (galantamine)", text: "Razadyne (galantamine)" },
+    { value: "Namenda (Memantine)", text: "Namenda (Memantine)" },
+    { value: "Comtan (entacopone)", text: "Comtan (entacopone)" },
+    { value: "Stalevo (carbidopa/levodopa/entacapone)", text: "Stalevo (carbidopa/levodopa/entacapone)" }
+]
+
+export const PDADLs = [
+    {title: "1) No difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
+    {title: "2) Mild difﬁculties with day-to-day activities.", text: "For example: Slowness with some aspects of housework, gardening or shopping. Able to dress and manage personal hygiene completely independently but rate is slower. You may feel that your medication is not quite effective as it was."},
+    {title: "3) Moderate difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease is interfering with your daily activities. It is increasinglydifﬁcult to do simple activities without some help such as rising from a chair, washing, dressing,shopping, housework. You may have some difﬁculties walking and may require assistance. Difﬁcultieswith recreational activities or the ability to drive a car. The medication is now less effective."},
+    {title: "4) High levels of difﬁculties with day-to-day activities.", text: "For example: You now require much more assistance with activities of daily living such as washing,dressing, housework or feeding yourself. You may have greater difﬁculties with mobility and ﬁnd youare becoming more dependent for assistance from others or aids and appliances. Your medicationappears to be signiﬁcantly less effective."},
+    {title: "5) Extreme difﬁculties with day-to-day activities.", text: "For example: You require assistance in all daily activities. These may include dressing, washing,feeding yourself or walking unaided. You may now be housebound and obtain little or no beneﬁtfrom your medication."}
+]
+
+export const medGroups = [
+    {class: "dopamine agonist", target: "motor symptoms"},
+    {class: "carbidopa/levodopa", target: "motor symptoms"},
+    {class: "other", target: "motor symptoms"}
+]
+
+export const meds = [
+    {generic: "Ropinirole", trade: ["Requip", "Ralnea", "Adartrel"], class: "dopamine agonist", description: ""},
+    {generic: "Pramipixole", trade: ["Mirapex"], class: "dopamine agonist", description: ""},
+    {generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", description: ""},
+
+    {generic: "Sinemet", trade: [], class: "carbidopa/levodopa", description: ""},
+    {generic: "Sinemet CR",  trade: [], class: "carbidopa/levodopa", description: ""},
+    {generic: "Rytary",  trade: [], class: "carbidopa/levodopa", description: ""},
+    {generic: "Doupa",  trade: [], class: "carbidopa/levodopa", description: ""},
+
+    {generic: "Amantadine", trade: ["Amantadine"], class: "other", description: ""}
+]
+
+export const motorSy = [
+    {motorSy: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
+    {motorSy: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
+    {motorSy: "Sudden, unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
+    {motorSy: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
+    {motorSy: "Tremor", shortDescription: "Shaking of the hands and arms that bothers you or prevents you doing things with your hands", description: ""},
+    {motorSy: "Bothersome dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
+    {motorSy: "Small handwriting", shortDescription: "Very small handwriting, which is not usual for you", description: ""},
+    {motorSy: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling walk. ", description: ""},
+    {motorSy: "Falls", shortDescription: "Falling over due to increased difficulty moving and walking", description: ""},
+    {motorSy: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
+    {motorSy: "Difficulty swallowing", shortDescription: "Difficulty swallowing food or fluids. Choking episodes. ", description: ""},
+    {motorSy: "Foot curling", shortDescription: "Involuntary curling of the foot and toes which can be painful and makes walking difficult.", description: ""},
+]
+
+export const nonMotorSy= [
+    {motorSy: "Hallucinations or delusions", shortDescription: "Seeying things that you know are not really there or firmly beleiving seomething despite good evidence that it is not real or true.", description: ""},
+    {motorSy: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or even feeling you may faint, particularly just after you have got up from sitting down or changed position ", description: ""},
+    {motorSy: "Constipation", shortDescription: "Infrequent and or difficuklty opening your bowels.", description: ""},
+    {motorSy: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep", description: ""},
+    {motorSy: "Depression", shortDescription: "Low mood and feeling sof hopelessness", description: ""},
+    {motorSy: "Poor cognition", shortDescription: "Difficulty thinking or remembering things to a point where it affects your life and others notice it.", description: ""},
+    
+]
+
+export const procedures  = [
+    {procedure: "Deep Brain Stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
+    {procedure: "Feeding tube placement", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
+]

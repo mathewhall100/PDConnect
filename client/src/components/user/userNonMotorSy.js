@@ -18,7 +18,13 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-//import { submitUserNonMotorSy} from '../actions/UserNonMotorSyAction'
+import { submitUserNonMotorSy, updateStepperCount} from '../../actions/index.js'
+import BottomNav from '../commons/userBottomNav'
+import TopTitle from '../commons/userTopTitle'
+import SubTitle from '../commons/userSubTitle'
+import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
+import UserModal from '../commons/userModal'
+import { nonMotorSy } from '../../constants'
 
 
  class UserNonMotorSy extends Component {
@@ -29,30 +35,40 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
         noAnswer: false,
         open : false,
         modalTitle : '',
-        modalDescription : '',
+        modalText : '',
+        modalWarning: "",
         redirect: false,
-        redirectAddress : 'test',
+        redirectAddress : 'results',
     }  
 
-    handleSubmit = () => {
-        console.log("submit - meds:, ", this.state.answerArray)
 
-        // this.submitUserNonMotorSy(this.state.answerArray)
-        // this.setState({
-        //     redirect: true
-        // })
-       
+    componentDidMount() {
+        this.props.updateStepperCount()
+        const index = this.props.answerTrack
+        if (index) {this.setState({
+            answerTrack: index,
+            answerArray: this.props.userNonMotorSy
+            })
+        }
+        
+    }
+
+    handleNext = () => {
+        console.log("submit - meds:, ", this.state.answerArray)
+        this.props.submitUserNonMotorSy(this.state.answerArray, this.state.answerTrack)
+        this.setState({redirect: true })
     }
 
     handleMedSelect = (index, choice, name) => {
         //console.log("handlemedselect : ", index, " + ", name)
+        this.setState({modalOpen: false})
         let tempTrack = this.state.answerTrack
         let tempArray = this.state.answerArray
         if (choice === "ns" || choice === "no") {
             tempTrack[index] = choice
             let ind = tempArray.indexOf(name)
             ind >= 0 ? tempArray[ind] = null : null
-            if (choice === "ns") {this.handleOpen({title: name}) }
+            if (choice === "ns") {this.handleModalOpen(name, name) }
           
 
         } 
@@ -77,110 +93,32 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
     }
 
     handleBack = () => {
-        this.setState({
-            redirect: true,
-            redirectAddress: '/'
-        })
+        this.setState({ redirectAddress: '/user/user_motorsy'}, () => this.setState({  redirect: true}) )
     }
 
     handleInfoClick = (info) => {
         console.log(info)
     }
 
-    getModalStyle = () => {
-        const top = 50;
-        const left = 50;
-    
-        return {
-            top: `${top}%`,
-            left: `${left}%`,
-            transform: `translate(-${top}%, -${left}%)`,
-        };
-    }
-
-    handleOpen = (modalItem) => { 
-        console.log(modalItem);
+    handleModalOpen = (title, text) => { 
+        console.log(title);
          this.setState({ 
-             open: true, 
-             modalTitle : modalItem.title,
-             modalDescription : modalItem.description
+             modalTitle : title,
+             modalText : text,
+             modalOpen: true
         });
-     };
-
-     handleClose = () => {
-         this.setState({ open: false });
      };
 
 
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, answerTrack, noAnswer } = this.state
-
-
-        const motorSy= [
-            {motorSy: "Hallucinations or delusions", shortDescription: "Seeying things that you know are not really there or firmly beleiving seomething despite good evidence that it is not real or true.", description: ""},
-            {motorSy: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or even feeling you may faint, particularly just after you have got up from sitting down or changed position ", description: ""},
-            {motorSy: "Constipation", shortDescription: "Infrequent and or difficuklty opening your bowels.", description: ""},
-            {motorSy: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep", description: ""},
-            {motorSy: "Depression", shortDescription: "Low mood and feeling sof hopelessness", description: ""},
-            {motorSy: "Poor cognition", shortDescription: "Difficulty thinking or remembering things to a point where it affects your life and others notice it.", description: ""},
-            
-        ]
-
+        const { redirect, redirectAddress, answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         if (redirect) { 
             const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
-        }
-
-        const TopTitle = (props) => {
-            return (
-                <div>
-                    <h1 className={classes.title}>{props.title}</h1>
-                    <hr className={classes.hr} />
-                </div>
-            )
-        }
-
-        const SubTitle = (props) => {
-            return (
-                <div>
-                    <h3 className={classes.subtitle}>{props.subtitle}</h3>
-                    <hr className={classes.hr}/>
-                </div>
-            )
-        }
-
-        const BottomNav= (props) => {
-            return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()} >NEXT</Button>
-                    </Grid>
-                </Grid>
-            )
-        }
-
-        const QuestionButtonIcons = (props) => {
-            return (
-                <span>
-                    {props.answerConditional !== "yes" && <span className={classes.questionButtonText}>yes</span> }
-                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} /> }
-                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
-                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
-                    {props.answerConditional === "yes" && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
-                </span>
-            )
         }
 
         return (
@@ -193,7 +131,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
 
                     <p className={classes.sectionTitle}>Non-motor symptoms</p>
 
-                    {motorSy.map((sy, index) => {
+                    {nonMotorSy.map((sy, index) => {
 
                         return (
                             <div key={index}>
@@ -203,7 +141,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
                                         <div className={classes.questionContainer}>
                                            
                                                 <span className={classes.questionHead}>{sy.motorSy}</span>  
-                                                <Button className={classes.helpButton} onClick={() => this.handleOpen({title: sy.motorSy, description: sy.shortDescription }) }>
+                                                <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.motorSy, sy.shortDescription) }>
                                                     <HelpIcon color="primary" className={classes.helpIcon}/>
                                                 </Button>
                                             <br />
@@ -222,7 +160,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>
                                         <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleMedSelect(index, "yes", sy.motorSy)}>
-                                            <QuestionButtonIcons answerConditional={answerTrack[index]} />      
+                                        <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  />     
                                         </Button>
                                     </Grid>
 
@@ -232,26 +170,16 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
                         )
                     }) }
    
-                    <BottomNav />            
+                    <BottomNav handleNext={this.handleNext} handleBack={this.handleBack}/>            
             
                 </div>
 
-                <Modal
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        open={this.state.open}
-                        onClose={this.handleClose}
-                    >
-                        <div style={this.getModalStyle()}  className={classes.paper}>
-                            <Typography variant="h6" id="modal-title">
-                                {this.state.modalTitle}
-                            </Typography>
-                            <hr />
-                            <Typography variant="subtitle1" id="simple-modal-description">
-                                {this.state.modalDescription}
-                            </Typography>
-                        </div>
-                </Modal>
+                { modalOpen && <UserModal 
+                    modalOpen={modalOpen}
+                    modalTitle={modalTitle} 
+                    modalText={modalText} 
+                    modalWarning={false} 
+                /> }
 
             </section>
 
@@ -259,13 +187,19 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ submitUserNonMotorSy, updateStepperCount }, dispatch);
+}
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserNonMotorSy }, dispatch);
-// }
-
+const mapStateToProps = (state) => {
+    console.log("state : ", state)
+    return {
+        userNonMotorSy: state.nonMotorSy.nonMotorSy, 
+        userTrack: state.nonMotorSy.track
+    }
+}
 
 UserNonMotorSy = withRouter(UserNonMotorSy)
 UserNonMotorSy = withStyles(userStylesheet)(UserNonMotorSy)
-// UserNonMotorSy = connect(null, mapDispatchToProps)(UserNonMotorSy)
+UserNonMotorSy = connect(mapStateToProps, mapDispatchToProps)(UserNonMotorSy)
 export default UserNonMotorSy

@@ -81,7 +81,7 @@ class VerticalLinearStepper extends React.Component {
 
     render() {
         const { classes, onPage } = this.props;
-        console.log("stepper props : ", this.props);
+        //console.log("stepper props : ", this.props);
         const steps = getSteps();
         const { activeStep } = this.state;
 
@@ -136,7 +136,7 @@ class VerticalLinearStepper extends React.Component {
 }
 
 function mapStatsToProps(state) {
-    console.log(state);
+    //console.log(state);
     return {
         user: state.user,
         currentTreatments: state.currentTreatments,

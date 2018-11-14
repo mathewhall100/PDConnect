@@ -14,9 +14,7 @@ import UserSurgery from '../components/user/userSurgery';
 import UserMotorSy from '../components/user/userMotorSy';
 import UserNonMotorSy from '../components/user/userNonMotorSy';
 import Result from './results'; 
-import UserInfo from './userinfo';
 import NotFound from './notFound';
-import Symptom from './symptom';
 
 import InfoDBS from '../infoFiles/DBS'
 import InfoApomorphine from '../infoFiles/Apomorphine.js'
@@ -62,8 +60,6 @@ class User extends Component {
                     </Grid>
                     <Grid item xs={9}>
                         <Switch>
-                            <Route path='/user/symptom' render={props => <Symptom {...this.props}></Symptom>} />
-                            <Route path='/user/user_info' render={props => <UserInfo ></UserInfo>} /> 
                             <Route path='/user/user_about' render={props => <UserAbout></UserAbout>} />
                             <Route path='/user/user_life' render={props => <UserLife></UserLife>} />
                             <Route path='/user/user_family' render={props => <UserFamily></UserFamily>} />
@@ -72,6 +68,7 @@ class User extends Component {
                             <Route path='/user/user_motorsy' render={props => <UserMotorSy></UserMotorSy>} />
                             <Route path='/user/user_nonmotorsy' render={props => <UserNonMotorSy></UserNonMotorSy>} />
                             <Route path="/user/result" render={props => <Result ></Result>} />
+
                             <Route path="/user/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                             <Route path="/user/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
                             <Route path="/user/info_duopa" render={props => <InfoDuopa {...this.props}></InfoDuopa>} />
@@ -95,8 +92,8 @@ User.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-function mapStatsToProps(state) {
-    console.log(state);
+function mapStateToProps(state) {
+    //console.log(state);
     return {
         currentTreatments: state.currentTreatments,
         previousTreatments: state.previousTreatments,
@@ -109,6 +106,6 @@ function mapStatsToProps(state) {
     
 };
 
-User = connect(mapStatsToProps, { updateStepperCount })(User)
+User = connect(mapStateToProps, { updateStepperCount })(User)
 User = withStyles(userStylesheet)(User)
 export default User;

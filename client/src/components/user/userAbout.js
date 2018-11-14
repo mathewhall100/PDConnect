@@ -23,40 +23,41 @@ import DoneIcon from '@material-ui/icons/Done';
 
 import { age, sex, raceEthnicity, years, activity_level } from '../../constants';
 import {userStylesheet } from '../../styles';
-//import { submitUserAbout } from '../actions/UserAboutAction'
+import { updateStepperCount, submitUserAbout} from '../../actions/index.js'
+import BottomNav from '../commons/userBottomNav'
+import TopTitle from '../commons/userTopTitle'
+import UserModal from '../commons/userModal'
 
 
  class UserAbout extends Component {
 
     state = {
-        open : false,
-        modalTitle : '',
+        modalOpen: false,
+        modalTitle: '',
         modalDescription : '',
+        modalwarning: false,
         redirect: false,
         redirectAddress : '/user/user_life',
     }  
     
-
     componentWillMount() {
         this.handleInitialize();
     }
 
+    componentDidMount() {
+        this.props.updateStepperCount()
+    }
 
     handleInitialize() {
-        const initData = this.props.userInfo
+        const initData = this.props.userAbout
         console.log("in handle init, init data is : ", initData);
         this.props.initialize(initData);
     }
 
     submit(values) {
-        console.log("props : ", this.props);
         console.log("values : " , values);
-
-        //this.props.submitUserAbout(values)
-
-        this.setState({
-            redirect : true,
-        })
+        this.props.submitUserAbout(values)
+        this.setState({redirect : true})
     }
 
     handleClearForm() {
@@ -66,61 +67,29 @@ import {userStylesheet } from '../../styles';
 
     handleBack = () => {
         this.setState({
-            redirect: true,
-            redirectAddress: '/'
-        })
+            redirectAddress: '/'}, () => this.setState({redirect: true}) )
     }
 
-    handleInfoClick = (info) => {
-        console.log(info)
-    }
-
-    getModalStyle = () => {
-        const top = 50;
-        const left = 50;
-    
-        return {
-            top: `${top}%`,
-            left: `${left}%`,
-            transform: `translate(-${top}%, -${left}%)`,
-        };
-    }
-
-    handleOpen = (modalItem) => { 
-        console.log(modalItem);
+    handleModalOpen = (title, text) => { 
+        console.log(title);
          this.setState({ 
-             open: true, 
-             modalTitle : modalItem.modal,
-             modalDescription : modalItem.modal
+             modalTitle : title,
+             modalText : text,
+             modalOpen: true
         });
-     };
-
-     handleClose = () => {
-         this.setState({ open: false });
      };
 
 
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress } = this.state
+        const { redirect, redirectAddress, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
 
         if (redirect) { 
             const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
-            return<Redirect exact to={"/user/user_life"} />;
-        }
-
-        const TopTitle = (props) => {
-            return (
-                <Grid container spacing={24}>
-                    <div className={classes.title}>
-                        {props.title}
-                        <hr className={classes.hr} />
-                    </div>
-                </Grid>
-            )
+            return<Redirect exact to={url} />;
         }
 
         const RenderSelect = (field) => {
@@ -154,15 +123,15 @@ import {userStylesheet } from '../../styles';
                         </FormControl> 
                     </span>
 
-                    { (pristine || error) && <Button className={classes.iconBtn} onClick={() => this.handleOpen({modal})}>
-                        <HelpIcon color="primary" disableRipple className={classes.iconHover}/>
+                    { (pristine || error) && <Button className={classes.helpButton} style={{position: "relative", top: "-38px", left: "-5px"}} onClick={() => this.handleModalOpen(label, label)}>
+                        <HelpIcon color="primary" className={classes.helpIcon}/>
                     </Button> }
 
                     <span className={classes.doneIcon}>
                         {!pristine && !error ? <DoneIcon /> : ''}
                     </span>
                     
-                    <span className={classes.errorText}>
+                    <span className={classes.errorText} >
                             {touched ? error : ''}
                     </span>
                 
@@ -177,7 +146,8 @@ import {userStylesheet } from '../../styles';
                         <hr className={classes.hr} />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                     <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
+                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
                     </Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3}></Grid>
@@ -192,7 +162,7 @@ import {userStylesheet } from '../../styles';
         return (
             <div className={classes.componentBox} >
                 <div>
-                    <TopTitle title={`Let's get started! \n Tell us a bit about you.`} />
+                    <TopTitle title="Let's get started! Tell us a bit about you." />
 
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
@@ -278,22 +248,12 @@ import {userStylesheet } from '../../styles';
 
                 </div>
 
-                <Modal
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        open={this.state.open}
-                        onClose={this.handleClose}
-                    >
-                        <div style={this.getModalStyle()}  className={classes.paper}>
-                            <Typography variant="h6" id="modal-title">
-                                {this.state.modalTitle}
-                            </Typography>
-                            <hr />
-                            <Typography variant="subtitle1" id="simple-modal-description">
-                                {this.state.modalDescription}
-                            </Typography>
-                        </div>
-                </Modal>
+                { modalOpen && <UserModal 
+                    modalOpen={modalOpen}
+                    modalTitle={modalTitle} 
+                    modalText={modalText} 
+                    modalWarning={modalWarning} 
+                /> }
 
             </div>
 
@@ -324,17 +284,24 @@ function validate(values) {
     return errors
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserAbout }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ updateStepperCount, submitUserAbout }, dispatch);
+}
+
+const mapStateToProps = (state) => {
+    console.log("state ", state)
+    return {
+        userAbout: state.about
+    }
+}
 
 const formData = {
     form: 'userAboutForm', //unique identifier for this form 
-    //validate,      
+    validate,      
 }
 
 UserAbout = reduxForm(formData)(UserAbout)
 UserAbout = withRouter(UserAbout)
 UserAbout = withStyles(userStylesheet)(UserAbout)
-// UserAbout = connect(null, mapDispatchToProps)(UserAbout)
+UserAbout = connect(mapStateToProps, mapDispatchToProps)(UserAbout)
 export default UserAbout

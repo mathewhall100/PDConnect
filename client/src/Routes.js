@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Homepage from './pages/home';
-import CurrentTreatment from './pages/treatment';
 import User from './pages/user';
 import Result from './pages/results';
 import TreatmentInfo from './pages/treatmentInfo';
-import UserInfo from './pages/userinfo';
 import NotFound from './pages/notFound';
-import Symptom from './pages/symptom';
 
 import InfoDBS from './infoFiles/DBS'
 import InfoApomorphine from './infoFiles/Apomorphine.js'
@@ -27,9 +24,7 @@ class Routes extends Component {
     render() {
         return (
             <div>
-
                 <Switch>
-                    <Route path='/symptom' render={props => <Symptom {...this.props}></Symptom>} />
                     <Route path='/user' component={User} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                     <Route path="/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
@@ -47,10 +42,10 @@ class Routes extends Component {
             </div>
         );
     }
-
 }
+
 function mapStatsToProps(state) {
-    console.log(state);
+    //console.log(state);
     return {
         currentTreatments: state.currentTreatments,
         previousTreatments: state.previousTreatments,

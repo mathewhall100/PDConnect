@@ -4,13 +4,13 @@ import {
 } from './types';
 
 
-export const submitUserMotorSy = (objUserMotorSy) => {
+export const submitUserMotorSy = (objUserMotorSy, objUserTrack) => {
     console.log("submitting user motorsy : ", objUserMotorSy);
 
     return (dispatch) => {
         dispatch({
             type: USER_MOTORSY,
-            payload: objUserMotorSy
+            payload: {motorSy: objUserMotorSy, track: objUserTrack}
         })
     }
 }

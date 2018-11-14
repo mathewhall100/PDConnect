@@ -14,6 +14,7 @@ export const updateStepperCount = (stepper) => {
 
     }
 }
+
 function getStepContent(){
     switch (window.location.pathname) {
         case '/user/user_about':
