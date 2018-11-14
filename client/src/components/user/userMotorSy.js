@@ -57,21 +57,21 @@ import { motorSy } from '../../constants'
         this.setState({redirect: true})
     }
 
-    handleAnswerSelect = (index, choice, name) => {
-        console.log("handleanswerselect : ", choice, " + ", index, " + ", name)
+    handleAnswerSelect = (index, choice, symptom) => {
+        console.log("handleanswerselect : ", choice, " + ", index, " + ", symptom)
         this.setState({modalOpen: false})
         let tempArray = this.state.answerTrack
         let tempTrack = this.state.answerArray
         if (choice === "ns" || choice === "no") {
             tempArray[index] = choice
-            let ind = tempTrack.indexOf(name)
+            let ind = tempTrack.indexOf(symptom)
             ind >= 0 ? tempTrack[ind] = null : null
-            if (choice === "ns") {this.handleModalOpen(name, "hello") }
+            if (choice === "ns") {this.handleModalOpen(symptom, "hello") }
 
         } 
         else {
             tempArray[index] = choice
-            tempTrack.indexOf(name) < 0 ? tempTrack.push(name) : null
+            tempTrack.indexOf(symptom) < 0 ? tempTrack.push(symptom) : null
         }
         this.setState({
             noAnswer: false,
@@ -150,8 +150,8 @@ import { motorSy } from '../../constants'
                                     <Grid item xs={12} sm={12} md={7} >
                                    
                                     <div className={classes.questionContainer}>
-                                            <span className={classes.questionHead}>{sy.motorSy}</span>  
-                                            <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.motorSy, sy.shortDescription) }>
+                                            <span className={classes.questionHead}>{sy.symptom}</span>  
+                                            <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.shortDescription) }>
                                                 <HelpIcon color="primary" className={classes.helpIcon}/>
                                             </Button>
                                         <br />
@@ -162,14 +162,14 @@ import { motorSy } from '../../constants'
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={5}>
-                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.symptom)}>
                                             <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}}>not sure</span>
                                         </Button>
-                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.symptom)}>
                                             {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>
-                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.motorSy)}>
+                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.key)}>
                                             <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  />
                                         </Button>
                                     </Grid>

@@ -428,27 +428,29 @@ export const meds = [
 ]
 
 export const motorSy = [
-    {motorSy: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
-    {motorSy: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
-    {motorSy: "Sudden, unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
-    {motorSy: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
-    {motorSy: "Tremor", shortDescription: "Shaking of the hands and arms that bothers you or prevents you doing things with your hands", description: ""},
-    {motorSy: "Bothersome dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
-    {motorSy: "Small handwriting", shortDescription: "Very small handwriting, which is not usual for you", description: ""},
-    {motorSy: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling walk. ", description: ""},
-    {motorSy: "Falls", shortDescription: "Falling over due to increased difficulty moving and walking", description: ""},
-    {motorSy: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
-    {motorSy: "Difficulty swallowing", shortDescription: "Difficulty swallowing food or fluids. Choking episodes. ", description: ""},
-    {motorSy: "Foot curling", shortDescription: "Involuntary curling of the foot and toes which can be painful and makes walking difficult.", description: ""},
+    {key: "motorfluct", symptom: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
+    {key: "earlyoff", symptom: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
+    {key: "suddenoff", symptom: "Sudden, unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
+    {key: "freezing", symptom: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
+    {key: "tremor", symptom: "Tremor", shortDescription: "Shaking of the hands and arms that bothers you or prevents you doing things with your hands", description: ""},
+    {key: "dyskinesia", symptom: "Bothersome dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
+    {key: "micrographia", symptom: "Small handwriting", shortDescription: "Very small handwriting, which is not usual for you", description: ""},
+    {key: "bradykinesia", symptom: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling walk. ", description: ""},
+    {key: "fall", symptom: "Falls", shortDescription: "Falling over due to increased difficulty moving and walking", description: ""},
+    {key: "dysphagia", symptom: "Difficulty swallowing", shortDescription: "Difficulty swallowing food or fluids. Choking episodes. ", description: ""},
+    
 ]
 
 export const nonMotorSy= [
-    {motorSy: "Hallucinations or delusions", shortDescription: "Seeying things that you know are not really there or firmly beleiving seomething despite good evidence that it is not real or true.", description: ""},
-    {motorSy: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or even feeling you may faint, particularly just after you have got up from sitting down or changed position ", description: ""},
-    {motorSy: "Constipation", shortDescription: "Infrequent and or difficuklty opening your bowels.", description: ""},
-    {motorSy: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep", description: ""},
-    {motorSy: "Depression", shortDescription: "Low mood and feeling sof hopelessness", description: ""},
-    {motorSy: "Poor cognition", shortDescription: "Difficulty thinking or remembering things to a point where it affects your life and others notice it.", description: ""},
+    {key: "psychosis", symptom: "Hallucinations or delusions", shortDescription: "Seeying things that you know are not really there or firmly beleiving seomething despite good evidence that it is not real or true.", description: ""},
+    {key: "orthostatic", symptom: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or even feeling you may faint, particularly just after you have got up from sitting down or changed position ", description: ""},
+    {key: "drooling", symptom: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
+    {key: "slowtransit", symptom: "Nausea and bloating", shortDescription: "Nausea, sickness and bloated stomach", description: ""},
+    {key: "footcurl", symptom: "Foot curling", shortDescription: "Involuntary curling of the foot and toes which can be painful and makes walking difficult.", description: ""},
+    {key: "constipation", symptom: "Constipation", shortDescription: "Infrequent and or difficuklty opening your bowels.", description: ""},
+    {key: "insomnia", symptom: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep", description: ""},
+    {key: "depression", symptom: "Depression", shortDescription: "Low mood and feeling sof hopelessness", description: ""},
+    {key: "cogdecline", symptom: "Poor cognition", shortDescription: "Difficulty thinking or remembering things to a point where it affects your life and others notice it.", description: ""},
     
 ]
 
