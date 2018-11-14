@@ -31,7 +31,7 @@ class Connects extends Component {
                     <hr />
                 </Grid>
                 <Grid container spacing={24} className={classes.aboutContainer}>
-                    <Grid item xs={8} className={classes.aboutContent}>
+                    <Grid item md={8} lg={8} xs={12} className={classes.aboutContent}>
                         <h3>Deep Brain Stimulation</h3>
                         <span>
                             This neurosurgical procedure involves implantation of medical device (brain pacemaker) that sends electrical impulses 
@@ -41,17 +41,17 @@ class Connects extends Component {
                             <Button variant='outlined' className={classes.aboutButton}>Learn More</Button>
                         </Grid>
                     </Grid>
-                    <Grid item xs={4} className={classes.aboutImgContainer}>
+                    <Grid item md={4} lg={4} xs={12} className={classes.aboutImgContainer}>
                         <img src={dbsImg} alt='deep brain surgery' className={classes.treatmentImg} />
                     </Grid>
                 </Grid>
                 <br />
                 < hr/>
                 <Grid container spacing={24} className={classes.aboutContainer}>
-                    <Grid item xs={4} className={classes.aboutImgContainer}>
+                    <Grid item md={4} lg={4} xs={12} className={classes.aboutImgContainer}>
                         <img src={rytaryImg} alt='Rytary Medication' className={classes.treatmentImg} />
                     </Grid>
-                    <Grid item xs={8} className={classes.aboutContent}>
+                    <Grid item md={8} lg={8} xs={12}  className={classes.aboutContent}>
                         <h3>Rytary</h3>
                         <span>
                             RYTARY is an extended-release treatment for Parkinsons Disease, it involves carbidopa and levodopa capsule approved by US Food and Drug Administration (FDA) in 2015. 
@@ -66,7 +66,7 @@ class Connects extends Component {
                 <br />
                 <hr />
                 <Grid container spacing={24} className={classes.aboutContainer}>
-                    <Grid item xs={8} className={classes.aboutContent}>
+                    <Grid item md={8} lg={8} xs={12}  className={classes.aboutContent}>
                         <h3>Focus Group</h3>
                         <span>
                             Find the study relates to you, research found that focus group creates an accepting environment that puts participants at ease
@@ -77,7 +77,7 @@ class Connects extends Component {
                             <Button variant='outlined' className={classes.aboutButton}>Find the closest focus group</Button>
                         </Grid>
                     </Grid>
-                    <Grid item xs={4} className={classes.aboutImgContainer}>
+                    <Grid item md={4} lg={4} xs={12}  className={classes.aboutImgContainer}>
                         <img src={focusGroupImg} alt='deep brain surgery' className={classes.treatmentImg} />
                     </Grid>
                 </Grid>

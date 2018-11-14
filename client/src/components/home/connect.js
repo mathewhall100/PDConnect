@@ -50,7 +50,7 @@ class Connects extends Component {
                     
                 </Grid>
                 <Grid container spacing={24}>
-                    <Grid item xs={4}>
+                    <Grid item md={4} lg={4} xs={12}>
                         <div className={classes.connectHeader}> 
                             Subscribe to Connect PD 
                             <Grid item xs={12}>
@@ -61,12 +61,12 @@ class Connects extends Component {
                             </Grid>
                         </div>
                     </Grid>
-                    <Grid item xs={5} className={classes.connectDescriptionContainer}>
+                    <Grid item md={5} lg={5} xs={12} className={classes.connectDescriptionContainer}>
                         <div className={classes.description}>
                             Join us to learn more about the latest Parkinsons disease treatment from pharmaceutical companies world wide
                         </div>
                     </Grid>
-                    <Grid item xs={3} className={classes.connectRight}>
+                    <Grid item md={3} lg={3} xs={12} className={classes.connectRight}>
                         <div className={classes.connectSubscribe}>
                             <TextField
                                 id="outlined-e-mail"
