@@ -8,6 +8,7 @@ import Promise from '../components/home/promise';
 import Connects from '../components/home/connect';
 import Endorsement from '../components/home/endorsement';
 import About from '../components/home/about';
+import Start from '../components/home/start';
 import Button from '@material-ui/core/Button';
 import background1 from '../images/andy-kelly-402111-unsplash.jpg';
 import { stylesheet } from '../styles';
@@ -89,10 +90,11 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <Hero />
-                <Connects />
+                <Start />
+                <About />
                 <Promise />
                 <Endorsement />
-                <About />
+                <Connects />
             </React.Fragment>
         );
     }

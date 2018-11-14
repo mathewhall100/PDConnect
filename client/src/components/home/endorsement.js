@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { stylesheet } from '../../styles';
 import DoneIcon from '@material-ui/icons/Done';
-import image from '../../images/rawpixel-600792-unsplash.jpg'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
