@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
 import { stylesheet } from '../../styles';
-import DoneIcon from '@material-ui/icons/Done';
-import AppleDownload from '../../images/AppleDownload.png';
-import GoogleDownload from '../../images/GoogleDownload.png';
-import MobileImg from '../../images/wearables.jpg';
 import PhysicianImg from '../../images/physician.jpg';
 import PatientImg from '../../images/patient.jpg';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import fbIcon from '../../images/socialMedia/facebook.png';
+import instagramIcon from '../../images/socialMedia/instagram.png';
+import youtubeIcon from '../../images/socialMedia/youtube.png';
+import twitterIcon from '../../images/socialMedia/twitter.png';
 
 class Connects extends Component {
     state={
+        email : '',
         redirect : false,
         redirectTo : '',
     }
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        });
+    };
     handleRedirect = (page)=>{
         this.setState({
             redirect : true,
@@ -37,23 +39,60 @@ class Connects extends Component {
             )
         }
         return (
-            <Grid container spacing={24} className={classes.homepageFixedWidthContent} cols={3}>
-                <Grid item xs={4} className={classes.connectItem}>
-                    <div className={classes.connectHeader}>Download mobile app today!</div>
-                    <div className={classes.connectImgContainer}>
-                        <img src={MobileImg} className={classes.connectImg} alt="Download from Apple Store" />
-                    </div>
-                    <div className={classes.connectDescription}>
-                        We developed a mobile application to help you better manage your Parkinsons disease. 
-                    </div>
-                    <span className={classes.connectImgContainer}>
-                        <a href='/'><img src={AppleDownload} className={classes.connectDownloadImg} alt="Download from Apple Store" /></a>
-                    </span>
-                    <span className={classes.connectImgContainer}>
-                        <a href='/'><img src={GoogleDownload} className={classes.connectDownloadImg} alt="Download from Google Store" /></a>
-                    </span>
+            <Grid container className={classes.homepageFixedWidthContent}>
+                <hr />
+                <Grid container spacing={24} className={classes.connectItem}>
+                    
+                    <Grid item xs={12} className={classes.homepageHeader}>
+                        Connect with Us
+                        <hr />
+                    </Grid>
+                    
                 </Grid>
-                <Grid item xs={4} className={classes.connectItem}>
+                <Grid container spacing={24}>
+                    <Grid item xs={4}>
+                        <div className={classes.connectHeader}> 
+                            Subscribe to Connect PD 
+                            <Grid item xs={12}>
+                                <img className={classes.socialIcon} src={fbIcon} alt="facebook icon" />
+                                <img className={classes.socialIcon} src={twitterIcon} alt="twitter icon" />
+                                <img className={classes.socialIcon} src={instagramIcon} alt="instagram icon" />
+                                <img className={classes.socialIcon} src={youtubeIcon} alt="youtube icon" />
+                            </Grid>
+                        </div>
+                    </Grid>
+                    <Grid item xs={5} className={classes.connectDescriptionContainer}>
+                        <div className={classes.description}>
+                            Join us to learn more about the latest Parkinsons disease treatment from pharmaceutical companies world wide
+                        </div>
+                    </Grid>
+                    <Grid item xs={3} className={classes.connectRight}>
+                        <div className={classes.connectSubscribe}>
+                            <TextField
+                                id="outlined-e-mail"
+                                label="e-mail address"
+                                className={classes.textField}
+                                value={this.state.email}
+                                onChange={this.handleChange('email')}
+                                margin="normal"
+                                variant="outlined"
+                            />
+                            <Button variant='outlined' className={classes.aboutButton}>Subscribe </Button>
+                        </div>
+                        
+                    </Grid>
+                </Grid>
+                {/* 
+                <Grid item xs={12}>
+                    <div className={classes.title}> Let's get started </div>
+                    <Grid container spacing={24}>
+                        <Grid item xs={12}>
+                            <Button variant='outlined'> Let's get started </Button>
+                        </Grid>
+                    </Grid>
+                    
+                </Grid>
+                <Grid item xs={3} className={classes.connectItem}>
                     <div className={classes.connectHeader}>Connect with us!</div>
                     <div className={classes.connectImgContainer}>
                         <img src={PhysicianImg} className={classes.connectImg} alt="Create Account" />
@@ -63,7 +102,7 @@ class Connects extends Component {
                     </Grid>
                     
                 </Grid>
-                <Grid item xs={4} className={classes.connectItem}>
+                <Grid item xs={3} className={classes.connectItem}>
                     <div className={classes.connectHeader}>Create an account</div>
                     <div className={classes.connectImgContainer}>
                         <img src={PatientImg} className={classes.connectImg} alt="Connect" />
@@ -73,6 +112,10 @@ class Connects extends Component {
                     </Grid>
                     
                 </Grid>
+                <Grid item xs={3} className={classes.connectItem}>
+
+                </Grid>
+                */}
             </Grid>
         )
     }

@@ -1,45 +1,51 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { stylesheet } from '../../styles';
 import DoneIcon from '@material-ui/icons/Done';
-import image from '../../images/rawpixel-600792-unsplash.jpg'
-import image2 from '../../images/jess-watters-701054-unsplash.jpg'
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import { Parallax } from 'react-scroll-parallax';
+import AppleDownload from '../../images/AppleDownload.png';
+import GoogleDownload from '../../images/GoogleDownload.png';
 
 class Hero extends Component {
     
     render(){
         const { classes } = this.props;
         return(
-            <div>
+            <div style={{position: "relative", height: "auto"}}>
                 <div className={classes.parallax}></div>
             
-                <Grid container spacing={24} className={classes.hero}>
-                    <Card className={classes.card}>
+                <div className={classes.hero}>
+                    <div className={classes.card}>
                         
-                        <div className={classes.content}>
-                            
-                            <span className={classes.heroTitle}>
-                                Individualized Parkinsons Treatments <br/>
-                                To Discuss With Your Neurologist <br />
-                                <DoneIcon /><span className={classes.heroList}>up-to-date treatments</span><br />
-                                <DoneIcon /><span className={classes.heroList}>patient first dedication</span><br />
-                                <DoneIcon /><span className={classes.heroList}>various clinical trials</span><br />
-                                <DoneIcon /><span className={classes.heroList}>focus groups recommendation</span>
-                                <Button variant='contained' color='primary' style={{display : 'block' , textAlign: 'right'}}>Find Out How</Button>
-                            </span>
-                            
-                        </div>
-                    </Card>
+                        <Grid container className={classes.content}>
+                            <Grid item xs={12} className={classes.heroTitle}>
+                                Use this application to find your next best and latest Parkinsons disease treatments and clinical trials.
+                            </Grid>
+                            <Grid item xs={12}>
+                                <div className={classes.description}>
+                                    Want to know what is the next best treatments or clinical trial out there waiting for you?
+                                </div>
+                            </Grid>
+                            <Grid item xs={12} className={classes.startButtonContainer}>
+                                <div className={classes.title}>
+                                    <Button variant='outlined' className={classes.startButton} >Start</Button>
+                                </div>
+                            </Grid>
+                        </Grid>
+                    </div>
                         
-                </Grid> 
-                
+                </div> 
+                <Grid container  className={classes.heroAppStore}>
+                    <Grid item xs={12}>
+                        <span className={classes.connectImgContainer}>
+                            <a href='/'><img src={AppleDownload} className={classes.heroDownloadImg} alt="Download from Apple Store" /></a>
+                        </span>
+                        <span className={classes.connectImgContainer}>
+                            <a href='/'><img src={GoogleDownload} className={classes.heroDownloadImg} alt="Download from Google Store" /></a>
+                        </span>
+                    </Grid>
+                </Grid>
             </div>
         )
     }
