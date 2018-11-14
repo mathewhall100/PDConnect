@@ -16,7 +16,13 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-//import { submitUserLife} from '../actions/UserLifeAction'
+import { updateStepperCount, submitUserLife } from '../../actions/index.js'
+import BottomNav from '../commons/userBottomNav'
+import TopTitle from '../commons/userTopTitle'
+import SubTitle from '../commons/userSubTitle'
+import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
+import UserModal from '../commons/userModal'
+import { PDADLs } from '../../constants'
 
 
  class UserLife extends Component {
@@ -25,40 +31,38 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
         this.props.updateStepperCount()
     }
 
-
     state = {
         activeBtn: [],
-        open: false,
+        modalOpen: false,
         modalWarning: false,
         modalTitle : '',
-        modalDescription : '',
+        modalText : '',
         redirect: false,
         redirectAddress : '/user/user_family',
     }  
 
     handleAnswerSelect = (index) => {
-        console.log("here : ",  index)
+        this.setState({modalOpen: false})
         let tempArray = [0, 0, 0, 0, 0,]
         tempArray[index] = 1
         this.setState({activeBtn: tempArray})
     }
 
-    handleSubmit = () => {
+    handleNext = () => {
         const { activeBtn } = this.state
         const ADL = activeBtn.indexOf(1)
         console.log("submit - ADL:, ", ADL)
         if (ADL >= 0) {
-            // this.submitUserLife( {
-            //     ADL: this.state.activeBtn.indexOf("1"),
-            // })
+            this.props.submitUserLife({
+                ADL: ADL,
+            }) 
+            this.setState({redirect: true})
         } else {
             this.setState({modalWarning: true})
-            this.handleOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
+            this.handleModalOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
         }
-        this.setState({redirect: true})
     }
     
-
     handleClearForm() {
         console.log("clear form")
         this.setState({activeBtn: []})
@@ -69,100 +73,26 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
             redirectAddress: '/user/user_about'}, () => this.setState({redirect: true}) )
     }
 
-    getModalStyle = () => {
-        const top = 50;
-        const left = 50;
-    
-        return {
-            top: `${top}%`,
-            left: `${left}%`,
-            transform: `translate(-${top}%, -${left}%)`,
-        };
-    }
-
-    handleOpen = (text, modalText) => { 
-        console.log(modalText);
+    handleModalOpen = (title, text) => { 
+        console.log(title);
          this.setState({ 
-             open: true, 
-             modalTitle : text,
-             modalDescription : modalText
+             modalTitle : title,
+             modalText : text,
+             modalOpen: true
         });
-     };
-
-     handleClose = () => {
-         this.setState({ open: false });
      };
 
 
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, activeBtn, modalWarning  } = this.state
-
-        const PDADLs = [
-            {text: "1) No difﬁculties with day-to-day activities.",modalText: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
-            {text: "2) Mild difﬁculties with day-to-day activities.",modalText: "For example: Slowness with some aspects of housework, gardening or shopping. Able to dress and manage personal hygiene completely independently but rate is slower. You may feel that your medication is not quite effective as it was."},
-            {text: "3) Moderate difﬁculties with day-to-day activities.",modalText: "For example: Your Parkinson’s disease is interfering with your daily activities. It is increasinglydifﬁcult to do simple activities without some help such as rising from a chair, washing, dressing,shopping, housework. You may have some difﬁculties walking and may require assistance. Difﬁcultieswith recreational activities or the ability to drive a car. The medication is now less effective."},
-            {text: "4) High levels of difﬁculties with day-to-day activities.",modalText: "For example: You now require much more assistance with activities of daily living such as washing,dressing, housework or feeding yourself. You may have greater difﬁculties with mobility and ﬁnd youare becoming more dependent for assistance from others or aids and appliances. Your medicationappears to be signiﬁcantly less effective."},
-            {text: "5) Extreme difﬁculties with day-to-day activities.", modalText: "For example: You require assistance in all daily activities. These may include dressing, washing,feeding yourself or walking unaided. You may now be housebound and obtain little or no beneﬁtfrom your medication."} 
-        ]
-
+        const { redirect, redirectAddress, activeBtn, modalOpen, modalTitle, modalText, modalWarning  } = this.state
 
         if (redirect) { 
             const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
-
-        const TopTitle = (props) => {
-            return (
-                <div>
-                    <h1 className={classes.title}>{props.title}</h1>
-                    <hr className={classes.hr} />
-                </div>
-            )
-        }
-
-        const SubTitle = (props) => {
-            return (
-                <div>
-                    <h3 className={classes.subtitle}>{props.subtitle}</h3>
-                    <hr className={classes.hr}/>
-                </div>
-            )
-        }
-
-        const BottomNav= (props) => {
-            return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
-                    </Grid>
-                    <Grid item xs={3}>
-                    <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()}>NEXT</Button>
-                    </Grid>
-                </Grid>
-            )
-        }
-
-        const QuestionButtonIcons = (props) => {
-            return (
-                <span>
-                    {props.answerConditional === 1 && <DoneIcon className={classes.doneIcon} /> }
-                    {props.answerConditional === 1 && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
-                    {props.answerConditional === 1  && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
-                    {props.answerConditional === 1 && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
-                    {!props.answerConditional && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
-                </span>
-            )
-        }
-
 
         return (
             <section>
@@ -180,9 +110,9 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                                 <Grid container spacing={24}>
                                     <Grid item xs={12} sm={8} md={8}>
                                         <div className={classes.questionContainer} >
-                                            <span className={classes.questionHead}>{question.text}</span>
+                                            <span className={classes.questionHead}>{question.title}</span>
                                             <br />
-                                            <Button className={classes.helpButtton} onClick={() => this.handleOpen(PDADLs[index].text, PDADLs[index].modalText)}>
+                                            <Button type="button" id="modalBtn" className={classes.helpButtton} onClick={() => this.handleModalOpen(PDADLs[index].title, PDADLs[index].text)}>
                                                 <HelpIcon color="primary" className={classes.helpIcon}/>
                                                     &nbsp;&nbsp;More Details and examples
                                             </Button>
@@ -193,7 +123,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                                     <Grid item xs={12} sm={4} md={4}>
                                         <Button type="button" className={classes.questionButton}  style={{borderColor: activeBtn[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index)}>
 
-                                        <QuestionButtonIcons answerConditional={activeBtn[index]} />
+                                        <QuestionButtonIcons answerConditional={activeBtn[index] ? true : false} />
                                            
                                         </Button>
                                     </Grid>
@@ -203,26 +133,16 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                         )
                     }) }
                     
-                    <BottomNav />
+                    <BottomNav handleBack={this.handleBack} handleNext={this.handleNext} />
 
                 </div>
 
-                <Modal
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        open={this.state.open}
-                        onClose={this.handleClose}
-                    >
-                        <div style={this.getModalStyle()}  className={classes.paper}>
-                            <Typography variant="h6" id="modal-title" style={{color: modalWarning ? "red" : "grey"}}>
-                                {this.state.modalTitle}
-                            </Typography>
-                            <hr />
-                            <Typography variant="subtitle1" id="simple-modal-description">
-                                {this.state.modalDescription}
-                            </Typography>
-                        </div>
-                </Modal>
+                { modalOpen && <UserModal 
+                    modalOpen={modalOpen}
+                    modalTitle={modalTitle} 
+                    modalText={modalText} 
+                    modalWarning={modalWarning} 
+                /> }
 
             </section>
 
@@ -232,11 +152,8 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
 
 
 function mapDispatchToProps(dispatch) {
-     return bindActionCreators({ updateStepperCount }, dispatch);
+     return bindActionCreators({ updateStepperCount, submitUserLife }, dispatch);
 }
-
-
-
 
 UserLife = withRouter(UserLife)
 UserLife = withStyles(userStylesheet)(UserLife)

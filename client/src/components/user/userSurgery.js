@@ -17,7 +17,12 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-//import { submitUserSurgery} from '../actions/UserSurgeryAction'
+import { submitUserSurgery, updateStepperCount} from '../../actions/index.js'
+import BottomNav from '../commons/userBottomNav'
+import TopTitle from '../commons/userTopTitle'
+import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
+import UserModal from '../commons/userModal'
+import { procedures } from '../../constants'
 
 
  class UserSurgery extends Component {
@@ -33,16 +38,19 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
         redirectAddress : '/user/user_motorsy',
     }  
 
-    handleSubmit = () => {
+    componentDidMount() {
+        this.props.updateStepperCount()
+    }
+
+    handleNext= () => {
         console.log("submit - meds:, ", this.state.answerArray)
-
-        // this.submitUserSurgeries(this.state.answerArray)
-
+        this.props.submitUserSurgery(this.state.answerArray)
         this.setState({redirect: true})
     }
 
     handleAnswerSelect = (index, name) => {
         console.log("handleAnswerselect : ", name)
+        this.setState({modalOpen: false})
         let tempTrack = this.state.answerTrack
         let tempArray = this.state.answerArray
         const tempIndex = tempArray.indexOf(name)
@@ -56,6 +64,10 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
 
         this.setState({
             noAnswer: false,
+            modalOpen: false,
+            modalWarning: false,
+            modalTitle : '',
+            modalText : '',
             answerTrack: tempTrack, 
             answerArray: tempArray
         })
@@ -74,91 +86,25 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
         this.setState({redirectAddress: '/user/user_meds'}, () => this.setState({redirect: true}) )
     }
 
-    handleInfoClick = (info) => {
-        console.log(info)
-    }
-
-    getModalStyle = () => {
-        const top = 50;
-        const left = 50;
-    
-        return {
-            top: `${top}%`,
-            left: `${left}%`,
-            transform: `translate(-${top}%, -${left}%)`,
-        };
-    }
-
-    handleOpen = (modalItem) => { 
-        console.log(modalItem);
+    handleModalOpen = (title, text) => { 
+        console.log(title);
          this.setState({ 
-             open: true, 
-             modalTitle : modalItem.title,
-             modalDescription : modalItem.description
+             modalTitle : title,
+             modalText : text,
+             modalOpen: true
         });
-     };
-
-     handleClose = () => {
-         this.setState({ open: false });
      };
 
 
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, answerTrack,noAnswer } = this.state
-
-
-        const procedures= [
-            {procedure: "Deep Brain Stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
-            {procedure: "Feeding tube placement", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
-        ]
-
+        const { redirect, redirectAddress, answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         if (redirect) { 
             const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
-        }
-
-        const TopTitle = (props) => {
-            return (
-                <div>
-                    <h1 className={classes.title}>{props.title}</h1>
-                    <hr className={classes.hr} />
-                </div>
-            )
-        }
-
-        const BottomNav= (props) => {
-            return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
-                    </Grid>
-                    <Grid item xs={3}>
-                    <Button type="button" variant="outlined" className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()} >NEXT</Button>
-                    </Grid>
-                </Grid>
-            )
-        }
-
-        const QuestionButtonIcons = (props) => {
-            return (
-                <span>
-                    {props.answerConditional  && <DoneIcon className={classes.doneIcon} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
-                    {!props.answerConditional && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
-                </span>
-            )
         }
 
         return (
@@ -177,7 +123,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                                     <Grid item xs={12} sm={8}>
                                         <div className={classes.questionContainer}>
                                             <span className={classes.questionHead}>{proc.procedure}</span>  
-                                            <Button className={classes.helpButton} onClick={() => this.handleOpen({title: proc.procedure, description: proc.shortDescription}) }>
+                                            <Button className={classes.helpButton} onClick={() => this.handleModalOpen(proc.procedure,proc.shortDescription) }>
                                                 <HelpIcon color="primary" className={classes.helpIcon}/>
                                                 </Button>
                                             <br />
@@ -197,26 +143,16 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                         )
                     }) }
    
-                    <BottomNav />            
+                    <BottomNav handleNext={this.handleNext} handleBack={this.handleBack} />    
             
                 </div>
 
-                <Modal
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        open={this.state.open}
-                        onClose={this.handleClose}
-                    >
-                        <div style={this.getModalStyle()}  className={classes.paper}>
-                            <Typography variant="h6" id="modal-title">
-                                {this.state.modalTitle}
-                            </Typography>
-                            <hr />
-                            <Typography variant="subtitle1" id="simple-modal-description">
-                                {this.state.modalDescription}
-                            </Typography>
-                        </div>
-                </Modal>
+                { modalOpen && <UserModal 
+                    modalOpen={modalOpen}
+                    modalTitle={modalTitle} 
+                    modalText={modalText} 
+                    modalWarning={false} 
+                /> }
 
             </section>
 
@@ -225,12 +161,12 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
 }
 
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserMeds }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ submitUserSurgery, updateStepperCount }, dispatch);
+}
 
 
 UserSurgery = withRouter(UserSurgery)
 UserSurgery = withStyles(userStylesheet)(UserSurgery)
-// UserSurgery = connect(null, mapDispatchToProps)(UserSurgery)
+UserSurgery = connect(null, mapDispatchToProps)(UserSurgery)
 export default UserSurgery

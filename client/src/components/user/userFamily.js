@@ -15,7 +15,10 @@ import DoneIcon from '@material-ui/icons/Done';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-//import { submitUserFamily} from '../actions/UserFamilyAction'
+import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
+import BottomNav from '../commons/userBottomNav'
+import TopTitle from '../commons/userTopTitle'
+import SubTitle from '../commons/userSubTitle'
 
 
  class UserFamily extends Component {
@@ -26,6 +29,10 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
         redirectAddress : '/user/user_meds',
     }  
 
+    componentDidMount() {
+        this.props.updateStepperCount()
+    }
+
     handleTreeBtnClicked = (rel) => {
         console.log("treebuttonClicked : ",  rel)
         if (this.state.familyResult.indexOf(rel) < 0 && rel !== "YOU") {
@@ -35,13 +42,13 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
         }
     }
 
-    handleSubmit = () => {
+    handleNext = () => {
         const { familyResult } = this.state
         console.log("submit - familyResult:, ", familyResult)
         if (familyResult.length > 0) {
-            // this.submitUserFamily( {
-            //     ADL: this.state.activeBtn.indexOf("1"),
-            // })
+            this.props.submitUserFamily( {
+                family: familyResult,
+            })
         } 
         this.setState({redirect: true})
     }
@@ -61,6 +68,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
 
         const { handleSubmit, pristine, submitting, classes } = this.props
         const { redirect, redirectAddress, familyResult } = this.state
+        const SELECTED_BUTTON_COLOR = "lightgreen"
         const spacingH = 90
         const spacingV = 100
 
@@ -68,43 +76,6 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
             const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
-        }
-
-        const TopTitle = (props) => {
-            return (
-                <div>
-                    <h1 className={classes.title}>{props.title}</h1>
-                    <hr className={classes.hr} />
-                </div>
-            )
-        }
-
-        const SubTitle = (props) => {
-            return (
-                <div>
-                    <h3 className={classes.subtitle}>{props.subtitle}</h3>
-                    <hr className={classes.hr}/>
-                </div>
-            )
-        }
-
-        const BottomNav= (props) => {
-            return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
-                    </Grid>
-                    <Grid item xs={3}>
-                    <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()} >NEXT</Button>
-                    </Grid>
-                </Grid>
-            )
         }
 
         const TreeButton = (props) => {
@@ -130,14 +101,14 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
 
                 <div className={classes.treeContainer}>
 
-                    <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? "lightgreen" : "white"}/>
-                    <TreeButton relative="parent" top={spacingV+25} left={spacingH} color={familyResult.indexOf("parent") >=0 ? "lightgreen" : "white"}/>
+                    <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
+                    <TreeButton relative="parent" top={spacingV+25} left={spacingH} color={familyResult.indexOf("parent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
                     <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color={QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR} bold="bold"/>
-                    <TreeButton relative="child" top={spacingV*3+25} left={spacingH} color={familyResult.indexOf("child") >=0 ? "lightgreen" : "white"} />
-                    <TreeButton relative="grandchild" top={spacingV*4+25} left={spacingH} color={familyResult.indexOf("grandchild") >=0 ? "lightgreen" : "white"} />
-                    <TreeButton relative="brother / sister" top={spacingV*2+25} left={spacingH*4} color={familyResult.indexOf("brother / sister") >=0 ? "lightgreen" : "white"} />
-                    <TreeButton relative="uncle / aunt" top={spacingV+25} left={spacingH*4} color={familyResult.indexOf("uncle / aunt") >=0 ? "lightgreen" : "white"} />
-                    <TreeButton relative="niece / nephew" top={spacingV*3+25} left={spacingH*4} color={familyResult.indexOf("niece / nephew") >=0 ? "lightgreen" : "white"} />
+                    <TreeButton relative="child" top={spacingV*3+25} left={spacingH} color={familyResult.indexOf("child") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+                    <TreeButton relative="grandchild" top={spacingV*4+25} left={spacingH} color={familyResult.indexOf("grandchild") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+                    <TreeButton relative="brother / sister" top={spacingV*2+25} left={spacingH*4} color={familyResult.indexOf("brother / sister") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+                    <TreeButton relative="uncle / aunt" top={spacingV+25} left={spacingH*4} color={familyResult.indexOf("uncle / aunt") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+                    <TreeButton relative="niece / nephew" top={spacingV*3+25} left={spacingH*4} color={familyResult.indexOf("niece / nephew") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
 
                     <TreeLink class={classes.treeLinkHorizontal} top={spacingV+25+25} left={spacingH+150} height="5px"/>
                     <TreeLink class={classes.treeLinkHorizontal} top={spacingV*2+25+25} left={spacingH+150} height="5px"/>
@@ -145,7 +116,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                     <TreeLink class={classes.treeLinkVertical} top={spacingV*2+25+25} left={spacingH*4+75} height="100px"/>
                     </div>
 
-                <BottomNav />
+                <BottomNav handleNext={this.handleNext} handleBack={this.handleBack}/>
 
             </div>
 
@@ -154,12 +125,12 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
 }
 
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserFamily }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ submitUserFamily, updateStepperCount }, dispatch);
+}
 
 
 UserFamily = withRouter(UserFamily)
 UserFamily = withStyles(userStylesheet)(UserFamily)
-// UserFamily = connect(null, mapDispatchToProps)(UserFamily)
+UserFamily = connect(null, mapDispatchToProps)(UserFamily)
 export default UserFamily

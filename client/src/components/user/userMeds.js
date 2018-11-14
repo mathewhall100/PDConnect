@@ -17,10 +17,15 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-//import { submitUserMeds} from '../actions/UserMedsAction'
+import { updateStepperCount, submitUserMeds} from '../../actions/index.js'
+import BottomNav from '../commons/userBottomNav'
+import TopTitle from '../commons/userTopTitle'
+import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
+import UserModal from '../commons/userModal'
+import {meds, medGroups } from '../../constants'
 
 
- class UserMeds extends Component {
+class UserMeds extends Component {
 
     state = {
         answerArray: [],
@@ -28,22 +33,24 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
         noAnswer: false,
         open : false,
         modalTitle : '',
-        modalDescription : '',
+        modalText : '',
         redirect: false,
         redirectAddress : '/user/user_surgery',
     }  
 
-    handleSubmit = () => {
+    componentDidMount() {
+        this.props.updateStepperCount()
+    }
+
+    handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
-
-        // this.submitUserMeds(this.state.answerArray)
-
+        this.props.submitUserMeds(this.state.answerArray)
         this.setState({redirect: true})
-
     }
 
     handleAnswerSelect = (index, name) => {
         console.log("handleAnswerselect : ", name)
+        this.setState({modalOpen: false})
         let tempTrack = this.state.answerTrack
         let tempArray = this.state.answerArray
         const tempIndex = tempArray.indexOf(name)
@@ -58,7 +65,8 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
         this.setState({
             noAnswer: false,
             answerTrack: tempTrack, 
-            answerArray: tempArray
+            answerArray: tempArray,
+            modalOpen: false
         })
     }
 
@@ -88,103 +96,26 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
         console.log(info)
     }
 
-    getModalStyle = () => {
-        const top = 50;
-        const left = 50;
-    
-        return {
-            top: `${top}%`,
-            left: `${left}%`,
-            transform: `translate(-${top}%, -${left}%)`,
-        };
-    }
-
-    handleOpen = (modalItem) => { 
-        console.log(modalItem);
+    handleModalOpen = (title, text) => { 
+        console.log(title);
          this.setState({ 
-             open: true, 
-             modalTitle : modalItem.title,
-             modalDescription : modalItem.description
+             modalTitle : title,
+             modalText : text,
+             modalOpen: true
         });
-     };
-
-     handleClose = () => {
-         this.setState({ open: false });
      };
 
 
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, answerTrack, noAnswer } = this.state
-
-        const medGroups = [
-            {class: "dopamine agonist", target: "motor symptoms"},
-            {class: "carbidopa/levodopa", target: "motor symptoms"},
-            {class: "other", target: "motor symptoms"}
-        ]
-
-        const meds= [
-            {generic: "Ropinirole", trade: ["Requip", "Ralnea", "Adartrel"], class: "dopamine agonist", description: ""},
-            {generic: "Pramipixole", trade: ["Mirapex"], class: "dopamine agonist", description: ""},
-            {generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", description: ""},
-
-            {generic: "Sinemet", trade: [], class: "carbidopa/levodopa", description: ""},
-            {generic: "Sinemet CR",  trade: [], class: "carbidopa/levodopa", description: ""},
-            {generic: "Rytary",  trade: [], class: "carbidopa/levodopa", description: ""},
-            {generic: "Doupa",  trade: [], class: "carbidopa/levodopa", description: ""},
-
-            {generic: "Amantadine", trade: ["Amantadine"], class: "other", description: ""}
-        ]
-
+        const { redirect, redirectAddress, answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         if (redirect) { 
             const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect to={url} />;
         }
-
-        const TopTitle = (props) => {
-            return (
-                <div>
-                    <h1 className={classes.title}>{props.title}</h1>
-                    <hr className={classes.hr} />
-                </div>
-            )
-        }
-
-        const BottomNav= (props) => {
-            return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
-                    </Grid>
-                    <Grid item xs={3}>
-                    <Button type="button" variant="outlined" className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()} >NEXT</Button>
-                    </Grid>
-                </Grid>
-            )
-        }
-
-        const QuestionButtonIcons = (props) => {
-            return (
-                <span>
-                    {props.answerConditional  && <DoneIcon className={classes.doneIcon} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "5px"}} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "6px"}} /> }
-                    {props.answerConditional && <DoneIcon className={classes.doneIcon} style={{position: "absolute", left: "11px", top: "7px"}} /> } 
-                    {!props.answerConditional && <DoneOutlineIcon className={classes.doneOutlineIcon} /> }
-                </span>
-            )
-        }
-
-
 
         return (
             <section >
@@ -197,7 +128,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                         <div className={classes.headerQuestion}>I don't take any medications for Parkinson disease: </div>
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                             <Button type="button" className={classes.questionButton} style={{borderColor: noAnswer ? "green" : null}}onClick={() => this.handleNoAnswerelect()}>
+                             <Button type="button" className={classes.questionButton} style={{borderColor: noAnswer ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoAnswerelect()}>
                                 <QuestionButtonIcons answerConditional={noAnswer} />
                             </Button> 
                         </Grid>
@@ -222,7 +153,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                                                 <Grid item xs={12} sm={8} >
                                                     <div style={{minHeight: "60px"}}>
                                                         <span className={classes.questionHead}>{med.generic}</span>  
-                                                        <Button className={classes.helpButton} onClick={() => this.handleOpen({title: med.generic, description: med.description}) }>
+                                                        <Button className={classes.helpButton} onClick={() => this.handleModalOpen(med.generic, med.description) }>
                                                             <HelpIcon color="primary" className={classes.helpIcon}/>
                                                          </Button>
                                                         <br />
@@ -255,26 +186,16 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
                     
 
 
-                <BottomNav />
+                <BottomNav handleNext={this.handleNext} handleBack={this.handleBack}/>
 
                 </div>
 
-                <Modal
-                        aria-labelledby="simple-modal-title"
-                        aria-describedby="simple-modal-description"
-                        open={this.state.open}
-                        onClose={this.handleClose}
-                    >
-                        <div style={this.getModalStyle()}  className={classes.paper}>
-                            <Typography variant="h6" id="modal-title">
-                                {this.state.modalTitle}
-                            </Typography>
-                            <hr />
-                            <Typography variant="subtitle1" id="simple-modal-description">
-                                {this.state.modalDescription}
-                            </Typography>
-                        </div>
-                </Modal>
+                { modalOpen && <UserModal 
+                    modalOpen={modalOpen}
+                    modalTitle={modalTitle} 
+                    modalText={modalText} 
+                    modalWarning={false} 
+                /> }
 
             </section>
 
@@ -283,12 +204,12 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
 }
 
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserMeds }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ updateStepperCount, submitUserMeds }, dispatch);
+}
 
 
 UserMeds = withRouter(UserMeds)
 UserMeds = withStyles(userStylesheet)(UserMeds)
-// UserMeds = connect(null, mapDispatchToProps)(UserMeds)
+UserMeds = connect(null, mapDispatchToProps)(UserMeds)
 export default UserMeds
