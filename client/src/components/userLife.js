@@ -16,10 +16,16 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
+import { updateStepperCount } from '../actions/index.js'
 //import { submitUserLife} from '../actions/UserLifeAction'
 
 
  class UserLife extends Component {
+
+    componentDidMount() {
+        this.props.updateStepperCount()
+    }
+
 
     state = {
         activeBtn: [],
@@ -61,9 +67,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 
     handleBack = () => {
         this.setState({
-            redirect: true,
-            redirectAddress: '/'
-        })
+            redirectAddress: '/user/user_about'}, () => this.setState({redirect: true}) )
     }
 
     getModalStyle = () => {
@@ -136,12 +140,13 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
                         <hr className={classes.hr} />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                    <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
+                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
                     </Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()}>NEXT</Button>
+                        <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleSubmit()}>NEXT</Button>
                     </Grid>
                 </Grid>
             )
@@ -172,7 +177,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 
                     {PDADLs.map((question, index) => {
                         return (
-                            <div>
+                            <div key={index}>
                                 <Grid container spacing={24}>
                                     <Grid item xs={12} sm={8} md={8}>
                                         <div className={classes.questionContainer} >
@@ -227,12 +232,14 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 }
 
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserLife }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+     return bindActionCreators({ updateStepperCount }, dispatch);
+}
+
+
 
 
 UserLife = withRouter(UserLife)
 UserLife = withStyles(userStylesheet)(UserLife)
-// UserLife = connect(null, mapDispatchToProps)(UserLife)
+UserLife = connect(null, mapDispatchToProps)(UserLife)
 export default UserLife

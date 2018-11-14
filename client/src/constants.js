@@ -374,3 +374,28 @@ export const activity_level = [
         "text": "severe disability, require constant care"
     },
 ]
+
+const medList = [
+    { value: "Sinemet (carbidopa/levodopa)", text: "Sinemet (carbidopa/levodopa)" },
+    { value: "Sinemet CR (carbidopa/levodopa)", text: "Sinemet CR (carbidopa/levodopa)" },
+    { value: "Parcopa (carbidopa/levodopa)", text: "Parcopa (carbidopa/levodopa)" },
+    { value: "Rytary (carbidopa/levodopa)", text: "Rytary (carbidopa/levodopa)" },
+    { value: "Duopa (carbidopa/levodopa)", text: "Duopa (carbidopa/levodopa)" },
+    { value: "Mirapex (pramipexole)", text: "Mirapex (pramipexole)" },
+    { value: "Mirapex ER (pramipexole)", text: "Mirapex ER (pramipexole)" },
+    { value: "Requip (ropinirole)", text: "Requip (ropinirole)" },
+    { value: "Requip XL (ropinirole)", text: "Requip XL (ropinirole)" },
+    { value: "Symmetrel (amantadine)", text: "Symmetrel (amantadine)"},
+    { value: "Gocovri  (amantadine)", text: "Gocovri  (amantadine)" },
+    { value: "Neupro (rotigotine)", text: "Neupro (rotigotine)" },
+    { value: "Apokyn(Apomorphine)", text: "Apokyn(Apomorphine)" },
+    { value: "Cogentin (benztropine)", text: "Cogentin (benztropine)" },
+    { value: "Zelapar (selegiline)", text: "Zelapar (selegiline)" },
+    { value: "Azilect (rasagiline)", text: "Azilect (rasagiline)" },
+    { value: "Aricept (donepezil)", text: "Aricept (donepezil)" },
+    { value: "Exelon (rivastigmine)", text: "Exelon (rivastigmine)" },
+    { value: "Razadyne (galantamine)", text: "Razadyne (galantamine)" },
+    { value: "Namenda (Memantine)", text: "Namenda (Memantine)" },
+    { value: "Comtan (entacopone)", text: "Comtan (entacopone)" },
+    { value: "Stalevo (carbidopa/levodopa/entacapone)", text: "Stalevo (carbidopa/levodopa/entacapone)" }
+]

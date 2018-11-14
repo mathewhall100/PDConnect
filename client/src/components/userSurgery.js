@@ -30,16 +30,15 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
         modalTitle : '',
         modalDescription : '',
         redirect: false,
-        redirectAddress : 'test',
+        redirectAddress : '/user/user_motorsy',
     }  
 
     handleSubmit = () => {
         console.log("submit - meds:, ", this.state.answerArray)
 
         // this.submitUserSurgeries(this.state.answerArray)
-        // this.setState({
-        //     redirect: true
-        // })
+
+        this.setState({redirect: true})
     }
 
     handleAnswerSelect = (index, name) => {
@@ -72,10 +71,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
     }
 
     handleBack = () => {
-        this.setState({
-            redirect: true,
-            redirectAddress: '/'
-        })
+        this.setState({redirectAddress: '/user/user_meds'}, () => this.setState({redirect: true}) )
     }
 
     handleInfoClick = (info) => {
@@ -141,7 +137,8 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
                         <hr className={classes.hr} />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                    <Button type="button" variant="outlined" className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
+                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
                     </Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3}></Grid>

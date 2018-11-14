@@ -53,9 +53,7 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 
     handleBack = () => {
         this.setState({
-            redirect: true,
-            redirectAddress: 'user_meds'
-        })
+            redirectAddress: '/user/user_life'}, () => this.setState({redirect: true}) )
     }
 
 
@@ -97,7 +95,8 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
                         <hr className={classes.hr} />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                    <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
+                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
                     </Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3}></Grid>

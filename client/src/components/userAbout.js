@@ -23,6 +23,7 @@ import DoneIcon from '@material-ui/icons/Done';
 
 import { age, sex, raceEthnicity, years, activity_level } from '../constants';
 import {userStylesheet } from '../styles';
+import { updateStepperCount } from '../actions/index.js'
 //import { submitUserAbout } from '../actions/UserAboutAction'
 
 
@@ -36,11 +37,13 @@ import {userStylesheet } from '../styles';
         redirectAddress : '/user/user_life',
     }  
     
-
     componentWillMount() {
         this.handleInitialize();
     }
 
+    componentDidMount() {
+        this.props.updateStepperCount()
+    }
 
     handleInitialize() {
         const initData = this.props.userInfo
@@ -66,9 +69,7 @@ import {userStylesheet } from '../styles';
 
     handleBack = () => {
         this.setState({
-            redirect: true,
-            redirectAddress: '/'
-        })
+            redirectAddress: '/'}, () => this.setState({redirect: true}) )
     }
 
     handleInfoClick = (info) => {
@@ -109,7 +110,7 @@ import {userStylesheet } from '../styles';
         if (redirect) { 
             const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
-            return<Redirect exact to={"/user/user_life"} />;
+            return<Redirect exact to={url} />;
         }
 
         const TopTitle = (props) => {
@@ -177,7 +178,8 @@ import {userStylesheet } from '../styles';
                         <hr className={classes.hr} />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>  
+                     <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
+                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
                     </Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3}></Grid>
@@ -324,9 +326,9 @@ function validate(values) {
     return errors
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({ submitUserAbout }, dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ updateStepperCount }, dispatch);
+}
 
 const formData = {
     form: 'userAboutForm', //unique identifier for this form 
@@ -336,5 +338,5 @@ const formData = {
 UserAbout = reduxForm(formData)(UserAbout)
 UserAbout = withRouter(UserAbout)
 UserAbout = withStyles(userStylesheet)(UserAbout)
-// UserAbout = connect(null, mapDispatchToProps)(UserAbout)
+UserAbout = connect(null, mapDispatchToProps)(UserAbout)
 export default UserAbout
