@@ -250,7 +250,6 @@ export const stylesheet = theme => ({
     rightTopNav : {
         textAlign : 'right',
         margin: 'auto',
-        marginRight: '5px',
     },
     homepageFixedWidthContent : {
         maxWidth : MAXWIDTH,
@@ -511,7 +510,7 @@ export const stylesheet = theme => ({
     },
     aboutContent : {
         backgroundColor: 'rgba(164, 164, 164, 0.2)',
-        margin : '25px !important',
+        padding : '3% !important',
     },
     aboutImgContainer : {
         padding : '0px 12px 0px 12px !important',
