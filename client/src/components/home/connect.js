@@ -61,7 +61,7 @@ class Connects extends Component {
                             </Grid>
                         </div>
                     </Grid>
-                    <Grid item md={5} lg={5} xs={12} className={classes.connectDescriptionContainer}>
+                    <Grid item md={5} lg={5} xs={10} className={classes.connectDescriptionContainer}>
                         <div className={classes.description}>
                             Join us to learn more about the latest Parkinsons disease treatment from pharmaceutical companies world wide
                         </div>
@@ -77,7 +77,9 @@ class Connects extends Component {
                                 margin="normal"
                                 variant="outlined"
                             />
-                            <Button variant='outlined' className={classes.aboutButton}>Subscribe </Button>
+                            <div className={classes.connectButtonContainer}>
+                                <Button variant='outlined' className={classes.connectButton}>Subscribe </Button>
+                            </div>
                         </div>
                         
                     </Grid>
