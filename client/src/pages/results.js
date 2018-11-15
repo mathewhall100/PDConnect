@@ -3,40 +3,44 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter, Link, Redirect} from 'react-router-dom';
 import { reset, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
+import SwipeableViews from 'react-swipeable-views';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 
 import FormText from '../components/forms/FormText';
 import FormTextPassword from '../components/forms/FormTextPassword';
-import { submitTrialResult, submitMedicalResult } from '../actions/ResultAction';
+import { submitTrialResult, submitTreatmentResult } from '../actions/ResultAction';
+import {resultStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
+import TopTitle from '../components/commons/userTopTitle'
+import SubTitle from '../components/commons/userSubTitle'
 
-const styles = theme => ({
-    root: {
 
-    },
-    textBox: {
-        textAlign: "center"
-    },
-    TextStyle: {
-        marginTop: '40px',
-        marginBottom: '40px'
-    },
-    Btn: {
-        width: "190px",
-        height: "30px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "14px"
-    },
 
-});
+function TabContainer({ children, dir }) {
+    return (
+      <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+        {children}
+      </Typography>
+    );
+  }
+  
+  TabContainer.propTypes = {
+    children: PropTypes.node.isRequired,
+    dir: PropTypes.string.isRequired,
+  };
+  
 
 class Results extends Component {
 
     state = {
+        value: 0,
         treatmentResults: [],
         trialResults: [],
         redirect: false
@@ -54,23 +58,8 @@ class Results extends Component {
 
         this.treatmentResults()
         this.trialResults()
-        
-        // Mathew : use  submitTrialResult(array), submitMedicalResult(array) to send results to store, 
-        /* note array can be an array of object  i.e : 
-            [ 
-                {
-                    medication_name : 'duopa',
-                    summary : 'summary text',
-                    link : 'link address',
-                },
-                {
-                    medication_name : 'duopa',
-                    summary : 'summary text',
-                    link : 'link address',
-                },
-            ]
-        */
     }
+        
 
     treatmentResults() {
         console.log("treatmentResults called")
@@ -128,7 +117,7 @@ class Results extends Component {
             })
         }
         console.log("treatmentResults: ", treatmentResults)
-        this.props.submitMedicalResult(treatmentResults);
+        this.props.submitTreatmentResult(treatmentResults);
         this.setState({treatmentResults: treatmentResults})
     }
 
@@ -158,123 +147,135 @@ class Results extends Component {
 
 
     testBotTox = () => {
-        console.log("testBotTox")
-        let test = null;
-        test = this.props.userNonMotorSy.filter(symptom => symptom === "drooling")
-        console.log(test.length)
-        if  (test.length > 0) {return true} else {return false}
+        // console.log("testBotTox")
+        // let test = null;
+        // test = this.props.userNonMotorSy.filter(symptom => symptom === "drooling")
+        // console.log(test.length)
+        // if  (test.length > 0) {return true} else {return false}
+
+        return true
     }
 
     testDBS() {
         console.log("testDBS")
-        let test1 = null;
-        let test2 = null;
-        let test3 = null;
-        let test4 = null;
-        let test5 = null;
+        // let test1 = null;
+        // let test2 = null;
+        // let test3 = null;
+        // let test4 = null;
+        // let test5 = null;
 
-        test1 = parseInt(this.props.userAbout.yearDiagnosed) < 2014 ? true : false
-        test2 = this.props.userMotorSy.filter(symptom => symptom === "suddenoff") 
-        test3 = this.props.userMotorSy.filter(symptom => symptom === "freezing")
-        test4 = this.props.userMotorSy.filter(symptom => symptom ===  "dyskinesia")
-        test5 = this.props.userNonMotorSy.filter(symptom => symptom ===  "cogdecline")
+        // test1 = parseInt(this.props.userAbout.yearDiagnosed) < 2014 ? true : false
+        // test2 = this.props.userMotorSy.filter(symptom => symptom === "suddenoff") 
+        // test3 = this.props.userMotorSy.filter(symptom => symptom === "freezing")
+        // test4 = this.props.userMotorSy.filter(symptom => symptom ===  "dyskinesia")
+        // test5 = this.props.userNonMotorSy.filter(symptom => symptom ===  "cogdecline")
 
-        console.log("DBS: ", test1, test2.length, test3.length, test4.length)
+        // console.log("DBS: ", test1, test2.length, test3.length, test4.length)
 
-        if (test1 && (test2.length > 0 || test3.length > 0 || test4.length > 0) && test5.length < 1) {return true} else {return false}
+        // if (test1 && (test2.length > 0 || test3.length > 0 || test4.length > 0) && test5.length < 1) {return true} else {return false}
+
+        return true
     }
 
 
     testRytary() {  
         console.log("testRytary")
-        let test1 = null;
-        let test2 = null;
-        let test3 = null;
+        // let test1 = null;
+        // let test2 = null;
+        // let test3 = null;
 
-        test1 = this.props.userMeds.length > 0 ? true : false
-        test2 = this.props.userMotorSy.filter(symptom => symptom === "suddenoff") 
-        test3 = this.props.userMotorSy.filter(symptom => symptom ===  "dyskinesia")
+        // test1 = this.props.userMeds.length > 0 ? true : false
+        // test2 = this.props.userMotorSy.filter(symptom => symptom === "suddenoff") 
+        // test3 = this.props.userMotorSy.filter(symptom => symptom ===  "dyskinesia")
 
-        console.log("rytary: ", test1, test2.length, test3.length)
+        // console.log("rytary: ", test1, test2.length, test3.length)
 
-        if (test1 && (test2.length > 0 || test3.length > 0)) {return true} else {return false}
+        // if (test1 && (test2.length > 0 || test3.length > 0)) {return true} else {return false}
     }
 
     testDuopa() {
         console.log("testDuopa")
-        let test1 = null;
-        let test2 = null;
-        let test3 = null;
-        let test4 = null;
-        let test5 = null;
+        // let test1 = null;
+        // let test2 = null;
+        // let test3 = null;
+        // let test4 = null;
+        // let test5 = null;
 
-        test1 = this.props.userNonMotorSy.filter(symptom => symptom === "dysphagia")
-        test2 = this.props.userNonMotorSy.filter(symptom => symptom === "slowtransit")
-        test3 = this.props.userMotorSy.filter(symptom => symptom === "suddenoff") 
-        test4 = this.props.userMotorSy.filter(symptom => symptom ===  "dyskinesia")
-        test5 = this.props.userMeds.length > 0 ? true : false
+        // test1 = this.props.userNonMotorSy.filter(symptom => symptom === "dysphagia")
+        // test2 = this.props.userNonMotorSy.filter(symptom => symptom === "slowtransit")
+        // test3 = this.props.userMotorSy.filter(symptom => symptom === "suddenoff") 
+        // test4 = this.props.userMotorSy.filter(symptom => symptom ===  "dyskinesia")
+        // test5 = this.props.userMeds.length > 0 ? true : false
 
-        console.log("dupoa: ", test1.length, test2.length, test3.length, test4.length, test5)
+        // console.log("dupoa: ", test1.length, test2.length, test3.length, test4.length, test5)
 
-        if ((test1.length > 0 ||  test2.length > 0) && (test3.length > 0 || test4.length > 0) && test5) {return true} else {return false}
+        // if ((test1.length > 0 ||  test2.length > 0) && (test3.length > 0 || test4.length > 0) && test5) {return true} else {return false}
+
+        return true
     }
 
     testDroxidopa() { 
         console.log("testDroxidopa")
-        let test = null;
-        test = this.props.userNonMotorSy.filter(symptom => symptom === "orthostatic")
-        console.log(test.length)
-        if  (test.length > 0) {return true} else {return false}
+        // let test = null;
+        // test = this.props.userNonMotorSy.filter(symptom => symptom === "orthostatic")
+        // console.log(test.length)
+        // if  (test.length > 0) {return true} else {return false}
+
+        return true
     }
 
     testNuplazid() {
         console.log("testNuplazid")
-        let test = null;
-        test = this.props.userNonMotorSy.filter(symptom => symptom === "psychosis")
-        console.log(test.length)
-        if  (test.length > 0) {return true} else {return false}
+        // let test = null;
+        // test = this.props.userNonMotorSy.filter(symptom => symptom === "psychosis")
+        // console.log(test.length)
+        // if  (test.length > 0) {return true} else {return false}
     }
 
     testApomorphine() {
         console.log("testApomorphine")
-        let test1 = null;
-        let test2 = null;
+        // let test1 = null;
+        // let test2 = null;
 
-        test1 = this.props.userMotorSy.filter(symptom => symptom === "freezing")
-        test2 = this.props.userMotorSy.filter(symptom => symptom === "suddenoff")
-        console.log(test1.length, test2.length)
-        if  (test1.length > 0 && test2.length > 1) {return true} else {return false}
+        // test1 = this.props.userMotorSy.filter(symptom => symptom === "freezing")
+        // test2 = this.props.userMotorSy.filter(symptom => symptom === "suddenoff")
+        // console.log(test1.length, test2.length)
+        // if  (test1.length > 0 && test2.length > 1) {return true} else {return false}
     }
 
     testSPARK() {
         console.log("testSpark")
-        let test1 = null;
-        let test2 = null;
-        let test3 = null;
+        // let test1 = null;
+        // let test2 = null;
+        // let test3 = null;
 
-        test1 = (parseInt(this.props.userAbout.age) > 40 && parseInt(this.props.userAbout.age) < 81 ) ? true : false
-        test2 = parseInt(this.props.userAbout.yearDiagnosed) > 2015 ? true : false
-        test3 = this.props.userMeds.length < 1 ? true : false
+        // test1 = (parseInt(this.props.userAbout.age) > 40 && parseInt(this.props.userAbout.age) < 81 ) ? true : false
+        // test2 = parseInt(this.props.userAbout.yearDiagnosed) > 2015 ? true : false
+        // test3 = this.props.userMeds.length < 1 ? true : false
 
-        console.log("spark: ", test1, test2, test3)
+        // console.log("spark: ", test1, test2, test3)
 
-        if (test1 && test2 && test3) {return true} else {return false}
+        // if (test1 && test2 && test3) {return true} else {return false}
+
+        return true
     }
 
 
     testNILO() {
         console.log("testNILO")
-        let test1 = null;
-        let test2 = null;
-        let test3 = null;
+        // let test1 = null;
+        // let test2 = null;
+        // let test3 = null;
 
-        test1 = (parseInt(this.props.userAbout.age) > 40 && parseInt(this.props.userAbout.age) < 80 ) ? true : false
-        test2 = parseInt(this.props.userAbout.yearDiagnosed) < 2013 ? true : false
-        test3 = this.props.userMeds.length > 0 ? true : false
+        // test1 = (parseInt(this.props.userAbout.age) > 40 && parseInt(this.props.userAbout.age) < 80 ) ? true : false
+        // test2 = parseInt(this.props.userAbout.yearDiagnosed) < 2013 ? true : false
+        // test3 = this.props.userMeds.length > 0 ? true : false
 
-        console.log("spark: ", test1, test2, test3)
+        // console.log("spark: ", test1, test2, test3)
 
-        if (test1 && test2 && test3) {return true} else {return false}
+        // if (test1 && test2 && test3) {return true} else {return false}
+
+        return true
     }
 
 
@@ -285,9 +286,17 @@ class Results extends Component {
     }
 
     
-   submit(values) {
-       console.log("submit: ", values)
-   }
+    handleChange = (event, value) => {
+        this.setState({ value });
+      };
+    
+    handleChangeIndex = index => {
+        this.setState({ value: index });
+      };
+
+    submit = (values) =>  {
+        console.log(values)
+    }
 
 
 
@@ -305,112 +314,195 @@ class Results extends Component {
         }
         
         return (
+            <div className={classes.root}>
 
-            <div>
+               <AppBar position="static" color="default" style={{margin: "0 auto", maxWidth: "1350px"}}>
+                <Tabs
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    indicatorColor="primary"
+                    textColor="primary"
+                >
+                    <Tab label="Treatments >" className={classes.tabTitle}/>
+                    <Tab label="Trials >" className={classes.tabTitle}/>
+                    <Tab label="Groups >" className={classes.tabTitle}/>
+                    <Tab label="Actions" className={classes.tabTitle}/>
+                </Tabs>
+               
 
-                <div>
-                    <div className={classes.textBox} style={{marginTop: "50px"}}>
-                        <h1>Treatments</h1>
-                    </div>
+                </AppBar>
 
-                    <div style={{margin: "25px"}}>
-                        <h3>Based on the information you have entered you may benefit from discussing the following treatments with the doctor that looks after you for your Parkinsons disease.</h3>
-                    </div>
+                <SwipeableViews
+                    axis={'x'}
+                    index={this.state.value}
+                    onChangeIndex={this.handleChangeIndex}
+                >
 
-                    <div style={{marginTop: "35px"}}> 
-                        
-                        {treatmentResults.map((treatment, index) => {
+                    <TabContainer dir={"rtl"}>
 
-                            return (
-                                <div key={index} style={{border: "1px solid grey", borderRadius: "5px", margin: "20px"}}>
-                                    <div style={{margin: "20px", fontSize: "20px"}}>
-                                        {index+1} {treatment.medication_name}
-                                    </div>
-                                    <div style={{margin: "20px", fontSize: "20px"}}>
-                                        {treatment.summary}
-                                    </div>
-                                    <div style={{margin: "20px", fontSize: "20px", textAlign : 'right'}}>
-                                        <Button type="button" className={classes.Btn} onClick={() => this.handleMoreInfo(treatment.link)}>Find Out More</Button>
-                                    </div>
+                        <div className={classes.resultContainer}>
+                            <br />
+                            <h1 className={classes.title}>Treatments</h1>
+                            <br />
+
+                            <div >
+                            
+                                <div>
+                                    <h1 className={classes.subtitle}>Based on the information you have entered you may benefit from discussing the following treatments with the doctor that looks after you for your Parkinsons disease.</h1>
                                 </div>
-                            ) 
-                        })}
-                    
-                    </div>
 
-                    <br />
-                    <br />
-
-                </div> 
-
-                <div>
-
-                    <div className={classes.textBox} style={{marginTop: "50px"}}>
-                        <h1>Clinical Trials</h1>
-                    </div>
-
-                    <div style={{margin: "25px"}}>
-                        <h3>You may be eligable to paticipate in the following Parkinsons disease clinical trials</h3>
-                    </div>
-
-                    <div style={{marginTop: "35px"}}> 
-                        
-                        {trialResults.map((trial, index) => {
-
-                            return (
-                                <div key={index} style={{border: "1px solid grey", borderRadius: "5px", margin: "20px"}}>
-                                    <div style={{margin: "20px", fontSize: "20px"}}>
-                                        {trial.trial_name}
-                                    </div>
-                                    <div style={{margin: "20px", fontSize: "20px"}}>
-                                        {trial.summary}
-                                    </div>
-                                    <div style={{margin: "20px", fontSize: "20px", textAlign : 'right'}}>
-                                        <Button type="button" className={classes.Btn} onClick={() => this.handleMoreInfo(trial.link)}>Find Out More</Button>
-                                    </div>
+                                <div> 
+                                    <Grid container spacing={24}>
+                                        {treatmentResults.map((treatment, index) => {
+                                            return (
+                                                <Grid item xs={12} sm={12} md={6}>
+                                                    <div key={index} className={classes.resultBox}>
+                                                        <div className={classes.resultTextBox}>
+                                                            <div className={classes.resultTitle}>
+                                                                {index+1} {treatment.medication_name}
+                                                            </div>
+                                                            <div className={classes.resultText}>
+                                                                {treatment.summary}
+                                                            </div>
+                                                        </div>
+                                                        <div style={{margin: "20px", fontSize: "20px", textAlign : 'right'}}>
+                                                            <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo(treatment.link)}>Find Out More</Button>
+                                                        </div>
+                                                    </div> 
+                                                </Grid>                            
+                                            ) 
+                                        }) }
+                                    </Grid> 
                                 </div>
-                            ) 
-                        })}
-                    
-                    </div>
+                            </div>
 
-                    <br />
-                    <br />
+                            <br />
 
-                </div> 
-                
-                <div style={{border: "1px solid grey", borderRadius: "5px", margin: "20px", padding: "20px"}}>
+                        </div> 
 
-                    <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
+                    </TabContainer>
 
-                        <div className={classes.textBox} style={{ marginTop: '50px' }}>
-                            <Button variant='contained' color='primary' className={classes.Email}>Email Me The Results</Button>
-                        </div>
-                        <FormText
-                          name="email"
-                          label="Email (john.doe@you.com"
-                          width="90%"
-                        />
-                        <br />
-                        <div style={{ margin: "25px" }}>
-                            <h3>
-                                Create an account to keep track of your symptoms and stay up-to-date with the latest Parkinsons treatment!
-                            </h3>
-                        </div>
-                        <FormTextPassword
-                            name="password1"
-                            label="Password"
-                            width="90%"
-                        />
-                        <br />
-                        <Button type="submit" className={classes.Btn}>Create Account</Button>
-                    </form>
+                    <TabContainer dir={"rtl"}>
 
-                </div>
+                        <div className={classes.resultContainer}>
+                            <br />
+                            <h1 className={classes.title}>Clinical Trials</h1>
+                            <br />
 
+                            <div />
+                                <div>
+                                    <h1 className={classes.subtitle}>Based on the information you have entered you may be eligable to participate in the following clinical trials</h1>
+                                </div>
+
+
+                                <div style={{marginTop: "35px"}}> 
+                                    <Grid container spacing={24}>
+                                        {trialResults.map((trial, index) => {
+                                            return (
+                                                <Grid item xs={12} sm={12} md={6}>
+                                                    <div key={index} className={classes.resultBox}>
+                                                        <div className={classes.resultTextBox}>
+                                                            <div className={classes.resultTitle}>
+                                                                {index+1} {trial.trial_name}
+                                                            </div>
+                                                            <div className={classes.resultText}>
+                                                                {trial.summary}
+                                                            </div>
+                                                        </div>
+                                                        <div style={{margin: "20px", fontSize: "20px", textAlign : 'right'}}>
+                                                            <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo(trial.link)}>Find Out More</Button>
+                                                        </div>
+                                                    </div> 
+                                                </Grid>
+                                            ) 
+                                        })}
+
+                                    </Grid>
+                                
+                                </div>
+
+                            <br />
+
+                        </div> 
+                        
+                    </TabContainer>
+
+                    <TabContainer dir={"rtl"}></TabContainer>
+
+                      <TabContainer dir={"rtl"}>
+
+                        <Grid container spacing={24}> 
+
+                            <Grid item xs={12} sm={12} md={4}>
+                                <div className={classes.emailContainer}>
+                                    <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
+                                        <div >
+                                            <h1 className={classes.title}>Create an account</h1>
+                                        </div>
+
+                                            <FormTextPassword
+                                                name="password1"
+                                                label="Password"
+                                                width="90%"
+                                            />
+
+                                            <br />
+
+                                            <Button type="submit" className={classes.btn}>Create Account</Button>
+                                        <br />
+                                    </form>
+                                </div>
+                            </Grid>   
+                            
+                            <Grid item xs={12} sm={12} md={4}>
+                                <div className={classes.emailContainer}>
+                                    <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
+                                        <div >
+                                            <h1 className={classes.title}>Email Me The Results</h1>
+                                        </div>
+                                        <FormText
+                                        name="email"
+                                        label="Email (john.doe@you.com"
+                                        width="90%"
+                                        />
+                                        <br />
+                                    </form>
+                                </div>
+                            </Grid>
+                        
+                            <Grid item xs={12} sm={12} md={4}>
+                                <div className={classes.emailContainer}>
+                                    <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
+                                        <div >
+                                            <h1 className={classes.title}>Print Results</h1>
+                                        </div>
+                                        <Button type="submit" className={classes.btn}>Print</Button>
+                                        <br />
+                                    </form>
+                                </div>
+                            </Grid>
+
+                        </Grid>
+
+                    </TabContainer>
+
+                </SwipeableViews>
             </div>
         );
     }
+}
+
+                                // <div>
+                                //     <h1 className={classes.subtitle}>Create an account to keep track of your symptoms and stay up-to-date with the latest Parkinsons treatment!
+                                //     </h1>
+                                // </div>
+
+                                
+
+
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ submitTreatmentResult, submitTrialResult }, dispatch);
 }
 
 const mapStateToProps = (state) => {
@@ -432,6 +524,6 @@ const formData = {
 
 Results = withRouter(Results)
 Results = reduxForm(formData)(Results)
-Results = withStyles(styles)(Results)
-Results = connect(mapStateToProps, { submitTrialResult, submitMedicalResult })(Results)
+Results = withStyles(resultStylesheet)(Results)
+Results = connect(mapStateToProps, mapDispatchToProps)(Results)
 export default Results

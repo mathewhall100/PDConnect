@@ -198,6 +198,80 @@ export const userStylesheet = theme => ({
     },
 })
 
+export const resultStylesheet = theme => ({
+    root: {
+        maxWidth: MAXWIDTH,
+        minHeight : MINHEIGHT,
+        margin: 'auto',
+        padding: "40px"
+    },
+    tabBar: {
+        height: "80px",
+        backgroundColor: "#eeeeee"
+    },
+    title: {
+        fontSize: '26px',
+        fontWeight: 'bold',
+        color : PRIMARY_COLOR,
+        lineHeight: '1.6',
+        textAlign: "center"
+    },
+    subtitle: {
+        fontSize: '20px', 
+        margin: "20px",
+    },
+    tabTitle: {
+        fontSize: '22px',
+        fontWeight: 'bold',
+        lineHeight: '1.6',
+        textAlign: "center",
+        padding: "10px",
+    },
+    resultContainer: {
+        border: "2px solid lightgrey",
+        borderRadius: "5px",
+        backgroundColor: "#eeeeee",
+    },
+    resultBox: {
+        border: "1px solid grey",
+        borderRadius: "5px", 
+        margin: "20px",
+    },
+    resultTextBox: {
+        height: "140px"
+    },
+    resultTitle: {
+        margin: "20px", 
+        fontSize: "20px"
+    },
+    resultText: {
+        margin: "20px",
+        fontSize: "20px"
+    },
+    button: {
+        width: "190px",
+        height: "30px",
+        border: "2px solid grey",
+        borderRadius: "10px",
+        fontSize: "14px",
+        fontweight: "bold",
+        backgroundColor: PRIMARY_COLOR,
+        color: 'white',
+        '&:hover': {
+            backgroundColor: "white",
+            fontWeight: "bold",
+            color: PRIMARY_COLOR
+        }
+    },
+    emailContainer: {
+        border: "2px solid lightgrey",
+        borderRadius: "20px",
+        backgroundColor: "#eeeeee",
+        padding: "20px"
+    },
+
+})
+
 
 export const stylesheet = theme => ({
     parallax : {

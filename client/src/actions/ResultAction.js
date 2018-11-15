@@ -1,6 +1,6 @@
 import { push } from 'react-router-dom';
 import {
-    MEDICAL_RESULTS,
+    TREATMENT_RESULTS,
     TRIAL_RESULTS
 } from './types';
 
@@ -17,13 +17,13 @@ export const submitTrialResult = (arrTrial) => {
     }
 }
 
-export const submitMedicalResult = (arrMedical) => {
-    console.log("submitting side effects info : ", arrMedical);
+export const submitTreatmentResult = (arrTreatment) => {
+    console.log("submitting side effects info : ", arrTreatment);
 
     return (dispatch) => {
         dispatch({
-            type: MEDICAL_RESULTS,
-            payload: arrMedical 
+            type: TREATMENT_RESULTS,
+            payload: arrTreatment 
         })
 
     }
