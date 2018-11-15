@@ -250,6 +250,7 @@ export const stylesheet = theme => ({
     rightTopNav : {
         textAlign : 'right',
         margin: 'auto',
+        marginRight: '5px',
     },
     homepageFixedWidthContent : {
         maxWidth : MAXWIDTH,
@@ -360,7 +361,7 @@ export const stylesheet = theme => ({
         },
     },
     promiseTitle : {
-        fontSize : '25px',
+        fontSize : '23px',
         margin : 'auto',
         textAlign : 'center',
         color : PRIMARY_COLOR,
@@ -394,6 +395,8 @@ export const stylesheet = theme => ({
         borderRadius : '22px',
         backgroundColor: 'rgba(164, 164, 164, 0.6) !important',
         minHeight : '290px',
+        margin: '0 30px 0 30px',
+        minWidth: `250px`,
         [theme.breakpoints.down('xs')]: {
             margin : '15px',
         },
@@ -412,7 +415,7 @@ export const stylesheet = theme => ({
     },
     promiseDescription : {
         color : PRIMARY_COLOR_HOVER,
-        fontSize : '18px',
+        fontSize : '16px',
         textAlign : 'center',
         
     },
@@ -440,6 +443,21 @@ export const stylesheet = theme => ({
         color: PRIMARY_COLOR,
         margin: 'auto',
         textAlign : 'center',
+    },
+    connectButtonContainer : {
+        textAlign : 'center',
+    },
+    connectButton: {
+        width: "100%",
+        backgroundColor: PRIMARY_COLOR,
+        color: "white",
+        '&:hover': {
+            color: PRIMARY_COLOR
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: "80%",
+            margin : 'auto',
+        },
     },
     connectDescription: {
         paddingTop: '5px',
@@ -493,7 +511,7 @@ export const stylesheet = theme => ({
     },
     aboutContent : {
         backgroundColor: 'rgba(164, 164, 164, 0.2)',
-        padding : '3% !important',
+        margin : '25px !important',
     },
     aboutImgContainer : {
         padding : '0px 12px 0px 12px !important',
@@ -561,5 +579,26 @@ export const stylesheet = theme => ({
     checkIcon : {
         color : SECONDARY_COLOR,
     },
-    
+    paper: {
+        position: 'absolute',
+        width: theme.spacing.unit * 50,
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
+    },
+    modalBtn: {
+        backgroundColor: PRIMARY_COLOR,
+        color: 'white',
+        '&:hover': {
+            color: PRIMARY_COLOR
+        }
+    },
+    textField : {
+        width : "100%",
+        margin: 'auto',
+        marginBottom : '15px',
+        [theme.breakpoints.down('xs')]: {
+            width: '80%',
+        },
+    }
 });

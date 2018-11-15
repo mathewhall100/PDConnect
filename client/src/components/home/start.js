@@ -12,12 +12,13 @@ class Start extends Component {
     render() {
         const { classes } = this.props;
         return (
-                <Grid container spacing={24} className={classes.startContainer}>
+                <div className={classes.startContainer}>
+                    <Grid container>
                     <Grid item xs={12} className={classes.homepageHeader}>
                         Our Goal
                         <hr />
                     </Grid>
-                    <Grid item xs={12} className={classes.description}>
+                    <Grid item xs={11} className={classes.description}>
                         We want to improve quality of life of Parkinsons disease patient find the most individualized treatments 
                         based on the picture of your Parkinsons symptoms and details. 
                         We strive to build a platform for pharmeceutical companies and research facilities
@@ -35,7 +36,8 @@ class Start extends Component {
                         
                     </Grid>
                     */}
-                </Grid>
+                    </Grid>
+                </div>
         )
     }
 }

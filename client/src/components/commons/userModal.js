@@ -28,7 +28,9 @@ class UserModal extends Component  {
     }
 
      handleClose = () => {
-         this.setState({ modalOpen: false });
+         this.setState({ modalOpen: false }, () => {
+             console.log('set modal to false')
+         });
      };
 
     render() {

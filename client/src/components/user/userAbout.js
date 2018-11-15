@@ -75,6 +75,7 @@ import UserModal from '../commons/userModal'
          this.setState({ 
              modalTitle : title,
              modalText : text,
+             modalWarning : false,
              modalOpen: true
         });
      };

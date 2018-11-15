@@ -26,11 +26,13 @@ class Connects extends Component {
 
         return (
             <div className={classes.homepageFixedWidthContent}>
+                <Grid container className={classes.aboutContainer}>
                 <Grid item xs={12}>
                     <h2 className={classes.homepageHeader}>Featured Treatments</h2>
                     <hr />
                 </Grid>
-                <Grid container spacing={24} className={classes.aboutContainer}>
+                </Grid>
+                <Grid container className={classes.aboutContainer}>
                     <Grid item md={8} lg={8} xs={12} className={classes.aboutContent}>
                         <h3>Deep Brain Stimulation</h3>
                         <span>
