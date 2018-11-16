@@ -39,6 +39,7 @@ import { procedures } from '../../constants'
     }  
 
     componentDidMount() {
+        window.scroll(0,0)
         this.props.updateStepperCount()
         const index = this.props.userTrack
         if (index) {

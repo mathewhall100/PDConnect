@@ -8,38 +8,20 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
-import SwipeableViews from 'react-swipeable-views';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import Badge from '@material-ui/core/Badge';
 
 import FormText from '../components/forms/FormText';
 import FormTextPassword from '../components/forms/FormTextPassword';
 import { submitTrialResult, submitTreatmentResult } from '../actions/ResultAction';
-import {resultStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
-import TopTitle from '../components/commons/userTopTitle'
-import SubTitle from '../components/commons/userSubTitle'
+import {resultStylesheet, PRIMARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../styles';
 
 
-
-function TabContainer({ children, dir }) {
-    return (
-      <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-        {children}
-      </Typography>
-    );
-  }
-  
-  TabContainer.propTypes = {
-    children: PropTypes.node.isRequired,
-    dir: PropTypes.string.isRequired,
-  };
-  
 
 class Results extends Component {
 
     state = {
+        tabSelected: 0,
         value: 0,
         treatmentResults: [],
         trialResults: [],
@@ -70,35 +52,35 @@ class Results extends Component {
             treatmentResults.push({
                 medication_name: "Botulinum Toxin",
                 summary: "Injections of a muscle paralysing agent (botulinum toxin) used to treat troublesome drooling and pedal dystonia",
-                link: "info_bottox"
+                key: "bottox"
             })
         }
         if (this.testDBS() === true) {
             treatmentResults.push({
                 medication_name: "Deep Brain Stimulation",
                 summary: "Surgical procedure to treat fluctuating motor symptoms despite oral medication",
-                link: "info_DBS"
+                key: "dbs"
             }) 
         }
         if (this.testRytary() === true) {
             treatmentResults.push({
                 medication_name: "Rytary",
                 summary: "Slow release carbidopa/levodopa to treat early wear'off' symptoms",
-                link: "info_rytary"
+                key: "rytary"
             })
         }
         if (this.testDuopa() === true) {
             treatmentResults.push({
                 medication_name: "Duopa",
                 summary: "Infusion of carbidopa/levodopa straigh into the intestine via a surgically placed tube. Treats unpredictable motor fluctuations and eraly wear 'off' symptoms",
-                link: "info_duopa"
+                key: "duopa"
             }) 
         }
         if (this.testDroxidopa() === true) {
             treatmentResults.push({
                 medication_name: "Droxidopa",
                 summary: "Medication used to treat dizziness and lightheadedness on changing position or standing caused by parkinson disease.",
-                link: "info_droxidopa"
+                key: "droxidopa"
             })
         }
         if (this.testNuplazid() === true) {
@@ -106,14 +88,14 @@ class Results extends Component {
             treatmentResults.push({
                 medication_name: "Nuplazid",
                 summary: "Treatment for hallucinations and delusions associated with Parkinson disease",
-                link: "info_nuplazid"
+                key: "nuplazid"
             }) 
         }
        if (this.testApomorphine() === true) {
             treatmentResults.push({
                 medication_name: "Apomorphine",
                 summary: "Medication that is injected just under the skin to treat  sudden, unpredictable and early wear'off' symptoms.",
-                link: "info_apomorphine"
+                key: "apomorph"
             })
         }
         console.log("treatmentResults: ", treatmentResults)
@@ -129,7 +111,7 @@ class Results extends Component {
             trialResults.push({
                 trial_name: "SPARK",
                 summary: "The SPARK study is for people who have been recently diagnosed with Parkinson’s disease and are looking to take a proactive step in their care.",
-                link: "info_SPARK"
+                key: "spark"
             })
         }
 
@@ -137,7 +119,7 @@ class Results extends Component {
             trialResults.push({
                 trial_name: "NILO-PD",
                 summary: "The NILO-PD study will investigate the safety and tolerability of nilotinib in stable patienst diagnosed with Parkinson disease for more than 5 years",
-                link: "info_NILO"
+                key: "nilo"
             }) 
         }
         console.log("trialResults: ", trialResults)
@@ -279,10 +261,9 @@ class Results extends Component {
     }
 
 
-    handleMoreInfo(link) {
-        console.log(link)
-        this.setState({page: link})
-        this.setState({redirect: true})
+    handleMoreInfo(item) {
+        console.log(item)
+        this.setState({item: item}, () => this.setState({redirect: true}) )
     }
 
     
@@ -294,6 +275,11 @@ class Results extends Component {
         this.setState({ value: index });
       };
 
+    handleTabClick = (tab) => {
+        console.log("tab: ", tab)
+        this.setState({tabSelected: tab})
+    }
+
     submit = (values) =>  {
         console.log(values)
     }
@@ -303,59 +289,47 @@ class Results extends Component {
     render() {
 
         const { handleSubmit, classes } = this.props
-        const { page, redirect, treatmentResults, trialResults } = this.state
+        const { redirect, treatmentResults, trialResults, tabSelected, item } = this.state
 
 
         if (redirect) { 
-            const url = `/${page}`;
+            const url = `/treatments:${item}`;
             console.log("URL: ", url)
             console.log("redirect to: " + url);
             return<Redirect to={url} />;
         }
         
         return (
-            <div className={classes.root}>
-
-               <AppBar position="static" color="default" style={{margin: "0 auto", maxWidth: "1350px"}}>
-                <Tabs
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                    indicatorColor="primary"
-                    textColor="primary"
-                >
-                    <Tab label="Treatments >" className={classes.tabTitle}/>
-                    <Tab label="Trials >" className={classes.tabTitle}/>
-                    <Tab label="Groups >" className={classes.tabTitle}/>
-                    <Tab label="Actions" className={classes.tabTitle}/>
-                </Tabs>
+            <div className={classes.root}> 
+            
+            <div className={classes.tabBar}>
                
+                    <span className={tabSelected === 0 ? classes.tabButtonSelected : classes.tabButtonLeft} onClick={() => this.handleTabClick(0)}>TREATMENTS<Badge color="primary" badgeContent={treatmentResults.length} className={classes.badge}> </Badge></span>
+                
+                    <span className={tabSelected === 1 ? classes.tabButtonSelected : classes.tabButtonMiddle} onClick={() => this.handleTabClick(1)}>CLINICAL TRIALS<Badge color="primary" badgeContent={trialResults.length} className={classes.badge}> </Badge></span>
+                    
+                    <span className={tabSelected === 2 ? classes.tabButtonSelected : classes.tabButtonRight} onClick={() => this.handleTabClick(2)}>FOCUS GROUPS<Badge color="primary" badgeContent={0} className={classes.badge}> </Badge></span>
+            </div>
 
-                </AppBar>
+                <Grid container spacing={24}>
+                    <Grid item xs={12} sm={12} md={8}>
 
-                <SwipeableViews
-                    axis={'x'}
-                    index={this.state.value}
-                    onChangeIndex={this.handleChangeIndex}
-                >
-
-                    <TabContainer dir={"rtl"}>
-
-                        <div className={classes.resultContainer}>
+                   
+                        {tabSelected === 0 && <div className={classes.resultContainer}>
                             <br />
                             <h1 className={classes.title}>Treatments</h1>
-                            <br />
 
-                            <div >
+                            <div>
                             
                                 <div>
                                     <h1 className={classes.subtitle}>Based on the information you have entered you may benefit from discussing the following treatments with the doctor that looks after you for your Parkinsons disease.</h1>
                                 </div>
 
                                 <div> 
-                                    <Grid container spacing={24}>
+                                
                                         {treatmentResults.map((treatment, index) => {
                                             return (
-                                                <Grid item xs={12} sm={12} md={6}>
+                                                
                                                     <div key={index} className={classes.resultBox}>
                                                         <div className={classes.resultTextBox}>
                                                             <div className={classes.resultTitle}>
@@ -366,28 +340,24 @@ class Results extends Component {
                                                             </div>
                                                         </div>
                                                         <div style={{margin: "20px", fontSize: "20px", textAlign : 'right'}}>
-                                                            <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo(treatment.link)}>Find Out More</Button>
+                                                            <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo(treatment.key)}>Find Out More</Button>
                                                         </div>
                                                     </div> 
-                                                </Grid>                            
+                                                                        
                                             ) 
                                         }) }
-                                    </Grid> 
+                                
                                 </div>
                             </div>
 
                             <br />
 
-                        </div> 
+                        </div> }
 
-                    </TabContainer>
 
-                    <TabContainer dir={"rtl"}>
-
-                        <div className={classes.resultContainer}>
+                         {tabSelected === 1 && <div className={classes.resultContainer}>
                             <br />
                             <h1 className={classes.title}>Clinical Trials</h1>
-                            <br />
 
                             <div />
                                 <div>
@@ -396,10 +366,10 @@ class Results extends Component {
 
 
                                 <div style={{marginTop: "35px"}}> 
-                                    <Grid container spacing={24}>
+                                    
                                         {trialResults.map((trial, index) => {
                                             return (
-                                                <Grid item xs={12} sm={12} md={6}>
+                                            
                                                     <div key={index} className={classes.resultBox}>
                                                         <div className={classes.resultTextBox}>
                                                             <div className={classes.resultTitle}>
@@ -413,89 +383,100 @@ class Results extends Component {
                                                             <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo(trial.link)}>Find Out More</Button>
                                                         </div>
                                                     </div> 
-                                                </Grid>
+                                            
                                             ) 
                                         })}
 
-                                    </Grid>
+                                
                                 
                                 </div>
 
                             <br />
 
-                        </div> 
-                        
-                    </TabContainer>
+                         </div> }
 
-                    <TabContainer dir={"rtl"}></TabContainer>
+                         {tabSelected === 2 && <div className={classes.resultContainer}>
+                            <br />
+                            <h1 className={classes.title}>Focus Groups</h1>
 
-                      <TabContainer dir={"rtl"}>
-
-                        <Grid container spacing={24}> 
-
-                            <Grid item xs={12} sm={12} md={4}>
-                                <div className={classes.emailContainer}>
-                                    <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                                        <div >
-                                            <h1 className={classes.title}>Create an account</h1>
-                                        </div>
-
-                                            <FormTextPassword
-                                                name="password1"
-                                                label="Password"
-                                                width="90%"
-                                            />
-
-                                            <br />
-
-                                            <Button type="submit" className={classes.btn}>Create Account</Button>
-                                        <br />
-                                    </form>
+                            <div />
+                                <div>
+                                    <h1 className={classes.subtitle}>There are no focus groups suitabkle for you at present.</h1>
                                 </div>
-                            </Grid>   
-                            
-                            <Grid item xs={12} sm={12} md={4}>
-                                <div className={classes.emailContainer}>
-                                    <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                                        <div >
-                                            <h1 className={classes.title}>Email Me The Results</h1>
-                                        </div>
-                                        <FormText
+
+
+                                <div style={{marginTop: "35px"}}> 
+                                    
+                                </div>
+
+                            <br />
+
+                         </div> }
+
+                    </Grid>
+
+                    <Grid item xs={12} sm={12} md={4}>
+                    
+                        <div className={classes.emailContainer}>
+                            <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
+                                <div >
+                                    <h1 className={classes.title}>Create an account</h1>
+                                </div>
+
+                                    <FormText
                                         name="email"
                                         label="Email (john.doe@you.com"
                                         width="90%"
-                                        />
-                                        <br />
-                                    </form>
+                                    />
+                                    <br />
+
+                                    <FormTextPassword
+                                        name="password1"
+                                        label="Password"
+                                        width="90%"
+                                    />
+
+                                    <br />
+
+                                    <Button type="submit" className={classes.btn}>Create Account</Button>
+                                <br />
+                            </form>
+                        </div>
+                    
+                    
+                    
+                        <div className={classes.emailContainer}>
+                            <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
+                                <div >
+                                    <h1 className={classes.title}>Email Me The Results</h1>
                                 </div>
-                            </Grid>
-                        
-                            <Grid item xs={12} sm={12} md={4}>
-                                <div className={classes.emailContainer}>
-                                    <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                                        <div >
-                                            <h1 className={classes.title}>Print Results</h1>
-                                        </div>
-                                        <Button type="submit" className={classes.btn}>Print</Button>
-                                        <br />
-                                    </form>
+                                <FormText
+                                name="email"
+                                label="Email (john.doe@you.com"
+                                width="90%"
+                                />
+                                <br />
+                            </form>
+                        </div>
+                    
+                
+                    
+                        <div className={classes.emailContainer}>
+                            <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
+                                <div >
+                                    <h1 className={classes.title}>Print Results</h1>
                                 </div>
-                            </Grid>
+                                <Button type="submit" className={classes.btn}>Print</Button>
+                                <br />
+                            </form>
+                        </div>
+                    </Grid>
+                </Grid>
 
-                        </Grid>
-
-                    </TabContainer>
-
-                </SwipeableViews>
             </div>
         );
     }
 }
-
-                                // <div>
-                                //     <h1 className={classes.subtitle}>Create an account to keep track of your symptoms and stay up-to-date with the latest Parkinsons treatment!
-                                //     </h1>
-                                // </div>
 
                                 
 

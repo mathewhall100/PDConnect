@@ -43,6 +43,7 @@ import { nonMotorSy } from '../../constants'
 
 
     componentDidMount() {
+        window.scroll(0,0)
         this.props.updateStepperCount()
         const index = this.props.answerTrack
         if (index) {this.setState({

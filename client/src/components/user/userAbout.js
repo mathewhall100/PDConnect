@@ -45,6 +45,7 @@ import UserModal from '../commons/userModal'
     }
 
     componentDidMount() {
+        window.scroll(0,0)
         this.props.updateStepperCount()
     }
 

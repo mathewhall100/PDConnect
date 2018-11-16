@@ -3,7 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import Homepage from './pages/home';
 import User from './pages/user';
 import Result from './pages/results';
-import TreatmentInfo from './pages/treatmentInfo';
+import TreatmentsDisplay from './pages/treatmentsDisplay';
+import TrialsDisplay from './pages/trialsDisplay';
 import NotFound from './pages/notFound';
 
 import InfoDBS from './infoFiles/DBS'
@@ -27,6 +28,8 @@ class Routes extends Component {
                 <Switch>
                     <Route path='/user' component={User} />
                     <Route path='/results' component={Result} />
+                    <Route path='/treatments:id' component={TreatmentsDisplay} />
+                    <Route path='/trials' component={TrialsDisplay} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                     <Route path="/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
                     <Route path="/info_duopa" render={props => <InfoDuopa {...this.props}></InfoDuopa>} />

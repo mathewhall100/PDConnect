@@ -28,6 +28,7 @@ import { PDADLs } from '../../constants'
  class UserLife extends Component {
 
     componentDidMount() {
+        window.scroll(0,0)
         this.props.updateStepperCount()
         console.log("CWRP: ", this.props.userADL)
         const index = this.props.userADL

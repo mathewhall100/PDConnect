@@ -11,7 +11,7 @@ import reportImg from './images/report.jpg';
 import stethoscopeImg from './images/stethoscope.jpg';
 import tabletReportHandsImg from './images/tablet_report_hands.jpg';
 
-const PRIMARY_COLOR = '#2F5597';
+export const PRIMARY_COLOR = '#2F5597';
 const PRIMARY_COLOR_HOVER = '#4d6591';
 const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%, #ffffff 100%)'
 const SECONDARY_COLOR = '#BF9000';
@@ -227,10 +227,82 @@ export const resultStylesheet = theme => ({
         textAlign: "center",
         padding: "10px",
     },
-    resultContainer: {
+    resultContainer: {   
+        padding: "10px", 
         border: "2px solid lightgrey",
-        borderRadius: "5px",
+        borderRadius: "0 5px 5px 5px",
         backgroundColor: "#eeeeee",
+    },
+    tabBar: {
+        backgroundColor: "#ffffff",
+        position: "relative",
+        top: "-10px",
+        fontSize: "16px",
+        fontWeight: "bold"
+    },
+    tabButtonLeft: {
+        padding: "12px 34px 12px 20px",
+        borderTop: "2px solid lightgrey",
+        borderLeft: "2px solid lightgrey",
+        borderRight: "1px solid lightgrey",
+        borderBottom: "none",
+        borderRadius: "5px 5px 0 0",
+        backgroundColor: "white",
+        position: "relative",
+        top: "1px",
+        '&:hover': {
+            cursor: "pointer",
+            color: PRIMARY_COLOR
+        }
+    },
+    tabButtonMiddle: {
+        padding: "12px 34px 12px 20px",
+        borderTop: "2px solid lightgrey",
+        borderLeft: "1px solid lightgrey",
+        borderRight: "1px solid lightgrey",
+        borderBottom: "none",
+        borderRadius: "5px 5px 0 0",
+        backgroundColor: "white",
+        position: "relative",
+        top: "1px",
+        '&:hover': {
+            cursor: "pointer",
+            color: PRIMARY_COLOR
+        }
+    },
+    tabButtonRight: {
+        padding: "12px 34px 12px 20px",
+        borderTop: "2px solid lightgrey",
+        borderLeft: "1px solid lightgrey",
+        borderRight: "2px solid lightgrey",
+        borderBottom: "none",
+        borderRadius: "5px 5px 0 0",
+        backgroundColor: "white",
+        position: "relative",
+        top: "1px",
+        '&:hover': {
+            cursor: "pointer",
+            color: PRIMARY_COLOR
+        }
+    },
+    tabButtonSelected: {
+        padding: "12px 34px 12px 20px",
+        borderTop: "2px solid lightgrey",
+        borderLeft: "2px solid lightgrey",
+        borderRight: "2px solid lightgrey",
+        borderBottom: "2px solid #eeeeee",
+        borderRadius: "5px 5px 0 0",
+        backgroundColor: "#eeeeee",
+        color: PRIMARY_COLOR,
+        position: "relative",
+        top: "1px",
+        '&:hover': {
+            cursor: "pointer"
+        }
+    },
+    badge: {
+        top: "-10px",
+        left: "17px"
     },
     resultBox: {
         border: "1px solid grey",
@@ -265,11 +337,37 @@ export const resultStylesheet = theme => ({
     },
     emailContainer: {
         border: "2px solid lightgrey",
-        borderRadius: "20px",
+        borderRadius: "5px",
         backgroundColor: "#eeeeee",
-        padding: "20px"
+        padding: "20px",
+        marginBottom: "40px"
     },
+    infoSummary: {
+        padding: "0 0 20px 20px",
+        fontSize: "18px", 
+        lineheight: "30px",
+        textAlign: "justify"
+    },
+    infoTitle: {
+        textAlign: "center",
+        textWeight: "bold",
+        color: PRIMARY_COLOR
+    },
+    infoText: {
+        padding: "20px 20px 10px 20px",
+        fontSize: "18px", 
+        lineheight: "30px",
+        textAlign: "justify"
+    },
+    mediaBox: {
+        margin: "20px 0 20px 20px"
+    },
+    infoBullets: {
+        padding: "0 20px 0 60px",
+        fontSize: "18px",
+        fontWeight: "bold"
 
+    },
 })
 
 
