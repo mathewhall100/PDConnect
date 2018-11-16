@@ -16,6 +16,7 @@ import InfoBotTox from './infoFiles/BotTox.js'
 import InfoSpark from './infoFiles/SPARK.js'
 import InfoNilo from './infoFiles/NILO.js'
 import Stepper from './components/stepper';
+import Homepage2 from './pages/home2';
 
 import { connect } from 'react-redux';
 import { updateStepperCount } from './actions/Stepper';
@@ -26,6 +27,7 @@ class Routes extends Component {
             <div>
                 <Switch>
                     <Route path='/user' component={User} />
+                    <Route path='/home' component={Homepage2} />
                     <Route path='/results' component={Result} />
                     <Route path="/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
                     <Route path="/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />

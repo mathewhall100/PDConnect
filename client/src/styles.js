@@ -305,15 +305,15 @@ export const stylesheet = theme => ({
         }
     },
     topNav : {
-        maxWidth : `${MAXWIDTH} !important `,
         margin : 'auto',
         [theme.breakpoints.down('xs')]: {
             marginTop: '50px',
         },
     },
     topNavLogo : {
-        height : '145px',
-        width : '145px',
+        height : '125px',
+        width : '125px',
+        margin: '30px 0 30px 0',
         [theme.breakpoints.down('xs')]: {
             display: 'none',
         },
@@ -391,7 +391,6 @@ export const stylesheet = theme => ({
     heroTitle: {
         fontSize: '34px',
         fontWeight: 'bold',
-        display: 'block',
         margin : 'auto',
         color: PRIMARY_COLOR,
         fontFamily : 'lato, open_sans, Arial, san-serif',
@@ -433,12 +432,7 @@ export const stylesheet = theme => ({
             marginBottom : '25px',
         },
     },
-    promiseTitle : {
-        fontSize : '23px',
-        margin : 'auto',
-        textAlign : 'center',
-        color : PRIMARY_COLOR,
-    },
+    
     promiseContainer1 : {
         position: 'absolute',
         marginLeft: 'auto',
@@ -462,6 +456,12 @@ export const stylesheet = theme => ({
         [theme.breakpoints.down('xs')]: {
             position: 'relative'
         },
+    },
+    promiseTitle: {
+        fontSize: '23px',
+        margin: 'auto',
+        textAlign: 'center',
+        color: PRIMARY_COLOR,
     },
     promiseCube : {
         border : 'gray 1px solid',
@@ -674,4 +674,173 @@ export const stylesheet = theme => ({
             width: '80%',
         },
     }
+});
+
+
+export const home2Stylesheet = theme => ({
+    HeroTitle : {
+        fontSize : '34px',
+        color : 'black',
+        fontWeight : 'bolder',
+        lineHeight : '3',
+    },
+    HeroWhiteTitle : {
+        fontSize: '34px',
+        color: 'white',
+        fontWeight: 'bolder',
+        lineHeight: '3',
+    },
+    description : {
+        fontSize : '22px',
+        color : 'dark gray',
+    },
+    homepageContainer : {
+        minHeight : '370px',
+        margin : 'auto',
+    },
+    startContainer : {
+        margin : 'auto',
+        height: '350px',
+        alignItems : 'center',
+    },
+    buttonContainer : {
+        paddingTop : '20px',
+        margin : 'auto',
+    },
+    homepageButton : {
+        backgroundColor: PRIMARY_COLOR,
+        fontSize : '18px',
+        color: 'white',
+        float : 'right',
+        textTransform : 'capitalize',
+        '&:hover': {
+            color: PRIMARY_COLOR,            
+        }
+    },
+    splitContent : {
+        margin : 'auto',
+        verticalAlign : 'center',
+    },
+    heroRotateText: {
+        margin: 'auto',
+        alignItems: 'center',
+    },
+    heroImg : {
+        borderColor :'solid 1px black',
+        width : '70%',
+    },
+    heroAppStore : {
+        margin : '00px 0 00px 0',
+        width : '100%',
+    },
+    heroDownloadImg : {
+        padding : '30px 50px 30px 0',
+        maxWidth : '225px',
+        maxHeight : 'auto',
+    },
+    treatmentImg: {
+        maxWidth: '380px',
+        textAlign : 'right',
+    },
+    aboutItemContainer : {
+        alignItems : 'middle',
+        minHeight: '250px',
+    },
+    aboutContentContainer : {
+        paddingTop : '30px',
+    },
+    aboutImgContainer: {
+        textAlign: 'center',
+        margin: 'auto',
+        minHeight : '375px',
+        alignItems : 'middle',
+    },
+    promiseTitle: {
+        fontSize: '23px',
+        margin: 'auto',
+        paddingTop :'15px',
+        textAlign: 'center',
+        color: 'white',
+    },
+    promiseCube : {
+        minHeight : '290px',
+        padding : '20px',
+        [theme.breakpoints.down('xs')]: {
+            margin : '15px',
+        },
+    },
+    promiseRowContainer : {
+        display : 'flex',
+        justifyContent : 'center',
+    },
+    promiseIconContainer : {
+        textAlign : 'center',
+    },
+    promiseIcon : {
+        maxWidth : '50px',
+        maxHeight: '50px',
+        margin: '20px',
+    },
+    promiseHeader: {
+        color: 'white',
+    },
+    promiseDescription : {
+        color : 'white',
+        fontSize : '16px',
+        textAlign : 'center',
+        maxWidth: '70%',
+        textAlign: 'center !important',
+        margin: 'auto',        
+    },
+    promiseSecondHeader: {
+        color: SECONDARY_COLOR,
+    },
+    promiseListItem : {
+        display: 'block',
+        textAlign : 'center',
+    },
+    bigAvatar: {
+        width: '100px',
+        height: '100px',
+    },
+    avatarContainer: {
+        textAlign: '-webkit-center',
+    },
+    wow : {
+        background: PRIMARY_COLOR_HOVER,
+        width: '80%',
+        height : '380px',
+        margin: '20px 15px 20px 15px',
+        '&:hover': {
+            background: SECONDARY_COLOR,
+            color : `${PRIMARY_COLOR} !important`,
+        }
+    },
+    connectHeader : {
+        display: 'block',
+        fontSize: '30px',
+        color: 'black',
+        margin: 'auto',
+        textAlign: 'center',
+    },
+    footerContainer: {
+        paddingTop: '40px',
+        backgroundColor: PRIMARY_COLOR,
+        color: "white",
+        paddingBottom: '10px',
+        marginTop: '60px'
+    },
+    socialIcon: {
+        height: '45px',
+        width: '45px',
+        borderRadius: '5px',
+        margin: '0 5px 0 5px',
+    },
+    paper: {
+        position: 'absolute',
+        width: theme.spacing.unit * 40,
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
+    },
 });

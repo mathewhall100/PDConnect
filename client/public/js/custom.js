@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
         $('body').toggleClass('cover-bg');
     });
     // Hero rotating texts
-    $("#hero .rotating").Morphext({
+    $(".rotating").Morphext({
         animation: "fadeIn",
         separator: ",",
         speed: 3000
