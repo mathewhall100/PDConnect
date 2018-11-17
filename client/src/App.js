@@ -4,7 +4,7 @@ import "./App.css";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import  AppBar from './components/AppBar';
-import Footer from './components/home/footer';
+import Footer2 from './components/home2/footer2';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
             <Routes {...this.props} />
           </div>
         </ParallaxProvider>
-        <Footer />
+        <Footer2 />
       </div>
     );
   }

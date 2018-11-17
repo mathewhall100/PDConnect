@@ -31,9 +31,9 @@ class Hero extends Component {
     };
     render(){
         const { classes } = this.props;
-        const { modalOpen, modalTitle, modalText, modalWarning, redirect, redirectAdress } = this.state
+        const { modalOpen, modalTitle, modalText, modalWarning, redirect, redirectAddress } = this.state
         if(redirect) {
-            const url = redirectAdress;
+            const url = redirectAddress;
             return(
                 <Redirect to={url} />
             )
@@ -87,7 +87,7 @@ class Hero extends Component {
                              We want you to understand that this application by no mean serve as a prescription. 
                              Please talk to you doctor about this before go to the pharmacy. 
                             <div>
-                            <Button className={classes.modalBtn} onClick={() => { this.handleModalButton("/user/userAbout")}}>Agree</Button>
+                            <Button className={classes.modalBtn} onClick={() => { this.handleModalButton("/user/user_about")}}>Agree</Button>
                             </div>
                         </div>
                     </div>
