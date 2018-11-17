@@ -73,9 +73,7 @@ class Connects extends Component {
                                     margin="normal"
                                     variant="outlined"
                                 />
-                                <div className={classes.connectButtonContainer}>
-                                    <Button variant='outlined' className={classes.connectButton}>Subscribe </Button>
-                                </div>
+                                <Button variant='outlined' className={classes.homepageButton}>Subscribe </Button>
                             </div>
 
                         </Grid>

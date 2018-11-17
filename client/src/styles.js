@@ -923,8 +923,6 @@ export const home2Stylesheet = theme => ({
     },
     footerContainer: {
         paddingTop: '40px',
-        backgroundColor: PRIMARY_COLOR,
-        color: "white",
         paddingBottom: '10px',
         marginTop: '60px'
     },
@@ -940,5 +938,8 @@ export const home2Stylesheet = theme => ({
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 4,
+    },
+    connectSubscribe: {
+        display: 'grid',
     },
 });

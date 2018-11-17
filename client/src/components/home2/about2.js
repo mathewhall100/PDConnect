@@ -44,11 +44,10 @@ class Connects extends Component {
                                         <Button variant='outlined' className={classes.homepageButton}>Learn More</Button>
                                     </div>
                                 </Grid>
-                                <Grid item xs={1}></Grid>
+                                <Grid item xs={2}></Grid>
                                 <Grid item md={3} xs={12} className={classes.aboutImgContainer}>
                                     <img src={dbsImg} alt='deep brain surgery' className={classes.treatmentImg} />
                                 </Grid>
-                                <Grid item xs={1}></Grid>
                             </Grid>
                             <Grid container className={classes.aboutItemContainer}>
                                 <Grid item md={7} xs={12}>
@@ -62,11 +61,10 @@ class Connects extends Component {
                                         <Button variant='outlined' className={classes.homepageButton}>Learn more about RYTARY</Button>
                                     </div>
                                 </Grid>
-                                <Grid item xs={1}></Grid>
+                                <Grid item xs={2}></Grid>
                                 <Grid item md={3} xs={12} className={classes.aboutImgContainer}>
                                     <img src={rytaryImg} alt='Rytary Medication' className={classes.treatmentImg} />
                                 </Grid>
-                                <Grid item xs={1}></Grid>
                             </Grid>
                             <Grid container className={classes.aboutItemContainer}>
                                 <Grid item md={7} xs={12}>
@@ -80,11 +78,10 @@ class Connects extends Component {
                                         <Button variant='outlined' className={classes.homepageButton}>Find the closest focus group</Button>
                                     </div>
                                 </Grid>
-                                <Grid item xs={1}></Grid>
+                                <Grid item xs={2}></Grid>
                                 <Grid item md={3} xs={12} className={classes.aboutImgContainer}>
                                     <img src={focusGroupImg} alt='deep brain surgery' className={classes.treatmentImg} />
                                 </Grid>
-                                <Grid item xs={1}></Grid>
                             </Grid>
                         </div>
                     </Grid>
