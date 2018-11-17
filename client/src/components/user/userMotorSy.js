@@ -43,6 +43,7 @@ import { motorSy } from '../../constants'
 
     componentDidMount() {
         this.props.updateStepperCount()
+        window.scroll(0,0)
         const index = this.props.userTrack
         if (index) {this.setState({
             answerTrack: index,

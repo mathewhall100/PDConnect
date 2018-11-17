@@ -30,6 +30,7 @@ import SubTitle from '../commons/userSubTitle'
     }  
 
     componentDidMount() {
+        window.scroll(0,0)
         this.props.updateStepperCount()
         const index=this.props.userFamily
         console.log("userFamily: ", index)
