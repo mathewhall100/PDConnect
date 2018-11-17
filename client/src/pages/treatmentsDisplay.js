@@ -10,7 +10,18 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import StarIcon from '@material-ui/icons/Star';
 import Badge from '@material-ui/core/Badge';
+import fbIcon from '../images/socialMedia/facebook.png';
+import instagramIcon from '../images/socialMedia/instagram.png';
+import twitterIcon from '../images/socialMedia/twitter.png';
+import googleIcon from '../images/socialMedia/google+.png';
+import whatsappIcon from '../images/socialMedia/whatsapp.png';
+import linkedinIcon from '../images/socialMedia/linkedin.png';
 
 import FormText from '../components/forms/FormText';
 import FormTextPassword from '../components/forms/FormTextPassword';
@@ -72,7 +83,7 @@ class TreatmentsDisplay extends Component {
 
             return (
                 <div className={classes.resultContainer}>
-                    <br />
+                    <Button type="button" className={classes.printButton}>print</Button>
                     <h1 className={classes.title}>{startCase(treatment.name)}</h1>
                     <Grid container spacing={24}>
                         <Grid item xs={12} sm={12} md={6}>
@@ -266,65 +277,105 @@ class TreatmentsDisplay extends Component {
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={4}>
-                    
-                        <div className={classes.emailContainer}>
-                            <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                                <div >
-                                    <h1 className={classes.title}>Create an account</h1>
-                                </div>
 
-                                    <FormText
-                                        name="email"
-                                        label="Email (john.doe@you.com"
-                                        width="90%"
-                                    />
-                                    <br />
-
-                                    <FormTextPassword
-                                        name="password1"
-                                        label="Password"
-                                        width="90%"
-                                    />
-
-                                    <br />
-
-                                    <Button type="submit" className={classes.btn}>Create Account</Button>
-                                <br />
-                            </form>
+                        <div className={classes.socMedContainer}>
+                            <span style={{fontSize: "18px", fontWeight: "bold", position: "relative", top: "10px"}}>Share page</span>
+                            <span style={{float: "right"}}>
+                                <img className={classes.socialIcon} src={fbIcon} alt="facebook icon" />
+                                <img className={classes.socialIcon} src={twitterIcon} alt="twitter icon" />
+                                <img className={classes.socialIcon} src={instagramIcon} alt="instagram icon" />
+                                <img className={classes.socialIcon} src={whatsappIcon} alt="whatsappicon" />
+                                <img className={classes.socialIcon} src={googleIcon} alt="google icon" />
+                                <img className={classes.socialIcon} src={linkedinIcon} alt="google icon" />
+                            </span>
                         </div>
-                    
+
+                        <br />
+                        <br />
+
                         <div className={classes.emailContainer}>
                             <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
                                 <div >
-                                    <h1 className={classes.title}>Email Me The Results</h1>
+                                    <h1 className={classes.title}>Email me this page</h1>
                                 </div>
                                 <FormText
-                                name="email"
-                                label="Email (john.doe@you.com"
-                                width="90%"
+                                    name="email2"
+                                    label="Email (john.doe@you.com"
+                                    width="90%"
                                 />
                                 <br />
-                            </form>
-                        </div>
-                    
-                        <div className={classes.emailContainer}>
-                            <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                                <div >
-                                    <h1 className={classes.title}>Print Results</h1>
-                                </div>
-                                <Button type="submit" className={classes.btn}>Print</Button>
+                                <Button type="submit" className={classes.button}>Send</Button>
                                 <br />
                             </form>
                         </div>
+                        
+                        <div className={classes.emailContainer}>
+                                
+                            <div >
+                                <h1 className={classes.title}>Create an account</h1>
+                            </div>
+                                
+                            <List component="nav">
+                                <ListItem button>
+                                <ListItemIcon>
+                                    <StarIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="save your profile between visits" />
+                                </ListItem>
+                                <ListItem button>
+                                <ListItemIcon>
+                                    <StarIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="receive prompts to update your information" />
+                                </ListItem>
+                                <ListItem button>
+                                <ListItemIcon>
+                                    <StarIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="alerts when new treatments or trials fit match profile" />
+                                </ListItem>
+                                <ListItem button>
+                                <ListItemIcon>
+                                    <StarIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="submit your details for particupation in focus groups" />
+                                </ListItem>
+                            </List>
+
+                            <br />
+                            <Button type="submit" className={classes.button}>Create</Button>
+                            <br />
+                        </div>
+
                     </Grid>
                  </Grid> }
-
             </div>
         );
     }
 }
 
-                                
+function validate(values) {
+    const errors = {}
+    if (!values.email1) {
+        errors.email1 = '*valid email required'
+    }
+    if (!values.email2) {
+        errors.email2 = '*valid email required'
+    }
+    if (!values.password1) {
+        errors.password1 = '* password required.'
+    } 
+    if (values.password1 && values.password1.length < 8) {
+        errors.password1 = '* password must be at least 8 characters long.'
+    } 
+    if (!values.password2) {
+        errors.password2 = '* password required.'
+    } 
+    if (values.password1 !== values.password2) {
+        errors.password2 = '* passwords did not match. '
+    } 
+    return errors
+}                              
 
 
 
@@ -333,7 +384,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const formData = {
-    form: "CreateAccountForm" //unique identifier for this form 
+    form: "CreateAccountForm", //unique identifier for this form
+    validate
 }
 
 TreatmentsDisplay = withRouter(TreatmentsDisplay)

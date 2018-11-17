@@ -8,7 +8,7 @@ import DoneIcon from '@material-ui/icons/Done';
 class FormTextPassword extends Component {  
 
     renderTextField(field) {
-    const {meta: {touched, error}} = field;
+    const {meta: {touched, pristine, error}} = field;
         return (
             <div>
                 <span>
@@ -22,12 +22,16 @@ class FormTextPassword extends Component {
                         autoComplete="current-password"
                     />
                 </span>
-                <span style={{fontSize: "13px", color: "red", position: "relative", top: "30px", left: "10px"}}> 
-                        {touched ? error : ''}
-                </span>
+
                 <span style={{fontSize: "13px", color: "green", position: "relative", top: "30px", left: "10px"}}> 
-                        {touched && !error ? <DoneIcon /> : ''}
+                        {!pristine && !error ? <DoneIcon /> : ''}
                 </span>
+
+                <div style={{fontSize: "13px", color: "red"}}> 
+                        {touched ? error : ''}
+                </div>
+
+                
             </div>
         )
     };

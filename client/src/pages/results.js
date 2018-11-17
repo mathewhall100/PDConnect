@@ -10,6 +10,17 @@ import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import StarIcon from '@material-ui/icons/Star';
+import fbIcon from '../images/socialMedia/facebook.png';
+import instagramIcon from '../images/socialMedia/instagram.png';
+import twitterIcon from '../images/socialMedia/twitter.png';
+import googleIcon from '../images/socialMedia/google+.png';
+import whatsappIcon from '../images/socialMedia/whatsapp.png';
+import linkedinIcon from '../images/socialMedia/linkedin.png';
 
 import FormText from '../components/forms/FormText';
 import FormTextPassword from '../components/forms/FormTextPassword';
@@ -316,6 +327,7 @@ class Results extends Component {
 
                    
                         {tabSelected === 0 && <div className={classes.resultContainer}>
+                            <Button type="button" className={classes.printButton}>print</Button>
                             <br />
                             <h1 className={classes.title}>Treatments</h1>
 
@@ -363,8 +375,6 @@ class Results extends Component {
                                 <div>
                                     <h1 className={classes.subtitle}>Based on the information you have entered you may be eligable to participate in the following clinical trials</h1>
                                 </div>
-
-
                                 <div style={{marginTop: "35px"}}> 
                                     
                                         {trialResults.map((trial, index) => {
@@ -386,13 +396,8 @@ class Results extends Component {
                                             
                                             ) 
                                         })}
-
-                                
-                                
                                 </div>
-
                             <br />
-
                          </div> }
 
                          {tabSelected === 2 && <div className={classes.resultContainer}>
@@ -403,7 +408,6 @@ class Results extends Component {
                                 <div>
                                     <h1 className={classes.subtitle}>There are no focus groups suitabkle for you at present.</h1>
                                 </div>
-
 
                                 <div style={{marginTop: "35px"}}> 
                                     
@@ -417,58 +421,73 @@ class Results extends Component {
 
                     <Grid item xs={12} sm={12} md={4}>
                     
-                        <div className={classes.emailContainer}>
-                            <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                                <div >
-                                    <h1 className={classes.title}>Create an account</h1>
-                                </div>
-
-                                    <FormText
-                                        name="email"
-                                        label="Email (john.doe@you.com"
-                                        width="90%"
-                                    />
-                                    <br />
-
-                                    <FormTextPassword
-                                        name="password1"
-                                        label="Password"
-                                        width="90%"
-                                    />
-
-                                    <br />
-
-                                    <Button type="submit" className={classes.btn}>Create Account</Button>
-                                <br />
-                            </form>
+                    <div className={classes.socMedContainer}>
+                            <span style={{fontSize: "18px", fontWeight: "bold", position: "relative", top: "10px"}}>Share page</span>
+                            <span style={{float: "right"}}>
+                                <img className={classes.socialIcon} src={fbIcon} alt="facebook icon" />
+                                <img className={classes.socialIcon} src={twitterIcon} alt="twitter icon" />
+                                <img className={classes.socialIcon} src={instagramIcon} alt="instagram icon" />
+                                <img className={classes.socialIcon} src={whatsappIcon} alt="whatsappicon" />
+                                <img className={classes.socialIcon} src={googleIcon} alt="google icon" />
+                                <img className={classes.socialIcon} src={linkedinIcon} alt="google icon" />
+                            </span>
                         </div>
-                    
-                    
-                    
+
+                        <br />
+                        <br />
+
                         <div className={classes.emailContainer}>
                             <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
                                 <div >
-                                    <h1 className={classes.title}>Email Me The Results</h1>
+                                    <h1 className={classes.title}>Email me this page</h1>
                                 </div>
                                 <FormText
-                                name="email"
-                                label="Email (john.doe@you.com"
-                                width="90%"
+                                    name="email2"
+                                    label="Email (john.doe@you.com"
+                                    width="90%"
                                 />
+                                <br />
+                                <Button type="submit" className={classes.button}>Send</Button>
                                 <br />
                             </form>
                         </div>
-                    
-                
-                    
+                        
                         <div className={classes.emailContainer}>
-                            <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                                <div >
-                                    <h1 className={classes.title}>Print Results</h1>
-                                </div>
-                                <Button type="submit" className={classes.btn}>Print</Button>
-                                <br />
-                            </form>
+                                
+                            <div >
+                                <h1 className={classes.title}>Create an account</h1>
+                            </div>
+                                
+                            <List component="nav">
+                                <ListItem button>
+                                <ListItemIcon>
+                                    <StarIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="save your profile between visits" />
+                                </ListItem>
+                                <ListItem button>
+                                <ListItemIcon>
+                                    <StarIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="receive prompts to update your information" />
+                                </ListItem>
+                                <ListItem button>
+                                <ListItemIcon>
+                                    <StarIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="alerts when new treatments or trials fit match profile" />
+                                </ListItem>
+                                <ListItem button>
+                                <ListItemIcon>
+                                    <StarIcon />
+                                </ListItemIcon>
+                                <ListItemText inset primary="submit your details for particupation in focus groups" />
+                                </ListItem>
+                            </List>
+
+                            <br />
+                            <Button type="submit" className={classes.button}>Create</Button>
+                            <br />
                         </div>
                     </Grid>
                 </Grid>
