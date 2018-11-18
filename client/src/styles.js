@@ -42,6 +42,10 @@ export const userStylesheet = theme => ({
         fontWeight : 'bold',
         lineHeight: 2,
     },
+    stepperImg : {
+        height : '50px',
+        width : '50px',
+    },
     componentBox : {
         height: "auto",
         border: "1px solid lightgrey",

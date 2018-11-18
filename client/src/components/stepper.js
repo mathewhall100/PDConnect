@@ -83,7 +83,7 @@ class VerticalLinearStepper extends React.Component {
 
     render() {
         const { classes, onPage, stepper } = this.props;
-        const { stepperCount, totalSteps, pageName, title, subtitle} = stepper;
+        const { stepperCount, pageImg, totalSteps, pageName, title, subtitle} = stepper;
         console.log("stepper props : ", this.props);
         const steps = getSteps();
         const { activeStep } = this.state;
@@ -95,6 +95,9 @@ class VerticalLinearStepper extends React.Component {
                         <Grid item xs={12} >
                             <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2> 
                             <h3 className={classes.stepperPageName}>{pageName}</h3>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <img src={pageImg} alt={pageName} />
                         </Grid>
                         <Grid item xs={12}>
                             <h2 className={classes.stepperTitle}>{title}</h2>
