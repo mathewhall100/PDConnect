@@ -101,13 +101,6 @@ import { PDADLs } from '../../constants'
         return (
             <section>
                 <div className={classes.componentBox}>
-                    
-                    <TopTitle title="Now tell us a little about how Parkinson disease affects you" />
-
-                    <SubTitle subtitle="Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month." />
-
-                    <br />
-
                     {PDADLs.map((question, index) => {
                         return (
                             <div key={index}>

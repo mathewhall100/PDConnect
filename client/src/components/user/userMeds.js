@@ -130,8 +130,6 @@ class UserMeds extends Component {
             <section >
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Congratulations, you're half way through! Now tell us about the medications you take for Parkinson Disease. " />
-
                     <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
                         <div className={classes.headerQuestion}>I don't take any medications for Parkinson disease: </div>

@@ -125,11 +125,6 @@ import { nonMotorSy } from '../../constants'
         return (
             <section className={classes.root}>
                 <div className={classes.componentBox}>
-                    
-                    <TopTitle title="Last question! About any non-motor symptoms" />
-
-                    <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms that aren't just related to movement, though this varies a lot from person to person. tell us if you have had any of the following problems in the past month. " />
-
                     <p className={classes.sectionTitle}>Non-motor symptoms</p>
 
                     {nonMotorSy.map((sy, index) => {

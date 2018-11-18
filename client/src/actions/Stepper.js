@@ -16,24 +16,78 @@ export const updateStepperCount = (stepper) => {
 }
 
 function getStepContent(){
+    let objStepperContent = {};
     switch (window.location.pathname) {
         case '/user/user_about':
-            return 0;
+            objStepperContent = {
+                stepperCount : 1,
+                pageName : 'You',
+                title: `Let's get started! Tell us a bit about you.`,
+                subtitle : ``,
+            }
+            return objStepperContent;
         case '/user/user_life':
-            return 1;
+            objStepperContent = {
+                stepperCount: 2,
+                pageName: 'Your life',
+                title: `Now tell us a little about how Parkinson disease affects you`,
+                subtitle: `Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month.`,
+            }
+            return objStepperContent;
         case '/user/user_family':
-            return 2;
+            objStepperContent = {
+                stepperCount: 3,
+                pageName: 'Your family',
+                title: `Tell us about any relatives you may have with Parkinson disease?`,
+                subtitle: `Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. When you are done, or if noone in your family has ever been diagnosed with Parkinson disease, click NEXT to go to the next question.`,
+            }
+            return objStepperContent;
         case '/user/user_meds':
-            return 3;
+            objStepperContent = {
+                stepperCount: 4,
+                pageName: 'Medications',
+                title: `Congratulations, you're half way through! Now tell us about the medications you take for Parkinson Disease.`,
+                subtitle: ``,
+            }
+            return objStepperContent;
         case '/user/user_surgery':
-            return 4;
+            objStepperContent = {
+                stepperCount: 5,
+                pageName: 'Surgery Procedure',
+                title: `Have you ever had any of the following procedures or surgeries to treat Parkinson disease?`,
+                subtitle: ``,
+            }
+            return objStepperContent;
         case '/user/user_motorsy':
-            return 5;
+            objStepperContent = {
+                stepperCount: 6,
+                pageName: 'Symptoms (Motor)',
+                title: `Almost done! Lastly, about your symptoms`,
+                subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may haveb experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom.`,
+            }
+            return objStepperContent;
         case '/user/user_nonmotorsy':
-            return 6;
+            objStepperContent = {
+                stepperCount: 7,
+                pageName: 'Symptoms (Non Motor)',
+                title: `Almost done! Lastly, about your symptoms`,
+                subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may haveb experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom.`,
+            }
+            return objStepperContent;
         case '/user/result':
-            return 7;
+            objStepperContent = {
+                stepperCount: 8,
+                pageName : 'Results',
+                title: `Last question! About any non-motor symptoms`,
+                subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms that aren't just related to movement, though this varies a lot from person to person. tell us if you have had any of the following problems in the past month.`,
+            }
+            return objStepperContent;
         default:
+            objStepperContent = {
+                stepperCount: 'Unknown step',
+                title: ``,
+                subtitle: ``,
+            }
             return 'Unknown step';
     }
 }

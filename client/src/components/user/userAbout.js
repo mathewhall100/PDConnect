@@ -164,8 +164,6 @@ import UserModal from '../commons/userModal'
         return (
             <div className={classes.componentBox} >
                 <div>
-                    <TopTitle title="Let's get started! Tell us a bit about you." />
-
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
 
