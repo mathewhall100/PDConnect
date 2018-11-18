@@ -345,12 +345,33 @@ export const resultStylesheet = theme => ({
             color: PRIMARY_COLOR
         }
     },
+    printButton: {
+        float: "right", 
+        color: "black", 
+        backgroundColor: "lightgrey",
+        '&:hover': {
+            backgroundColor: "#bbbbbb",
+        }
+
+    },
     emailContainer: {
         border: "2px solid lightgrey",
         borderRadius: "5px",
         backgroundColor: "#eeeeee",
         padding: "20px",
         marginBottom: "40px"
+    },
+    // socMedContainer: {
+
+    //     border: "2px solid lightgrey",
+    //     borderRadius: "5px",
+    //     height: "90px"
+    // },
+    socialIcon : {
+        height : '45px',
+        width : '45px',
+        borderRadius : '5px',
+        margin : '0 5px 0 5px',
     },
     infoSummary: {
         padding: "0 0 20px 20px",

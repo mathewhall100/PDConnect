@@ -8,7 +8,7 @@ class FormText extends Component {
 
     renderTextField(field) {
         console.log("text field : ", field);
-        const {width, meta: {touched, error}} = field;
+        const {width, meta: {touched, pristine, error}} = field;
         return (
             <div>
                 <span>
@@ -17,15 +17,18 @@ class FormText extends Component {
                         {...field.input}    
                         margin="normal"
                         variant="outlined"
-                        multiline={field.mutliline === true ? true : false}
+                        multiline={false}
                         style={{width: `${width}`}}
                     />
                 </span>
-                <span style={{fontSize: "13px", color: "red", position: "relative", top: "30px", left: "10px"}}> 
+
+                
+                {touched && <div style={{fontSize: "13px", color: "red", }}> 
                     {touched ? error : ''}
-                </span>
+                 </div> }
+
                 <span style={{fontSize: "13px", color: "green", position: "relative", top: "30px", left: "10px"}}> 
-                    {touched && !error ? <DoneIcon /> : ''}
+                    {!pristine && !error ? <DoneIcon /> : ''}
                 </span>
             </div>
         )
