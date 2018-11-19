@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { Route, Switch } from "react-router-dom"; 
+import { Route, Switch } from "react-router-dom";
 
 import UserAbout from '../components/user/userAbout';
 import UserLife from '../components/user/userLife';
@@ -13,7 +13,7 @@ import UserMeds from '../components/user/userMeds';
 import UserSurgery from '../components/user/userSurgery';
 import UserMotorSy from '../components/user/userMotorSy';
 import UserNonMotorSy from '../components/user/userNonMotorSy';
-import Result from './results'; 
+import Result from './results';
 import NotFound from './notFound';
 
 import InfoDBS from '../infoFiles/DBS'
@@ -53,13 +53,13 @@ class User extends Component {
         }
 
         return (
-            <div className={classes.root}>
+            <div>
                 <Grid container>
-                    <Grid item md={1} lg={1} xs={1}></Grid>
-                    <Grid item md={5} sm={5} lg={5} xs={12}>
+                    <Grid item xs={1}></Grid>
+                    <Grid item md={4} sm={4} lg={4} xs={12}>
                         <Stepper />
                     </Grid>
-                    <Grid item md={5} sm={5} lg={5} xs={12}>
+                    <Grid item md={6} sm={6} lg={6} xs={12}>
                         <Switch>
                             <Route path='/user/user_about' render={props => <UserAbout></UserAbout>} />
                             <Route path='/user/user_life' render={props => <UserLife></UserLife>} />
@@ -83,7 +83,7 @@ class User extends Component {
                             <Route component={NotFound} />
                         </Switch>
                     </Grid>
-                    <Grid item md={1} lg={1} xs={1}></Grid>
+                    <Grid item xs={1}></Grid>
                 </Grid>
             </div>
         );
@@ -105,7 +105,7 @@ function mapStateToProps(state) {
         sideEffect: state.sideEffect,
         stepper: state.stepper,
     }
-    
+
 };
 
 User = connect(mapStateToProps, { updateStepperCount })(User)

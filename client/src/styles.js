@@ -59,7 +59,7 @@ export const userStylesheet = theme => ({
         lineHeight: '1.6',
     },
     subtitle: {
-        fontSize: '20px', 
+        fontSize: '20px',
         margin: "20px 0 20px 0",
     },
     sectionTitle: {
@@ -69,15 +69,15 @@ export const userStylesheet = theme => ({
         minHeight: "80px"
     },
     questionHead: {
-        fontSize: "18px", 
+        fontSize: "18px",
         fontWeight: "bold"
-    }, 
+    },
     questionText: {
         fontSize: "18px",
     },
     headerQuestion: {
         marginTop: "15px",
-        fontSize: "18px", 
+        fontSize: "18px",
         fontWeight: "bold"
     },
     questionButton: {
@@ -157,7 +157,7 @@ export const userStylesheet = theme => ({
         },
     },
     closeIcon: {
-        fontSize: "44px", 
+        fontSize: "44px",
         color: QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR,
         padding: 0,
         marginTop: -6
@@ -231,7 +231,7 @@ export const resultStylesheet = theme => ({
         textAlign: "center"
     },
     subtitle: {
-        fontSize: '20px', 
+        fontSize: '20px',
         margin: "20px",
     },
     tabTitle: {
@@ -241,8 +241,8 @@ export const resultStylesheet = theme => ({
         textAlign: "center",
         padding: "10px",
     },
-    resultContainer: {   
-        padding: "10px", 
+    resultContainer: {
+        padding: "10px",
         border: "2px solid lightgrey",
         borderRadius: "0 5px 5px 5px",
         backgroundColor: "#eeeeee",
@@ -320,14 +320,14 @@ export const resultStylesheet = theme => ({
     },
     resultBox: {
         border: "1px solid grey",
-        borderRadius: "5px", 
+        borderRadius: "5px",
         margin: "20px",
     },
     resultTextBox: {
         height: "140px"
     },
     resultTitle: {
-        margin: "20px", 
+        margin: "20px",
         fontSize: "20px"
     },
     resultText: {
@@ -350,8 +350,8 @@ export const resultStylesheet = theme => ({
         }
     },
     printButton: {
-        float: "right", 
-        color: "black", 
+        float: "right",
+        color: "black",
         backgroundColor: "lightgrey",
         '&:hover': {
             backgroundColor: "#bbbbbb",
@@ -379,7 +379,7 @@ export const resultStylesheet = theme => ({
     },
     infoSummary: {
         padding: "0 0 20px 20px",
-        fontSize: "18px", 
+        fontSize: "18px",
         lineheight: "30px",
         textAlign: "justify"
     },
@@ -390,7 +390,7 @@ export const resultStylesheet = theme => ({
     },
     infoText: {
         padding: "20px 20px 10px 20px",
-        fontSize: "18px", 
+        fontSize: "18px",
         lineheight: "30px",
         textAlign: "justify"
     },
@@ -444,9 +444,9 @@ export const stylesheet = theme => ({
         },
     },
     topNavLogo : {
-        height : '125px',
-        width : '125px',
-        margin: '30px 0 30px 0',
+        height : '110px',
+        width : '110px',
+        margin : '15px 0 15px 0',
         [theme.breakpoints.down('xs')]: {
             display: 'none',
         },
@@ -507,7 +507,7 @@ export const stylesheet = theme => ({
         left: 0,
         right: 0,
         textAlign : 'right',
-    },  
+    },
     heroImg: {
         width: '100%',
     },
@@ -565,7 +565,7 @@ export const stylesheet = theme => ({
             marginBottom : '25px',
         },
     },
-    
+
     promiseContainer1 : {
         position: 'absolute',
         marginLeft: 'auto',
@@ -623,7 +623,7 @@ export const stylesheet = theme => ({
         color : PRIMARY_COLOR_HOVER,
         fontSize : '16px',
         textAlign : 'center',
-        
+
     },
     promiseSecondHeader: {
         color: SECONDARY_COLOR,
@@ -746,7 +746,7 @@ export const stylesheet = theme => ({
     startButtonContainer : {
         margin: 'auto 0 auto 0',
         textAlign : 'right',
-        
+
     },
     description : {
         textAlign : 'center',
@@ -775,7 +775,7 @@ export const stylesheet = theme => ({
         color : "white",
         paddingBottom : '10px',
         marginTop : '60px'
-    }, 
+    },
     socialIcon : {
         height : '45px',
         width : '45px',
@@ -847,7 +847,7 @@ export const home2Stylesheet = theme => ({
         float : 'right',
         textTransform : 'capitalize',
         '&:hover': {
-            color: PRIMARY_COLOR,            
+            color: PRIMARY_COLOR,
         }
     },
     splitContent : {
@@ -923,7 +923,7 @@ export const home2Stylesheet = theme => ({
         textAlign : 'center',
         maxWidth: '70%',
         textAlign: 'center !important',
-        margin: 'auto',        
+        margin: 'auto',
     },
     promiseSecondHeader: {
         color: SECONDARY_COLOR,
