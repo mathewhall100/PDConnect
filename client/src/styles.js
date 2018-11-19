@@ -13,7 +13,7 @@ import tabletReportHandsImg from './images/tablet_report_hands.jpg';
 
 export const PRIMARY_COLOR = '#2F5597';
 const PRIMARY_COLOR_HOVER = '#4d6591';
-const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%, #ffffff 100%)'
+const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%, lightgrey 100%)'
 const SECONDARY_COLOR = '#BF9000';
 const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
 const MAXWIDTH = '1480px';
@@ -219,6 +219,18 @@ export const resultStylesheet = theme => ({
         margin: 'auto',
         padding: "40px"
     },
+    appBar: {
+        width: "100%",
+        height: "60px",
+        backgroundColor: PRIMARY_COLOR,
+        backgroundImage: PRIMARY_COLOR_GRADIENT_FADE_DOWN,
+        marginBottom: "30px",
+        padding: "10px 20px 20px 20px",
+        color: "white",
+        fontSize: "28px",
+        fontWeigt: "bold",
+        borderRadius: "5px"
+    },
     tabBar: {
         height: "80px",
         backgroundColor: "#eeeeee"
@@ -228,10 +240,12 @@ export const resultStylesheet = theme => ({
         fontWeight: 'bold',
         color : PRIMARY_COLOR,
         lineHeight: '1.6',
-        textAlign: "center"
+        textAlign: "center",
     },
     subtitle: {
-        fontSize: '20px',
+        fontSize: '18px', 
+        fontWeight: "bold",
+        lineHeight: "26px",
         margin: "20px",
     },
     tabTitle: {
@@ -242,7 +256,7 @@ export const resultStylesheet = theme => ({
         padding: "10px",
     },
     resultContainer: {
-        padding: "10px",
+        padding: "30px", 
         border: "2px solid lightgrey",
         borderRadius: "0 5px 5px 5px",
         backgroundColor: "#eeeeee",
@@ -327,12 +341,13 @@ export const resultStylesheet = theme => ({
         height: "140px"
     },
     resultTitle: {
+        fontWeight: "bold",
         margin: "20px",
         fontSize: "20px"
     },
     resultText: {
         margin: "20px",
-        fontSize: "20px"
+        fontSize: "18px"
     },
     button: {
         width: "190px",
@@ -351,37 +366,50 @@ export const resultStylesheet = theme => ({
     },
     printButton: {
         float: "right",
+        margin: "-15px -15px 0 0",
         color: "black",
+        fontWeight: "bold",
         backgroundColor: "lightgrey",
         '&:hover': {
             backgroundColor: "#bbbbbb",
         }
-
     },
     emailContainer: {
         border: "2px solid lightgrey",
         borderRadius: "5px",
         backgroundColor: "#eeeeee",
-        padding: "20px",
+        padding: "20px 20px 20px 40px",
         marginBottom: "40px"
     },
-    // socMedContainer: {
-
-    //     border: "2px solid lightgrey",
-    //     borderRadius: "5px",
-    //     height: "90px"
-    // },
+    accountContainer: {
+        border: "2px solid lightgrey",
+        borderRadius: "5px",
+        backgroundColor: "#eeeeee",
+        padding: "20px 20px 20px 40px",
+        marginBottom: "40px"
+    },
+    socMedContainer: {
+        border: "2px solid lightgrey",
+        borderRadius: "5px",
+        padding: "20px 20px 20px 40px",
+        marginBottom: "40px"
+    },
+    socMedText: {
+        fontSize: "24px", 
+        fontWeight: "bold"
+    },
     socialIcon : {
         height : '45px',
         width : '45px',
         borderRadius : '5px',
-        margin : '0 5px 0 5px',
-    },
-    infoSummary: {
-        padding: "0 0 20px 20px",
-        fontSize: "18px",
-        lineheight: "30px",
-        textAlign: "justify"
+        margin : '10px 5px 0 5px',
+        '&:hover': {
+            height: "51px", 
+            width: "51px",
+            cursor: "pointer",
+            margin: "7px 2px -3px 2px"
+
+        }
     },
     infoTitle: {
         textAlign: "center",
@@ -394,14 +422,26 @@ export const resultStylesheet = theme => ({
         lineheight: "30px",
         textAlign: "justify"
     },
+    infoSubText: {
+        padding: "20px 20px 10px 20px",
+        fontSize: "15px", 
+        lineheight: "30px",
+        textAlign: "justify"
+    },
     mediaBox: {
-        margin: "20px 0 20px 20px"
+        margin: "10px 20px 20px 0"
     },
     infoBullets: {
         padding: "0 20px 0 60px",
         fontSize: "18px",
         fontWeight: "bold"
-
+    },
+    listItems: {
+        marginLeft: "-20px",
+        '&:hover': {
+            backgroundColor: "#eeeeee",
+            cursor: "default"
+        },
     },
 })
 

@@ -16,16 +16,6 @@ import UserNonMotorSy from '../components/user/userNonMotorSy';
 import Result from './results';
 import NotFound from './notFound';
 
-import InfoDBS from '../infoFiles/DBS'
-import InfoApomorphine from '../infoFiles/Apomorphine.js'
-import InfoDuopa from '../infoFiles/Duopa.js'
-import InfoRytary from '../infoFiles/Rytary.js'
-import InfoNuplazid from '../infoFiles/Nuplazid.js'
-import InfoDroxidopa from '../infoFiles/Droxidopa.js'
-import InfoBotTox from '../infoFiles/BotTox.js'
-import InfoSpark from '../infoFiles/SPARK.js'
-import InfoNilo from '../infoFiles/NILO.js'
-
 import Stepper from '../components/stepper';
 import { updateStepperCount } from '../actions/Stepper';
 import { userStylesheet } from '../styles';
@@ -69,16 +59,6 @@ class User extends Component {
                             <Route path='/user/user_motorsy' render={props => <UserMotorSy></UserMotorSy>} />
                             <Route path='/user/user_nonmotorsy' render={props => <UserNonMotorSy></UserNonMotorSy>} />
                             <Route path="/user/result" render={props => <Result ></Result>} />
-
-                            <Route path="/user/info_dbs" render={props => <InfoDBS {...this.props}></InfoDBS>} />
-                            <Route path="/user/info_apomorphine" render={props => <InfoApomorphine {...this.props}></InfoApomorphine>} />
-                            <Route path="/user/info_duopa" render={props => <InfoDuopa {...this.props}></InfoDuopa>} />
-                            <Route path="/user/info_rytary" render={props => <InfoRytary {...this.props}></InfoRytary>} />
-                            <Route path="/user/info_nuplazid" render={props => <InfoNuplazid {...this.props}></InfoNuplazid>} />
-                            <Route path="/user/info_droxidopa" render={props => <InfoDroxidopa {...this.props}></InfoDroxidopa>} />
-                            <Route path="/user/info_bottox" render={props => <InfoBotTox {...this.props}></InfoBotTox>} />
-                            <Route path="/user/info_spark" render={props => <InfoSpark {...this.props}></InfoSpark>} />
-                            <Route path="/user/info_nilo" render={props => <InfoNilo {...this.props}></InfoNilo>} />
                             <Route path="/notfound" component={NotFound} />
                             <Route component={NotFound} />
                         </Switch>
