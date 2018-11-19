@@ -8,8 +8,10 @@ import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { updateStepperCount } from '../actions/Stepper';
+import { userStylesheet } from '../styles';
 
 const styles = theme => ({
     root: {
@@ -80,53 +82,31 @@ class VerticalLinearStepper extends React.Component {
     };
 
     render() {
-        const { classes, onPage } = this.props;
-        //console.log("stepper props : ", this.props);
+        const { classes, onPage, stepper } = this.props;
+        const { stepperCount, pageImg, totalSteps, pageName, title, subtitle} = stepper;
+        console.log("stepper props : ", this.props);
         const steps = getSteps();
         const { activeStep } = this.state;
 
         return (
             onPage!== 'Unknown step' ? 
                 <div className={classes.root}>
-                    <Stepper activeStep={onPage} orientation="vertical">
-                        {steps.map((label, index) => {
-                            return (
-                                <Step key={label}>
-                                    <StepLabel>{label}</StepLabel>
-                                    <StepContent>
-                                        <Typography>{getStepContent(index)}</Typography>
-                                        {/*<div className={classes.actionsContainer}>
-                                            <div>
-                                                <Button
-                                                    disabled={activeStep === 0}
-                                                    onClick={this.handleBack}
-                                                    className={classes.button}
-                                                >
-                                                    Back
-                                            </Button>
-                                                <Button
-                                                    variant="contained"
-                                                    color="primary"
-                                                    onClick={this.handleNext}
-                                                    className={classes.button}
-                                                >
-                                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                                </Button>
-                                            </div>
-                                        </div>*/}
-                                    </StepContent>
-                                </Step>
-                            );
-                        })}
-                    </Stepper>
-                    {activeStep === steps.length && (
-                        <Paper square elevation={0} className={classes.resetContainer}>
-                            <Typography>All steps completed - you&quot;re finished</Typography>
-                            <Button onClick={this.handleReset} className={classes.button}>
-                                Reset
-                        </Button>
-                        </Paper>
-                    )}
+                    <Grid container className={classes.stepperContainer}>
+                        <Grid item xs={12} >
+                            <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2> 
+                            <h3 className={classes.stepperPageName}>{pageName}</h3>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <img src={pageImg} alt={pageName} />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <h2 className={classes.stepperTitle}>{title}</h2>
+                            {subtitle ? <hr /> : null}
+                        </Grid>
+                        <Grid item xs={12}>
+                            <span className={classes.stepperTitle}>{subtitle}</span>
+                        </Grid>
+                    </Grid>
                 </div>
             :
             null
@@ -144,6 +124,7 @@ function mapStatsToProps(state) {
         userChoice: state.userChoice,
         symptom: state.symptom,
         sideEffect: state.sideEffect,
+        stepper: state.stepper,
     }
 }
 
@@ -151,6 +132,6 @@ VerticalLinearStepper.propTypes = {
     classes: PropTypes.object,
 };
 
-VerticalLinearStepper = withStyles(styles)(VerticalLinearStepper);
+VerticalLinearStepper = withStyles(userStylesheet)(VerticalLinearStepper);
 
 export default connect(mapStatsToProps, { updateStepperCount })(VerticalLinearStepper);

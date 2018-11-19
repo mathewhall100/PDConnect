@@ -135,10 +135,6 @@ import { motorSy } from '../../constants'
             <section>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Almost done! Lastly, about your symptoms" />
-
-                    <SubTitle subtitle="Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may haveb experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom." />
-
                     <p className={classes.sectionTitle}>Let's start with motor symptoms</p>
                     <br />
 

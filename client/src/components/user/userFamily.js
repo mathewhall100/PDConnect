@@ -100,10 +100,6 @@ import SubTitle from '../commons/userSubTitle'
         return (
             <div className={classes.componentBox} >
                 
-                <TopTitle title="Tell us about any relatives you may have with Parkinson disease?" />
-
-                <SubTitle subtitle="Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. When you are done, or if noone in your family has ever been diagnosed with Parkinson disease, click NEXT to go to the next question." />
-
                 <div className={classes.treeContainer}>
 
                     <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>

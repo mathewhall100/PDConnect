@@ -120,10 +120,6 @@ import { procedures } from '../../constants'
             <section className={classes.root}>
                 <div className={classes.componentBox}>
                     
-                    <TopTitle title="Have you ever had any of the following procedures or surgeries to treat Parkinson disease? " />
-
-                    <br />
-
                     {procedures.map((proc, index) => {
 
                         return (

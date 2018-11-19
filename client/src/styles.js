@@ -31,9 +31,23 @@ export const userStylesheet = theme => ({
         margin: 'auto',
         minHeight : MINHEIGHT,
     },
+    stepperContainer : {
+        width : '90%',
+        fontFamily : 'Muli',
+    },
+    stepperCounter : {
+        lineHeight: 2,
+    },
+    stepperPageName : {
+        fontWeight : 'bold',
+        lineHeight: 2,
+    },
+    stepperImg : {
+        height : '50px',
+        width : '50px',
+    },
     componentBox : {
         height: "auto",
-        margin: "20px auto",
         border: "1px solid lightgrey",
         padding: "30px 30px 30px 30px",
         fontFamily : 'Muli'
