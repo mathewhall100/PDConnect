@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -21,19 +22,21 @@ import { updateStepperCount } from '../actions/Stepper';
 import { userStylesheet } from '../styles';
 
 
-const subTitleArray = ["find out about Parkinson disease treatments individualised for you",
-    "discover Parkinson disease clinical trials you can participate in",
-    "take away new knowledge about your condition to share with your doctor"]
-
 class User extends Component {
 
     state = {
-        subtitle: ""
+        redirect: ""
     }
 
     render() {
         const { classes } = this.props;
-        const { redirect, next, back } = this.state;
+        const { redirect } = this.state;
+
+        if (redirect) {
+            const url = `/intro_choice`;
+            console.log("redirect to .. " + url);
+            return <Redirect to={url} />;
+        }
 
         return (
             <div className={classes.root}>

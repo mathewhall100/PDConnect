@@ -1,25 +1,22 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import Homepage from './pages/home';
+import Homepage from './pages/home2';
 import User from './pages/user';
 import Result from './pages/results';
 import TreatmentDisplay from './pages/treatmentDisplay';
 import TrialDisplay from './pages/trialDisplay';
 import NotFound from './pages/notFound';
 
-import Stepper from './components/stepper';
-import Homepage2 from './pages/home2';
-
 import { connect } from 'react-redux';
 import { updateStepperCount } from './actions/Stepper';
 class Routes extends Component {
-    
+
     render() {
         return (
             <div>
                 <Switch>
                     <Route path='/user' component={User} />
-                    <Route path='/home' component={Homepage2} />
+                    <Route path='/home' component={Homepage} />
                     <Route path='/results' component={Result} />
                     <Route path='/treatment:id' component={TreatmentDisplay} />
                     <Route path='/trial:id' component={TrialDisplay} />

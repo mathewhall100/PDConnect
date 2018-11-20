@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import { home2Stylesheet } from '../../styles';
 import noSellIcon from '../../images/avatar/no-coin.png';
 import secureIcon from '../../images/avatar/secure.png';
@@ -19,10 +15,10 @@ class Promises extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.homepageContainer} style={{ background: '#2F5597', minHeight : '800px'}}>
-                
+
                 <Grid container>
                     <Grid item md={1} lg={1} xs={1}></Grid>
-                    <Grid item md={10} lg={10} xs={10} > 
+                    <Grid item md={10} lg={10} xs={10} >
                         <div className={classes.HeroWhiteTitle}>
                             Features
                         </div>
@@ -85,7 +81,7 @@ class Promises extends Component {
                             </Grid>
                         </Grid>
                     </Grid>
-                    
+
                 </Grid>
             </div>
 

@@ -1,8 +1,6 @@
 import React, {Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Logo from '../images/PDC_logo_square.png';
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { stylesheet } from '../styles.js';
 

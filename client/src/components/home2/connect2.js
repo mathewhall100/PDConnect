@@ -3,8 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { home2Stylesheet } from '../../styles';
-import PhysicianImg from '../../images/physician.jpg';
-import PatientImg from '../../images/patient.jpg';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import fbIcon from '../../images/socialMedia/facebook.png';
@@ -41,7 +39,7 @@ class Connects extends Component {
         return (
             <Grid container className={classes.homepageFixedWidthContent} >
                 <Grid item md={1} lg={1} xs={1}></Grid>
-                <Grid item md={10} lg={10} xs={10} > 
+                <Grid item md={10} lg={10} xs={10} >
                     <div className={classes.HeroTitle}>
                         Connect with Us
                     </div>

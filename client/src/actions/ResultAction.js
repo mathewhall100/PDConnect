@@ -1,4 +1,3 @@
-import { push } from 'react-router-dom';
 import {
     TREATMENT_RESULTS,
     TRIAL_RESULTS
@@ -11,7 +10,7 @@ export const submitTrialResult = (arrTrial) => {
     return (dispatch) => {
         dispatch({
             type: TRIAL_RESULTS,
-            payload: arrTrial 
+            payload: arrTrial
         })
 
     }
@@ -23,7 +22,7 @@ export const submitTreatmentResult = (arrTreatment) => {
     return (dispatch) => {
         dispatch({
             type: TREATMENT_RESULTS,
-            payload: arrTreatment 
+            payload: arrTreatment
         })
 
     }
