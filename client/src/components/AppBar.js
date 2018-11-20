@@ -33,7 +33,7 @@ class AppBar extends Component {
                         <a href="/"><img src={Logo} className={classes.topNavLogo} alt='PD Connect' /></a>
                     </Grid>
                     <Grid item xs={5} className={classes.rightTopNav}>
-                        <Button className={classes.topBarBtn} onClick={()=>{this.handleSignIn()}} variant="outlined">Sign In</Button>
+                        <Button className={classes.topBarBtn} onClick={()=>{this.handleSignIn()}} variant="outlined">My Account</Button>
                     </Grid>
                     <Grid item xs={1}></Grid>
                 </Grid> */}
@@ -45,7 +45,7 @@ class AppBar extends Component {
                         <li><a href="/">Endorsements</a></li>
                         <li><a href="/">Featured Treatments</a></li>
                         <li className='li-right'><a href="">Sign In</a></li>
-                        
+
                     </ul>
                 </div>
                 <div className="nav-bg-fostrap">

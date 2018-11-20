@@ -18,13 +18,13 @@ import {resultStylesheet } from '../../styles';
                     <span className={classes.socMedText}>Tell friends about this site.</span>
                     <br />
                     <span>
-                        <img className={classes.socialIcon} src={fbIcon} alt="facebook icon" />
-                        <img className={classes.socialIcon} src={twitterIcon} alt="twitter icon" />
-                        <img className={classes.socialIcon} src={instagramIcon} alt="instagram icon" />
-                        <img className={classes.socialIcon} src={whatsappIcon} alt="whatsappicon" />
-                        <img className={classes.socialIcon} src={googleIcon} alt="google icon" />
-                        <img className={classes.socialIcon} src={linkedinIcon} alt="google icon" />
-                        <img className={classes.socialIcon} src={skypeIcon} alt="google icon" />
+                        <img className={classes.socialIcon}  style={{ transition: 'all .4s ease'}} src={fbIcon} alt="facebook icon" />
+                        <img className={classes.socialIcon}  style={{ transition: 'all .4s ease'}} src={twitterIcon} alt="twitter icon" />
+                        <img className={classes.socialIcon}  style={{ transition: 'all .4s ease'}} src={instagramIcon} alt="instagram icon" />
+                        <img className={classes.socialIcon}  style={{ transition: 'all .4s ease'}} src={whatsappIcon} alt="whatsappicon" />
+                        <img className={classes.socialIcon}  style={{ transition: 'all .4s ease'}} src={googleIcon} alt="google icon" />
+                        <img className={classes.socialIcon}  style={{ transition: 'all .4s ease'}} src={linkedinIcon} alt="google icon" />
+                        <img className={classes.socialIcon}  style={{ transition: 'all .4s ease'}} src={skypeIcon} alt="google icon" />
                     </span>
                 </div>
             )

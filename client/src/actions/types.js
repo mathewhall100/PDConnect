@@ -31,3 +31,5 @@ export const USER_SURGERY = 'USER_SURGERY';
 export const USER_MOTORSY = 'USER_MOTORSY';
 
 export const USER_NONMOTORSY = 'USER_NONMOTORSY';
+
+export const USER_ACCOUNT = 'USER_ACCOUNT';
