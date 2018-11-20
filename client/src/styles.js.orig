@@ -17,7 +17,7 @@ const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%,
 const SECONDARY_COLOR = '#BF9000';
 const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
 const MAXWIDTH = '1480px';
-const MINHEIGHT = '920px';
+const MINHEIGHT = '1060px';
 
 export const QUESTION_BUTTON_DEFAULT_COLOR = 'grey'
 export const QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR = 'green'
@@ -243,9 +243,13 @@ export const resultStylesheet = theme => ({
         textAlign: "center",
     },
     subtitle: {
-        fontSize: '18px',
+<<<<<<< HEAD
+        fontSize: '20px',
+=======
+        fontSize: '18px', 
         fontWeight: "bold",
         lineHeight: "26px",
+>>>>>>> 0f2b18697477c57f2f2f09d34945b36996c6650f
         margin: "20px",
     },
     tabTitle: {
@@ -255,8 +259,13 @@ export const resultStylesheet = theme => ({
         textAlign: "center",
         padding: "10px",
     },
+<<<<<<< HEAD
     resultContainer: {
-        padding: "30px",
+        padding: "10px",
+=======
+    resultContainer: {   
+        padding: "30px", 
+>>>>>>> 0f2b18697477c57f2f2f09d34945b36996c6650f
         border: "2px solid lightgrey",
         borderRadius: "0 5px 5px 5px",
         backgroundColor: "#eeeeee",
@@ -341,8 +350,12 @@ export const resultStylesheet = theme => ({
         height: "140px"
     },
     resultTitle: {
-        fontWeight: "bold",
+<<<<<<< HEAD
         margin: "20px",
+=======
+        fontWeight: "bold",
+        margin: "20px", 
+>>>>>>> 0f2b18697477c57f2f2f09d34945b36996c6650f
         fontSize: "20px"
     },
     resultText: {
@@ -365,10 +378,15 @@ export const resultStylesheet = theme => ({
         }
     },
     printButton: {
+<<<<<<< HEAD
         float: "right",
-        margin: "-15px -15px 0 0",
         color: "black",
+=======
+        float: "right", 
+        margin: "-15px -15px 0 0",
+        color: "black", 
         fontWeight: "bold",
+>>>>>>> 0f2b18697477c57f2f2f09d34945b36996c6650f
         backgroundColor: "lightgrey",
         '&:hover': {
             backgroundColor: "#bbbbbb",
@@ -395,21 +413,31 @@ export const resultStylesheet = theme => ({
         marginBottom: "40px"
     },
     socMedText: {
-        fontSize: "24px",
+        fontSize: "24px", 
         fontWeight: "bold"
     },
     socialIcon : {
         height : '45px',
         width : '45px',
         borderRadius : '5px',
+<<<<<<< HEAD
+        margin : '0 5px 0 5px',
+    },
+    infoSummary: {
+        padding: "0 0 20px 20px",
+        fontSize: "18px",
+        lineheight: "30px",
+        textAlign: "justify"
+=======
         margin : '10px 5px 0 5px',
         '&:hover': {
-            height: "51px",
+            height: "51px", 
             width: "51px",
             cursor: "pointer",
             margin: "7px 2px -3px 2px"
 
         }
+>>>>>>> 0f2b18697477c57f2f2f09d34945b36996c6650f
     },
     infoTitle: {
         textAlign: "center",
@@ -424,7 +452,7 @@ export const resultStylesheet = theme => ({
     },
     infoSubText: {
         padding: "20px 20px 10px 20px",
-        fontSize: "15px",
+        fontSize: "15px", 
         lineheight: "30px",
         textAlign: "justify"
     },

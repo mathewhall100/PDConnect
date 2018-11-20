@@ -9,10 +9,11 @@ import medsImg from '../images/avatar/stepper/meds.png';
 import motorImg from '../images/avatar/stepper/motor.png';
 import nonMotorImg from '../images/avatar/stepper/non-motor.png';
 import surgeryImg from '../images/avatar/stepper/surgery.png';
+import accountImg from '../images/avatar/stepper/create_account.png';
 
 export const updateStepperCount = (stepper) => {
     console.log("get window location : ", window.location.pathname);
-    
+
     return (dispatch) => {
         dispatch({
             type: STEP_COUNT,
@@ -25,6 +26,16 @@ export const updateStepperCount = (stepper) => {
 function getStepContent(){
     let objStepperContent = {};
     switch (window.location.pathname) {
+        case '/user/account' : {
+            objStepperContent = {
+                stepperCount: '',
+                pageName: 'Create Account',
+                title: `Create an account to enjoy the benefits as below!`,
+                pageImg: `${accountImg}`,
+                subtitle: `You will be able to receive notification to edit your medications, and symptoms so you are always on top of the new treatments available!`,
+            }
+            return objStepperContent;
+        }
         case '/user/user_about':
             objStepperContent = {
                 stepperCount : 1,

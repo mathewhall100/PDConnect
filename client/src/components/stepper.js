@@ -89,11 +89,11 @@ class VerticalLinearStepper extends React.Component {
         const { activeStep } = this.state;
 
         return (
-            onPage!== 'Unknown step' ? 
+            onPage!== 'Unknown step' ?
                 <div className={classes.root}>
                     <Grid container className={classes.stepperContainer}>
                         <Grid item xs={12} >
-                            <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2> 
+                            {stepperCount !== '' ? <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2>  : null}
                             <h3 className={classes.stepperPageName}>{pageName}</h3>
                         </Grid>
                         <Grid item xs={12}>
@@ -110,7 +110,7 @@ class VerticalLinearStepper extends React.Component {
                 </div>
             :
             null
-            
+
         );
     }
 }

@@ -16,7 +16,7 @@ import UserMedsReducer from './UserMedsReducer';
 import UserSurgeryReducer from './UserSurgeryReducer';
 import UserMotorSyReducer from './UserMotorSyReducer';
 import UserNonMotorSyReducer from './UserNonMotorSyReducer';
-
+import UserAccountReducer from './UserAccountReducer';
 export default combineReducers({
     form: formReducer,
     router: routerReducer,
@@ -33,5 +33,6 @@ export default combineReducers({
     meds : UserMedsReducer,
     surgery : UserSurgeryReducer,
     motorSy : UserMotorSyReducer,
-    nonMotorSy : UserNonMotorSyReducer
+    nonMotorSy : UserNonMotorSyReducer,
+    accountResponse : UserAccountReducer,
 });
