@@ -1,10 +1,21 @@
 import {
     USER_ACCOUNT
 } from './types';
+import mailerAPI from '../utils/mailerAPI';
+
+export const submitUserAccount = (objEmail) => {
+    console.log("submitting user account : ", objEmail);
+    return (dispatch) => {
+        mailerAPI.sendMail(objEmail).then( () =>{
+            dispatch({
+                type: USER_ACCOUNT,
+                payload: "Message Sent",
+            })
+        })
+
+    }
 
 
-export const submitUserAccount = (objUserAccount) => {
-    console.log("submitting user account : ", objUserAccount);
     /*axios.post("/api/userInfo", objUserAccount)
         .then((response) => {
             console.log("Redux axios response: ", response);
