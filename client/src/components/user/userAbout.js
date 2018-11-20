@@ -24,7 +24,6 @@ import DoneIcon from '@material-ui/icons/Done';
 import { age, sex, raceEthnicity, years, activity_level } from '../../constants';
 import {userStylesheet } from '../../styles';
 import { updateStepperCount, submitUserAbout} from '../../actions/index.js'
-import BottomNav from '../commons/userBottomNav'
 import TopTitle from '../commons/userTopTitle'
 import UserModal from '../commons/userModal'
 
@@ -242,8 +241,6 @@ import UserModal from '../commons/userModal'
                                         )}
                                 </Field> 
                        
-                       <BottomNav />
-
                     </form>
 
                 </div>

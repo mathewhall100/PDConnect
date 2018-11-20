@@ -19,7 +19,6 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { updateStepperCount, submitUserMotorSy } from '../../actions/index.js'
-import BottomNav from '../commons/userBottomNav'
 import TopTitle from '../commons/userTopTitle'
 import SubTitle from '../commons/userSubTitle'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
@@ -144,7 +143,7 @@ import { motorSy } from '../../constants'
                             <div key={index}>
                                 <Grid container spacing={24}>
 
-                                    <Grid item xs={12} sm={12} md={7} >
+                                    <Grid item xs={12} sm={12} md={12} lg={7}>
                                    
                                     <div className={classes.questionContainer}>
                                             <span className={classes.questionHead}>{sy.symptom}</span>  
@@ -158,7 +157,7 @@ import { motorSy } from '../../constants'
                                     </div>
                                     </Grid>
 
-                                    <Grid item xs={12} sm={12} md={5}>
+                                    <Grid item xs={12} sm={12} md={12} lg={5}>
                                         <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.symptom)}>
                                             <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}}>not sure</span>
                                         </Button>
@@ -177,8 +176,6 @@ import { motorSy } from '../../constants'
                         )
                     }) }
    
-                    <BottomNav handleNext={this.handleNext} handleBack={this.handleBack}/>            
-            
                 </div>
 
                 { modalOpen && <UserModal 

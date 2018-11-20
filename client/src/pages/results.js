@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import ResultsBar from '../components/commons/resultsBar'
 import ResultTabs from '../components/commons/resultTabs'
+import ResultTabsWithBadge from '../components/commons/resultTabsWithBadge'
 import ResultPrintButton from '../components/commons/resultPrintBtn'
 import ResultMainSubTitle from '../components/commons/resultMainSubTitle'
 import FormText from '../components/forms/FormText';
@@ -76,7 +77,7 @@ class Results extends Component {
         if (this.testDuopa() === true) {
             treatmentResults.push({
                 medication_name: "Duopa",
-                summary: "Infusion of carbidopa/levodopa straigh into the intestine via a surgically placed tube. Treats unpredictable motor fluctuations and eraly wear 'off' symptoms",
+                summary: "Infusion of carbidopa/levodopa directly into the intestine via a surgically placed feeding tube. Treats unpredictable motor fluctuations and early wear 'off'",
                 mediaLnk1: "https://www.youtube.com/embed/GaCiXlXwBp8",
                 key: "duopa"
             }) 
@@ -308,14 +309,14 @@ class Results extends Component {
             return (
                 <div className={classes.resultContainer}>
                     <ResultPrintButton /><br />
-                    <h1 className={classes.title}>Treatments</h1>
-                    <ResultMainSubTitle text={`Based on the information you have entered we have found ${treatmentResults.length} treatments that you may benefit from discussing with the doctor that looks after you for your Parkinsons disease.`} />
+                    <h1 className={classes.title}>Treatments to discuss with your doctor</h1>
+                    {/* <ResultMainSubTitle text={`Based on the information you have entered we have found ${treatmentResults.length} treatments that you may benefit from discussing with the doctor that looks after you for your Parkinsons disease.`} /> */}
                     <div> 
                         {treatmentResults.map((treatment, index) => {
                             return (
                                 <div key={index} className={classes.resultBox}> 
                                     <Grid container spacing={8}>
-                                        <Grid item xs={12} sm={12} md={8}>
+                                        <Grid item xs={12} sm={12} md={7}>
                                             <div className={classes.resultTextBox}>
                                                 <div className={classes.resultTitle}>
                                                     {treatment.medication_name}
@@ -324,12 +325,12 @@ class Results extends Component {
                                                     {treatment.summary}
                                                 </div>
                                             </div> 
-                                            <div style={{margin: "15px 20px 20px 20px"}}>
+                                            <div style={{margin: "10px 20px 20px 20px"}}>
                                                 <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo("treatment", treatment.key)}>Find Out More</Button>
                                             </div>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={4}>
-                                            <iframe width="240" height="180" style={{marginTop: "30px", marginLeft: "20px"}}
+                                        <Grid item xs={12} sm={12} md={5}>
+                                            <iframe width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
                                                 src={treatment.mediaLnk1}>
                                             </iframe>
                                         </Grid>
@@ -348,14 +349,14 @@ class Results extends Component {
             return (
                 <div className={classes.resultContainer}>
                     <ResultPrintButton /><br />
-                    <h1 className={classes.title}>Clinical Trials</h1>
-                    <ResultMainSubTitle text={`Based on your profile we have found ${trialResults.length} Parkinson disease clinical trials where you may be able to participate and which are currently recruiting volunteeers.`} />
+                    <h1 className={classes.title}>Clinical Trials you might volunteer for</h1>
+                    {/* <ResultMainSubTitle text={`Based on your profile we have found ${trialResults.length} Parkinson disease clinical trials where you may be able to participate and which are currently recruiting volunteeers.`} /> */}
                     <div>
                         {trialResults.map((trial, index) => {
                             return (
                                 <div key={index} className={classes.resultBox}>
                                     <Grid container spacing={8}>
-                                        <Grid item xs={12} sm={12} md={8}>
+                                        <Grid item xs={12} sm={12} md={7}>
                                             <div className={classes.resultTextBox}>
                                                 <div className={classes.resultTitle}>
                                                     {trial.trial_name}
@@ -364,12 +365,12 @@ class Results extends Component {
                                                     {trial.summary}
                                                 </div>
                                             </div> 
-                                            <div style={{margin: "15px 20px 20px 20px"}}>
+                                            <div style={{margin: "10px 20px 20px 20px"}}>
                                                 <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo("trial", trial.key)}>Find Out More</Button>
                                             </div>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={4}>
-                                            <iframe width="240" height="180" style={{marginTop: "30px", marginLeft: "20px"}}
+                                        <Grid item xs={12} sm={12} md={5}>
+                                            <iframe width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
                                                 src={trial.mediaLnk1}>
                                             </iframe>
                                         </Grid>
@@ -387,7 +388,7 @@ class Results extends Component {
             return (
                 <div className={classes.resultContainer}>
                     <ResultPrintButton /><br />
-                    <h1 className={classes.title}>Focus Groups</h1>
+                    <h1 className={classes.title}>Focus Groups you might participate in</h1>
                     <ResultMainSubTitle text={`There are no focus groups suitable for you at present.`} />`
                     <br />
                 </div>
@@ -402,7 +403,14 @@ class Results extends Component {
                 <Grid container spacing={24}> 
                     <Grid item xs={12} sm={12} md={8}>
 
-                    <ResultTabs tabs={["TREATMENTS", "TRIALS", "FOCUS GROUPS" ]} handleTabClick={this.handleTabClick} />   
+                    <ResultTabsWithBadge 
+                        tabs={[
+                            {text: "TREATMENTS", badgeContent: treatmentResults.length},
+                            {text: "TRIALS", badgeContent: trialResults.length},
+                            {text: "FOCUS GROUPS", badgeContent: 0}
+                        ]} 
+                        handleTabClick={this.handleTabClick} 
+                    />   
                     {tabSelected === 0 && <RenderTreatments /> }
                     {tabSelected === 1 && <RenderTrials /> }
                     {tabSelected === 2 && <RenderFocusGroups /> }

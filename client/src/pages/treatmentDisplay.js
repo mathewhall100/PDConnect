@@ -130,7 +130,7 @@ class TreatmentDisplay extends Component {
                                     </Grid>
                                     <Grid item xs={12} sm={12} md={6}>
                                         <br />
-                                        <img src={apomorphineGraph} width="400" height="300" className={classes.mediaBox} />
+                                        <img src={apomorphineGraph} width="340" height="255" className={classes.mediaBox} />
                                         <br />
                                         <br />                             
                                     </Grid>

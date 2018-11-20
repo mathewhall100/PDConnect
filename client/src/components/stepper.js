@@ -12,10 +12,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { updateStepperCount } from '../actions/Stepper';
 import { userStylesheet } from '../styles';
+import BottomNav from '../components/commons/userBottomNav'
 
 const styles = theme => ({
-    root: {
-        width: '90%',
+    container: {
+        width: '100%',
     },
     button: {
         marginTop: theme.spacing.unit,
@@ -90,8 +91,9 @@ class VerticalLinearStepper extends React.Component {
 
         return (
             onPage!== 'Unknown step' ?
-                <div className={classes.root}>
-                    <Grid container className={classes.stepperContainer}>
+                <div>
+                    <div className={classes.spacingContainer}></div>
+                    <Grid container spacing={24}className={classes.stepperContainer}>
                         <Grid item xs={12} >
                             {stepperCount !== '' ? <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2>  : null}
                             <h3 className={classes.stepperPageName}>{pageName}</h3>
@@ -107,6 +109,9 @@ class VerticalLinearStepper extends React.Component {
                             <span className={classes.stepperTitle}>{subtitle}</span>
                         </Grid>
                     </Grid>
+
+                    <BottomNav />
+
                 </div>
             :
             null

@@ -21,9 +21,8 @@ import {resultStylesheet } from '../../styles';
 
         }
             return (
-                <div className={classes.appBar}>
-                What we have found for you
-                <Button type="button" className={classes.button} style={{float: "right", marginTop: "2px"}} onClick={() => this.setState({redirect: true}) }>BACK</Button>
+                <div >
+                <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "27px"}} onClick={() => this.setState({redirect: true}) }>BACK</Button>
                 </div>
             )
         }

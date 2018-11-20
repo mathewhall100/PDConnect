@@ -18,7 +18,6 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { submitUserSurgery, updateStepperCount} from '../../actions/index.js'
-import BottomNav from '../commons/userBottomNav'
 import TopTitle from '../commons/userTopTitle'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
@@ -147,9 +146,7 @@ import { procedures } from '../../constants'
                             </div>
                         )
                     }) }
-   
-                    <BottomNav handleNext={this.handleNext} handleBack={this.handleBack} />    
-            
+
                 </div>
 
                 { modalOpen && <UserModal 

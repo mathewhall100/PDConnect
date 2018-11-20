@@ -14,7 +14,20 @@ class AppBar extends Component {
         const { classes } = this.props;
         return(
             <nav>
-                <Grid container  className={classes.topNav}>
+                <div className={classes.topNavContainer}>
+                    <div className={classes.topNav}>
+
+                        <a href="/"><img src={Logo} className={classes.topNavLogo} alt='PD Connect' /></a>
+
+                        <Button className={classes.topBarBtn} style={{float: "right", marginTop: "30px"}} onClick={()=>{this.handleSignIn()}} variant="outlined">Sign in</Button>
+
+                        <Button className={classes.topBarBtn} style={{float: "right", marginTop: "30px"}} onClick={()=>{this.handleSignIn()}} variant="outlined">Register</Button>
+
+                    </div>
+                </div>
+
+
+                {/* <Grid container  className={classes.topNav}>
                     <Grid item xs={1}></Grid>
                     <Grid item xs={5} className={classes.leftTopNav}>
                         <a href="/"><img src={Logo} className={classes.topNavLogo} alt='PD Connect' /></a>
@@ -23,7 +36,7 @@ class AppBar extends Component {
                         <Button className={classes.topBarBtn} onClick={()=>{this.handleSignIn()}} variant="outlined">My Account</Button>
                     </Grid>
                     <Grid item xs={1}></Grid>
-                </Grid>
+                </Grid> */}
                 { /*
                 <div className="nav-fostrap">
                     <ul>

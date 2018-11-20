@@ -8,7 +8,7 @@ import {resultStylesheet } from '../../styles';
         render() {
             const { classes, mediaLnk} = this.props
             return (
-                <iframe src={mediaLnk} width="400" height="300" frameborder="1" allowfullscreen="true" className={classes.mediaBox}></iframe> 
+                <iframe src={mediaLnk} width="340" height="255" frameborder="1" allowfullscreen="true" className={classes.mediaBox}></iframe> 
             )
         }
     }
