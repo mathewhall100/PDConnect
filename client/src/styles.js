@@ -1,21 +1,27 @@
-import heartShapeImg from './images/heartshapepills.jpeg';
+import pillBottlesImg from './images/pill_bottle.jpg';
+import tabletReportHandsImg from './images/tablet_report_hands.jpg';
+
+{/*import heartShapeImg from './images/heartshapepills.jpeg';
 import eldHighFiveImg from './images/elder_highfive.jpg';
 import elderLaptopMilkImg from './images/elder_laptop_milk.jpeg';
 import elderTechImg from './images/elder_tech.jpeg'
 import patientImg from './images/patient.jpg';
 import patientStressBallImg from './images/patientStressBall.jpeg';
 import physicianShowReportImg from './images/physician_show_report.jpg';
-import pillBottlesImg from './images/pill_bottle.jpg';
+
 import pillsImg from './images/pills.jpg';
 import reportImg from './images/report.jpg';
 import stethoscopeImg from './images/stethoscope.jpg';
-import tabletReportHandsImg from './images/tablet_report_hands.jpg';
+const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
+const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%, lightgrey 100%)'
+*/}
+
 
 export const PRIMARY_COLOR = '#2F5597';
 const PRIMARY_COLOR_HOVER = '#4d6591';
-const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%, lightgrey 100%)'
+
 export const SECONDARY_COLOR = '#BF9000';
-const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
+
 const MAXWIDTH = '1280px';
 const MINHEIGHT = '920px';
 
@@ -429,7 +435,7 @@ export const resultStylesheet = theme => ({
         borderRadius : '4px',
         margin : '10px 5px 0 5px',
         '&:hover': {
-            height: "41px", 
+            height: "41px",
             width: "41px",
             cursor: "pointer",
             margin: "7px 2px -3px 2px"

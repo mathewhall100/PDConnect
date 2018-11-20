@@ -11,7 +11,7 @@ import nonMotorImg from '../images/avatar/stepper/non-motor.png';
 import surgeryImg from '../images/avatar/stepper/surgery.png';
 import accountImg from '../images/avatar/stepper/create_account.png';
 
-export const updateStepperCount = (stepper) => {
+export const updateStepperCount = () => {
     console.log("get window location : ", window.location.pathname);
 
     return (dispatch) => {

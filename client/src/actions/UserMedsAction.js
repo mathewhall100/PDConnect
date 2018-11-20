@@ -1,4 +1,3 @@
-import { push } from 'react-router-dom';
 import {
     USER_MEDS
 } from './types';

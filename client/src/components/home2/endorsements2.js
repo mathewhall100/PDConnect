@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { home2Stylesheet } from '../../styles';
-import DoneIcon from '@material-ui/icons/Done';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import classNames from 'classnames';
 import Avatar from '@material-ui/core/Avatar';
 import physician1Img from '../../images/avatar/physician1.png';
 import physician2Img from '../../images/avatar/physician2.png';
@@ -29,7 +22,7 @@ class Endorse extends Component {
                                     Endorsements
                                 </div>
                             </Grid>
-                            
+
                             <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
                                 <Avatar alt='User1' src={physician1Img} className={classes.bigAvatar} />
                                 <h2>Gilbert	Reese</h2>

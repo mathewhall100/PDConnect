@@ -4,7 +4,7 @@ import { home2Stylesheet } from '../../styles';
 
 class Footer extends Component {
     render() {
-        const { classes, theme } = this.props;
+        const { classes } = this.props;
 
         return (
             <footer className={classes.footerContainer}>

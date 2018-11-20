@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import MobileStepper from '@material-ui/core/MobileStepper';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+
+
 import Button from '@material-ui/core/Button';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
 import Grid from '@material-ui/core/Grid';
-import { autoPlay } from 'react-swipeable-views-utils';
 import { home2Stylesheet } from '../../styles';
 import dbsImg from '../../images/dbs.png';
 import rytaryImg from '../../images/rytary.jpg';
 import focusGroupImg from '../../images/focusgroup.jpg';
 
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+//const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
 class Connects extends Component {
 
 
     render() {
-        const { classes, theme } = this.props;
+        const { classes } = this.props;
 
         return (
             <div className={classes.homepageContainer} style={{ background: '#EEEEEE'}}>
@@ -72,11 +66,11 @@ class Connects extends Component {
                                     <span>
                                         Find the study relates to you, research found that focus group creates an accepting environment that puts participants at ease
                                         that allow them to thoughtfully answer questions in their own words and add meaning to their answers.
-            
+
                                     </span>
-                                    <div item xs={12} className={classes.buttonContainer}>
+                                    <Grid item xs={12} className={classes.buttonContainer}>
                                         <Button variant='outlined' className={classes.homepageButton}>Find the closest focus group</Button>
-                                    </div>
+                                    </Grid>
                                 </Grid>
                                 <Grid item xs={2}></Grid>
                                 <Grid item md={3} xs={12} className={classes.aboutImgContainer}>

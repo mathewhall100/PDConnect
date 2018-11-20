@@ -1,5 +1,3 @@
-import axios from 'axios';
-import _ from 'lodash';
 import {
     USER_CHOICE
 } from './types';

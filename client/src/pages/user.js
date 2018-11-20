@@ -22,10 +22,6 @@ import { updateStepperCount } from '../actions/Stepper';
 import { userStylesheet } from '../styles';
 
 
-const subTitleArray = ["find out about Parkinson disease treatments individualised for you",
-    "discover Parkinson disease clinical trials you can participate in",
-    "take away new knowledge about your condition to share with your doctor"]
-
 class User extends Component {
 
     state = {
@@ -35,7 +31,7 @@ class User extends Component {
 
     render() {
         const { classes } = this.props;
-        const { redirect, subtitle } = this.state;
+        const { redirect } = this.state;
 
         if (redirect) {
             const url = `/intro_choice`;

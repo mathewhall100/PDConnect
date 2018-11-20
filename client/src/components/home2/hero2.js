@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Redirect } from 'react-router-dom'; 
+import { Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import { home2Stylesheet } from '../../styles';
 import Button from '@material-ui/core/Button';
@@ -31,7 +31,7 @@ class Hero extends Component {
     };
     render(){
         const { classes } = this.props;
-        const { modalOpen, modalTitle, modalText, modalWarning, redirect, redirectAddress } = this.state
+        const { redirect, redirectAddress } = this.state
         if(redirect) {
             const url = redirectAddress;
             return(
@@ -41,9 +41,9 @@ class Hero extends Component {
         return(
             <div>
                 <div style={{ background: 'linear-gradient(rgba(255,255,255,0) 60%,lightgray)'}}>
-                    <Grid container spacing={50} className={classes.homepageContainer}>
-                        <Grid xs={1} sm={1} md={1} lg={1} />
-                        <Grid xs={10} sm={10} md={5} lg={5} className={classes.splitContent}>
+                    <Grid container spacing={40} className={classes.homepageContainer}>
+                        <Grid item xs={1} sm={1} md={1} lg={1} />
+                        <Grid item xs={10} sm={10} md={5} lg={5} className={classes.splitContent}>
                             <Grid container className={classes.imageContainer}>
                                 <span className={classes.heroImgContainer}>
                                     <a href='/'><img src={img} className={classes.heroImg} alt="Download from Apple Store" /></a>
@@ -60,7 +60,7 @@ class Hero extends Component {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid xs={10} sm={10} md={5} lg={5} className={classes.splitContent}>
+                        <Grid item xs={10} sm={10} md={5} lg={5} className={classes.splitContent}>
                             <div className={classes.HeroTitle}>
                                 Your individualized Parkinsons treatment</div>
                             <div className={classes.description}>
@@ -70,9 +70,9 @@ class Hero extends Component {
                                 <Button variant='outlined' className={classes.homepageButton} onClick={() => this.handleModalOpen()}>Get Connected</Button>
                             </div>
                         </Grid>
-                        <Grid xs={1} sm={1} md={1} lg={1} />
+                        <Grid item xs={1} sm={1} md={1} lg={1} />
                     </Grid>
-                        
+
                     </div>
                 <Modal
                     aria-labelledby="simple-modal-title"
@@ -85,8 +85,8 @@ class Hero extends Component {
                             Before you provide any personal information..
                         </h6>
                         <div id="simple-modal-description">
-                                We want you to understand that this application by no mean serve as a prescription. 
-                                Please talk to you doctor about this before go to the pharmacy. 
+                                We want you to understand that this application by no mean serve as a prescription.
+                                Please talk to you doctor about this before go to the pharmacy.
                             <div>
                                 <Button className={classes.homepageButton} onClick={() => { this.handleModalButton("/user/user_about")}}>Agree</Button>
                             </div>
@@ -96,7 +96,7 @@ class Hero extends Component {
             </div>
         )
     }
-} 
+}
 
 function getModalStyle() {
     const top = 50;

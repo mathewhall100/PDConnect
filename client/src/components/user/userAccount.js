@@ -1,33 +1,15 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { withRouter, Link, Redirect } from 'react-router-dom';
-import { reset, reduxForm, Field } from 'redux-form';
+import { withRouter, Redirect } from 'react-router-dom';
+import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import FormLabel from '@material-ui/core/FormLabel';
-import TextBox from '../forms/FormText';
-import Input from '@material-ui/core/Input';
-import FormControl from '@material-ui/core/FormControl';
-import Modal from '@material-ui/core/Modal';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import TextField from '@material-ui/core/TextField'
-import HelpIcon from '@material-ui/icons/Help';
-import DoneIcon from '@material-ui/icons/Done';
 
-import { age, sex, raceEthnicity, years, activity_level } from '../../constants';
 import { userStylesheet } from '../../styles';
-import { submitUserAccount } from '../../actions/UserAccountAccount';
-import BottomNav from '../commons/userBottomNav'
-import TopTitle from '../commons/userTopTitle'
-import UserModal from '../commons/userModal'
+import { submitUserAccount } from '../../actions/UserAccountAction';
 import FormText from '../forms/FormText';
 import FormPassword from '../forms/FormTextPassword';
 
@@ -85,8 +67,8 @@ class UserAccount extends Component {
 
     render() {
 
-        const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, modalOpen, modalTitle, modalText, modalWarning } = this.state
+        const { handleSubmit, classes } = this.props
+        const { redirect, redirectAddress, } = this.state
 
 
         if (redirect) {

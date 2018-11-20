@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { withRouter, Link, Redirect} from 'react-router-dom';
-import { reset, reduxForm, Field } from 'redux-form';
+import { withRouter, Redirect} from 'react-router-dom';
+import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import FormLabel from '@material-ui/core/FormLabel';
-import TextBox from '../forms/FormText';
-import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
-import Modal from '@material-ui/core/Modal';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -21,12 +15,10 @@ import Select from '@material-ui/core/Select';
 import HelpIcon from '@material-ui/icons/Help';
 import DoneIcon from '@material-ui/icons/Done';
 
-import { age, sex, raceEthnicity, years, activity_level } from '../../constants';
+import { age, sex, raceEthnicity, years } from '../../constants';
 import {userStylesheet } from '../../styles';
 import { updateStepperCount, submitUserAbout} from '../../actions/index.js'
-import TopTitle from '../commons/userTopTitle'
 import UserModal from '../commons/userModal'
-
 
  class UserAbout extends Component {
 
@@ -37,8 +29,8 @@ import UserModal from '../commons/userModal'
         modalwarning: false,
         redirect: false,
         redirectAddress : '/user/user_life',
-    }  
-    
+    }
+
     componentWillMount() {
         this.handleInitialize();
     }
@@ -70,9 +62,9 @@ import UserModal from '../commons/userModal'
             redirectAddress: '/'}, () => this.setState({redirect: true}) )
     }
 
-    handleModalOpen = (title, text) => { 
+    handleModalOpen = (title, text) => {
         console.log(title);
-         this.setState({ 
+         this.setState({
              modalTitle : title,
              modalText : text,
              modalWarning : false,
@@ -87,7 +79,7 @@ import UserModal from '../commons/userModal'
         const { redirect, redirectAddress, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
 
-        if (redirect) { 
+        if (redirect) {
             const url = `${redirectAddress}`;
             console.log("redirect to .. " + url);
             return<Redirect exact to={url} />;
@@ -98,14 +90,14 @@ import UserModal from '../commons/userModal'
             const {input, label, width, modal, labelWidth, meta: { pristine, touched, error }, children, ...custom} = field
 
             return (
-    
-                <div> 
+
+                <div>
 
                     <span>
-                        <FormControl variant="outlined"  style={{width: `${width}`}}>  
+                        <FormControl variant="outlined"  style={{width: `${width}`}}>
                             <InputLabel className={classes.inputLabel}>
                                 {label}
-                            </InputLabel>    
+                            </InputLabel>
                             <Select
                                 {...input}
                                 onSelect={(event, index, value) => input.onChange(value)}
@@ -121,7 +113,7 @@ import UserModal from '../commons/userModal'
                                 }
                             >
                             </Select>
-                        </FormControl> 
+                        </FormControl>
                     </span>
 
                     { (pristine || error) && <Button className={classes.helpButton} style={{position: "relative", top: "-38px", left: "-5px"}} onClick={() => this.handleModalOpen(label, label)}>
@@ -131,11 +123,11 @@ import UserModal from '../commons/userModal'
                     <span className={classes.doneIcon}>
                         {!pristine && !error ? <DoneIcon /> : ''}
                     </span>
-                    
+
                     <span className={classes.errorText} >
                             {touched ? error : ''}
                     </span>
-                
+
                 </div>
             )
         };
@@ -166,45 +158,45 @@ import UserModal from '../commons/userModal'
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
 
-                                <Field 
+                                <Field
                                         name="age"
-                                        component={RenderSelect} 
+                                        component={RenderSelect}
                                         label="Your age"
                                         width={"150px"}
                                         labelWidth={75}
                                         modal={1}
                                     >
-                                        {age.map(item => 
+                                        {age.map(item =>
                                         <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                         )}
                                 </Field>
 
                                 <br /><br />
 
-                                 <Field 
+                                 <Field
                                         name="sex"
-                                        component={RenderSelect} 
+                                        component={RenderSelect}
                                         label="Your sex"
                                         width={"150px"}
                                         labelWidth={75}
                                         modal={2}
                                     >
-                                        {sex.map(item => 
+                                        {sex.map(item =>
                                         <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                         )}
                                 </Field>
 
                                 <br /><br />
-                           
-                                <Field 
+
+                                <Field
                                         name="race"
-                                        component={RenderSelect} 
+                                        component={RenderSelect}
                                         label="Your race/ethnicity"
                                         width={"320px"}
                                         labelWidth={150}
                                         modal={3}
                                     >
-                                        {raceEthnicity.map(item => 
+                                        {raceEthnicity.map(item =>
                                         <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                         )}
                                 </Field>
@@ -212,15 +204,15 @@ import UserModal from '../commons/userModal'
                                 <br />
 
                                 <h4 className={classes.labelText}>When were you first diagnosed with Parkinson disease?</h4>
-                                <Field 
+                                <Field
                                         name="yearDiagnosed"
-                                        component={RenderSelect} 
+                                        component={RenderSelect}
                                         label="Year"
                                         width={"150px"}
                                         labelWidth={40}
                                         modal={4}
                                     >
-                                        {years.map(item => 
+                                        {years.map(item =>
                                         <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                         )}
                                 </Field>
@@ -228,28 +220,28 @@ import UserModal from '../commons/userModal'
                                 <br />
 
                                 <h4 className={classes.labelText}>When did you start treatment for Parkinson Disease?</h4>
-                                <Field 
+                                <Field
                                         name="yearTreatment"
-                                        component={RenderSelect} 
+                                        component={RenderSelect}
                                         label="Year"
                                         width={"150px"}
                                         labelWidth={40}
                                         modal={5}
                                     >
-                                        {years.map(item => 
+                                        {years.map(item =>
                                         <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                         )}
-                                </Field> 
-                       
+                                </Field>
+
                     </form>
 
                 </div>
 
-                { modalOpen && <UserModal 
+                { modalOpen && <UserModal
                     modalOpen={modalOpen}
-                    modalTitle={modalTitle} 
-                    modalText={modalText} 
-                    modalWarning={modalWarning} 
+                    modalTitle={modalTitle}
+                    modalText={modalText}
+                    modalWarning={modalWarning}
                 /> }
 
             </div>
@@ -265,7 +257,7 @@ function validate(values) {
     }
     if (!values.sex) {
         errors.sex = '*required'
-    } 
+    }
     if (!values.race) {
         errors.race = '*required'
     }
@@ -293,8 +285,8 @@ const mapStateToProps = (state) => {
 }
 
 const formData = {
-    form: 'userAboutForm', //unique identifier for this form 
-    validate,      
+    form: 'userAboutForm', //unique identifier for this form
+    validate,
 }
 
 UserAbout = reduxForm(formData)(UserAbout)

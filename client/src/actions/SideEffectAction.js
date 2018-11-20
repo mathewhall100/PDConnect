@@ -1,4 +1,3 @@
-import { push } from 'react-router-dom';
 import {
     SIDE_EFFECT_INFO
 } from './types';
