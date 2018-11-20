@@ -31,7 +31,7 @@ const styles = theme => ({
 });
 
 function getSteps() {
-    return ['You', 'Your Life', 'Your Family', 'Medications', 'Surgery Procedure', 'Symptoms - Motor', 'Symptoms - Non-Motor', 'Results'];
+    return ['About You', 'Your Life', 'Your Family', 'Medications', 'Surgeries', 'Symptoms - Motor', 'Symptoms - Non-Motor', 'Review'];
 }
 
 function getStepContent(step) {
@@ -65,15 +65,11 @@ class VerticalLinearStepper extends React.Component {
         this.props.updateStepperCount();
     }
     handleNext = () => {
-        this.setState(state => ({
-            activeStep: state.activeStep + 1,
-        }));
+        console.log("handleNext")
     };
 
     handleBack = () => {
-        this.setState(state => ({
-            activeStep: state.activeStep - 1,
-        }));
+        console.log("handleBack")
     };
 
     handleReset = () => {
@@ -110,7 +106,7 @@ class VerticalLinearStepper extends React.Component {
                         </Grid>
                     </Grid>
 
-                    <BottomNav />
+                    <BottomNav handleBack={this.handleBack} handleNext={this.handleNext}/>
 
                 </div>
             :
@@ -121,7 +117,7 @@ class VerticalLinearStepper extends React.Component {
 }
 
 function mapStatsToProps(state) {
-    //console.log(state);
+    console.log(state);
     return {
         user: state.user,
         currentTreatments: state.currentTreatments,

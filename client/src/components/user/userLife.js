@@ -29,7 +29,6 @@ import { PDADLs } from '../../constants'
     componentDidMount() {
         window.scroll(0,0)
         this.props.updateStepperCount()
-        console.log("CWRP: ", this.props.userADL)
         const index = this.props.userADL
         if (index) {this.handleAnswerSelect(index)}
     }
@@ -152,7 +151,7 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = (state =>{
     console.log("state: ", state)
     return {
-        userADL: state.life.ADL
+        userADL: state.life.ADL,
     }
 })
 

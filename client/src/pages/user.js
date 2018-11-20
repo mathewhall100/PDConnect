@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -25,8 +25,7 @@ import { userStylesheet } from '../styles';
 class User extends Component {
 
     state = {
-        redirect: false,
-        subtitle: ""
+        redirect: ""
     }
 
     render() {
@@ -44,7 +43,7 @@ class User extends Component {
                 <Grid container spacing={8}>
 
                     <Grid item lg={5} md={5} sm={12}  xs={12}>
-                        <Stepper />
+                        <Stepper handleClickNext={this.handleNextClicked}/>
                     </Grid>
                     <Grid item lg={7} md={7} sm={12}  xs={12}>
                         <Switch>

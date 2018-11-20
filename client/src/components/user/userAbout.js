@@ -48,7 +48,7 @@ import UserModal from '../commons/userModal'
 
     submit(values) {
         console.log("values : " , values);
-        this.props.submitUserAbout(values)
+        //this.props.submitUserAbout(values)
         this.setState({redirect : true})
     }
 
@@ -280,7 +280,7 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = (state) => {
     console.log("state ", state)
     return {
-        userAbout: state.about
+        userAbout: state.about,
     }
 }
 
