@@ -19,7 +19,7 @@ class AppBar extends Component {
 
                         <a href="/"><img src={Logo} className={classes.topNavLogo} alt='PD Connect' /></a>
 
-                        <Button className={classes.topBarBtn} style={{float: "right", marginTop: "30px"}} onClick={()=>{this.handleSignIn()}} variant="outlined">Sign in</Button>
+                        <Button className={classes.topBarBtn} style={{float: "right", marginTop: "30px"}} onClick={()=>{this.handleSignIn()}} variant="outlined">My account</Button>
 
                         <Button className={classes.topBarBtn} style={{float: "right", marginTop: "30px"}} onClick={()=>{this.handleSignIn()}} variant="outlined">Register</Button>
 

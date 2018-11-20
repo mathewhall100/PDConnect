@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -29,26 +28,19 @@ const subTitleArray = ["find out about Parkinson disease treatments individualis
 class User extends Component {
 
     state = {
-        redirect: false,
         subtitle: ""
     }
 
     render() {
         const { classes } = this.props;
-        const { redirect, subtitle } = this.state;
-
-        if (redirect) {
-            const url = `/intro_choice`;
-            console.log("redirect to .. " + url);
-            return <Redirect to={url} />;
-        }
+        const { redirect, next, back } = this.state;
 
         return (
             <div className={classes.root}>
                 <Grid container spacing={8}>
 
                     <Grid item lg={5} md={5} sm={12}  xs={12}>
-                        <Stepper />
+                        <Stepper handleClickNext={this.handleNextClicked}/>
                     </Grid>
                     <Grid item lg={7} md={7} sm={12}  xs={12}>
                         <Switch>

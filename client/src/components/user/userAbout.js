@@ -56,7 +56,7 @@ import UserModal from '../commons/userModal'
 
     submit(values) {
         console.log("values : " , values);
-        this.props.submitUserAbout(values)
+        //this.props.submitUserAbout(values)
         this.setState({redirect : true})
     }
 
@@ -240,7 +240,6 @@ import UserModal from '../commons/userModal'
                                         <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                         )}
                                 </Field> 
-                       
                     </form>
 
                 </div>
@@ -288,7 +287,7 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = (state) => {
     console.log("state ", state)
     return {
-        userAbout: state.about
+        userAbout: state.about,
     }
 }
 

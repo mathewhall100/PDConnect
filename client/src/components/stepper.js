@@ -66,16 +66,10 @@ class VerticalLinearStepper extends React.Component {
     }
     handleNext = () => {
         console.log("handleNext")
-        this.setState(state => ({
-            activeStep: state.activeStep + 1,
-        }));
     };
 
     handleBack = () => {
         console.log("handleBack")
-        this.setState(state => ({
-            activeStep: state.activeStep - 1,
-        }));
     };
 
     handleReset = () => {
@@ -123,7 +117,7 @@ class VerticalLinearStepper extends React.Component {
 }
 
 function mapStatsToProps(state) {
-    //console.log(state);
+    console.log(state);
     return {
         user: state.user,
         currentTreatments: state.currentTreatments,
