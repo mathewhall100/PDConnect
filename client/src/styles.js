@@ -14,9 +14,9 @@ import tabletReportHandsImg from './images/tablet_report_hands.jpg';
 export const PRIMARY_COLOR = '#2F5597';
 const PRIMARY_COLOR_HOVER = '#4d6591';
 const PRIMARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #2f5597 0%, lightgrey 100%)'
-const SECONDARY_COLOR = '#BF9000';
+export const SECONDARY_COLOR = '#BF9000';
 const SECONDARY_COLOR_GRADIENT_FADE_DOWN = 'linear-gradient(to bottom, #bf9000 0%, #ffffff 100%)'
-const MAXWIDTH = '1480px';
+const MAXWIDTH = '1280px';
 const MINHEIGHT = '1060px';
 
 export const QUESTION_BUTTON_DEFAULT_COLOR = 'grey'
@@ -28,11 +28,16 @@ export const WARNING_COLOR = "red"
 export const userStylesheet = theme => ({
     root: {
         maxWidth: MAXWIDTH,
-        margin: 'auto',
         minHeight : MINHEIGHT,
+        margin: 'auto',
+        padding: "0 40px 40px 40px"
+    },
+    spacingContainer: {
+        height: "180px",
     },
     stepperContainer : {
-        width : '90%',
+        width : '100%',
+        marginRight: "40px",
         fontFamily : 'Muli',
     },
     stepperCounter : {
@@ -47,9 +52,10 @@ export const userStylesheet = theme => ({
         width : '50px',
     },
     componentBox : {
+        margin: "40px 0",
         height: "auto",
-        border: "1px solid lightgrey",
-        padding: "30px 30px 30px 30px",
+        borderLeft: "1px solid lightgrey",
+        paddingLeft: "20px",
         fontFamily : 'Muli'
     },
     title: {
@@ -128,7 +134,7 @@ export const userStylesheet = theme => ({
             backgroundColor:'rgb(225, 0, 80)',
         }
     },
-    nextButton : {
+    userNavButton : {
         backgroundColor: PRIMARY_COLOR,
         width: '80%',
         color: 'white',
@@ -165,7 +171,7 @@ export const userStylesheet = theme => ({
     hr: {
         height: "1px",
         color: "lightgrey",
-        opacity: 0.5
+        opacity: 0.8
     },
     errorText: {
         fontSize: "15px",
@@ -217,19 +223,19 @@ export const resultStylesheet = theme => ({
         maxWidth: MAXWIDTH,
         minHeight : MINHEIGHT,
         margin: 'auto',
-        padding: "40px"
+        padding: "0 40px 40px 40px"
     },
     appBar: {
         width: "100%",
         height: "60px",
-        backgroundColor: PRIMARY_COLOR,
-        backgroundImage: PRIMARY_COLOR_GRADIENT_FADE_DOWN,
+        // backgroundColor: PRIMARY_COLOR,
+        // backgroundImage: PRIMARY_COLOR_GRADIENT_FADE_DOWN,
         marginBottom: "30px",
-        padding: "10px 20px 20px 20px",
-        color: "white",
+        padding: "10px 0 20px 0",
+        color: PRIMARY_COLOR,
         fontSize: "28px",
-        fontWeigt: "bold",
-        borderRadius: "5px"
+        fontWeight: "bold",
+        // borderRadius: "5px"
     },
     tabBar: {
         height: "80px",
@@ -256,13 +262,13 @@ export const resultStylesheet = theme => ({
         padding: "10px",
     },
     resultContainer: {
+        minHeight: "865px",
         padding: "30px", 
         border: "2px solid lightgrey",
         borderRadius: "0 5px 5px 5px",
-        backgroundColor: "#eeeeee",
+        backgroundColor: "#F8F8F8",
     },
     tabBar: {
-        backgroundColor: "#ffffff",
         position: "relative",
         top: "-10px",
         fontSize: "16px",
@@ -318,9 +324,9 @@ export const resultStylesheet = theme => ({
         borderTop: "2px solid lightgrey",
         borderLeft: "2px solid lightgrey",
         borderRight: "2px solid lightgrey",
-        borderBottom: "2px solid #eeeeee",
+        borderBottom: "2px solid #F8F8F8",
         borderRadius: "5px 5px 0 0",
-        backgroundColor: "#eeeeee",
+        backgroundColor: "#F8F8F8",
         color: PRIMARY_COLOR,
         position: "relative",
         top: "1px",
@@ -329,6 +335,7 @@ export const resultStylesheet = theme => ({
         }
     },
     badge: {
+        position: "relative",
         top: "-10px",
         left: "17px"
     },
@@ -338,7 +345,7 @@ export const resultStylesheet = theme => ({
         margin: "20px",
     },
     resultTextBox: {
-        height: "140px"
+        minHeight: "130px"
     },
     resultTitle: {
         fontWeight: "bold",
@@ -352,21 +359,39 @@ export const resultStylesheet = theme => ({
     button: {
         width: "190px",
         height: "30px",
+        paddingTop: '6px',
         border: "2px solid grey",
         borderRadius: "10px",
         fontSize: "14px",
-        fontweight: "bold",
-        backgroundColor: PRIMARY_COLOR,
-        color: 'white',
+        fontWeight: "bold",
+        backgroundColor: "lightgrey",
+        color: PRIMARY_COLOR,
         '&:hover': {
-            backgroundColor: "white",
+            backgroundColor: PRIMARY_COLOR,
             fontWeight: "bold",
-            color: PRIMARY_COLOR
+            color: "white"
+        }
+    },
+    resultBackButton: {
+        float: "right",
+        paddingTop: '6px',
+        width: "100px",
+        height: "30px",
+        border: "2px solid lightgrey",
+        borderRadius: "5px",
+        fontSize: "14px",
+        fontWeight: "bold",
+        backgroundColor: "white",
+        color: PRIMARY_COLOR,
+        '&:hover': {
+            backgroundColor: PRIMARY_COLOR,
+            fontWeight: "bold",
+            color: "white"
         }
     },
     printButton: {
         float: "right",
-        margin: "-15px -15px 0 0",
+        margin: "-20px -20px 0 0",
         color: "black",
         fontWeight: "bold",
         backgroundColor: "lightgrey",
@@ -377,21 +402,21 @@ export const resultStylesheet = theme => ({
     emailContainer: {
         border: "2px solid lightgrey",
         borderRadius: "5px",
-        backgroundColor: "#eeeeee",
-        padding: "20px 20px 20px 40px",
+        backgroundColor: "#F8F8F8",
+        padding: "20px 0 20px 25px",
         marginBottom: "40px"
     },
     accountContainer: {
         border: "2px solid lightgrey",
         borderRadius: "5px",
-        backgroundColor: "#eeeeee",
-        padding: "20px 20px 20px 40px",
+        backgroundColor: "#F8F8F8",
+        padding: "20px 0 20px 25px",
         marginBottom: "40px"
     },
     socMedContainer: {
         border: "2px solid lightgrey",
         borderRadius: "5px",
-        padding: "20px 20px 20px 40px",
+        padding: "20px 0 20px 25px",
         marginBottom: "40px"
     },
     socMedText: {
@@ -399,13 +424,13 @@ export const resultStylesheet = theme => ({
         fontWeight: "bold"
     },
     socialIcon : {
-        height : '45px',
-        width : '45px',
-        borderRadius : '5px',
+        height : '35px',
+        width : '35px',
+        borderRadius : '4px',
         margin : '10px 5px 0 5px',
         '&:hover': {
-            height: "51px", 
-            width: "51px",
+            height: "41px", 
+            width: "41px",
             cursor: "pointer",
             margin: "7px 2px -3px 2px"
 
@@ -471,22 +496,38 @@ export const stylesheet = theme => ({
         },
     },
     topBarBtn : {
-        backgroundColor: PRIMARY_COLOR,
-        color: 'white',
+        margin: "20px 0 0 15px",
+        backgroundColor: "white",
+        color: "black",
+        border: "2px solid #BF9000",
+        fontWeight: "bold",
         '&:hover': {
-            color: PRIMARY_COLOR
+            backgroundColor: PRIMARY_COLOR,
+            color: "white"
         }
     },
+    topNavContainer: {
+        height: "100px",
+        width: "100%",
+        borderBottom: "1px solid rgba(47,85,121,0.2)",
+        borderOpacity: 0.5,
+        boxShadow: "0 1px 2px 0 rgba(47, 85, 121, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.0)",
+    },
     topNav : {
-        margin : 'auto',
+        maxWidth: MAXWIDTH,
+        minHeight : MINHEIGHT,
+        margin: 'auto',
+        padding: "0 40px 40px 40px",
+        margin : '0 auto',
         [theme.breakpoints.down('xs')]: {
-            marginTop: '50px',
+            marginTop: '10px',
         },
     },
+
     topNavLogo : {
-        height : '110px',
-        width : '110px',
-        margin : '15px 0 15px 0',
+        height : '80px',
+        width : '80px',
+        margin : '10px 0 10px 0',
         [theme.breakpoints.down('xs')]: {
             display: 'none',
         },

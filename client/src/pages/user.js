@@ -43,13 +43,13 @@ class User extends Component {
         }
 
         return (
-            <div>
-                <Grid container>
-                    <Grid item xs={1}></Grid>
-                    <Grid item md={4} sm={4} lg={4} xs={12}>
+            <div className={classes.root}>
+                <Grid container spacing={8}>
+
+                    <Grid item lg={5} md={5} sm={12}  xs={12}>
                         <Stepper />
                     </Grid>
-                    <Grid item md={6} sm={6} lg={6} xs={12}>
+                    <Grid item lg={7} md={7} sm={12}  xs={12}>
                         <Switch>
                             <Route path='/user/user_about' render={props => <UserAbout></UserAbout>} />
                             <Route path='/user/user_life' render={props => <UserLife></UserLife>} />
@@ -63,7 +63,7 @@ class User extends Component {
                             <Route component={NotFound} />
                         </Switch>
                     </Grid>
-                    <Grid item xs={1}></Grid>
+
                 </Grid>
             </div>
         );

@@ -20,17 +20,16 @@ import {userStylesheet } from '../../styles';
             const { classes } = this.props
 
             return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
+                <Grid container spacing={24} >
                     <Grid item xs={12}>
                         <hr className={classes.hr} />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
+                        <Button type="button" variant='outlined' className={classes.userNavButton} onClick={() => this.handleBack()}>BACK</Button>
                     </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleNext()}>NEXT</Button>
+                    <Grid item xs={6}></Grid>
+                    <Grid item xs={3}>
+                        <Button type="button" variant='outlined' className={classes.userNavButton} onClick={() => this.handleNext()}>NEXT</Button>
                     </Grid>
                 </Grid>
             )

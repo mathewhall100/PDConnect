@@ -8,7 +8,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import StarIcon from '@material-ui/icons/Star';
 
-import {resultStylesheet } from '../../styles';
+import {resultStylesheet, SECONDARY_COLOR } from '../../styles';
 
     class AccountBox extends Component  {
 
@@ -28,25 +28,25 @@ import {resultStylesheet } from '../../styles';
                     <List component="nav">
                         <ListItem className={classes.listItems}>
                         <ListItemIcon>
-                            <StarIcon />
+                            <StarIcon style={{color: SECONDARY_COLOR}}/>
                         </ListItemIcon>
                         <ListItemText inset primary="save your profile between visits" />
                         </ListItem >
                         <ListItem button className={classes.listItems}>
                         <ListItemIcon>
-                            <StarIcon />
+                            <StarIcon style={{color: SECONDARY_COLOR}}/>
                         </ListItemIcon>
                         <ListItemText inset primary="receive prompts to update your information" />
                         </ListItem>
                         <ListItem button className={classes.listItems}>
                         <ListItemIcon>
-                            <StarIcon />
+                            <StarIcon style={{color: SECONDARY_COLOR}}/>
                         </ListItemIcon>
                         <ListItemText inset primary="alerts when new treatments or trials match your profile" />
                         </ListItem>
                         <ListItem button className={classes.listItems}>
                         <ListItemIcon>
-                            <StarIcon />
+                            <StarIcon style={{color: SECONDARY_COLOR}}/>
                         </ListItemIcon>
                         <ListItemText inset primary="submit your details for participation in focus groups" />
                         </ListItem>

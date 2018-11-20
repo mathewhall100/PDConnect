@@ -19,7 +19,6 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { submitUserNonMotorSy, updateStepperCount} from '../../actions/index.js'
-import BottomNav from '../commons/userBottomNav'
 import TopTitle from '../commons/userTopTitle'
 import SubTitle from '../commons/userSubTitle'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
@@ -165,9 +164,7 @@ import { nonMotorSy } from '../../constants'
                             </div>
                         )
                     }) }
-   
-                    <BottomNav handleNext={this.handleNext} handleBack={this.handleBack}/>            
-            
+           
                 </div>
 
                 { modalOpen && <UserModal 

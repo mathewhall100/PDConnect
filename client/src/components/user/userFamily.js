@@ -16,7 +16,6 @@ import DoneIcon from '@material-ui/icons/Done';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
-import BottomNav from '../commons/userBottomNav'
 import TopTitle from '../commons/userTopTitle'
 import SubTitle from '../commons/userSubTitle'
 
@@ -116,8 +115,6 @@ import SubTitle from '../commons/userSubTitle'
                     <TreeLink class={classes.treeLinkVertical} top={25} left={spacingH+75} height="400px"/>
                     <TreeLink class={classes.treeLinkVertical} top={spacingV*2+25+25} left={spacingH*4+75} height="100px"/>
                     </div>
-
-                <BottomNav handleNext={this.handleNext} handleBack={this.handleBack}/>
 
             </div>
 
