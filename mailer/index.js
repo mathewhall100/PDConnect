@@ -18,15 +18,17 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const send = ({ email, name, text }) => {
+const send = ({ email, name, text,html, subject }) => {
     console.log("in send function");
     const from = name && email ? `${name} <${email}>` : `${name || email}`
+    const to = `${email} <${email}>`
     console.log("uemail : ", process.env.MAILER_USER);
     const message = {
-        from,
-        to: 'sk.tan97@gmail.com',
-        subject: `New message from ${from}`,
+        from: `PD Connect <bscwruproject2@gmail.com>`,
+        to,
+        subject,
         text,
+        html,
         replyTo: from
     };
 
@@ -35,7 +37,7 @@ const send = ({ email, name, text }) => {
             error ? reject(error) : resolve(info)
         )
     })
-} 
+}
 module.exports = {
     send: send
 }
