@@ -153,7 +153,7 @@ import UserModal from '../commons/userModal'
 
 
         return (
-            <div className={classes.componentBox} >
+            <div className={classes.componentBox} style={{paddingBottom: '20px'}}>
                 <div>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
@@ -203,7 +203,7 @@ import UserModal from '../commons/userModal'
 
                                 <br />
 
-                                <h4 className={classes.labelText}>When were you first diagnosed with Parkinson disease?</h4>
+                                <h4 className={classes.questionHead} >When were you first diagnosed with Parkinson disease?</h4>
                                 <Field
                                         name="yearDiagnosed"
                                         component={RenderSelect}
@@ -219,7 +219,7 @@ import UserModal from '../commons/userModal'
 
                                 <br />
 
-                                <h4 className={classes.labelText}>When did you start treatment for Parkinson Disease?</h4>
+                                <h4 className={classes.questionHead}>When did you start treatment for Parkinson Disease?</h4>
                                 <Field
                                         name="yearTreatment"
                                         component={RenderSelect}

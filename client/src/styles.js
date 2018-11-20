@@ -36,14 +36,13 @@ export const userStylesheet = theme => ({
         maxWidth: MAXWIDTH,
         minHeight : MINHEIGHT,
         margin: 'auto',
-        padding: "0 40px 40px 40px"
+        padding: "0 20px 40px 40px"
     },
-    spacingContainer: {
-        height: "180px",
-    },
+   
     stepperContainer : {
         width : '100%',
         marginRight: "40px",
+        marginTop: "40px",
         fontFamily : 'Muli',
     },
     stepperCounter : {
@@ -56,13 +55,19 @@ export const userStylesheet = theme => ({
     stepperImg : {
         height : '50px',
         width : '50px',
+    }, 
+    spacingContainer: {
+        height: "100px",
     },
     componentBox : {
-        margin: "40px 0",
+        marginTop: "60px",
         height: "auto",
         borderLeft: "1px solid lightgrey",
-        paddingLeft: "20px",
+        paddingLeft: "30px",
         fontFamily : 'Muli'
+    },
+    labelText: {
+        fontSize: "23px"
     },
     title: {
         fontSize: '32px',
@@ -78,10 +83,11 @@ export const userStylesheet = theme => ({
         fontStyle: "italic",
     },
     questionContainer: {
-        minHeight: "80px"
+        minHeight: "80px",
+        marginBottom: "10px"
     },
     questionHead: {
-        fontSize: "18px",
+        fontSize: "20px",
         fontWeight: "bold"
     },
     questionText: {
@@ -99,8 +105,8 @@ export const userStylesheet = theme => ({
         backgroundColor: "white",
         border: "4px solid",
         borderColor: QUESTION_BUTTON_DEFAULT_COLOR,
-        marginLeft: "25px",
         borderRadius: "50%",
+        marginLeft: "20px",
         position: "relative",
         top: "5px",
          '&:hover': {
@@ -126,7 +132,6 @@ export const userStylesheet = theme => ({
             backgroundColor: "white"
         },
     },
-
     buttonContainer : {
         width : "100%",
         paddingTop : '5%'

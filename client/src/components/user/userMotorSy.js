@@ -134,8 +134,8 @@ import { motorSy } from '../../constants'
             <section>
                 <div className={classes.componentBox}>
                     
-                    <p className={classes.sectionTitle}>Let's start with motor symptoms</p>
-                    <br />
+                    {/* <p className={classes.sectionTitle}>Let's start with motor symptoms</p>
+                    <br /> */}
 
                     {motorSy.map((sy, index) => {
 
@@ -143,7 +143,7 @@ import { motorSy } from '../../constants'
                             <div key={index}>
                                 <Grid container spacing={24}>
 
-                                    <Grid item xs={12} sm={12} md={12} lg={7}>
+                                    <Grid item xs={12} sm={12} md={12} lg={6}>
                                    
                                     <div className={classes.questionContainer}>
                                             <span className={classes.questionHead}>{sy.symptom}</span>  
@@ -157,11 +157,11 @@ import { motorSy } from '../../constants'
                                     </div>
                                     </Grid>
 
-                                    <Grid item xs={12} sm={12} md={12} lg={5}>
-                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.symptom)}>
+                                    <Grid item xs={12} sm={12} md={12} lg={6}>
+                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.symptom)}>
                                             <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}}>not sure</span>
                                         </Button>
-                                        <Button type="button" className={classes.questionButton} style={{marginLeft: "25px", borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.symptom)}>
+                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.symptom)}>
                                             {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>

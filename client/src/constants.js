@@ -401,11 +401,11 @@ const medList = [
 ]
 
 export const PDADLs = [
-    {title: "1) No difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
-    {title: "2) Mild difﬁculties with day-to-day activities.", text: "For example: Slowness with some aspects of housework, gardening or shopping. Able to dress and manage personal hygiene completely independently but rate is slower. You may feel that your medication is not quite effective as it was."},
-    {title: "3) Moderate difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease is interfering with your daily activities. It is increasinglydifﬁcult to do simple activities without some help such as rising from a chair, washing, dressing,shopping, housework. You may have some difﬁculties walking and may require assistance. Difﬁcultieswith recreational activities or the ability to drive a car. The medication is now less effective."},
-    {title: "4) High levels of difﬁculties with day-to-day activities.", text: "For example: You now require much more assistance with activities of daily living such as washing,dressing, housework or feeding yourself. You may have greater difﬁculties with mobility and ﬁnd youare becoming more dependent for assistance from others or aids and appliances. Your medicationappears to be signiﬁcantly less effective."},
-    {title: "5) Extreme difﬁculties with day-to-day activities.", text: "For example: You require assistance in all daily activities. These may include dressing, washing,feeding yourself or walking unaided. You may now be housebound and obtain little or no beneﬁtfrom your medication."}
+    {title: "1) I have no difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
+    {title: "2) I have mild difﬁculties with day-to-day activities.", text: "For example: Slowness with some aspects of housework, gardening or shopping. Able to dress and manage personal hygiene completely independently but rate is slower. You may feel that your medication is not quite effective as it was."},
+    {title: "3) I have moderate difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease is interfering with your daily activities. It is increasinglydifﬁcult to do simple activities without some help such as rising from a chair, washing, dressing,shopping, housework. You may have some difﬁculties walking and may require assistance. Difﬁcultieswith recreational activities or the ability to drive a car. The medication is now less effective."},
+    {title: "4) I have a high levels of difﬁculties with day-to-day activities.", text: "For example: You now require much more assistance with activities of daily living such as washing,dressing, housework or feeding yourself. You may have greater difﬁculties with mobility and ﬁnd youare becoming more dependent for assistance from others or aids and appliances. Your medicationappears to be signiﬁcantly less effective."},
+    {title: "5) I have extreme difﬁculties with day-to-day activities.", text: "For example: You require assistance in all daily activities. These may include dressing, washing,feeding yourself or walking unaided. You may now be housebound and obtain little or no beneﬁtfrom your medication."}
 ]
 
 export const medGroups = [
@@ -442,8 +442,8 @@ export const motorSy = [
 ]
 
 export const nonMotorSy= [
-    {key: "psychosis", symptom: "Hallucinations or delusions", shortDescription: "Seeying things that you know are not really there or firmly beleiving seomething despite good evidence that it is not real or true.", description: ""},
-    {key: "orthostatic", symptom: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or even feeling you may faint, particularly just after you have got up from sitting down or changed position ", description: ""},
+    {key: "psychosis", symptom: "Hallucinations or delusions", shortDescription: "Seeying or believing things that you know are not really there or true.", description: ""},
+    {key: "orthostatic", symptom: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or feeling faint particularly just after standing up or changing position ", description: ""},
     {key: "drooling", symptom: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
     {key: "slowtransit", symptom: "Nausea and bloating", shortDescription: "Nausea, sickness and bloated stomach", description: ""},
     {key: "footcurl", symptom: "Foot curling", shortDescription: "Involuntary curling of the foot and toes which can be painful and makes walking difficult.", description: ""},

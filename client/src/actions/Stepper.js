@@ -39,17 +39,17 @@ function getStepContent(){
         case '/user/user_about':
             objStepperContent = {
                 stepperCount : 1,
-                pageName : 'You',
+                pageName : 'About you',
                 title: `Let's get started! Tell us a bit about you.`,
                 pageImg  : `${meImg}`,
-                subtitle : ``,
+                subtitle : `This is important information which we use to individualise the information we provide to you.`,
             }
             return objStepperContent;
         case '/user/user_life':
             objStepperContent = {
                 stepperCount: 2,
                 pageName: 'Your life',
-                title: `Now tell us a little about how Parkinson disease affects you`,
+                title: `Tell us a little about how Parkinson disease affects you`,
                 pageImg: `${lifestyleImg}`,
                 subtitle: `Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month.`,
             }
@@ -67,16 +67,16 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 4,
                 pageName: 'Medications',
-                title: `Congratulations, you're half way through! Now tell us about the medications you take for Parkinson Disease.`,
+                title: `Awesome, you're half way through! Now, what medications do you take for Parkinson Disease?`,
                 pageImg: `${medsImg}`,
-                subtitle: ``,
+                subtitle: `Click the circles to indicate which medications you are currently taking for parkinson disease, or select "none" if you don't take any.`,
             }
             return objStepperContent;
         case '/user/user_surgery':
             objStepperContent = {
                 stepperCount: 5,
                 pageName: 'Surgery Procedure',
-                title: `Have you ever had any of the following procedures or surgeries to treat Parkinson disease?`,
+                title: `Have you ever had any surgery or procedures to treat Parkinson disease?`,
                 pageImg: `${surgeryImg}`,
                 subtitle: ``,
             }
@@ -85,18 +85,18 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 6,
                 pageName: 'Symptoms (Motor)',
-                title: `Almost done! Lastly, about your symptoms`,
+                title: `Almost done! Now about your symptoms of Parkinson disease`,
                 pageImg: `${motorImg}`,
-                subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may haveb experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom.`,
+                subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may have experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom.`,
             }
             return objStepperContent;
         case '/user/user_nonmotorsy':
             objStepperContent = {
                 stepperCount: 7,
                 pageName: 'Symptoms (Non Motor)',
-                title: `Almost done! Lastly, about your symptoms`,
+                title: `Final question! About your symptoms other than those that affect your movement`,
                 pageImg: `${nonMotorImg}`,
-                subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may haveb experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom.`,
+                subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,
             }
             return objStepperContent;
         case '/user/result':

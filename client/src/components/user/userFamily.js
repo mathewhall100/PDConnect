@@ -97,7 +97,10 @@ import SubTitle from '../commons/userSubTitle'
         }
 
         return (
-            <div className={classes.componentBox} >
+            <div className={classes.componentBox} style={{paddingTop: "10px", paddingBottom: "20px"}}>
+
+            <p className={classes.sectionTitle}>Click all that apply</p>
+            <br />
                 
                 <div className={classes.treeContainer}>
 

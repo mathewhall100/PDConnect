@@ -88,7 +88,6 @@ class VerticalLinearStepper extends React.Component {
         return (
             onPage!== 'Unknown step' ?
                 <div>
-                    <div className={classes.spacingContainer}></div>
                     <Grid container spacing={24}className={classes.stepperContainer}>
                         <Grid item xs={12} >
                             {stepperCount !== '' ? <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2>  : null}
@@ -99,7 +98,7 @@ class VerticalLinearStepper extends React.Component {
                         </Grid>
                         <Grid item xs={12}>
                             <h2 className={classes.stepperTitle}>{title}</h2>
-                            {subtitle ? <hr /> : null}
+                            
                         </Grid>
                         <Grid item xs={12}>
                             <span className={classes.stepperTitle}>{subtitle}</span>

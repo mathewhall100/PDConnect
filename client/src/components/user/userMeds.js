@@ -127,14 +127,15 @@ class UserMeds extends Component {
 
         return (
             <section >
-                <div className={classes.componentBox}>
+                <div className={classes.componentBox} >
                     
                     <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        <div className={classes.headerQuestion}>I don't take any medications for Parkinson disease: </div>
+                        <div className={classes.headerQuestion} >None </div>
+                        <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                             <Button type="button" className={classes.questionButton} style={{borderColor: noAnswer ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoAnswerelect()}>
+                             <Button type="button" className={classes.questionButton} style={{postion: "relative", top: "-4px", borderColor: noAnswer ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoAnswerelect()}>
                                 <QuestionButtonIcons answerConditional={noAnswer} />
                             </Button> 
                         </Grid>

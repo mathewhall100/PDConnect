@@ -40,12 +40,12 @@ class User extends Component {
 
         return (
             <div className={classes.root}>
-                <Grid container spacing={8}>
+                <Grid container spacing={24}>
 
-                    <Grid item lg={5} md={5} sm={12}  xs={12}>
-                        <Stepper handleClickNext={this.handleNextClicked}/>
+                    <Grid item lg={6} md={6} sm={12}  xs={12}>
+                        <Stepper/>
                     </Grid>
-                    <Grid item lg={7} md={7} sm={12}  xs={12}>
+                    <Grid item lg={6} md={6} sm={12}  xs={12}>
                         <Switch>
                             <Route path='/user/user_about' render={props => <UserAbout></UserAbout>} />
                             <Route path='/user/user_life' render={props => <UserLife></UserLife>} />

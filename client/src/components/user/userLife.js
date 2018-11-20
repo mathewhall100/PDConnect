@@ -98,7 +98,11 @@ import { PDADLs } from '../../constants'
 
         return (
             <section>
-                <div className={classes.componentBox}>
+                <div className={classes.componentBox} style={{paddingTop: "10px", paddingBottom: "20px"}}>
+
+                    <p className={classes.sectionTitle}>Select one</p>
+                    <br />
+                    
                     {PDADLs.map((question, index) => {
                         return (
                             <div key={index}>
@@ -106,17 +110,16 @@ import { PDADLs } from '../../constants'
                                     <Grid item xs={12} sm={8} md={8}>
                                         <div className={classes.questionContainer} >
                                             <span className={classes.questionHead}>{question.title}</span>
-                                            <br />
-                                            <Button type="button" id="modalBtn" className={classes.helpButtton} onClick={() => this.handleModalOpen(PDADLs[index].title, PDADLs[index].text)}>
+                                            <Button type="button" id="modalBtn" className={classes.helpButtton} style={{position: "relative", top: "-5px"}} onClick={() => this.handleModalOpen(PDADLs[index].title, PDADLs[index].text)}>
                                                 <HelpIcon color="primary" className={classes.helpIcon}/>
-                                                    &nbsp;&nbsp;More Details and examples
+                                                 &nbsp;&nbsp;examples
                                             </Button>
                                         </div>
                                     </Grid>
 
 
                                     <Grid item xs={12} sm={4} md={4}>
-                                        <Button type="button" className={classes.questionButton}  style={{borderColor: activeBtn[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index)}>
+                                        <Button type="button" className={classes.questionButton}  style={{position: "relative", top: "-5px", borderColor: activeBtn[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index)}>
 
                                         <QuestionButtonIcons answerConditional={activeBtn[index] ? true : false} />
                                            
