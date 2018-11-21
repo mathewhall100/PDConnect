@@ -62,7 +62,7 @@ export const userStylesheet = theme => ({
     componentBox : {
         marginTop: "60px",
         height: "auto",
-        borderLeft: "1px solid lightgrey",
+        borderLeft: "1px solid rgb(211,211,211, 0.5)",
         paddingLeft: "30px",
         fontFamily : 'Muli'
     },
@@ -126,8 +126,8 @@ export const userStylesheet = theme => ({
     helpButton: {
         position: "relative",
         top: "-5px",
-        marginBottom: 0,
-        paddingBottom: 0,
+        margin: 0,
+        padding: 0,
         '&:hover': {
             backgroundColor: "white"
         },

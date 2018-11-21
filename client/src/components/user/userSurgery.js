@@ -116,8 +116,11 @@ import { procedures } from '../../constants'
         }
 
         return (
-            <section className={classes.root}>
+            <section >
                 <div className={classes.componentBox} style={{paddingTop: "10px", paddingBottom: "160px"}}>
+
+                <p className={classes.sectionTitle}>Select all that apply</p>
+                <br />
                     
                     {procedures.map((proc, index) => {
 

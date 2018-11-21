@@ -405,14 +405,13 @@ class Results extends Component {
                         tabs={[
                             {text: "TREATMENTS", badgeContent: treatmentResults.length},
                             {text: "TRIALS", badgeContent: trialResults.length},
-                            {text: "FOCUS GROUPS", badgeContent: 0}
+                            {text: "FOCUS GROUPS", badgeContent: 0},
                         ]}
                         handleTabClick={this.handleTabClick}
                     />
                     {tabSelected === 0 && <RenderTreatments /> }
                     {tabSelected === 1 && <RenderTrials /> }
                     {tabSelected === 2 && <RenderFocusGroups /> }
-
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={4}>
