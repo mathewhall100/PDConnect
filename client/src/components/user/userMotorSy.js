@@ -134,8 +134,8 @@ import { motorSy } from '../../constants'
             <section>
                 <div className={classes.componentBox}>
                     
-                    {/* <p className={classes.sectionTitle}>Let's start with motor symptoms</p>
-                    <br /> */}
+                    <p className={classes.sectionTitle}>Tick all that apply, 'no' if you don't take that medication and 'not sure' for more description.</p>
+                    <br />
 
                     {motorSy.map((sy, index) => {
 
@@ -175,6 +175,8 @@ import { motorSy } from '../../constants'
                             </div>
                         )
                     }) }
+
+                    <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
    
                 </div>
 

@@ -430,10 +430,10 @@ export const meds = [
 export const motorSy = [
     {key: "motorfluct", symptom: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
     {key: "earlyoff", symptom: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
-    {key: "suddenoff", symptom: "Sudden, unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
+    {key: "suddenoff", symptom: "Sudden or unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
     {key: "freezing", symptom: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
     {key: "tremor", symptom: "Tremor", shortDescription: "Shaking of the hands and arms that bothers you or prevents you doing things with your hands", description: ""},
-    {key: "dyskinesia", symptom: "Bothersome dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
+    {key: "dyskinesia", symptom: "Troubling dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
     {key: "micrographia", symptom: "Small handwriting", shortDescription: "Very small handwriting, which is not usual for you", description: ""},
     {key: "bradykinesia", symptom: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling walk. ", description: ""},
     {key: "fall", symptom: "Falls", shortDescription: "Falling over due to increased difficulty moving and walking", description: ""},
@@ -442,8 +442,8 @@ export const motorSy = [
 ]
 
 export const nonMotorSy= [
-    {key: "psychosis", symptom: "Hallucinations or delusions", shortDescription: "Seeying or believing things that you know are not really there or true.", description: ""},
-    {key: "orthostatic", symptom: "Dizziness & lightheadedness", shortDescription: "Dizziness, lightheadedness or feeling faint particularly just after standing up or changing position ", description: ""},
+    {key: "psychosis", symptom: "Hallucinations and / or delusions", shortDescription: "Seeying or believing things that you know are not really there or true.", description: ""},
+    {key: "orthostatic", symptom: "Dizziness, lightheadedness or feeling faint", shortDescription: "Dizziness, lightheadedness or feeling faint, particularly after standing or changing position ", description: ""},
     {key: "drooling", symptom: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
     {key: "slowtransit", symptom: "Nausea and bloating", shortDescription: "Nausea, sickness and bloated stomach", description: ""},
     {key: "footcurl", symptom: "Foot curling", shortDescription: "Involuntary curling of the foot and toes which can be painful and makes walking difficult.", description: ""},
@@ -455,6 +455,6 @@ export const nonMotorSy= [
 ]
 
 export const procedures  = [
-    {procedure: "Deep Brain Stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
-    {procedure: "Feeding tube placement", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
+    {procedure: "Deep brain stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
+    {procedure: "Placement of a feeding tube for Duopa therapy", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
 ]

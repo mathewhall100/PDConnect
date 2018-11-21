@@ -131,15 +131,18 @@ class UserMeds extends Component {
                     
                     <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        <div className={classes.headerQuestion} >None </div>
+                        <div className={classes.headerQuestion} >None (I don't take any medications for Parkinson disease)</div>
                         <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                             <Button type="button" className={classes.questionButton} style={{postion: "relative", top: "-4px", borderColor: noAnswer ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoAnswerelect()}>
+                             <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: noAnswer ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoAnswerelect()}>
                                 <QuestionButtonIcons answerConditional={noAnswer} />
                             </Button> 
                         </Grid>
                     </Grid>
+                    <br />
+                     <p className={classes.sectionTitle}>Or, Select all that apply from the following list</p>
+
 
                     {medGroups.map((group, index) => {
 
@@ -147,7 +150,7 @@ class UserMeds extends Component {
                             <div key={index}>
 
                                 <hr className={classes.hr}/>
-                                <p className={classes.sectionTitle}> {startCase(group.class)} preparations for {group.target}</p>
+                                {/* <p className={classes.sectionTitle}> {startCase(group.class)} preparations for {group.target}</p> */}
                                 <br />
 
                                 {meds.filter(med => med.class === group.class).map((med, index) => {
@@ -190,6 +193,8 @@ class UserMeds extends Component {
                         )
                         
                 }) }
+
+                <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
                     
                 </div>
 

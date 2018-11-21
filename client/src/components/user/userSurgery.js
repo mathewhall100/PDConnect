@@ -116,36 +116,41 @@ import { procedures } from '../../constants'
         }
 
         return (
-            <section className={classes.root}>
-                <div className={classes.componentBox} style={{paddingTop: "10px", paddingBottom: "160px"}}>
-                    
-                    {procedures.map((proc, index) => {
+            <section >
+                <div className={classes.componentBox} >
 
-                        return (
-                            <div key={index}>
-                                <Grid container spacing={24}>
-                                    <Grid item xs={12} sm={12} md={12} lg={7}> 
-                                        <div className={classes.questionContainer}>
-                                            <span className={classes.questionHead}>{proc.procedure}</span>  
-                                            <Button className={classes.helpButton} onClick={() => this.handleModalOpen(proc.procedure,proc.shortDescription) }>
-                                                <HelpIcon color="primary" className={classes.helpIcon}/>
-                                                </Button>
-                                            <br />
-                                            <span className={classes.questionText}> 
-                                                {proc.shortDescription}
-                                            </span> 
-                                        </div>
-                                    </Grid>
-                                    <Grid item xs={12} sm={12} md={12} lg={5}>
-                                            <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, proc.procedure)}>
-                                                <QuestionButtonIcons answerConditional = {answerTrack[index]} />
+                <p className={classes.sectionTitle}>Select all that apply</p>
+                <br />
+                    
+                {procedures.map((proc, index) => {
+
+                    return (
+                        <div key={index}>
+                            <Grid container spacing={24}>
+                                <Grid item xs={12} sm={12} md={12} lg={7}> 
+                                    <div className={classes.questionContainer}>
+                                        <span className={classes.questionHead}>{proc.procedure}</span>  
+                                        <Button className={classes.helpButton} onClick={() => this.handleModalOpen(proc.procedure,proc.shortDescription) }>
+                                            <HelpIcon color="primary" className={classes.helpIcon}/>
                                             </Button>
-                                    </Grid>
+                                        <br />
+                                        <span className={classes.questionText}> 
+                                            {proc.shortDescription}
+                                        </span> 
+                                    </div>
                                 </Grid>
-                                <br />
-                            </div>
-                        )
-                    }) }
+                                <Grid item xs={12} sm={12} md={12} lg={5}>
+                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, proc.procedure)}>
+                                            <QuestionButtonIcons answerConditional = {answerTrack[index]} />
+                                        </Button>
+                                </Grid>
+                            </Grid>
+                            <br />
+                        </div>
+                    )
+                }) }
+
+                <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
 
                 </div>
 

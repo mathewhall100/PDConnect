@@ -14,6 +14,7 @@ import UserSurgery from '../components/user/userSurgery';
 import UserMotorSy from '../components/user/userMotorSy';
 import UserNonMotorSy from '../components/user/userNonMotorSy';
 import UserAccount from '../components/user/userAccount';
+import UserServices from '../components/user/userServices';
 import Result from './results';
 import NotFound from './notFound';
 
@@ -55,6 +56,7 @@ class User extends Component {
                             <Route path='/user/user_motorsy' render={props => <UserMotorSy></UserMotorSy>} />
                             <Route path='/user/user_nonmotorsy' render={props => <UserNonMotorSy></UserNonMotorSy>} />
                             <Route path='/user/account' component={UserAccount} />
+                            <Route path='/user/services' component={UserServices} />
                             <Route path="/user/result" render={props => <Result ></Result>} />
                             <Route path="/notfound" component={NotFound} />
                             <Route component={NotFound} />

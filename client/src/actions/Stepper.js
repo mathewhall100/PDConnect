@@ -39,7 +39,7 @@ function getStepContent(){
         case '/user/user_about':
             objStepperContent = {
                 stepperCount : 1,
-                pageName : 'About you',
+                pageName : 'You',
                 title: `Let's get started! Tell us a bit about you.`,
                 pageImg  : `${meImg}`,
                 subtitle : `This is important information which we use to individualise the information we provide to you.`,
@@ -64,9 +64,7 @@ function getStepContent(){
                 pageName: 'Your family',
                 title: `Tell us about any relatives you may have with Parkinson disease?`,
                 pageImg: `${familyImg}`,
-                subtitle: `Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. When you are done, or if noone in your family has ever been diagnosed with Parkinson disease, click NEXT to go to the next question.`,
-                nextPage: `/user/user_meds`,
-                prevPage: `/user_about`,
+                subtitle: `Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. `,
             }
             return objStepperContent;
         case '/user/user_meds':
@@ -86,9 +84,7 @@ function getStepContent(){
                 pageName: 'Surgery Procedure',
                 title: `Have you ever had any surgery or procedures to treat Parkinson disease?`,
                 pageImg: `${surgeryImg}`,
-                subtitle: ``,
-                nextPage: `/user/user_motorsy`,
-                prevPage: `/user/user_meds`,
+                subtitle: `Some patients have had surgery or precideures performed to treat their Parkinson disease. Tell us if you have ever had any of the surgeries or procedures opposite. `,
             }
             return objStepperContent;
         case '/user/user_motorsy':
@@ -97,9 +93,7 @@ function getStepContent(){
                 pageName: 'Symptoms (Motor)',
                 title: `Almost done! Now about your symptoms of Parkinson disease`,
                 pageImg: `${motorImg}`,
-                subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may have experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom.`,
-                nextPage: `/user/user_nonmotorsy`,
-                prevPage: `/user_surgery`,
+                subtitle: `Patients with Parkinson disease experience a wide range of possible symptoms. Tell us about any symptoms you may have experienced over the past month by clicking the circles opposite.`,
             }
             return objStepperContent;
         case '/user/user_nonmotorsy':
@@ -113,12 +107,13 @@ function getStepContent(){
                 prevPage: `/result`,
             }
             return objStepperContent;
-        case '/user/result':
+        case '/user/services':
             objStepperContent = {
                 stepperCount: 8,
-                pageName : 'Results',
-                title: `Last question! About any non-motor symptoms`,
-                subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms that aren't just related to movement, though this varies a lot from person to person. tell us if you have had any of the following problems in the past month.`,
+                pageName : 'A big thank you for completing your profile! ',
+                title: `Now, go ahead and view our services individualised for you.`,
+                pageImg  : `${meImg}`,
+                subtitle: `Our services are individualised for you using the information in your profile so we recommend creating an account to save your profile and easily keep it up to date.`,
             }
             return objStepperContent;
         default:
