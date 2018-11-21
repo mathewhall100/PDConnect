@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -27,7 +27,6 @@ import UserModal from '../commons/userModal'
         modalTitle: '',
         modalDescription : '',
         modalwarning: false,
-        redirect: false,
         redirectAddress : '/user/user_life',
     }
 
@@ -49,17 +48,12 @@ import UserModal from '../commons/userModal'
     submit(values) {
         console.log("values : " , values);
         this.props.submitUserAbout(values)
-        this.setState({redirect : true})
+        this.props.history.push(this.state.redirectAddress)
     }
 
     handleClearForm() {
         console.log("clear form")
         this.props.reset()
-    }
-
-    handleBack = () => {
-        this.setState({
-            redirectAddress: '/'}, () => this.setState({redirect: true}) )
     }
 
     handleModalOpen = (title, text) => {
@@ -76,14 +70,7 @@ import UserModal from '../commons/userModal'
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, modalOpen, modalTitle, modalText, modalWarning } = this.state
-
-
-        if (redirect) {
-            const url = `${redirectAddress}`;
-            console.log("redirect to .. " + url);
-            return<Redirect exact to={url} />;
-        }
+        const { modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         const RenderSelect = (field) => {
 
@@ -116,12 +103,12 @@ import UserModal from '../commons/userModal'
                         </FormControl>
                     </span>
 
-                    { (pristine || error) && <Button className={classes.helpButton} style={{position: "relative", top: "-38px", left: "-5px"}} onClick={() => this.handleModalOpen(label, label)}>
+                    { (pristine || error) && <Button className={classes.helpButton}  onClick={() => this.handleModalOpen(label, label)}>
                         <HelpIcon color="primary" className={classes.helpIcon}/>
                     </Button> }
 
-                    <span className={classes.doneIcon}>
-                        {!pristine && !error ? <DoneIcon /> : ''}
+                    <span>
+                        {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px"}}/> : ''}
                     </span>
 
                     <span className={classes.errorText} >
@@ -132,28 +119,12 @@ import UserModal from '../commons/userModal'
             )
         };
 
-        const BottomNav= (props) => {
-            return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
-                    </Grid>
-                    <Grid item xs={3}>
-                     <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton}>NEXT</Button>
-                    </Grid>
-                </Grid>
-            )
-        }
-
 
         return (
             <div className={classes.componentBox} >
+               
+                <p className={classes.sectionTitle}>Please select an entry for each box</p> 
+
                 <div>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
@@ -232,6 +203,7 @@ import UserModal from '../commons/userModal'
                                         <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                         )}
                                 </Field>
+                                <br />
 
                                 <Button type="submit" type="variant" className={classes.userNavButtonRight}>SAVE AND CONTINUE</Button>
 

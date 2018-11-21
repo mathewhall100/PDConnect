@@ -16,15 +16,12 @@ import DoneIcon from '@material-ui/icons/Done';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
-import TopTitle from '../commons/userTopTitle'
-import SubTitle from '../commons/userSubTitle'
 
 
  class UserFamily extends Component {
 
     state = {
         familyResult: [],
-        redirect: false,
         redirectAddress : '/user/user_meds',
     }  
 
@@ -55,33 +52,16 @@ import SubTitle from '../commons/userSubTitle'
                 family: familyResult,
             })
         } 
-        this.setState({redirect: true})
+        this.props.history.push(this.state.redirectAddress)
     }
     
-    handleClearForm() {
-        console.log("clear form")
-        this.setState({familyResult: []})
-    }
-
-    handleBack = () => {
-        this.setState({
-            redirectAddress: '/user/user_life'}, () => this.setState({redirect: true}) )
-    }
-
-
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, familyResult } = this.state
+        const { familyResult } = this.state
         const SELECTED_BUTTON_COLOR = "lightgreen"
         const spacingH = 90
         const spacingV = 100
-
-        if (redirect) { 
-            const url = `${redirectAddress}`;
-            console.log("redirect to .. " + url);
-            return<Redirect to={url} />;
-        }
 
         const TreeButton = (props) => {
             return (

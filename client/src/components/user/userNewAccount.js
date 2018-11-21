@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -10,10 +11,11 @@ import Button from '@material-ui/core/Button'
 
 import { userStylesheet } from '../../styles';
 import { submitUserAccount } from '../../actions/UserAccountAction';
+import { updateStepperCount } from '../../actions/index.js'
 import FormText from '../forms/FormText';
 import FormPassword from '../forms/FormTextPassword';
 
-class UserAccount extends Component {
+class UserNewAccount extends Component {
 
     state = {
         modalOpen: false,
@@ -29,8 +31,8 @@ class UserAccount extends Component {
     }
 
     componentDidMount() {
-        window.scroll(0,0)
-
+        window.scroll(0, 0)
+        this.props.updateStepperCount()
     }
 
     handleInitialize() {
@@ -104,27 +106,11 @@ class UserAccount extends Component {
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
                         <label>E-mail : </label><br/>
-                        {/* <Field
-                            name="email"
-                            component={this.renderTextField}
-                            label="E-mail Address"
-                        /><br /> */}
 
                         <FormText title='email' name='email' label='e-mail address' />
                         <FormPassword title='password' name='password' label='password' />
                         <FormPassword title='confirmPassword' name='confirmPassword' label='confirm password' />
-                        {/*<label>Password : </label><br/>
-                        <Field
-                            name="password"
-                            component={this.renderTextField}
-                            label="Password"
-                        /><br/>
-                        <label>Confirm Password : </label><br />
-                        <Field
-                            name="confirmPassword"
-                            component={this.renderTextField}
-                            label="Confirm Password"
-                        />*/}
+
                         <BottomNav />
 
                     </form>
@@ -159,6 +145,10 @@ function validate(values) {
     return errors
 }
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ updateStepperCount }, dispatch);
+}
+
 const mapStateToProps = (state) => {
     console.log("state ", state)
     return {
@@ -167,12 +157,12 @@ const mapStateToProps = (state) => {
 }
 
 const formData = {
-    form: 'userAccountForm', //unique identifier for this form
+    form: 'userNewAccountForm', //unique identifier for this form
     validate,
 }
 
-UserAccount = reduxForm(formData)(UserAccount)
-UserAccount = withRouter(UserAccount)
-UserAccount = withStyles(userStylesheet)(UserAccount)
-UserAccount = connect(mapStateToProps, { submitUserAccount})(UserAccount)
-export default UserAccount
+UserNewAccount = reduxForm(formData)(UserNewAccount)
+UserNewAccount = withRouter(UserNewAccount)
+UserNewAccount = withStyles(userStylesheet)(UserNewAccount)
+UserNewAccount = connect(mapStateToProps, mapDispatchToProps)(UserNewAccount)
+export default UserNewAccount

@@ -19,8 +19,6 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { updateStepperCount, submitUserMotorSy } from '../../actions/index.js'
-import TopTitle from '../commons/userTopTitle'
-import SubTitle from '../commons/userSubTitle'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import { motorSy } from '../../constants'
@@ -36,13 +34,12 @@ import { motorSy } from '../../constants'
         modalTitle : '',
         modalText : '',
         modalWarning: "",
-        redirect: false,
         redirectAddress : '/user/user_nonmotorsy',
     }  
 
     componentDidMount() {
-        this.props.updateStepperCount()
         window.scroll(0,0)
+        this.props.updateStepperCount()
         const index = this.props.userTrack
         if (index) {this.setState({
             answerTrack: index,
@@ -54,7 +51,7 @@ import { motorSy } from '../../constants'
     handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
         this.props.submitUserMotorSy(this.state.answerArray, this.state.answerTrack)
-        this.setState({redirect: true})
+        this.props.history.push(this.state.redirectAddress)
     }
 
     handleAnswerSelect = (index, choice, symptom) => {
@@ -80,23 +77,6 @@ import { motorSy } from '../../constants'
         })
     }
 
-    handleClearForm() {
-        console.log("clear form")
-        this.setState({
-            noAnswer: false,
-            answerTrack: [],
-            answerArray: []
-        })
-    }
-
-    handleBack = () => {
-        this.setState({redirectAddress: '/user/user_surgery'}, () => this.setState({redirect: true}) )
-    }
-
-    handleInfoClick = (info) => {
-        console.log(info)
-    }
-
     handleModalOpen = (title, text) => { 
         console.log(title);
          this.setState({ 
@@ -110,26 +90,8 @@ import { motorSy } from '../../constants'
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
+        const { answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
         
-
-
-        if (redirect) { 
-            const url = `${redirectAddress}`;
-            console.log("redirect to .. " + url);
-            return<Redirect to={url} />;
-        }
-
-        const TopTitle = (props) => {
-            return (
-                <div>
-                    <h1 className={classes.title}>{props.title}</h1>
-                    <hr className={classes.hr} />
-                </div>
-            )
-        }
-
-
         return (
             <section>
                 <div className={classes.componentBox}>

@@ -17,8 +17,6 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { updateStepperCount, submitUserLife } from '../../actions/index.js'
-import TopTitle from '../commons/userTopTitle'
-import SubTitle from '../commons/userSubTitle'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import { PDADLs } from '../../constants'
@@ -39,7 +37,6 @@ import { PDADLs } from '../../constants'
         modalWarning: false,
         modalTitle : '',
         modalText : '',
-        redirect: false,
         redirectAddress : '/user/user_family',
     }  
 
@@ -58,7 +55,7 @@ import { PDADLs } from '../../constants'
             this.props.submitUserLife({
                 ADL: ADL,
             }) 
-            this.setState({redirect: true})
+            this.props.history.push(this.state.redirectAddress)
         } else {
             this.setState({modalWarning: true})
             this.handleModalOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
@@ -68,11 +65,6 @@ import { PDADLs } from '../../constants'
     handleClearForm() {
         console.log("clear form")
         this.setState({activeBtn: []})
-    }
-
-    handleBack = () => {
-        this.setState({
-            redirectAddress: '/user/user_about'}, () => this.setState({redirect: true}) )
     }
 
     handleModalOpen = (title, text) => { 
@@ -88,13 +80,7 @@ import { PDADLs } from '../../constants'
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, activeBtn, modalOpen, modalTitle, modalText, modalWarning  } = this.state
-
-        if (redirect) { 
-            const url = `${redirectAddress}`;
-            console.log("redirect to .. " + url);
-            return<Redirect to={url} />;
-        }
+        const { activeBtn, modalOpen, modalTitle, modalText, modalWarning  } = this.state
 
         return (
             <section>

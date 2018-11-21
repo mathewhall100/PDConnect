@@ -3,40 +3,18 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
+
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 import {userStylesheet } from '../../styles';
 
     class BottomNav extends Component  {
-        state= ({
-            redirect : false,
-            redirectUrl : '',
-        })
-
-        handleBack(prevPage) {
-            this.setState({
-                redirect : true,
-                redirectUrl : prevPage,
-            })
-        }
-
-        handleNext(nextPage) {
-            this.setState({
-                redirect : true,
-                redirectUrl : nextPage,
-            })
-        }
 
         render() {
-            const { redirect , redirectUrl } = this.state;
-            const { classes, stepper : {prevPage, nextPage}} = this.props;
 
-            if(redirect){
-                const url = redirectUrl;
-                return(
-                    <Redirect to={url} />
-                )
-            }
+            const { classes, stepper : {prevPage, nextPage }} = this.props;
 
             return (
                 <Grid container spacing={24} >
@@ -44,11 +22,15 @@ import {userStylesheet } from '../../styles';
                         <hr className={classes.hr} />
                     </Grid>
                     <Grid item xs={3}>
-                        <Button type="button" variant='outlined' className={classes.userNavButton} onClick={() => this.handleBack(prevPage)}>BACK</Button>
+                        <Link to={`${prevPage}`} style={{textDecoration: "none"}}>
+                            <Button type="button" variant='outlined' className={classes.userNavButton}>BACK</Button>
+                        </Link>
                     </Grid>
                     <Grid item xs={6}></Grid>
                     <Grid item xs={3}>
-                        <Button type="button" variant='outlined' className={classes.userNavButton} onClick={() => this.handleNext(nextPage)}>NEXT</Button>
+                        {/* <Link to={`${nextPage}`} style={{textDecoration: "none"}}>
+                            <Button type="button" variant='outlined' className={classes.userNavButton}>NEXT</Button>
+                        </Link>  */}
                     </Grid>
                 </Grid>
             )
@@ -57,14 +39,7 @@ import {userStylesheet } from '../../styles';
 function mapStatsToProps(state) {
     console.log(state);
     return {
-        user: state.user,
-        currentTreatments: state.currentTreatments,
-        previousTreatments: state.previousTreatments,
-        userChoice: state.userChoice,
-        symptom: state.symptom,
-        sideEffect: state.sideEffect,
         stepper: state.stepper,
-
     }
 }
 

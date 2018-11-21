@@ -18,7 +18,6 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { submitUserSurgery, updateStepperCount} from '../../actions/index.js'
-import TopTitle from '../commons/userTopTitle'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import { procedures } from '../../constants'
@@ -33,7 +32,6 @@ import { procedures } from '../../constants'
         open : false,
         modalTitle : '',
         modalDescription : '',
-        redirect: false,
         redirectAddress : '/user/user_motorsy',
     }  
 
@@ -53,7 +51,7 @@ import { procedures } from '../../constants'
     handleNext= () => {
         console.log("submit - meds:, ", this.state.answerArray)
         this.props.submitUserSurgery(this.state.answerArray, this.state.answerTrack)
-        this.setState({redirect: true})
+        this.props.history.push(this.state.redirectAddress)
     }
 
     handleAnswerSelect = (index, name) => {
@@ -81,19 +79,6 @@ import { procedures } from '../../constants'
         })
     }
 
-    handleClearForm() {
-        console.log("clear form")
-        this.setState({
-            noAnswer: false,
-            answerTrack: [],
-            answerArray: []
-        })
-    }
-
-    handleBack = () => {
-        this.setState({redirectAddress: '/user/user_meds'}, () => this.setState({redirect: true}) )
-    }
-
     handleModalOpen = (title, text) => { 
         console.log(title);
          this.setState({ 
@@ -107,13 +92,7 @@ import { procedures } from '../../constants'
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
-
-        if (redirect) { 
-            const url = `${redirectAddress}`;
-            console.log("redirect to .. " + url);
-            return<Redirect to={url} />;
-        }
+        const { answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         return (
             <section >

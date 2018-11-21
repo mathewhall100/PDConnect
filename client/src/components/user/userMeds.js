@@ -18,7 +18,6 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { updateStepperCount, submitUserMeds} from '../../actions/index.js'
-import TopTitle from '../commons/userTopTitle'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import {meds, medGroups } from '../../constants'
@@ -33,7 +32,6 @@ class UserMeds extends Component {
         open : false,
         modalTitle : '',
         modalText : '',
-        redirect: false,
         redirectAddress : '/user/user_surgery',
     }  
 
@@ -53,7 +51,7 @@ class UserMeds extends Component {
     handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
         this.props.submitUserMeds(this.state.answerArray, this.state.answerTrack)
-        this.setState({redirect: true})
+        this.props.history.push(this.state.redirectAddress)
     }
 
     handleAnswerSelect = (index, name) => {
@@ -86,24 +84,6 @@ class UserMeds extends Component {
             answerArray: []}) 
     }
 
-    handleClearForm() {
-        console.log("clear form")
-        this.setState({
-            noAnswer: false,
-            answerTrack: [],
-            answerArray: []
-        })
-    }
-
-    handleBack = () => {
-        this.setState({
-            redirectAddress: "/user/user_family"}, () => this.setState({redirect: true}) )
-    }
-
-    handleInfoClick = (info) => {
-        console.log(info)
-    }
-
     handleModalOpen = (title, text) => { 
         console.log(title);
          this.setState({ 
@@ -117,13 +97,7 @@ class UserMeds extends Component {
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { redirect, redirectAddress, answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
-
-        if (redirect) { 
-            const url = `${redirectAddress}`;
-            console.log("redirect to .. " + url);
-            return<Redirect to={url} />;
-        }
+        const { answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         return (
             <section >
@@ -150,8 +124,6 @@ class UserMeds extends Component {
                             <div key={index}>
 
                                 <hr className={classes.hr}/>
-                                {/* <p className={classes.sectionTitle}> {startCase(group.class)} preparations for {group.target}</p> */}
-                                <br />
 
                                 {meds.filter(med => med.class === group.class).map((med, index) => {
                                     const answerIndex = meds.findIndex(medication => medication.generic == med.generic)

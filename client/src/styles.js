@@ -69,6 +69,13 @@ export const userStylesheet = theme => ({
     labelText: {
         fontSize: "23px"
     },
+    selectLabel: {
+        fontSize: "20px",
+        fontweight: "bold"
+    },
+    inputLabel: {
+        fontSize: "18px"
+    },
     title: {
         fontSize: '32px',
         fontWeight: 'bold',
@@ -146,11 +153,17 @@ export const userStylesheet = theme => ({
         }
     },
     userNavButton : {
+        textDecoration: "none",
         backgroundColor: PRIMARY_COLOR,
         width: '80%',
         color: 'white',
+        fontWeight: "bold",
+        fontSize: "14px",
         '&:hover': {
-            color: PRIMARY_COLOR
+            color: PRIMARY_COLOR,
+            backgroundColor: "lightgrey",
+            border: "2px solid",
+            borderColor: PRIMARY_COLOR
         }
     },
 
@@ -161,8 +174,13 @@ export const userStylesheet = theme => ({
         padding: "10px",
         width: '100%',
         color: 'white',
+        fontWeight: "bold",
+        fontSize: "14px",
         '&:hover': {
-            color: PRIMARY_COLOR
+            color: PRIMARY_COLOR,
+            backgroundColor: "lightgrey",
+            border: "2px solid",
+            borderColor: PRIMARY_COLOR
         }
     },
     doneOutlineIcon: {
@@ -200,8 +218,8 @@ export const userStylesheet = theme => ({
         fontSize: "15px",
         color: "red",
         position: "relative",
-        left: "-40px",
-        top: "-5px"
+        left: "-45px",
+        top: "30px"
     },
     paper: {
         position: 'absolute',

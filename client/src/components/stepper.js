@@ -65,13 +65,12 @@ class VerticalLinearStepper extends React.Component {
         this.props.updateStepperCount();
     }
 
-    
-
     handleReset = () => {
         this.setState({
             activeStep: 0,
         });
     };
+
 
     render() {
         const { classes, onPage, stepper } = this.props;
@@ -100,7 +99,7 @@ class VerticalLinearStepper extends React.Component {
                         </Grid>
                     </Grid>
 
-                     <BottomNav /> 
+                    <BottomNav /> 
 
                 </div>
             :
@@ -113,12 +112,6 @@ class VerticalLinearStepper extends React.Component {
 function mapStatsToProps(state) {
     console.log(state);
     return {
-        user: state.user,
-        currentTreatments: state.currentTreatments,
-        previousTreatments: state.previousTreatments,
-        userChoice: state.userChoice,
-        symptom: state.symptom,
-        sideEffect: state.sideEffect,
         stepper: state.stepper,
     }
 }

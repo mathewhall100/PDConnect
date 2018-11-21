@@ -65,6 +65,8 @@ function getStepContent(){
                 title: `Tell us about any relatives you may have with Parkinson disease?`,
                 pageImg: `${familyImg}`,
                 subtitle: `Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. `,
+                nextPage: `/user/user_meds`,
+                prevPage: `/user/user_life`,
             }
             return objStepperContent;
         case '/user/user_meds':
@@ -85,6 +87,8 @@ function getStepContent(){
                 title: `Have you ever had any surgery or procedures to treat Parkinson disease?`,
                 pageImg: `${surgeryImg}`,
                 subtitle: `Some patients have had surgery or precideures performed to treat their Parkinson disease. Tell us if you have ever had any of the surgeries or procedures opposite. `,
+                nextPage: `/user/user_motorsy`,
+                prevPage: `/user/user_meds`,
             }
             return objStepperContent;
         case '/user/user_motorsy':
@@ -94,6 +98,8 @@ function getStepContent(){
                 title: `Almost done! Now about your symptoms of Parkinson disease`,
                 pageImg: `${motorImg}`,
                 subtitle: `Patients with Parkinson disease experience a wide range of possible symptoms. Tell us about any symptoms you may have experienced over the past month by clicking the circles opposite.`,
+                nextPage: `/user/user_nonmotorsy`,
+                prevPage: `/user/user_surgery`,
             }
             return objStepperContent;
         case '/user/user_nonmotorsy':
@@ -103,8 +109,19 @@ function getStepContent(){
                 title: `Final question! About your symptoms other than those that affect your movement`,
                 pageImg: `${nonMotorImg}`,
                 subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,
-                nextPage: `/user/user_result`,
-                prevPage: `/result`,
+                nextPage: `/user/user_account`,
+                prevPage: `/user/user_motorsy`,
+            }
+            return objStepperContent;
+        case '/user/user_account':
+            objStepperContent = {
+                stepperCount: 8,
+                pageName: 'Set Up An Account',
+                title: `Set up your account with us now to gain the following benefits:`,
+                pageImg: `${nonMotorImg}`,
+                subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,
+                nextPage: `/user/services`,
+                prevPage: `/user/user_nonmotorsy`,
             }
             return objStepperContent;
         case '/user/services':
