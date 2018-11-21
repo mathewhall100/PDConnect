@@ -193,6 +193,8 @@ class UserMeds extends Component {
                         )
                         
                 }) }
+
+                <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
                     
                 </div>
 

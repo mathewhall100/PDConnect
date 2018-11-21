@@ -153,6 +153,18 @@ export const userStylesheet = theme => ({
             color: PRIMARY_COLOR
         }
     },
+
+    userNavButtonRight : {
+        backgroundColor: PRIMARY_COLOR,
+        borderradius: "6px",
+        marginTop: "15px",
+        padding: "10px",
+        width: '100%',
+        color: 'white',
+        '&:hover': {
+            color: PRIMARY_COLOR
+        }
+    },
     doneOutlineIcon: {
         fontSize: "36px",
         color: "#eeeeee",

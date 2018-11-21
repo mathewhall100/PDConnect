@@ -48,7 +48,7 @@ import UserModal from '../commons/userModal'
 
     submit(values) {
         console.log("values : " , values);
-        //this.props.submitUserAbout(values)
+        this.props.submitUserAbout(values)
         this.setState({redirect : true})
     }
 
@@ -153,7 +153,7 @@ import UserModal from '../commons/userModal'
 
 
         return (
-            <div className={classes.componentBox} style={{paddingBottom: '20px'}}>
+            <div className={classes.componentBox} >
                 <div>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
@@ -232,6 +232,8 @@ import UserModal from '../commons/userModal'
                                         <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                         )}
                                 </Field>
+
+                                <Button type="submit" type="variant" className={classes.userNavButtonRight}>SAVE AND CONTINUE</Button>
 
                     </form>
 

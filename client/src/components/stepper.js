@@ -64,13 +64,8 @@ class VerticalLinearStepper extends React.Component {
     componentDidMount() {
         this.props.updateStepperCount();
     }
-    handleNext = () => {
-        console.log("handleNext")
-    };
 
-    handleBack = () => {
-        console.log("handleBack")
-    };
+    
 
     handleReset = () => {
         this.setState({
@@ -105,7 +100,7 @@ class VerticalLinearStepper extends React.Component {
                         </Grid>
                     </Grid>
 
-                    <BottomNav handleBack={this.handleBack} handleNext={this.handleNext}/>
+                     <BottomNav /> 
 
                 </div>
             :

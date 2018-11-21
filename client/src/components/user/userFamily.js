@@ -97,29 +97,36 @@ import SubTitle from '../commons/userSubTitle'
         }
 
         return (
-            <div className={classes.componentBox} style={{paddingTop: "10px", paddingBottom: "20px"}}>
+            <section>
+                <div className={classes.componentBox} >
 
-            <p className={classes.sectionTitle}>Click all that apply</p>
-            <br />
+                    <p className={classes.sectionTitle}>Click all that apply</p>
+                    <br />
+                    
+                    <div className={classes.treeContainer}>
+
+                        <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
+                        <TreeButton relative="parent" top={spacingV+25} left={spacingH} color={familyResult.indexOf("parent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
+                        <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color={QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR} bold="bold"/>
+                        <TreeButton relative="child" top={spacingV*3+25} left={spacingH} color={familyResult.indexOf("child") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+                        <TreeButton relative="grandchild" top={spacingV*4+25} left={spacingH} color={familyResult.indexOf("grandchild") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+                        <TreeButton relative="brother / sister" top={spacingV*2+25} left={spacingH*4} color={familyResult.indexOf("brother / sister") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+                        <TreeButton relative="uncle / aunt" top={spacingV+25} left={spacingH*4} color={familyResult.indexOf("uncle / aunt") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+                        <TreeButton relative="niece / nephew" top={spacingV*3+25} left={spacingH*4} color={familyResult.indexOf("niece / nephew") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
+
+                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV+25+25} left={spacingH+150} height="5px"/>
+                        <TreeLink class={classes.treeLinkHorizontal} top={spacingV*2+25+25} left={spacingH+150} height="5px"/>
+                        <TreeLink class={classes.treeLinkVertical} top={25} left={spacingH+75} height="400px"/>
+                        <TreeLink class={classes.treeLinkVertical} top={spacingV*2+25+25} left={spacingH*4+75} height="100px"/>
+                     </div>
+                     
+                     <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
+
+                </div>
+
                 
-                <div className={classes.treeContainer}>
-
-                    <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
-                    <TreeButton relative="parent" top={spacingV+25} left={spacingH} color={familyResult.indexOf("parent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
-                    <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color={QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR} bold="bold"/>
-                    <TreeButton relative="child" top={spacingV*3+25} left={spacingH} color={familyResult.indexOf("child") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
-                    <TreeButton relative="grandchild" top={spacingV*4+25} left={spacingH} color={familyResult.indexOf("grandchild") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
-                    <TreeButton relative="brother / sister" top={spacingV*2+25} left={spacingH*4} color={familyResult.indexOf("brother / sister") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
-                    <TreeButton relative="uncle / aunt" top={spacingV+25} left={spacingH*4} color={familyResult.indexOf("uncle / aunt") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
-                    <TreeButton relative="niece / nephew" top={spacingV*3+25} left={spacingH*4} color={familyResult.indexOf("niece / nephew") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
-
-                    <TreeLink class={classes.treeLinkHorizontal} top={spacingV+25+25} left={spacingH+150} height="5px"/>
-                    <TreeLink class={classes.treeLinkHorizontal} top={spacingV*2+25+25} left={spacingH+150} height="5px"/>
-                    <TreeLink class={classes.treeLinkVertical} top={25} left={spacingH+75} height="400px"/>
-                    <TreeLink class={classes.treeLinkVertical} top={spacingV*2+25+25} left={spacingH*4+75} height="100px"/>
-                    </div>
-
-            </div>
+            
+            </section>
 
         );
     }

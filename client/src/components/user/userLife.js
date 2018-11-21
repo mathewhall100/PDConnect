@@ -98,7 +98,7 @@ import { PDADLs } from '../../constants'
 
         return (
             <section>
-                <div className={classes.componentBox} style={{paddingTop: "10px", paddingBottom: "20px"}}>
+                <div className={classes.componentBox} >
 
                     <p className={classes.sectionTitle}>Select one</p>
                     <br />
@@ -130,6 +130,8 @@ import { PDADLs } from '../../constants'
                             </div>
                         )
                     }) }
+
+                    <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
 
                 </div>
 

@@ -175,6 +175,8 @@ import { motorSy } from '../../constants'
                             </div>
                         )
                     }) }
+
+                    <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
    
                 </div>
 
