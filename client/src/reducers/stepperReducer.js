@@ -13,7 +13,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case STEP_COUNT:
-            return { ...state ,pageImg : action.payload.pageImg, stepperCount :action.payload.stepperCount, pageName : action.payload.pageName, title : action.payload.title, subtitle : action.payload.subtitle }
+            return { ...state ,pageImg : action.payload.pageImg, stepperCount :action.payload.stepperCount, pageName : action.payload.pageName, title : action.payload.title, subtitle : action.payload.subtitle, nextPage : action.payload.nextPage, prevPage : action.payload.prevPage }
         default:
             return state;
     }

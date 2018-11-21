@@ -43,6 +43,8 @@ function getStepContent(){
                 title: `Let's get started! Tell us a bit about you.`,
                 pageImg  : `${meImg}`,
                 subtitle : `This is important information which we use to individualise the information we provide to you.`,
+                nextPage : `/user/user_life`,
+                prevPage : `/user`,
             }
             return objStepperContent;
         case '/user/user_life':
@@ -52,6 +54,8 @@ function getStepContent(){
                 title: `Tell us a little about how Parkinson disease affects you`,
                 pageImg: `${lifestyleImg}`,
                 subtitle: `Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month.`,
+                nextPage: `/user/user_family`,
+                prevPage: `/user/user_about`,
             }
             return objStepperContent;
         case '/user/user_family':
@@ -61,6 +65,8 @@ function getStepContent(){
                 title: `Tell us about any relatives you may have with Parkinson disease?`,
                 pageImg: `${familyImg}`,
                 subtitle: `Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. When you are done, or if noone in your family has ever been diagnosed with Parkinson disease, click NEXT to go to the next question.`,
+                nextPage: `/user/user_meds`,
+                prevPage: `/user_about`,
             }
             return objStepperContent;
         case '/user/user_meds':
@@ -70,6 +76,8 @@ function getStepContent(){
                 title: `Awesome, you're half way through! Now, what medications do you take for Parkinson Disease?`,
                 pageImg: `${medsImg}`,
                 subtitle: `Click the circles to indicate which medications you are currently taking for parkinson disease, or select "none" if you don't take any.`,
+                nextPage: `/user/user_surgery`,
+                prevPage: `/user/user_family`,
             }
             return objStepperContent;
         case '/user/user_surgery':
@@ -79,6 +87,8 @@ function getStepContent(){
                 title: `Have you ever had any surgery or procedures to treat Parkinson disease?`,
                 pageImg: `${surgeryImg}`,
                 subtitle: ``,
+                nextPage: `/user/user_motorsy`,
+                prevPage: `/user/user_meds`,
             }
             return objStepperContent;
         case '/user/user_motorsy':
@@ -88,6 +98,8 @@ function getStepContent(){
                 title: `Almost done! Now about your symptoms of Parkinson disease`,
                 pageImg: `${motorImg}`,
                 subtitle: `Patients with Parkinson disease eperience a wide ramge of symptoms. Tell us about any of the following which you may have experienced over the past month by clicking the circles next to the symptom. Click on the help icon for more information about each symptom.`,
+                nextPage: `/user/user_nonmotorsy`,
+                prevPage: `/user_surgery`,
             }
             return objStepperContent;
         case '/user/user_nonmotorsy':
@@ -97,6 +109,8 @@ function getStepContent(){
                 title: `Final question! About your symptoms other than those that affect your movement`,
                 pageImg: `${nonMotorImg}`,
                 subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,
+                nextPage: `/user/user_result`,
+                prevPage: `/result`,
             }
             return objStepperContent;
         case '/user/result':
