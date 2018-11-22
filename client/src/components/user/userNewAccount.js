@@ -23,7 +23,7 @@ class UserNewAccount extends Component {
         modalDescription: '',
         modalwarning: false,
         redirect: false,
-        redirectAddress: '',
+        redirectAddress: '/user/services',
     }
 
     componentWillMount() {

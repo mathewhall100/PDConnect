@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -13,10 +12,10 @@ import UserMeds from '../components/user/userMeds';
 import UserSurgery from '../components/user/userSurgery';
 import UserMotorSy from '../components/user/userMotorSy';
 import UserNonMotorSy from '../components/user/userNonMotorSy';
-import UserAccount from '../components/user/userAccount';
+import UserReview from '../components/user/userReview';
 import UserNewAccount from '../components/user/userNewAccount';
-import UserServices from '../components/user/userServices';
-import Result from './results';
+import UserAccount from '../components/user/userAccount';
+import UserServices from './services';
 import NotFound from './notFound';
 
 import Stepper from '../components/stepper';
@@ -26,19 +25,8 @@ import { userStylesheet } from '../styles';
 
 class User extends Component {
 
-    state = {
-        redirect: ""
-    }
-
     render() {
         const { classes } = this.props;
-        const { redirect } = this.state;
-
-        if (redirect) {
-            const url = `/intro_choice`;
-            console.log("redirect to .. " + url);
-            return <Redirect to={url} />;
-        }
 
         return (
             <div className={classes.root}>
@@ -55,11 +43,10 @@ class User extends Component {
                             <Route path='/user/user_meds' render={props => <UserMeds></UserMeds>} />
                             <Route path='/user/user_surgery' render={props => <UserSurgery></UserSurgery>} />
                             <Route path='/user/user_motorsy' render={props => <UserMotorSy></UserMotorSy>} />
-                            <Route path='/user/user_nonmotorsy' render={props => <UserNonMotorSy></UserNonMotorSy>} />
+                            <Route path='/user/user_nonmotorsy' render={props => <UserNonMotorSy></UserNonMotorSy>} />  
+                            <Route path='/user/user_review' component={UserReview} />
                             <Route path='/user/user_account' component={UserNewAccount} />
                             <Route path='/user/account' component={UserAccount} />
-                            <Route path='/user/services' component={UserServices} />
-                            <Route path="/user/result" render={props => <Result ></Result>} />
                             <Route path="/notfound" component={NotFound} />
                             <Route component={NotFound} />
                         </Switch>
@@ -78,12 +65,6 @@ User.propTypes = {
 function mapStateToProps(state) {
     //console.log(state);
     return {
-        currentTreatments: state.currentTreatments,
-        previousTreatments: state.previousTreatments,
-        user: state.user,
-        userChoice: state.userChoice,
-        symptom: state.symptom,
-        sideEffect: state.sideEffect,
         stepper: state.stepper,
     }
 

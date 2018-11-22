@@ -34,7 +34,7 @@ import { nonMotorSy } from '../../constants'
         modalTitle : '',
         modalText : '',
         modalWarning: "",
-        redirectAddress : '/user/user_account',
+        redirectAddress : '/user/user_review',
     }  
 
 

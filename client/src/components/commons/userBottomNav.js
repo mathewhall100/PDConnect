@@ -5,8 +5,8 @@ import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
 import {Redirect, Link} from 'react-router-dom';
 
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+// import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+// import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 import {userStylesheet } from '../../styles';
 

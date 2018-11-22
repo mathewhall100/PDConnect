@@ -8,10 +8,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
-import { userStylesheet } from '../../styles';
-import { submitUserAccount } from '../../actions/UserAccountAction';
-import FormText from '../forms/FormText';
-import FormPassword from '../forms/FormTextPassword';
+import { userStylesheet } from '../styles';
+import { submitUserAccount } from '../actions/UserAccountAction';
+import FormText from '../components/forms/FormText';
+import FormPassword from '../components/forms/FormTextPassword';
 
 class UserServices extends Component {
 

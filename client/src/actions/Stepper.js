@@ -109,28 +109,30 @@ function getStepContent(){
                 title: `Final question! About your symptoms other than those that affect your movement`,
                 pageImg: `${nonMotorImg}`,
                 subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,
-                nextPage: `/user/user_account`,
+                nextPage: `/user/user_review`,
                 prevPage: `/user/user_motorsy`,
+            }
+            return objStepperContent;
+        case '/user/user_review':
+            objStepperContent = {
+                stepperCount: 8,
+                pageName: 'Create Profile',
+                title: `Review your answers and create a profile`,
+                pageImg: `${nonMotorImg}`,
+                subtitle: `text about profile and data security`,
+                nextPage: `/user/user_account`,
+                prevPage: `/user/user_nonmotorsy`,
             }
             return objStepperContent;
         case '/user/user_account':
             objStepperContent = {
-                stepperCount: 8,
+                stepperCount: '',
                 pageName: 'Set Up An Account',
                 title: `Set up your account with us now to gain the following benefits:`,
                 pageImg: `${nonMotorImg}`,
                 subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,
-                nextPage: `/user/services`,
-                prevPage: `/user/user_nonmotorsy`,
-            }
-            return objStepperContent;
-        case '/user/services':
-            objStepperContent = {
-                stepperCount: 8,
-                pageName : 'A big thank you for completing your profile! ',
-                title: `Now, go ahead and view our services individualised for you.`,
-                pageImg  : `${meImg}`,
-                subtitle: `Our services are individualised for you using the information in your profile so we recommend creating an account to save your profile and easily keep it up to date.`,
+                nextPage: `/services`,
+                prevPage: `/user/user_review`,
             }
             return objStepperContent;
         default:
