@@ -27,7 +27,7 @@ import UserModal from '../commons/userModal'
         modalTitle: '',
         modalDescription : '',
         modalwarning: false,
-        redirectAddress : '/user/user_life',
+        redirectAddress : '/user/user_review',
     }
 
     componentWillMount() {

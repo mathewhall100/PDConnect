@@ -3,13 +3,13 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    age: '',
-    sex: '',
-    race : '',
-    yearDiagnosed : '',
-    yearFirstSymptoms : '',
-    startPDTreatment : '',
-    performDailyActivities : '',
+    // age: '',
+    // sex: '',
+    // race : '',
+    // yearDiagnosed : '',
+    // yearFirstSymptoms : '',
+    // startPDTreatment : '',
+    // performDailyActivities : '',
 
 }
 

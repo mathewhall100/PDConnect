@@ -308,7 +308,6 @@ class Results extends Component {
                 <div className={classes.resultContainer}>
                     <ResultPrintButton /><br />
                     <h1 className={classes.title}>Treatments to discuss with your doctor</h1>
-                    {/* <ResultMainSubTitle text={`Based on the information you have entered we have found ${treatmentResults.length} treatments that you may benefit from discussing with the doctor that looks after you for your Parkinsons disease.`} /> */}
                     <div>
                         {treatmentResults.map((treatment, index) => {
                             return (
@@ -348,7 +347,6 @@ class Results extends Component {
                 <div className={classes.resultContainer}>
                     <ResultPrintButton /><br />
                     <h1 className={classes.title}>Clinical Trials you might volunteer for</h1>
-                    {/* <ResultMainSubTitle text={`Based on your profile we have found ${trialResults.length} Parkinson disease clinical trials where you may be able to participate and which are currently recruiting volunteeers.`} /> */}
                     <div>
                         {trialResults.map((trial, index) => {
                             return (
@@ -439,7 +437,7 @@ const mapStateToProps = (state) => {
     console.log("State : ", state);
     return {
         userAbout: state.about,
-        userADL: state.life.ADL,
+        userADL: state.adl.ADL,
         userFamily: state.family.family,
         userMeds: state.meds.meds,
         userSurgery: state.surgery.surgery,

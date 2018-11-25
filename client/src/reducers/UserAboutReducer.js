@@ -3,11 +3,11 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    age: '',
-    sex: '',
-    race: '',
-    yearDiagnosed: '',
-    startPDTreatment: '',
+    // age: '',
+    // sex: '',
+    // race: '',
+    // yearDiagnosed: '',
+    // startPDTreatment: '',
 }
 
 export default (state = INITIAL_STATE, action) => {

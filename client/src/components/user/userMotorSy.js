@@ -34,7 +34,7 @@ import { motorSy } from '../../constants'
         modalTitle : '',
         modalText : '',
         modalWarning: "",
-        redirectAddress : '/user/user_nonmotorsy',
+        redirectAddress : '/user/user_review',
     }  
 
     componentDidMount() {
@@ -54,26 +54,25 @@ import { motorSy } from '../../constants'
         this.props.history.push(this.state.redirectAddress)
     }
 
-    handleAnswerSelect = (index, choice, symptom) => {
-        console.log("handleanswerselect : ", choice, " + ", index, " + ", symptom)
+    handleAnswerSelect = (index, choice, key) => {
+        console.log("handleanswerselect : ", choice, " + ", index, " + ", key)
         this.setState({modalOpen: false})
-        let tempArray = this.state.answerTrack
-        let tempTrack = this.state.answerArray
+        let tempTrack = this.state.answerTrack  
+        let tempArray = this.state.answerArray
         if (choice === "ns" || choice === "no") {
-            tempArray[index] = choice
-            let ind = tempTrack.indexOf(symptom)
-            ind >= 0 ? tempTrack[ind] = null : null
-            if (choice === "ns") {this.handleModalOpen(symptom, "hello") }
-
+            tempTrack[index] = choice
+            let ind = tempArray.indexOf(key)
+            ind >= 0 ? tempArray.splice(ind, 1) : null
+            choice === "ns" ? this.handleModalOpen(key, "hello") : null
         } 
         else {
-            tempArray[index] = choice
-            tempTrack.indexOf(symptom) < 0 ? tempTrack.push(symptom) : null
+            tempTrack[index] = choice
+            tempArray.indexOf(key) < 0 ? tempArray.push(key) : null
         }
         this.setState({
             noAnswer: false,
-            answerTrack: tempArray, 
-            answerArray: tempTrack
+            answerTrack: tempTrack, 
+            answerArray: tempArray
         })
     }
 
@@ -120,10 +119,10 @@ import { motorSy } from '../../constants'
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.symptom)}>
+                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.key)}>
                                             <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}}>not sure</span>
                                         </Button>
-                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.symptom)}>
+                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.key)}>
                                             {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>

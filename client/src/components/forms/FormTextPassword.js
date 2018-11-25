@@ -8,7 +8,7 @@ import DoneIcon from '@material-ui/icons/Done';
 class FormTextPassword extends Component {  
 
     renderTextField(field) {
-    const {meta: {touched, pristine, error}} = field;
+        const {width, placeholder, meta: {touched, pristine, error}} = field;
         return (
             <div>
                 <span>
@@ -19,17 +19,18 @@ class FormTextPassword extends Component {
                         variant="outlined"
                         style={{width: `${field.width}`}}
                         type="password"
+                        placeholder={`${placeholder}`}
                         autoComplete="current-password"
                     />
                 </span>
 
-                <span style={{fontSize: "13px", color: "green", position: "relative", top: "30px", left: "10px"}}> 
-                        {!pristine && !error ? <DoneIcon /> : ''}
-                </span>
+                 {touched && <span style={{fontSize: "14px", color: "red", position: "relative", top: "30px", left: "12px"}}> 
+                    {touched ? error : ''}
+                 </span> }
 
-                <div style={{fontSize: "13px", color: "red"}}> 
-                        {touched ? error : ''}
-                </div>
+                <span style={{fontSize: "13px", color: "green", position: "relative", top: "18px", left: "10px"}}> 
+                    {!pristine && !error ? <DoneIcon style={{fontSize: "48px"}} /> : ''}
+                </span>
 
                 
             </div>
@@ -43,7 +44,8 @@ class FormTextPassword extends Component {
             <Field 
                 name={this.props.name}
                 label={this.props.label}
-                width={this.props.width ? this.props.width : "250"}
+                width={this.props.width ? this.props.width : "350px"}
+                placeholder={this.props.placeholder ? this.props.placeholder : null}
                 component={this.renderTextField}
                 
             />

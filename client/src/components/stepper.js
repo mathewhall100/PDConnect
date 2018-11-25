@@ -1,18 +1,17 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
+
 import { withStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import { updateStepperCount } from '../actions/Stepper';
 import { userStylesheet } from '../styles';
 import BottomNav from '../components/commons/userBottomNav'
+import FormCheckbox from './forms/FormCheckbox'
 
 const styles = theme => ({
     container: {
@@ -30,61 +29,78 @@ const styles = theme => ({
     },
 });
 
-function getSteps() {
-    return ['About You', 'Your Life', 'Your Family', 'Medications', 'Surgeries', 'Symptoms - Motor', 'Symptoms - Non-Motor', 'Review'];
-}
-
-function getStepContent(step) {
-    switch (step) {
-        case 0:
-            return `Tell us about yourselves`;
-        case 1:
-            return 'Thank you! Now a little bit about your daily routines.';
-        case 2:
-            return `Please tell us more about your family background`;
-        case 3:
-            return `Now, your medications?`;
-        case 4:
-            return `Any surgery procedures`;
-        case 5:
-            return `Almost there! We need more info about your symptoms`;
-        case 6:
-            return `We also like to know more about your non-motor symptoms`;
-        case 7:
-            return `These are some treatments you can talk to your neurologist. `;
-        default:
-            return 'Unknown step';
-    }
-}
-
 class VerticalLinearStepper extends React.Component {
     state = {
         activeStep: 0,
+        redirectAddress: '/user/user_account'
     };
     componentDidMount() {
         this.props.updateStepperCount();
     }
-
-    handleReset = () => {
-        this.setState({
-            activeStep: 0,
-        });
-    };
 
 
     render() {
         const { classes, onPage, stepper } = this.props;
         const { stepperCount, pageImg, totalSteps, pageName, title, subtitle} = stepper;
         console.log("stepper props : ", this.props);
-        const steps = getSteps();
         const { activeStep } = this.state;
+        
+        const ExtraText = () => {
+            console.log("stepperCount: ", stepperCount)
+            if (stepperCount < 8) {
+                return null
+            } else if (stepperCount === 8) {
+                return (
+                    <div style={{marginRight: "10px"}}> 
+                        <span className={classes.stepperTitle}>Your profile will be secure and we will not sell or share any information within it without your express permission.</span>
+                        <br />
+                        <br />
+                        <span className={classes.stepperTitle}>
+                            Please read our 
+                            <span className={classes.profileTermsButton}>Terms & Conditions</span> 
+                            as well as our 
+                            <span className={classes.profileTermsButton}>Data Privacy Policy</span>
+                        </span>
+                        <br />
+                        <br />
+                        <hr className={classes.hr} style={{marginRight: 0}}/>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><FormCheckbox name="policyCheck" label="Check" /></td>
+                                    <td className={classes.stepperTitle}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy."</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <hr className={classes.hr} style={{marginRight: 0}}/>
+                    </div>
+                )
+            } else return null
+            
+        }
+        
+        const StepperHead = () =>  {
+            console.log("stepperCount: ", stepperCount)
+            if (!isNaN(stepperCount) ) {
+                return (
+                    <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2>
+                ) 
+            } else {
+                return (
+                    <h2 className={classes.stepperCounter}>{stepperCount}</h2>
+                )
+            }
+        }
+
 
         return (
             onPage!== 'Unknown step' ?
                 <div>
-                    <Grid container spacing={24}className={classes.stepperContainer}>
+
+                    <Grid container spacing={24} className={classes.stepperContainer} >
                         <Grid item xs={12} >
-                            {stepperCount !== '' ? <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2>  : null}
+                            {stepperCount && <StepperHead /> }
                             <h3 className={classes.stepperPageName}>{pageName}</h3>
                         </Grid>
                         <Grid item xs={12}>
@@ -96,15 +112,15 @@ class VerticalLinearStepper extends React.Component {
                         </Grid>
                         <Grid item xs={12}>
                             <span className={classes.stepperTitle}>{subtitle}</span>
+                            <ExtraText />
                         </Grid>
                     </Grid>
 
-                    <BottomNav /> 
+                    {( stepperCount < 8 || isNaN(stepperCount) ) && <BottomNav />  }
 
                 </div>
             :
             null
-
         );
     }
 }
@@ -120,6 +136,11 @@ VerticalLinearStepper.propTypes = {
     classes: PropTypes.object,
 };
 
-VerticalLinearStepper = withStyles(userStylesheet)(VerticalLinearStepper);
+const formData = {
+    form: 'policyCheckbox', //unique identifier for this form
+}
 
+VerticalLinearStepper = reduxForm(formData)(VerticalLinearStepper)
+VerticalLinearStepper = withStyles(userStylesheet)(VerticalLinearStepper);
+VerticalLinearStepper = withRouter(VerticalLinearStepper)
 export default connect(mapStatsToProps, { updateStepperCount })(VerticalLinearStepper);

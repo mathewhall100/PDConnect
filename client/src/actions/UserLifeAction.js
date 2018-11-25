@@ -3,13 +3,13 @@ import {
 } from './types';
 
 
-export const submitUserLife = (objUserLife) => {
-    console.log("submitting user Life : ", objUserLife);
+export const submitUserLife = (objUserLife, objUserADLTrack) => {
+    console.log("submitting user Life : ", objUserLife, objUserADLTrack);
 
     return (dispatch) => {
         dispatch({
             type: USER_LIFE,
-            payload: objUserLife
+            payload: {adl: objUserLife, track: objUserADLTrack}
         })
     }
 }

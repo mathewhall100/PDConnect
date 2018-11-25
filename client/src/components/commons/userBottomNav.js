@@ -16,26 +16,43 @@ import {userStylesheet } from '../../styles';
 
             const { classes, stepper : {prevPage, nextPage }} = this.props;
 
+            const SecondButton = () => {
+                if (window.location.pathname === '/user/user_account') {
+                    return (
+                        <div style={{width: "40%", float: "right"}} >
+                            <Link to={"/services"} style={{textDecoration: "none"}}>
+                                <Button type="button" variant='outlined' className={classes.userNavButton} style={{width: "80%"}}>SKIP FOR NOW</Button>
+                            </Link>  
+                        </div>
+                    )
+                } else return null
+                        
+            }
+
             return (
-                <Grid container spacing={24} >
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
+                <div>
+                    <br />
+                    <hr className={classes.hr} style={{marginRight: "40px"}}/>
+                    <br />
+                    <Grid container spacing={24} >
+                        <Grid item xs={3}>
+                            <Link to={`${prevPage}`} style={{textDecoration: "none"}}>
+                                <Button type="button" variant='outlined' className={classes.userNavButton}>BACK</Button>
+                            </Link>
+                        </Grid>
+                        <Grid item xs={9}>
+                            <SecondButton  style={{float: "right"}}/>
+                             {/* <Link to={`${nextPage}`} style={{textDecoration: "none"}}>
+                                <Button type="button" variant='outlined' className={classes.userNavButton} style={{width: "80%"}}>NEXT</Button>
+                             </Link>  */}
+                        </Grid>
                     </Grid>
-                    <Grid item xs={3}>
-                        <Link to={`${prevPage}`} style={{textDecoration: "none"}}>
-                            <Button type="button" variant='outlined' className={classes.userNavButton}>BACK</Button>
-                        </Link>
-                    </Grid>
-                    <Grid item xs={6}></Grid>
-                    <Grid item xs={3}>
-                        {/* <Link to={`${nextPage}`} style={{textDecoration: "none"}}>
-                            <Button type="button" variant='outlined' className={classes.userNavButton}>NEXT</Button>
-                        </Link>  */}
-                    </Grid>
-                </Grid>
+                </div>
             )
          }
     }
+
+
 function mapStatsToProps(state) {
     console.log(state);
     return {

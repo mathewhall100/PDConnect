@@ -27,7 +27,7 @@ import { PDADLs } from '../../constants'
     componentDidMount() {
         window.scroll(0,0)
         this.props.updateStepperCount()
-        const index = this.props.userADL
+        const index = this.props.userADLTrack
         if (index) {this.handleAnswerSelect(index)}
     }
 
@@ -37,7 +37,7 @@ import { PDADLs } from '../../constants'
         modalWarning: false,
         modalTitle : '',
         modalText : '',
-        redirectAddress : '/user/user_family',
+        redirectAddress : '/user/user_review',
     }  
 
     handleAnswerSelect = (index) => {
@@ -52,9 +52,7 @@ import { PDADLs } from '../../constants'
         const ADL = activeBtn.indexOf(1)
         console.log("submit - ADL:, ", ADL)
         if (ADL >= 0) {
-            this.props.submitUserLife({
-                ADL: ADL,
-            }) 
+            this.props.submitUserLife(PDADLs[ADL].key, ADL) 
             this.props.history.push(this.state.redirectAddress)
         } else {
             this.setState({modalWarning: true})
@@ -142,7 +140,8 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = (state =>{
     console.log("state: ", state)
     return {
-        userADL: state.life.ADL,
+        userADL: state.adl.ADL,
+        userADLTrack: state.adl.track
     }
 })
 

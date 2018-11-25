@@ -50,10 +50,10 @@ function getStepContent(){
         case '/user/user_life':
             objStepperContent = {
                 stepperCount: 2,
-                pageName: 'Your life',
-                title: `Tell us a little about how Parkinson disease affects you`,
+                pageName: 'Your day-to-day activities',
+                title: `Tell us a little about how Parkinson disease affects your day-to-day activities`,
                 pageImg: `${lifestyleImg}`,
-                subtitle: `Please check the box next to the description that best describes how your Parkinson disease has affected your day-to-day activities in the last month.`,
+                subtitle: `Please check the box next to the description that best describes how your Parkinson disease has affected your normal day-to-day activities over the past month.`,
                 nextPage: `/user/user_family`,
                 prevPage: `/user/user_about`,
             }
@@ -116,21 +116,21 @@ function getStepContent(){
         case '/user/user_review':
             objStepperContent = {
                 stepperCount: 8,
-                pageName: 'Create Profile',
-                title: `Review your answers and create a profile`,
-                pageImg: `${nonMotorImg}`,
-                subtitle: `text about profile and data security`,
+                pageName: 'Your Profile',
+                title: `Review your answers, read our terms and conditions and set up your profile.`,
+                pageImg: ``,
+                subtitle: `Please review the answers you have given (oposite). They will form the basis of your profile and be used to match you with our individualised services.`,
                 nextPage: `/user/user_account`,
                 prevPage: `/user/user_nonmotorsy`,
             }
             return objStepperContent;
         case '/user/user_account':
             objStepperContent = {
-                stepperCount: '',
-                pageName: 'Set Up An Account',
-                title: `Set up your account with us now to gain the following benefits:`,
-                pageImg: `${nonMotorImg}`,
-                subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,
+                stepperCount: 'Finally...',
+                pageName: 'Create An Account',
+                title: `Create your account with us now to gain the following benefits:`,
+                pageImg: ``,
+                subtitle: `Account benefits:`,
                 nextPage: `/services`,
                 prevPage: `/user/user_review`,
             }

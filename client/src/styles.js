@@ -155,6 +155,8 @@ export const userStylesheet = theme => ({
     userNavButton : {
         textDecoration: "none",
         backgroundColor: PRIMARY_COLOR,
+        borderColor: "#000080",
+        border: "2px solid",
         width: '80%',
         color: 'white',
         fontWeight: "bold",
@@ -169,6 +171,8 @@ export const userStylesheet = theme => ({
 
     userNavButtonRight : {
         backgroundColor: PRIMARY_COLOR,
+        borderColor: "#000080",
+        border: "2px solid",
         borderradius: "6px",
         marginTop: "15px",
         padding: "10px",
@@ -212,7 +216,8 @@ export const userStylesheet = theme => ({
     hr: {
         height: "1px",
         color: "lightgrey",
-        opacity: 0.8
+        opacity: 0.8,
+        marginRight: "24px"
     },
     errorText: {
         fontSize: "15px",
@@ -223,7 +228,7 @@ export const userStylesheet = theme => ({
     },
     paper: {
         position: 'absolute',
-        width: theme.spacing.unit * 40,
+        width: theme.spacing.unit * 80,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 4,
@@ -257,6 +262,51 @@ export const userStylesheet = theme => ({
         position: "absolute",
         zIndex: -100
     },
+    profileBox: {
+        border: "1px solid grey",
+        padding: "20px 20px 0 20px",
+        borderRadius: "5px",
+    },
+    profileSectionHeader: {
+        fontSize: "18px",
+        fontWeight: "bold",
+        marginBottom: "20px"
+    },
+    profileBoxButton: {
+        backgroundColor: "#EEE",
+        width: '80px',
+        color: 'black',
+        fontWeight: "bold",
+        fontSize: "13px", 
+        border: "2px solid",
+        borderColor: "grey",
+        height: "16px",
+        '&:hover': {
+            color: PRIMARY_COLOR,
+            backgroundColor: "lightgrey",
+            border: "2px solid",
+            borderColor: PRIMARY_COLOR,
+            fontWeight: "bold",
+        }
+    },
+    profileTermsButton: {
+        backgroundColor: "#EEE",
+        width: '60px',
+        color: 'black',
+        fontWeight: "bold",
+        fontSize: "14px", 
+        border: "2px solid",
+        borderColor: "grey",
+        padding: '5px 10px 5px 10px',
+        margin: "10px",
+        '&:hover': {
+            color: PRIMARY_COLOR,
+            backgroundColor: "lightgrey",
+            border: "2px solid",
+            borderColor: PRIMARY_COLOR,
+            fontWeight: "bold",
+        }
+    }
 })
 
 export const resultStylesheet = theme => ({

@@ -35,10 +35,10 @@ class SimpleModal extends React.Component {
                     <div className={classes.paper}>
                         <Typography variant="h6" id="modal-title">
                             Text in a modal
-            </Typography>
+                        </Typography>
                         <Typography variant="subtitle1" id="simple-modal-description">
                             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
+                        </Typography>
                         <SimpleModalWrapped />
                     </div>
                 </Modal>

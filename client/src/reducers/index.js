@@ -28,7 +28,7 @@ export default combineReducers({
     results: ResultReducer,
     stepper: StepperReducer,
     about : UserAboutReducer,
-    life : UserLifeReducer,
+    adl : UserLifeReducer,
     family : UserFamilyReducer,
     meds : UserMedsReducer,
     surgery : UserSurgeryReducer,

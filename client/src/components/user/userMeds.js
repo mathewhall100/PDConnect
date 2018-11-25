@@ -28,60 +28,72 @@ class UserMeds extends Component {
     state = {
         answerArray: [],
         answerTrack: [],
-        noAnswer: false,
+        answerNone: false,
         open : false,
         modalTitle : '',
         modalText : '',
-        redirectAddress : '/user/user_surgery',
+        redirectAddress : '/user/user_review',
     }  
 
     componentDidMount() {
         window.scroll(0,0)
         this.props.updateStepperCount()
         const index = this.props.userTrack
-        if (index) {
-            console.log(index)
+        if (index && index.length > 0) {
+            console.log("index: ", index)
             this.setState({
                 answerTrack: index,
-                answerArray: this.props.userMeds
+                answerArray: this.props.userMeds,
+                answerNone: false
+            })
+        } else if (this.props.userAnswerNone) {
+            console.log(this.props.userAnswerNone)
+            this.setState({
+                answerNone: true
             })
         }
     }
 
     handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
-        this.props.submitUserMeds(this.state.answerArray, this.state.answerTrack)
-        this.props.history.push(this.state.redirectAddress)
+        if (this.state.answerNone || this.state.answerArray.length > 0) {
+             this.props.submitUserMeds(this.state.answerArray, this.state.answerTrack, this.state.answerNone)
+             this.props.history.push(this.state.redirectAddress)
+        } else {
+            this.setState({modalWarning: true})
+            this.handleModalOpen("This question is important!","To suggest treatments you may benefit from we need to know what medications you currently take for Parkinson disease. Also, participation in many clinical trials and focus groups depends on how you are currently treated. Please take the time to tell us about the medications you take for Parkinson disease or select 'none' if you do not take any")
+            }
     }
 
-    handleAnswerSelect = (index, name) => {
-        console.log("handleAnswerselect : ", name)
+    handleAnswerSelect = (index, key) => {
+        console.log("handleAnswerselect : ", key)
         this.setState({modalOpen: false})
         let tempTrack = this.state.answerTrack
         let tempArray = this.state.answerArray
-        const tempIndex = tempArray.indexOf(name)
+        const tempIndex = tempArray.indexOf(key)
 
-        if (tempIndex < 0) {tempArray.push(name)}
+        if (tempIndex < 0) {tempArray.push(key)}
         else if (tempTrack[index] === true && tempIndex >= 0) {
-            tempArray[tempIndex] = ""
+            tempArray.splice(tempIndex, 1)
         }
-
         tempTrack[index] = !tempTrack[index]
 
         this.setState({
-            noAnswer: false,
+            answerNone: false,
             answerTrack: tempTrack, 
             answerArray: tempArray,
             modalOpen: false
         })
     }
 
-    handleNoAnswerelect = () => {
-        console.log('NoanswerTrack')
+    handleNoneSelect = () => {
+        console.log('answerNone')
         this.setState({
-            noAnswer: true,
+            answerNone: true,
             answerTrack: [],
-            answerArray: []}) 
+            answerArray: [],
+            modalOpen: false
+        }) 
     }
 
     handleModalOpen = (title, text) => { 
@@ -97,7 +109,7 @@ class UserMeds extends Component {
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
+        const { answerTrack, answerNone, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         return (
             <section >
@@ -109,8 +121,8 @@ class UserMeds extends Component {
                         <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                             <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: noAnswer ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoAnswerelect()}>
-                                <QuestionButtonIcons answerConditional={noAnswer} />
+                             <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
+                                <QuestionButtonIcons answerConditional={answerNone} />
                             </Button> 
                         </Grid>
                     </Grid>
@@ -152,7 +164,7 @@ class UserMeds extends Component {
                                                     </div>
                                                 </Grid>
                                                 <Grid item xs={12} sm={4} >
-                                                         <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[answerIndex] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.generic)}>
+                                                         <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[answerIndex] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.key)}>
                                                             <QuestionButtonIcons answerConditional={answerTrack[answerIndex]} />
                                                         </Button>
                                                 </Grid>
@@ -174,7 +186,7 @@ class UserMeds extends Component {
                     modalOpen={modalOpen}
                     modalTitle={modalTitle} 
                     modalText={modalText} 
-                    modalWarning={false} 
+                    modalWarning={modalWarning} 
                 /> }
 
             </section>
@@ -192,7 +204,8 @@ const mapStateToProps = (state) => {
     console.log("state: ", state)
     return {
         userMeds: state.meds.meds,
-        userTrack: state.meds.track
+        userTrack: state.meds.track,
+        userAnswerNone: state.meds.answerNone
 
     }
 }

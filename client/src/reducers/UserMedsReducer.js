@@ -3,14 +3,14 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    ropinirole : -1,
-    pramipixole : -1,
-    rotigotine : -1,
-    sinemet : -1,
-    sinemetCR : -1,
-    rytary : -1,
-    doupa : -1,
-    amantadine : -1,
+    // ropinirole : -1,
+    // pramipixole : -1,
+    // rotigotine : -1,
+    // sinemet : -1,
+    // sinemetCR : -1,
+    // rytary : -1,
+    // doupa : -1,
+    // amantadine : -1,
 }
 
 export default (state = INITIAL_STATE, action) => {

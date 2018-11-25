@@ -3,13 +3,13 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    grandparent: false,
-    parent : false,
-    uncleAunt : false,
-    brotherSis : false,
-    child : false,
-    nieceNephew : false,
-    grandchild : false,
+    // grandparent: false,
+    // parent : false,
+    // uncleAunt : false,
+    // brotherSis : false,
+    // child : false,
+    // nieceNephew : false,
+    // grandchild : false,
 }
 
 export default (state = INITIAL_STATE, action) => {

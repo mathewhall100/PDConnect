@@ -18,16 +18,7 @@ import FormPassword from '../forms/FormTextPassword';
 class UserNewAccount extends Component {
 
     state = {
-        modalOpen: false,
-        modalTitle: '',
-        modalDescription: '',
-        modalwarning: false,
-        redirect: false,
-        redirectAddress: '/user/services',
-    }
-
-    componentWillMount() {
-        this.handleInitialize();
+        redirectAddress: '/services'
     }
 
     componentDidMount() {
@@ -35,50 +26,15 @@ class UserNewAccount extends Component {
         this.props.updateStepperCount()
     }
 
-    handleInitialize() {
-        const initData = this.props.userAccount
-        console.log("in handle init, init data is : ", initData);
-        this.props.initialize(initData);
-    }
-
     submit(values) {
         console.log("values : ", values);
         this.props.submitUserAccount(values)
-        this.setState({ redirect: true })
+        this.props.history.push(this.state.redirectAddress)
     }
-
-    handleBack = () => {
-        this.setState({
-            redirectAddress: '/'
-        }, () => this.setState({ redirect: true }))
-    }
-
-    handleCreateAccount = () => {
-        console.log("create account");
-    }
-
-    handleModalOpen = (title, text) => {
-        console.log(title);
-        this.setState({
-            modalTitle: title,
-            modalText: text,
-            modalWarning: false,
-            modalOpen: true
-        });
-    };
-
 
     render() {
 
         const { handleSubmit, classes } = this.props
-        const { redirect, redirectAddress, } = this.state
-
-
-        if (redirect) {
-            const url = `${redirectAddress}`;
-            console.log("redirect to .. " + url);
-            return <Redirect exact to={url} />;
-        }
 
         const BottomNav = (props) => {
             return (
@@ -88,7 +44,6 @@ class UserNewAccount extends Component {
                     </Grid>
                     <Grid item xs={3}>
                         <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
                     </Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3}></Grid>
@@ -101,17 +56,24 @@ class UserNewAccount extends Component {
 
 
         return (
-            <div className={classes.componentBox} >
+            <div className={classes.componentBox} style={{marginTop: "75px"}}>
+
+            <p className={classes.sectionTitle}>Enter your e-mail address and a password to set up your account. </p>
+
                 <div>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
-                        <label>E-mail : </label><br/>
+                        <label style={{fontWeight: "bold", position: "relative", top: "15px"}}>E-mail</label>
+                        <FormText title='email' name='email' label='' placeholder="e.g. john.doe@gmail.com"/>
+                        <br />
+                        <label style={{fontWeight: "bold", position: "relative", top: "15px"}}>Password</label>
+                        <FormPassword title='password' name='password' label='' placeholder="8 characters minimum"/>
+                        <br />
+                        <label style={{fontWeight: "bold", position: "relative", top: "15px"}}>Re-enter password</label>
+                        <FormPassword title='password' name='confirmPassword' label='' placeholder="passwords must match"/>
 
-                        <FormText title='email' name='email' label='e-mail address' />
-                        <FormPassword title='password' name='password' label='password' />
-                        <FormPassword title='confirmPassword' name='confirmPassword' label='confirm password' />
-
-                        <BottomNav />
+                        <br />
+                        <Button type="submit" type="variant" className={classes.userNavButtonRight} >SET UP ACCOUNT</Button>
 
                     </form>
 
@@ -136,17 +98,24 @@ function validate(values) {
     if (!values.password) {
         errors.password = '*required'
     }
+    if (values.password && values.password.length < 8) {
+        errors.password = 'password must be at least 8 charcters long.'
+    }
     if (!values.confirmPassword) {
         errors.confirmPassword = '*required'
     }
-    if(values.password !== values.confirmPassword){
-        errors.password = 'password provided does not match with each other.'
+    if (values.confirmPassword && values.confirmPassword.length < 8) {
+        errors.confirmPassword = ' '
     }
+    if(values.confirmPassword && values.confirmPassword.length > 8 && values.password !== values.confirmPassword){
+        errors.confirmPassword = 'passwords entered must match.'
+    }
+    
     return errors
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ updateStepperCount }, dispatch);
+    return bindActionCreators({ updateStepperCount, submitUserAccount }, dispatch);
 }
 
 const mapStateToProps = (state) => {

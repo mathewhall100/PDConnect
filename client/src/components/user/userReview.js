@@ -5,129 +5,203 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import Modal from '@material-ui/core/Modal';
-import HelpIcon from '@material-ui/icons/Help';
-import DoneIcon from '@material-ui/icons/Done';
-import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
+
+import {userStylesheet } from '../../styles';
+import { PDADLs, meds, procedures, motorSy, nonMotorSy } from '../../constants'
+import { updateStepperCount } from '../../actions/index.js'
 
 
-import { activity_level } from '../../constants';
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-import { updateStepperCount, submitUserLife } from '../../actions/index.js'
-import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
-import UserModal from '../commons/userModal'
-import { PDADLs } from '../../constants'
 
-
- class UserLife extends Component {
+ class UserReview extends Component {
 
     componentDidMount() {
         window.scroll(0,0)
         this.props.updateStepperCount()
-        const index = this.props.userADL
-        if (index) {this.handleAnswerSelect(index)}
     }
 
     state = {
-        activeBtn: [],
-        modalOpen: false,
-        modalWarning: false,
-        modalTitle : '',
-        modalText : '',
-        redirectAddress : '/user/user_account',
+        showBox: [null],
+        redirectAddress : '/user/user_account'
     }  
 
-    handleAnswerSelect = (index) => {
-        this.setState({modalOpen: false})
-        let tempArray = [0, 0, 0, 0, 0,]
-        tempArray[index] = 1
-        this.setState({activeBtn: tempArray})
+    handleCreateProfile() {
+        // check to see if checkbox signed - if not display modal & do not save
+        // save checkbox 
+        this.props.history.push(this.state.redirectAddress)
+    }
+
+    handleShowBox = (index) => {
+        let indexValue = null
+        let tempArray = []
+        indexValue = this.state.showBox[index]
+        this.setState({ showBox: [] })
+        tempArray[index] = !indexValue
+        this.setState({ showBox: tempArray })
     }
 
     handleNext = () => {
-        const { activeBtn } = this.state
-        const ADL = activeBtn.indexOf(1)
-        console.log("submit - ADL:, ", ADL)
-        if (ADL >= 0) {
-            this.props.submitUserLife({
-                ADL: ADL,
-            }) 
-            this.props.history.push(this.state.redirectAddress)
-        } else {
-            this.setState({modalWarning: true})
-            this.handleModalOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
-        }
+        
     }
     
-    handleClearForm() {
-        console.log("clear form")
-        this.setState({activeBtn: []})
-    }
-
-    handleModalOpen = (title, text) => { 
-        console.log(title);
-         this.setState({ 
-             modalTitle : title,
-             modalText : text,
-             modalOpen: true
-        });
-     };
-
-
     render() {
 
-        const { handleSubmit, pristine, submitting, classes } = this.props
-        const { activeBtn, modalOpen, modalTitle, modalText, modalWarning  } = this.state
+        const { classes, userAbout, userFamily, userADL, userMeds, userSurgery, userMotorSy, userNonMotorSy} = this.props
+        const { showBox } = this.state
+
+        const RenderBoxHeader = (props) => {
+            return (
+                <div className={classes.profileSectionHeader}>
+                       <span style={{position: "relative", top: "5px"}}>{props.title}</span>
+                       <Button type="button" className={classes.profileBoxButton} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>
+                            {showBox[props.number] ? "HIDE" : "VIEW" }
+                        </Button>
+                    </div>
+            )
+        }
+
+        const RenderEditButton = (props) => {
+            return (
+                <section>
+                    <hr className={classes.hr} />
+                    <Link to={props.link} style={{textDecoration: "none"}}><Button type="button" className={classes.profileBoxButton}>EDIT</Button></Link>
+                    <br />
+                    <br />
+                </section>
+            )
+        }
 
         return (
             <section>
-                <div className={classes.componentBox} >
+                <div className={classes.componentBox} style={{marginTop: "75px"}}>
 
-                    <p className={classes.sectionTitle}>Select one</p>
+                    <p className={classes.sectionTitle}>Review your answers and edit if required.Then click 'CREATE PROFILE AND CONTINUE'</p>
+
+                    <RenderBoxHeader title="About me" number={0} />
+                    {showBox[0] && <div className={classes.profileBox}>
+                        <p>Age: {userAbout.age}</p> 
+                        <p>Sex: {userAbout.sex}</p>
+                        <p>Race/Ethnicity {userAbout.race}</p>
+                        <p>Diagnosed with Parkinson disease: {userAbout.yearDiagnosed}</p> 
+                        <p>Started treatment for Parkinson disease: {userAbout.yearTreatment}</p>
+                        <RenderEditButton link="/user/user_about" />
+                    </div> }
+
+                    <br />
+
+                    <RenderBoxHeader title="My day-to-day activities" number={1} />
+                    {showBox[1] && <div className={classes.profileBox}>
+                    {userADL ? 
+                       <p>{PDADLs.filter(adl => adl.key === userADL)[0].title} </p>  
+                       : null }
+                       <RenderEditButton link="/user/user_life" />
+                    </div> }
+
+                    <br />
+
+                    <RenderBoxHeader title="My family history" number={2}  />  
+                    {showBox[2] && <div className={classes.profileBox}>
+                        {userFamily ? userFamily.length > 0 ? 
+                            <div>
+                                <p>Family members also affected by Parkinson disease: </p>
+                                {userFamily.map((item, index) => {
+                                    return (
+                                        <p key={index}>{index === userFamily.length-1 ? item : `${item}, ` }</p>
+                                    )  
+                                }) }
+                            </div> 
+                            :
+                            <p>I have no family members with Parkinson disease.</p>
+                        : null }
+                        <RenderEditButton link="/user/user_family" />
+                    </div> }
+
                     <br />
                     
-                    {PDADLs.map((question, index) => {
-                        return (
-                            <div key={index}>
-                                <Grid container spacing={24}>
-                                    <Grid item xs={12} sm={8} md={8}>
-                                        <div className={classes.questionContainer} >
-                                            <span className={classes.questionHead}>{question.title}</span>
-                                            <Button type="button" id="modalBtn" className={classes.helpButtton} style={{position: "relative", top: "-5px"}} onClick={() => this.handleModalOpen(PDADLs[index].title, PDADLs[index].text)}>
-                                                <HelpIcon color="primary" className={classes.helpIcon}/>
-                                                 &nbsp;&nbsp;examples
-                                            </Button>
-                                        </div>
-                                    </Grid>
-
-
-                                    <Grid item xs={12} sm={4} md={4}>
-                                        <Button type="button" className={classes.questionButton}  style={{position: "relative", top: "-5px", borderColor: activeBtn[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index)}>
-
-                                        <QuestionButtonIcons answerConditional={activeBtn[index] ? true : false} />
-                                           
-                                        </Button>
-                                    </Grid>
-
-                                </Grid>
+                    <RenderBoxHeader title="My medications" number={3} />
+                    {showBox[3] && <div className={classes.profileBox}>
+                        {userMeds ? userMeds.length > 0 ? 
+                            <div>
+                                <p>My current medications for Parkinson disease are: </p>
+                                {userMeds.map((item, index) => {
+                                   let med = meds.filter(med => med.key === item)[0].generic
+                                    return (
+                                        <p key={index}>{med}</p>
+                                    )
+                                }) }
                             </div>
-                        )
-                    }) }
+                            :
+                            <p> I take no medications for Parkinson disease.</p>
+                        : null }
+                        <RenderEditButton link="/user/user_meds" />
+                    </div> }
 
-                    <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
+                    <br />
+
+                    <RenderBoxHeader title="My surgeries and procedures" number={4} />
+                    {showBox[4] && <div className={classes.profileBox}>
+                        {userSurgery ? userSurgery.length > 0 ?
+                            <div>
+                                <p>I have had the following surgeries or procedures for Parkinson disease: </p>
+                                {userSurgery.map((item, index) => {
+                                    let proc = procedures.filter(proc => proc.key === item)[0].procedure
+                                    return (
+                                        <p key={index}>{proc}</p>
+                                    )
+                                }) }
+                            </div>
+                            :
+                            <p>I havn't had any surgery or procedures for Parkinson disease.</p> 
+                        : null }
+                        <RenderEditButton link="/user/user_surgery" />
+                    </div> }
+
+                    <br />
+
+                    <RenderBoxHeader title="My symptoms (motor)" number={5} />
+                    {showBox[5] && <div className={classes.profileBox}>
+                        {userMotorSy ? userMotorSy.length > 0 ?
+                        <div>
+                            <p>Symptoms that have bothered me over the past month: </p>
+                            {userMotorSy.map((item, index) => {
+                                let symptom = motorSy.filter(sy => sy.key === item)[0].symptom
+                                return (
+                                    <p key={index}>{symptom}</p>
+                                )
+                            }) }
+                            </div>
+                            :
+                            <p>I didn't record any symptoms of Parkinson disease</p>
+                        : null }
+                        <RenderEditButton link="/user/user_motorsy" />
+                    </div> }
+
+                    <br />
+
+                    <RenderBoxHeader title="My symptoms (non-motor)" number={6}/>
+                    {showBox[6] && <div className={classes.profileBox}>
+                        {userNonMotorSy ? userNonMotorSy.length > 0 ?
+                        <div>
+                            <p>Other symptoms that have bothered me are: </p>
+                            {userNonMotorSy.map((item, index) => {
+                                let symptom = nonMotorSy.filter(sy => sy.key === item)[0].symptom
+                                return (
+                                    <p key={index}>{symptom}</p>
+                                )
+                            }) }
+                            </div>
+                            :
+                            <p>I didn't record any furtehr symptoms</p>
+                        : null }
+                        <RenderEditButton link="/user/user_nonmotorsy" />
+                    </div> }
+
+                <br />
+                <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleCreateProfile()}>CREATE PROFILE AND CONTINUE</Button>
 
                 </div>
-
-                { modalOpen && <UserModal 
-                    modalOpen={modalOpen}
-                    modalTitle={modalTitle} 
-                    modalText={modalText} 
-                    modalWarning={modalWarning} 
-                /> }
-
+                
             </section>
 
         );
@@ -136,17 +210,23 @@ import { PDADLs } from '../../constants'
 
 
 function mapDispatchToProps(dispatch) {
-     return bindActionCreators({ updateStepperCount, submitUserLife }, dispatch);
+     return bindActionCreators({ updateStepperCount }, dispatch);
 }
 
 const mapStateToProps = (state =>{
     console.log("state: ", state)
     return {
-        userADL: state.life.ADL,
+        userAbout: state.about,
+        userADL: state.adl.adl,
+        userFamily: state.family.family,
+        userMeds: state.meds.meds,
+        userSurgery: state.surgery.surgery,
+        userMotorSy: state.motorSy.motorSy,
+        userNonMotorSy: state.nonMotorSy.nonMotorSy, 
     }
 })
 
-UserLife = withRouter(UserLife)
-UserLife = withStyles(userStylesheet)(UserLife)
-UserLife = connect(mapStateToProps, mapDispatchToProps)(UserLife)
-export default UserLife
+UserReview = withRouter(UserReview)
+UserReview = withStyles(userStylesheet)(UserReview)
+UserReview = connect(mapStateToProps, mapDispatchToProps)(UserReview)
+export default UserReview

@@ -22,7 +22,7 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
 
     state = {
         familyResult: [],
-        redirectAddress : '/user/user_meds',
+        redirectAddress : '/user/user_review',
     }  
 
     componentDidMount() {
@@ -37,21 +37,18 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
 
     handleTreeBtnClicked = (rel) => {
         console.log("treebuttonClicked : ",  rel)
-        if (this.state.familyResult.indexOf(rel) < 0 && rel !== "YOU") {
-            let tempArray = this.state.familyResult
-            tempArray.push(rel)
-            this.setState({familyResult: tempArray})
-        }
+        let tempArray = this.state.familyResult
+        const index= tempArray.indexOf(rel)
+        if (index < 0 && rel !== "YOU") {tempArray.push(rel)} 
+            else if (index >= 0) {tempArray.splice(index, 1)}
+        this.setState({familyResult: tempArray})
     }
 
     handleNext = () => {
         const { familyResult } = this.state
         console.log("submit - familyResult:, ", familyResult)
-        if (familyResult.length > 0) {
-            this.props.submitUserFamily( {
-                family: familyResult,
-            })
-        } 
+        if (familyResult.length === 0) {familyResult[0] = "none"}
+        this.props.submitUserFamily({family: familyResult})
         this.props.history.push(this.state.redirectAddress)
     }
     

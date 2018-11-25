@@ -3,8 +3,8 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    DBS : false,
-    FTP : false,
+    // DBS : false,
+    // FTP : false,
 }
 
 export default (state = INITIAL_STATE, action) => {

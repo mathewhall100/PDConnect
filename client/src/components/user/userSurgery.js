@@ -32,7 +32,7 @@ import { procedures } from '../../constants'
         open : false,
         modalTitle : '',
         modalDescription : '',
-        redirectAddress : '/user/user_motorsy',
+        redirectAddress : '/user/user_review',
     }  
 
     componentDidMount() {
@@ -54,14 +54,14 @@ import { procedures } from '../../constants'
         this.props.history.push(this.state.redirectAddress)
     }
 
-    handleAnswerSelect = (index, name) => {
-        console.log("handleAnswerselect : ", name)
+    handleAnswerSelect = (index, key) => {
+        console.log("handleAnswerselect : ", key)
         this.setState({modalOpen: false})
         let tempTrack = this.state.answerTrack
         let tempArray = this.state.answerArray
-        const tempIndex = tempArray.indexOf(name)
+        const tempIndex = tempArray.indexOf(key)
 
-        if (tempIndex < 0) {tempArray.push(name)}
+        if (tempIndex < 0) {tempArray.push(key)}
         else if (tempTrack[index] === true && tempIndex >= 0) {
             tempArray[tempIndex] = ""
         }
@@ -119,7 +119,7 @@ import { procedures } from '../../constants'
                                     </div>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={5}>
-                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, proc.procedure)}>
+                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, proc.key)}>
                                             <QuestionButtonIcons answerConditional = {answerTrack[index]} />
                                         </Button>
                                 </Grid>

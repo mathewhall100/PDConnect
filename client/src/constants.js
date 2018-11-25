@@ -401,11 +401,11 @@ const medList = [
 ]
 
 export const PDADLs = [
-    {title: "I have no difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
-    {title: "I have mild difﬁculties with day-to-day activities.", text: "For example: Slowness with some aspects of housework, gardening or shopping. Able to dress and manage personal hygiene completely independently but rate is slower. You may feel that your medication is not quite effective as it was."},
-    {title: "I have moderate difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease is interfering with your daily activities. It is increasinglydifﬁcult to do simple activities without some help such as rising from a chair, washing, dressing,shopping, housework. You may have some difﬁculties walking and may require assistance. Difﬁcultieswith recreational activities or the ability to drive a car. The medication is now less effective."},
-    {title: "I have a high levels of difﬁculties with day-to-day activities.", text: "For example: You now require much more assistance with activities of daily living such as washing,dressing, housework or feeding yourself. You may have greater difﬁculties with mobility and ﬁnd youare becoming more dependent for assistance from others or aids and appliances. Your medicationappears to be signiﬁcantly less effective."},
-    {title: "I have extreme difﬁculties with day-to-day activities.", text: "For example: You require assistance in all daily activities. These may include dressing, washing,feeding yourself or walking unaided. You may now be housebound and obtain little or no beneﬁtfrom your medication."}
+    {key: "none", title: "I have no difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
+    {key: "mild", title: "I have mild difﬁculties with day-to-day activities.", text: "For example: Slowness with some aspects of housework, gardening or shopping. Able to dress and manage personal hygiene completely independently but rate is slower. You may feel that your medication is not quite effective as it was."},
+    {key: "moderate", title: "I have moderate difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease is interfering with your daily activities. It is increasinglydifﬁcult to do simple activities without some help such as rising from a chair, washing, dressing,shopping, housework. You may have some difﬁculties walking and may require assistance. Difﬁcultieswith recreational activities or the ability to drive a car. The medication is now less effective."},
+    {key: "high", title: "I have a high levels of difﬁculties with day-to-day activities.", text: "For example: You now require much more assistance with activities of daily living such as washing,dressing, housework or feeding yourself. You may have greater difﬁculties with mobility and ﬁnd you are becoming more dependent for assistance from others or aids and appliances. Your medicationappears to be signiﬁcantly less effective."},
+    {key: "extreme", title: "I have extreme difﬁculties with day-to-day activities.", text: "For example: You require assistance in all daily activities. These may include dressing, washing,feeding yourself or walking unaided. You may now be housebound and obtain little or no beneﬁtfrom your medication."}
 ]
 
 export const medGroups = [
@@ -415,16 +415,16 @@ export const medGroups = [
 ]
 
 export const meds = [
-    {generic: "Ropinirole", trade: ["Requip", "Ralnea", "Adartrel"], class: "dopamine agonist", description: ""},
-    {generic: "Pramipixole", trade: ["Mirapex"], class: "dopamine agonist", description: ""},
-    {generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", description: ""},
+    {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Ralnea", "Adartrel"], class: "dopamine agonist", description: ""},
+    {key: "pramipixole", generic: "Pramipixole", trade: ["Mirapex"], class: "dopamine agonist", description: ""},
+    {key: "rotigotine", generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", description: ""},
 
-    {generic: "Sinemet", trade: [], class: "carbidopa/levodopa", description: ""},
-    {generic: "Sinemet CR",  trade: [], class: "carbidopa/levodopa", description: ""},
-    {generic: "Rytary",  trade: [], class: "carbidopa/levodopa", description: ""},
-    {generic: "Doupa",  trade: [], class: "carbidopa/levodopa", description: ""},
+    {key: "sinemet", generic: "Sinemet", trade: [], class: "carbidopa/levodopa", description: ""},
+    {key: "sinemetcr", generic: "Sinemet CR",  trade: [], class: "carbidopa/levodopa", description: ""},
+    {key: "rytary", generic: "Rytary",  trade: [], class: "carbidopa/levodopa", description: ""},
+    {key: "duopa", generic: "Doupa",  trade: [], class: "carbidopa/levodopa", description: ""},
 
-    {generic: "Amantadine", trade: ["Amantadine"], class: "other", description: ""}
+    {key: "amantadine", generic: "Amantadine", trade: ["Amantadine"], class: "other", description: ""}
 ]
 
 export const motorSy = [
@@ -455,6 +455,6 @@ export const nonMotorSy= [
 ]
 
 export const procedures  = [
-    {procedure: "Deep brain stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
-    {procedure: "Placement of a feeding tube for Duopa therapy", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
+    {key: "dbs", procedure: "Deep brain stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
+    {key: "pegj", procedure: "Placement of a feeding tube for Duopa therapy", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
 ]
