@@ -79,7 +79,7 @@ class VerticalLinearStepper extends React.Component {
                 )
             } else if (stepperCount === "Finally...") {
                 return (
-                    <div className={classes.questionHead} >
+                    <div className={classes.listItems} >
                         <ul style={{marginLeft: "20px"}}>
                             <li>Save your profile between visits</li>
                             <li>Hear first about new treatments and clinical trials matched to you</li>
@@ -91,9 +91,9 @@ class VerticalLinearStepper extends React.Component {
                 )
             } else if (stepperCount=== "Hello!") {
                 return (
-                    <div className={classes.questionHead} >
+                    <div className={classes.listItems} >
                         <ul style={{marginLeft: "20px"}}>
-                            <li>Up to date knowledge of new and established treatments that may benefit you</li>
+                            <li>Knowledge of new and established treatments that may benefit you</li>
                             <li>Clinical trials in Parkinson disease looking to recruit volunteers</li>
                             <li>Focus groups that pay you for participating</li>
                             <li>Latest Parkinson disease news and information</li>

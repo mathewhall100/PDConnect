@@ -8,40 +8,20 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
-import { userStylesheet } from '../styles';
-import { submitUserAccount } from '../actions/UserAccountAction';
-import FormText from '../components/forms/FormText';
-import FormPassword from '../components/forms/FormTextPassword';
+import { resultStylesheet, PRIMARY_COLOR, SECONDARY_COLOR } from '../styles';
+
+
 
 class UserServices extends Component {
 
     state = {
-        modalOpen: false,
-        modalTitle: '',
-        modalDescription: '',
-        modalwarning: false,
-        redirect: false,
         redirectAddress: '',
     }
 
-    componentWillMount() {
-        this.handleInitialize();
-    }
+
 
     componentDidMount() {
         window.scroll(0, 0)
-    }
-
-    handleInitialize() {
-        const initData = this.props.userAccount
-        console.log("in handle init, init data is : ", initData);
-        this.props.initialize(initData);
-    }
-
-    submit(values) {
-        console.log("values : ", values);
-        this.props.submitUserAccount(values)
-        this.setState({ redirect: true })
     }
 
     handleBack = () => {
@@ -50,96 +30,71 @@ class UserServices extends Component {
         }, () => this.setState({ redirect: true }))
     }
 
-    handleCreateAccount = () => {
-        console.log("create account");
-    }
-
-    handleModalOpen = (title, text) => {
-        console.log(title);
-        this.setState({
-            modalTitle: title,
-            modalText: text,
-            modalWarning: false,
-            modalOpen: true
-        });
-    };
-
 
     render() {
 
         const { handleSubmit, classes } = this.props
-        const { redirect, redirectAddress, } = this.state
+        const {  } = this.state
 
-
-        if (redirect) {
-            const url = `${redirectAddress}`;
-            console.log("redirect to .. " + url);
-            return <Redirect exact to={url} />;
-        }
-
-        const BottomNav = (props) => {
+        const RenderServiceListItem = (props) => {
             return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
+                <div className={classes.serviceListBox} >
+                    <Grid container spacing={8} >
+                        <Grid item xs={12} sm={2}>
+                            Avatar<br />image
+                        </Grid>
+                        <Grid item xs={12} sm={10}>
+                            <span className={classes.serviceListHeader}>{props.header}</span>
+                            <br />
+                            <span className={classes.serviceListText}>{props.text}</span>
+                        </Grid>              
                     </Grid>
-                    <Grid item xs={3}>
-                        <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleCreateAccount()}>Create</Button>
-                    </Grid>
-                </Grid>
+                </div>
             )
         }
 
-
         return (
-            <div className={classes.componentBox} >
-               
-               Individualised for me
-               <br /> 
-               <br /> 
-               1. treatments (4)<br />
-               2.clinicakl trials (2)<br /> 
-               3. focis groups (0)<br /> 
-               4. knowledge articles (4)<br />
-               <br /> 
-               <br /> 
-               5. My account
+            <div className={classes.root}>
 
+               <br />
 
+                <Grid container spacing={24}>
+                    <Grid item xs={12} sm={12} md={8}>
+                        <div className={classes.serviceMainContainer}>
+                            <h1>Welcome to PD Connect</h1>
+                            <br />
+                            <h5>Based on your profile we have matched the following services. </h5>
 
+                            <br />
+
+                            <RenderServiceListItem header="View treatments" text="We have found x treatments that may benefit you and to disucss with your doctor" color={PRIMARY_COLOR}/>
+                            <RenderServiceListItem header="View clinical trials" text="We have matched you with x clinical trials currently recruiting volunteers" color={PRIMARY_COLOR}/>
+                            <RenderServiceListItem header="View focus groups" text="Ther are x focus groups looking for participants like you" color={PRIMARY_COLOR}/>
+                            <RenderServiceListItem header="Learn about your Parkinson disease" text="Knowledge articles aand videos tailored to you" color={PRIMARY_COLOR}/>
+                            <hr className={classes.hr} />
+                            <RenderServiceListItem header="Monitor my symptoms" text="Use theis site or our mobile app to monitor your symptoms" color={SECONDARY_COLOR}/>
+                            <RenderServiceListItem header="Assess my welllness" text="Complete a wellness questionnaire designed for Parkinson patients." color={SECONDARY_COLOR}/>
+
+                        </div>
+                    </Grid>
+
+                    <Grid item xs={12} sm={12} md={4}>
+                    <br />
+
+                    <div className={classes.serviceSideContainer}>
+                        </div>
+                    <div className={classes.serviceSideContainer}>
+                        </div>
+                    
+
+                    </Grid>
+                </Grid>
             </div>
-
         );
     }
 }
 
-function validate(values) {
-    const errors = {}
-    if (!values.email) {
-        errors.email = '*required'
-    } else if (
-        values.email &&
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-        errors.email = 'Invalid email address'
-    }
-    if (!values.password) {
-        errors.password = '*required'
-    }
-    if (!values.confirmPassword) {
-        errors.confirmPassword = '*required'
-    }
-    if(values.password !== values.confirmPassword){
-        errors.password = 'password provided does not match with each other.'
-    }
-    return errors
-}
+
 
 const mapStateToProps = (state) => {
     console.log("state ", state)
@@ -148,13 +103,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const formData = {
-    form: 'userAccountForm', //unique identifier for this form
-    validate,
-}
 
-UserServices = reduxForm(formData)(UserServices)
 UserServices = withRouter(UserServices)
-UserServices = withStyles(userStylesheet)(UserServices)
+UserServices = withStyles(resultStylesheet)(UserServices)
 // UserServices = connect(mapStateToProps, { submitUserServices})(UserServices)
 export default UserServices

@@ -330,22 +330,10 @@ export const userStylesheet = theme => ({
             fontWeight: "bold",
         }
     },
-    startPageContainer: {
-        fontFamily: 'muli',
-        maxWidth: "900px",
-        margin: "0 auto"
-    },
-    startPageTitle: {
-        fontSize: "26px"
-    },
-    startPageText: {
-        fontSize: "20px"
-    },
-    startPageListItems: {
-        margin: 0,
-        fontSize: "20px",
-        fontFamily: "muli",
-        fontWeight: "bold"
+    listItems: {
+        fontSize: "17px",
+        fontWeight: "bold",
+        lineHeight: 2
     },
     startPageButton: {
         backgroundColor: PRIMARY_COLOR,
@@ -380,7 +368,8 @@ export const userStylesheet = theme => ({
             border: "2px solid",
             borderColor: "#000080"
         }
-    }
+    }, 
+
 })
 
 export const resultStylesheet = theme => ({
@@ -633,6 +622,41 @@ export const resultStylesheet = theme => ({
             cursor: "default"
         },
     },
+    serviceMainContainer: {
+        minHeight: "600px",
+         padding: "20px 0",
+        // border: "2px solid lightgrey",
+        // borderRadius: "5px",
+        backgroundColor: "white",
+    }, 
+    serviceSideContainer: {
+        border: "2px solid lightgrey",
+        borderRadius: "5px",
+        backgroundColor: "white",
+        padding: "20px 0 20px 25px",
+        marginBottom: "40px"
+    },
+    serviceListBox: {
+        margin: "10px 0 10px 0", 
+        padding: "10px", 
+        border: "2px solid white", 
+        '&:hover': {
+            
+            borderRadius: "5px", 
+            borderColor: PRIMARY_COLOR,
+            backgroundColor: "#eeeeee"
+        }
+       
+    },
+    serviceListHeader: {
+        fontSize: "18px",
+        fontWeight: "bold"
+    },
+    serviceListText: {
+        fontSize: "16px",
+
+    }
+
 })
 
 
