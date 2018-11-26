@@ -34,7 +34,7 @@ import { motorSy } from '../../constants'
         modalTitle : '',
         modalText : '',
         modalWarning: "",
-        redirectAddress : '/user/user_review',
+        redirectAddress : '/user/user_nonmotorsy',
     }  
 
     componentDidMount() {

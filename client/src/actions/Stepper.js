@@ -36,15 +36,27 @@ function getStepContent(){
             }
             return objStepperContent;
         }
+        case '/user/user_start' : {
+            objStepperContent = {
+                stepperCount: 'Hello!',
+                pageName: `Let's get you connected`,
+                title: ``,
+                pageImg: `${accountImg}`,
+                subtitle: ``,
+                nextPage : `/user/user_about`,
+                prevPage : `/`,
+            }
+            return objStepperContent;
+        }
         case '/user/user_about':
             objStepperContent = {
                 stepperCount : 1,
-                pageName : 'You',
+                pageName : 'About you',
                 title: `Let's get started! Tell us a bit about you.`,
                 pageImg  : `${meImg}`,
                 subtitle : `This is important information which we use to individualise the information we provide to you.`,
                 nextPage : `/user/user_life`,
-                prevPage : `/user`,
+                prevPage : `/user/user_start`,
             }
             return objStepperContent;
         case '/user/user_life':
@@ -83,7 +95,7 @@ function getStepContent(){
         case '/user/user_surgery':
             objStepperContent = {
                 stepperCount: 5,
-                pageName: 'Surgery Procedure',
+                pageName: 'Surgery or Procedures',
                 title: `Have you ever had any surgery or procedures to treat Parkinson disease?`,
                 pageImg: `${surgeryImg}`,
                 subtitle: `Some patients have had surgery or precideures performed to treat their Parkinson disease. Tell us if you have ever had any of the surgeries or procedures opposite. `,
@@ -117,9 +129,9 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 8,
                 pageName: 'Your Profile',
-                title: `Review your answers, read our terms and conditions and set up your profile.`,
+                title: `Review your answers, read our privacy policy then create your profile.`,
                 pageImg: ``,
-                subtitle: `Please review the answers you have given (oposite). They will form the basis of your profile and be used to match you with our individualised services.`,
+                subtitle: `The answers you have given will be used to create your profile and to match you with our individualised services. Please take a moment to review your entries and make sure they are all correct. `,
                 nextPage: `/user/user_account`,
                 prevPage: `/user/user_nonmotorsy`,
             }
@@ -127,10 +139,10 @@ function getStepContent(){
         case '/user/user_account':
             objStepperContent = {
                 stepperCount: 'Finally...',
-                pageName: 'Create An Account',
-                title: `Create your account with us now to gain the following benefits:`,
+                pageName: 'Set Up An Account',
+                title: `Set up an account with us now to gain the following benefits:`,
                 pageImg: ``,
-                subtitle: `Account benefits:`,
+                subtitle: ``,
                 nextPage: `/services`,
                 prevPage: `/user/user_review`,
             }

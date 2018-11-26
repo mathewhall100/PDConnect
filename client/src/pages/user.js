@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Route, Switch } from "react-router-dom";
 
+import UserStart from '../components/user/userStart';
 import UserAbout from '../components/user/userAbout';
 import UserLife from '../components/user/userLife';
 import UserFamily from '../components/user/userFamily';
@@ -37,6 +38,7 @@ class User extends Component {
                     </Grid>
                     <Grid item lg={6} md={6} sm={12}  xs={12}>
                         <Switch>
+                            <Route path='/user/user_start' render={props => <UserStart></UserStart>} />
                             <Route path='/user/user_about' render={props => <UserAbout></UserAbout>} />
                             <Route path='/user/user_life' render={props => <UserLife></UserLife>} />
                             <Route path='/user/user_family' render={props => <UserFamily></UserFamily>} />

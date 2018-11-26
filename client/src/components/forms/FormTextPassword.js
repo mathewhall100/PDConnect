@@ -44,7 +44,7 @@ class FormTextPassword extends Component {
             <Field 
                 name={this.props.name}
                 label={this.props.label}
-                width={this.props.width ? this.props.width : "350px"}
+                width={this.props.width ? this.props.width : "300px"}
                 placeholder={this.props.placeholder ? this.props.placeholder : null}
                 component={this.renderTextField}
                 

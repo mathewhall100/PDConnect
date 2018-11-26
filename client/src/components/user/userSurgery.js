@@ -32,7 +32,7 @@ import { procedures } from '../../constants'
         open : false,
         modalTitle : '',
         modalDescription : '',
-        redirectAddress : '/user/user_review',
+        redirectAddress : '/user/user_motorsy',
     }  
 
     componentDidMount() {

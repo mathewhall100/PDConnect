@@ -27,7 +27,7 @@ import UserModal from '../commons/userModal'
         modalTitle: '',
         modalDescription : '',
         modalwarning: false,
-        redirectAddress : '/user/user_review',
+        redirectAddress : '/user/user_life',
     }
 
     componentWillMount() {
@@ -82,10 +82,8 @@ import UserModal from '../commons/userModal'
 
                     <span>
                         <FormControl variant="outlined"  style={{width: `${width}`}}>
-                            <InputLabel className={classes.inputLabel}>
-                                {label}
-                            </InputLabel>
                             <Select
+                                displayEmpty={true}
                                 {...input}
                                 onSelect={(event, index, value) => input.onChange(value)}
                                 children={children}
@@ -93,9 +91,9 @@ import UserModal from '../commons/userModal'
                                 input={
                                     <OutlinedInput
                                         className={classes.selectLabel}
-                                        labelWidth={labelWidth}
                                         name=' '
                                         id="outlined"
+                                        
                                     />
                                 }
                             >
@@ -129,83 +127,81 @@ import UserModal from '../commons/userModal'
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
 
-                                <Field
-                                        name="age"
-                                        component={RenderSelect}
-                                        label="Your age"
-                                        width={"150px"}
-                                        labelWidth={75}
-                                        modal={1}
-                                    >
-                                        {age.map(item =>
-                                        <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                                        )}
-                                </Field>
+                        <h4 className={classes.questionHead} >Your age</h4>
+                        <Field
+                                name="age"
+                                component={RenderSelect}
+                                width={"150px"}
+                                modal={1}
+                            >   
+                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select age</span></MenuItem>
+                                {age.map(item =>
+                                <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
+                                )}
+                        </Field>
 
-                                <br /><br />
+                        <br />
 
-                                 <Field
-                                        name="sex"
-                                        component={RenderSelect}
-                                        label="Your sex"
-                                        width={"150px"}
-                                        labelWidth={75}
-                                        modal={2}
-                                    >
-                                        {sex.map(item =>
-                                        <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                                        )}
-                                </Field>
+                        <h4 className={classes.questionHead} >Sex</h4>
+                        <Field
+                            name="sex"
+                            component={RenderSelect}
+                            width={"150px"}
+                            modal={2}
+                        >
+                            <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select sex</span></MenuItem>
+                            {sex.map(item =>
+                            <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
+                            )}
+                        </Field>
 
-                                <br /><br />
+                        <br />
 
-                                <Field
-                                        name="race"
-                                        component={RenderSelect}
-                                        label="Your race/ethnicity"
-                                        width={"320px"}
-                                        labelWidth={150}
-                                        modal={3}
-                                    >
-                                        {raceEthnicity.map(item =>
-                                        <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                                        )}
-                                </Field>
+                        <h4 className={classes.questionHead} >Race/ethnicity</h4>
+                        <Field
+                                name="race"
+                                component={RenderSelect}
+                                width={"380px"}
+                                modal={3}
+                            >
+                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select race/ethnicity</span></MenuItem>
+                                {raceEthnicity.map(item =>
+                                <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
+                                )}
+                        </Field>
 
-                                <br />
+                        <br />
 
-                                <h4 className={classes.questionHead} >When were you first diagnosed with Parkinson disease?</h4>
-                                <Field
-                                        name="yearDiagnosed"
-                                        component={RenderSelect}
-                                        label="Year"
-                                        width={"150px"}
-                                        labelWidth={40}
-                                        modal={4}
-                                    >
-                                        {years.map(item =>
-                                        <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                                        )}
-                                </Field>
+                        <h4 className={classes.questionHead} >When were you first diagnosed with Parkinson disease?</h4>
+                        <Field
+                                name="yearDiagnosed"
+                                component={RenderSelect}
+                                width={"150px"}
+                                modal={4}
+                            >
+                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select year</span></MenuItem>
+                                {years.map(item =>
+                                <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
+                                )}
+                        </Field>
 
-                                <br />
+                        <br />
 
-                                <h4 className={classes.questionHead}>When did you start treatment for Parkinson Disease?</h4>
-                                <Field
-                                        name="yearTreatment"
-                                        component={RenderSelect}
-                                        label="Year"
-                                        width={"150px"}
-                                        labelWidth={40}
-                                        modal={5}
-                                    >
-                                        {years.map(item =>
-                                        <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                                        )}
-                                </Field>
-                                <br />
+                        <h4 className={classes.questionHead}>When did you start treatment for Parkinson Disease?</h4>
+                        <Field
+                                name="yearTreatment"
+                                component={RenderSelect}
+                                width={"150px"}
+                                modal={5}
+                            >
+                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select year</span></MenuItem>
+                                {years.map(item =>
+                                <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
+                                )}
+                        </Field>
+                        <br />
 
-                                <Button type="submit" type="variant" className={classes.userNavButtonRight}>SAVE AND CONTINUE</Button>
+                        <Button type="submit" type="variant" className={classes.userNavButtonRight}>SAVE AND CONTINUE</Button>
 
                     </form>
 

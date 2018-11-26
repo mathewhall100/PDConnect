@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
@@ -13,11 +14,13 @@ class Hero extends Component {
     state = {
         open: false,
         redirect : false,
-        redirectAdress : '',
+        redirectAddress : '/user/user_start',
     };
 
     handleModalOpen = () => {
-        this.setState({ open: true });
+        console.log("modal open")
+        this.props.history.push(this.state.redirectAddress)
+        // this.setState({ open: true });
     };
 
     handleClose = () => {
@@ -67,7 +70,7 @@ class Hero extends Component {
                                 Use this application to find your next best and latest Parkinsons disease treatments and clinical trials.
                             </div>
                             <div className={classes.buttonContainer}>
-                                <Button variant='outlined' className={classes.homepageButton} onClick={() => this.handleModalOpen()}>Get Connected</Button>
+                                <Button variant='outlined' className={classes.homepageButton} onClick={() => this.handleModalOpen()}>Connect online today</Button>
                             </div>
                         </Grid>
                         <Grid item xs={1} sm={1} md={1} lg={1} />
@@ -109,6 +112,6 @@ function getModalStyle() {
     };
 }
 
-
+Hero = withRouter(Hero)
 Hero = withStyles(home2Stylesheet)(Hero)
 export default Hero;

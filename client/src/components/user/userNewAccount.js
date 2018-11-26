@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
-
-import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
 import { userStylesheet } from '../../styles';
@@ -36,25 +34,6 @@ class UserNewAccount extends Component {
 
         const { handleSubmit, classes } = this.props
 
-        const BottomNav = (props) => {
-            return (
-                <Grid container spacing={24} className={classes.buttonContainer}>
-                    <Grid item xs={12}>
-                        <hr className={classes.hr} />
-                    </Grid>
-                    <Grid item xs={3}>
-                        <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleCreateAccount()}>Create</Button>
-                    </Grid>
-                </Grid>
-            )
-        }
-
-
         return (
             <div className={classes.componentBox} style={{marginTop: "75px"}}>
 
@@ -63,17 +42,17 @@ class UserNewAccount extends Component {
                 <div>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
-                        <label style={{fontWeight: "bold", position: "relative", top: "15px"}}>E-mail</label>
+                        <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>E-mail</label>
                         <FormText title='email' name='email' label='' placeholder="e.g. john.doe@gmail.com"/>
                         <br />
-                        <label style={{fontWeight: "bold", position: "relative", top: "15px"}}>Password</label>
-                        <FormPassword title='password' name='password' label='' placeholder="8 characters minimum"/>
+                        <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>Password</label>
+                        <FormPassword title='password' name='password' label='' placeholder="8 or more characters"/>
                         <br />
-                        <label style={{fontWeight: "bold", position: "relative", top: "15px"}}>Re-enter password</label>
+                        <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>Re-enter password</label>
                         <FormPassword title='password' name='confirmPassword' label='' placeholder="passwords must match"/>
 
                         <br />
-                        <Button type="submit" type="variant" className={classes.userNavButtonRight} >SET UP ACCOUNT</Button>
+                        <Button type="submit" type="variant" className={classes.userNavButtonRight} >SET UP MY ACCOUNT</Button>
 
                     </form>
 
@@ -93,22 +72,22 @@ function validate(values) {
         values.email &&
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
-        errors.email = 'Invalid email address'
+        errors.email = '*Invalid email address'
     }
     if (!values.password) {
-        errors.password = '*required'
+        errors.password = '*Required'
     }
     if (values.password && values.password.length < 8) {
-        errors.password = 'password must be at least 8 charcters long.'
+        errors.password = '*Minimum 8 charcters long.'
     }
     if (!values.confirmPassword) {
-        errors.confirmPassword = '*required'
+        errors.confirmPassword = '*Required'
     }
     if (values.confirmPassword && values.confirmPassword.length < 8) {
         errors.confirmPassword = ' '
     }
     if(values.confirmPassword && values.confirmPassword.length > 8 && values.password !== values.confirmPassword){
-        errors.confirmPassword = 'passwords entered must match.'
+        errors.confirmPassword = '*Passwords must match.'
     }
     
     return errors
@@ -126,8 +105,8 @@ const mapStateToProps = (state) => {
 }
 
 const formData = {
-    form: 'userNewAccountForm', //unique identifier for this form
-    validate,
+    form: 'userNewAccountForm',
+    validate
 }
 
 UserNewAccount = reduxForm(formData)(UserNewAccount)

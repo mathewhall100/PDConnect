@@ -32,7 +32,7 @@ class UserMeds extends Component {
         open : false,
         modalTitle : '',
         modalText : '',
-        redirectAddress : '/user/user_review',
+        redirectAddress : '/user/user_surgery',
     }  
 
     componentDidMount() {

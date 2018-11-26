@@ -37,7 +37,7 @@ import { PDADLs } from '../../constants'
         modalWarning: false,
         modalTitle : '',
         modalText : '',
-        redirectAddress : '/user/user_review',
+        redirectAddress : '/user/user_family',
     }  
 
     handleAnswerSelect = (index) => {

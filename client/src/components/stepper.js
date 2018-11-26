@@ -52,13 +52,14 @@ class VerticalLinearStepper extends React.Component {
             } else if (stepperCount === 8) {
                 return (
                     <div style={{marginRight: "10px"}}> 
-                        <span className={classes.stepperTitle}>Your profile will be secure and we will not sell or share any information within it without your express permission.</span>
+                        <br />
+                        <span className={classes.stepperSubtitle}>Your profile will be secure and we will not sell or share any information within it without your express permission.</span>
                         <br />
                         <br />
-                        <span className={classes.stepperTitle}>
+                        <span className={classes.stepperSubtitle}>
                             Please read our 
                             <span className={classes.profileTermsButton}>Terms & Conditions</span> 
-                            as well as our 
+                            and
                             <span className={classes.profileTermsButton}>Data Privacy Policy</span>
                         </span>
                         <br />
@@ -68,7 +69,7 @@ class VerticalLinearStepper extends React.Component {
                             <tbody>
                                 <tr>
                                     <td><FormCheckbox name="policyCheck" label="Check" /></td>
-                                    <td className={classes.stepperTitle}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy."</td>
+                                    <td>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy."</td>
                                 </tr>
 
                             </tbody>
@@ -76,10 +77,34 @@ class VerticalLinearStepper extends React.Component {
                         <hr className={classes.hr} style={{marginRight: 0}}/>
                     </div>
                 )
+            } else if (stepperCount === "Finally...") {
+                return (
+                    <div className={classes.questionHead} >
+                        <ul style={{marginLeft: "20px"}}>
+                            <li>Save your profile between visits</li>
+                            <li>Hear first about new treatments and clinical trials matched to you</li>
+                            <li>Submit your details to participate in focus groups</li>
+                            <li>Earn reward points for greater involvement</li>
+                            <li>Easily keep you profile up to date</li>
+                        </ul>             
+                    </div>
+                )
+            } else if (stepperCount=== "Hello!") {
+                return (
+                    <div className={classes.questionHead} >
+                        <ul style={{marginLeft: "20px"}}>
+                            <li>Up to date knowledge of new and established treatments that may benefit you</li>
+                            <li>Clinical trials in Parkinson disease looking to recruit volunteers</li>
+                            <li>Focus groups that pay you for participating</li>
+                            <li>Latest Parkinson disease news and information</li>
+                            <li>More</li>
+                        </ul>             
+                    </div>
+                )
             } else return null
             
         }
-        
+
         const StepperHead = () =>  {
             console.log("stepperCount: ", stepperCount)
             if (!isNaN(stepperCount) ) {
@@ -111,12 +136,12 @@ class VerticalLinearStepper extends React.Component {
                             
                         </Grid>
                         <Grid item xs={12}>
-                            <span className={classes.stepperTitle}>{subtitle}</span>
+                            <span className={classes.stepperSubtitle}>{subtitle}</span>
                             <ExtraText />
                         </Grid>
                     </Grid>
 
-                    {( stepperCount < 8 || isNaN(stepperCount) ) && <BottomNav />  }
+                    {( (stepperCount < 8 || isNaN(stepperCount)) && stepperCount !== "Hello!") && <BottomNav />  }
 
                 </div>
             :

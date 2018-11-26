@@ -120,7 +120,7 @@ export const raceEthnicity = [
 export const years = [
     {
         "value": "ns",
-        "text": "not sureyarn start"
+        "text": "not sure"
     },
     {
         "value": "2018",

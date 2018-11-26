@@ -22,7 +22,7 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
 
     state = {
         familyResult: [],
-        redirectAddress : '/user/user_review',
+        redirectAddress : '/user/user_meds',
     }  
 
     componentDidMount() {
@@ -39,6 +39,7 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
         console.log("treebuttonClicked : ",  rel)
         let tempArray = this.state.familyResult
         const index= tempArray.indexOf(rel)
+        if (tempArray[0] === "none") {tempArray.splice(0,1)}
         if (index < 0 && rel !== "YOU") {tempArray.push(rel)} 
             else if (index >= 0) {tempArray.splice(index, 1)}
         this.setState({familyResult: tempArray})

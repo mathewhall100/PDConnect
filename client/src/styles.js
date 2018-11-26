@@ -52,6 +52,10 @@ export const userStylesheet = theme => ({
         fontWeight : 'bold',
         lineHeight: 2,
     },
+    stepperSubtitle: {
+        lineHeight: 1.2,
+        fontSize: "19px"
+    },
     stepperImg : {
         height : '50px',
         width : '50px',
@@ -71,10 +75,7 @@ export const userStylesheet = theme => ({
     },
     selectLabel: {
         fontSize: "20px",
-        fontweight: "bold"
-    },
-    inputLabel: {
-        fontSize: "18px"
+        color: "black"
     },
     title: {
         fontSize: '32px',
@@ -94,8 +95,9 @@ export const userStylesheet = theme => ({
         marginBottom: "10px"
     },
     questionHead: {
-        fontSize: "20px",
-        fontWeight: "bold"
+        fontSize: "18px",
+        fontWeight: "bold",
+        lineHeight: 2
     },
     questionText: {
         fontSize: "18px",
@@ -266,6 +268,8 @@ export const userStylesheet = theme => ({
         border: "1px solid grey",
         padding: "20px 20px 0 20px",
         borderRadius: "5px",
+        fontWeight: "bold",
+        
     },
     profileSectionHeader: {
         fontSize: "18px",
@@ -289,6 +293,24 @@ export const userStylesheet = theme => ({
             fontWeight: "bold",
         }
     },
+    profileBoxButton2: {
+        backgroundColor: "#EEE",
+        color: 'black',
+        fontWeight: "bold",
+        fontSize: "13px", 
+        border: "2px solid",
+        borderColor: "grey",
+        borderRadius: '5px',
+        padding: '5px 20px 5px 20px',
+        margin: "10px",
+        '&:hover': {
+            color: PRIMARY_COLOR,
+            backgroundColor: "lightgrey",
+            border: "2px solid",
+            borderColor: PRIMARY_COLOR,
+            fontWeight: "bold",
+        }
+    },
     profileTermsButton: {
         backgroundColor: "#EEE",
         width: '60px',
@@ -297,6 +319,7 @@ export const userStylesheet = theme => ({
         fontSize: "14px", 
         border: "2px solid",
         borderColor: "grey",
+        borderRadius: '3px',
         padding: '5px 10px 5px 10px',
         margin: "10px",
         '&:hover': {
@@ -305,6 +328,57 @@ export const userStylesheet = theme => ({
             border: "2px solid",
             borderColor: PRIMARY_COLOR,
             fontWeight: "bold",
+        }
+    },
+    startPageContainer: {
+        fontFamily: 'muli',
+        maxWidth: "900px",
+        margin: "0 auto"
+    },
+    startPageTitle: {
+        fontSize: "26px"
+    },
+    startPageText: {
+        fontSize: "20px"
+    },
+    startPageListItems: {
+        margin: 0,
+        fontSize: "20px",
+        fontFamily: "muli",
+        fontWeight: "bold"
+    },
+    startPageButton: {
+        backgroundColor: PRIMARY_COLOR,
+        borderColor: "#000080",
+        border: "2px solid",
+        borderRadius: "6px",
+        margin: "10px",
+        padding: "10px",
+        color: 'white',
+        fontWeight: "bold",
+        fontSize: "18px",
+        '&:hover': {
+            color: PRIMARY_COLOR,
+            backgroundColor: "lightgrey",
+            border: "2px solid",
+            borderColor: "#000080"
+        }
+    },
+    startPageButton2: {
+        backgroundColor: "white",
+        borderColor: "#000080",
+        border: "2px solid",
+        borderRadius: "6px",
+        margin: "10px",
+        padding: "6px",
+        color: 'grey',
+        fontWeight: "bold",
+        fontSize: "16px",
+        '&:hover': {
+            color: PRIMARY_COLOR,
+            backgroundColor: "lightgrey",
+            border: "2px solid",
+            borderColor: "#000080"
         }
     }
 })
