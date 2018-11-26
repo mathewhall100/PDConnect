@@ -46,10 +46,10 @@ class UserStart extends Component {
         return (
             <section>
                 <div className={classes.componentBox} style={{marginTop: "75px"}}>
-                    <span className={classes.stepperSubtitle} style={{fontWeight: "bold"}}>First, however, we need to know a bit about you, about how Parkinson disease affects you and about your treatment.</span>
+                    <span className={classes.stepperSubtitle} style={{fontWeight: "bold"}}>First, however, we need to know a bit about you, how Parkinson disease affects you and about your treatment.</span>
                     <br />
                     <br />
-                    <p>This is important as it allows us so to tailor the information and services we provide specifically to be of most relevance to you.</p>
+                    <p>This is important as it allows us so to tailor the information and services we provide specifically to you and to be of most relevance to you.</p>
 
                     <br />
 

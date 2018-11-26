@@ -53,8 +53,8 @@ export const userStylesheet = theme => ({
         lineHeight: 2,
     },
     stepperSubtitle: {
-        lineHeight: 1.2,
-        fontSize: "19px"
+        lineHeight: 1.,
+        fontSize: "17px"
     },
     stepperImg : {
         height : '50px',
@@ -74,7 +74,7 @@ export const userStylesheet = theme => ({
         fontSize: "23px"
     },
     selectLabel: {
-        fontSize: "20px",
+        
         color: "black"
     },
     title: {
@@ -95,9 +95,9 @@ export const userStylesheet = theme => ({
         marginBottom: "10px"
     },
     questionHead: {
-        fontSize: "18px",
+        fontSize: "17px",
         fontWeight: "bold",
-        lineHeight: 2
+        lineHeight: 1.5
     },
     questionText: {
         fontSize: "18px",

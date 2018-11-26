@@ -74,7 +74,7 @@ import UserModal from '../commons/userModal'
 
         const RenderSelect = (field) => {
 
-            const {input, label, width, modal, labelWidth, meta: { pristine, touched, error }, children, ...custom} = field
+            const {input, label, width, modal, meta: { pristine, touched, error }, children, ...custom} = field
 
             return (
 
@@ -93,7 +93,6 @@ import UserModal from '../commons/userModal'
                                         className={classes.selectLabel}
                                         name=' '
                                         id="outlined"
-                                        
                                     />
                                 }
                             >

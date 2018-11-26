@@ -429,8 +429,8 @@ export const meds = [
 
 export const motorSy = [
     {key: "motorfluct", symptom: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
-    {key: "earlyoff", symptom: "Early wear off", shortDescription: "Your medications stop working aftr a while and symptoms return before next dose", description: ""},
-    {key: "suddenoff", symptom: "Sudden or unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
+    {key: "earlyoff", symptom: "Early wear off", shortDescription: "Your medications stop working after a while and symptoms return before next dose", description: ""},
+    {key: "suddenoff", symptom: "Unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
     {key: "freezing", symptom: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
     {key: "tremor", symptom: "Tremor", shortDescription: "Shaking of the hands and arms that bothers you or prevents you doing things with your hands", description: ""},
     {key: "dyskinesia", symptom: "Troubling dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
@@ -442,7 +442,7 @@ export const motorSy = [
 ]
 
 export const nonMotorSy= [
-    {key: "psychosis", symptom: "Hallucinations and / or delusions", shortDescription: "Seeying or believing things that you know are not really there or true.", description: ""},
+    {key: "psychosis", symptom: "Hallucination or delusion", shortDescription: "Seeying or believing things that you know are not really there or true.", description: ""},
     {key: "orthostatic", symptom: "Dizziness, lightheadedness or feeling faint", shortDescription: "Dizziness, lightheadedness or feeling faint, particularly after standing or changing position ", description: ""},
     {key: "drooling", symptom: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
     {key: "slowtransit", symptom: "Nausea and bloating", shortDescription: "Nausea, sickness and bloated stomach", description: ""},
@@ -450,7 +450,7 @@ export const nonMotorSy= [
     {key: "constipation", symptom: "Constipation", shortDescription: "Infrequent and or difficuklty opening your bowels.", description: ""},
     {key: "insomnia", symptom: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep", description: ""},
     {key: "depression", symptom: "Depression", shortDescription: "Low mood and feeling sof hopelessness", description: ""},
-    {key: "cogdecline", symptom: "Poor cognition", shortDescription: "Difficulty thinking or remembering things to a point where it affects your life and others notice it.", description: ""},
+    {key: "cogdecline", symptom: "Poor cognition", shortDescription: "Difficulty thinking and/or remembering things which adversely affects your life.", description: ""},
     
 ]
 

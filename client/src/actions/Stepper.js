@@ -85,7 +85,7 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 4,
                 pageName: 'Medications',
-                title: `Awesome, you're half way through! Now, what medications do you take for Parkinson Disease?`,
+                title: `Awesome, you're half way through! Now, what medications do you take for Parkinson disease?`,
                 pageImg: `${medsImg}`,
                 subtitle: `Click the circles to indicate which medications you are currently taking for parkinson disease, or select "none" if you don't take any.`,
                 nextPage: `/user/user_surgery`,
@@ -131,7 +131,7 @@ function getStepContent(){
                 pageName: 'Your Profile',
                 title: `Review your answers, read our privacy policy then create your profile.`,
                 pageImg: ``,
-                subtitle: `The answers you have given will be used to create your profile and to match you with our individualised services. Please take a moment to review your entries and make sure they are all correct. `,
+                subtitle: `The answers you have given will be used to create your profile and to match you with individualised information and services. Please take a moment to review your entries and make sure they are all correct. `,
                 nextPage: `/user/user_account`,
                 prevPage: `/user/user_nonmotorsy`,
             }
@@ -140,7 +140,7 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 'Finally...',
                 pageName: 'Set Up An Account',
-                title: `Set up an account with us now to gain the following benefits:`,
+                title: ``,
                 pageImg: ``,
                 subtitle: ``,
                 nextPage: `/services`,
