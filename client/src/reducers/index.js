@@ -17,6 +17,8 @@ import UserSurgeryReducer from './UserSurgeryReducer';
 import UserMotorSyReducer from './UserMotorSyReducer';
 import UserNonMotorSyReducer from './UserNonMotorSyReducer';
 import UserAccountReducer from './UserAccountReducer';
+import CredsReducer from './CredsReducer';
+
 export default combineReducers({
     form: formReducer,
     router: routerReducer,
@@ -35,4 +37,5 @@ export default combineReducers({
     motorSy : UserMotorSyReducer,
     nonMotorSy : UserNonMotorSyReducer,
     accountResponse : UserAccountReducer,
+    creds: CredsReducer,
 });

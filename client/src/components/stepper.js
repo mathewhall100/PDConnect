@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Modal from '../components/commons/modal';
 import { updateStepperCount } from '../actions/Stepper';
 import { userStylesheet } from '../styles';
 import BottomNav from '../components/commons/userBottomNav'
@@ -44,23 +45,26 @@ class VerticalLinearStepper extends React.Component {
         const { stepperCount, pageImg, totalSteps, pageName, title, subtitle} = stepper;
         console.log("stepper props : ", this.props);
         const { activeStep } = this.state;
-        
+
         const ExtraText = () => {
             console.log("stepperCount: ", stepperCount)
             if (stepperCount < 8) {
                 return null
             } else if (stepperCount === 8) {
                 return (
-                    <div style={{marginRight: "10px"}}> 
+                    <div style={{marginRight: "10px"}}>
                         <br />
                         <span className={classes.stepperSubtitle}>Your profile will be secure and we will not sell or share any information within it without your express permission.</span>
                         <br />
                         <br />
+
                         <span className={classes.stepperSubtitle}>
-                            Please read our 
-                            <span className={classes.profileTermsButton}>Terms & Conditions</span> 
-                            and
-                            <span className={classes.profileTermsButton}>Data Privacy Policy</span>
+                            Please read our
+                            <Modal buttonLabel="Terms & Conditions" modalTitle='PD Connect Terms and Conditions' modalContent='content heeeere' />
+                            {/*<span className={classes.profileTermsButton}>Terms & Conditions</span> */}
+                              and
+                            <Modal buttonLabel="Data Privacy Policy" modalTitle='PD Connect Data Privacy Policy' modalContent='content heeeere' />
+                            {/*<span className={classes.profileTermsButton}>Data Privacy Policy</span> */}
                         </span>
                         <br />
                         <br />
@@ -68,8 +72,11 @@ class VerticalLinearStepper extends React.Component {
                         <table>
                             <tbody>
                                 <tr>
-                                    <td><FormCheckbox name="policyCheck" label="Check" /></td>
-                                    <td>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy."</td>
+                                    <td>
+                                        <FormCheckbox   name="policyCheck"
+                                                        label={`I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.`}
+                                        />
+                                    </td>
                                 </tr>
 
                             </tbody>
@@ -86,7 +93,7 @@ class VerticalLinearStepper extends React.Component {
                             <li>Submit your details to participate in focus groups</li>
                             <li>Earn reward points for greater involvement</li>
                             <li>Easily keep you profile up to date</li>
-                        </ul>             
+                        </ul>
                     </div>
                 )
             } else if (stepperCount=== "Hello!") {
@@ -98,11 +105,11 @@ class VerticalLinearStepper extends React.Component {
                             <li>Focus groups that pay you for participating</li>
                             <li>Latest Parkinson disease news and information</li>
                             <li>More</li>
-                        </ul>             
+                        </ul>
                     </div>
                 )
             } else return null
-            
+
         }
 
         const StepperHead = () =>  {
@@ -110,7 +117,7 @@ class VerticalLinearStepper extends React.Component {
             if (!isNaN(stepperCount) ) {
                 return (
                     <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2>
-                ) 
+                )
             } else {
                 return (
                     <h2 className={classes.stepperCounter}>{stepperCount}</h2>
@@ -133,7 +140,7 @@ class VerticalLinearStepper extends React.Component {
                         </Grid>
                         <Grid item xs={12}>
                             <h2 className={classes.stepperTitle}>{title}</h2>
-                            
+
                         </Grid>
                         <Grid item xs={12}>
                             <span className={classes.stepperSubtitle}>{subtitle}</span>

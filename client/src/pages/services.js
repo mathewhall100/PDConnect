@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
-import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
+import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -11,18 +12,38 @@ import Button from '@material-ui/core/Button'
 import { resultStylesheet, PRIMARY_COLOR, SECONDARY_COLOR } from '../styles';
 import SocMedBox from '../components/commons/socMedBox'
 
+import assessImg from '../images/avatar/services/assess.png';
+import focusImg from '../images/avatar/services/focus.png';
+import learnImg from '../images/avatar/services/learn.png';
+import monitorImg from '../images/avatar/services/monitor.png';
+import treatmentImg from '../images/avatar/services/treatments.png';
+import trialsImg from '../images/avatar/services/trials.png';
+import { testApomorphine, testBotTox, testDBS, testDroxidopa, testDuopa, testNILO, testNuplazid, testRytary, testSPARK } from '../functions';
+import { submitTrialResult, submitTreatmentResult } from '../actions/ResultAction';
 
 
 class UserServices extends Component {
 
     state = {
-        listItemHover: false,
+        redirectAddress: '',
+        treatmentResults: [],
+        trialResults: [],
     }
 
 
 
     componentDidMount() {
         window.scroll(0, 0)
+        console.log(this.props.userAbout)
+        console.log(this.props.userADL)
+        console.log(this.props.userFamily)
+        console.log(this.props.userMeds)
+        console.log(this.props.userSurgery)
+        console.log(this.props.userMotorSy)
+        console.log(this.props.userNonMotorSy)
+
+        this.treatmentResults()
+        this.trialResults()
     }
 
     handleServiceRedirect = (redirectAddress) => {
@@ -50,13 +71,13 @@ class UserServices extends Component {
                 <div className={classes.serviceListBox} onClick={() => this.handleServiceRedirect(props.redirectAddress)}>
                     <Grid container spacing={8} >
                         <Grid item xs={12} sm={2}>
-                            Avatar<br />image<br />
+                            <img className={classes.serviceIcon} src={props.avatar} alt={props.header} />
                         </Grid>
                         <Grid item xs={12} sm={10}>
                             <span className={classes.serviceListHeader}>{props.header}</span>
                             <br />
                             <span className={classes.serviceListText}>{props.text}</span>
-                        </Grid>              
+                        </Grid>
                     </Grid>
                 </div>
             )
@@ -127,12 +148,22 @@ class UserServices extends Component {
 const mapStateToProps = (state) => {
     console.log("state ", state)
     return {
-        accountResponse: state.accountResponse
+        accountResponse: state.accountResponse,
+        userAbout: state.about,
+        userADL: state.adl.ADL,
+        userFamily: state.family.family,
+        userMeds: state.meds.meds,
+        userSurgery: state.surgery.surgery,
+        userMotorSy: state.motorSy.motorSy,
+        userNonMotorSy: state.nonMotorSy.nonMotorSy,
+        creds: state.creds,
     }
 }
-
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ submitTreatmentResult, submitTrialResult }, dispatch);
+}
 
 UserServices = withRouter(UserServices)
 UserServices = withStyles(resultStylesheet)(UserServices)
-// UserServices = connect(mapStateToProps, { submitUserServices})(UserServices)
+UserServices = connect(mapStateToProps, mapDispatchToProps)(UserServices)
 export default UserServices

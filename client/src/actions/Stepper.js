@@ -33,6 +33,7 @@ function getStepContent(){
                 title: `Create an account to enjoy the benefits as below!`,
                 pageImg: `${accountImg}`,
                 subtitle: `You will be able to receive notification to edit your medications, and symptoms so you are always on top of the new treatments available!`,
+                prevPage: `/`,
             }
             return objStepperContent;
         }
@@ -141,7 +142,7 @@ function getStepContent(){
                 stepperCount: 'Finally...',
                 pageName: 'Set Up An Account',
                 title: ``,
-                pageImg: ``,
+                pageImg: `${accountImg}`,
                 subtitle: ``,
                 nextPage: `/services`,
                 prevPage: `/user/user_review`,

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
-
+import Modal from '../commons/modal';
 import { userStylesheet, PRIMARY_COLOR } from '../../styles';
 import { updateStepperCount } from '../../actions/index.js'
 
@@ -29,9 +29,9 @@ class UserStart extends Component {
         this.props.history.push('/')
     }
 
-    handleModalOpen = (title, text) => { 
+    handleModalOpen = (title, text) => {
         console.log(title);
-         this.setState({ 
+         this.setState({
              modalTitle : title,
              modalText : text,
              modalOpen: true
@@ -58,14 +58,17 @@ class UserStart extends Component {
                         <p>This site is intended for use by patients with Parkinson disease, their family and carers and the following pages will guide you through telling us about yourself, about how Parkinson disease affects you and about your treatment.
                             <span style={{fontWeight: "bold"}}> We take your privacy very seriously and will not sell or share any information about you without your express permission. </span>
                             <span style={{position: "relative", top: "10px"}}><br />
-                                Read our <span  className={classes.profileBoxButton2} style={{padding: "5px", backgroundColor: "lightgrey"}}>DATA PRIVACY POLICY</span>
+                                Read our
+                                <Modal buttonLabel="Data Privacy Policy" modalTitle="Privacy Policy" modalContent="Privacy Policy content here" />
+                                {/*<span  className={classes.profileBoxButton2} style={{padding: "5px", backgroundColor: "lightgrey"}}>DATA PRIVACY POLICY</span> */}
+
                             </span>
-                        </p> 
-                    </div> 
+                        </p>
+                    </div>
 
                     <br />
                     <br />
-                    
+
                     <div style={{textAlign: "center"}}>
                         <Button type="button" className={classes.startPageButton} style={{width: "50%"}} onClick={() => this.handleGo()}>Ok, Let's go</Button>
                         <br /><br />
@@ -74,11 +77,11 @@ class UserStart extends Component {
 
                 </div>
 
-                     {/* { modalOpen && <UserModal 
+                     {/* { modalOpen && <UserModal
                          modalOpen={modalOpen}
-                         modalTitle={modalTitle} 
-                         modalText={modalText} 
-                         modalWarning={modalWarning} 
+                         modalTitle={modalTitle}
+                         modalText={modalText}
+                         modalWarning={modalWarning}
                      /> } */}
             </section>
 
