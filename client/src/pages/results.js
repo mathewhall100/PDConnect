@@ -24,6 +24,7 @@ class Results extends Component {
         value: 0,
         treatmentResults: [],
         trialResults: [],
+        redirect: false,
     }
 
     componentDidMount() {
