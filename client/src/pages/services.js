@@ -10,6 +10,12 @@ import Button from '@material-ui/core/Button'
 
 import { resultStylesheet, PRIMARY_COLOR, SECONDARY_COLOR } from '../styles';
 
+import assessImg from '../images/avatar/services/assess.png';
+import focusImg from '../images/avatar/services/focus.png';
+import learnImg from '../images/avatar/services/learn.png';
+import monitorImg from '../images/avatar/services/monitor.png';
+import treatmentImg from '../images/avatar/services/treatments.png';
+import trialsImg from '../images/avatar/services/trials.png';
 
 
 class UserServices extends Component {
@@ -41,13 +47,13 @@ class UserServices extends Component {
                 <div className={classes.serviceListBox} >
                     <Grid container spacing={8} >
                         <Grid item xs={12} sm={2}>
-                            Avatar<br />image
+                            <img className={classes.serviceIcon} src={props.avatar} alt={props.header} />
                         </Grid>
                         <Grid item xs={12} sm={10}>
                             <span className={classes.serviceListHeader}>{props.header}</span>
                             <br />
                             <span className={classes.serviceListText}>{props.text}</span>
-                        </Grid>              
+                        </Grid>
                     </Grid>
                 </div>
             )
@@ -67,13 +73,13 @@ class UserServices extends Component {
 
                             <br />
 
-                            <RenderServiceListItem header="View treatments" text="We have found x treatments that may benefit you and to disucss with your doctor" color={PRIMARY_COLOR}/>
-                            <RenderServiceListItem header="View clinical trials" text="We have matched you with x clinical trials currently recruiting volunteers" color={PRIMARY_COLOR}/>
-                            <RenderServiceListItem header="View focus groups" text="Ther are x focus groups looking for participants like you" color={PRIMARY_COLOR}/>
-                            <RenderServiceListItem header="Learn about your Parkinson disease" text="Knowledge articles aand videos tailored to you" color={PRIMARY_COLOR}/>
+                            <RenderServiceListItem avatar={treatmentImg} header="View treatments" text="We have found x treatments that may benefit you and to disucss with your doctor" color={PRIMARY_COLOR}/>
+                            <RenderServiceListItem avatar={trialsImg} header="View clinical trials" text="We have matched you with x clinical trials currently recruiting volunteers" color={PRIMARY_COLOR}/>
+                            <RenderServiceListItem avatar={focusImg} header="View focus groups" text="Ther are x focus groups looking for participants like you" color={PRIMARY_COLOR}/>
+                            <RenderServiceListItem avatar={learnImg} header="Learn about your Parkinson disease" text="Knowledge articles aand videos tailored to you" color={PRIMARY_COLOR}/>
                             <hr className={classes.hr} />
-                            <RenderServiceListItem header="Monitor my symptoms" text="Use theis site or our mobile app to monitor your symptoms" color={SECONDARY_COLOR}/>
-                            <RenderServiceListItem header="Assess my welllness" text="Complete a wellness questionnaire designed for Parkinson patients." color={SECONDARY_COLOR}/>
+                            <RenderServiceListItem avatar={monitorImg} header="Monitor my symptoms" text="Use theis site or our mobile app to monitor your symptoms" color={SECONDARY_COLOR}/>
+                            <RenderServiceListItem avatar={assessImg} header="Assess my welllness" text="Complete a wellness questionnaire designed for Parkinson patients." color={SECONDARY_COLOR}/>
 
                         </div>
                     </Grid>
@@ -85,7 +91,7 @@ class UserServices extends Component {
                         </div>
                     <div className={classes.serviceSideContainer}>
                         </div>
-                    
+
 
                     </Grid>
                 </Grid>

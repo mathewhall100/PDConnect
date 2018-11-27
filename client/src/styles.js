@@ -38,7 +38,7 @@ export const userStylesheet = theme => ({
         margin: 'auto',
         padding: "0 20px 40px 40px"
     },
-   
+
     stepperContainer : {
         width : '100%',
         marginRight: "40px",
@@ -59,7 +59,7 @@ export const userStylesheet = theme => ({
     stepperImg : {
         height : '50px',
         width : '50px',
-    }, 
+    },
     spacingContainer: {
         height: "100px",
     },
@@ -74,7 +74,7 @@ export const userStylesheet = theme => ({
         fontSize: "23px"
     },
     selectLabel: {
-        
+
         color: "black"
     },
     title: {
@@ -269,7 +269,7 @@ export const userStylesheet = theme => ({
         padding: "20px 20px 0 20px",
         borderRadius: "5px",
         fontWeight: "bold",
-        
+
     },
     profileSectionHeader: {
         fontSize: "18px",
@@ -281,7 +281,7 @@ export const userStylesheet = theme => ({
         width: '80px',
         color: 'black',
         fontWeight: "bold",
-        fontSize: "13px", 
+        fontSize: "13px",
         border: "2px solid",
         borderColor: "grey",
         height: "16px",
@@ -297,7 +297,7 @@ export const userStylesheet = theme => ({
         backgroundColor: "#EEE",
         color: 'black',
         fontWeight: "bold",
-        fontSize: "13px", 
+        fontSize: "13px",
         border: "2px solid",
         borderColor: "grey",
         borderRadius: '5px',
@@ -316,7 +316,7 @@ export const userStylesheet = theme => ({
         width: '60px',
         color: 'black',
         fontWeight: "bold",
-        fontSize: "14px", 
+        fontSize: "14px",
         border: "2px solid",
         borderColor: "grey",
         borderRadius: '3px',
@@ -368,7 +368,7 @@ export const userStylesheet = theme => ({
             border: "2px solid",
             borderColor: "#000080"
         }
-    }, 
+    },
 
 })
 
@@ -590,6 +590,11 @@ export const resultStylesheet = theme => ({
 
         }
     },
+    serviceIcon: {
+        maxWidth: '50px',
+        maxHeight: '50px',
+        margin: '5px',
+    },
     infoTitle: {
         textAlign: "center",
         textWeight: "bold",
@@ -628,7 +633,7 @@ export const resultStylesheet = theme => ({
         // border: "2px solid lightgrey",
         // borderRadius: "5px",
         backgroundColor: "white",
-    }, 
+    },
     serviceSideContainer: {
         border: "2px solid lightgrey",
         borderRadius: "5px",
@@ -637,16 +642,16 @@ export const resultStylesheet = theme => ({
         marginBottom: "40px"
     },
     serviceListBox: {
-        margin: "10px 0 10px 0", 
-        padding: "10px", 
-        border: "2px solid white", 
+        margin: "10px 0 10px 0",
+        padding: "10px",
+        border: "2px solid white",
         '&:hover': {
-            
-            borderRadius: "5px", 
+
+            borderRadius: "5px",
             borderColor: PRIMARY_COLOR,
             backgroundColor: "#eeeeee"
         }
-       
+
     },
     serviceListHeader: {
         fontSize: "18px",
@@ -686,13 +691,19 @@ export const stylesheet = theme => ({
     },
     topBarBtn : {
         margin: "20px 0 0 15px",
-        backgroundColor: "white",
-        color: "black",
+        backgroundColor: "white !important",
+        color: "black !important",
         border: "2px solid #BF9000",
         fontWeight: "bold",
         '&:hover': {
             backgroundColor: PRIMARY_COLOR,
-            color: "white"
+            color: "white",
+        }
+    },
+    hypLink : {
+        textDecoration: 'none !important',
+        '&:hover': {
+            textDecoration: 'none !important',
         }
     },
     topNavContainer: {

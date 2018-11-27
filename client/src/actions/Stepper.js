@@ -141,7 +141,7 @@ function getStepContent(){
                 stepperCount: 'Finally...',
                 pageName: 'Set Up An Account',
                 title: ``,
-                pageImg: ``,
+                pageImg: `${accountImg}`,
                 subtitle: ``,
                 nextPage: `/services`,
                 prevPage: `/user/user_review`,

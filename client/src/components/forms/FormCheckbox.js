@@ -5,9 +5,12 @@ import Checkbox from '@material-ui/core/Checkbox'
 class FormCheckbox extends Component {
 
     renderCheckbox = ({input, label}) => {
+        console.log(input);
+        console.log("Label : ", label);
         return (
             <Checkbox
-            label="check"
+
+            label={label}
             checked={input.value ? true : false}
             onCheck={input.onChange}
             />
@@ -15,9 +18,10 @@ class FormCheckbox extends Component {
     }
 
     render() {
+        console.log("Props in form checkbox : ", this.props);
         return (
 
-            <Field name={this.props.name}  component={this.renderCheckbox} label="check"/>
+            <Field name={this.props.name} label={this.props.label} component={Checkbox} />
 
         )
     }
