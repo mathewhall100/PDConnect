@@ -1,6 +1,7 @@
 import {
     TREATMENT_RESULTS,
-    TRIAL_RESULTS
+    TRIAL_RESULTS,
+    FOCUSGROUP_RESULTS
 } from './types';
 
 
@@ -23,6 +24,18 @@ export const submitTreatmentResult = (arrTreatment) => {
         dispatch({
             type: TREATMENT_RESULTS,
             payload: arrTreatment
+        })
+
+    }
+}
+
+export const submitFocusGroupResult = (arrFocusGroup) => {
+    console.log("submitting side effects info : ", arrFocusGroup);
+
+    return (dispatch) => {
+        dispatch({
+            type: FOCUSGROUP_RESULTS,
+            payload: arrFocusGroup
         })
 
     }
