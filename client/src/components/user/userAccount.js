@@ -42,6 +42,7 @@ class UserAccount extends Component {
     submit(values) {
         console.log("values : ", values);
         this.props.submitCredsInfo(values)
+
         this.setState({
             redirect: true,
             redirectAddress: '/user/user_start'

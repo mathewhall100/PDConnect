@@ -17,7 +17,7 @@ import DoneIcon from '@material-ui/icons/Done';
 
 import { age, sex, raceEthnicity, years } from '../../constants';
 import {userStylesheet } from '../../styles';
-import { updateStepperCount, submitUserAbout} from '../../actions/index.js'
+import { updateStepperCount, submitUserAbout, submitReview} from '../../actions/index.js'
 import UserModal from '../commons/userModal'
 
  class UserAbout extends Component {
@@ -48,7 +48,12 @@ import UserModal from '../commons/userModal'
     submit(values) {
         console.log("values : " , values);
         this.props.submitUserAbout(values)
-        this.props.history.push(this.state.redirectAddress)
+        if(this.props.review.redirect){
+            this.props.submitReview(false);
+            this.props.history.push('/user/user_review');
+        }else{
+            this.props.history.push(this.state.redirectAddress)
+        }
     }
 
     handleClearForm() {
@@ -119,8 +124,8 @@ import UserModal from '../commons/userModal'
 
         return (
             <div className={classes.componentBox} >
-               
-                <p className={classes.sectionTitle}>Please select an entry for each box</p> 
+
+                <p className={classes.sectionTitle}>Please select an entry for each box</p>
 
                 <div>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
@@ -132,7 +137,7 @@ import UserModal from '../commons/userModal'
                                 component={RenderSelect}
                                 width={"150px"}
                                 modal={1}
-                            >   
+                            >
                                 <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select age</span></MenuItem>
                                 {age.map(item =>
                                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
@@ -243,13 +248,14 @@ function validate(values) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ updateStepperCount, submitUserAbout }, dispatch);
+    return bindActionCreators({ updateStepperCount, submitUserAbout, submitReview }, dispatch);
 }
 
 const mapStateToProps = (state) => {
     console.log("state ", state)
     return {
         userAbout: state.about,
+        review :state.review,
     }
 }
 

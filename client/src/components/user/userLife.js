@@ -16,7 +16,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-import { updateStepperCount, submitUserLife } from '../../actions/index.js'
+import { updateStepperCount, submitUserLife, submitReview } from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import { PDADLs } from '../../constants'
@@ -38,7 +38,7 @@ import { PDADLs } from '../../constants'
         modalTitle : '',
         modalText : '',
         redirectAddress : '/user/user_family',
-    }  
+    }
 
     handleAnswerSelect = (index) => {
         this.setState({modalOpen: false})
@@ -52,22 +52,27 @@ import { PDADLs } from '../../constants'
         const ADL = activeBtn.indexOf(1)
         console.log("submit - ADL:, ", ADL)
         if (ADL >= 0) {
-            this.props.submitUserLife(PDADLs[ADL].key, ADL) 
-            this.props.history.push(this.state.redirectAddress)
+            this.props.submitUserLife(PDADLs[ADL].key, ADL)
+            if (this.props.review.redirect) {
+                this.props.submitReview(false);
+                this.props.history.push('/user/user_review');
+            } else {
+                this.props.history.push(this.state.redirectAddress)
+            }
         } else {
             this.setState({modalWarning: true})
             this.handleModalOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
         }
     }
-    
+
     handleClearForm() {
         console.log("clear form")
         this.setState({activeBtn: []})
     }
 
-    handleModalOpen = (title, text) => { 
+    handleModalOpen = (title, text) => {
         console.log(title);
-         this.setState({ 
+         this.setState({
              modalTitle : title,
              modalText : text,
              modalOpen: true
@@ -86,7 +91,7 @@ import { PDADLs } from '../../constants'
 
                     <p className={classes.sectionTitle}>Select one</p>
                     <br />
-                    
+
                     {PDADLs.map((question, index) => {
                         return (
                             <div key={index}>
@@ -106,7 +111,7 @@ import { PDADLs } from '../../constants'
                                         <Button type="button" className={classes.questionButton}  style={{position: "relative", top: "-5px", borderColor: activeBtn[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index)}>
 
                                         <QuestionButtonIcons answerConditional={activeBtn[index] ? true : false} />
-                                           
+
                                         </Button>
                                     </Grid>
 
@@ -119,11 +124,11 @@ import { PDADLs } from '../../constants'
 
                 </div>
 
-                { modalOpen && <UserModal 
+                { modalOpen && <UserModal
                     modalOpen={modalOpen}
-                    modalTitle={modalTitle} 
-                    modalText={modalText} 
-                    modalWarning={modalWarning} 
+                    modalTitle={modalTitle}
+                    modalText={modalText}
+                    modalWarning={modalWarning}
                 /> }
 
             </section>
@@ -134,14 +139,15 @@ import { PDADLs } from '../../constants'
 
 
 function mapDispatchToProps(dispatch) {
-     return bindActionCreators({ updateStepperCount, submitUserLife }, dispatch);
+    return bindActionCreators({ updateStepperCount, submitUserLife, submitReview }, dispatch);
 }
 
 const mapStateToProps = (state =>{
     console.log("state: ", state)
     return {
         userADL: state.adl.ADL,
-        userADLTrack: state.adl.track
+        userADLTrack: state.adl.track,
+        review: state.review,
     }
 })
 

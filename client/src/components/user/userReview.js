@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button'
 
 import {userStylesheet } from '../../styles';
 import { PDADLs, meds, procedures, motorSy, nonMotorSy } from '../../constants'
-import { updateStepperCount } from '../../actions/index.js'
+import { updateStepperCount, submitReview } from '../../actions/index.js'
 
 
 
@@ -25,11 +25,11 @@ import { updateStepperCount } from '../../actions/index.js'
     state = {
         showBox: [null],
         redirectAddress : '/user/user_account'
-    }  
+    }
 
     handleCreateProfile() {
         // check to see if checkbox signed - if not display modal & do not save
-        // save checkbox 
+        // save checkbox
         this.props.history.push(this.state.redirectAddress)
     }
 
@@ -43,9 +43,15 @@ import { updateStepperCount } from '../../actions/index.js'
     }
 
     handleNext = () => {
-        
+
     }
-    
+
+    redirectStuff = (url) => {
+        this.props.submitReview(true);
+        this.props.history.push(url);
+
+
+    }
     render() {
 
         const { classes, userAbout, userFamily, userADL, userMeds, userSurgery, userMotorSy, userNonMotorSy} = this.props
@@ -69,10 +75,11 @@ import { updateStepperCount } from '../../actions/index.js'
             return (
                 <section>
                     <hr className={classes.hr} />
-                    <Link to={props.link} style={{textDecoration: "none"}}>
-                        <span className={classes.profileBoxButton2}>EDIT</span> 
-                    </Link>
-                    <span className={classes.profileBoxButton2} onClick={() => this.handleShowBox(props.number)}>CLOSE</span> 
+
+                        <span className={classes.profileBoxButton2} onClick={() => { this.redirectStuff(props.link)}} >EDIT</span>
+                    {/*<Link to={props.link} style={{ textDecoration: "none" }} onClick={() => submitReview(true)} >
+                    </Link> */}
+                    <span className={classes.profileBoxButton2} onClick={() => this.handleShowBox(props.number)}>CLOSE</span>
                     <br />
                     <br />
                 </section>
@@ -90,12 +97,12 @@ import { updateStepperCount } from '../../actions/index.js'
                     {showBox[0] && <div className={classes.profileBox}>
                         {userAbout && userAbout.age ?
                             <ul>
-                                <li style={{fontSize: "1.2rem", marginLeft: "20px"}}>{userAbout.age} years old {startCase(userAbout.sex)}</li> 
+                                <li style={{fontSize: "1.2rem", marginLeft: "20px"}}>{userAbout.age} years old {startCase(userAbout.sex)}</li>
                                 <li style={{fontSize: "1.2rem", marginLeft: "20px"}}>{userAbout.race}</li>
-                                <li style={{marginLeft: "20px", fontSize: "1.2rem"}}>First diagnosed with Parkinson disease: {userAbout.yearDiagnosed}</li> 
+                                <li style={{marginLeft: "20px", fontSize: "1.2rem"}}>First diagnosed with Parkinson disease: {userAbout.yearDiagnosed}</li>
                                 <li style={{marginLeft: "20px", fontSize: "1.2rem"}}>Began treatment for Parkinson disease: {userAbout.yearTreatment}</li>
-                                
-                            </ul> 
+
+                            </ul>
                         : null }
                         <RenderEditButton link="/user/user_about" number={0}/>
                     </div> }
@@ -104,36 +111,36 @@ import { updateStepperCount } from '../../actions/index.js'
 
                     <RenderBoxHeader title="My day-to-day activities" number={1} />
                     {showBox[1] && <div className={classes.profileBox}>
-                    {userADL ? 
-                       <p style={{fontSize: "1.2rem"}}>{PDADLs.filter(adl => adl.key === userADL)[0].title}</p>  
+                    {userADL ?
+                       <p style={{fontSize: "1.2rem"}}>{PDADLs.filter(adl => adl.key === userADL)[0].title}</p>
                        : null }
                        <RenderEditButton link="/user/user_life" number={1}/>
                     </div> }
 
                     <br />
 
-                    <RenderBoxHeader title="Relatives with Parkinson disease" number={2}  />  
+                    <RenderBoxHeader title="Relatives with Parkinson disease" number={2}  />
 
                     {showBox[2] && <div className={classes.profileBox}>
-                        {userFamily ? userFamily[0] !== "none" ? 
+                        {userFamily ? userFamily[0] !== "none" ?
                             <ul>
                                {userFamily.map((item, index) => {
                                     return (
                                         <li style={{fontSize: "1.2rem", marginLeft: "20px"}} key={index}>A {item}</li>
                                     )
                                 }) }
-                            </ul> 
+                            </ul>
                             :
-                            <p style={{fontSize: "1.2rem"}}>None that I know of.</p> 
+                            <p style={{fontSize: "1.2rem"}}>None that I know of.</p>
                         : null }
                         <RenderEditButton link="/user/user_family" number={2}/>
                     </div> }
 
                     <br />
-                    
+
                     <RenderBoxHeader title="My current medications for Parkinson disease" number={3} />
                     {showBox[3] && <div className={classes.profileBox}>
-                        {userMeds ? userMeds.length > 0 ? 
+                        {userMeds ? userMeds.length > 0 ?
                             <ul>
                                 {userMeds.map((item, index) => {
                                    let med = meds.filter(med => med.key === item)[0].generic
@@ -162,7 +169,7 @@ import { updateStepperCount } from '../../actions/index.js'
                                 }) }
                             </ul>
                             :
-                            <p style={{fontSize: "1.2rem"}}>I havn't had any surgery or procedures for Parkinson disease.</p> 
+                            <p style={{fontSize: "1.2rem"}}>I havn't had any surgery or procedures for Parkinson disease.</p>
                         : null }
                         <RenderEditButton link="/user/user_surgery"number={4}/>
                     </div> }
@@ -209,7 +216,7 @@ import { updateStepperCount } from '../../actions/index.js'
                 <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleCreateProfile()}>CREATE MY PROFILE AND CONTINUE</Button>
 
                 </div>
-                
+
             </section>
 
         );
@@ -218,7 +225,7 @@ import { updateStepperCount } from '../../actions/index.js'
 
 
 function mapDispatchToProps(dispatch) {
-     return bindActionCreators({ updateStepperCount }, dispatch);
+    return bindActionCreators({ updateStepperCount, submitReview }, dispatch);
 }
 
 const mapStateToProps = (state =>{
@@ -230,7 +237,8 @@ const mapStateToProps = (state =>{
         userMeds: state.meds.meds,
         userSurgery: state.surgery.surgery,
         userMotorSy: state.motorSy.motorSy,
-        userNonMotorSy: state.nonMotorSy.nonMotorSy, 
+        userNonMotorSy: state.nonMotorSy.nonMotorSy,
+        review : state.review,
     }
 })
 
