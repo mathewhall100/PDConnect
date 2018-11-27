@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
-import ResultsBar from '../components/commons/resultsBar'
 import ResultTabs from '../components/commons/resultTabs'
 import ResultPrintButton from '../components/commons/resultPrintBtn'
 import ResultTitle from '../components/commons/resultTitle'
@@ -181,9 +181,6 @@ class TrialDisplay extends Component {
                             <ResultInfoText text={trial.more} />
                         </Grid>
                     </Grid>
-                     {/* <br />
-                    <ResultInfoSubTitle text="Should I discuss this with my doctor first?" />
-                    <ResultInfoText text={trial.discuss} /> */}
                 </div>
             )
         }
@@ -191,7 +188,11 @@ class TrialDisplay extends Component {
         return (
             <div className={classes.root}> 
 
-                <ResultsBar redirectAddress = "/results" />
+                <Link to="/results:trials">
+                    <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "27px"}} >
+                        BACK
+                    </Button>
+                </Link>
 
                 <Grid container spacing={24}>
                 

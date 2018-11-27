@@ -9,6 +9,14 @@ class ResultTabsWithBadge extends Component  {
         tabSelected: 0
     }
 
+    componentDidMount() {
+        this.setState({tabSelected: this.props.tabStart})
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({tabSelected: nextProps.tabStart})
+    }
+
     handleTabClick = (tab) => {
         this.props.handleTabClick(tab)
         this.setState({tabSelected: tab})

@@ -633,20 +633,19 @@ export const resultStylesheet = theme => ({
         border: "2px solid lightgrey",
         borderRadius: "5px",
         backgroundColor: "white",
-        padding: "20px 0 20px 25px",
-        marginBottom: "40px"
+        padding: "20px 10px 10px 10px",
+        marginBottom: "30px"
     },
     serviceListBox: {
         margin: "10px 0 10px 0", 
         padding: "10px", 
         border: "2px solid white", 
         '&:hover': {
-            
             borderRadius: "5px", 
-            borderColor: PRIMARY_COLOR,
-            backgroundColor: "#eeeeee"
+            backgroundColor: "#eeeeee",
+            borderColor: SECONDARY_COLOR
+
         }
-       
     },
     serviceListHeader: {
         fontSize: "18px",
@@ -654,7 +653,6 @@ export const resultStylesheet = theme => ({
     },
     serviceListText: {
         fontSize: "16px",
-
     }
 
 })

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { withRouter, Redirect} from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
 
-import ResultsBar from '../components/commons/resultsBar'
 import ResultTabsWithBadge from '../components/commons/resultTabsWithBadge'
 import ResultPrintButton from '../components/commons/resultPrintBtn'
 import ResultMainSubTitle from '../components/commons/resultMainSubTitle'
@@ -25,18 +24,37 @@ class Results extends Component {
         value: 0,
         treatmentResults: [],
         trialResults: [],
-        redirect: false
     }
 
     componentDidMount() {
 
-        console.log(this.props.userAbout)
-        console.log(this.props.userADL)
-        console.log(this.props.userFamily)
-        console.log(this.props.userMeds)
-        console.log(this.props.userSurgery)
-        console.log(this.props.userMotorSy)
-        console.log(this.props.userNonMotorSy)
+        window.scroll(0,0)
+        const locn = window.location.href
+        const item = locn.substr(locn.lastIndexOf(':') + 1)
+        let tab
+        switch (item) {
+            case "treatments":
+                tab = 0
+                break;
+            case "trials":
+                tab = 1
+                break;
+            case "focusgroups":
+                tab = 2
+                break;
+            default: 
+                tab = 0
+        }
+        this.setState({tabSelected: tab}, () => 
+        console.log("CDM tabselected: ", this.state.tabSelected) )
+
+        // console.log(this.props.userAbout)
+        // console.log(this.props.userADL)
+        // console.log(this.props.userFamily)
+        // console.log(this.props.userMeds)
+        // console.log(this.props.userSurgery)
+        // console.log(this.props.userMotorSy)
+        // console.log(this.props.userNonMotorSy)
 
         this.treatmentResults()
         this.trialResults()
@@ -44,7 +62,7 @@ class Results extends Component {
 
 
     treatmentResults() {
-        console.log("treatmentResults called")
+        // console.log("treatmentResults called")
 
         let treatmentResults = [];
 
@@ -106,13 +124,13 @@ class Results extends Component {
             })
         }
 
-        console.log("treatmentResults: ", treatmentResults)
+        // console.log("treatmentResults: ", treatmentResults)
         this.props.submitTreatmentResult(treatmentResults);
         this.setState({treatmentResults: treatmentResults})
     }
 
     trialResults() {
-        console.log("trialResults called")
+        // console.log("trialResults called")
         let trialResults = [];
 
         if (this.testSPARK() === true)  {
@@ -273,7 +291,8 @@ class Results extends Component {
 
     handleMoreInfo(type, item) {
         console.log(type, " ", item)
-        this.setState({item: `${type}:${item}`}, () => this.setState({redirect: true}) )
+        const redirectAddress = `${type}:${item}`
+        this.props.history.push(redirectAddress)
     }
 
     handleChange = (event, value) => {
@@ -293,15 +312,7 @@ class Results extends Component {
     render() {
 
         const { handleSubmit, classes } = this.props
-        const { redirect, treatmentResults, trialResults, tabSelected, item } = this.state
-
-
-        if (redirect) {
-            const url = `/${item}`;
-            console.log("URL: ", url)
-            console.log("redirect to: " + url);
-            return<Redirect to={url} />;
-        }
+        const { treatmentResults, trialResults, tabSelected } = this.state
 
         const RenderTreatments= () => {
             return (
@@ -394,7 +405,11 @@ class Results extends Component {
         return (
             <div className={classes.root}>
 
-                <ResultsBar redirectAddress = "/results" />
+                <Link to="/services">
+                    <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "27px"}} >
+                        BACK
+                    </Button>
+                </Link>
 
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={12} md={8}>
@@ -405,6 +420,7 @@ class Results extends Component {
                             {text: "TRIALS", badgeContent: trialResults.length},
                             {text: "FOCUS GROUPS", badgeContent: 0},
                         ]}
+                        tabStart={tabSelected}
                         handleTabClick={this.handleTabClick}
                     />
                     {tabSelected === 0 && <RenderTreatments /> }

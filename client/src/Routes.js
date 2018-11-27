@@ -19,7 +19,7 @@ class Routes extends Component {
                     <Route path='/user' component={User} />
                     <Route path='/home' component={Homepage} />
                     <Route path='/services' component={Services} />
-                    <Route path='/results' component={Result} />
+                    <Route path='/results:id' component={Result} />
                     <Route path='/treatment:id' component={TreatmentDisplay} />
                     <Route path='/trial:id' component={TrialDisplay} />
                     <Route path="/notfound" component={NotFound} />
