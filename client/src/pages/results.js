@@ -38,12 +38,196 @@ class Results extends Component {
         console.log(this.props.userMotorSy)
         console.log(this.props.userNonMotorSy)
 
-        this.treatmentResults()
-        this.trialResults()
+        //this.treatmentResults()
+        //this.trialResults()
     }
 
 
-    treatmentResults() {
+    handleMoreInfo(type, item) {
+        console.log(type, " ", item)
+        this.setState({item: `${type}:${item}`}, () => this.setState({redirect: true}) )
+    }
+
+    handleChange = (event, value) => {
+        this.setState({ value });
+      };
+
+    handleChangeIndex = index => {
+        this.setState({ value: index });
+      };
+
+    handleTabClick = (tab) => {
+        console.log("tab: ", tab)
+        this.setState({tabSelected: tab})
+    }
+
+
+    render() {
+
+        const { handleSubmit, classes } = this.props
+        const { redirect, treatmentResults, trialResults, tabSelected, item } = this.state
+
+
+        if (redirect) {
+            const url = `/${item}`;
+            console.log("URL: ", url)
+            console.log("redirect to: " + url);
+            return<Redirect to={url} />;
+        }
+
+        const RenderTreatments= () => {
+            return (
+                <div className={classes.resultContainer}>
+                    <ResultPrintButton /><br />
+                    <h1 className={classes.title}>Treatments to discuss with your doctor</h1>
+                    <div>
+                        {treatmentResults.map((treatment, index) => {
+                            return (
+                                <div key={index} className={classes.resultBox}>
+                                    <Grid container spacing={8}>
+                                        <Grid item xs={12} sm={12} md={7}>
+                                            <div className={classes.resultTextBox}>
+                                                <div className={classes.resultTitle}>
+                                                    {treatment.medication_name}
+                                                </div>
+                                                <div className={classes.resultText}>
+                                                    {treatment.summary}
+                                                </div>
+                                            </div>
+                                            <div style={{margin: "10px 20px 20px 20px"}}>
+                                                <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo("treatment", treatment.key)}>Find Out More</Button>
+                                            </div>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={5}>
+                                            <iframe title={index} width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
+                                                src={treatment.mediaLnk1}>
+                                            </iframe>
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                            )
+                        }) }
+                    </div>
+                    <br />
+                </div>
+            )
+        }
+
+
+        const RenderTrials= () => {
+            return (
+                <div className={classes.resultContainer}>
+                    <ResultPrintButton /><br />
+                    <h1 className={classes.title}>Clinical Trials you might volunteer for</h1>
+                    <div>
+                        {trialResults.map((trial, index) => {
+                            return (
+                                <div key={index} className={classes.resultBox}>
+                                    <Grid container spacing={8}>
+                                        <Grid item xs={12} sm={12} md={7}>
+                                            <div className={classes.resultTextBox}>
+                                                <div className={classes.resultTitle}>
+                                                    {trial.trial_name}
+                                                </div>
+                                                <div className={classes.resultText}>
+                                                    {trial.summary}
+                                                </div>
+                                            </div>
+                                            <div style={{margin: "10px 20px 20px 20px"}}>
+                                                <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo("trial", trial.key)}>Find Out More</Button>
+                                            </div>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={5}>
+                                            <iframe width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
+                                                src={trial.mediaLnk1}>
+                                            </iframe>
+                                        </Grid>
+                                    </Grid>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <br />
+                </div>
+            )
+        }
+
+        const RenderFocusGroups= () => {
+            return (
+                <div className={classes.resultContainer}>
+                    <ResultPrintButton /><br />
+                    <h1 className={classes.title}>Focus Groups you might participate in</h1>
+                    <ResultMainSubTitle text={`There are no focus groups suitable for you at present.`} />`
+                    <br />
+                </div>
+            )
+        }
+
+        return (
+            <div className={classes.root}>
+
+                <ResultsBar redirectAddress = "/results" />
+
+                <Grid container spacing={24}>
+                    <Grid item xs={12} sm={12} md={8}>
+
+                    <ResultTabsWithBadge
+                        tabs={[
+                            {text: "TREATMENTS", badgeContent: treatmentResults.length},
+                            {text: "TRIALS", badgeContent: trialResults.length},
+                            {text: "FOCUS GROUPS", badgeContent: 0},
+                        ]}
+                        handleTabClick={this.handleTabClick}
+                    />
+                    {tabSelected === 0 && <RenderTreatments /> }
+                    {tabSelected === 1 && <RenderTrials /> }
+                    {tabSelected === 2 && <RenderFocusGroups /> }
+                    </Grid>
+
+                    <Grid item xs={12} sm={12} md={4}>
+                        <br />
+
+                        <EmailBox />
+
+                        <AccountBox />
+
+                        <SocMedBox />
+
+                    </Grid>
+                </Grid>
+            </div>
+        );
+    }
+}
+
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ submitTreatmentResult, submitTrialResult }, dispatch);
+}
+
+const mapStateToProps = (state) => {
+    console.log("State : ", state);
+    return {
+        results : state.results,
+        userAbout: state.about,
+        userADL: state.adl.ADL,
+        userFamily: state.family.family,
+        userMeds: state.meds.meds,
+        userSurgery: state.surgery.surgery,
+        userMotorSy: state.motorSy.motorSy,
+        userNonMotorSy: state.nonMotorSy.nonMotorSy,
+    }
+  };
+
+
+Results = withRouter(Results)
+Results = withStyles(resultStylesheet)(Results)
+Results = connect(mapStateToProps, mapDispatchToProps)(Results)
+export default Results
+
+
+
+{/*treatmentResults() {
         console.log("treatmentResults called")
 
         let treatmentResults = [];
@@ -270,184 +454,4 @@ class Results extends Component {
 
         return true
     }
-
-    handleMoreInfo(type, item) {
-        console.log(type, " ", item)
-        this.setState({item: `${type}:${item}`}, () => this.setState({redirect: true}) )
-    }
-
-    handleChange = (event, value) => {
-        this.setState({ value });
-      };
-
-    handleChangeIndex = index => {
-        this.setState({ value: index });
-      };
-
-    handleTabClick = (tab) => {
-        console.log("tab: ", tab)
-        this.setState({tabSelected: tab})
-    }
-
-
-    render() {
-
-        const { handleSubmit, classes } = this.props
-        const { redirect, treatmentResults, trialResults, tabSelected, item } = this.state
-
-
-        if (redirect) {
-            const url = `/${item}`;
-            console.log("URL: ", url)
-            console.log("redirect to: " + url);
-            return<Redirect to={url} />;
-        }
-
-        const RenderTreatments= () => {
-            return (
-                <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
-                    <h1 className={classes.title}>Treatments to discuss with your doctor</h1>
-                    <div>
-                        {treatmentResults.map((treatment, index) => {
-                            return (
-                                <div key={index} className={classes.resultBox}>
-                                    <Grid container spacing={8}>
-                                        <Grid item xs={12} sm={12} md={7}>
-                                            <div className={classes.resultTextBox}>
-                                                <div className={classes.resultTitle}>
-                                                    {treatment.medication_name}
-                                                </div>
-                                                <div className={classes.resultText}>
-                                                    {treatment.summary}
-                                                </div>
-                                            </div>
-                                            <div style={{margin: "10px 20px 20px 20px"}}>
-                                                <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo("treatment", treatment.key)}>Find Out More</Button>
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={5}>
-                                            <iframe title={index} width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
-                                                src={treatment.mediaLnk1}>
-                                            </iframe>
-                                        </Grid>
-                                    </Grid>
-                                </div>
-                            )
-                        }) }
-                    </div>
-                    <br />
-                </div>
-            )
-        }
-
-
-        const RenderTrials= () => {
-            return (
-                <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
-                    <h1 className={classes.title}>Clinical Trials you might volunteer for</h1>
-                    <div>
-                        {trialResults.map((trial, index) => {
-                            return (
-                                <div key={index} className={classes.resultBox}>
-                                    <Grid container spacing={8}>
-                                        <Grid item xs={12} sm={12} md={7}>
-                                            <div className={classes.resultTextBox}>
-                                                <div className={classes.resultTitle}>
-                                                    {trial.trial_name}
-                                                </div>
-                                                <div className={classes.resultText}>
-                                                    {trial.summary}
-                                                </div>
-                                            </div>
-                                            <div style={{margin: "10px 20px 20px 20px"}}>
-                                                <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo("trial", trial.key)}>Find Out More</Button>
-                                            </div>
-                                        </Grid>
-                                        <Grid item xs={12} sm={12} md={5}>
-                                            <iframe width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
-                                                src={trial.mediaLnk1}>
-                                            </iframe>
-                                        </Grid>
-                                    </Grid>
-                                </div>
-                            )
-                        })}
-                    </div>
-                    <br />
-                </div>
-            )
-        }
-
-        const RenderFocusGroups= () => {
-            return (
-                <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
-                    <h1 className={classes.title}>Focus Groups you might participate in</h1>
-                    <ResultMainSubTitle text={`There are no focus groups suitable for you at present.`} />`
-                    <br />
-                </div>
-            )
-        }
-
-        return (
-            <div className={classes.root}>
-
-                <ResultsBar redirectAddress = "/results" />
-
-                <Grid container spacing={24}>
-                    <Grid item xs={12} sm={12} md={8}>
-
-                    <ResultTabsWithBadge
-                        tabs={[
-                            {text: "TREATMENTS", badgeContent: treatmentResults.length},
-                            {text: "TRIALS", badgeContent: trialResults.length},
-                            {text: "FOCUS GROUPS", badgeContent: 0},
-                        ]}
-                        handleTabClick={this.handleTabClick}
-                    />
-                    {tabSelected === 0 && <RenderTreatments /> }
-                    {tabSelected === 1 && <RenderTrials /> }
-                    {tabSelected === 2 && <RenderFocusGroups /> }
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={4}>
-                        <br />
-
-                        <EmailBox />
-
-                        <AccountBox />
-
-                        <SocMedBox />
-
-                    </Grid>
-                </Grid>
-            </div>
-        );
-    }
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ submitTreatmentResult, submitTrialResult }, dispatch);
-}
-
-const mapStateToProps = (state) => {
-    console.log("State : ", state);
-    return {
-        userAbout: state.about,
-        userADL: state.adl.ADL,
-        userFamily: state.family.family,
-        userMeds: state.meds.meds,
-        userSurgery: state.surgery.surgery,
-        userMotorSy: state.motorSy.motorSy,
-        userNonMotorSy: state.nonMotorSy.nonMotorSy,
-    }
-  };
-
-
-Results = withRouter(Results)
-Results = withStyles(resultStylesheet)(Results)
-Results = connect(mapStateToProps, mapDispatchToProps)(Results)
-export default Results
+*/}

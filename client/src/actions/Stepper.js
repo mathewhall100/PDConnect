@@ -33,6 +33,7 @@ function getStepContent(){
                 title: `Create an account to enjoy the benefits as below!`,
                 pageImg: `${accountImg}`,
                 subtitle: `You will be able to receive notification to edit your medications, and symptoms so you are always on top of the new treatments available!`,
+                prevPage: `/`,
             }
             return objStepperContent;
         }

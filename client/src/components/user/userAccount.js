@@ -50,8 +50,9 @@ class UserAccount extends Component {
 
     handleBack = () => {
         this.setState({
+            redirect : true,
             redirectAddress: '/'
-        }, () => this.setState({ redirect: true }))
+        })
     }
 
     handleCreateAccount = () => {
