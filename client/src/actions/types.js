@@ -33,3 +33,5 @@ export const USER_MOTORSY = 'USER_MOTORSY';
 export const USER_NONMOTORSY = 'USER_NONMOTORSY';
 
 export const USER_ACCOUNT = 'USER_ACCOUNT';
+
+export const CREDS_INFO = 'CREDS_INFO';

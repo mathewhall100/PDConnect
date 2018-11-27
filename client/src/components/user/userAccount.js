@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
 import { userStylesheet } from '../../styles';
-import { submitUserAccount } from '../../actions/UserAccountAction';
+import { submitCredsInfo } from '../../actions/CredsActions';
 import FormText from '../forms/FormText';
 import FormPassword from '../forms/FormTextPassword';
 
@@ -41,8 +41,11 @@ class UserAccount extends Component {
 
     submit(values) {
         console.log("values : ", values);
-        this.props.submitUserAccount(values)
-        this.setState({ redirect: true })
+        this.props.submitCredsInfo(values)
+        this.setState({
+            redirect: true,
+            redirectAddress: '/user/user_start'
+        })
     }
 
     handleBack = () => {
@@ -91,7 +94,7 @@ class UserAccount extends Component {
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3} className={classes.nextButtonContainer}>
-                        <Button type="submit" variant='outlined' className={classes.nextButton} onClick={() => this.handleCreateAccount()}>Create</Button>
+                        <Button type="submit" variant='outlined' className={classes.nextButton} >Create</Button>
                     </Grid>
                 </Grid>
             )
@@ -111,7 +114,9 @@ class UserAccount extends Component {
                         /><br /> */}
 
                         <FormText title='email' name='email' label='e-mail address' />
+                        <label>Password : </label><br />
                         <FormPassword title='password' name='password' label='password' />
+                        <label>Confirm Password : </label><br />
                         <FormPassword title='confirmPassword' name='confirmPassword' label='confirm password' />
                         {/*<label>Password : </label><br/>
                         <Field
@@ -174,5 +179,5 @@ const formData = {
 UserAccount = reduxForm(formData)(UserAccount)
 UserAccount = withRouter(UserAccount)
 UserAccount = withStyles(userStylesheet)(UserAccount)
-UserAccount = connect(mapStateToProps, { submitUserAccount})(UserAccount)
+UserAccount = connect(mapStateToProps, { submitCredsInfo})(UserAccount)
 export default UserAccount

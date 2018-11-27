@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 
 import { userStylesheet } from '../../styles';
-import { submitUserAccount } from '../../actions/UserAccountAction';
+import { submitCredsInfo } from '../../actions/CredsActions';
 import { updateStepperCount } from '../../actions/index.js'
 import FormText from '../forms/FormText';
 import FormPassword from '../forms/FormTextPassword';
@@ -26,7 +26,7 @@ class UserNewAccount extends Component {
 
     submit(values) {
         console.log("values : ", values);
-        this.props.submitUserAccount(values)
+        this.props.submitCredsInfo(values)
         this.props.history.push(this.state.redirectAddress)
     }
 
@@ -89,12 +89,12 @@ function validate(values) {
     if(values.confirmPassword && values.confirmPassword.length > 8 && values.password !== values.confirmPassword){
         errors.confirmPassword = '*Passwords must match.'
     }
-    
+
     return errors
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ updateStepperCount, submitUserAccount }, dispatch);
+    return bindActionCreators({ updateStepperCount, submitCredsInfo }, dispatch);
 }
 
 const mapStateToProps = (state) => {
