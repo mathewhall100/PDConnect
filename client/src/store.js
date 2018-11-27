@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/es/storage'
+import storage from 'redux-persist/lib/storage'
 import reducer from './reducers/index';
 
 
@@ -24,7 +24,7 @@ const createAppStore = () => {
     let store = configureStore(combinedReducer)
     let persistor = persistStore(store)
 
-    return { persistor, store }
+    return { store, persistor }
 }
 
 export default createAppStore

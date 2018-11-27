@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
+import Badge from '@material-ui/core/Badge'
 
 import { resultStylesheet, PRIMARY_COLOR, SECONDARY_COLOR } from '../styles';
 import SocMedBox from '../components/commons/socMedBox'
@@ -19,7 +20,7 @@ import monitorImg from '../images/avatar/services/monitor.png';
 import treatmentImg from '../images/avatar/services/treatments.png';
 import trialsImg from '../images/avatar/services/trials.png';
 import { testApomorphine, testBotTox, testDBS, testDroxidopa, testDuopa, testNILO, testNuplazid, testRytary, testSPARK } from '../functions';
-import { submitTrialResult, submitTreatmentResult } from '../actions/ResultAction';
+import { submitTrialResult, submitTreatmentResult, submitFocusGroupResult } from '../actions/ResultAction';
 
 
 class UserServices extends Component {
@@ -28,9 +29,8 @@ class UserServices extends Component {
         redirectAddress: '',
         treatmentResults: [],
         trialResults: [],
+        focusGroupResults: []
     }
-
-
 
     componentDidMount() {
         window.scroll(0, 0)
@@ -42,8 +42,9 @@ class UserServices extends Component {
         console.log(this.props.userMotorSy)
         console.log(this.props.userNonMotorSy)
 
-        this.treatmentResults()
-        this.trialResults()
+        this.fetchTreatmentResults()
+        this.fetchTrialResults()
+        this.fetchFocusGroupResults()
     }
 
     handleServiceRedirect = (redirectAddress) => {
@@ -52,10 +53,7 @@ class UserServices extends Component {
 
     }
 
-
-
-
-    treatmentResults() {
+    fetchTreatmentResults() {
         console.log("treatmentResults called")
 
         let treatmentResults = [];
@@ -123,7 +121,8 @@ class UserServices extends Component {
         this.setState({ treatmentResults: treatmentResults })
 
     };
-    trialResults() {
+
+    fetchTrialResults() {
         console.log("trialResults called")
         let trialResults = [];
 
@@ -150,10 +149,21 @@ class UserServices extends Component {
             this.setState({ trialResults: trialResults })
     };
 
+    fetchFocusGroupResults() {
+        console.log("focusgroupResults called")
+        let focusGroupResults = [];
+
+        // logic here
+
+        console.log("focusGroupResults: ", focusGroupResults)
+        this.props.submitFocusGroupResult(focusGroupResults);
+        this.setState({ focusGroupResults: focusGroupResults })
+    }
+
     render() {
 
-        const { handleSubmit, classes } = this.props
-        const { listItemHover } = this.state
+        const { handleSubmit, classes, badgeContent } = this.props
+        const { listItemHover, treatmentResults, trialResults, focusGroupResults } = this.state
 
         const beforeStyle = {
             display: 'table'
@@ -170,9 +180,13 @@ class UserServices extends Component {
                     <Grid container spacing={8} >
                         <Grid item xs={12} sm={2}>
                             <img className={classes.serviceIcon} src={props.avatar} alt={props.header} />
+                           
                         </Grid>
                         <Grid item xs={12} sm={10}>
-                            <span className={classes.serviceListHeader}>{props.header}</span>
+                            <span className={classes.serviceListHeader}>{props.header}</span> 
+                            {props.badgeContent && <Badge className={classes.badge} badgeContent={props.badgeContent} color="primary"> 
+                                <span> </span>
+                            </Badge> }
                             <br />
                             <span className={classes.serviceListText}>{props.text}</span>
                         </Grid>
@@ -194,10 +208,10 @@ class UserServices extends Component {
                             <h5>Based on your profile you have matched the following services. </h5>
                             <br />
 
-                            <RenderServiceListItem avatar={treatmentImg} header="View treatments" text="We have found x treatments that may benefit you and to disucss with your doctor" redirectAddress="/results:treatments" />
-                            <RenderServiceListItem avatar={trialsImg} header="View clinical trials" text="We have matched you with x clinical trials currently recruiting volunteers" redirectAddress="/results:trials" />
-                            <RenderServiceListItem avatar={focusImg} header="View focus groups" text="Ther are x focus groups looking for participants like you" redirectAddress="/results:focusgroups" />
-                            <RenderServiceListItem avatar={learnImg} header="Learn about your Parkinson disease" text="Knowledge articles aand videos tailored to you" />
+                            <RenderServiceListItem avatar={treatmentImg} header="View treatments" badgeContent={`${treatmentResults.length}`} text={`We have found ${treatmentResults.length > 0 ? treatmentResults.length : "no"} treatments that may benefit you and to disucss with your doctor`} redirectAddress="/results:treatments" />
+                            <RenderServiceListItem avatar={trialsImg} header="View clinical trials" badgeContent={`${trialResults.length}`} text={`We have matched you with ${trialResults.length > 0 ? trialResults.length : "no"} clinical trials currently recruiting volunteers`} redirectAddress="/results:trials" />
+                            <RenderServiceListItem avatar={focusImg} header="View focus groups" badgeContent="0" text={`There are ${focusGroupResults.length > 0 ? focusGroupResults.length : "no"} focus groups looking for participants like you`} redirectAddress="/results:focusgroups" />
+                            <RenderServiceListItem avatar={learnImg} header="Learn about your Parkinson disease"  text="Knowledge articles aand videos tailored to you" />
                             <hr className={classes.hr} />
                             <RenderServiceListItem avatar={monitorImg} header="Monitor my symptoms" text="Use theis site or our mobile app to monitor your symptoms" />
                             <RenderServiceListItem avatar={assessImg} header="Assess my welllness" text="Complete a wellness questionnaire designed for Parkinson patients." />
@@ -258,7 +272,7 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ submitTreatmentResult, submitTrialResult }, dispatch);
+    return bindActionCreators({ submitTreatmentResult, submitTrialResult, submitFocusGroupResult }, dispatch);
 }
 
 UserServices = withRouter(UserServices)
