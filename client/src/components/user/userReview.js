@@ -162,7 +162,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                         {userSurgery ? userSurgery.length > 0 ?
                             <ul>
                                 {userSurgery.map((item, index) => {
-                                    let proc = procedures.filter(proc => proc.key === item)[0].procedure
+                                    let proc = procedures.filter(pr => pr.key === item)[0].procedure
                                     return (
                                         <li key={index} style={{fontSize: "1.2rem", marginLeft: "20px"}}>{proc}</li>
                                     )
