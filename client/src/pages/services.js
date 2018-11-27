@@ -42,8 +42,8 @@ class UserServices extends Component {
         console.log(this.props.userMotorSy)
         console.log(this.props.userNonMotorSy)
 
-       //  this.treatmentResults()
-       // this.trialResults()
+        this.treatmentResults()
+        this.trialResults()
     }
 
     handleServiceRedirect = (redirectAddress) => {
@@ -51,6 +51,104 @@ class UserServices extends Component {
         this.props.history.push(redirectAddress)
 
     }
+
+
+
+
+    treatmentResults() {
+        console.log("treatmentResults called")
+
+        let treatmentResults = [];
+        if (testBotTox(this.props.userNonMotorSy)) {
+            treatmentResults.push({
+                medication_name: "Botulinum Toxin",
+                summary: "Injections of a muscle paralysing agent (botulinum toxin) used to treat troublesome drooling and pedal dystonia",
+                mediaLnk1: "https://www.youtube.com/embed/fWzRQassYjI",
+                key: "bottox"
+            })
+        }
+        if (testDBS(this.props.userAbout, this.props.userMotorSy, this.props.userNonMotorSy)) {
+            treatmentResults.push({
+                medication_name: "Deep Brain Stimulation",
+                summary: "Surgical procedure to treat fluctuating motor symptoms despite oral medication",
+                mediaLnk1: "https://www.youtube.com/embed/2wvj7XJrQW4",
+                key: "dbs"
+            })
+        }
+        if (testRytary(this.props.userMeds, this.props.userMotorSy)) {
+            treatmentResults.push({
+                medication_name: "Rytary",
+                summary: "Slow release carbidopa/levodopa to treat early wear'off' symptoms",
+                mediaLnk1: "https://www.youtube.com/embed/uPjnpKth40o",
+                key: "rytary"
+            })
+        }
+
+        if (testDuopa(this.props.userNonMotorSy, this.props.userMotorSy, this.props.userMeds)) {
+            treatmentResults.push({
+                medication_name: "Duopa",
+                summary: "Infusion of carbidopa/levodopa directly into the intestine via a surgically placed feeding tube. Treats unpredictable motor fluctuations and early wear 'off'",
+                mediaLnk1: "https://www.youtube.com/embed/GaCiXlXwBp8",
+                key: "duopa"
+            })
+        }
+        if (testDroxidopa(this.props.userNonMotorSy)) {
+            treatmentResults.push({
+                medication_name: "Droxidopa",
+                summary: "Medication used to treat dizziness and lightheadedness on changing position or standing caused by parkinson disease.",
+                mediaLnk1: "https://www.youtube.com/embed/4RTAAkA9cG8",
+                key: "droxidopa"
+            })
+        }
+        if (testNuplazid(this.props.userNonMotorSy)) {
+
+            treatmentResults.push({
+                medication_name: "Nuplazid",
+                summary: "Treatment for hallucinations and delusions associated with Parkinson disease",
+                mediaLnk1: "https://www.youtube.com/embed/ZDbxEZP2qDY",
+                key: "nuplazid"
+            })
+        }
+        if (testApomorphine(this.props.userMotorSy)) {
+            treatmentResults.push({
+                medication_name: "Apomorphine",
+                summary: "Medication that is injected just under the skin to treat  sudden, unpredictable and early wear'off' symptoms.",
+                mediaLnk1: "https://www.youtube.com/embed/4RTAAkA9cG8",
+                key: "apomorph"
+            })
+        }
+
+        console.log("treatmentResults: ", treatmentResults)
+        this.props.submitTreatmentResult(treatmentResults);
+        this.setState({ treatmentResults: treatmentResults })
+
+    };
+    trialResults() {
+        console.log("trialResults called")
+        let trialResults = [];
+
+        if (testSPARK(this.props.userAbout, this.props.userMeds)) {
+            trialResults.push({
+                trial_name: "SPARK",
+                summary: "The SPARK study is for people who have been recently diagnosed with Parkinson’s disease and are looking to take a proactive step in their care.",
+                mediaLnk1: "https://www.youtube.com/embed/OpWugct99BI",
+                key: "spark"
+            })
+        }
+
+        if (testNILO(this.props.userAbout, this.props.userMeds)) {
+            trialResults.push({
+                trial_name: "NILO-PD",
+                summary: "The NILO-PD study will investigate the safety and tolerability of nilotinib in stable patienst diagnosed with Parkinson disease for more than 5 years",
+                mediaLnk1: "https://www.youtube.com/embed/OpWugct99BI",
+                key: "nilo"
+            })
+        }
+
+            console.log("trialResults: ", trialResults)
+            this.props.submitTrialResult(trialResults);
+            this.setState({ trialResults: trialResults })
+    };
 
     render() {
 
@@ -60,7 +158,7 @@ class UserServices extends Component {
         const beforeStyle = {
             display: 'table'
           };
-      
+
           const afterStyle = {
             ...beforeStyle,
             clear: 'both'
@@ -114,27 +212,27 @@ class UserServices extends Component {
                     <div className={classes.serviceSideContainer}>
                         <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My Account</h3>
                         <hr className={classes.hr} />
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Bronze member</h5> <span style={afterStyle}></span> 
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>You have 100 connect points</h5> <span style={afterStyle}></span> 
+                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Bronze member</h5> <span style={afterStyle}></span>
+                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>You have 100 connect points</h5> <span style={afterStyle}></span>
                         <hr style={{margin: "9px 0 17px 0"}}/>
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">View my activity</a></h5><span style={afterStyle}></span> 
+                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">View my activity</a></h5><span style={afterStyle}></span>
                         <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Edit account details</a></h5> <span style={afterStyle}></span>
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Earn points</a></h5> <span style={afterStyle}></span> 
+                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Earn points</a></h5> <span style={afterStyle}></span>
                     </div>
 
                     <div className={classes.serviceSideContainer}>
                         <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My profile</h3>
                         <hr className={classes.hr} />
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Your profile is 70% complete</h5> <span style={afterStyle}></span> 
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Next update due: Dec 2018</h5> <span style={afterStyle}></span> 
+                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Your profile is 70% complete</h5> <span style={afterStyle}></span>
+                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Next update due: Dec 2018</h5> <span style={afterStyle}></span>
                             <hr style={{margin: "9px 0 17px 0"}}/>
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">View & edit profile information</a></h5> <span style={afterStyle}></span> 
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Upgrade your profile</a></h5> <span style={afterStyle}></span> 
-            
+                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">View & edit profile information</a></h5> <span style={afterStyle}></span>
+                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Upgrade your profile</a></h5> <span style={afterStyle}></span>
+
                     </div>
 
-                    
-                    
+
+
 
                     </Grid>
                 </Grid>
