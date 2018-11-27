@@ -18,7 +18,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-import { updateStepperCount, submitUserMotorSy } from '../../actions/index.js'
+import { updateStepperCount, submitUserMotorSy, submitReview } from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import { motorSy } from '../../constants'
@@ -35,7 +35,7 @@ import { motorSy } from '../../constants'
         modalText : '',
         modalWarning: "",
         redirectAddress : '/user/user_nonmotorsy',
-    }  
+    }
 
     componentDidMount() {
         window.scroll(0,0)
@@ -51,34 +51,39 @@ import { motorSy } from '../../constants'
     handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
         this.props.submitUserMotorSy(this.state.answerArray, this.state.answerTrack)
-        this.props.history.push(this.state.redirectAddress)
+        if (this.props.review.redirect) {
+            this.props.submitReview(false);
+            this.props.history.push('/user/user_review');
+        } else {
+            this.props.history.push(this.state.redirectAddress)
+        }
     }
 
     handleAnswerSelect = (index, choice, key) => {
         console.log("handleanswerselect : ", choice, " + ", index, " + ", key)
         this.setState({modalOpen: false})
-        let tempTrack = this.state.answerTrack  
+        let tempTrack = this.state.answerTrack
         let tempArray = this.state.answerArray
         if (choice === "ns" || choice === "no") {
             tempTrack[index] = choice
             let ind = tempArray.indexOf(key)
             ind >= 0 ? tempArray.splice(ind, 1) : null
             choice === "ns" ? this.handleModalOpen(key, "hello") : null
-        } 
+        }
         else {
             tempTrack[index] = choice
             tempArray.indexOf(key) < 0 ? tempArray.push(key) : null
         }
         this.setState({
             noAnswer: false,
-            answerTrack: tempTrack, 
+            answerTrack: tempTrack,
             answerArray: tempArray
         })
     }
 
-    handleModalOpen = (title, text) => { 
+    handleModalOpen = (title, text) => {
         console.log(title);
-         this.setState({ 
+         this.setState({
              modalTitle : title,
              modalText : text,
              modalOpen: true
@@ -90,11 +95,11 @@ import { motorSy } from '../../constants'
 
         const { handleSubmit, pristine, submitting, classes } = this.props
         const { answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
-        
+
         return (
             <section>
                 <div className={classes.componentBox}>
-                    
+
                     <p className={classes.sectionTitle}>Tick all that apply, 'no' if you don't take that medication and 'not sure' for more description.</p>
                     <br />
 
@@ -105,16 +110,16 @@ import { motorSy } from '../../constants'
                                 <Grid container spacing={24}>
 
                                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                                   
+
                                     <div className={classes.questionContainer}>
-                                            <span className={classes.questionHead}>{sy.symptom}</span>  
+                                            <span className={classes.questionHead}>{sy.symptom}</span>
                                             <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.shortDescription) }>
                                                 <HelpIcon color="primary" className={classes.helpIcon}/>
                                             </Button>
                                         <br />
-                                        <span className={classes.questionText} > 
+                                        <span className={classes.questionText} >
                                             {sy.shortDescription}
-                                        </span>  
+                                        </span>
                                     </div>
                                     </Grid>
 
@@ -130,7 +135,7 @@ import { motorSy } from '../../constants'
                                             <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  />
                                         </Button>
                                     </Grid>
-                                    
+
                                 </Grid>
                                 <br />
                             </div>
@@ -138,14 +143,14 @@ import { motorSy } from '../../constants'
                     }) }
 
                     <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
-   
+
                 </div>
 
-                { modalOpen && <UserModal 
+                { modalOpen && <UserModal
                     modalOpen={modalOpen}
-                    modalTitle={modalTitle} 
-                    modalText={modalText} 
-                    modalWarning={false} 
+                    modalTitle={modalTitle}
+                    modalText={modalText}
+                    modalWarning={false}
                 /> }
 
             </section>
@@ -156,14 +161,15 @@ import { motorSy } from '../../constants'
 
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ submitUserMotorSy, updateStepperCount }, dispatch);
+    return bindActionCreators({ submitUserMotorSy, updateStepperCount, submitReview }, dispatch);
 }
 
 const mapStateToProps = (state) => {
     console.log("state: ", state)
     return {
         userMotorSy: state.motorSy.motorSy,
-        userTrack: state.motorSy.track
+        userTrack: state.motorSy.track,
+        review: state.review,
     }
 }
 

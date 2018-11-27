@@ -13,6 +13,7 @@ import UserMotorSyReducer from './UserMotorSyReducer';
 import UserNonMotorSyReducer from './UserNonMotorSyReducer';
 import UserAccountReducer from './UserAccountReducer';
 import CredsReducer from './CredsReducer';
+import RedirectReducer from './RedirectReducer';
 
 export default combineReducers({
     form: formReducer,
@@ -28,4 +29,5 @@ export default combineReducers({
     nonMotorSy : UserNonMotorSyReducer,
     accountResponse : UserAccountReducer,
     creds: CredsReducer,
+    review: RedirectReducer,
 });

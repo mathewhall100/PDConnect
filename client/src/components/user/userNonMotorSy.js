@@ -10,7 +10,7 @@ import HelpIcon from '@material-ui/icons/Help';
 import CloseIcon from '@material-ui/icons/Close';
 
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-import { submitUserNonMotorSy, updateStepperCount} from '../../actions/index.js'
+import { submitUserNonMotorSy, updateStepperCount, submitReview} from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import { nonMotorSy } from '../../constants'
@@ -27,10 +27,10 @@ import { nonMotorSy } from '../../constants'
         modalText : '',
         modalWarning: "",
         redirectAddress : '/user/user_review',
-    }  
+    }
 
 
-    componentDidMount() {     
+    componentDidMount() {
         window.scroll(0,0)
         this.props.updateStepperCount()
         const index = this.props.userTrack
@@ -44,7 +44,12 @@ import { nonMotorSy } from '../../constants'
     handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
         this.props.submitUserNonMotorSy(this.state.answerArray, this.state.answerTrack)
-        this.props.history.push(this.state.redirectAddress)
+        if (this.props.review.redirect) {
+            this.props.submitReview(false);
+            this.props.history.push('/user/user_review');
+        } else {
+            this.props.history.push(this.state.redirectAddress)
+        }
     }
 
     handleAnswerSelect = (index, choice, key) => {
@@ -56,21 +61,21 @@ import { nonMotorSy } from '../../constants'
             tempTrack[index] = choice
             let ind = tempArray.indexOf(key)
             ind >= 0 ? tempArray.splice(ind, 1) : null
-            choice === "ns" ? this.handleModalOpen(key, key) : null        } 
+            choice === "ns" ? this.handleModalOpen(key, key) : null        }
         else {
             tempTrack[index] = choice
             tempArray.indexOf(key) < 0 ? tempArray.push(key) : null
         }
         this.setState({
             noAnswer: false,
-            answerTrack: tempTrack, 
+            answerTrack: tempTrack,
             answerArray: tempArray
         })
     }
 
-    handleModalOpen = (title, text) => { 
+    handleModalOpen = (title, text) => {
         console.log(title);
-         this.setState({ 
+         this.setState({
              modalTitle : title,
              modalText : text,
              modalOpen: true
@@ -98,15 +103,15 @@ import { nonMotorSy } from '../../constants'
 
                                     <Grid item xs={12} sm={12} md={12} lg={6}>
                                         <div className={classes.questionContainer}>
-                                           
-                                                <span className={classes.questionHead}>{sy.symptom}</span>  
+
+                                                <span className={classes.questionHead}>{sy.symptom}</span>
                                                 <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.shortDescription) }>
                                                     <HelpIcon color="primary" className={classes.helpIcon}/>
                                                 </Button>
                                             <br />
-                                            <span className={classes.questionText} > 
+                                            <span className={classes.questionText} >
                                                 {sy.shortDescription}
-                                            </span> 
+                                            </span>
                                         </div>
                                     </Grid>
 
@@ -119,7 +124,7 @@ import { nonMotorSy } from '../../constants'
                                             {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
                                         </Button>
                                         <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.key)}>
-                                        <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  />     
+                                        <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  />
                                         </Button>
                                     </Grid>
 
@@ -130,14 +135,14 @@ import { nonMotorSy } from '../../constants'
                     }) }
 
                     <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
-           
+
                 </div>
 
-                { modalOpen && <UserModal 
+                { modalOpen && <UserModal
                     modalOpen={modalOpen}
-                    modalTitle={modalTitle} 
-                    modalText={modalText} 
-                    modalWarning={false} 
+                    modalTitle={modalTitle}
+                    modalText={modalText}
+                    modalWarning={false}
                 /> }
 
             </section>
@@ -147,14 +152,15 @@ import { nonMotorSy } from '../../constants'
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ submitUserNonMotorSy, updateStepperCount }, dispatch);
+    return bindActionCreators({ submitUserNonMotorSy, updateStepperCount, submitReview }, dispatch);
 }
 
 const mapStateToProps = (state) => {
     console.log("state : ", state)
     return {
-        userNonMotorSy: state.nonMotorSy.nonMotorSy, 
-        userTrack: state.nonMotorSy.track
+        userNonMotorSy: state.nonMotorSy.nonMotorSy,
+        userTrack: state.nonMotorSy.track,
+        review: state.review,
     }
 }
 

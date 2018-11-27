@@ -15,7 +15,7 @@ import DoneIcon from '@material-ui/icons/Done';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
+import { submitUserFamily, updateStepperCount, submitReview} from '../../actions/index.js'
 
 
  class UserFamily extends Component {
@@ -23,7 +23,7 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
     state = {
         familyResult: [],
         redirectAddress : '/user/user_meds',
-    }  
+    }
 
     componentDidMount() {
         window.scroll(0,0)
@@ -40,7 +40,7 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
         let tempArray = this.state.familyResult
         const index= tempArray.indexOf(rel)
         if (tempArray[0] === "none") {tempArray.splice(0,1)}
-        if (index < 0 && rel !== "YOU") {tempArray.push(rel)} 
+        if (index < 0 && rel !== "YOU") {tempArray.push(rel)}
             else if (index >= 0) {tempArray.splice(index, 1)}
         this.setState({familyResult: tempArray})
     }
@@ -50,9 +50,15 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
         console.log("submit - familyResult:, ", familyResult)
         if (familyResult.length === 0) {familyResult[0] = "none"}
         this.props.submitUserFamily({family: familyResult})
-        this.props.history.push(this.state.redirectAddress)
+        if (this.props.review.redirect) {
+            this.props.submitReview(false);
+            this.props.history.push('/user/user_review');
+        } else {
+            this.props.history.push(this.state.redirectAddress)
+        }
+
     }
-    
+
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
@@ -66,7 +72,7 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
                 <Button type="button" className={classes.treeBtn} style={{top: props.top, left: props.left, backgroundColor: props.color, fontWeight: props.bold}} onClick={() => this.handleTreeBtnClicked(props.relative)}>{props.relative}</Button>
             )
         }
-        
+
         const TreeLink = (props) => {
             return (
                 <div className={props.class} style={{top: props.top, left: props.left, height: props.height, }}>
@@ -80,7 +86,7 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
 
                     <p className={classes.sectionTitle}>Click all that apply</p>
                     <br />
-                    
+
                     <div className={classes.treeContainer}>
 
                         <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
@@ -97,13 +103,13 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
                         <TreeLink class={classes.treeLinkVertical} top={25} left={spacingH+75} height="400px"/>
                         <TreeLink class={classes.treeLinkVertical} top={spacingV*2+25+25} left={spacingH*4+75} height="100px"/>
                      </div>
-                     
+
                      <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
 
                 </div>
 
-                
-            
+
+
             </section>
 
         );
@@ -112,13 +118,14 @@ import { submitUserFamily, updateStepperCount} from '../../actions/index.js'
 
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ submitUserFamily, updateStepperCount }, dispatch);
+    return bindActionCreators({ submitUserFamily, updateStepperCount, submitReview }, dispatch);
 }
 
 const mapStateToProps = (state) => {
     console.log("state: ", state)
     return {
-        userFamily: state.family.family
+        userFamily: state.family.family,
+        review: state.review,
     }
 }
 

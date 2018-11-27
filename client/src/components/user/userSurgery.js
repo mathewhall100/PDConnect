@@ -17,7 +17,7 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-import { submitUserSurgery, updateStepperCount} from '../../actions/index.js'
+import { submitUserSurgery, updateStepperCount, submitReview} from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import { procedures } from '../../constants'
@@ -33,7 +33,7 @@ import { procedures } from '../../constants'
         modalTitle : '',
         modalDescription : '',
         redirectAddress : '/user/user_motorsy',
-    }  
+    }
 
     componentDidMount() {
         window.scroll(0,0)
@@ -51,7 +51,12 @@ import { procedures } from '../../constants'
     handleNext= () => {
         console.log("submit - meds:, ", this.state.answerArray)
         this.props.submitUserSurgery(this.state.answerArray, this.state.answerTrack)
-        this.props.history.push(this.state.redirectAddress)
+        if (this.props.review.redirect) {
+            this.props.submitReview(false);
+            this.props.history.push('/user/user_review');
+        } else {
+            this.props.history.push(this.state.redirectAddress)
+        }
     }
 
     handleAnswerSelect = (index, key) => {
@@ -74,14 +79,14 @@ import { procedures } from '../../constants'
             modalWarning: false,
             modalTitle : '',
             modalText : '',
-            answerTrack: tempTrack, 
+            answerTrack: tempTrack,
             answerArray: tempArray
         })
     }
 
-    handleModalOpen = (title, text) => { 
+    handleModalOpen = (title, text) => {
         console.log(title);
-         this.setState({ 
+         this.setState({
              modalTitle : title,
              modalText : text,
              modalOpen: true
@@ -100,22 +105,22 @@ import { procedures } from '../../constants'
 
                 <p className={classes.sectionTitle}>Select all that apply</p>
                 <br />
-                    
+
                 {procedures.map((proc, index) => {
 
                     return (
                         <div key={index}>
                             <Grid container spacing={24}>
-                                <Grid item xs={12} sm={12} md={12} lg={7}> 
+                                <Grid item xs={12} sm={12} md={12} lg={7}>
                                     <div className={classes.questionContainer}>
-                                        <span className={classes.questionHead}>{proc.procedure}</span>  
+                                        <span className={classes.questionHead}>{proc.procedure}</span>
                                         <Button className={classes.helpButton} onClick={() => this.handleModalOpen(proc.procedure,proc.shortDescription) }>
                                             <HelpIcon color="primary" className={classes.helpIcon}/>
                                             </Button>
                                         <br />
-                                        <span className={classes.questionText}> 
+                                        <span className={classes.questionText}>
                                             {proc.shortDescription}
-                                        </span> 
+                                        </span>
                                     </div>
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={12} lg={5}>
@@ -133,11 +138,11 @@ import { procedures } from '../../constants'
 
                 </div>
 
-                { modalOpen && <UserModal 
+                { modalOpen && <UserModal
                     modalOpen={modalOpen}
-                    modalTitle={modalTitle} 
-                    modalText={modalText} 
-                    modalWarning={false} 
+                    modalTitle={modalTitle}
+                    modalText={modalText}
+                    modalWarning={false}
                 /> }
 
             </section>
@@ -148,14 +153,15 @@ import { procedures } from '../../constants'
 
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ submitUserSurgery, updateStepperCount }, dispatch);
+    return bindActionCreators({ submitUserSurgery, updateStepperCount, submitReview }, dispatch);
 }
 
 const mapStateToProps = (state) => {
     console.log("state: ", state)
     return {
         userSurgery: state.surgery.surgery,
-        userTrack: state.surgery.track
+        userTrack: state.surgery.track,
+        review: state.review,
     }
 }
 
