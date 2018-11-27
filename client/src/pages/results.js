@@ -311,7 +311,7 @@ class Results extends Component {
 
     render() {
 
-        const { handleSubmit, classes } = this.props
+        const { handleSubmit, userCreds, classes } = this.props
         const { treatmentResults, trialResults, tabSelected } = this.state
 
         const RenderTreatments= () => {
@@ -431,9 +431,9 @@ class Results extends Component {
                     <Grid item xs={12} sm={12} md={4}>
                         <br />
 
-                        <EmailBox />
+                        <EmailBox email={userCreds.email}/>
 
-                        <AccountBox />
+                        {!userCreds.email && !userCreds.password ? <AccountBox /> : null }
 
                         <SocMedBox />
 
@@ -459,6 +459,7 @@ const mapStateToProps = (state) => {
         userSurgery: state.surgery.surgery,
         userMotorSy: state.motorSy.motorSy,
         userNonMotorSy: state.nonMotorSy.nonMotorSy,
+        userCreds: state.creds
     }
   };
 

@@ -76,11 +76,7 @@ class EmailBox extends Component  {
                     <div >
                         <h1 className={classes.title} style={{marginRight: "30px"}}>Email me this page</h1>
                     </div>
-                   <FormText
-                        name="email"
-                        label="Email (john.doe@you.com)"
-                        width="90%"
-                    />
+                    <FormText title='email' name='email' label='' placeholder={this.props.email ? this.props.email : "e.g. john.doe@gmail.com"} width="90%"/>
                      <br />
                     <Button type="submit" className={classes.button}>Send</Button>
                     <br />
