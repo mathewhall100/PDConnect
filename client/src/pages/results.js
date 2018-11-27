@@ -56,8 +56,8 @@ class Results extends Component {
         // console.log(this.props.userMotorSy)
         // console.log(this.props.userNonMotorSy)
 
-        //this.treatmentResults()
-        //this.trialResults()
+        this.treatmentResults()
+        this.trialResults()
     }
 
 

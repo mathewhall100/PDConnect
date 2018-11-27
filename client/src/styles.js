@@ -571,7 +571,7 @@ export const resultStylesheet = theme => ({
         border: "2px solid lightgrey",
         borderRadius: "5px",
         padding: "20px 0 20px 25px",
-        marginBottom: "40px"
+        marginBottom: "30px"
     },
     socMedText: {
         fontSize: "24px",
@@ -658,6 +658,13 @@ export const resultStylesheet = theme => ({
     },
     serviceListText: {
         fontSize: "16px",
+    },
+    serviceSideAnchor: {
+        color: "black",
+        '&:hover': {
+            fontWeight: "bold",
+            color: PRIMARY_COLOR
+        }
     }
 
 })

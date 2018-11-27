@@ -42,8 +42,8 @@ class UserServices extends Component {
         console.log(this.props.userMotorSy)
         console.log(this.props.userNonMotorSy)
 
-        this.treatmentResults()
-        this.trialResults()
+       //  this.treatmentResults()
+       // this.trialResults()
     }
 
     handleServiceRedirect = (redirectAddress) => {
@@ -96,20 +96,19 @@ class UserServices extends Component {
                             <h5>Based on your profile you have matched the following services. </h5>
                             <br />
 
-                            <RenderServiceListItem header="View treatments" text="We have found x treatments that may benefit you and to disucss with your doctor" redirectAddress="/results:treatments" />
-                            <RenderServiceListItem header="View clinical trials" text="We have matched you with x clinical trials currently recruiting volunteers" redirectAddress="/results:trials" />
-                            <RenderServiceListItem header="View focus groups" text="Ther are x focus groups looking for participants like you" redirectAddress="/results:focusgroups" />
-                            <RenderServiceListItem header="Learn about your Parkinson disease" text="Knowledge articles aand videos tailored to you" />
+                            <RenderServiceListItem avatar={treatmentImg} header="View treatments" text="We have found x treatments that may benefit you and to disucss with your doctor" redirectAddress="/results:treatments" />
+                            <RenderServiceListItem avatar={trialsImg} header="View clinical trials" text="We have matched you with x clinical trials currently recruiting volunteers" redirectAddress="/results:trials" />
+                            <RenderServiceListItem avatar={focusImg} header="View focus groups" text="Ther are x focus groups looking for participants like you" redirectAddress="/results:focusgroups" />
+                            <RenderServiceListItem avatar={learnImg} header="Learn about your Parkinson disease" text="Knowledge articles aand videos tailored to you" />
                             <hr className={classes.hr} />
-                            <RenderServiceListItem header="Monitor my symptoms" text="Use theis site or our mobile app to monitor your symptoms" />
-                            <RenderServiceListItem header="Assess my welllness" text="Complete a wellness questionnaire designed for Parkinson patients." />
+                            <RenderServiceListItem avatar={monitorImg} header="Monitor my symptoms" text="Use theis site or our mobile app to monitor your symptoms" />
+                            <RenderServiceListItem avatar={assessImg} header="Assess my welllness" text="Complete a wellness questionnaire designed for Parkinson patients." />
                             <hr className={classes.hr} />
-
                         </div>
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={4}>
-                    <br />
+                    <br /><br />
                     <SocMedBox />
 
                     <div className={classes.serviceSideContainer}>
@@ -117,9 +116,10 @@ class UserServices extends Component {
                         <hr className={classes.hr} />
                         <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Bronze member</h5> <span style={afterStyle}></span> 
                         <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>You have 100 connect points</h5> <span style={afterStyle}></span> 
-                        <hr style={{margin: "8px 0 16px 0"}}/>
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>View account</h5> <span style={afterStyle}></span> 
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Earn points</h5> <span style={afterStyle}></span> 
+                        <hr style={{margin: "9px 0 17px 0"}}/>
+                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">View my activity</a></h5><span style={afterStyle}></span> 
+                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Edit account details</a></h5> <span style={afterStyle}></span>
+                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Earn points</a></h5> <span style={afterStyle}></span> 
                     </div>
 
                     <div className={classes.serviceSideContainer}>
@@ -127,9 +127,9 @@ class UserServices extends Component {
                         <hr className={classes.hr} />
                             <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Your profile is 70% complete</h5> <span style={afterStyle}></span> 
                             <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Next update due: Dec 2018</h5> <span style={afterStyle}></span> 
-                            <hr style={{margin: "8px 0 16px 0"}}/>
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>View/update profile</h5> <span style={afterStyle}></span> 
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Enhance your profile</h5> <span style={afterStyle}></span> 
+                            <hr style={{margin: "9px 0 17px 0"}}/>
+                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">View & edit profile information</a></h5> <span style={afterStyle}></span> 
+                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Upgrade your profile</a></h5> <span style={afterStyle}></span> 
             
                     </div>
 
