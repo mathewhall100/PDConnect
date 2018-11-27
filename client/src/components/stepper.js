@@ -73,9 +73,12 @@ class VerticalLinearStepper extends React.Component {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <FormCheckbox   name="policyCheck"
-                                                        label={`I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.`}
-                                        />
+                                        <label style={{display : 'flex'}}><FormCheckbox   name="policyCheck"
+                                                        label={`this doesn't work`}
+
+                                                />
+                                            <span style={{ cursor: 'pointer' }}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.</span>
+                                        </label>
                                     </td>
                                 </tr>
 
