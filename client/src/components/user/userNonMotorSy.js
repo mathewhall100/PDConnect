@@ -92,7 +92,7 @@ import { nonMotorSy } from '../../constants'
             <section>
                 <div className={classes.componentBox}>
 
-                    <p className={classes.sectionTitle}>Tick all that apply, 'no' if you don't take that medication and 'not sure' for more description.</p>
+                    <p className={classes.sectionTitle}>Tick all that apply, 'no' if you don't take that medication and 'not sure' for more description.Scroll down to view all.</p>
                     <br />
 
                     {nonMotorSy.map((sy, index) => {

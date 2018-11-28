@@ -94,10 +94,11 @@ class UserMeds extends Component {
     handleNoneSelect = () => {
         console.log('answerNone')
         this.setState({
+            modalOpen: false,
             answerNone: true,
             answerTrack: [],
-            answerArray: [],
-            modalOpen: false
+            answerArray: []
+            
         })
     }
 
@@ -132,7 +133,7 @@ class UserMeds extends Component {
                         </Grid>
                     </Grid>
                     <br />
-                     <p className={classes.sectionTitle}>Or, Select all that apply from the following list</p>
+                     <p className={classes.sectionTitle}>Or, Select all that apply from the following list (scroll down to view all).</p>
 
 
                     {medGroups.map((group, index) => {

@@ -31,15 +31,6 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
         this.props.history.push(this.state.redirectAddress)
     }
 
-    // handleShowBox = (index) => {
-    //     let indexValue = null
-    //     let tempArray = []
-    //     indexValue = this.state.showBox[index]
-    //     this.setState({ showBox: [] })
-    //     tempArray[index] = !indexValue
-    //     this.setState({ showBox: tempArray })
-    // }
-
     handleShowBox = (index) => {
         let indexValue = null
         let tempArray = this.state.showBox
@@ -73,7 +64,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
             <section>
                 <div className={classes.componentBox} style={{marginTop: "75px"}}>
 
-                    <p className={classes.sectionTitle}>Please check your entries below and edit any that are incorrect. Then click 'CREATE MY PROFILE AND CONTINUE'. </p>
+                    <p className={classes.sectionTitle}>Please check your entries below and click 'edit' to make changes. Then click 'CREATE MY PROFILE AND CONTINUE'. </p>
 
                     <RenderBoxHeader title="About me" number={0} link="/user/user_about"/>
                     {showBox[0] && <div>

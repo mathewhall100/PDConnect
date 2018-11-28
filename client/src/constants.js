@@ -456,5 +456,5 @@ export const nonMotorSy= [
 
 export const procedures  = [
     {key: "dbs", procedure: "Deep brain stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
-    {key: "pegj", procedure: "Placement of a feeding tube for Duopa therapy", shortDescription: "Placement of a narrow feeding tube throuigh the stomach wall (a Peg-J tube) to deliver drugs such as Duopa directly into the intestine.", description: ""},
+    {key: "pegj", procedure: "Placement of a feeding tube", shortDescription: "Placement of a feeding tube through the stomach wall  to deliver drugs such as Duopa directly into the intestine.", description: ""},
 ]

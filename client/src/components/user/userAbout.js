@@ -110,7 +110,7 @@ import UserModal from '../commons/userModal'
                     </Button> }
 
                     <span>
-                        {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px"}}/> : ''}
+                        {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px", color: "green"}}/> : ''}
                     </span>
 
                     <span className={classes.errorText} >
@@ -138,7 +138,7 @@ import UserModal from '../commons/userModal'
                                 width={"150px"}
                                 modal={1}
                             >
-                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select age</span></MenuItem>
+                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select age</span></MenuItem>
                                 {age.map(item =>
                                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                 )}
@@ -153,7 +153,7 @@ import UserModal from '../commons/userModal'
                             width={"150px"}
                             modal={2}
                         >
-                            <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select sex</span></MenuItem>
+                            <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select sex</span></MenuItem>
                             {sex.map(item =>
                             <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                             )}
@@ -168,7 +168,7 @@ import UserModal from '../commons/userModal'
                                 width={"380px"}
                                 modal={3}
                             >
-                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select race/ethnicity</span></MenuItem>
+                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select race/ethnicity</span></MenuItem>
                                 {raceEthnicity.map(item =>
                                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                 )}
@@ -183,7 +183,7 @@ import UserModal from '../commons/userModal'
                                 width={"150px"}
                                 modal={4}
                             >
-                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select year</span></MenuItem>
+                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select year</span></MenuItem>
                                 {years.map(item =>
                                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                 )}
@@ -198,7 +198,7 @@ import UserModal from '../commons/userModal'
                                 width={"150px"}
                                 modal={5}
                             >
-                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px"}}>Select year</span></MenuItem>
+                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select year</span></MenuItem>
                                 {years.map(item =>
                                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                 )}

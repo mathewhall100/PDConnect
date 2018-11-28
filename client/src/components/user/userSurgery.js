@@ -39,24 +39,35 @@ import { procedures } from '../../constants'
         window.scroll(0,0)
         this.props.updateStepperCount()
         const index = this.props.userTrack
-        if (index) {
-            console.log(index)
+        if (index && index.length > 0) {
+            console.log("index: ", index)
             this.setState({
                 answerTrack: index,
-                answerArray: this.props.userSurgery
+                answerArray: this.props.userSurgery,
+                answerNone: false
+            })
+        } else if (this.props.userAnswerNone) {
+            console.log(this.props.userAnswerNone)
+            this.setState({
+                answerNone: true
             })
         }
     }
 
-    handleNext= () => {
+    handleNext = () => {
         console.log("submit - meds:, ", this.state.answerArray)
-        this.props.submitUserSurgery(this.state.answerArray, this.state.answerTrack)
-        if (this.props.review.redirect) {
-            this.props.submitReview(false);
-            this.props.history.push('/user/user_review');
+        if (this.state.answerNone || this.state.answerArray.length > 0) {
+             this.props.submitUserSurgery(this.state.answerArray, this.state.answerTrack, this.state.answerNone)
+            if (this.props.review.redirect) {
+                this.props.submitReview(false);
+                this.props.history.push('/user/user_review');
+            } else {
+                this.props.history.push(this.state.redirectAddress)
+            }
         } else {
-            this.props.history.push(this.state.redirectAddress)
-        }
+            this.setState({modalWarning: true})
+            this.handleModalOpen("This question is important!","There are a number of surgical operations and procedures that can treat certain symptoms of Parkinson disease in certain patients. It is importnat for us to know if you have had any of these surgeries or procedures so that we can best match you to treatments you might benefit from.")
+            }
     }
 
     handleAnswerSelect = (index, key) => {
@@ -68,19 +79,25 @@ import { procedures } from '../../constants'
 
         if (tempIndex < 0) {tempArray.push(key)}
         else if (tempTrack[index] === true && tempIndex >= 0) {
-            tempArray[tempIndex] = ""
+            tempArray.splice(tempIndex, 1)
         }
-
         tempTrack[index] = !tempTrack[index]
 
         this.setState({
-            noAnswer: false,
+            answerNone: false,
             modalOpen: false,
-            modalWarning: false,
-            modalTitle : '',
-            modalText : '',
             answerTrack: tempTrack,
             answerArray: tempArray
+        })
+    }
+
+    handleNoneSelect = () => {
+        console.log('answerNone')
+        this.setState({
+            modalOpen: false,
+            answerNone: true,
+            answerTrack: [],
+            answerArray: []
         })
     }
 
@@ -97,14 +114,27 @@ import { procedures } from '../../constants'
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
+        const { answerTrack, answerNone, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         return (
             <section >
                 <div className={classes.componentBox} >
 
-                <p className={classes.sectionTitle}>Select all that apply</p>
-                <br />
+                <Grid container spacing={24}>
+                    <Grid item xs={12} sm={8}>
+                        <div className={classes.headerQuestion} >None (I havn't had any surgery or procedures done for Parkinson disease)</div>
+                        <br />
+                    </Grid>
+                        <Grid item xs={12} sm={4}>
+                             <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
+                                <QuestionButtonIcons answerConditional={answerNone} />
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <br />
+                     <p className={classes.sectionTitle}>Or, Select any that have have had from the following list</p>
+
+                      <hr className={classes.hr}/>
 
                 {procedures.map((proc, index) => {
 
@@ -161,6 +191,7 @@ const mapStateToProps = (state) => {
     return {
         userSurgery: state.surgery.surgery,
         userTrack: state.surgery.track,
+        userAnswerNone: state.surgery.answerNone,
         review: state.review,
     }
 }

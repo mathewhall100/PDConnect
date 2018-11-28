@@ -26,7 +26,7 @@ const MAXWIDTH = '1280px';
 const MINHEIGHT = '920px';
 
 export const QUESTION_BUTTON_DEFAULT_COLOR = 'grey'
-export const QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR = 'green'
+export const QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR = '#BF9000';
 export const QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR = "black"
 export const WARNING_COLOR = "red"
 
@@ -74,8 +74,9 @@ export const userStylesheet = theme => ({
         fontSize: "23px"
     },
     selectLabel: {
-
-        color: "black"
+        height: "40px",
+        color: "black",
+        fontWeight: "bold"
     },
     title: {
         fontSize: '32px',
@@ -97,10 +98,11 @@ export const userStylesheet = theme => ({
     questionHead: {
         fontSize: "17px",
         fontWeight: "bold",
-        lineHeight: 1.5
+        // lineHeight: 1.5
     },
     questionText: {
         fontSize: "18px",
+
     },
     headerQuestion: {
         marginTop: "15px",
