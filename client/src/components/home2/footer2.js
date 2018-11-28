@@ -14,40 +14,86 @@ class Footer extends Component {
 
         return (
             <footer className={classes.footerContainer}>
-                <Grid container>
-                    <Grid md={1}xs={1}></Grid>
-                    <Grid md={10}xs={10}>
-                        <Grid container>
-                            <Grid md={4} xs={12}>
-                                <a href="/"><img src={Logo} className={classes.footerLogo} alt='PD Connect' /></a>
-                                <br/>
-                                © 2017-2018 PD Connect. All Rights Reserved. <br/>
-                                <a href='/'>Privacy Policy</a>
+                <div className={classes.footerCenter}>
+                
+                    <Grid container spacing={8}>
+                        <Grid sm={1} xs={12}>
+                            <a href="/"><img src={Logo} className={classes.footerLogo} alt='PD Connect' /></a>
                             </Grid>
-                            <Grid md={4}xs={12}><br/><br/>
-                                <img src={phoneIcon} />(800)-333-3333 <br /><br/>
-                                <img src={mailIcon} />medmonitor.io@gmail.com
+                        <Grid sm={3} xs={12}>
+                            © 2017-2018 PD Connect. 
+                            <br />
+                            All Rights Reserved.
+                            <br />
+                            <a href='/' style={{color: "black"}}>Terms & Conditions</a>
+                            <br />
+                            <a href='/' style={{color: "black"}}>Privacy Policy</a>
+                        </Grid>
+                        <Grid sm={4}xs={12}>
+                            123 Great Western Blv<br />
+                            Cleveland, Ohio 44123<br />
+                            <img src={phoneIcon} />(800)-333-3333 <br />
+                            <img src={mailIcon} />medmonitor.io@gmail.com
+                        </Grid>
+                        <Grid sm={4} xs={12}>
+                            <Grid container >
+                                <Grid item xs={12}>
+                                     <span style={{fontWeight: "bold", fontSize: "20px", textAlign: "left"}}>Download the app: </span>
+                                </Grid>
                             </Grid>
-                            <Grid md={4} xs={12}>
-                                <Grid container className={classes.footerAppStore}>
-                                    <Grid item xs={6}>
-                                        <span className={classes.footerImgContainer}>
-                                            <a href='/'><img src={AppleDownload} className={classes.footerDownloadImg} alt="Download from Apple Store" /></a>
-                                        </span><br/>
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <span className={classes.footerImgContainer}>
-                                            <a href='/'><img src={GoogleDownload} className={classes.footerDownloadImg} alt="Download from Google Store" /></a>
-                                        </span>
-                                    </Grid>
+                            <Grid container className={classes.footerAppStore}>
+                                <Grid item xs={6} >
+                                    <span className={classes.footerImgContainer}>
+                                        <a href='/'><img src={AppleDownload} className={classes.footerDownloadImg} alt="Download from Apple Store" /></a>
+                                    </span><br/>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <span className={classes.footerImgContainer}>
+                                        <a href='/'><img src={GoogleDownload} className={classes.footerDownloadImg} alt="Download from Google Store" /></a>
+                                    </span>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid md={1} xs={1}></Grid>
-                </Grid>
 
+                </div>
             </footer>
+
+            // <footer className={classes.footerContainer}>
+            //     <Grid container>
+            //         <Grid md={1}xs={1}></Grid>
+            //         <Grid md={10}xs={10}>
+            //             <Grid container>
+            //                 <Grid md={4} xs={12}>
+            //                     <a href="/"><img src={Logo} className={classes.footerLogo} alt='PD Connect' /></a>
+            //                     <br/>
+            //                     © 2017-2018 PD Connect. All Rights Reserved. <br/>
+            //                     <a href='/'>Privacy Policy</a>
+            //                 </Grid>
+            //                 <Grid md={4}xs={12}><br/><br/>
+            //                     <img src={phoneIcon} />(800)-333-3333 <br /><br/>
+            //                     <img src={mailIcon} />medmonitor.io@gmail.com
+            //                 </Grid>
+            //                 <Grid md={4} xs={12}>
+            //                     <Grid container className={classes.footerAppStore}>
+            //                         <Grid item xs={6}>
+            //                             <span className={classes.footerImgContainer}>
+            //                                 <a href='/'><img src={AppleDownload} className={classes.footerDownloadImg} alt="Download from Apple Store" /></a>
+            //                             </span><br/>
+            //                         </Grid>
+            //                         <Grid item xs={6}>
+            //                             <span className={classes.footerImgContainer}>
+            //                                 <a href='/'><img src={GoogleDownload} className={classes.footerDownloadImg} alt="Download from Google Store" /></a>
+            //                             </span>
+            //                         </Grid>
+            //                     </Grid>
+            //                 </Grid>
+            //             </Grid>
+            //         </Grid>
+            //         <Grid md={1} xs={1}></Grid>
+            //     </Grid>
+
+            // </footer>
         )
     }
 }

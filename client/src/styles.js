@@ -1085,6 +1085,7 @@ export const stylesheet = theme => ({
 
 
 export const home2Stylesheet = theme => ({
+
     HeroTitle : {
         fontSize : '34px',
         color : 'black',
@@ -1256,10 +1257,16 @@ export const home2Stylesheet = theme => ({
         textAlign: 'center',
     },
     footerContainer: {
-        paddingTop: '40px',
-        paddingBottom: '10px',
+        paddingTop: '45px',
+        paddingBottom: '25px',
         marginTop: '60px',
         backgroundColor : 'lightgrey',
+        borderTop: "2px solid",
+        borderColor: PRIMARY_COLOR,
+    },
+    footerCenter: {
+        maxWidth: MAXWIDTH,
+        margin: '0 auto',
     },
     socialIcon: {
         height: '45px',
@@ -1289,9 +1296,9 @@ export const home2Stylesheet = theme => ({
         maxHeight: 'auto',
     },
     footerLogo: {
-        height: '80px',
-        width: '80px',
-        margin: '10px 0 10px 0',
+        height: '90px',
+        width: '90px',
+        margin: '0px 10px 10px 0',
         [theme.breakpoints.down('xs')]: {
             display: 'none',
         },
