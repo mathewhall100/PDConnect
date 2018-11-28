@@ -31,18 +31,18 @@ class AppBar extends Component {
                 <span>
 
                     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px"}} onClick={() => { this.handleNav('/account') }} >
-                        <AccountIcon style={{color: PRIMARY_COLOR}}/> &nbsp;&nbsp;My account
+                        <AccountIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Account
                     </Button>
                     <Button type="button" className={classes.topBarBtn}  style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/profile') }} >
-                        <DescriptionIcon style={{color: PRIMARY_COLOR}}/> &nbsp;&nbsp;My profile
+                        <DescriptionIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Profile
                     </Button>
                     
                     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/services') }} >
-                        <DashboardIcon style={{color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Services
+                        <DashboardIcon style={{fontSize: "24px", fontSize: "26px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Services
                     </Button>
 
                     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/services') }} >
-                        <HomeIcon style={{color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Home
+                        <HomeIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Home
                     </Button>
 
                 </span> 
@@ -52,11 +52,11 @@ class AppBar extends Component {
                 <span>
                     
                     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/signin') }} >
-                         <AccountIcon style={{color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Sign in
+                         <AccountIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Sign in
                     </Button>
 
                     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleSignIn('/faq') }} >
-                        <HelpIcon style={{color: PRIMARY_COLOR}}/> &nbsp;&nbsp;FAQ
+                        <HelpIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;FAQ
                     </Button>
 
                 </span>

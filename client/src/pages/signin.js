@@ -39,7 +39,7 @@ class SignIn extends Component {
 
                 <div style={{marginTop: "75px", maxWidth: "600px", margin: "75px auto"}}>
 
-                <h3 className={classes.stepperPageName} style={{fontFamily: "muli"}}>Sign In to Your account </h3>
+                <h3 className={classes.stepperPageName} style={{fontFamily: "muli"}}>Sign In To Your Account </h3>
 
                     <div>
                         <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>

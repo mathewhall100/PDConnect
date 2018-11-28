@@ -130,9 +130,9 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 8,
                 pageName: 'Your Profile',
-                title: `Review your answers, read our privacy policy then create your profile.`,
+                title: `Read our privacy policy, review your entries, then create a profile.`,
                 pageImg: ``,
-                subtitle: `The answers you have given will be used to create your profile and to match you with individualised information and services. Please take a moment to review your entries and make sure they are all correct. `,
+                subtitle: `The answers you have given will be used to create your profile and to match you with individualised information and services. Your profile will be secure and we will not sell or share any information within it without your express permission.`,
                 nextPage: `/user/user_account`,
                 prevPage: `/user/user_nonmotorsy`,
             }

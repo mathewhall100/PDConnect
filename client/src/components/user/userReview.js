@@ -61,11 +61,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
             return (
                 <div className={classes.profileSectionHeader}>
                        <span style={{position: "relative", top: "5px"}}>{props.title}</span>
-                       {!showBox[props.number] && <span className={classes.profileBoxButton2} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>REVIEW</span> }
-
-                       {/* <Button type="button" className={classes.profileBoxButton} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>
-                            {showBox[props.number] ? "HIDE" : "VIEW" }
-                        </Button> */}
+                       {!showBox[props.number] && <span className={classes.profileBoxButton3} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>Check</span> }
 
                     </div>
             )
@@ -75,10 +71,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
             return (
                 <section>
                     <hr className={classes.hr} />
-
-                        <span className={classes.profileBoxButton2} onClick={() => { this.redirectStuff(props.link)}} >EDIT</span>
-                    {/*<Link to={props.link} style={{ textDecoration: "none" }} onClick={() => submitReview(true)} >
-                    </Link> */}
+                    <span className={classes.profileBoxButton2} onClick={() => { this.redirectStuff(props.link)}} >EDIT</span>
                     <span className={classes.profileBoxButton2} onClick={() => this.handleShowBox(props.number)}>CLOSE</span>
                     <br />
                     <br />
@@ -91,7 +84,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
             <section>
                 <div className={classes.componentBox} style={{marginTop: "75px"}}>
 
-                    <p className={classes.sectionTitle}>Please review your entries below and edit any that are incorrect. Then click 'CREATE MY PROFILE AND CONTINUE'. </p>
+                    <p className={classes.sectionTitle}>Please check your entries below and edit any that are incorrect. Then click 'CREATE MY PROFILE AND CONTINUE'. </p>
 
                     <RenderBoxHeader title="About me" number={0} />
                     {showBox[0] && <div className={classes.profileBox}>

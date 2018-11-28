@@ -54,8 +54,6 @@ class VerticalLinearStepper extends React.Component {
                 return (
                     <div style={{marginRight: "10px"}}>
                         <br />
-                        <span className={classes.stepperSubtitle}>Your profile will be secure and we will not sell or share any information within it without your express permission.</span>
-                        <br />
                         <br />
 
                         <span className={classes.stepperSubtitle}>
@@ -89,7 +87,7 @@ class VerticalLinearStepper extends React.Component {
                 )
             } else if (stepperCount === "Finally...") {
                 return (
-                    <div className={classes.listItems} >
+                    <div className={classes.listItems} style={{marginTop: "-15px", marginBottom: "-15px"}} >
                         <ul style={{marginLeft: "20px"}}>
                             <li>Save your profile between visits</li>
                             <li>Hear first about new treatments and clinical trials matched to you</li>

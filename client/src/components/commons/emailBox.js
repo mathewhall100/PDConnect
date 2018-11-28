@@ -73,8 +73,8 @@ class EmailBox extends Component  {
         return (
             <div className={classes.emailContainer}>
                 <form autoComplete="off" onSubmit={handleSubmit(this.submit.bind(this))}>
-                    <div >
-                        <h1 className={classes.title} style={{marginRight: "30px"}}>Email me this page</h1>
+                    <div>
+                        <h1 className={classes.socMedText} style={{marginBottom: "-3px"}}>Email me this page</h1>
                     </div>
                     <FormText title='email' name='email' label='' placeholder={this.props.email ? this.props.email : "e.g. john.doe@gmail.com"} width="90%"/>
                      <br />

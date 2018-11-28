@@ -210,12 +210,10 @@ class TrialDisplay extends Component {
 
                         <br />
 
+                        <SocMedBox title="Share page" />
+                        
                         <EmailBox />
                         
-                        <AccountBox />
-
-                        <SocMedBox />
-
                     </Grid>
                  </Grid> 
             </div>

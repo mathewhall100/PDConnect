@@ -205,7 +205,7 @@ class UserServices extends Component {
                         <div className={classes.serviceMainContainer}>
                             <h1 style={{color: PRIMARY_COLOR}}>Welcome to PD Connect</h1>
                             <br />
-                            <h5>Based on your profile you have matched the following services. </h5>
+                            <h5>Based on your profile we have matched the following services. </h5>
                             <br />
 
                             <RenderServiceListItem
@@ -256,7 +256,7 @@ class UserServices extends Component {
 
                     <Grid item xs={12} sm={12} md={4}>
                     <br /><br />
-                    <SocMedBox />
+                    <SocMedBox title="Share this site with friends: "/>
 
                     <div className={classes.serviceSideContainer}>
 
@@ -302,11 +302,11 @@ class UserServices extends Component {
                         <hr style={{margin: "9px 0 13px 0"}}/>
 
                         <span style={beforeStyle}></span>
-                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile')}>View & edit profile information</h5>
+                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile')}>View & edit profile </h5>
                         <span style={afterStyle}></span>
 
                         <span style={beforeStyle}></span>
-                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile/upgrade')}>Upgrade profile</h5>
+                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile/upgrade')}>Complete your profile</h5>
                         <span style={afterStyle}></span>
 
                         <span style={beforeStyle}></span>
