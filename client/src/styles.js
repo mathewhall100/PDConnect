@@ -649,7 +649,6 @@ export const resultStylesheet = theme => ({
             borderRadius: "5px", 
             backgroundColor: "#eeeeee",
             borderColor: SECONDARY_COLOR
-
         }
     },
     serviceListHeader: {
@@ -659,11 +658,19 @@ export const resultStylesheet = theme => ({
     serviceListText: {
         fontSize: "16px",
     },
-    serviceSideAnchor: {
-        color: "black",
+    serviceSideLink: {
+        margin: "2px 0",
+        padding: 0,
+        backgroundColor: "white !important",
+        color: "black !important",
+        border: "2px solid #ffffff",
+        float: "right",
+        fontSize: "16px",
+        fontWeight: "bold",
         '&:hover': {
-            fontWeight: "bold",
-            color: PRIMARY_COLOR
+            backgroundColor: "lightgrey",
+            cursor: "pointer",
+            borderBottom: "2px solid #BF9000",
         }
     }
 
@@ -695,14 +702,15 @@ export const stylesheet = theme => ({
         },
     },
     topBarBtn : {
-        margin: "20px 0 0 15px",
+        margin: "0 0 0 55px",
         backgroundColor: "white !important",
         color: "black !important",
-        border: "2px solid #BF9000",
+        padding: 0,
+        border: "2px solid #ffffff",
         fontWeight: "bold",
+        '&:focus': {outline: 'none' },
         '&:hover': {
-            backgroundColor: PRIMARY_COLOR,
-            color: "white",
+            borderBottom: "2px solid #BF9000",
         }
     },
     hypLink : {
