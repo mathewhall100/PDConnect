@@ -624,7 +624,7 @@ export const resultStylesheet = theme => ({
         padding: "10px",
         border: "2px solid white",
         '&:hover': {
-            borderRadius: "5px", 
+            borderRadius: "5px",
             backgroundColor: "#F8F8F8",
             borderColor: SECONDARY_COLOR
         }
@@ -922,6 +922,7 @@ export const stylesheet = theme => ({
         color: PRIMARY_COLOR,
         margin: 'auto',
         textAlign : 'center',
+        padding: '40px 0 40px 0',
     },
     connectButtonContainer : {
         textAlign : 'center',
@@ -1088,7 +1089,7 @@ export const home2Stylesheet = theme => ({
         fontSize : '34px',
         color : 'black',
         fontWeight : 'bolder',
-        lineHeight : '3',
+        lineHeight : '1.5',
     },
     HeroWhiteTitle : {
         fontSize: '34px',
@@ -1098,11 +1099,14 @@ export const home2Stylesheet = theme => ({
     },
     description : {
         fontSize : '22px',
-        color : 'dark gray',
     },
     homepageContainer : {
         minHeight : '370px',
         margin : 'auto',
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: '50px',
+            paddingBottom : '50px',
+        },
     },
     startContainer : {
         margin : 'auto',
@@ -1112,6 +1116,17 @@ export const home2Stylesheet = theme => ({
     buttonContainer : {
         paddingTop : '20px',
         margin : 'auto',
+    },
+    mobileImg : {
+        display : 'none',
+        [theme.breakpoints.down('sm')]: {
+            display: 'block',
+            textAlign: 'center',
+            margin: 'auto',
+            minHeight: '250px',
+            alignItems: 'middle',
+            padding : '40px 0 40px 0',
+        },
     },
     homepageButton : {
         backgroundColor: PRIMARY_COLOR,
@@ -1160,6 +1175,9 @@ export const home2Stylesheet = theme => ({
         margin: 'auto',
         minHeight : '375px',
         alignItems : 'middle',
+        [theme.breakpoints.down('sm')]: {
+            display : 'none',
+        },
     },
     promiseTitle: {
         fontSize: '23px',
@@ -1169,10 +1187,11 @@ export const home2Stylesheet = theme => ({
         color: 'white',
     },
     promiseCube : {
-        minHeight : '290px',
+        minHeight : '250px',
         padding : '20px',
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('md')]: {
             margin : '15px',
+            minHeight: '190px',
         },
     },
     promiseRowContainer : {
@@ -1215,24 +1234,32 @@ export const home2Stylesheet = theme => ({
     wow : {
         background: PRIMARY_COLOR_HOVER,
         width: '80%',
-        height : '380px',
+        height : '350px',
         margin: '20px 15px 20px 15px',
         '&:hover': {
+            height: '350px',
             background: SECONDARY_COLOR,
             color : `${PRIMARY_COLOR} !important`,
-        }
+        },
+        [theme.breakpoints.down('md')]: {
+            margin: '15px',
+            minHeight: '200px',
+
+        },
     },
     connectHeader : {
         display: 'block',
         fontSize: '30px',
         color: 'black',
         margin: 'auto',
+        padding: '40px 0 40px 0',
         textAlign: 'center',
     },
     footerContainer: {
         paddingTop: '40px',
         paddingBottom: '10px',
-        marginTop: '60px'
+        marginTop: '60px',
+        backgroundColor : 'lightgrey',
     },
     socialIcon: {
         height: '45px',
@@ -1249,5 +1276,24 @@ export const home2Stylesheet = theme => ({
     },
     connectSubscribe: {
         display: 'grid',
+    },
+    footerAppStore : {
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        maxWidth: '1200px',
+        textAlign : 'right',
+    },
+    footerDownloadImg: {
+        padding: '15px 50px 15px 0',
+        maxWidth: '225px',
+        maxHeight: 'auto',
+    },
+    footerLogo: {
+        height: '80px',
+        width: '80px',
+        margin: '10px 0 10px 0',
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+        },
     },
 });
