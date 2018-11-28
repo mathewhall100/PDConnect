@@ -28,6 +28,9 @@ class Connects extends Component {
                         </div>
                         <div className={classes.aboutContentContainer}>
                             <Grid container className={classes.aboutItemContainer}>
+                                <Grid item md={3} xs={12} className={classes.mobileImg}>
+                                    <img src={dbsImg} alt='deep brain surgery' className={classes.treatmentImg} />
+                                </Grid>
                                 <Grid item md={7} xs={12}>
                                     <h3>Deep Brain Stimulation</h3>
                                     <span>
@@ -44,6 +47,9 @@ class Connects extends Component {
                                 </Grid>
                             </Grid>
                             <Grid container className={classes.aboutItemContainer}>
+                                <Grid item md={3} xs={12} className={classes.mobileImg}>
+                                    <img src={rytaryImg} alt='Rytary Medication' className={classes.treatmentImg} />
+                                </Grid>
                                 <Grid item md={7} xs={12}>
                                     <h3>Rytary</h3>
                                     <span>
@@ -61,6 +67,9 @@ class Connects extends Component {
                                 </Grid>
                             </Grid>
                             <Grid container className={classes.aboutItemContainer}>
+                                <Grid item md={3} xs={12} className={classes.mobileImg}>
+                                    <img src={focusGroupImg} alt='deep brain surgery' className={classes.treatmentImg} />
+                                </Grid>
                                 <Grid item md={7} xs={12}>
                                     <h3>Focus Group</h3>
                                     <span>
