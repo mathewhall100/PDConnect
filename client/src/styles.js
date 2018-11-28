@@ -140,6 +140,7 @@ export const userStylesheet = theme => ({
         '&:hover': {
             backgroundColor: "white"
         },
+        '&:focus': {outline: 0}
     },
     buttonContainer : {
         width : "100%",
@@ -247,6 +248,7 @@ export const userStylesheet = theme => ({
         border: "2px solid grey",
         borderRadius: "10px",
         fontSize: "15px",
+        fontWeight: "bold",
         position: "absolute",
         '&:hover': {
             backgroundColor: "lightgrey",
@@ -264,50 +266,20 @@ export const userStylesheet = theme => ({
         position: "absolute",
         zIndex: -100
     },
-    profileBox: {
-        border: "1px solid grey",
-        padding: "20px 20px 0 20px",
-        borderRadius: "5px",
-        fontWeight: "bold",
-
-    },
     profileSectionHeader: {
+        marginTop: "10px",        
         fontSize: "18px",
         fontWeight: "bold",
-        marginBottom: "20px"
     },
     profileBoxButton: {
-        backgroundColor: "#EEE",
-        width: '80px',
+        backgroundColor: "white",
         color: 'black',
         fontWeight: "bold",
-        fontSize: "13px",
-        border: "2px solid",
-        borderColor: "grey",
-        height: "16px",
+        fontSize: "14px",
         '&:hover': {
-            color: PRIMARY_COLOR,
-            backgroundColor: "lightgrey",
-            border: "2px solid",
-            borderColor: PRIMARY_COLOR,
-            fontWeight: "bold",
-        }
-    },
-    profileBoxButton2: {
-        backgroundColor: "#EEE",
-        color: 'black',
-        fontWeight: "bold",
-        fontSize: "13px",
-        border: "2px solid",
-        borderColor: "grey",
-        borderRadius: '5px',
-        padding: '5px 20px 5px 20px',
-        margin: "10px",
-        '&:hover': {
-            color: PRIMARY_COLOR,
-            backgroundColor: "lightgrey",
-            border: "2px solid",
-            borderColor: PRIMARY_COLOR,
+            color: SECONDARY_COLOR,
+            borderBottom: "2px solid",
+            borderColor: SECONDARY_COLOR,
             fontWeight: "bold",
         }
     },
@@ -557,7 +529,7 @@ export const resultStylesheet = theme => ({
         border: "2px solid lightgrey",
         borderRadius: "5px",
         backgroundColor: "#F8F8F8",
-        padding: "20px 0 20px 25px",
+        padding: "20px 10px 20px 25px",
         marginBottom: "40px"
     },
     accountContainer: {
@@ -568,14 +540,16 @@ export const resultStylesheet = theme => ({
         marginBottom: "40px"
     },
     socMedContainer: {
+        backgroundColor: "#F8F8F8",
         border: "2px solid lightgrey",
         borderRadius: "5px",
-        padding: "20px 0 20px 25px",
+        padding: "20px 0 20px 20px",
         marginBottom: "30px"
     },
     socMedText: {
         fontSize: "24px",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontFamily: 'muli',
     },
     socialIcon : {
         height : '35px',
@@ -621,6 +595,7 @@ export const resultStylesheet = theme => ({
         fontWeight: "bold"
     },
     listItems: {
+        marginTop: 0,
         marginLeft: "-20px",
         '&:hover': {
             backgroundColor: "#eeeeee",
@@ -639,7 +614,8 @@ export const resultStylesheet = theme => ({
         borderRadius: "5px",
         backgroundColor: "white",
         padding: "20px 10px 10px 10px",
-        marginBottom: "30px"
+        marginBottom: "30px",
+        backgroundColor: "#F8F8F8",
     },
     serviceListBox: {
         margin: "10px 0 10px 0",
@@ -647,9 +623,8 @@ export const resultStylesheet = theme => ({
         border: "2px solid white",
         '&:hover': {
             borderRadius: "5px",
-            backgroundColor: "#eeeeee",
+            backgroundColor: "#F8F8F8",
             borderColor: SECONDARY_COLOR
-
         }
     },
     serviceListHeader: {
@@ -659,11 +634,19 @@ export const resultStylesheet = theme => ({
     serviceListText: {
         fontSize: "16px",
     },
-    serviceSideAnchor: {
-        color: "black",
+    serviceSideLink: {
+        margin: "2px 0",
+        padding: 0,
+        backgroundColor: "#F8F8F8 !important",
+        color: "black !important",
+        border: "2px solid #F8F8F8",
+        float: "right",
+        fontSize: "16px",
+        fontWeight: "bold",
         '&:hover': {
-            fontWeight: "bold",
-            color: PRIMARY_COLOR
+            backgroundColor: "lightgrey",
+            cursor: "pointer",
+            borderBottom: "2px solid #BF9000",
         }
     }
 
@@ -695,14 +678,16 @@ export const stylesheet = theme => ({
         },
     },
     topBarBtn : {
-        margin: "20px 0 0 15px",
+        margin: "0 0 0 55px",
         backgroundColor: "white !important",
         color: "black !important",
-        border: "2px solid #BF9000",
+        padding: 0,
+        border: "2px solid #ffffff",
         fontWeight: "bold",
+        fontSize: "15px",
+        '&:focus': {outline: 'none' },
         '&:hover': {
-            backgroundColor: PRIMARY_COLOR,
-            color: "white",
+            borderBottom: "2px solid #BF9000",
         }
     },
     hypLink : {

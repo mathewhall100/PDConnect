@@ -205,43 +205,113 @@ class UserServices extends Component {
                         <div className={classes.serviceMainContainer}>
                             <h1 style={{color: PRIMARY_COLOR}}>Welcome to PD Connect</h1>
                             <br />
-                            <h5>Based on your profile you have matched the following services. </h5>
+                            <h5>Based on your profile we have matched the following services. </h5>
                             <br />
 
-                            <RenderServiceListItem avatar={treatmentImg} header="View treatments" badgeContent={`${treatmentResults.length}`} text={`We have found ${treatmentResults.length > 0 ? treatmentResults.length : "no"} treatments that may benefit you and to disucss with your doctor`} redirectAddress="/results:treatments" />
-                            <RenderServiceListItem avatar={trialsImg} header="View clinical trials" badgeContent={`${trialResults.length}`} text={`We have matched you with ${trialResults.length > 0 ? trialResults.length : "no"} clinical trials currently recruiting volunteers`} redirectAddress="/results:trials" />
-                            <RenderServiceListItem avatar={focusImg} header="View focus groups" badgeContent="0" text={`There are ${focusGroupResults.length > 0 ? focusGroupResults.length : "no"} focus groups looking for participants like you`} redirectAddress="/results:focusgroups" />
-                            <RenderServiceListItem avatar={learnImg} header="Learn about your Parkinson disease"  text="Knowledge articles aand videos tailored to you" />
+                            <RenderServiceListItem
+                                 avatar={treatmentImg} 
+                                 header="View treatments" 
+                                 badgeContent={`${treatmentResults.length}`} 
+                                 text={`We have found ${treatmentResults.length > 0 ? treatmentResults.length : "no"} treatments that may benefit you and to disucss with your doctor`} 
+                                 redirectAddress="/results:treatments" 
+                            />
+
+                            <RenderServiceListItem 
+                                avatar={trialsImg} 
+                                header="View clinical trials" 
+                                badgeContent={`${trialResults.length}`} 
+                                text={`We have matched you with ${trialResults.length > 0 ? trialResults.length : "no"} clinical trials currently recruiting volunteers`} 
+                                redirectAddress="/results:trials" 
+                            />
+                            <RenderServiceListItem 
+                                avatar={focusImg} 
+                                header="View focus groups" 
+                                badgeContent="0" 
+                                text={`There are ${focusGroupResults.length > 0 ? focusGroupResults.length : "no"} focus groups looking for participants like you`} 
+                                redirectAddress="/results:focusgroups" 
+                            />
+                            <RenderServiceListItem 
+                                avatar={learnImg} 
+                                header="Learn about your Parkinson disease"  
+                                text="Knowledge articles aand videos tailored to you"
+                             />
+
                             <hr className={classes.hr} />
-                            <RenderServiceListItem avatar={monitorImg} header="Monitor my symptoms" text="Use theis site or our mobile app to monitor your symptoms" />
-                            <RenderServiceListItem avatar={assessImg} header="Assess my welllness" text="Complete a wellness questionnaire designed for Parkinson patients." />
+
+                            <RenderServiceListItem 
+                                avatar={monitorImg} 
+                                header="Monitor my symptoms" 
+                                text="Use theis site or our mobile app to monitor your symptoms" 
+                            />
+                            <RenderServiceListItem 
+                                avatar={assessImg} 
+                                header="Assess my welllness" 
+                                text="Complete a wellness questionnaire designed for Parkinson patients." 
+                            />
+
                             <hr className={classes.hr} />
+
                         </div>
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={4}>
                     <br /><br />
-                    <SocMedBox />
+                    <SocMedBox title="Share this site with friends: "/>
 
                     <div className={classes.serviceSideContainer}>
+
                         <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My Account</h3>
                         <hr className={classes.hr} />
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Bronze member</h5> <span style={afterStyle}></span>
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>You have 100 connect points</h5> <span style={afterStyle}></span>
-                        <hr style={{margin: "9px 0 17px 0"}}/>
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">View my activity</a></h5><span style={afterStyle}></span>
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Edit account details</a></h5> <span style={afterStyle}></span>
-                        <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Earn points</a></h5> <span style={afterStyle}></span>
+
+                        <span style={beforeStyle}></span>
+                        <h5 style={{float: "right", fontSize: "19px"}}>Bronze member</h5> 
+                        <span style={afterStyle}></span>
+
+                        <span style={beforeStyle}></span>
+                        <h5 style={{float: "right", fontSize: "19px"}}>You have 100 connect points</h5> 
+                        <span style={afterStyle}></span>
+
+                        <hr style={{margin: "9px 0 13px 0"}}/>
+
+                        <span style={beforeStyle}></span>
+                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/activity')}>View my activity</h5>
+                        <span style={afterStyle}></span>
+
+                        <span style={beforeStyle}></span>
+                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/details')}>Edit account details</h5> 
+                        <span style={afterStyle}></span>
+
+                        <span style={beforeStyle}></span>
+                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/earn')}>Earn points</h5>
+                        <span style={afterStyle}></span>
                     </div>
 
                     <div className={classes.serviceSideContainer}>
+
                         <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My profile</h3>
                         <hr className={classes.hr} />
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Your profile is 70% complete</h5> <span style={afterStyle}></span>
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}>Next update due: Dec 2018</h5> <span style={afterStyle}></span>
-                            <hr style={{margin: "9px 0 17px 0"}}/>
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">View & edit profile information</a></h5> <span style={afterStyle}></span>
-                            <span style={beforeStyle}></span><h5 style={{float: "right", fontSize: "19px"}}><a className={classes.serviceSideAnchor}href="">Upgrade your profile</a></h5> <span style={afterStyle}></span>
+
+                        <span style={beforeStyle}></span>
+                        <h5 style={{float: "right", fontSize: "19px"}}>Your profile is 70% complete</h5>
+                        <span style={afterStyle}></span>
+
+                        <span style={beforeStyle}></span>
+                        <h5 style={{float: "right", fontSize: "19px"}}>Next update due: Dec 2018</h5>
+                        <span style={afterStyle}></span>
+
+                        <hr style={{margin: "9px 0 13px 0"}}/>
+
+                        <span style={beforeStyle}></span>
+                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile')}>View & edit profile </h5>
+                        <span style={afterStyle}></span>
+
+                        <span style={beforeStyle}></span>
+                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile/upgrade')}>Complete your profile</h5>
+                        <span style={afterStyle}></span>
+
+                        <span style={beforeStyle}></span>
+                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile/upgrade')}>Upgrade your profile</h5>
+                        <span style={afterStyle}></span>
 
                     </div>
 

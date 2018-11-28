@@ -190,11 +190,13 @@ class Results extends Component {
                     <Grid item xs={12} sm={12} md={4}>
                         <br />
 
+                        <SocMedBox title="Share page"/>
+                        
                         <EmailBox email={userCreds.email}/>
 
-                        {!userCreds.email && !userCreds.password ? <AccountBox /> : null }
+                        {/* {!userCreds.email && !userCreds.password ? <AccountBox /> : null } */}
 
-                        <SocMedBox />
+                        
 
                     </Grid>
                 </Grid>

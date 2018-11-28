@@ -12,10 +12,10 @@ import {resultStylesheet } from '../../styles';
 
     class SocMedBox extends Component  {
         render() {
-            const { classes } = this.props
+            const { classes, title } = this.props
             return (
                 <div className={classes.socMedContainer}>
-                    <span className={classes.socMedText}>Tell friends about this site.</span>
+                    <span className={classes.socMedText}>&nbsp;{title}</span>
                     <br />
                     <span>
                         <img className={classes.socialIcon}  style={{ transition: 'all .4s ease'}} src={fbIcon} alt="facebook icon" />

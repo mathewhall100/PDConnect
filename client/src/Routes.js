@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Homepage from './pages/home2';
 import User from './pages/user';
+import SignIn from './pages/signin';
 import Result from './pages/results';
 import Services from './pages/services';
 import TreatmentDisplay from './pages/treatmentDisplay';
@@ -17,6 +18,7 @@ class Routes extends Component {
             <div>
                 <Switch>
                     <Route path='/user' component={User} />
+                    <Route path='/signin' component={SignIn} />
                     <Route path='/home' component={Homepage} />
                     <Route path='/services' component={Services} />
                     <Route path='/results:id' component={Result} />

@@ -39,7 +39,9 @@ export const testRytary = (userMeds, userMotorSy) => {
         //console.log("rytary: ", test1, test2.length, test3.length)
 
         if (test1 && (test2.length > 0 || test3.length > 0 || test4.length > 0)) {return true} else {return false}
-    }
+
+       
+    } return true
 }
 
 export const testDuopa = (userNonMotorSy, userMotorSy, userMeds) => {
@@ -53,10 +55,12 @@ export const testDuopa = (userNonMotorSy, userMotorSy, userMeds) => {
         test4 = userMotorSy.filter(symptom => symptom ===  "dyskinesia")
         test5 = userMeds.length > 0 ? true : false
 
-        //console.log("dupoa: ", test1.length, test2.length, test3.length, test4.length, test5)
+        console.log("dupoa: ", test1.length, test2.length, test3.length, test4.length, test5)
 
-        if ((test1.length > 0 ||  test2.length > 0) && (test3.length > 0 || test4.length > 0) && test5) {return true} else {return false}
-    }
+         if ((test1.length > 0 ||  test2.length > 0) && (test3.length > 0 || test4.length > 0) && test5) {return true} else {return false}
+
+        
+    } return true
 }
 
 export const testDroxidopa = (userNonMotorSy) => {
@@ -67,8 +71,10 @@ export const testDroxidopa = (userNonMotorSy) => {
 
         //console.log(test.length)
 
-        if  (test.length > 0) {return true} else {return false}
-    }
+        // if  (test.length > 0) {return true} else {return false}
+
+        
+    } return true
 }
 
 export const testNuplazid = (userNonMotorSy) => {
@@ -107,8 +113,10 @@ export const testSPARK = (userAbout, userMeds) => {
 
         //console.log("spark: ", test1, test2, test3)
 
-        if (test1 && test2 && test3) {return true} else {return false}
-    }
+        // if (test1 && test2 && test3) {return true} else {return false}
+
+        
+    } return true
 }
 
 
