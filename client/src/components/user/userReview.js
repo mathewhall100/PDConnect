@@ -23,27 +23,29 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
     }
 
     state = {
-        showBox: [null],
+        showBox: [1],
         redirectAddress : '/user/user_account'
     }
 
     handleCreateProfile() {
-        // check to see if checkbox signed - if not display modal & do not save
-        // save checkbox
         this.props.history.push(this.state.redirectAddress)
     }
 
+    // handleShowBox = (index) => {
+    //     let indexValue = null
+    //     let tempArray = []
+    //     indexValue = this.state.showBox[index]
+    //     this.setState({ showBox: [] })
+    //     tempArray[index] = !indexValue
+    //     this.setState({ showBox: tempArray })
+    // }
+
     handleShowBox = (index) => {
         let indexValue = null
-        let tempArray = []
+        let tempArray = this.state.showBox
         indexValue = this.state.showBox[index]
-        this.setState({ showBox: [] })
         tempArray[index] = !indexValue
         this.setState({ showBox: tempArray })
-    }
-
-    handleNext = () => {
-
     }
 
     redirectStuff = (url) => {
@@ -60,25 +62,12 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
         const RenderBoxHeader = (props) => {
             return (
                 <div className={classes.profileSectionHeader}>
-                       <span style={{position: "relative", top: "5px"}}>{props.title}</span>
-                       {!showBox[props.number] && <span className={classes.profileBoxButton3} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>Check</span> }
-
-                    </div>
+                       <span >{props.title}</span>  
+                       <span className={classes.profileBoxButton} style={{float: "right", marginLeft: "15px"}}  onClick={() => { this.redirectStuff(props.link)}}>EDIT</span> 
+                       <span className={classes.profileBoxButton} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>{showBox[props.number] ? "HIDE" : "VIEW"}</span>  
+                </div>
             )
         }
-
-        const RenderEditButton = (props) => {
-            return (
-                <section>
-                    <hr className={classes.hr} />
-                    <span className={classes.profileBoxButton2} onClick={() => { this.redirectStuff(props.link)}} >EDIT</span>
-                    <span className={classes.profileBoxButton2} onClick={() => this.handleShowBox(props.number)}>CLOSE</span>
-                    <br />
-                    <br />
-                </section>
-            )
-        }
-
 
         return (
             <section>
@@ -86,123 +75,105 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
 
                     <p className={classes.sectionTitle}>Please check your entries below and edit any that are incorrect. Then click 'CREATE MY PROFILE AND CONTINUE'. </p>
 
-                    <RenderBoxHeader title="About me" number={0} />
-                    {showBox[0] && <div className={classes.profileBox}>
+                    <RenderBoxHeader title="About me" number={0} link="/user/user_about"/>
+                    {showBox[0] && <div>
                         {userAbout && userAbout.age ?
                             <ul>
-                                <li style={{fontSize: "1.2rem", marginLeft: "20px"}}>{userAbout.age} years old {startCase(userAbout.sex)}</li>
-                                <li style={{fontSize: "1.2rem", marginLeft: "20px"}}>{userAbout.race}</li>
-                                <li style={{marginLeft: "20px", fontSize: "1.2rem"}}>First diagnosed with Parkinson disease: {userAbout.yearDiagnosed}</li>
-                                <li style={{marginLeft: "20px", fontSize: "1.2rem"}}>Began treatment for Parkinson disease: {userAbout.yearTreatment}</li>
+                                <li style={{marginLeft: "20px"}}>{userAbout.age} years old {startCase(userAbout.sex)}</li>
+                                <li style={{marginLeft: "20px"}}>{userAbout.race}</li>
+                                <li style={{marginLeft: "20px"}}>First diagnosed with Parkinson disease: {userAbout.yearDiagnosed}</li>
+                                <li style={{marginLeft: "20px"}}>Began treatment for Parkinson disease: {userAbout.yearTreatment}</li>
 
                             </ul>
                         : null }
-                        <RenderEditButton link="/user/user_about" number={0}/>
+                    </div> } 
+
+                    <RenderBoxHeader title="My day-to-day activities" number={1} link="/user/user_life" />
+                    {showBox[1] && <div>
+                        {userADL ?
+                            <ul>
+                                <li style={{marginLeft: "20px"}}>{PDADLs.filter(adl => adl.key === userADL)[0].title}</li>
+                            </ul> 
+                        : null }
                     </div> }
 
-                    <br />
-
-                    <RenderBoxHeader title="My day-to-day activities" number={1} />
-                    {showBox[1] && <div className={classes.profileBox}>
-                    {userADL ?
-                       <p style={{fontSize: "1.2rem"}}>{PDADLs.filter(adl => adl.key === userADL)[0].title}</p>
-                       : null }
-                       <RenderEditButton link="/user/user_life" number={1}/>
-                    </div> }
-
-                    <br />
-
-                    <RenderBoxHeader title="Relatives with Parkinson disease" number={2}  />
-
-                    {showBox[2] && <div className={classes.profileBox}>
+                    <RenderBoxHeader title="Relatives with Parkinson disease" number={2} link="/user/user_family" />
+                    {showBox[2] && <div>
                         {userFamily ? userFamily[0] !== "none" ?
                             <ul>
                                {userFamily.map((item, index) => {
                                     return (
-                                        <li style={{fontSize: "1.2rem", marginLeft: "20px"}} key={index}>A {item}</li>
+                                        <li style={{marginLeft: "20px"}} key={index}>A {item}</li>
                                     )
                                 }) }
                             </ul>
                             :
-                            <p style={{fontSize: "1.2rem"}}>None that I know of.</p>
+                            <p>None that I know of.</p>
                         : null }
-                        <RenderEditButton link="/user/user_family" number={2}/>
                     </div> }
 
-                    <br />
-
-                    <RenderBoxHeader title="My current medications for Parkinson disease" number={3} />
-                    {showBox[3] && <div className={classes.profileBox}>
+                    <RenderBoxHeader title="My current medications for Parkinson disease" number={3} link="/user/user_meds" />
+                    {showBox[3] && <div>
                         {userMeds ? userMeds.length > 0 ?
                             <ul>
                                 {userMeds.map((item, index) => {
                                    let med = meds.filter(med => med.key === item)[0].generic
                                     return (
-                                        <li key={index} style={{fontSize: "1.2rem", marginLeft: "20px"}}>{med}</li>
+                                        <li key={index} style={{marginLeft: "20px"}}>{med}</li>
                                     )
                                 }) }
                             </ul>
                             :
-                            <p style={{fontSize: "1.2rem"}}> I take no medications for Parkinson disease.</p>
+                            <p> I take no medications for Parkinson disease.</p>
                         : null }
-                        <RenderEditButton link="/user/user_meds" number={3}/>
                     </div> }
 
-                    <br />
-
-                    <RenderBoxHeader title="Surgeries or procedures for Parkinson disease" number={4} />
-                    {showBox[4] && <div className={classes.profileBox}>
+                    <RenderBoxHeader title="Surgeries or procedures for Parkinson disease" number={4} link="/user/user_surgery"/>
+                    {showBox[4] && <div>
                         {userSurgery ? userSurgery.length > 0 ?
                             <ul>
                                 {userSurgery.map((item, index) => {
                                     let proc = procedures.filter(pr => pr.key === item)[0].procedure
                                     return (
-                                        <li key={index} style={{fontSize: "1.2rem", marginLeft: "20px"}}>{proc}</li>
+                                        <li key={index} style={{marginLeft: "20px"}}>{proc}</li>
                                     )
                                 }) }
                             </ul>
                             :
-                            <p style={{fontSize: "1.2rem"}}>I havn't had any surgery or procedures for Parkinson disease.</p>
+                            <p>I havn't had any surgery or procedures for Parkinson disease.</p>
                         : null }
-                        <RenderEditButton link="/user/user_surgery"number={4}/>
                     </div> }
 
-                    <br />
-
-                    <RenderBoxHeader title="Current motor symptoms" number={5} />
-                    {showBox[5] && <div className={classes.profileBox}>
+                    <RenderBoxHeader title="Current motor symptoms" number={5} link="/user/user_motorsy"/>
+                    {showBox[5] && <div>
                         {userMotorSy ? userMotorSy.length > 0 ?
                             <ul>
                                 {userMotorSy.map((item, index) => {
                                     let symptom = motorSy.filter(sy => sy.key === item)[0].symptom
                                     return (
-                                        <li key={index} style={{fontSize: "1.2rem", marginLeft: "20px"}}>{symptom}</li>
+                                        <li key={index} style={{marginLeft: "20px"}}>{symptom}</li>
                                     )
                                 }) }
                             </ul>
                             :
-                            <p style={{fontSize: "1.2rem"}}>I didn't record any symptoms of Parkinson disease</p>
+                            <p>I didn't record any symptoms of Parkinson disease</p>
                         : null }
-                        <RenderEditButton link="/user/user_motorsy" number={5}/>
                     </div> }
 
-                    <br />
-
-                    <RenderBoxHeader title="Current non-motor symptoms" number={6}/>
-                    {showBox[6] && <div className={classes.profileBox}>
+                    <RenderBoxHeader title="Current non-motor symptoms" number={6} link="/user/user_nonmotorsy"/>
+                    {showBox[6] && <div>
                         {userNonMotorSy ? userNonMotorSy.length > 0 ?
                             <ul>
                                 {userNonMotorSy.map((item, index) => {
                                     let symptom = nonMotorSy.filter(sy => sy.key === item)[0].symptom
                                     return (
-                                        <li key={index} style={{fontSize: "1.2rem", marginLeft: "20px"}}>{symptom}</li>
+                                        <li key={index} style={{marginLeft: "20px"}}>{symptom}</li>
                                     )
                                 }) }
                             </ul>
                             :
-                            <p style={{fontSize: "1.2rem"}}>I didn't record any non-motor symptoms</p>
+                            <p>I didn't record any non-motor symptoms</p>
                         : null }
-                        <RenderEditButton link="/user/user_nonmotorsy" number={6}/>
                     </div> }
 
                 <br />

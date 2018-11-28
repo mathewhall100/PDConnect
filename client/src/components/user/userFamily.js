@@ -63,13 +63,13 @@ import { submitUserFamily, updateStepperCount, submitReview} from '../../actions
 
         const { handleSubmit, pristine, submitting, classes } = this.props
         const { familyResult } = this.state
-        const SELECTED_BUTTON_COLOR = "lightgreen"
+        const SELECTED_BUTTON_COLOR = "#ffcc66"
         const spacingH = 90
         const spacingV = 100
 
         const TreeButton = (props) => {
             return (
-                <Button type="button" className={classes.treeBtn} style={{top: props.top, left: props.left, backgroundColor: props.color, fontWeight: props.bold}} onClick={() => this.handleTreeBtnClicked(props.relative)}>{props.relative}</Button>
+                <Button type="button" className={classes.treeBtn} style={{top: props.top, left: props.left, backgroundColor: props.color }} onClick={() => this.handleTreeBtnClicked(props.relative)}>{props.relative}</Button>
             )
         }
 
@@ -91,7 +91,7 @@ import { submitUserFamily, updateStepperCount, submitReview} from '../../actions
 
                         <TreeButton relative="grandparent" top="25px" left={spacingH} color={familyResult.indexOf("grandparent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
                         <TreeButton relative="parent" top={spacingV+25} left={spacingH} color={familyResult.indexOf("parent") >=0 ? SELECTED_BUTTON_COLOR : "white"}/>
-                        <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color={QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR} bold="bold"/>
+                        <TreeButton relative="YOU" top={spacingV*2+25} left={spacingH} color="#ff9900" />
                         <TreeButton relative="child" top={spacingV*3+25} left={spacingH} color={familyResult.indexOf("child") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
                         <TreeButton relative="grandchild" top={spacingV*4+25} left={spacingH} color={familyResult.indexOf("grandchild") >=0 ? SELECTED_BUTTON_COLOR : "white"} />
                         <TreeButton relative="brother / sister" top={spacingV*2+25} left={spacingH*4} color={familyResult.indexOf("brother / sister") >=0 ? SELECTED_BUTTON_COLOR : "white"} />

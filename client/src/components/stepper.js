@@ -100,7 +100,7 @@ class VerticalLinearStepper extends React.Component {
             } else if (stepperCount=== "Hello!") {
                 return (
                     <div className={classes.listItems} >
-                        <ul style={{marginLeft: "20px"}}>
+                        <ul style={{marginLeft: "20px", marginTop: "-15px", marginBottom: "-15px"}}>
                             <li>Knowledge of new and established treatments that may benefit you</li>
                             <li>Clinical trials in Parkinson disease looking to recruit volunteers</li>
                             <li>Focus groups that pay you for participating</li>

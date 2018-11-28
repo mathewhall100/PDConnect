@@ -140,7 +140,7 @@ export const userStylesheet = theme => ({
         '&:hover': {
             backgroundColor: "white"
         },
-        '&:focus': {outline: "none"}
+        '&:focus': {outline: 0}
     },
     buttonContainer : {
         width : "100%",
@@ -248,6 +248,7 @@ export const userStylesheet = theme => ({
         border: "2px solid grey",
         borderRadius: "10px",
         fontSize: "15px",
+        fontWeight: "bold",
         position: "absolute",
         '&:hover': {
             backgroundColor: "lightgrey",
@@ -265,62 +266,20 @@ export const userStylesheet = theme => ({
         position: "absolute",
         zIndex: -100
     },
-    profileBox: {
-        border: "1px solid grey",
-        padding: "20px 20px 0 20px",
-        borderRadius: "5px",
-        fontWeight: "bold",
-
-    },
     profileSectionHeader: {
+        marginTop: "10px",        
         fontSize: "18px",
         fontWeight: "bold",
-        marginBottom: "20px"
     },
     profileBoxButton: {
-        backgroundColor: "#EEE",
-        width: '80px',
-        color: 'black',
-        fontWeight: "bold",
-        fontSize: "13px",
-        border: "2px solid",
-        borderColor: "grey",
-        height: "16px",
-        '&:hover': {
-            color: PRIMARY_COLOR,
-            backgroundColor: "lightgrey",
-            border: "2px solid",
-            borderColor: PRIMARY_COLOR,
-            fontWeight: "bold",
-        }
-    },
-    profileBoxButton2: {
-        backgroundColor: "#EEE",
-        color: 'black',
-        fontWeight: "bold",
-        fontSize: "13px",
-        border: "2px solid",
-        borderColor: "grey",
-        borderRadius: '5px',
-        padding: '3px 20px 3px 20px',
-        margin: "10px",
-        '&:hover': {
-            color: PRIMARY_COLOR,
-            backgroundColor: "lightgrey",
-            border: "2px solid",
-            borderColor: PRIMARY_COLOR,
-            fontWeight: "bold",
-        }
-    },
-    profileBoxButton3: {
         backgroundColor: "white",
         color: 'black',
         fontWeight: "bold",
         fontSize: "14px",
         '&:hover': {
-            color: PRIMARY_COLOR,
+            color: SECONDARY_COLOR,
             borderBottom: "2px solid",
-            borderColor: PRIMARY_COLOR,
+            borderColor: SECONDARY_COLOR,
             fontWeight: "bold",
         }
     },
