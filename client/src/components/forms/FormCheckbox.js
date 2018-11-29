@@ -6,8 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 class FormCheckbox extends Component {
 
     renderCheckbox = ({input, label}) => {
-        console.log(input);
-        console.log("Label : ", label);
+        console.log("here");
         return (
 
             <FormControlLabel
@@ -24,7 +23,6 @@ class FormCheckbox extends Component {
     }
 
     render() {
-        console.log("Props in form checkbox : ", this.props);
         return (
 
             <Field name={this.props.name} label={this.props.label} component={Checkbox} />

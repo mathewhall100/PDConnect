@@ -10,6 +10,7 @@ import motorImg from '../images/avatar/stepper/motor.png';
 import nonMotorImg from '../images/avatar/stepper/non-motor.png';
 import surgeryImg from '../images/avatar/stepper/surgery.png';
 import accountImg from '../images/avatar/stepper/create_account.png';
+import profileImg from '../images/avatar/stepper/profile.png';
 
 export const updateStepperCount = () => {
     console.log("get window location : ", window.location.pathname);
@@ -131,7 +132,7 @@ function getStepContent(){
                 stepperCount: 8,
                 pageName: 'Your Profile',
                 title: `Read our privacy policy, review your entries, then create a profile.`,
-                pageImg: ``,
+                pageImg: `${profileImg}`,
                 subtitle: `The answers you have given will be used to create your profile and to match you with individualised information and services. Your profile will be secure and we will not sell or share any information within it without asking you first.`,
                 nextPage: `/user/user_account`,
                 prevPage: `/user/user_nonmotorsy`,

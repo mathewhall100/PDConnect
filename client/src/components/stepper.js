@@ -38,7 +38,10 @@ class VerticalLinearStepper extends React.Component {
     componentDidMount() {
         this.props.updateStepperCount();
     }
-
+    handleAgreement = (e) => {
+        e.preventDefault();
+        console.log("here");
+    }
 
     render() {
         const { classes, onPage, stepper } = this.props;
@@ -55,33 +58,36 @@ class VerticalLinearStepper extends React.Component {
                     <div style={{marginRight: "10px"}}>
                         <br />
                         <br />
+                            <form>
+                            <span className={classes.stepperSubtitle}>
+                                Please read our
+                                <Modal buttonLabel="Terms & Conditions" modalTitle='PD Connect Terms and Conditions' modalContent='content heeeere' />
+                                {/*<span className={classes.profileTermsButton}>Terms & Conditions</span> */}
+                                and
+                                <Modal buttonLabel="Data Privacy Policy" modalTitle='PD Connect Data Privacy Policy' modalContent='content heeeere' />
+                                {/*<span className={classes.profileTermsButton}>Data Privacy Policy</span> */}
+                            </span>
+                            <br />
+                            <br />
+                            <hr className={classes.hr} style={{marginRight: 0}}/>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label style={{ display: 'flex' }} onClick={(e) => { this.handleAgreement(e) }}>
+                                                <FormCheckbox   name="policyCheck"
+                                                                label={`this doesn't work`}
 
-                        <span className={classes.stepperSubtitle}>
-                            Please read our
-                            <Modal buttonLabel="Terms & Conditions" modalTitle='PD Connect Terms and Conditions' modalContent='content heeeere' />
-                            {/*<span className={classes.profileTermsButton}>Terms & Conditions</span> */}
-                              and
-                            <Modal buttonLabel="Data Privacy Policy" modalTitle='PD Connect Data Privacy Policy' modalContent='content heeeere' />
-                            {/*<span className={classes.profileTermsButton}>Data Privacy Policy</span> */}
-                        </span>
-                        <br />
-                        <br />
-                        <hr className={classes.hr} style={{marginRight: 0}}/>
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <label style={{display : 'flex'}}><FormCheckbox   name="policyCheck"
-                                                        label={`this doesn't work`}
 
                                                 />
-                                            <span style={{ cursor: 'pointer' }}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.</span>
-                                        </label>
-                                    </td>
-                                </tr>
+                                                <span style={{ cursor: 'pointer' }}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.</span>
+                                            </label>
+                                        </td>
+                                    </tr>
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                            </form>
                         <hr className={classes.hr} style={{marginRight: 0}}/>
                     </div>
                 )
