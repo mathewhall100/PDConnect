@@ -255,68 +255,64 @@ class UserServices extends Component {
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={4}>
-                    <br /><br />
-                    <SocMedBox title="Share this site with friends: "/>
+                        <br />
+                        <SocMedBox title="Share this site: "/>
+                        <br />
+                        
+                        <div className={classes.serviceSideContainer}>
+                            <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My Bookmarks</h3>
+                            <hr className={classes.hr} />
 
-                    <div className={classes.serviceSideContainer}>
+                            <span style={beforeStyle}></span>
+                            <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/activity')}>View Bookmarks</h5>
+                            <span style={afterStyle}></span>
 
-                        <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My Account</h3>
-                        <hr className={classes.hr} />
+                        </div>
 
-                        <span style={beforeStyle}></span>
-                        <h5 style={{float: "right", fontSize: "19px"}}>Bronze member</h5> 
-                        <span style={afterStyle}></span>
+                        <div className={classes.serviceSideContainer}>
 
-                        <span style={beforeStyle}></span>
-                        <h5 style={{float: "right", fontSize: "19px"}}>You have 100 connect points</h5> 
-                        <span style={afterStyle}></span>
+                            <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My Account</h3>
+                            <hr className={classes.hr} />
 
-                        <hr style={{margin: "9px 0 13px 0"}}/>
+                            <span style={beforeStyle}></span>
+                            <h5 style={{float: "right", fontSize: "19px"}}>Bronze member</h5> 
+                            <span style={afterStyle}></span>
 
-                        <span style={beforeStyle}></span>
-                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/activity')}>View my activity</h5>
-                        <span style={afterStyle}></span>
+                            <span style={beforeStyle}></span>
+                            <h5 style={{float: "right", fontSize: "19px"}}>You have 100 connect points</h5> 
+                            <span style={afterStyle}></span>
 
-                        <span style={beforeStyle}></span>
-                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/details')}>Edit account details</h5> 
-                        <span style={afterStyle}></span>
+                            <hr style={{margin: "9px 0 13px 0"}}/>
 
-                        <span style={beforeStyle}></span>
-                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/earn')}>Earn points</h5>
-                        <span style={afterStyle}></span>
-                    </div>
+                            <span style={beforeStyle}></span>
+                            <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/activity')}>View account</h5>
+                            <span style={afterStyle}></span>
 
-                    <div className={classes.serviceSideContainer}>
+                            <span style={beforeStyle}></span>
+                            <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/earn')}>Earn points</h5>
+                            <span style={afterStyle}></span>
+                        </div>
 
-                        <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My profile</h3>
-                        <hr className={classes.hr} />
+                        <div className={classes.serviceSideContainer}>
 
-                        <span style={beforeStyle}></span>
-                        <h5 style={{float: "right", fontSize: "19px"}}>Your profile is 70% complete</h5>
-                        <span style={afterStyle}></span>
+                            <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My profile</h3>
+                            <hr className={classes.hr} />
 
-                        <span style={beforeStyle}></span>
-                        <h5 style={{float: "right", fontSize: "19px"}}>Next update due: Dec 2018</h5>
-                        <span style={afterStyle}></span>
+                            <span style={beforeStyle}></span>
+                            <h5 style={{float: "right", fontSize: "19px"}}>Your profile is 70% complete</h5>
+                            <span style={afterStyle}></span>
 
-                        <hr style={{margin: "9px 0 13px 0"}}/>
+                            <span style={beforeStyle}></span>
+                            <h5 style={{float: "right", fontSize: "19px"}}>Next update due: Dec 2018</h5>
+                            <span style={afterStyle}></span>
 
-                        <span style={beforeStyle}></span>
-                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile')}>View & edit profile </h5>
-                        <span style={afterStyle}></span>
+                            <hr style={{margin: "9px 0 13px 0"}}/>
 
-                        <span style={beforeStyle}></span>
-                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile/upgrade')}>Complete your profile</h5>
-                        <span style={afterStyle}></span>
+                            <span style={beforeStyle}></span>
+                            <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile')}>View profile </h5>
+                            <span style={afterStyle}></span>
 
-                        <span style={beforeStyle}></span>
-                        <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile/upgrade')}>Upgrade your profile</h5>
-                        <span style={afterStyle}></span>
-
-                    </div>
-
-
-
+                        </div>
 
                     </Grid>
                 </Grid>

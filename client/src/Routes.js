@@ -3,10 +3,10 @@ import { Route, Switch } from "react-router-dom";
 import Homepage from './pages/home2';
 import User from './pages/user';
 import SignIn from './pages/signin';
-import Result from './pages/results';
+import Result from './pages/results2';
 import Services from './pages/services';
-import TreatmentDisplay from './pages/treatmentDisplay';
-import TrialDisplay from './pages/trialDisplay';
+import TreatmentDisplay from './pages/treatmentDisplay2';
+import TrialDisplay from './pages/trialDisplay2';
 import NotFound from './pages/notFound';
 
 import { connect } from 'react-redux';

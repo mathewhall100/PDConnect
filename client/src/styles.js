@@ -505,16 +505,17 @@ export const resultStylesheet = theme => ({
         paddingTop: '6px',
         width: "100px",
         height: "30px",
-        border: "2px solid lightgrey",
+        border: "2px solid #000080",
         borderRadius: "5px",
         fontSize: "14px",
         fontWeight: "bold",
-        backgroundColor: "white",
-        color: PRIMARY_COLOR,
+        backgroundColor: PRIMARY_COLOR,
+        color: "white",
         '&:hover': {
-            backgroundColor: PRIMARY_COLOR,
+            border: "2px solid #000080",
+            backgroundColor: "lightgrey",
             fontWeight: "bold",
-            color: "white"
+            color: "#000080"
         }
     },
     printButton: {
@@ -545,22 +546,25 @@ export const resultStylesheet = theme => ({
         backgroundColor: "#F8F8F8",
         border: "2px solid lightgrey",
         borderRadius: "5px",
-        padding: "20px 0 20px 20px",
-        marginBottom: "30px"
+        padding: "10px 0 20px 20px",
+
     },
     socMedText: {
-        fontSize: "24px",
+        fontSize: "20px",
         fontWeight: "bold",
         fontFamily: 'muli',
+        position: "relative",
+        top: "7px",
+        color: PRIMARY_COLOR,
     },
     socialIcon : {
-        height : '35px',
-        width : '35px',
-        borderRadius : '4px',
+        height : '30px',
+        width : '30px',
+        borderRadius : '3px',
         margin : '10px 5px 0 5px',
         '&:hover': {
-            height: "41px",
-            width: "41px",
+            height: "36px",
+            width: "36px",
             cursor: "pointer",
             margin: "7px 2px -3px 2px"
 
@@ -606,9 +610,7 @@ export const resultStylesheet = theme => ({
     },
     serviceMainContainer: {
         minHeight: "600px",
-         padding: "20px 0",
-        // border: "2px solid lightgrey",
-        // borderRadius: "5px",
+        padding: "20px 0",
         backgroundColor: "white",
     },
     serviceSideContainer: {
@@ -650,7 +652,16 @@ export const resultStylesheet = theme => ({
             cursor: "pointer",
             borderBottom: "2px solid #BF9000",
         }
-    }
+    },
+    resultActionBtn : {
+        padding: 0,
+        backgroundColor: "#F8F8F8 !important",
+        border: "2px solid #F8F8F8",
+        '&:focus': {outline: 'none' },
+        '&:hover': {
+            borderBottom: "2px solid #BF9000",
+        }
+    },
 
 })
 
@@ -1257,7 +1268,7 @@ export const home2Stylesheet = theme => ({
         textAlign: 'center',
     },
     footerContainer: {
-        padding: '45px 0 15px 25px',
+        padding: '45px 20px 15px 20px',
         marginTop: '60px',
         backgroundColor : 'lightgrey',
         borderTop: "2px solid",
@@ -1265,7 +1276,8 @@ export const home2Stylesheet = theme => ({
     },
     footerCenter: {
         maxWidth: MAXWIDTH,
-        margin: ' auto',
+        padding: "0 20px 0 40px",
+        margin: '0 auto',
     },
     socialIcon: {
         height: '45px',
