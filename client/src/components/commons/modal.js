@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import { userStylesheet } from '../../styles';
 
 function rand() {
-    return Math.round(Math.random() * 20) - 10;
+    return Math.round(Math.random() * 5) - 3;
 }
 
 function getModalStyle() {
@@ -20,16 +20,6 @@ function getModalStyle() {
         transform: `translate(-${top}%, -${left}%)`,
     };
 }
-
-const styles = theme => ({
-    paper: {
-        position: 'absolute',
-        width: theme.spacing.unit * 50,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-    },
-});
 
 class SimpleModal extends React.Component {
     state = {
@@ -62,7 +52,7 @@ class SimpleModal extends React.Component {
                         <div id="simple-modal-description">
                             {modalContent}
                         </div>
-                        <Button onClick={this.handleClose}>close</Button>
+                        <Button className={classes.stepperButton} onClick={this.handleClose}>close</Button>
                     </div>
                 </Modal>
             </span>
