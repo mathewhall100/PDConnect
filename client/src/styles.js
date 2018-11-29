@@ -74,9 +74,10 @@ export const userStylesheet = theme => ({
         fontSize: "23px"
     },
     selectLabel: {
-        height: "40px",
+        height: "45px",
         color: "black",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        backgroundColor: "white !important",
     },
     title: {
         fontSize: '32px',
@@ -617,7 +618,7 @@ export const resultStylesheet = theme => ({
         border: "2px solid lightgrey",
         borderRadius: "5px",
         backgroundColor: "white",
-        padding: "20px 10px 10px 10px",
+        padding: "20px 20px 10px 20px",
         marginBottom: "30px",
         backgroundColor: "#F8F8F8",
     },
@@ -1098,10 +1099,10 @@ export const stylesheet = theme => ({
 export const home2Stylesheet = theme => ({
 
     HeroTitle : {
-        fontSize : '34px',
+        fontSize : '60px',
         color : 'black',
         fontWeight : 'bolder',
-        lineHeight : '1.5',
+        lineHeight : '1.0',
     },
     HeroWhiteTitle : {
         fontSize: '34px',
@@ -1113,8 +1114,9 @@ export const home2Stylesheet = theme => ({
         fontSize : '22px',
     },
     homepageContainer : {
-        minHeight : '370px',
-        margin : 'auto',
+        width: "100%",
+        minHeight : '500px',
+        margin : '15px',
         [theme.breakpoints.down('sm')]: {
             paddingTop: '50px',
             paddingBottom : '50px',
@@ -1127,7 +1129,7 @@ export const home2Stylesheet = theme => ({
     },
     buttonContainer : {
         paddingTop : '20px',
-        margin : 'auto',
+        margin : '0 auto',
     },
     mobileImg : {
         display : 'none',
@@ -1144,23 +1146,26 @@ export const home2Stylesheet = theme => ({
         backgroundColor: PRIMARY_COLOR,
         fontSize : '18px',
         color: 'white',
-        float : 'right',
+        // float : 'right',
         textTransform : 'capitalize',
         '&:hover': {
             color: PRIMARY_COLOR,
         }
     },
-    splitContent : {
-        margin : 'auto',
-        verticalAlign : 'center',
+    // splitContent : {
+    //     margin : '0 auto',
+    //     verticalAlign : 'center',
+    // },
+    heroTextContainer: {
+        marginTop: "50px",
     },
     heroRotateText: {
         margin: 'auto',
         alignItems: 'center',
     },
     heroImg : {
-        borderColor :'solid 1px black',
-        width : '70%',
+        border :'2px solid lightgrey',
+        marginTop: '50px'
     },
     heroAppStore : {
         margin : '00px 0 00px 0',

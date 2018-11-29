@@ -140,7 +140,7 @@ import UserModal from '../commons/userModal'
                             >
                                 <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select age</span></MenuItem>
                                 {age.map(item =>
-                                <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
+                                <MenuItem key={item.value} value={item.value} >{item.text}</MenuItem>
                                 )}
                         </Field>
 

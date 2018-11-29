@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Hero2 from '../components/home2/hero2';
+import Hero2 from '../components/home2/hero3';
 import Start2 from '../components/home2/start2';
 import About2 from '../components/home2/about2';
 import Promise2 from '../components/home2/promise2';
