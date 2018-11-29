@@ -16,44 +16,56 @@ class Footer extends Component {
             <footer className={classes.footerContainer}>
                 <div className={classes.footerCenter}>
                 
-                    <Grid container spacing={8}>
-                        <Grid sm={1} xs={12}>
-                            <a href="/"><img src={Logo} className={classes.footerLogo} alt='PD Connect' /></a>
-                            </Grid>
-                        <Grid sm={3} xs={12}>
-                            © 2017-2018 PD Connect. 
-                            <br />
-                            All Rights Reserved.
-                            <br />
-                            <a href='/' style={{color: "black"}}>Terms & Conditions</a>
-                            <br />
-                            <a href='/' style={{color: "black"}}>Privacy Policy</a>
-                        </Grid>
-                        <Grid sm={4}xs={12}>
-                            123 Great Western Blv<br />
-                            Cleveland, Ohio 44123<br />
-                            <img src={phoneIcon} />(800)-333-3333 <br />
-                            <img src={mailIcon} />medmonitor.io@gmail.com
-                        </Grid>
-                        <Grid sm={4} xs={12}>
-                            <Grid container >
-                                <Grid item xs={12}>
-                                     <span style={{fontWeight: "bold", fontSize: "20px", textAlign: "left"}}>Download the app: </span>
-                                </Grid>
-                            </Grid>
-                            <Grid container className={classes.footerAppStore}>
-                                <Grid item xs={6} >
-                                    <span className={classes.footerImgContainer}>
-                                        <a href='/'><img src={AppleDownload} className={classes.footerDownloadImg} alt="Download from Apple Store" /></a>
-                                    </span><br/>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <span className={classes.footerImgContainer}>
-                                        <a href='/'><img src={GoogleDownload} className={classes.footerDownloadImg} alt="Download from Google Store" /></a>
+                    <Grid container spacing={24}>
+
+                        <Grid item md={4} xs={12}>
+
+                                <div>
+                                    <span style={{float: "left"}}><a href="/"><img src={Logo} className={classes.footerLogo} alt='PD Connect' /></a></span>
+                                    <span >
+                                        © 2017-2018 PD Connect.
+                                        <br />
+                                        All Rights Reserved.
+                                        <br />
+                                        <a href='/' style={{color: "black"}}>Terms & Conditions</a>
+                                        <br />
+                                        <a href='/' style={{color: "black"}}>Privacy Policy</a>
                                     </span>
-                                </Grid>
-                            </Grid>
+                                </div>
+
                         </Grid>
+
+                        <Grid md={3} xs={12}>
+                            <div style={{marginLeft: "10px", marginTop: "10px", marginBottom: "20px"}}>
+                                123 Great Western Blv<br />
+                                Cleveland, Ohio 44123<br />
+                                <img src={phoneIcon} />(800)-333-3333 <br />
+                                <img src={mailIcon} />medmonitor.io@gmail.com
+                            </div>
+                        </Grid>
+
+                        <Grid md={5} xs={12}>
+
+                            <div className={classes.footerAppStore} style={{marginLeft: "10px", marginBottom: "20px", float: "right"}}>
+                                <span style={{fontWeight: "bold", fontSize: "20px", textAlign: "left"}}>Download the app: </span>
+                                <br />
+
+                                <Grid container spacing={0}>
+                                    <Grid item sm={6} xs={12}>
+                                        <span className={classes.footerImgContainer}>
+                                            <a href='/'><img src={AppleDownload} className={classes.footerDownloadImg} alt="Download from Apple Store" /></a>
+                                        </span>
+                                    </Grid> 
+                                    <Grid item sm={6} xs={12}>
+                                        <span className={classes.footerImgContainer} > 
+                                            <a href='/'><img src={GoogleDownload} className={classes.footerDownloadImg} alt="Download from Google Store" /></a>
+                                        </span>
+                                    </Grid>
+                                </Grid>
+
+                            </div>
+                        </Grid>
+
                     </Grid>
 
                 </div>

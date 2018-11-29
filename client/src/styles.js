@@ -1257,8 +1257,7 @@ export const home2Stylesheet = theme => ({
         textAlign: 'center',
     },
     footerContainer: {
-        paddingTop: '45px',
-        paddingBottom: '25px',
+        padding: '45px 0 15px 25px',
         marginTop: '60px',
         backgroundColor : 'lightgrey',
         borderTop: "2px solid",
@@ -1266,7 +1265,7 @@ export const home2Stylesheet = theme => ({
     },
     footerCenter: {
         maxWidth: MAXWIDTH,
-        margin: '0 auto',
+        margin: ' auto',
     },
     socialIcon: {
         height: '45px',
@@ -1288,17 +1287,18 @@ export const home2Stylesheet = theme => ({
         marginLeft: 'auto',
         marginRight: 'auto',
         maxWidth: '1200px',
-        textAlign : 'right',
+        textAlign : 'left',
     },
     footerDownloadImg: {
-        padding: '15px 50px 15px 0',
+        padding: '15px 20px 15px 0',
         maxWidth: '225px',
+        width: "90%",
         maxHeight: 'auto',
     },
     footerLogo: {
         height: '90px',
         width: '90px',
-        margin: '0px 10px 10px 0',
+        margin: '0px 20px 0 0',
         [theme.breakpoints.down('xs')]: {
             display: 'none',
         },
