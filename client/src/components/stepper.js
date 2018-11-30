@@ -9,10 +9,12 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Modal from '../components/commons/modal';
-import { updateStepperCount } from '../actions/Stepper';
+import { updateStepperCount, updateTermAgreement } from '../actions/Stepper';
 import { userStylesheet } from '../styles';
 import BottomNav from '../components/commons/userBottomNav'
 import FormCheckbox from './forms/FormCheckbox'
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const styles = theme => ({
     container: {
@@ -33,24 +35,24 @@ const styles = theme => ({
 class VerticalLinearStepper extends React.Component {
     state = {
         activeStep: 0,
-        redirectAddress: '/user/user_account'
+        redirectAddress: '/user/user_account',
+        checkedAgreement: false,
     };
     componentDidMount() {
         this.props.updateStepperCount();
     }
-    handleAgreement = (e) => {
-        e.preventDefault();
-        console.log("here");
-    }
+    handleChange = name => event => {
+        this.setState({ [name]: event.target.checked }, () => {
+            this.props.updateTermAgreement(this.state.checkedAgreement);
+        });
+    };
 
     render() {
         const { classes, onPage, stepper } = this.props;
         const { stepperCount, pageImg, totalSteps, pageName, title, subtitle} = stepper;
-        console.log("stepper props : ", this.props);
         const { activeStep } = this.state;
 
         const ExtraText = () => {
-            console.log("stepperCount: ", stepperCount)
             if (stepperCount < 8) {
                 return null
             } else if (stepperCount === 8) {
@@ -74,7 +76,18 @@ class VerticalLinearStepper extends React.Component {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <label style={{ display: 'flex' }} onClick={(e) => { this.handleAgreement(e) }}>
+                                            <FormControlLabel
+                                                control={
+                                                    <Checkbox
+                                                        checked={this.state.checkedAgreement}
+                                                        onChange={this.handleChange('checkedAgreement')}
+                                                        value="checkedAgreement"
+                                                        color="primary"
+                                                    />
+                                                }
+                                                label="I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy."
+                                            />
+                                            {/*<label style={{ display: 'flex' }} onClick={(e) => { this.handleAgreement(e) }}>
                                                 <FormCheckbox   name="policyCheck"
                                                                 label={`this doesn't work`}
 
@@ -82,6 +95,7 @@ class VerticalLinearStepper extends React.Component {
                                                 />
                                                 <span style={{ cursor: 'pointer' }}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.</span>
                                             </label>
+                                            */}
                                         </td>
                                     </tr>
 
@@ -120,7 +134,6 @@ class VerticalLinearStepper extends React.Component {
         }
 
         const StepperHead = () =>  {
-            console.log("stepperCount: ", stepperCount)
             if (!isNaN(stepperCount) ) {
                 return (
                     <h2 className={classes.stepperCounter}>Step {stepperCount} of {totalSteps}</h2>
@@ -165,7 +178,6 @@ class VerticalLinearStepper extends React.Component {
 }
 
 function mapStatsToProps(state) {
-    console.log(state);
     return {
         stepper: state.stepper,
     }
@@ -182,4 +194,4 @@ const formData = {
 VerticalLinearStepper = reduxForm(formData)(VerticalLinearStepper)
 VerticalLinearStepper = withStyles(userStylesheet)(VerticalLinearStepper);
 VerticalLinearStepper = withRouter(VerticalLinearStepper)
-export default connect(mapStatsToProps, { updateStepperCount })(VerticalLinearStepper);
+export default connect(mapStatsToProps, { updateStepperCount, updateTermAgreement })(VerticalLinearStepper);

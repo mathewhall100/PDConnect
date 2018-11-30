@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
 import Modal from '@material-ui/core/Modal'
-
+import ClearIcon from '@material-ui/icons/Clear'
 import {userStylesheet } from '../../styles';
 
 class UserModal extends Component  {
@@ -10,7 +10,7 @@ class UserModal extends Component  {
     state = {
         modalOpen: true,
         modalWarning: false,
-    } 
+    }
 
     componentWillReceiveProps(nextProps) {
         console.log(nextProps)
@@ -46,6 +46,7 @@ class UserModal extends Component  {
             onClose={this.handleClose}
         >
             <div style={this.getModalStyle()}  className={classes.paper}>
+                    <label style={{ float: 'right' }}><ClearIcon style={{ color: 'red', cursor: 'pointer' }} onClick={this.handleClose} /></label>
                 <Typography variant="h6" id="modal-title" style={{color: modalWarning ? "red" : "grey"}}>
                     {modalTitle}
                 </Typography>
@@ -61,8 +62,3 @@ class UserModal extends Component  {
 
 UserModal = withStyles(userStylesheet)(UserModal)
 export default UserModal
-
-
-
-
-

@@ -26,3 +26,5 @@ export const USER_ACCOUNT = 'USER_ACCOUNT';
 export const CREDS_INFO = 'CREDS_INFO';
 
 export const BACK_TO_REVIEW = 'BACK_TO_REVIEW';
+
+export const AGREEMENT = 'AGREEMENT';

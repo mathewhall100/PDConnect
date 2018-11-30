@@ -1,6 +1,7 @@
 
 import {
-    STEP_COUNT
+    STEP_COUNT,
+    AGREEMENT
 } from './types';
 import familyImg from '../images/avatar/stepper/family.png';
 import lifestyleImg from '../images/avatar/stepper/lifestyle.png';
@@ -23,6 +24,16 @@ export const updateStepperCount = () => {
 
     }
 }
+
+export const updateTermAgreement = (tf) => {
+    return (dispatch) => {
+        dispatch({
+            type : AGREEMENT,
+            payload : tf
+        })
+    }
+}
+
 
 function getStepContent(){
     let objStepperContent = {};

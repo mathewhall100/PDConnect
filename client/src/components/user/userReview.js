@@ -6,13 +6,15 @@ import { bindActionCreators } from 'redux';
 import { startCase } from 'lodash'
 
 import { withStyles } from '@material-ui/core/styles';
+import ArrowUp from '@material-ui/icons/ExpandLess';
+import ArrowDown from '@material-ui/icons/ExpandMore';
+import Edit from '@material-ui/icons/Edit';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
 import {userStylesheet } from '../../styles';
 import { PDADLs, meds, procedures, motorSy, nonMotorSy } from '../../constants'
 import { updateStepperCount, submitReview } from '../../actions/index.js'
-
 
 
  class UserReview extends Component {
@@ -47,15 +49,20 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
     }
     render() {
 
-        const { classes, userAbout, userFamily, userADL, userMeds, userSurgery, userMotorSy, userNonMotorSy} = this.props
+        const { classes, userAbout, userFamily, userADL, userMeds, userSurgery, userMotorSy, userNonMotorSy, stepper: { agree } } = this.props
         const { showBox } = this.state
 
         const RenderBoxHeader = (props) => {
             return (
                 <div className={classes.profileSectionHeader}>
-                       <span >{props.title}</span>  
-                       <span className={classes.profileBoxButton} style={{float: "right", marginLeft: "15px"}}  onClick={() => { this.redirectStuff(props.link)}}>EDIT</span> 
-                       <span className={classes.profileBoxButton} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>{showBox[props.number] ? "HIDE" : "VIEW"}</span>  
+                       <span >{props.title}</span>
+                       <span className={classes.profileBoxButton} style={{float: "right", marginLeft: "15px"}}  onClick={() => { this.redirectStuff(props.link)}}>
+                        <React.Fragment>EDIT <Edit style={{ fontSize: "18px", display: 'inlineBlock' }} /></React.Fragment>
+                        </span>
+                       <span className={classes.profileBoxButton} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>{showBox[props.number]
+                        ?
+                        <React.Fragment>HIDE <ArrowUp style={{ fontSize: "18"}} /></React.Fragment>  :
+                        <React.Fragment>VIEW <ArrowDown style={{ fontSize: "18" }} /></React.Fragment> }</span>
                 </div>
             )
         }
@@ -77,14 +84,14 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
 
                             </ul>
                         : null }
-                    </div> } 
+                    </div> }
 
                     <RenderBoxHeader title="My day-to-day activities" number={1} link="/user/user_life" />
                     {showBox[1] && <div>
                         {userADL ?
                             <ul>
                                 <li style={{marginLeft: "20px"}}>{PDADLs.filter(adl => adl.key === userADL)[0].title}</li>
-                            </ul> 
+                            </ul>
                         : null }
                     </div> }
 
@@ -168,8 +175,9 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                     </div> }
 
                 <br />
-                <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleCreateProfile()}>CREATE MY PROFILE AND CONTINUE</Button>
 
+                <Button type="button" disabled={this.props.stepper.agree ? false : true } type="variant" className={classes.userNavButtonRight} onClick={() => this.handleCreateProfile()}>CREATE MY PROFILE AND CONTINUE</Button>
+                {this.props.stepper.agree === false ? "*You need to agree to the term and condition in order to continue" : null}
                 </div>
 
             </section>
@@ -194,6 +202,7 @@ const mapStateToProps = (state =>{
         userMotorSy: state.motorSy.motorSy,
         userNonMotorSy: state.nonMotorSy.nonMotorSy,
         review : state.review,
+        stepper : state.stepper,
     }
 })
 
