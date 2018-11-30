@@ -68,7 +68,7 @@ import { motorSy } from '../../constants'
             tempTrack[index] = choice
             let ind = tempArray.indexOf(key)
             ind >= 0 ? tempArray.splice(ind, 1) : null
-            choice === "ns" ? this.handleModalOpen(key, "hello") : null
+            choice === "ns" ? this.handleModalOpen(motorSy.filter(sy => sy.key === key)[0].symptom, motorSy.filter(sy => sy.key === key)[0].description) : null
         }
         else {
             tempTrack[index] = choice

@@ -28,7 +28,7 @@ class AppBar extends Component {
         const RenderAccountButtons = () => {
             return (
 
-                //  userCreds.email && userCreds.password ?
+                  userCreds.email && userCreds.password ?
 
                 <span>
 
@@ -48,19 +48,19 @@ class AppBar extends Component {
 
                 </span>
 
-                //  :
+                 :
 
-                // <span>
+                <span>
 
-                //     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/signin') }} >
-                //          <AccountIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Sign in
-                //     </Button>
+                    <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/signin') }} >
+                         <AccountIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Sign in
+                    </Button>
 
-                //     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleSignIn('/faq') }} >
-                //         <HelpIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;FAQ
-                //     </Button>
+                    <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleSignIn('/faq') }} >
+                        <HelpIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;FAQ
+                    </Button>
 
-                // </span>
+                </span>
 
             )
         }

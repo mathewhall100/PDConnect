@@ -52,8 +52,8 @@ class SimpleModal extends React.Component {
                     onClose={this.handleClose}
                     aria-labelledby="scroll-dialog-title"
                 >
-                    <div style={getModalStyle()} className={classes.paper}>
-                        <label style={{ float: 'right' }}><CancelIcon style={{ color: 'red', cursor: 'pointer', fontSize: "35px", position: "relative", top: "-18px", left: "18px"}}  onClick={this.handleClose} /></label>
+                    <DialogTitle id="scroll-dialog-title">
+                        <label style={{ float: 'right' }}><CancelIcon style={{ color: 'red', cursor: 'pointer', fontSize: "35px", position: "relative", top: "-18px", left: "18px"}} onClick={this.handleClose} /></label>
                         <h6>{modalTitle}</h6>
                     </DialogTitle>
                     <DialogContent>
@@ -76,3 +76,4 @@ SimpleModal.propTypes = {
 const SimpleModalWrapped = withStyles(userStylesheet)(SimpleModal);
 
 export default SimpleModalWrapped;
+
