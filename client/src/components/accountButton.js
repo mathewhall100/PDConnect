@@ -41,14 +41,14 @@ class FadeMenu extends React.Component {
 
 
         return (
-            <React.Fragment>
+            <React.Fragment >
                 <Button
                     className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }}
                     aria-owns={open ? 'fade-menu' : undefined}
                     aria-haspopup="true"
                     onClick={this.handleClick}
                 >
-                    <AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> Account
+                    <AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;My account
                 </Button>
                 <Menu
                     id="fade-menu"
@@ -57,9 +57,11 @@ class FadeMenu extends React.Component {
                     onClose={this.handleClose}
                     TransitionComponent={Fade}
                 >
-                    <MenuItem onClick={()=> this.handleRedirect('/profile')}>Profile</MenuItem>
-                    <MenuItem onClick={()=> this.handleRedirect('/setting')}>Settings</MenuItem>
-                    <MenuItem onClick={() => this.handleLogout()}>Logout</MenuItem>
+                    <MenuItem disable="true" style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}><AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;My account</MenuItem> <hr style={{margin: 0, padding: 0}}/>
+                    <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}>VIEW</MenuItem>
+                    <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/setting')}>SETTINGS</MenuItem>
+                   
+                    <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={() => this.handleLogout()}>LOGOUT</MenuItem>
                 </Menu>
             </React.Fragment>
         );

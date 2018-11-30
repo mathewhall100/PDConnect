@@ -287,8 +287,8 @@ export const userStylesheet = theme => ({
         fontSize: "14px",
         '&:hover': {
             color: SECONDARY_COLOR,
-            borderBottom: "2px solid",
-            borderColor: SECONDARY_COLOR,
+            // borderBottom: "2px solid",
+            // borderColor: SECONDARY_COLOR,
             fontWeight: "bold",
             cursor : 'pointer',
         }

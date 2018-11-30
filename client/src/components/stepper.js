@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Modal from '../components/commons/modal';
 import { updateStepperCount, updateTermAgreement } from '../actions/Stepper';
-import { userStylesheet } from '../styles';
+import { userStylesheet, PRIMARY_COLOR } from '../styles';
 import BottomNav from '../components/commons/userBottomNav'
 import FormCheckbox from './forms/FormCheckbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -72,35 +72,29 @@ class VerticalLinearStepper extends React.Component {
                             <br />
                             <br />
                             <hr className={classes.hr} style={{marginRight: 0}}/>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <FormControlLabel
-                                                control={
-                                                    <Checkbox
-                                                        checked={this.state.checkedAgreement}
-                                                        onChange={this.handleChange('checkedAgreement')}
-                                                        value="checkedAgreement"
-                                                        color="primary"
-                                                    />
-                                                }
-                                                label="I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy."
-                                            />
-                                            {/*<label style={{ display: 'flex' }} onClick={(e) => { this.handleAgreement(e) }}>
-                                                <FormCheckbox   name="policyCheck"
-                                                                label={`this doesn't work`}
+
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        checked={this.state.checkedAgreement}
+                                        onChange={this.handleChange('checkedAgreement')}
+                                        value="checkedAgreement"
+                                        color="primary"
+                                        style={{color: PRIMARY_COLOR}}
+                                    />
+                                }
+                                label="I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy."
+                            />
+                            {/*<label style={{ display: 'flex' }} onClick={(e) => { this.handleAgreement(e) }}>
+                                <FormCheckbox   name="policyCheck"
+                                                label={`this doesn't work`}
 
 
-                                                />
-                                                <span style={{ cursor: 'pointer' }}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.</span>
-                                            </label>
-                                            */}
-                                        </td>
-                                    </tr>
+                                />
+                                <span style={{ cursor: 'pointer' }}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.</span>
+                            </label>
+                            */}
 
-                                </tbody>
-                            </table>
                             </form>
                         <hr className={classes.hr} style={{marginRight: 0}}/>
                     </div>

@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import { userStylesheet } from '../../styles';
-import ClearIcon from '@material-ui/icons/Clear'
+import CancelIcon from '@material-ui/icons/Cancel'
 
 function rand() {
     return Math.round(Math.random() * 5) - 3;
@@ -49,7 +49,7 @@ class SimpleModal extends React.Component {
                     onClose={this.handleClose}
                 >
                     <div style={getModalStyle()} className={classes.paper}>
-                        <label style={{ float: 'right' }}><ClearIcon style={{color : 'red', cursor : 'pointer'}} onClick={this.handleClose} /></label>
+                        <label style={{ float: 'right' }}><CancelIcon style={{ color: 'red', cursor: 'pointer', fontSize: "35px", position: "relative", top: "-18px", left: "18px"}}  onClick={this.handleClose} /></label>
                         <h6>{modalTitle}</h6>
                         <div id="simple-modal-description">
                             {modalContent}

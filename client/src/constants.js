@@ -410,63 +410,75 @@ export const PDADLs = [
 ]
 
 export const medGroups = [
-    {class: "dopamine agonist", target: "motor symptoms"},
     {class: "carbidopa/levodopa", target: "motor symptoms"},
-    {class: "other", target: "motor symptoms"}
+    {class: "dopamine agonist", target: "motor symptoms"},
+    {class: "anticholinergic", target: "motor symptoms"},
+    {class: "maob inhibitor", target: "motor symptoms"},
+    {class: "comt inhibitor", target: "motor symptoms"},
+    {class: "other", target: "non-motor symptoms"}
 ]
 
 export const meds = [
-    {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Requip XL", "Adartrel"], class: "dopamine agonist", description: ""},
-    {key: "pramipexole", generic: "Pramipexole", trade: ["Mirapex", "Mirapex ER"], class: "dopamine agonist", description: ""},
-    {key: "rotigotine", generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", description: ""},
-    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", description: ""},
-    {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", description: ""},
-    {key: "duopa", generic: "Doupa",  trade: ["Duopa"], class: "carbidopa/levodopa", description: ""},
+
+    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", description: ""},
+    {key: "stalevo", generic: "Carbidopa-levodopa-entacapone", trade: ["Stalevo"], class: "carbidopa/levodopa", target: "motor", description: ""},
+    {key: "duopa", generic: "Doupa",  trade: ["Duopa"], class: "carbidopa/levodopa", target: "motor", description: ""},
+    {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", target: "motor", description: ""},
     
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
-    {key: "", generic: "", trade: [""], class: ""},
+    {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", target: "motor", description: ""},
+    {key: "apomorphine", generic: "apomorphine", trade: ["apokym"], class: "dopamine agonist", target: "motor", description: ""},
+    {key: "bromocriptine", generic: "Bromocriptine", trade: ["Parlodel", "Cycloset"], class: "dpamine aginsty", target: "motor", description: ""},
+    {key: "pramipexole", generic: "Pramipexole", trade: ["Mirapex", "Mirapex ER"], class: "dopamine agonist", target: "motor", description: ""},
+    {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Requip XL", "Adartrel"], class: "dopamine agonist",target: "motor",  description: ""},
+    {key: "rotigotine", generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", target: "motor", description: ""},
 
+    {key: "benztropine", generic: "Benztropine", trade: ["Cogentin"], target: "motor", class: "anticholinergic", description: ""},
+    {key: "trihexyphenidyl", generic: "Trihexphenidyl", trade: ["Artane, Tremin"], target: "motor", class: "anticholinergic", description: ""},
+ 
+   
+    {key: "rasagline", generic: "Rasagline", trade: ["Azilect"], class: "maob inhibitor", target: "motor", description: ""},
+    {key: "safinamide", generic: "Safinamide", trade: ["Xadago"], class: "maob inhibitor", target: "motor", description: ""},
+    {key: "selegiline", generic: "Selegiline", trade: ["Eldepryl, Zelepar, Emsam, L-deprenyl"], class: "maob inhibitor", description: ""},
 
+    {key: "entacapone", generic: "Entacapone", trade: ["Comtan"], class: "comt inhibitor", target: "motor", description: ""},
+    {key: "tolcapone", generic: "Tolcapone", trade: ["Tasmar"], class: "comt inhibitor", target: "motor", description: ""},
+  
 
-    {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", description: ""}
+    {key: "bottox", generic: "Botulinum Toxin", trade: ["Botox, Dysport, Myobloc, Xeomin"], class: "other", description: ""}, 
+    {key: "droxidopa", generic: "Droxidopa", trade: ["Northera"], class: "other", target: "non-motor", description: ""},
+    {key: "Pimavanserin", generic: "Nuplazid", trade: ["Nuplazid"], class: "other", target: "non-motor", description: ""},
+    {key: "rivastigmine", generic: "Rivastigmine", trade: ["Exelon"], class: "other", target: "non-motor", description: ""},
 ]
 
 export const motorSy = [
-    {key: "motorfluct", symptom: "Motor fluctuations", shortDescription: "Symptoms and ease of movement vary throughout the day even on medications.", description: ""},
-    {key: "earlyoff", symptom: "Early wear off", shortDescription: "Your medications stop working after a while and symptoms return before next dose", description: ""},
-    {key: "suddenoff", symptom: "Unpredictable wear off", shortDescription: "Your medications stop working and symptoms suddenly return without warning", description: ""},
-    {key: "freezing", symptom: "Freezing", shortDescription: "Sudden freezing of movement at unpredicatble times", description: ""},
-    {key: "tremor", symptom: "Tremor", shortDescription: "Shaking of the hands and arms that bothers you or prevents you doing things with your hands", description: ""},
-    {key: "dyskinesia", symptom: "Troubling dyskinesia", shortDescription: "Movements that you can't control and that disrupt your life", description: ""},
-    {key: "micrographia", symptom: "Small handwriting", shortDescription: "Very small handwriting, which is not usual for you", description: ""},
-    {key: "bradykinesia", symptom: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling walk. ", description: ""},
-    {key: "fall", symptom: "Falls", shortDescription: "Falling over due to increased difficulty moving and walking", description: ""},
-    {key: "dysphagia", symptom: "Difficulty swallowing", shortDescription: "Difficulty swallowing food or fluids. Choking episodes. ", description: ""},
+    {key: "motorfluct", symptom: "Motor fluctuations", shortDescription: "Fluctuating or varying Parkinson symptoms and dyskinesia during the day.", description: "After a number of years taking Parkinson medications, they can become less effective and their effects last for shorter periods of time. As this happens, it becomes more difficult to maintain a steady dose of medication in the body and, as medication levels go up and down, patients experience fluctuating or varying Parkinson symptoms. This is commonly experienced as a return of Parkinson symptoms such as tremor, stiffness, slowness and gait freezing when medication levels drop, usually before the next medication dose, and dyskinesia or involuntary movements when medications levels are highest."},
+    {key: "earlyoff", symptom: "Early wear off", shortDescription: "Return of Parkinson symptoms before next dose of medication is due.", description: "After a number of years taking Parkinson medications, they can become less effective and their effects last for shorter periods of time. Many patients at this stage in their disease experience early 'wear off', where the sypmtoms of Parkinson disease (e.g. tremor, stiffness, slowness and/or gait freezing) return before the next dose of parkinson medication is due."},
+    {key: "suddenoff", symptom: "Unpredictable wear off", shortDescription: "The sudden or unpredicatble return of Parkinson symptoms.", description: "After a number of years taking Parkinson medications, they can become less effective and their effects last for shorter periods of time. In some patients, this can lead to sudden or unpredictable 'wear off' and the abrupt return of Parkinson symptoms (e.g. tremor, stiffness, slowness and/or gait freezing) without warning or at unpredictable times."},
+    {key: "freezing", symptom: "Freezing", shortDescription: "Sudden episodes of inability to move, walk or rise from a chair.", description: "Sudden episodes of inability to move, walk or rise from a chair due to legs your feet feeling 'frozen' or 'stuck' to the ground. Some patients can overcome freezing episodes using certain visual tricks or sounds."},
+    {key: "tremor", symptom: "Tremor", shortDescription: "Rhythmic shaking that bothers you or prevents you doing normal things.", description: "Tremors are rhythmic, shaking like, movements of any part of the body  which you cannot control. parkinson patients most commonly experince tremors in the arm and/or leg and these can interfere with normal activities like doing up buttons or usig a keyboard!"},
+    {key: "dyskinesia", symptom: "Troubling dyskinesia", shortDescription: "Involuntary dance-like movements related to effects of Parkinson medications.", description: "Dyskinesias are invlontary dance like movements, involving the whole body causing the patient to appear in a constant state of jerky movement or writhing. They are different from tremor. Dyskinesia are associated with Parkinson medications and are not a symptom of the disease itself.  "},
+    {key: "micrographia", symptom: "Small handwriting ", shortDescription: "Very small handwriting (micrographia), which is not usual for you.", description: "Many patients with Parkinson notice thier handwriting becoming smaller. This is micrographia. "},
+    {key: "bradykinesia", symptom: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling gait.", description: "Unusually slow walking, sometimes with a shuffling gait. This may vary with throughout the day with Parkinons medication."},
+    {key: "fall", symptom: "Falls", shortDescription: "Falling over due to increased difficulty with balance and walking.", description: "Falling over due to increased difficulty with balance and walking can be a serious symptom of Parkinson disease and may result in injury and/or ED attendances."},
+    {key: "dysphagia", symptom: "Difficulty swallowing known as dysphagia", shortDescription: "Difficulty swallowing food, liquid or pills. Choking episodes.", description: "In the advanced stages of Parkinson disease, swallowing may be affected and this is experienced as difficulty swallowing food and liquids and may lead to choking episodes when eating or drinking."},
     
 ]
 
 export const nonMotorSy= [
-    {key: "psychosis", symptom: "Hallucination or delusion", shortDescription: "Seeying or believing things that you know are not really there or true.", description: ""},
-    {key: "orthostatic", symptom: "Dizziness, lightheadedness or feeling faint", shortDescription: "Dizziness, lightheadedness or feeling faint, particularly after standing or changing position ", description: ""},
-    {key: "drooling", symptom: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling", description: ""},
-    {key: "slowtransit", symptom: "Nausea and bloating", shortDescription: "Nausea, sickness and bloated stomach", description: ""},
-    {key: "footcurl", symptom: "Foot curling", shortDescription: "Involuntary curling of the foot and toes which can be painful and makes walking difficult.", description: ""},
-    {key: "constipation", symptom: "Constipation", shortDescription: "Infrequent and or difficuklty opening your bowels.", description: ""},
-    {key: "insomnia", symptom: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep", description: ""},
-    {key: "depression", symptom: "Depression", shortDescription: "Low mood and feeling sof hopelessness", description: ""},
-    {key: "cogdecline", symptom: "Poor cognition", shortDescription: "Difficulty thinking and/or remembering things which adversely affects your life.", description: ""},
+    {key: "psychosis", symptom: "Hallucination or delusion", shortDescription: "Seeying or believing things that you know are not really there or true.", description: "Hallucinations are seeing things that are not actually there. Parkinson patients with hallucinations often see shadows, shapes, people or animals but it can be anything. Delusions are unshakable beliefs in something that is not true. Common delusions are thinking that people are out to steal from you, or to harm or poison you, or even that a spouse is being unfaithful when it is not true, but again they can be about anything. Delusions may occur on their own or together with hallucinations."},
+    {key: "orthostatic", symptom: "Dizziness, lightheadedness or feeling faint", shortDescription: "Dizziness, lightheadedness or feeling faint, particularly after standing or changing position.", description: "Dizziness, lightheadedness or feeling faint, particularly after standing or changing position can be a symptom of parkinson disease which can be minor for some but troubling for others. It is due to a sudden, abnormal drop in blood pressure on postural change and is known medically as orthostatic hypotension. Patients adjust by rising slowly from lying or a chair and waiting a couple of minutes for the feeling to go before strating walking."},
+    {key: "drooling", symptom: "Drooling", shortDescription: "Drooling of saliva from the mouth which you have difficulty controlling.", description: "Drooling of saliva from the mouth which you have difficulty controlling."},
+    {key: "slowtransit", symptom: "Nausea and bloating", shortDescription: "Nausea, sickness and bloated stomach.", description: "A reduction in gut motility affects some Parkinson patients and this is experienced as feelings of nausea and stomach bloating. Though not serious it can mean a slower digestion and therefore slower absorbance into the body of oral medications."},
+    {key: "footcurl", symptom: "Foot spasm or toe curling", shortDescription: "Involuntary muscle contraction causing twisting of the leg and/or foot, or curling of toes.", description: "Involuntary contraction of leg/foot muscles causing twisting of the leg, foot, or curling of toes, causing pain and difficulty walking."},
+    {key: "constipation", symptom: "Constipation", shortDescription: "Infrequent and or difficulty with bowel movements.", description: "Infrequent and or difficulty with bowel movements."},
+    {key: "insomnia", symptom: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep.", description: "Difficulty getting to sleep or waking in the night and unable to get back to sleep."},
+    {key: "depression", symptom: "Depression", shortDescription: "Low mood and feelings of hopelessness.", description: "Feelings or low mood, inability to enjoy anything and feelings of hopelessness are all signs of depression."},
+    {key: "cogdecline", symptom: "Poor cognition", shortDescription: "Difficulty thinking and/or remembering things which adversely affects your life.", description: "From time to time it is common to have difficulty thinking or remembering things, especially with older age, but if thinking through normal activities or remembering day-to-day events has become a significant problem for you in your life or that others around you notice, then it would be appropriate to tick this box."},
     
 ]
 
 export const procedures  = [
-    {key: "dbs", procedure: "Deep brain stimulation", shortDescription: "Electrodes implanted into the brain", description: ""},
-    {key: "pegj", procedure: "Placement of a feeding tube", shortDescription: "Placement of a feeding tube through the stomach wall  to deliver drugs such as Duopa directly into the intestine.", description: ""},
+    {key: "dbs", procedure: "Deep brain stimulation", shortDescription: "Implanting of small elecrodes into the brain to control Parkinson disease symptoms by electrical stimulation", description: ""},
+    {key: "pegj", procedure: "Placement of a feeding tube", shortDescription: "Placement of a feeding tube through the stomach wall to deliver drugs such as Duopa directly into the intestine.", description: ""},
+    {key: "neurosurgery", procedure: "Other neurosurgery", shortDescription: "A operation to remove a part of the brain (pallidotomy or thalamotomy)", description: ""},
 ]

@@ -61,7 +61,7 @@ import { nonMotorSy } from '../../constants'
             tempTrack[index] = choice
             let ind = tempArray.indexOf(key)
             ind >= 0 ? tempArray.splice(ind, 1) : null
-            choice === "ns" ? this.handleModalOpen(key, key) : null        }
+            choice === "ns" ? this.handleModalOpen(nonMotorSy.filter(sy => sy.key === key)[0].symptom, nonMotorSy.filter(sy => sy.key === key)[0].description) : null }
         else {
             tempTrack[index] = choice
             tempArray.indexOf(key) < 0 ? tempArray.push(key) : null
@@ -105,7 +105,7 @@ import { nonMotorSy } from '../../constants'
                                         <div className={classes.questionContainer}>
 
                                                 <span className={classes.questionHead}>{sy.symptom}</span>
-                                                <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.shortDescription) }>
+                                                <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.description) }>
                                                     <HelpIcon color="primary" className={classes.helpIcon}/>
                                                 </Button>
                                             <br />

@@ -1,16 +1,16 @@
-import {
-    USER_INFO
-} from './types';
+// import {
+//     USER_INFO
+// } from './types';
 
 
-export const submitUserInfo = (objUserInfo) => {
-    console.log("submitting user info : ", objUserInfo);
+// export const submitUserInfo = (objUserInfo) => {
+//     console.log("submitting user info : ", objUserInfo);
 
-    return (dispatch) => {
-        dispatch({
-            type: USER_INFO,
-            payload: objUserInfo
-        })
+//     return (dispatch) => {
+//         dispatch({
+//             type: USER_INFO,
+//             payload: objUserInfo
+//         })
 
-    }
-}
+//     }
+// }

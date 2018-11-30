@@ -113,7 +113,7 @@ import { motorSy } from '../../constants'
 
                                     <div className={classes.questionContainer}>
                                             <span className={classes.questionHead}>{sy.symptom}</span>
-                                            <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.shortDescription) }>
+                                            <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.description) }>
                                                 <HelpIcon color="primary" className={classes.helpIcon}/>
                                             </Button>
                                         <br />
