@@ -192,6 +192,11 @@ export const userStylesheet = theme => ({
             backgroundColor: "lightgrey",
             border: "2px solid",
             borderColor: PRIMARY_COLOR
+        },
+        '&:disabled' : {
+            color : "grey",
+            backgroundColor : 'lightgrey',
+            borderColor : 'grey',
         }
     },
     doneOutlineIcon: {
@@ -285,6 +290,7 @@ export const userStylesheet = theme => ({
             borderBottom: "2px solid",
             borderColor: SECONDARY_COLOR,
             fontWeight: "bold",
+            cursor : 'pointer',
         }
     },
     profileTermsButton: {
@@ -344,7 +350,7 @@ export const userStylesheet = theme => ({
             border: "2px solid",
             borderColor: "#000080"
         }
-    },
+    }
 
 })
 
@@ -630,7 +636,8 @@ export const resultStylesheet = theme => ({
         '&:hover': {
             borderRadius: "5px",
             backgroundColor: "#F8F8F8",
-            borderColor: SECONDARY_COLOR
+            borderColor: SECONDARY_COLOR,
+            cursor : 'pointer',
         }
     },
     serviceListHeader: {
@@ -668,31 +675,9 @@ export const resultStylesheet = theme => ({
 })
 
 
-export const stylesheet = theme => ({
-    parallax : {
-        backgroundImage: `url(${pillBottlesImg})`,
-        backgroundAttachment : 'fixed',
-        backgroundPosition : 'middle',
-        backgroundRepeat : 'no-repeat',
-        backgroundSize : 'cover',
-        minHeight : '560px',
-        maxHeight : '560px',
-        maxWidth : '100vw !immportant',
-    },
-    parallaxPromise : {
-        backgroundImage: `url(${tabletReportHandsImg})`,
-        backgroundAttachment: 'fixed',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        minHeight: '800px',
-        maxHeight: '800px',
-        maxWidth: '100vw !immportant',
-        [theme.breakpoints.down('xs')]: {
-            display : 'none',
-        },
-    },
-    topBarBtn : {
+
+export const home2Stylesheet = theme => ({
+    topBarBtn: {
         margin: "0 0 0 55px",
         backgroundColor: "white !important",
         color: "black !important",
@@ -700,15 +685,9 @@ export const stylesheet = theme => ({
         border: "2px solid #ffffff",
         fontWeight: "bold",
         fontSize: "15px",
-        '&:focus': {outline: 'none' },
+        '&:focus': { outline: 'none' },
         '&:hover': {
             borderBottom: "2px solid #BF9000",
-        }
-    },
-    hypLink : {
-        textDecoration: 'none !important',
-        '&:hover': {
-            textDecoration: 'none !important',
         }
     },
     topNavContainer: {
@@ -718,387 +697,32 @@ export const stylesheet = theme => ({
         borderOpacity: 0.5,
         boxShadow: "0 1px 2px 0 rgba(47, 85, 121, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.0)",
     },
-    topNav : {
+    topNav: {
         maxWidth: MAXWIDTH,
-        minHeight : MINHEIGHT,
+        minHeight: MINHEIGHT,
         margin: 'auto',
         padding: "0 40px 40px 40px",
-        margin : '0 auto',
+        margin: '0 auto',
         [theme.breakpoints.down('xs')]: {
             marginTop: '10px',
         },
     },
 
-    topNavLogo : {
-        height : '80px',
-        width : '80px',
-        margin : '10px 0 10px 0',
+    topNavLogo: {
+        height: '80px',
+        width: '80px',
+        margin: '10px 0 10px 0',
         [theme.breakpoints.down('xs')]: {
             display: 'none',
         },
     },
-    leftTopNav : {
-        textAlign : 'left',
+    leftTopNav: {
+        textAlign: 'left',
     },
-    rightTopNav : {
-        textAlign : 'right',
+    rightTopNav: {
+        textAlign: 'right',
         margin: 'auto',
     },
-    homepageFixedWidthContent : {
-        maxWidth : MAXWIDTH,
-        margin : 'auto',
-        marginBottom : '80px',
-    },
-    loginBtn: {
-        width: "550px",
-        height: "30px",
-        backgroundColor: "white",
-        border: "2px solid grey",
-        borderRadius: "10px",
-        fontSize: "14px"
-    },
-    homepageHeader : {
-        paddingTop : '25px',
-        display: 'block',
-        fontSize: '30px',
-        color: PRIMARY_COLOR,
-        textAlign : 'center',
-        fontWeight : 'bold',
-        fontFamily : 'Helvetica',
-        opacity : '1',
-    },
-    heroParallax : {
-        minHeight: '650px',
-        position : 'relative',
-        backgroundSize : 'cover',
-    },
-    hero: {
-        position: 'absolute',
-        marginLeft: 'auto',
-        marginRight : 'auto',
-        maxWidth : '1200px',
-        maxHeight : '350px',
-        height : '350px',
-        top: "12%",
-        left : 0,
-        right : 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.84) !important',
-    },
-    heroAppStore : {
-        position: 'absolute',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: '1200px',
-        top: "77%",
-        left: 0,
-        right: 0,
-        textAlign : 'right',
-    },
-    heroImg: {
-        width: '100%',
-    },
-    title : {
-        fontSize: '34px',
-        fontWeight: 'bold',
-        display: 'block',
-        color: PRIMARY_COLOR,
-        borderRadius: '22px',
-        padding: '15px 40px',
-        margin : 'auto',
-        textAlign : 'center',
-    },
-    heroTitle: {
-        fontSize: '34px',
-        fontWeight: 'bold',
-        margin : 'auto',
-        color: PRIMARY_COLOR,
-        fontFamily : 'lato, open_sans, Arial, san-serif',
-        textAlign : 'center',
-        [theme.breakpoints.down('xs')] : {
-            fontSize: '20px',
-        },
-    },
-    heroList: {
-        color: PRIMARY_COLOR,
-        fontSize: '18px',
-        verticalAlign: 'middle',
-        textShadow: 'initial',
-    },
-    heroDownloadImg: {
-        width: '200px',
-        margin: '30px',
-        [theme.breakpoints.down('xs')]: {
-            width: '140px',
-            margin: '12px',
-        },
-    },
-    promise: {
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        display: 'contents',
-        position: 'absolute',
-    },
-    promiseHeaderContainer : {
-        position: 'absolute',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: MAXWIDTH,
-        left : 0,
-        right : 0,
-        top: "3%",
-        [theme.breakpoints.down('xs')]: {
-            position: 'relative',
-            marginBottom : '25px',
-        },
-    },
-
-    promiseContainer1 : {
-        position: 'absolute',
-        marginLeft: 'auto',
-        marginRight : 'auto',
-        maxWidth : MAXWIDTH,
-        top: "12%",
-        left : 0,
-        right : 0,
-        [theme.breakpoints.down('xs')]: {
-            position: 'relative'
-        },
-    },
-    promiseContainer2: {
-        position: 'absolute',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: MAXWIDTH,
-        top: "58%",
-        left: 0,
-        right: 0,
-        [theme.breakpoints.down('xs')]: {
-            position: 'relative'
-        },
-    },
-    promiseTitle: {
-        fontSize: '23px',
-        margin: 'auto',
-        textAlign: 'center',
-        color: PRIMARY_COLOR,
-    },
-    promiseCube : {
-        border : 'gray 1px solid',
-        borderRadius : '22px',
-        backgroundColor: 'rgba(164, 164, 164, 0.6) !important',
-        minHeight : '290px',
-        margin: '0 30px 0 30px',
-        minWidth: `250px`,
-        [theme.breakpoints.down('xs')]: {
-            margin : '15px',
-        },
-    },
-    promiseIconContainer : {
-        textAlign : 'center',
-    },
-    promiseIcon : {
-        maxWidth : '50px',
-        maxHeight: '50px',
-        margin: '20px',
-    },
-    promiseHeader: {
-        color: PRIMARY_COLOR,
-        opacity : '1',
-    },
-    promiseDescription : {
-        color : PRIMARY_COLOR_HOVER,
-        fontSize : '16px',
-        textAlign : 'center',
-
-    },
-    promiseSecondHeader: {
-        color: SECONDARY_COLOR,
-    },
-    promiseListItem : {
-        display: 'block',
-        textAlign : 'center',
-    },
-    connect: {
-        paddingTop: '50px',
-        paddingBottom: '20px',
-        textAlign: 'center !important',
-    },
-    connectItem: {
-        height: '150px',
-    },
-    connectRight : {
-        textAlign : 'right',
-    },
-    connectHeader: {
-        display: 'block',
-        fontSize: '30px',
-        color: PRIMARY_COLOR,
-        margin: 'auto',
-        textAlign : 'center',
-        padding: '40px 0 40px 0',
-    },
-    connectButtonContainer : {
-        textAlign : 'center',
-    },
-    connectButton: {
-        width: "100%",
-        backgroundColor: PRIMARY_COLOR,
-        color: "white",
-        '&:hover': {
-            color: PRIMARY_COLOR
-        },
-        [theme.breakpoints.down('xs')]: {
-            width: "80%",
-            margin : 'auto',
-        },
-    },
-    connectDescription: {
-        paddingTop: '5px',
-    },
-    heroImgContainer: {
-        width: '100%',
-    },
-    connectImg: {
-        width: '80%',
-    },
-    connectSubscribe : {
-        display: 'grid',
-    },
-    connectDescriptionContainer : {
-        margin : 'auto',
-    },
-    buttonStyle: {
-        backgroundColor: PRIMARY_COLOR,
-        width: '80%',
-        marginTop: '67px',
-        color: 'white',
-        '&:hover': {
-            color: PRIMARY_COLOR
-        }
-    },
-    avatar: {
-        margin: 10,
-    },
-    bigAvatar: {
-        width: '120px',
-        height: '120px',
-    },
-    avatarContainer : {
-        textAlign : '-webkit-center',
-    },
-    aboutHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        height: 50,
-        paddingLeft: theme.spacing.unit * 4,
-        backgroundColor: theme.palette.background.default,
-    },
-    aboutImg: {
-        height: 255,
-        display: 'block',
-        maxWidth: 400,
-        width: '100%',
-    },
-    aboutContainer : {
-        paddingTop: "3%",
-    },
-    aboutContent : {
-        backgroundColor: 'rgba(164, 164, 164, 0.2)',
-        padding : '3% !important',
-    },
-    aboutImgContainer : {
-        padding : '0px 12px 0px 12px !important',
-        textAlign : 'center',
-        margin: 'auto',
-    },
-    treatmentImg : {
-        maxWidth: "80%"
-    },
-    buttonContainer : {
-        width : "100%",
-        paddingTop : '5%'
-    },
-    aboutButton : {
-        width : "100%",
-        backgroundColor : PRIMARY_COLOR,
-        color : "white",
-        '&:hover': {
-            color: PRIMARY_COLOR
-        }
-    },
-    startContainer : {
-        maxWidth : MAXWIDTH,
-        margin: 'auto',
-    },
-    startButtonContainer : {
-        margin: 'auto 0 auto 0',
-        textAlign : 'right',
-
-    },
-    description : {
-        textAlign : 'center',
-        fontSize : '20px',
-        [theme.breakpoints.down('xs')]: {
-            fontSize: '17px',
-        },
-    },
-    startButton : {
-        backgroundColor: PRIMARY_COLOR,
-        fontSize : '20px',
-        width : '80% !important',
-        color: 'white',
-        '&:hover': {
-            color: `white`,
-            backgroundColor: PRIMARY_COLOR,
-            borderColor : 'white'
-        },
-        [theme.breakpoints.down('xs')]: {
-            width: '100% !important',
-        },
-    },
-    footerContainer : {
-        paddingTop : '40px',
-        backgroundColor: PRIMARY_COLOR,
-        color : "white",
-        paddingBottom : '10px',
-        marginTop : '60px',
-    },
-    socialIcon : {
-        height : '45px',
-        width : '45px',
-        borderRadius : '5px',
-        margin : '0 5px 0 5px',
-    },
-    checkIcon : {
-        color : SECONDARY_COLOR,
-    },
-    paper: {
-        position: 'absolute',
-        width: theme.spacing.unit * 50,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-    },
-    modalBtn: {
-        backgroundColor: PRIMARY_COLOR,
-        color: 'white',
-        '&:hover': {
-            color: PRIMARY_COLOR
-        }
-    },
-    textField : {
-        width : "100%",
-        margin: 'auto',
-        marginBottom : '15px',
-        [theme.breakpoints.down('xs')]: {
-            width: '80%',
-        },
-    }
-});
-
-
-export const home2Stylesheet = theme => ({
-
     HeroTitle : {
         fontSize : '34px',
         color : 'black',

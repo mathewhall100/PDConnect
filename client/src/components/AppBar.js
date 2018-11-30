@@ -11,8 +11,10 @@ import DescriptionIcon from '@material-ui/icons/Description'
 import AddIcon from '@material-ui/icons/Add'
 import HelpIcon from '@material-ui/icons/Help'
 import DashboardIcon from '@material-ui/icons/Dashboard'
-import { stylesheet, PRIMARY_COLOR } from '../styles.js';
-
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { home2Stylesheet, PRIMARY_COLOR } from '../styles.js';
+import AccountButton from '../components/accountButton';
 class AppBar extends Component {
 
     handleNav = (redirectAddress) => {
@@ -30,13 +32,11 @@ class AppBar extends Component {
 
                 <span>
 
-                    <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px"}} onClick={() => { this.handleNav('/account') }} >
-                        <AccountIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Account
-                    </Button>
+                    <AccountButton />
                     <Button type="button" className={classes.topBarBtn}  style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/profile') }} >
                         <DescriptionIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Profile
                     </Button>
-                    
+
                     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/services') }} >
                         <DashboardIcon style={{fontSize: "24px", fontSize: "26px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Services
                     </Button>
@@ -45,12 +45,12 @@ class AppBar extends Component {
                         <HomeIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Home
                     </Button>
 
-                </span > 
+                </span>
 
                  :
 
                 <span>
-                    
+
                     <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/signin') }} >
                          <AccountIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Sign in
                     </Button>
@@ -82,13 +82,12 @@ class AppBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("State : ", state);
     return {
         userCreds: state.creds
     }
   };
 
 AppBar = withRouter(AppBar)
-AppBar = withStyles(stylesheet)(AppBar)
+AppBar = withStyles(home2Stylesheet)(AppBar)
 AppBar = connect(mapStateToProps)(AppBar)
 export default  AppBar

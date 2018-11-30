@@ -45,9 +45,14 @@ import {userStylesheet } from '../../styles';
                     <hr className={classes.hr} style={{marginRight: "40px"}}/>
                     <br />
                     <Grid container spacing={24} >
-                        <Grid item xs={3}>
-                            <Button type="button" variant='outlined' className={classes.userNavButton} onClick={()=>this.handleBack()}>BACK</Button>
-                        </Grid>
+                    {!redirect ?
+                            <Grid item xs={3}>
+                                <Button type="button" variant='outlined' className={classes.userNavButton} onClick={() => this.handleBack()}>BACK</Button>
+                            </Grid>
+                        :
+                        null
+                    }
+
                         <Grid item xs={9}>
                             <SecondButton  style={{float: "right"}}/>
                              {/* <Link to={`${nextPage}`} style={{textDecoration: "none"}}>
