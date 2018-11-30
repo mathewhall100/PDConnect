@@ -20,7 +20,9 @@ import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../style
 import { updateStepperCount, submitUserMeds, submitReview} from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
+import UserMedsModal from '../commons/userMedsModal'
 import {meds, medGroups } from '../../constants'
+import { ETXTBSY } from 'constants';
 
 
 class UserMeds extends Component {
@@ -29,9 +31,11 @@ class UserMeds extends Component {
         answerArray: [],
         answerTrack: [],
         answerNone: false,
-        open : false,
+        modalMedOpen : false,
+        modalOpen : false,
         modalTitle : '',
         modalText : '',
+        modalImgaes : [],
         redirectAddress : '/user/user_surgery',
     }
 
@@ -72,7 +76,7 @@ class UserMeds extends Component {
 
     handleAnswerSelect = (index, key) => {
         console.log("handleAnswerselect : ", key)
-        this.setState({modalOpen: false})
+        this.setState({modalOpen: false, modalMedOpen: false})
         let tempTrack = this.state.answerTrack
         let tempArray = this.state.answerArray
         const tempIndex = tempArray.indexOf(key)
@@ -87,7 +91,8 @@ class UserMeds extends Component {
             answerNone: false,
             answerTrack: tempTrack,
             answerArray: tempArray,
-            modalOpen: false
+            modalOpen: false,
+            modalMedOpen: false
         })
     }
 
@@ -95,6 +100,7 @@ class UserMeds extends Component {
         console.log('answerNone')
         this.setState({
             modalOpen: false,
+            modalMedOpen: false,
             answerNone: true,
             answerTrack: [],
             answerArray: []
@@ -107,7 +113,17 @@ class UserMeds extends Component {
          this.setState({
              modalTitle : title,
              modalText : text,
-             modalOpen: true
+             modalOpen: true,
+             modalMedOpen: false
+        });
+     };
+    handleMedModalOpen = (title, images) => {
+        console.log(title);
+         this.setState({
+             modalTitle : title,
+             modalImages : images,
+             modalOpen: false,
+             modalMedOpen: true
         });
      };
 
@@ -115,7 +131,7 @@ class UserMeds extends Component {
     render() {
 
         const { handleSubmit, pristine, submitting, classes } = this.props
-        const { answerTrack, answerNone, modalOpen, modalTitle, modalText, modalWarning } = this.state
+        const { answerTrack, answerNone, modalOpen, modalMedOpen, modalTitle, modalText, modalImages, modalWarning } = this.state
 
         return (
             <section >
@@ -123,12 +139,10 @@ class UserMeds extends Component {
 
                     <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        {/* <div className={classes.headerQuestion} >None (I don't take any medications for Parkinson disease)</div> */}
                         <div className={classes.headerQuestion} style={{position: "relative", top: '10px'}}>None</div>
                         <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                             {/* <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}> */}
                              <Button type="button" className={classes.questionButton} style={{borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
                                 <QuestionButtonIcons answerConditional={answerNone} />
                             </Button>
@@ -155,7 +169,7 @@ class UserMeds extends Component {
                                                 <Grid item xs={12} sm={8} >
                                                     <div style={{minHeight: "60px"}}>
                                                         <span className={classes.questionHead}>{med.generic}</span>
-                                                        <Button className={classes.helpButton} onClick={() => this.handleModalOpen(med.generic, med.description) }>
+                                                        <Button className={classes.helpButton} onClick={() => this.handleMedModalOpen(med.generic, med.images) }>
                                                             <HelpIcon color="primary" className={classes.helpIcon} />
                                                          </Button>
                                                         <br />
@@ -197,6 +211,13 @@ class UserMeds extends Component {
                     modalTitle={modalTitle}
                     modalText={modalText}
                     modalWarning={modalWarning}
+                /> }
+
+                { modalMedOpen && <UserMedsModal
+                    modalOpen={modalMedOpen}
+                    modalTitle={modalTitle}
+                    modalImages={modalImages}
+                    modalWarning={false}
                 /> }
 
             </section>

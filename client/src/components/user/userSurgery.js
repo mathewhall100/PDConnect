@@ -101,12 +101,13 @@ import { procedures } from '../../constants'
         })
     }
 
-    handleModalOpen = (title, text) => {
+    handleModalOpen = (title, text, warning) => {
         console.log(title);
          this.setState({
              modalTitle : title,
              modalText : text,
-             modalOpen: true
+             modalOpen: true,
+             modalwarning: warning
         });
      };
 
@@ -122,12 +123,10 @@ import { procedures } from '../../constants'
 
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        {/* <div className={classes.headerQuestion} >None (I havn't had any surgery or procedures done for Parkinson disease)</div> */}
                         <div className={classes.headerQuestion} style={{position: "relative", top: "10px"}}>None </div>
                         <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                             {/* <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}> */}
                              <Button type="button" className={classes.questionButton} style={{borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
                                 <QuestionButtonIcons answerConditional={answerNone} />
                             </Button>
@@ -146,7 +145,7 @@ import { procedures } from '../../constants'
                                 <Grid item xs={12} sm={12} md={12} lg={7}>
                                     <div className={classes.questionContainer}>
                                         <span className={classes.questionHead}>{proc.procedure}</span>
-                                        <Button className={classes.helpButton} onClick={() => this.handleModalOpen(proc.procedure,proc.shortDescription) }>
+                                        <Button className={classes.helpButton} onClick={() => this.handleModalOpen(proc.procedure, proc.description, false) }>
                                             <HelpIcon color="primary" className={classes.helpIcon}/>
                                             </Button>
                                         <br />
@@ -174,7 +173,7 @@ import { procedures } from '../../constants'
                     modalOpen={modalOpen}
                     modalTitle={modalTitle}
                     modalText={modalText}
-                    modalWarning={true}
+                    modalWarning={modalWarning}
                 /> }
 
             </section>

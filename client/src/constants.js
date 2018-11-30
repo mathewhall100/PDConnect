@@ -304,8 +304,7 @@ export const medGroups = [
 ]
 
 export const meds = [
-
-    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", description: ""},
+    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "sinemet plus", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", images: ["sinemet", "sinemet_cr", "parcopa"] },
     {key: "stalevo", generic: "Carbidopa-levodopa-entacapone", trade: ["Stalevo"], class: "carbidopa/levodopa", target: "motor", description: ""},
     {key: "duopa", generic: "Doupa",  trade: ["Duopa"], class: "carbidopa/levodopa", target: "motor", description: ""},
     {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", target: "motor", description: ""},
@@ -320,7 +319,6 @@ export const meds = [
     {key: "benztropine", generic: "Benztropine", trade: ["Cogentin"], target: "motor", class: "anticholinergic", description: ""},
     {key: "trihexyphenidyl", generic: "Trihexphenidyl", trade: ["Artane, Tremin"], target: "motor", class: "anticholinergic", description: ""},
  
-   
     {key: "rasagline", generic: "Rasagline", trade: ["Azilect"], class: "maob inhibitor", target: "motor", description: ""},
     {key: "safinamide", generic: "Safinamide", trade: ["Xadago"], class: "maob inhibitor", target: "motor", description: ""},
     {key: "selegiline", generic: "Selegiline", trade: ["Eldepryl, Zelepar, Emsam, L-deprenyl"], class: "maob inhibitor", description: ""},
@@ -328,7 +326,6 @@ export const meds = [
     {key: "entacapone", generic: "Entacapone", trade: ["Comtan"], class: "comt inhibitor", target: "motor", description: ""},
     {key: "tolcapone", generic: "Tolcapone", trade: ["Tasmar"], class: "comt inhibitor", target: "motor", description: ""},
   
-
     {key: "bottox", generic: "Botulinum Toxin", trade: ["Botox, Dysport, Myobloc, Xeomin"], class: "other", description: ""}, 
     {key: "droxidopa", generic: "Droxidopa", trade: ["Northera"], class: "other", target: "non-motor", description: ""},
     {key: "Pimavanserin", generic: "Nuplazid", trade: ["Nuplazid"], class: "other", target: "non-motor", description: ""},
@@ -345,8 +342,7 @@ export const motorSy = [
     {key: "micrographia", symptom: "Small handwriting ", shortDescription: "Very small handwriting (micrographia), which is not usual for you.", description: "Many patients with Parkinson notice thier handwriting becoming smaller. This is micrographia. "},
     {key: "bradykinesia", symptom: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling gait.", description: "Unusually slow walking, sometimes with a shuffling gait. This may vary with throughout the day with Parkinons medication."},
     {key: "fall", symptom: "Falls", shortDescription: "Falling over due to increased difficulty with balance and walking.", description: "Falling over due to increased difficulty with balance and walking can be a serious symptom of Parkinson disease and may result in injury and/or ED attendances."},
-    {key: "dysphagia", symptom: "Difficulty swallowing known as dysphagia", shortDescription: "Difficulty swallowing food, liquid or pills. Choking episodes.", description: "In the advanced stages of Parkinson disease, swallowing may be affected and this is experienced as difficulty swallowing food and liquids and may lead to choking episodes when eating or drinking."},
-    
+    {key: "dysphagia", symptom: "Difficulty swallowing known as dysphagia", shortDescription: "Difficulty swallowing food, liquid or pills. Choking episodes.", description: "In the advanced stages of Parkinson disease, swallowing may be affected and this is experienced as difficulty swallowing food and liquids and may lead to choking episodes when eating or drinking."}, 
 ]
 
 export const nonMotorSy= [
@@ -359,11 +355,10 @@ export const nonMotorSy= [
     {key: "insomnia", symptom: "Poor sleep", shortDescription: "Difficulty getting to sleep or waking in the night and unable to get back to sleep.", description: "Difficulty getting to sleep or waking in the night and unable to get back to sleep."},
     {key: "depression", symptom: "Depression", shortDescription: "Low mood and feelings of hopelessness.", description: "Feelings or low mood, inability to enjoy anything and feelings of hopelessness are all signs of depression."},
     {key: "cogdecline", symptom: "Poor cognition", shortDescription: "Difficulty thinking and/or remembering things which adversely affects your life.", description: "From time to time it is common to have difficulty thinking or remembering things, especially with older age, but if thinking through normal activities or remembering day-to-day events has become a significant problem for you in your life or that others around you notice, then it would be appropriate to tick this box."},
-    
 ]
 
 export const procedures  = [
-    {key: "dbs", procedure: "Deep brain stimulation", shortDescription: "Implanting of small elecrodes into the brain to control Parkinson disease symptoms by electrical stimulation", description: ""},
-    {key: "pegj", procedure: "Placement of a feeding tube", shortDescription: "Placement of a feeding tube through the stomach wall to deliver drugs such as Duopa directly into the intestine.", description: ""},
-    {key: "neurosurgery", procedure: "Other neurosurgery", shortDescription: "A operation to remove a part of the brain (pallidotomy or thalamotomy)", description: ""},
+    {key: "dbs", procedure: "Deep brain stimulation", shortDescription: "Implanting of small elecrodes into the brain to control Parkinson disease symptoms by electrical stimulation", description: "Deep Brain Stimulation (DBS) involves a neurosurgical operation to place two small electrodes into a part of the brain associated with Parkinson disease. These electrodes are then used to send elctrical signals to the brain via a patient controlled device to suppress Parkinson symptoms when required. "},
+    {key: "pegj", procedure: "Placement of a feeding tube", shortDescription: "Placement of a feeding tube through the stomach wall to deliver drugs such as Duopa directly into the intestine.", description: "Placement of a feeding tube through the stomach wall (called a PEG-J tube)to deliver drugs such as Duopa directly into the intestine."},
+    {key: "othernuerosurg", procedure: "Other neurosurgery", shortDescription: "An operation to remove a part of the brain (pallidotomy or thalamotomy)", description: "Palidotomy and thalamotomy are now very rarely carried out having been superceeded over the past 10 years by deep brain stimulation,  but a small number of older Parkinson patients may have had these surgeries in the past."},
 ]
