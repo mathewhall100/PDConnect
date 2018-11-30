@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
-import {Redirect, Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {submitReview } from '../../actions/index.js'
 
 // import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -35,10 +35,7 @@ import {userStylesheet } from '../../styles';
                         </div>
                     )
                 } else return null
-
             }
-
-
             return (
                 <div>
                     <br />

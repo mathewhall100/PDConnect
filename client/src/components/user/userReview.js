@@ -61,8 +61,8 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                         </span>
                        <span className={classes.profileBoxButton} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>{showBox[props.number]
                         ?
-                        <React.Fragment>HIDE <ArrowUp style={{ fontSize: "18"}} /></React.Fragment>  :
-                        <React.Fragment>VIEW <ArrowDown style={{ fontSize: "18" }} /></React.Fragment> }</span>
+                        <React.Fragment><ArrowUp style={{ fontSize: "18"}} /></React.Fragment>  :
+                        <React.Fragment><ArrowDown style={{ fontSize: "18" }} /></React.Fragment> }</span>
                 </div>
             )
         }
