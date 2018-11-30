@@ -1,5 +1,7 @@
 import { CREDS_INFO } from "./actions/types";
-
+import sinemet from './images/medication/sinemet.jpg';
+import sinemetCR from './images/medication/sinemet_cr.jpg';
+import parcopa from './images/medication/parcopa.jpg';
 // constants for select boxes
 
 export const age = [
@@ -78,11 +80,11 @@ export const age = [
 
 export const sex = [
     {
-        "value" : "male", 
+        "value" : "male",
         "text" : "Male"
     },
     {
-        "value" : "female", 
+        "value" : "female",
         "text" : "Female"
     }
 ]
@@ -304,11 +306,11 @@ export const medGroups = [
 ]
 
 export const meds = [
-    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "sinemet plus", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", images: ["sinemet", "sinemet_cr", "parcopa"] },
+    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "sinemet plus", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", images: [sinemet, sinemetCR, parcopa] },
     {key: "stalevo", generic: "Carbidopa-levodopa-entacapone", trade: ["Stalevo"], class: "carbidopa/levodopa", target: "motor", description: ""},
     {key: "duopa", generic: "Doupa",  trade: ["Duopa"], class: "carbidopa/levodopa", target: "motor", description: ""},
     {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", target: "motor", description: ""},
-    
+
     {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", target: "motor", description: ""},
     {key: "apomorphine", generic: "apomorphine", trade: ["apokym"], class: "dopamine agonist", target: "motor", description: ""},
     {key: "bromocriptine", generic: "Bromocriptine", trade: ["Parlodel", "Cycloset"], class: "dpamine aginsty", target: "motor", description: ""},
@@ -318,15 +320,15 @@ export const meds = [
 
     {key: "benztropine", generic: "Benztropine", trade: ["Cogentin"], target: "motor", class: "anticholinergic", description: ""},
     {key: "trihexyphenidyl", generic: "Trihexphenidyl", trade: ["Artane, Tremin"], target: "motor", class: "anticholinergic", description: ""},
- 
+
     {key: "rasagline", generic: "Rasagline", trade: ["Azilect"], class: "maob inhibitor", target: "motor", description: ""},
     {key: "safinamide", generic: "Safinamide", trade: ["Xadago"], class: "maob inhibitor", target: "motor", description: ""},
     {key: "selegiline", generic: "Selegiline", trade: ["Eldepryl, Zelepar, Emsam, L-deprenyl"], class: "maob inhibitor", description: ""},
 
     {key: "entacapone", generic: "Entacapone", trade: ["Comtan"], class: "comt inhibitor", target: "motor", description: ""},
     {key: "tolcapone", generic: "Tolcapone", trade: ["Tasmar"], class: "comt inhibitor", target: "motor", description: ""},
-  
-    {key: "bottox", generic: "Botulinum Toxin", trade: ["Botox, Dysport, Myobloc, Xeomin"], class: "other", description: ""}, 
+
+    {key: "bottox", generic: "Botulinum Toxin", trade: ["Botox, Dysport, Myobloc, Xeomin"], class: "other", description: ""},
     {key: "droxidopa", generic: "Droxidopa", trade: ["Northera"], class: "other", target: "non-motor", description: ""},
     {key: "Pimavanserin", generic: "Nuplazid", trade: ["Nuplazid"], class: "other", target: "non-motor", description: ""},
     {key: "rivastigmine", generic: "Rivastigmine", trade: ["Exelon"], class: "other", target: "non-motor", description: ""},
@@ -342,7 +344,7 @@ export const motorSy = [
     {key: "micrographia", symptom: "Small handwriting ", shortDescription: "Very small handwriting (micrographia), which is not usual for you.", description: "Many patients with Parkinson notice thier handwriting becoming smaller. This is micrographia. "},
     {key: "bradykinesia", symptom: "Slowness walking", shortDescription: "Unusually slow walking, sometimes with a shuffling gait.", description: "Unusually slow walking, sometimes with a shuffling gait. This may vary with throughout the day with Parkinons medication."},
     {key: "fall", symptom: "Falls", shortDescription: "Falling over due to increased difficulty with balance and walking.", description: "Falling over due to increased difficulty with balance and walking can be a serious symptom of Parkinson disease and may result in injury and/or ED attendances."},
-    {key: "dysphagia", symptom: "Difficulty swallowing known as dysphagia", shortDescription: "Difficulty swallowing food, liquid or pills. Choking episodes.", description: "In the advanced stages of Parkinson disease, swallowing may be affected and this is experienced as difficulty swallowing food and liquids and may lead to choking episodes when eating or drinking."}, 
+    {key: "dysphagia", symptom: "Difficulty swallowing known as dysphagia", shortDescription: "Difficulty swallowing food, liquid or pills. Choking episodes.", description: "In the advanced stages of Parkinson disease, swallowing may be affected and this is experienced as difficulty swallowing food and liquids and may lead to choking episodes when eating or drinking."},
 ]
 
 export const nonMotorSy= [

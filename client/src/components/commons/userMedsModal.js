@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Modal from '@material-ui/core/Modal'
 import CancelIcon from '@material-ui/icons/Cancel'
 import {userStylesheet } from '../../styles';
-import sinemet from '../../images/medication/sinemet.jpg'
+import Sinemet from '../../images/medication/sinemet.jpg'
 import sinemet_cr from '../../images/medication/sinemet_cr.jpg'
 import parcopa from '../../images/medication/parcopa.jpg'
 
@@ -56,6 +56,7 @@ class UserMedsModal extends Component  {
                 <hr />
                 <Typography variant="subtitle1" id="simple-modal-description">
                     {modalImages.map((img, index) => {
+                        console.log(img);
                         return (
                             <div>
                                 <br />
@@ -63,7 +64,7 @@ class UserMedsModal extends Component  {
                                 <br />
                             </div>
                         )
-                    }) } 
+                    }) }
                 </Typography>
             </div>
     </Modal>
