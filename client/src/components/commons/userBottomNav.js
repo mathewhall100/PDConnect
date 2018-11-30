@@ -18,7 +18,7 @@ import {userStylesheet } from '../../styles';
                 this.props.submitReview(false);
                 this.props.history.push('/user/user_review');
             } else {
-                this.props.history.push(this.state.stepper.prevPage)
+                this.props.history.push(this.props.stepper.prevPage)
             }
         }
         render() {

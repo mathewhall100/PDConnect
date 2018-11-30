@@ -878,9 +878,9 @@ export const home2Stylesheet = theme => ({
     },
     wow : {
         background: PRIMARY_COLOR_HOVER,
-        width: '80%',
+        width: '100%',
         height : '350px',
-        margin: '20px 15px 20px 15px',
+        margin: '20px 0 20px 0',
         '&:hover': {
             height: '350px',
             background: SECONDARY_COLOR,
