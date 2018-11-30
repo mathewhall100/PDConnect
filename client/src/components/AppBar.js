@@ -76,6 +76,7 @@ class AppBar extends Component {
                     </div>
                 </div>
             </nav>
+            
         )
     }
 }

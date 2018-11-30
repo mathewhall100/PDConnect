@@ -60,15 +60,6 @@ export const userStylesheet = theme => ({
         height : '50px',
         width : '50px',
     },
-    stepperButton  : {
-        marginTop : '30px',
-        backgroundColor : PRIMARY_COLOR,
-        color : 'white',
-        '&:hover': {
-            backgroundColor: "white",
-            color : PRIMARY_COLOR,
-        },
-    },
     spacingContainer: {
         height: "100px",
     },
@@ -83,9 +74,10 @@ export const userStylesheet = theme => ({
         fontSize: "23px"
     },
     selectLabel: {
-        height: "40px",
+        height: "45px",
         color: "black",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        backgroundColor: "white !important",
     },
     title: {
         fontSize: '32px',
@@ -148,6 +140,7 @@ export const userStylesheet = theme => ({
         top: "-5px",
         margin: 0,
         padding: 0,
+        backgroundColor: "white",
         '&:hover': {
             backgroundColor: "white"
         },
@@ -283,7 +276,7 @@ export const userStylesheet = theme => ({
         zIndex: -100
     },
     profileSectionHeader: {
-        marginTop: "10px",
+        marginTop: "10px",        
         fontSize: "18px",
         fontWeight: "bold",
     },
@@ -632,7 +625,7 @@ export const resultStylesheet = theme => ({
         border: "2px solid lightgrey",
         borderRadius: "5px",
         backgroundColor: "white",
-        padding: "20px 10px 10px 10px",
+        padding: "20px 20px 10px 20px",
         marginBottom: "30px",
         backgroundColor: "#F8F8F8",
     },
