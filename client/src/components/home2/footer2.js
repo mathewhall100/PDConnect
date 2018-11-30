@@ -35,7 +35,7 @@ class Footer extends Component {
 
                         </Grid>
 
-                        <Grid md={3} xs={12}>
+                        <Grid item md={3} xs={12}>
                             <div style={{marginLeft: "10px", marginTop: "10px", marginBottom: "20px"}}>
                                 123 Great Western Blv<br />
                                 Cleveland, Ohio 44123<br />
@@ -44,7 +44,7 @@ class Footer extends Component {
                             </div>
                         </Grid>
 
-                        <Grid md={5} xs={12}>
+                        <Grid item md={5} xs={12}>
 
                             <div className={classes.footerAppStore} style={{marginLeft: "10px", marginBottom: "20px", float: "right"}}>
                                 <span style={{fontWeight: "bold", fontSize: "20px", textAlign: "left"}}>Download the app: </span>
