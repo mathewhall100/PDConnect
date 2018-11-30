@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import { userStylesheet } from '../../styles';
 import ClearIcon from '@material-ui/icons/Clear'
@@ -42,20 +47,22 @@ class SimpleModal extends React.Component {
         return (
             <span>
                 <span className={classes.profileTermsButton} onClick={this.handleOpen}>{buttonLabel}</span>
-                <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
+                <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
+                    aria-labelledby="scroll-dialog-title"
                 >
-                    <div style={getModalStyle()} className={classes.paper}>
-                        <label style={{ float: 'right' }}><ClearIcon style={{color : 'red', cursor : 'pointer'}} onClick={this.handleClose} /></label>
+                    <DialogTitle id="scroll-dialog-title">
+                        <label style={{ float: 'right' }}><ClearIcon style={{ color: 'red', cursor: 'pointer' }} onClick={this.handleClose} /></label>
                         <h6>{modalTitle}</h6>
-                        <div id="simple-modal-description">
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
                             {modalContent}
-                        </div>
-                    </div>
-                </Modal>
+                        </DialogContentText>
+                    </DialogContent>
+                </Dialog>
+
             </span>
         );
     }
