@@ -77,7 +77,7 @@ function validate(values) {
         errors.password = '*Required'
     }
     if (values.password && values.password.length < 8) {
-        errors.password = '*Minimum 8 charcters long.'
+        errors.password = '*Minimum 8 characters long.'
     }
     return errors
 }

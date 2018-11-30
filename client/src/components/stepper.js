@@ -135,9 +135,9 @@ class VerticalLinearStepper extends React.Component {
 
         return (
             onPage!== 'Unknown step' ?
-                <div>
+                <div className={classes.stepperContainer}>
 
-                    <Grid container spacing={24} className={classes.stepperContainer} >
+                    <Grid container spacing={24}  >
                         <Grid item xs={12} >
                             {stepperCount && <StepperHead /> }
                             <h3 className={classes.stepperPageName}>{pageName}</h3>

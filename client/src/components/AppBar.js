@@ -45,7 +45,7 @@ class AppBar extends Component {
                         <HomeIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Home
                     </Button>
 
-                </span> 
+                </span > 
 
                  :
 
@@ -76,6 +76,7 @@ class AppBar extends Component {
                     </div>
                 </div>
             </nav>
+            
         )
     }
 }

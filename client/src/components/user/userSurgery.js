@@ -122,11 +122,13 @@ import { procedures } from '../../constants'
 
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        <div className={classes.headerQuestion} >None (I havn't had any surgery or procedures done for Parkinson disease)</div>
+                        {/* <div className={classes.headerQuestion} >None (I havn't had any surgery or procedures done for Parkinson disease)</div> */}
+                        <div className={classes.headerQuestion} style={{position: "relative", top: "10px"}}>None </div>
                         <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                             <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
+                             {/* <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}> */}
+                             <Button type="button" className={classes.questionButton} style={{borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
                                 <QuestionButtonIcons answerConditional={answerNone} />
                             </Button>
                         </Grid>
@@ -172,7 +174,7 @@ import { procedures } from '../../constants'
                     modalOpen={modalOpen}
                     modalTitle={modalTitle}
                     modalText={modalText}
-                    modalWarning={false}
+                    modalWarning={true}
                 /> }
 
             </section>

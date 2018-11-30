@@ -60,15 +60,6 @@ export const userStylesheet = theme => ({
         height : '50px',
         width : '50px',
     },
-    stepperButton  : {
-        marginTop : '30px',
-        backgroundColor : PRIMARY_COLOR,
-        color : 'white',
-        '&:hover': {
-            backgroundColor: "white",
-            color : PRIMARY_COLOR,
-        },
-    },
     spacingContainer: {
         height: "100px",
     },
@@ -149,6 +140,7 @@ export const userStylesheet = theme => ({
         top: "-5px",
         margin: 0,
         padding: 0,
+        backgroundColor: "white",
         '&:hover': {
             backgroundColor: "white"
         },
@@ -279,7 +271,7 @@ export const userStylesheet = theme => ({
         zIndex: -100
     },
     profileSectionHeader: {
-        marginTop: "10px",
+        marginTop: "10px",        
         fontSize: "18px",
         fontWeight: "bold",
     },
@@ -1069,7 +1061,7 @@ export const stylesheet = theme => ({
         backgroundColor: PRIMARY_COLOR,
         color : "white",
         paddingBottom : '10px',
-        marginTop : '60px'
+        marginTop : '60px',
     },
     socialIcon : {
         height : '45px',
@@ -1108,10 +1100,10 @@ export const stylesheet = theme => ({
 export const home2Stylesheet = theme => ({
 
     HeroTitle : {
-        fontSize : '60px',
+        fontSize : '34px',
         color : 'black',
         fontWeight : 'bolder',
-        lineHeight : '1.0',
+        lineHeight : '1.5',
     },
     HeroWhiteTitle : {
         fontSize: '34px',
@@ -1123,9 +1115,8 @@ export const home2Stylesheet = theme => ({
         fontSize : '22px',
     },
     homepageContainer : {
-        width: "100%",
-        minHeight : '500px',
-        margin : '15px',
+        minHeight : '370px',
+        margin : 'auto',
         [theme.breakpoints.down('sm')]: {
             paddingTop: '50px',
             paddingBottom : '50px',
@@ -1138,7 +1129,7 @@ export const home2Stylesheet = theme => ({
     },
     buttonContainer : {
         paddingTop : '20px',
-        margin : '0 auto',
+        margin : 'auto',
     },
     mobileImg : {
         display : 'none',
@@ -1155,26 +1146,23 @@ export const home2Stylesheet = theme => ({
         backgroundColor: PRIMARY_COLOR,
         fontSize : '18px',
         color: 'white',
-        // float : 'right',
+        float : 'right',
         textTransform : 'capitalize',
         '&:hover': {
             color: PRIMARY_COLOR,
         }
     },
-    // splitContent : {
-    //     margin : '0 auto',
-    //     verticalAlign : 'center',
-    // },
-    heroTextContainer: {
-        marginTop: "50px",
+    splitContent : {
+        margin : 'auto',
+        verticalAlign : 'center',
     },
     heroRotateText: {
         margin: 'auto',
         alignItems: 'center',
     },
     heroImg : {
-        border :'2px solid lightgrey',
-        marginTop: '50px'
+        borderColor :'solid 1px black',
+        width : '70%',
     },
     heroAppStore : {
         margin : '00px 0 00px 0',

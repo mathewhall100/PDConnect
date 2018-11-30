@@ -1,3 +1,4 @@
+import { CREDS_INFO } from "./actions/types";
 
 // constants for select boxes
 
@@ -401,7 +402,7 @@ const medList = [
 ]
 
 export const PDADLs = [
-    {key: "none", title: "I have no difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
+    {key: "none", title: "I have no difﬁculty with normal day-to-day activities.", text: "For example: Your Parkinson’s disease at present is not affecting your daily living"},
     {key: "mild", title: "I have mild difﬁculties with day-to-day activities.", text: "For example: Slowness with some aspects of housework, gardening or shopping. Able to dress and manage personal hygiene completely independently but rate is slower. You may feel that your medication is not quite effective as it was."},
     {key: "moderate", title: "I have moderate difﬁculties with day-to-day activities.", text: "For example: Your Parkinson’s disease is interfering with your daily activities. It is increasinglydifﬁcult to do simple activities without some help such as rising from a chair, washing, dressing,shopping, housework. You may have some difﬁculties walking and may require assistance. Difﬁcultieswith recreational activities or the ability to drive a car. The medication is now less effective."},
     {key: "high", title: "I have a high levels of difﬁculties with day-to-day activities.", text: "For example: You now require much more assistance with activities of daily living such as washing,dressing, housework or feeding yourself. You may have greater difﬁculties with mobility and ﬁnd you are becoming more dependent for assistance from others or aids and appliances. Your medicationappears to be signiﬁcantly less effective."},
@@ -415,16 +416,27 @@ export const medGroups = [
 ]
 
 export const meds = [
-    {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Ralnea", "Adartrel"], class: "dopamine agonist", description: ""},
-    {key: "pramipixole", generic: "Pramipixole", trade: ["Mirapex"], class: "dopamine agonist", description: ""},
+    {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Requip XL", "Adartrel"], class: "dopamine agonist", description: ""},
+    {key: "pramipexole", generic: "Pramipexole", trade: ["Mirapex", "Mirapex ER"], class: "dopamine agonist", description: ""},
     {key: "rotigotine", generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", description: ""},
+    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", description: ""},
+    {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", description: ""},
+    {key: "duopa", generic: "Doupa",  trade: ["Duopa"], class: "carbidopa/levodopa", description: ""},
+    
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
+    {key: "", generic: "", trade: [""], class: ""},
 
-    {key: "sinemet", generic: "Sinemet", trade: [], class: "carbidopa/levodopa", description: ""},
-    {key: "sinemetcr", generic: "Sinemet CR",  trade: [], class: "carbidopa/levodopa", description: ""},
-    {key: "rytary", generic: "Rytary",  trade: [], class: "carbidopa/levodopa", description: ""},
-    {key: "duopa", generic: "Doupa",  trade: [], class: "carbidopa/levodopa", description: ""},
 
-    {key: "amantadine", generic: "Amantadine", trade: ["Amantadine"], class: "other", description: ""}
+
+    {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", description: ""}
 ]
 
 export const motorSy = [

@@ -99,9 +99,9 @@ import { PDADLs } from '../../constants'
                                     <Grid item xs={12} sm={8} md={8}>
                                         <div className={classes.questionContainer} >
                                             <span className={classes.questionHead}>{question.title}</span>
-                                            <Button type="button" id="modalBtn" className={classes.helpButtton} style={{position: "relative", top: "-5px", outline: "none"}} onClick={() => this.handleModalOpen(PDADLs[index].title, PDADLs[index].text)}>
+                                            <Button type="button" id="modalBtn" className={classes.helpButton} style={{position: "relative", top: "-5px", outline: "none"}} onClick={() => this.handleModalOpen(PDADLs[index].title, PDADLs[index].text)}>
                                                 <HelpIcon color="primary" className={classes.helpIcon}/>
-                                                 &nbsp;&nbsp;examples
+                                                 {/* &nbsp;&nbsp;examples */}
                                             </Button>
                                         </div>
                                     </Grid>

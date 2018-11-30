@@ -123,11 +123,13 @@ class UserMeds extends Component {
 
                     <Grid container spacing={24}>
                     <Grid item xs={12} sm={8}>
-                        <div className={classes.headerQuestion} >None (I don't take any medications for Parkinson disease)</div>
+                        {/* <div className={classes.headerQuestion} >None (I don't take any medications for Parkinson disease)</div> */}
+                        <div className={classes.headerQuestion} style={{position: "relative", top: '10px'}}>None</div>
                         <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
-                             <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
+                             {/* <Button type="button" className={classes.questionButton} style={{position: "relative", top: "15px", borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}> */}
+                             <Button type="button" className={classes.questionButton} style={{borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
                                 <QuestionButtonIcons answerConditional={answerNone} />
                             </Button>
                         </Grid>
@@ -154,10 +156,10 @@ class UserMeds extends Component {
                                                     <div style={{minHeight: "60px"}}>
                                                         <span className={classes.questionHead}>{med.generic}</span>
                                                         <Button className={classes.helpButton} onClick={() => this.handleModalOpen(med.generic, med.description) }>
-                                                            <HelpIcon color="primary" className={classes.helpIcon}/>
+                                                            <HelpIcon color="primary" className={classes.helpIcon} />
                                                          </Button>
                                                         <br />
-                                                        {med.trade.length > 0 && <span className={classes.questionText}>Examples:&nbsp;&nbsp;
+                                                        {med.trade.length > 0 && <span className={classes.questionText}>(
                                                             {med.trade.map((trade, index) => {
                                                                 return (
                                                                     <span key={index} className={classes.questionText}>
@@ -165,7 +167,9 @@ class UserMeds extends Component {
                                                                         {index === med.trade.length-1 ? "" : ", "}
                                                                     </span>
                                                                 )
+                                                            
                                                              }) }
+                                                             )
                                                         </span> }
                                                     </div>
                                                 </Grid>

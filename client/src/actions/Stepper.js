@@ -89,7 +89,7 @@ function getStepContent(){
                 pageName: 'Medications',
                 title: `Awesome, you're half way through! Now, what medications do you take for Parkinson disease?`,
                 pageImg: `${medsImg}`,
-                subtitle: `Click the circles to indicate which medications you are currently taking for parkinson disease, or select "none" if you don't take any.`,
+                subtitle: `Click the circles to indicate which medications you are currently taking for Parkinson disease, or select "none" if you don't take any.`,
                 nextPage: `/user/user_surgery`,
                 prevPage: `/user/user_family`,
             }
