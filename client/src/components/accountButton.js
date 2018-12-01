@@ -58,10 +58,10 @@ class FadeMenu extends React.Component {
                     TransitionComponent={Fade}
                 >
                     <MenuItem disable="true" style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}><AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;My account</MenuItem> <hr style={{margin: 0, padding: 0}}/>
-                    <MenuItem style={{width:"120px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}>VIEW</MenuItem>
-                    <MenuItem style={{width:"120px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/setting')}>SETTINGS</MenuItem>
+                    <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}>VIEW</MenuItem>
+                    <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/setting')}>SETTINGS</MenuItem>
                    
-                    <MenuItem style={{width:"120px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={() => this.handleLogout()}>LOGOUT</MenuItem>
+                    <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={() => this.handleLogout()}>LOGOUT</MenuItem>
                 </Menu>
             </React.Fragment>
         );

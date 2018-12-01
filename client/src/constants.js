@@ -304,13 +304,13 @@ export const medGroups = [
 ]
 
 export const meds = [
-    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "sinemet plus", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", images: ["sinemet", "sinemet_cr", "parcopa"] },
+    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "Sinemet plus", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", images: ["sinemet", "sinemet_cr", "parcopa"] },
     {key: "stalevo", generic: "Carbidopa-levodopa-entacapone", trade: ["Stalevo"], class: "carbidopa/levodopa", target: "motor", description: ""},
     {key: "duopa", generic: "Doupa",  trade: ["Duopa"], class: "carbidopa/levodopa", target: "motor", description: ""},
     {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", target: "motor", description: ""},
     
     {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", target: "motor", description: ""},
-    {key: "apomorphine", generic: "apomorphine", trade: ["apokym"], class: "dopamine agonist", target: "motor", description: ""},
+    {key: "apomorphine", generic: "Apomorphine", trade: ["Apokyn"], class: "dopamine agonist", target: "motor", description: ""},
     {key: "bromocriptine", generic: "Bromocriptine", trade: ["Parlodel", "Cycloset"], class: "dpamine aginsty", target: "motor", description: ""},
     {key: "pramipexole", generic: "Pramipexole", trade: ["Mirapex", "Mirapex ER"], class: "dopamine agonist", target: "motor", description: ""},
     {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Requip XL", "Adartrel"], class: "dopamine agonist",target: "motor",  description: ""},

@@ -55,7 +55,8 @@ class UserMedsModal extends Component  {
                 </Typography>
                 <hr />
                 <Typography variant="subtitle1" id="simple-modal-description">
-                    {modalImages.map((img, index) => {
+                {modalImages ? 
+                    modalImages.map((img, index) => {
                         return (
                             <div>
                                 <br />
@@ -63,7 +64,9 @@ class UserMedsModal extends Component  {
                                 <br />
                             </div>
                         )
-                    }) } 
+                    }) 
+                    : null 
+                }
                 </Typography>
             </div>
     </Modal>

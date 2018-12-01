@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { withRouter, Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { startCase } from 'lodash';
 
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import Modal from '@material-ui/core/Modal';
 import HelpIcon from '@material-ui/icons/Help';
-import DoneIcon from '@material-ui/icons/Done';
-import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
-
-import { activity_level } from '../../constants';
 import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { updateStepperCount, submitUserMeds, submitReview} from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import UserMedsModal from '../commons/userMedsModal'
 import {meds, medGroups } from '../../constants'
-import { ETXTBSY } from 'constants';
 
 
 class UserMeds extends Component {
@@ -137,11 +128,11 @@ class UserMeds extends Component {
             <section >
                 <div className={classes.componentBox} >
 
-                    <Grid container spacing={24}>
-                    <Grid item xs={12} sm={8}>
-                        <div className={classes.headerQuestion} style={{position: "relative", top: '10px'}}>None</div>
-                        <br />
-                    </Grid>
+                    <Grid container spacing={0}>
+                        <Grid item xs={12} sm={8}>
+                            <div className={classes.headerQuestion}>None</div>
+                            <br />
+                        </Grid>
                         <Grid item xs={12} sm={4}>
                              <Button type="button" className={classes.questionButton} style={{borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
                                 <QuestionButtonIcons answerConditional={answerNone} />

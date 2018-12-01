@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import Modal from '../commons/modal';
 import { userStylesheet, PRIMARY_COLOR } from '../../styles';
 import { updateStepperCount } from '../../actions/index.js'
+import PrivacyPolicy from '../commons/privacyPolicy'
 
 
 class UserStart extends Component {
@@ -59,9 +60,7 @@ class UserStart extends Component {
                             <span style={{fontWeight: "bold"}}> We take your privacy very seriously and will not sell or share any information about you without asking you first. </span>
                             <span style={{position: "relative", top: "10px"}}><br />
                                 Read our
-                                <Modal buttonLabel="Data Privacy Policy" modalTitle="Privacy Policy" modalContent="Privacy Policy content here" />
-                                {/*<span  className={classes.profileBoxButton2} style={{padding: "5px", backgroundColor: "lightgrey"}}>DATA PRIVACY POLICY</span> */}
-
+                                <Modal buttonLabel="Data Privacy Policy" modalTitle={<span>Privacy Policy<hr /></span>} modalContent={<PrivacyPolicy />} />
                             </span>
                         </p>
                     </div>
@@ -72,17 +71,10 @@ class UserStart extends Component {
                     <div style={{textAlign: "center"}}>
                         <Button type="button" className={classes.startPageButton} style={{width: "50%"}} onClick={() => this.handleGo()}>Ok, Let's go</Button>
                         <br /><br />
-                        {/* <Button type="button" className={classes.startPageButton2} style={{width: "200px"}} onClick={() => this.handleBack()}>No, maybe later</Button> */}
                     </div>
 
                 </div>
 
-                     {/* { modalOpen && <UserModal
-                         modalOpen={modalOpen}
-                         modalTitle={modalTitle}
-                         modalText={modalText}
-                         modalWarning={modalWarning}
-                     /> } */}
             </section>
 
         );

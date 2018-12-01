@@ -15,6 +15,8 @@ import BottomNav from '../components/commons/userBottomNav'
 import FormCheckbox from './forms/FormCheckbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Terms from '../components/commons/terms'
+import PrivacyPolicy from '../components/commons/privacyPolicy'
 
 const styles = theme => ({
     container: {
@@ -63,10 +65,10 @@ class VerticalLinearStepper extends React.Component {
                             <form>
                             <span className={classes.stepperSubtitle}>
                                 Please read our
-                                <Modal buttonLabel="Terms & Conditions" modalTitle='PD Connect Terms and Conditions' modalContent='content heeeere' />
+                                <Modal buttonLabel="Terms & Conditions" modalTitle={<span>PDConnect Terms and Conditions<hr /></span>} modalContent={< Terms />} />
                                 {/*<span className={classes.profileTermsButton}>Terms & Conditions</span> */}
                                 and
-                                <Modal buttonLabel="Data Privacy Policy" modalTitle='PD Connect Data Privacy Policy' modalContent='content heeeere' />
+                                <Modal buttonLabel="Data Privacy Policy" modalTitle={<span>PD Connect Data Privacy Policy<hr /></span>} modalContent={<PrivacyPolicy />}/>
                                 {/*<span className={classes.profileTermsButton}>Data Privacy Policy</span> */}
                             </span>
                             <br />
@@ -85,16 +87,6 @@ class VerticalLinearStepper extends React.Component {
                                 }
                                 label="I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy."
                             />
-                            {/*<label style={{ display: 'flex' }} onClick={(e) => { this.handleAgreement(e) }}>
-                                <FormCheckbox   name="policyCheck"
-                                                label={`this doesn't work`}
-
-
-                                />
-                                <span style={{ cursor: 'pointer' }}>I understand that the data I have entered will be used to provide me with individualised services and I have read this site's Terms & Conditions and Data Privacy Policy.</span>
-                            </label>
-                            */}
-
                             </form>
                         <hr className={classes.hr} style={{marginRight: 0}}/>
                     </div>
