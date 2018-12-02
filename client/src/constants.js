@@ -312,7 +312,7 @@ export const meds = [
     {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", target: "motor", description: ""},
 
     {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", target: "motor", description: ""},
-    {key: "apomorphine", generic: "apomorphine", trade: ["apokym"], class: "dopamine agonist", target: "motor", description: ""},
+    {key: "apomorphine", generic: "Apomorphine", trade: ["Apokyn"], class: "dopamine agonist", target: "motor", description: ""},
     {key: "bromocriptine", generic: "Bromocriptine", trade: ["Parlodel", "Cycloset"], class: "dpamine aginsty", target: "motor", description: ""},
     {key: "pramipexole", generic: "Pramipexole", trade: ["Mirapex", "Mirapex ER"], class: "dopamine agonist", target: "motor", description: ""},
     {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Requip XL", "Adartrel"], class: "dopamine agonist",target: "motor",  description: ""},

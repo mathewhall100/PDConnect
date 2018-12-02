@@ -118,12 +118,12 @@ import { procedures } from '../../constants'
         const { answerTrack, answerNone, modalOpen, modalTitle, modalText, modalWarning } = this.state
 
         return (
-            <section >
+            <section>
                 <div className={classes.componentBox} >
 
-                <Grid container spacing={24}>
+                <Grid container spacing={0}>
                     <Grid item xs={12} sm={8}>
-                        <div className={classes.headerQuestion} style={{position: "relative", top: "10px"}}>None </div>
+                        <div className={classes.headerQuestion}>None</div>
                         <br />
                     </Grid>
                         <Grid item xs={12} sm={4}>
@@ -133,7 +133,7 @@ import { procedures } from '../../constants'
                         </Grid>
                     </Grid>
                     <br />
-                     <p className={classes.sectionTitle}>Or, Select any that have have had from the following list</p>
+                    <p className={classes.sectionTitle}>Or, Select any that have have had from the following list</p>
 
                       <hr className={classes.hr}/>
 

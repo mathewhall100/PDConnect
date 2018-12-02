@@ -131,7 +131,7 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 7,
                 pageName: 'Symptoms (Non Motor)',
-                title: `Final question! About your symptoms other than those that affect your movement`,
+                title: `Final question! About any other symptoms of Parkinson disease not related to movement`,
                 pageImg: `${nonMotorImg}`,
                 subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,
                 nextPage: `/user/user_review`,
