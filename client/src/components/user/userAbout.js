@@ -113,7 +113,7 @@ import UserModal from '../commons/userModal'
                         {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px", color: "green"}}/> : ''}
                     </span>
 
-                    <span className={classes.errorText} >
+                    <span className={classes.errorText} style={{position: "relative", top: "5px", left: "20px"}}>
                             {touched ? error : ''}
                     </span>
 
