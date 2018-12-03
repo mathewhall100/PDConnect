@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Modal from '@material-ui/core/Modal'
 import CancelIcon from '@material-ui/icons/Cancel'
 import {userStylesheet } from '../../styles';
-import sinemet from '../../images/medication/sinemet.jpg'
+import Sinemet from '../../images/medication/sinemet.jpg'
 import sinemet_cr from '../../images/medication/sinemet_cr.jpg'
 import parcopa from '../../images/medication/parcopa.jpg'
 

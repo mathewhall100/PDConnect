@@ -95,7 +95,7 @@ class UserMeds extends Component {
             answerNone: true,
             answerTrack: [],
             answerArray: []
-            
+
         })
     }
 
@@ -151,6 +151,7 @@ class UserMeds extends Component {
                                 <hr className={classes.hr}/>
 
                                 {meds.filter(med => med.class === group.class).map((med, index) => {
+                                    console.log(med);
                                     const answerIndex = meds.findIndex(medication => medication.generic == med.generic)
 
                                     return (
@@ -172,7 +173,7 @@ class UserMeds extends Component {
                                                                         {index === med.trade.length-1 ? "" : ", "}
                                                                     </span>
                                                                 )
-                                                            
+
                                                              }) }
                                                              )
                                                         </span> }
