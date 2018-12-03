@@ -277,7 +277,7 @@ export const userStylesheet = theme => ({
         zIndex: -100
     },
     profileSectionHeader: {
-        marginTop: "10px",        
+        marginTop: "10px",
         fontSize: "18px",
         fontWeight: "bold",
     },
@@ -306,6 +306,7 @@ export const userStylesheet = theme => ({
         padding: '5px 10px 5px 10px',
         margin: "10px",
         '&:hover': {
+            cursor : 'pointer',
             color: PRIMARY_COLOR,
             backgroundColor: "lightgrey",
             border: "2px solid",
