@@ -79,7 +79,7 @@ class FadeMenu extends React.Component {
                     onMouseOver ={this.handleClick}
 
                 >
-                    <AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;My account
+                    <AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;MY ACCOUNT
                 </Button>
                 <Menu
                     id="fade-menu"
@@ -92,7 +92,7 @@ class FadeMenu extends React.Component {
                     }}
                     TransitionComponent={Fade}
                 >
-                    <MenuItem disable="true" style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}><AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;My account</MenuItem> <hr style={{margin: 0, padding: 0}}/>
+                    <MenuItem disable="true" style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}><AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;MY ACCOUNT</MenuItem> <hr style={{margin: 0, padding: 0}}/>
                     <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}>VIEW</MenuItem>
                     <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/setting')}>SETTINGS</MenuItem>
 
