@@ -13,13 +13,13 @@ class Promises extends Component {
 
     render() {
         const { classes } = this.props;
-        return (   
+        return (
             <div>
                 <div className={classes.homepageContainer} style={{ background: '#2F5597', minHeight : '600px', padding: "0 40px 0 40px"}}>
                     <br />
                     <div className={classes.homeSubTitle} style={{color: "white", textAlign: "center", padding: "20px 0 10px 0"}}>
                         Our promise
-                    </div> 
+                    </div>
                     <br />
 
                     <Grid container spacing={24} className={classes.promiseRowContainer} >
@@ -34,11 +34,11 @@ class Promises extends Component {
                         </Grid>
                         <Grid item md={4} lg={4} xs={12} className={classes.promiseCube}>
                             <div className={classes.wow} style={{ transition: 'all .7s ease' }}>
-                                <div className={classes.promiseTitle}>Your Data is private</div>
+                                <div className={classes.promiseTitle}>Your data is private</div>
                                 <div className={classes.promiseIconContainer}>
                                     <img className={classes.promiseIcon} src={noSellIcon} alt="we do not sell data" />
                                 </div>
-                                <div className={classes.promiseDescription}>We take yoru data privacy very seriously and we will never share or sell your data to any third party without asking you first.</div>
+                                <div className={classes.promiseDescription}>We take your data privacy very seriously and we will never share or sell your data to any third party without asking you first.</div>
                             </div>
                         </Grid>
                         <Grid item md={4} lg={4} xs={12} className={classes.promiseCube}>
