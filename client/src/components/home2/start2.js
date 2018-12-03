@@ -16,11 +16,11 @@ class Start extends Component {
                         <br />
                         <br />
                         <div className={classes.homeSubTitle}>
-                            The Aim
+                            Our Aim
                         </div>
                         <br />
-                        <div className={classes.description}>
-                           PD Connect offers a personalised portal for patients with Parkinson disease, their relatives and carers connecting them to current and new treatments, clinical trials and focus groups as well as up to date knowledge and developments in the field. Our aim is to provide individualised information and resources to empower you to a healthier life. 
+                        <div className={classes.description} style={{textAlign: "justify"}}>
+                           PD Connect offers a personalised portal for patients with Parkinson disease, their relatives and carers, connecting them to current and new treatments, clinical trials and focus groups as well as up to date knowledge and developments in the field. Our aim is to provide individualised information and resources to empower patients with Parkinson disease to a healthier life. 
                         </div>
                         <br />
                         <br />

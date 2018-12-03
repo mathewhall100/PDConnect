@@ -35,7 +35,7 @@ class Endorse extends Component {
                                         <h2 style={{padding: "10px"}}>Dr. G. Reese MD</h2>
                                         <Grid item xs={10}>
                                             <p>Neurologist</p>
-                                            <p>A great way to keep patients in the loop in our fast moving field of medicine. </p>
+                                            <p>"A great way to keep patients in the loop in our fast moving field of medicine." </p>
                                         </Grid>
                                     </Grid>
                                     <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
@@ -43,7 +43,7 @@ class Endorse extends Component {
                                         <h2 style={{padding: "10px"}}>Sarah James</h2>
                                         <Grid item xs={10}>
                                             <p>Parkinson patient</p>
-                                            <p>The app made me aware of more than one treatment suitable for me and, which after discussion with my doctor, i am now taking. </p>
+                                            <p>"The app made me aware of more than one treatment suitable for me and, which after discussion with my doctor, I am now taking." </p>
                                         </Grid>
                                     </Grid>
                                     <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
@@ -51,7 +51,7 @@ class Endorse extends Component {
                                         <h2 style={{padding: "10px"}}>Daryl Reid</h2>
                                         <Grid item xs={10}>
                                             <p>Parkinson Patient</p>
-                                            <p>I have been paid for two focus groups so far and I know the app is constantly on the lookout for more that I can participate in.</p>
+                                            <p>"I have been paid for two focus groups so far and I know the app is constantly on the lookout for more that I can participate in."</p>
                                         </Grid>
                                     </Grid>
                                     <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
@@ -59,7 +59,7 @@ class Endorse extends Component {
                                         <h2 style={{padding: "10px"}}>Johnnie	Watson</h2>
                                         <Grid item xs={10}>
                                             <p>Relative</p>
-                                            <p>This app has really helped my aunt and I learn about her Parkinson disease and have more meaningful discussions with her doctors.  </p>
+                                            <p>"This app has really helped my aunt and I learn about her Parkinson disease and have more meaningful discussions with her doctors."  </p>
                                         </Grid>
                                     </Grid>
                                 </Grid>

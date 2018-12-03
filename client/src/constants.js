@@ -2,6 +2,11 @@ import { CREDS_INFO } from "./actions/types";
 import sinemet from './images/medication/sinemet.jpg';
 import sinemetCR from './images/medication/sinemet_cr.jpg';
 import parcopa from './images/medication/parcopa.jpg';
+import stalevo from './images/medication/stalevo.jpg';
+import duopa from './images/medication/duopa.png';
+import rytary from './images/medication/rytary.PNG';
+import apokyn from './images/medication/apokyn.jpg';
+import mirapex from './images/medication/mirapex.jpg';
 // constants for select boxes
 
 export const age = [
@@ -306,15 +311,15 @@ export const medGroups = [
 ]
 
 export const meds = [
-    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "sinemet plus", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", images: [sinemet, sinemetCR, parcopa] },
-    {key: "stalevo", generic: "Carbidopa-levodopa-entacapone", trade: ["Stalevo"], class: "carbidopa/levodopa", target: "motor", description: ""},
-    {key: "duopa", generic: "Doupa",  trade: ["Duopa"], class: "carbidopa/levodopa", target: "motor", description: ""},
-    {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", target: "motor", description: ""},
+    {key: "cldopa", generic: "Carbidopa-levodopa", trade: ["Sinemet", "Sinemet plus", "Sinemet CR", "Parcopa"], class: "carbidopa/levodopa", target: "motor", images: [sinemet, sinemetCR, parcopa] },
+    {key: "stalevo", generic: "Carbidopa-levodopa-entacapone", trade: ["Stalevo"], class: "carbidopa/levodopa", target: "motor", images: [stalevo]},
+    {key: "duopa", generic: "Doupa therapy",  trade: ["Duopa"], class: "carbidopa/levodopa", target: "motor", images: [duopa]},
+    {key: "rytary", generic: "Rytary",  trade: ["Rytary"], class: "carbidopa/levodopa", target: "motor", images: [rytary]},
 
-    {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", target: "motor", description: ""},
-    {key: "apomorphine", generic: "Apomorphine", trade: ["Apokyn"], class: "dopamine agonist", target: "motor", description: ""},
-    {key: "bromocriptine", generic: "Bromocriptine", trade: ["Parlodel", "Cycloset"], class: "dpamine aginsty", target: "motor", description: ""},
-    {key: "pramipexole", generic: "Pramipexole", trade: ["Mirapex", "Mirapex ER"], class: "dopamine agonist", target: "motor", description: ""},
+    
+    {key: "apomorphine", generic: "Apomorphine", trade: ["Apokyn"], class: "dopamine agonist", target: "motor", images: [apokyn]},
+    {key: "bromocriptine", generic: "Bromocriptine", trade: ["Parlodel", "Cycloset"], class: "dopamine agonist", target: "motor", description: ""},
+    {key: "pramipexole", generic: "Pramipexole", trade: ["Mirapex", "Mirapex ER"], class: "dopamine agonist", target: "motor", images: [mirapex]},
     {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Requip XL", "Adartrel"], class: "dopamine agonist",target: "motor",  description: ""},
     {key: "rotigotine", generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", target: "motor", description: ""},
 
@@ -328,6 +333,7 @@ export const meds = [
     {key: "entacapone", generic: "Entacapone", trade: ["Comtan"], class: "comt inhibitor", target: "motor", description: ""},
     {key: "tolcapone", generic: "Tolcapone", trade: ["Tasmar"], class: "comt inhibitor", target: "motor", description: ""},
 
+    {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", target: "motor", description: ""},
     {key: "bottox", generic: "Botulinum Toxin", trade: ["Botox, Dysport, Myobloc, Xeomin"], class: "other", description: ""},
     {key: "droxidopa", generic: "Droxidopa", trade: ["Northera"], class: "other", target: "non-motor", description: ""},
     {key: "Pimavanserin", generic: "Nuplazid", trade: ["Nuplazid"], class: "other", target: "non-motor", description: ""},

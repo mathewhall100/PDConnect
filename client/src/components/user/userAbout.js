@@ -105,9 +105,9 @@ import UserModal from '../commons/userModal'
                         </FormControl>
                     </span>
 
-                    { (pristine || error) && <Button className={classes.helpButton}  onClick={() => this.handleModalOpen(label, label)}>
+                    {/* { (pristine || error) && <Button className={classes.helpButton}  onClick={() => this.handleModalOpen(label, label)}>
                         <HelpIcon color="primary" className={classes.helpIcon}/>
-                    </Button> }
+                    </Button> } */}
 
                     <span>
                         {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px", color: "green"}}/> : ''}

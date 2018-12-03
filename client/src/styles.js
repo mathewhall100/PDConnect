@@ -778,17 +778,16 @@ export const home2Stylesheet = theme => ({
     homepageButton : {
         backgroundColor: PRIMARY_COLOR,
         fontSize : '18px',
+        fontWeight: "bold",
         color: 'white',
+        border: "2px solid #000080",
         // float : 'right',
         // textTransform : 'capitalize',
         '&:hover': {
             color: PRIMARY_COLOR,
+            backgroundColor: "lightgrey"
         }
     },
-    // splitContent : {
-    //     margin : 'auto',
-    //     verticalAlign : 'center',
-    // },
     heroRotateText: {
         margin: 'auto',
         alignItems: 'center',
@@ -806,7 +805,7 @@ export const home2Stylesheet = theme => ({
     },
     heroDownloadImg : {
         padding : '30px 50px 30px 0',
-        maxWidth : '225px',
+        width : '45%',
         maxHeight : 'auto',
     },
     treatmentImg: {
@@ -929,7 +928,7 @@ export const home2Stylesheet = theme => ({
     },
     connectSubscribe: {
         display: 'grid',
-        width: "250px",
+        width: "400px",
         margin: "0 auto"
     },
     footerAppStore : {
