@@ -23,7 +23,7 @@ class Hero extends Component {
         const { classes } = this.props
 
         return(
-            <div style={{ background: 'linear-gradient(rgba(255,255,255,0) 60%, lightgray)'}}>
+            <div style={{ background: 'linear-gradient(rgba(255,255,255,0) 10%, rgba(240,240,240,1))'}}>
 
                 <Grid container spacing={24} className={classes.homepageContainer}>
                 
@@ -33,31 +33,27 @@ class Hero extends Component {
                                 <a href='/'><img src={img} className={classes.heroImg} alt="Patient with mobile device" /></a>
                             </span>
 
-                            <Grid container spacing={24}>
-                                <Grid item xs={6}>
                                     <span className={classes.heroImgContainer}>
                                         <a href='/'><img src={AppleDownload} className={classes.heroDownloadImg} alt="Download from Apple Store" /></a>
                                     </span>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <span className={classes.heroImgContainer} style={{float: "right"}}>
+
+                                    <span className={classes.heroImgContainer} >
                                         <a href='/'><img src={GoogleDownload} className={classes.heroDownloadImg} alt="Download from Google Store" /></a>
                                     </span>
-                                </Grid>
-                            </Grid>
+
                         </div>
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={6} lg={6}>
-                        <div style={{width: "100%", marginLeft: "50px", marginTop: "50px"}}>
+                        <div style={{width: "90%", margin: "50px auto 0 auto", textAlign: "center"}}>
                             <div className={classes.HeroTitle}>
                                 PD Connect</div>
                             <div className={classes.description}>
-                                Connecting patients with Parkinson disease to a healthier life. <br />
+                                Connecting patients with Parkinson disease <br />to resources for a healthier life. <br />
                             </div>
                             <br />
                             <span className="rotating" style={{fontSize: "44px", color: SECONDARY_COLOR, fontWeight: "bold", fontFamily: "muli"}}>
-                                New treatments,
+                                Treatments,
                                 Clinicial trials,
                                 Focus groups,
                                 Knowledge,
