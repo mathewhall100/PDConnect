@@ -7,6 +7,29 @@ import duopa from './images/medication/duopa.png';
 import rytary from './images/medication/rytary.PNG';
 import apokyn from './images/medication/apokyn.jpg';
 import mirapex from './images/medication/mirapex.jpg';
+import parlodel from './images/medication/parlodel.jpg';
+import cycloset from './images/medication/cycloset.jpg';
+import adartrel from './images/medication/adartrel.jpg';
+import requip from './images/medication/requip.jpg';
+import neupro from './images/medication/neupro.jpg';
+import artane from './images/medication/artane.jpg';
+import cogentin from './images/medication/cogentin.jpg';
+import azilect from './images/medication/azilect.jpg';
+import xadago from './images/medication/xadago.jpg';
+import zelepar from './images/medication/zelepar.jpg';
+import eldepryl from './images/medication/eldepryl.jpg';
+import comtan from './images/medication/comtan.jpg';
+import tasmar from './images/medication/tasmar.jpg';
+import northera from './images/medication/northera.jpg';
+import exelon from './images/medication/exelon.jpg';
+import symmetrel from './images/medication/symmetrel.jpg';
+import gocovri from './images/medication/gocovri.jpg';
+import nuplazid from './images/medication/nuplazid.jpg';
+import botox from './images/medication/botox.jpg';
+import dysport from './images/medication/dysport.jpg';
+import myobloc from './images/medication/myobloc.JPG';
+import anipryl from './images/medication/anipryl.jpg';
+import emsam from './images/medication/emsam.PNG';
 // constants for select boxes
 
 export const age = [
@@ -318,26 +341,26 @@ export const meds = [
 
     
     {key: "apomorphine", generic: "Apomorphine", trade: ["Apokyn"], class: "dopamine agonist", target: "motor", images: [apokyn]},
-    {key: "bromocriptine", generic: "Bromocriptine", trade: ["Parlodel", "Cycloset"], class: "dopamine agonist", target: "motor", description: ""},
+    {key: "bromocriptine", generic: "Bromocriptine", trade: ["Parlodel", "Cycloset"], class: "dopamine agonist", target: "motor", images: [parlodel, cycloset]},
     {key: "pramipexole", generic: "Pramipexole", trade: ["Mirapex", "Mirapex ER"], class: "dopamine agonist", target: "motor", images: [mirapex]},
-    {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Requip XL", "Adartrel"], class: "dopamine agonist",target: "motor",  description: ""},
-    {key: "rotigotine", generic: "Rotigotine", trade: ["Neupro"], class: "dopamine agonist", target: "motor", description: ""},
+    {key: "ropinirole", generic: "Ropinirole", trade: ["Requip", "Requip XL", "Adartrel"], class: "dopamine agonist",target: "motor",  images: [requip, adartrel]},
+    {key: "rotigotine", generic: "Rotigotine", trade: ["Neupro transdermal"], class: "dopamine agonist", target: "motor", images: [neupro]},
 
-    {key: "benztropine", generic: "Benztropine", trade: ["Cogentin"], target: "motor", class: "anticholinergic", description: ""},
-    {key: "trihexyphenidyl", generic: "Trihexphenidyl", trade: ["Artane, Tremin"], target: "motor", class: "anticholinergic", description: ""},
+    {key: "benztropine", generic: "Benztropine", trade: ["Cogentin"], target: "motor", class: "anticholinergic", images: [cogentin]},
+    {key: "trihexyphenidyl", generic: "Trihexphenidyl", trade: ["Artane, Tremin"], target: "motor", class: "anticholinergic", images: [artane]},
 
-    {key: "rasagline", generic: "Rasagline", trade: ["Azilect"], class: "maob inhibitor", target: "motor", description: ""},
-    {key: "safinamide", generic: "Safinamide", trade: ["Xadago"], class: "maob inhibitor", target: "motor", description: ""},
-    {key: "selegiline", generic: "Selegiline", trade: ["Eldepryl, Zelepar, Emsam, L-deprenyl"], class: "maob inhibitor", description: ""},
+    {key: "rasagline", generic: "Rasagline", trade: ["Azilect"], class: "maob inhibitor", target: "motor", images: [azilect]},
+    {key: "safinamide", generic: "Safinamide", trade: ["Xadago"], class: "maob inhibitor", target: "motor", images: [xadago]},
+    {key: "selegiline", generic: "Selegiline", trade: ["Eldepryl, Zelepar, Emsam transdermal, anipryl"], class: "maob inhibitor", images: [eldepryl, zelepar, emsam]},
 
-    {key: "entacapone", generic: "Entacapone", trade: ["Comtan"], class: "comt inhibitor", target: "motor", description: ""},
-    {key: "tolcapone", generic: "Tolcapone", trade: ["Tasmar"], class: "comt inhibitor", target: "motor", description: ""},
+    {key: "entacapone", generic: "Entacapone", trade: ["Comtan"], class: "comt inhibitor", target: "motor", images: [comtan]},
+    {key: "tolcapone", generic: "Tolcapone", trade: ["Tasmar"], class: "comt inhibitor", target: "motor", images: [tasmar]},
 
-    {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", target: "motor", description: ""},
-    {key: "bottox", generic: "Botulinum Toxin", trade: ["Botox, Dysport, Myobloc, Xeomin"], class: "other", description: ""},
-    {key: "droxidopa", generic: "Droxidopa", trade: ["Northera"], class: "other", target: "non-motor", description: ""},
-    {key: "Pimavanserin", generic: "Nuplazid", trade: ["Nuplazid"], class: "other", target: "non-motor", description: ""},
-    {key: "rivastigmine", generic: "Rivastigmine", trade: ["Exelon"], class: "other", target: "non-motor", description: ""},
+    {key: "amantadine", generic: "Amantadine", trade: ["Gocovri", "Symadine", "Symmetrel"], class: "other", target: "motor", images: [gocovri, symmetrel]},
+    {key: "bottox", generic: "Botulinum Toxin injection", trade: ["Botox, Dysport, Myobloc, Xeomin"], class: "other",images: [botox, dysport, myobloc]},
+    {key: "droxidopa", generic: "Droxidopa", trade: ["Northera"], class: "other", target: "non-motor", images: [northera]},
+    {key: "Pimavanserin", generic: "Nuplazid", trade: ["Nuplazid"], class: "other", target: "non-motor", images: [nuplazid]},
+    {key: "rivastigmine", generic: "Rivastigmine", trade: ["Exelon"], class: "other", target: "non-motor", images: [exelon]},
 ]
 
 export const motorSy = [

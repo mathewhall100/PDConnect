@@ -776,16 +776,16 @@ export const home2Stylesheet = theme => ({
         },
     },
     homepageButton : {
-        backgroundColor: PRIMARY_COLOR,
+        backgroundColor: "lightgrey",
         fontSize : '18px',
         fontWeight: "bold",
-        color: 'white',
+        color: PRIMARY_COLOR,
         border: "2px solid #000080",
         // float : 'right',
         // textTransform : 'capitalize',
         '&:hover': {
-            color: PRIMARY_COLOR,
-            backgroundColor: "lightgrey"
+            color: 'white',
+            backgroundColor: PRIMARY_COLOR
         }
     },
     heroRotateText: {
