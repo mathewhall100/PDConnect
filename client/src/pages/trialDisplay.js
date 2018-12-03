@@ -54,10 +54,8 @@ class TrialDisplay extends Component {
         const { trial, tabSelected } = this.state
 
         const RenderOverview = () => {
-
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <ResultTitle text={trial.name} />
                     <Grid container spacing={24}>
                         <Grid item xs={12} sm={12} md={6}>
@@ -102,7 +100,6 @@ class TrialDisplay extends Component {
 
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <ResultTitle text={trial.name} />
                     <br />
                     <ResultInfoSubTitle text="Recruitment" />
@@ -139,7 +136,6 @@ class TrialDisplay extends Component {
 
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <ResultTitle text={trial.name} />
                     <Grid container spacing={24}> 
                         <Grid item xs={12} sm={12} md={6}>
@@ -167,7 +163,6 @@ class TrialDisplay extends Component {
 
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <ResultTitle text={trial.name} />
                     <Grid container spacing={24}> 
                         <Grid item xs={12} sm={12} md={6}>
@@ -187,18 +182,23 @@ class TrialDisplay extends Component {
 
         return (
             <div className={classes.root}> 
-
-                <Link to="/results:trials">
-                    <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "27px"}} >
-                        BACK
-                    </Button>
-                </Link>
+            <br />
+            <br />
+            
 
                 <Grid container spacing={24}>
                 
                     {trial && <Grid item xs={12} sm={12} md={8}>
 
-                        <ResultTabs tabs={["TRIAL OVERVIEW", "RECRUITMENT", "BENEFITS", "CONTACT"]} handleTabClick={this.handleTabClick} />
+                        <ResultTabs tabs={["TRIAL OVERVIEW", "RECRUITMENT", "BENEFITS", "CONTACT"]}
+                         handleTabClick={this.handleTabClick} />
+
+                         <Link to="/results:trials">
+                            <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "-20px"}} >
+                                BACK
+                            </Button>
+                        </Link>
+
                         {tabSelected === 0 && <RenderOverview /> }
                         {tabSelected === 1 && <RenderRecruit /> }
                         {tabSelected === 2 && <RenderBenefits /> }
@@ -207,12 +207,6 @@ class TrialDisplay extends Component {
                     </Grid> }
 
                     <Grid item xs={12} sm={12} md={4}>
-
-                        <br />
-
-                        <SocMedBox title="Share page" />
-                        
-                        <EmailBox />
                         
                     </Grid>
                  </Grid> 

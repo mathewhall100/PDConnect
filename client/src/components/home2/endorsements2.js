@@ -12,53 +12,63 @@ class Endorse extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className={classes.homepageFixedWidthContent}>
-                <Grid container >
-                    <Grid item xs={1}></Grid>
-                    <Grid item xs={10} className={classes.homepageHeader}>
-                        <Grid container>
-                            <Grid item xs={12}>
-                                <div className={classes.HeroTitle}>
-                                    Endorsements
-                                </div>
-                            </Grid>
+            <div>
+                <br />
+                <br />
+                <div style={{backgroundColor: "#EEE"}}>
+                <br />
+    >
+                    <div className={classes.homepageFixedWidthContent}>
+                        <Grid container >
+                            <Grid item xs={1}></Grid>
+                            <Grid item xs={10} className={classes.homepageHeader}>
+                                <Grid container>
+                                    <Grid item xs={12}>
+                                        <div className={classes.homeSubTitle}>
+                                            Endorsements
+                                        </div>
+                                        <br />
+                                    </Grid>
 
-                            <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
-                                <Avatar alt='User1' src={physician1Img} className={classes.bigAvatar} />
-                                <h2>Gilbert	Reese</h2>
-                                <Grid item xs={10}>
-                                    <p>Neurologist</p>
-                                    <p>A great way to learn about the new treatments out there from the mouth of patient! </p>
+                                    <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
+                                        <Avatar alt='User1' src={physician1Img} className={classes.bigAvatar} />
+                                        <h2 style={{padding: "10px"}}>Dr. G. Reese MD</h2>
+                                        <Grid item xs={10}>
+                                            <p>Neurologist</p>
+                                            <p>A great way to keep patients in the loop in our fast moving field of medicine. </p>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
+                                        <Avatar alt='User1' src={physician2Img} className={classes.bigAvatar} />
+                                        <h2 style={{padding: "10px"}}>Sarah James</h2>
+                                        <Grid item xs={10}>
+                                            <p>Parkinson patient</p>
+                                            <p>The app made me aware of more than one treatment suitable for me and, which after discussion with my doctor, i am now taking. </p>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
+                                        <Avatar alt='User1' src={patient1Img} className={classes.bigAvatar} />
+                                        <h2 style={{padding: "10px"}}>Daryl Reid</h2>
+                                        <Grid item xs={10}>
+                                            <p>Parkinson Patient</p>
+                                            <p>I have been paid for two focus groups so far and I know the app is constantly on the lookout for more that I can participate in.</p>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
+                                        <Avatar alt='User1' src={patient2Img} className={classes.bigAvatar} />
+                                        <h2 style={{padding: "10px"}}>Johnnie	Watson</h2>
+                                        <Grid item xs={10}>
+                                            <p>Relative</p>
+                                            <p>This app has really helped my aunt and I learn about her Parkinson disease and have more meaningful discussions with her doctors.  </p>
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
-                                <Avatar alt='User1' src={physician2Img} className={classes.bigAvatar} />
-                                <h2>Shaun Perez</h2>
-                                <Grid item xs={10}>
-                                    <p>Pharmaceutical Rep</p>
-                                    <p>Platform to promote and introduce new treatments to the world, what not to like? </p>
-                                </Grid>
-                            </Grid>
-                            <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
-                                <Avatar alt='User1' src={patient1Img} className={classes.bigAvatar} />
-                                <h2>Daryl Reid</h2>
-                                <Grid item xs={10}>
-                                    <p>Parkinsons Patient</p>
-                                    <p>Pin point my Parkinsons symptoms and recommened me treatments that I never tried before.</p>
-                                </Grid>
-                            </Grid>
-                            <Grid item lg={3} md={3} xs={12} className={classes.avatarContainer}>
-                                <Avatar alt='User1' src={patient2Img} className={classes.bigAvatar} />
-                                <h2>Johnnie	Watson</h2>
-                                <Grid item xs={10}>
-                                    <p>Parkinsons Patient's Relatives</p>
-                                    <p>This is a great application to help my aunt finds the latest treatments information! </p>
-                                </Grid>
-                            </Grid>
+                            <Grid item xs={1}></Grid>
                         </Grid>
-                    </Grid>
-                    <Grid item xs={1}></Grid>
-                </Grid>
+                    </div>
+                    <br />
+                </div>
             </div>
         )
     }

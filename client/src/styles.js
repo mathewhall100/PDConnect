@@ -66,7 +66,8 @@ export const userStylesheet = theme => ({
     componentBox : {
         marginTop: "60px",
         height: "auto",
-        borderLeft: "1px solid rgb(211,211,211, 0.5)",
+        // borderLeft: "1px solid rgb(211,211,211, 0.5)",
+        borderLeft: "1px solid rgb(191, 144, 0, 0.5)",
         paddingLeft: "30px",
         fontFamily : 'Muli'
     },
@@ -712,9 +713,9 @@ export const home2Stylesheet = theme => ({
         height: '80px',
         width: '80px',
         margin: '10px 0 10px 0',
-        [theme.breakpoints.down('xs')]: {
-            display: 'none',
-        },
+        // [theme.breakpoints.down('xs')]: {
+        //     display: 'none',
+        // },
     },
     leftTopNav: {
         textAlign: 'left',
@@ -724,10 +725,19 @@ export const home2Stylesheet = theme => ({
         margin: 'auto',
     },
     HeroTitle : {
-        fontSize : '34px',
+        fontSize : '76px',
         color : 'black',
         fontWeight : 'bolder',
         lineHeight : '1.5',
+        fontFamily: "muli"
+    },
+    homeSubTitle: {
+        fontSize : '44px',
+        color : 'black',
+        fontWeight : 'bolder',
+        lineHeight : '1.5',
+        fontFamily: "muli",
+        textAlign: "center"
     },
     HeroWhiteTitle : {
         fontSize: '34px',
@@ -739,16 +749,15 @@ export const home2Stylesheet = theme => ({
         fontSize : '22px',
     },
     homepageContainer : {
-        minHeight : '370px',
-        margin : 'auto',
+        maxWidth: "1360px",
+        margin: "0 auto",
         [theme.breakpoints.down('sm')]: {
             paddingTop: '50px',
             paddingBottom : '50px',
         },
     },
     startContainer : {
-        margin : 'auto',
-        height: '350px',
+        margin: "50px 0 50px 0",
         alignItems : 'center',
     },
     buttonContainer : {
@@ -770,23 +779,26 @@ export const home2Stylesheet = theme => ({
         backgroundColor: PRIMARY_COLOR,
         fontSize : '18px',
         color: 'white',
-        float : 'right',
-        textTransform : 'capitalize',
+        // float : 'right',
+        // textTransform : 'capitalize',
         '&:hover': {
             color: PRIMARY_COLOR,
         }
     },
-    splitContent : {
-        margin : 'auto',
-        verticalAlign : 'center',
-    },
+    // splitContent : {
+    //     margin : 'auto',
+    //     verticalAlign : 'center',
+    // },
     heroRotateText: {
         margin: 'auto',
         alignItems: 'center',
     },
     heroImg : {
-        borderColor :'solid 1px black',
-        width : '70%',
+        borderColor :'solid 1px grey',
+        borderRadius: " 10px",
+        width : '90%',
+        marginTop: "30px"
+
     },
     heroAppStore : {
         margin : '00px 0 00px 0',
@@ -798,7 +810,7 @@ export const home2Stylesheet = theme => ({
         maxHeight : 'auto',
     },
     treatmentImg: {
-        maxWidth: '380px',
+        maxWidth: '90%',
         textAlign : 'right',
     },
     aboutItemContainer : {
@@ -809,10 +821,7 @@ export const home2Stylesheet = theme => ({
         paddingTop : '30px',
     },
     aboutImgContainer: {
-        textAlign: 'center',
-        margin: 'auto',
-        minHeight : '375px',
-        alignItems : 'middle',
+        textAlign: 'right',
         [theme.breakpoints.down('sm')]: {
             display : 'none',
         },
@@ -826,7 +835,7 @@ export const home2Stylesheet = theme => ({
     },
     promiseCube : {
         minHeight : '250px',
-        padding : '20px',
+        padding : '20px 20px 20px 20px',
         [theme.breakpoints.down('md')]: {
             margin : '15px',
             minHeight: '190px',
@@ -920,6 +929,8 @@ export const home2Stylesheet = theme => ({
     },
     connectSubscribe: {
         display: 'grid',
+        width: "250px",
+        margin: "0 auto"
     },
     footerAppStore : {
         marginLeft: 'auto',

@@ -94,7 +94,7 @@ class UserServices extends Component {
             treatmentResults.push({
                 medication_name: "Droxidopa",
                 summary: "Medication used to treat dizziness and lightheadedness on changing position or standing caused by parkinson disease.",
-                mediaLnk1: "https://www.youtube.com/embed/4RTAAkA9cG8",
+                mediaLnk1: "https://www.youtube.com/embed/tpvxz6wbjVY",
                 key: "droxidopa"
             })
         }

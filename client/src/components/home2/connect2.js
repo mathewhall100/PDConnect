@@ -37,48 +37,64 @@ class Connects extends Component {
             )
         }
         return (
-            <Grid container className={classes.homepageFixedWidthContent} >
-                <Grid item md={1} lg={1} xs={1}></Grid>
-                <Grid item md={10} lg={10} xs={10} >
-                    <div className={classes.HeroTitle}>
-                        Connect with Us
-                    </div>
-                    <Grid container>
-                        <Grid item md={4} lg={4} xs={12}>
-                            <div className={classes.connectHeader}>
-                                Subscribe to Connect PD
-                                <Grid item xs={12}>
-                                    <img className={classes.socialIcon} src={fbIcon} alt="facebook icon" />
-                                    <img className={classes.socialIcon} src={twitterIcon} alt="twitter icon" />
-                                    <img className={classes.socialIcon} src={instagramIcon} alt="instagram icon" />
-                                    <img className={classes.socialIcon} src={youtubeIcon} alt="youtube icon" />
-                                </Grid>
+            <div>
+                <br />
+                <br />
+                <br />
+                <div className={classes.homepageContainer}>
+                    {/* <Grid container className={classes.homepageFixedWidthContent} > */}
+                    <Grid container spacing={24}>
+                        <Grid item md={1} lg={1} xs={1}></Grid>
+                        <Grid item md={10} lg={10} xs={10} >
+                            <div className={classes.homeSubTitle}>
+                                Subscribe to our newsletter
                             </div>
-                        </Grid>
-                        <Grid item md={5} lg={5} xs={12} className={classes.connectDescriptionContainer}>
-                            <div className={classes.description}>
-                                Join us to learn more about the latest Parkinsons disease treatment from pharmaceutical companies world wide
-                        </div>
-                        </Grid>
-                        <Grid item md={3} lg={3} xs={12} className={classes.connectRight}>
-                            <div className={classes.connectSubscribe}>
-                                <TextField
-                                    id="outlined-e-mail"
-                                    label="e-mail address"
-                                    className={classes.textField}
-                                    value={this.state.email}
-                                    onChange={this.handleChange('email')}
-                                    margin="normal"
-                                    variant="outlined"
-                                />
-                                <Button variant='outlined' className={classes.homepageButton}>Subscribe </Button>
-                            </div>
+                            <br />
+                            
+                            <Grid container spacing={24}>
 
+                                {/* <Grid item md={4} lg={4} xs={12}>
+                                    <div className={classes.connectHeader}>
+                                   
+                                        
+                                        <Grid item xs={12}>
+                                            <img className={classes.socialIcon} src={fbIcon} alt="facebook icon" />
+                                            <img className={classes.socialIcon} src={twitterIcon} alt="twitter icon" />
+                                            <img className={classes.socialIcon} src={instagramIcon} alt="instagram icon" />
+                                            <img className={classes.socialIcon} src={youtubeIcon} alt="youtube icon" />
+                                        </Grid>
+                                    </div>
+                                </Grid>
+
+                                <Grid item md={5} lg={5} xs={12} className={classes.connectDescriptionContainer}>
+                                    <div className={classes.description}> 
+                                         <br />
+                                        Join us to learn more about the latest Parkinsons disease treatment from pharmaceutical companies world wide
+                                </div>
+                                </Grid> */}
+
+                                {/* <Grid item md={3} lg={3} xs={12} className={classes.connectRight}> */}
+                                    <div className={classes.connectSubscribe}>
+                                    <br />
+                                        <TextField
+                                            id="outlined-e-mail"
+                                            label="e-mail address"
+                                            className={classes.textField}
+                                            value={this.state.email}
+                                            onChange={this.handleChange('email')}
+                                            margin="normal"
+                                            variant="outlined"
+                                        />
+                                        <Button variant='outlined' className={classes.homepageButton}>Subscribe </Button>
+                                    </div>
+                                {/* </Grid> */}
+
+                            </Grid>
                         </Grid>
+                        <Grid item md={1} lg={1} xs={1}></Grid>
                     </Grid>
-                </Grid>
-                <Grid item md={1} lg={1} xs={1}></Grid>
-            </Grid>
+                </div>
+            </div>
         )
     }
 }

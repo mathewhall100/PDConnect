@@ -57,7 +57,6 @@ class TreatmentDisplay extends Component {
         const RenderOverview = () => {
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <ResultTitle text={treatment.name} />
                     <Grid container spacing={24}>
                         <Grid item xs={12} sm={12} md={6}>
@@ -86,7 +85,7 @@ class TreatmentDisplay extends Component {
         const RenderPatientExp= () => {
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
+
                     <ResultTitle text={treatment.name} />
                     <Grid container spacing={24}>
                         <Grid item xs={12} sm={12} md={6}>
@@ -117,7 +116,6 @@ class TreatmentDisplay extends Component {
         const RenderEvidence= () => {
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <ResultTitle text={treatment.name} />
                     {treatment.evidence ? 
                         treatment.evidence.map((ev, index) => {
@@ -147,7 +145,6 @@ class TreatmentDisplay extends Component {
         const RenderRisks = () => {
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <ResultTitle text={treatment.name} />
                     <Grid container spacing={24}> 
                         <Grid item xs={12} sm={12} md={6}>
@@ -173,7 +170,6 @@ class TreatmentDisplay extends Component {
         const RenderMore = () => {
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <ResultTitle text={treatment.name} />
                     <Grid container spacing={24}> 
                         <Grid item xs={12} sm={12} md={6}>
@@ -193,17 +189,21 @@ class TreatmentDisplay extends Component {
         return (
             <div className={classes.root}> 
 
-                <Link to="/results:treatments">
-                    <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "27px"}} >
-                        BACK
-                    </Button>
-                </Link>
+                <br />
+                <br />
 
                 <Grid container spacing={24}>
                 
                     {treatment && <Grid item xs={12} sm={12} md={8}>
                 
                         <ResultTabs tabs={["OVERVIEW", "PATIENT STORIES", "EVIDENCE", "RISKS", "MORE"]} handleTabClick={this.handleTabClick} />   
+
+                        <Link to="/results:treatments">
+                            <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "-20px"}} >
+                            BACK 
+                            </Button> 
+                        </Link>
+
                         {tabSelected === 0 && <RenderOverview /> }
                         {tabSelected === 1 && <RenderPatientExp /> }
                         {tabSelected === 2 && <RenderEvidence /> }
@@ -213,11 +213,6 @@ class TreatmentDisplay extends Component {
                     </Grid> }
 
                     <Grid item xs={12} sm={12} md={4}>
-                        <br />
-
-                        <SocMedBox title="Share page"/>
-                        
-                        <EmailBox />
                         
                     </Grid>
                  </Grid> 

@@ -12,88 +12,58 @@ import focusGroupImg from '../../images/focusgroup.jpg';
 //const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
-class Connects extends Component {
+class  Feature extends Component {
 
 
     render() {
         const { classes } = this.props;
 
         return (
-            <div className={classes.homepageContainer} style={{ background: '#EEEEEE'}}>
-                <Grid container className={classes.aboutContainer} >
-                    <Grid item xs={1}></Grid>
-                    <Grid item xs={10} className={classes.homepageHeader}>
-                        <div className={classes.HeroTitle}>
-                            Featured Treatments
-                        </div>
-                        <div className={classes.aboutContentContainer}>
-                            <Grid container className={classes.aboutItemContainer}>
-                                <Grid item md={3} xs={12} className={classes.mobileImg}>
-                                    <img src={dbsImg} alt='deep brain surgery' className={classes.treatmentImg} />
-                                </Grid>
-                                <Grid item md={7} xs={12}>
-                                    <h3>Deep Brain Stimulation</h3>
-                                    <span>
-                                        This neurosurgical procedure involves implantation of medical device (brain pacemaker) that sends electrical impulses
-                                        via implanted electrodes to brain nuclei to treat movement disorders.
-                                    </span>
-                                    <div className={classes.buttonContainer}>
-                                        <Button variant='outlined' className={classes.homepageButton}>Learn More</Button>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={2}></Grid>
-                                <Grid item md={3} xs={12} className={classes.aboutImgContainer}>
-                                    <img src={dbsImg} alt='deep brain surgery' className={classes.treatmentImg} />
-                                </Grid>
-                            </Grid>
-                            <Grid container className={classes.aboutItemContainer}>
-                                <Grid item md={3} xs={12} className={classes.mobileImg}>
-                                    <img src={rytaryImg} alt='Rytary Medication' className={classes.treatmentImg} />
-                                </Grid>
-                                <Grid item md={7} xs={12}>
-                                    <h3>Rytary</h3>
-                                    <span>
-                                        RYTARY is an extended-release treatment for Parkinsons Disease, it involves carbidopa and levodopa capsule approved by US Food and Drug Administration (FDA) in 2015.
-                                        The combination is the most common used therapies for treating Parkinson disease symptoms. <br /> <br />
-                                        It is suitable for early, moderate, and advanced Parkinsons disease.
-                                        </span>
-                                    <div className={classes.buttonContainer}>
-                                        <Button variant='outlined' className={classes.homepageButton}>Learn more about RYTARY</Button>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={2}></Grid>
-                                <Grid item md={3} xs={12} className={classes.aboutImgContainer}>
-                                    <img src={rytaryImg} alt='Rytary Medication' className={classes.treatmentImg} />
-                                </Grid>
-                            </Grid>
-                            <Grid container className={classes.aboutItemContainer}>
-                                <Grid item md={3} xs={12} className={classes.mobileImg}>
-                                    <img src={focusGroupImg} alt='deep brain surgery' className={classes.treatmentImg} />
-                                </Grid>
-                                <Grid item md={7} xs={12}>
-                                    <h3>Focus Group</h3>
-                                    <span>
-                                        Find the study relates to you, research found that focus group creates an accepting environment that puts participants at ease
-                                        that allow them to thoughtfully answer questions in their own words and add meaning to their answers.
 
-                                    </span>
-                                    <Grid item xs={12} className={classes.buttonContainer}>
-                                        <Button variant='outlined' className={classes.homepageButton}>Find the closest focus group</Button>
-                                    </Grid>
-                                </Grid>
-                                <Grid item xs={2}></Grid>
-                                <Grid item md={3} xs={12} className={classes.aboutImgContainer}>
-                                    <img src={focusGroupImg} alt='deep brain surgery' className={classes.treatmentImg} />
-                                </Grid>
-                            </Grid>
-                        </div>
+            <div style={{ background: '#EEE'}}>
+
+                <div className={classes.homepageContainer} >
+                    <br />
+                    <br />
+
+                    <div className={classes.homeSubTitle}>
+                        Featured Treatment
+                    </div>
+                    <br />
+                    <br />
+                    <Grid container spacing={24} >
+
+                        <Grid item xs={1}></Grid>
+
+                        <Grid item md={5} xs={12} className={classes.mobileImg}>
+                            <img src={dbsImg} alt='deep brain surgery' className={classes.treatmentImg} />
+                        </Grid>
+
+                        <Grid item md={5} xs={12}>
+                            <h3 style={{paddingLeft: "20px"}}>Deep Brain Stimulation</h3>
+                            <div style={{paddingLeft: "20px", paddingTop: "20px"}}>
+                            Deep brain Stimulation (DBS) is a surgical procedure where electrodes are inserted into the area of the brain affected by Parkinons disease and which controls movement. These eletrodes send electrical signals into the brain to supress the abnormal nerve signals that give rise to Parkinson symptoms. DBS is an effective treatment for patients with disabling tremor, uncontrolled wearing off spells and medication-induced dyskinesia. Learn more inside.
+                            </div>
+                            {/* <div className={classes.buttonContainer} style={{paddingLeft: "20px"}}>
+                                <Button variant='outlined' className={classes.homepageButton}>Learn More</Button>
+                            </div> */}
+                        </Grid>
+
+                        <Grid item md={5} xs={12} className={classes.aboutImgContainer}>
+                            <img src={dbsImg} alt='deep brain surgery' className={classes.treatmentImg} />
+                        </Grid>
+
+
+                        <Grid item xs={1}></Grid>
+
                     </Grid>
-                    <Grid item xs={1}></Grid>
-                </Grid>
 
+                     <br /><br />
+                </div>
+                <br />
             </div>
         );
     }
 }
-Connects = withStyles(home2Stylesheet, { withTheme: true })(Connects)
-export default Connects;
+Feature = withStyles(home2Stylesheet, { withTheme: true })(Feature)
+export default Feature;

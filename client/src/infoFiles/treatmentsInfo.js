@@ -57,7 +57,7 @@ export const treatmentsInfo = [
         administration: "Droxidopa is a tablet that is usually taken three times a day. Initially patients are started on a low dose but this is increased until an improvement in symptoms is achieved or a maximum dose is reached. Patients taking droxidopa also need their blood pressure checked regularly to ensure it does not get too high.",
         benefits: "Droxidopa treats patienst with dizziness, lightheadedness or feeling they may faint (black out) when changing position and standing up and where this is thought to be caused by their Parkinson disease. It does not treat any of the motor or other symptoms of Parkinson disease.",
         patient: "Click on the video opposite to hear a patient's experince of taking Droxidopa",
-        mediaLnk2: ["https://www.youtube.com/embed/"],
+        mediaLnk2: ["https://www.youtube.com/embed/7zJSc7A6M08"],
         evidence: [
             {   name: "Clinical Trial",
                 text: "Clinical trials have shown Droxidopa to be effective in short term treatment of patients with symptomatic neurogenic orthostatic hypotension with reduction in symptoms and less impact of symptoms of daily life. The longer term usefulness of Droxidopa is not yet established, however.",

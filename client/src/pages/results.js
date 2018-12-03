@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -7,14 +6,16 @@ import { withRouter, Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles';
+import BookmarkIcon from '@material-ui/icons/Bookmark'
+import PaymentIcon from '@material-ui/icons/Payment'
+import PrintIcon from '@material-ui/icons/Print'
+import SendIcon from '@material-ui/icons/Send'
+import ShareIcon from '@material-ui/icons/Share'
 
 import ResultTabsWithBadge from '../components/commons/resultTabsWithBadge'
 import ResultPrintButton from '../components/commons/resultPrintBtn'
 import ResultMainSubTitle from '../components/commons/resultMainSubTitle'
-import EmailBox from '../components/commons/emailBox'
-import AccountBox from '../components/commons/accountBox'
-import SocMedBox from '../components/commons/socMedBox'
-import { resultStylesheet } from '../styles';
+import { resultStylesheet, PRIMARY_COLOR, SECONDARY_COLOR } from '../styles';
 
 
 class Results extends Component {
@@ -76,14 +77,14 @@ class Results extends Component {
         const RenderTreatments= () => {
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
+
                     <h1 className={classes.title}>Treatments to discuss with your doctor</h1>
                     <div>
                         {treatmentResults.map((treatment, index) => {
                             return (
                                 <div key={index} className={classes.resultBox}>
                                     <Grid container spacing={8}>
-                                        <Grid item xs={12} sm={12} md={7}>
+                                        <Grid item xs={12} sm={12} md={6}>
                                             <div className={classes.resultTextBox}>
                                                 <div className={classes.resultTitle}>
                                                     {treatment.medication_name}
@@ -96,10 +97,19 @@ class Results extends Component {
                                                 <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo("treatment", treatment.key)}>Find Out More</Button>
                                             </div>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={5}>
+                                        <Grid item xs={12} sm={12} md={4}>
                                             <iframe title={index} width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
                                                 src={treatment.mediaLnk1}>
                                             </iframe>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={2}>
+                                        <br />
+                                            <Button className={classes.resultActionBtn} style={{marginTop: "0px", fontWeight: "bold"}}><BookmarkIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Bookmark</Button><br />
+                                            <Button className={classes.resultActionBtn} style={{fontWeight: "bold"}}><PaymentIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Am I covered?</Button><br />
+                                            <Button className={classes.resultActionBtn} style={{fontWeight: "bold"}}><PrintIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Print</Button><br />
+                                            <Button className={classes.resultActionBtn} style={{fontWeight: "bold"}}><SendIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Email</Button><br />
+                                            <Button className={classes.resultActionBtn} style={{marginBottom: "20px", fontWeight: "bold"}}><ShareIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Share </Button><br />
+
                                         </Grid>
                                     </Grid>
                                 </div>
@@ -115,14 +125,13 @@ class Results extends Component {
         const RenderTrials= () => {
             return (
                 <div className={classes.resultContainer}>
-                    <ResultPrintButton /><br />
                     <h1 className={classes.title}>Clinical Trials you might volunteer for</h1>
                     <div>
                         {trialResults.map((trial, index) => {
                             return (
                                 <div key={index} className={classes.resultBox}>
                                     <Grid container spacing={8}>
-                                        <Grid item xs={12} sm={12} md={7}>
+                                        <Grid item xs={12} sm={12} md={6}>
                                             <div className={classes.resultTextBox}>
                                                 <div className={classes.resultTitle}>
                                                     {trial.trial_name}
@@ -135,10 +144,19 @@ class Results extends Component {
                                                 <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo("trial", trial.key)}>Find Out More</Button>
                                             </div>
                                         </Grid>
-                                        <Grid item xs={12} sm={12} md={5}>
+                                        <Grid item xs={12} sm={12} md={4}>
                                             <iframe width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
                                                 src={trial.mediaLnk1}>
                                             </iframe>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12} md={2}>
+                                        <br />
+                                            <Button className={classes.resultActionBtn} style={{marginTop: "0px", fontWeight: "bold"}}><BookmarkIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Bookmark</Button><br />
+                                            <Button className={classes.resultActionBtn} style={{fontWeight: "bold"}}><PaymentIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Contact trial</Button><br />
+                                            <Button className={classes.resultActionBtn} style={{fontWeight: "bold"}}><PrintIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Print</Button><br />
+                                            <Button className={classes.resultActionBtn} style={{fontWeight: "bold"}}><SendIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Email</Button><br />
+                                            <Button className={classes.resultActionBtn} style={{marginBottom: "20px", fontWeight: "bold"}}><ShareIcon style={{color: PRIMARY_COLOR}} /> &nbsp;&nbsp;Share </Button><br />
+
                                         </Grid>
                                     </Grid>
                                 </div>
@@ -171,7 +189,7 @@ class Results extends Component {
                 </Link>
 
                 <Grid container spacing={24}>
-                    <Grid item xs={12} sm={12} md={8}>
+                    <Grid item xs={12} sm={12} md={12}>
 
                     <ResultTabsWithBadge
                         tabs={[
@@ -187,18 +205,6 @@ class Results extends Component {
                     {tabSelected === 2 && <RenderFocusGroups /> }
                     </Grid>
 
-                    <Grid item xs={12} sm={12} md={4}>
-                        <br />
-
-                        <SocMedBox title="Share page"/>
-                        
-                        <EmailBox email={userCreds.email}/>
-
-                        {/* {!userCreds.email && !userCreds.password ? <AccountBox /> : null } */}
-
-                        
-
-                    </Grid>
                 </Grid>
             </div>
         );
