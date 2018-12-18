@@ -27,7 +27,7 @@ import UserModal from '../commons/userModal'
         modalTitle: '',
         modalDescription : '',
         modalwarning: false,
-        redirectAddress : '/user/user_life',
+        redirectAddress : '/user/user_family',
     }
 
     componentWillMount() {
@@ -131,7 +131,7 @@ import UserModal from '../commons/userModal'
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
 
-                        <h4 className={classes.questionHead} >Your age</h4>
+                        <h4 className={classes.questionHead} >How old are you?</h4>
                         <Field
                                 name="age"
                                 component={RenderSelect}
@@ -146,7 +146,7 @@ import UserModal from '../commons/userModal'
 
                         <br />
 
-                        <h4 className={classes.questionHead} >Sex</h4>
+                        <h4 className={classes.questionHead} >What is your sex?</h4>
                         <Field
                             name="sex"
                             component={RenderSelect}
@@ -161,7 +161,7 @@ import UserModal from '../commons/userModal'
 
                         <br />
 
-                        <h4 className={classes.questionHead} >Race/ethnicity</h4>
+                        <h4 className={classes.questionHead} >What do you consider yourself?</h4>
                         <Field
                                 name="race"
                                 component={RenderSelect}

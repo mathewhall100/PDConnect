@@ -1,5 +1,6 @@
 import pillBottlesImg from './images/pill_bottle.jpg';
 import tabletReportHandsImg from './images/tablet_report_hands.jpg';
+import { bold } from 'ansi-colors';
 
 {/*import heartShapeImg from './images/heartshapepills.jpeg';
 import eldHighFiveImg from './images/elder_highfive.jpg';
@@ -26,8 +27,9 @@ const MAXWIDTH = '1280px';
 const MINHEIGHT = '920px';
 
 export const QUESTION_BUTTON_DEFAULT_COLOR = 'grey'
-export const QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR = '#BF9000';
+export const QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR = 'green';
 export const QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR = "black"
+export const QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR = "#BF9000"
 export const WARNING_COLOR = "red"
 
 
@@ -209,9 +211,18 @@ export const userStylesheet = theme => ({
     },
     doneIcon: {
         fontSize: "48px",
+        fontWeight: bold,
         color: QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR,
         padding: 0,
-        margin: -6
+        margin: "-6px"
+    },
+    unsureIcon: {
+        fontSize: "48px",
+        color: QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR,
+        padding: 0,
+        position: "relative",
+        marginTop: 0,
+        top: "-15px"
     },
     helpIcon : {
         fontSize: "28px",
@@ -224,7 +235,7 @@ export const userStylesheet = theme => ({
         fontSize: "44px",
         color: QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR,
         padding: 0,
-        marginTop: -6
+        marginTop: "-6px"
     },
     hr: {
         height: "1px",

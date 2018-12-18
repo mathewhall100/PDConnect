@@ -37,7 +37,7 @@ import { PDADLs } from '../../constants'
         modalWarning: false,
         modalTitle : '',
         modalText : '',
-        redirectAddress : '/user/user_family',
+        redirectAddress : '/user/user_motorsy',
     }
 
     handleAnswerSelect = (index) => {
@@ -89,7 +89,7 @@ import { PDADLs } from '../../constants'
             <section>
                 <div className={classes.componentBox} >
 
-                    <p className={classes.sectionTitle}>Select one</p>
+                    <p className={classes.sectionTitle}>Select the most accurate answer below</p>
                     <br />
 
                     {PDADLs.map((question, index) => {

@@ -34,14 +34,6 @@ class UserServices extends Component {
 
     componentDidMount() {
         window.scroll(0, 0)
-        console.log(this.props.userAbout)
-        console.log(this.props.userADL)
-        console.log(this.props.userFamily)
-        console.log(this.props.userMeds)
-        console.log(this.props.userSurgery)
-        console.log(this.props.userMotorSy)
-        console.log(this.props.userNonMotorSy)
-
         this.fetchTreatmentResults()
         this.fetchTrialResults()
         this.fetchFocusGroupResults()
@@ -203,9 +195,9 @@ class UserServices extends Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={12} md={8}>
                         <div className={classes.serviceMainContainer}>
-                            <h1 style={{color: PRIMARY_COLOR}}>Welcome to PD Connect</h1>
+                            <h1 style={{color: PRIMARY_COLOR}}>Congratulations!</h1>
                             <br />
-                            <h5>Based on your profile we have matched the following services. </h5>
+                            <h5>Thank you for sharing your profile with us. Based on the information you entered, we have found the following services personalized to you:</h5>
                             <br />
 
                             <RenderServiceListItem
@@ -241,7 +233,7 @@ class UserServices extends Component {
                             <RenderServiceListItem 
                                 avatar={monitorImg} 
                                 header="Monitor my symptoms" 
-                                text="Use theis site or our mobile app to monitor your symptoms" 
+                                text="Use this site or our mobile app to monitor your symptoms" 
                             />
                             <RenderServiceListItem 
                                 avatar={assessImg} 
@@ -291,6 +283,7 @@ class UserServices extends Component {
                             <span style={beforeStyle}></span>
                             <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/earn')}>Earn points</h5>
                             <span style={afterStyle}></span>
+                            
                         </div>
 
                         <div className={classes.serviceSideContainer}>

@@ -17,8 +17,8 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
 import { activity_level } from '../../constants';
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
-import { updateStepperCount, submitUserMotorSy, submitReview } from '../../actions/index.js'
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
+import {updateStepperCount, submitUserMotorSy, submitReview } from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
 import { motorSy } from '../../constants'
@@ -30,6 +30,7 @@ import { motorSy } from '../../constants'
         answerArray: [],
         answerTrack: [],
         noAnswer: false,
+        displaySub: false,
         open : false,
         modalTitle : '',
         modalText : '',
@@ -41,9 +42,11 @@ import { motorSy } from '../../constants'
         window.scroll(0,0)
         this.props.updateStepperCount()
         const index = this.props.userTrack
-        if (index) {this.setState({
+        
+        if (index) { this.setState({
             answerTrack: index,
-            answerArray: this.props.userMotorSy
+            answerArray: this.props.userMotorSy,
+            displaySub: this.props.userMotorSy.find(elem => elem==="motorfluct") ? true : false
             })
         }
     }
@@ -69,15 +72,22 @@ import { motorSy } from '../../constants'
             let ind = tempArray.indexOf(key)
             ind >= 0 ? tempArray.splice(ind, 1) : null
             choice === "ns" ? this.handleModalOpen(motorSy.filter(sy => sy.key === key)[0].symptom, motorSy.filter(sy => sy.key === key)[0].description) : null
+            if (key === "motorfluct") {
+                let motorFluctKeys = ["earlyoff", "suddenoff", "morningbrady", "freezing"]
+                motorFluctKeys.map(k => tempArray.indexOf(k) >= 0 ? tempArray.splice(tempArray.indexOf(k), 1) : null ) 
+                tempTrack.fill(null, 5, 9)
+                this.setState({displaySub: false })
+            } 
         }
         else {
             tempTrack[index] = choice
             tempArray.indexOf(key) < 0 ? tempArray.push(key) : null
+            this.setState({displaySub: key === "motorfluct" ? true : this.state.displaySub})
         }
         this.setState({
             noAnswer: false,
             answerTrack: tempTrack,
-            answerArray: tempArray
+            answerArray: tempArray,
         })
     }
 
@@ -93,8 +103,46 @@ import { motorSy } from '../../constants'
 
     render() {
 
-        const { handleSubmit, pristine, submitting, classes } = this.props
-        const { answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
+        const { classes } = this.props
+        const { answerTrack, noAnswer, displaySub, modalOpen, modalTitle, modalText, modalWarning } = this.state
+
+        const RenderQuestion = (props) => {
+            const {symptom, shortDescription, description} = props
+            return (
+                <div className={classes.questionContainer}>
+                    <span className={classes.questionHead}>{symptom}</span>
+                    <Button className={classes.helpButton} onClick={() => this.handleModalOpen(symptom, description) }>
+                        <HelpIcon color="primary" className={classes.helpIcon}/>
+                    </Button>
+                    <br />
+                    <span className={classes.questionText} >
+                        {shortDescription}
+                    </span>
+                </div>
+            )
+        }
+
+        const RenderButtons = (props) => {
+            const { index, symptomKey } = props
+            return (
+                <span>
+                    <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", symptomKey)}>
+                        {answerTrack[index] !== "ns" && <span className={classes.questionButtonText} style={{marginTop: -3}}>not sure</span> }
+                        {answerTrack[index] === "ns" && <span className={classes.unsureIcon}>?</span>}
+                    </Button>
+
+                    <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", symptomKey)}>
+                        {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
+                        {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
+                    </Button>
+
+                    <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", symptomKey)}>
+                        {answerTrack[index] !== "yes" && <span className={classes.questionButtonText}>yes</span> }
+                        {answerTrack[index] === "yes" && <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  /> }
+                    </Button>
+                </span>
+            )
+        }
 
         return (
             <section>
@@ -107,37 +155,44 @@ import { motorSy } from '../../constants'
 
                         return (
                             <div key={index}>
-                                <Grid container spacing={24}>
+                                { sy.display === "main" && <Grid container spacing={24}>
 
                                     <Grid item xs={12} sm={12} md={12} lg={6}>
-
-                                    <div className={classes.questionContainer}>
-                                            <span className={classes.questionHead}>{sy.symptom}</span>
-                                            <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.description) }>
-                                                <HelpIcon color="primary" className={classes.helpIcon}/>
-                                            </Button>
-                                        <br />
-                                        <span className={classes.questionText} >
-                                            {sy.shortDescription}
-                                        </span>
-                                    </div>
+                                        <RenderQuestion symptom={sy.symptom} shortDescription={sy.shortDescription} description={sy.description} />
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.key)}>
-                                            <span className={classes.questionButtonText}  style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}}>not sure</span>
-                                        </Button>
-                                        <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.key)}>
-                                            {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
-                                            {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
-                                        </Button>
-                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.key)}>
-                                            <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  />
-                                        </Button>
+                                        <RenderButtons index={index} symptomKey={sy.key} />
                                     </Grid>
 
-                                </Grid>
-                                <br />
+                                </Grid> }
+
+                                { sy.display === "sub" && displaySub && <span>
+
+                                    {index === 5 && <span>
+                                        <hr className={classes.hr} /> 
+                                        <p className={classes.sectionTitle}>Tell us a bit more about your motor fluctations. Do you have any of the following problems?  </p>
+                                    </span> }
+                                
+                                    <Grid container spacing={24}>
+
+                                        <Grid item xs={12} sm={12} md={12} lg={6}>
+                                            <RenderQuestion symptom={sy.symptom} shortDescription={sy.shortDescription} description={sy.description} />
+                                        </Grid>
+
+                                        <Grid item xs={12} sm={12} md={12} lg={6}>
+                                            <RenderButtons index={index} symptomKey={sy.key} />
+                                        </Grid>
+
+                                    </Grid> 
+
+                                    {index === 8 && <hr className={classes.hr} /> }
+
+                                </span> 
+                                }
+
+                                
+
                             </div>
                         )
                     }) }

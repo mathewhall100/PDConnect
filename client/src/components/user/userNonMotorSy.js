@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button'
 import HelpIcon from '@material-ui/icons/Help';
 import CloseIcon from '@material-ui/icons/Close';
 
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
+import {userStylesheet, QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { submitUserNonMotorSy, updateStepperCount, submitReview} from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import UserModal from '../commons/userModal'
@@ -85,8 +85,46 @@ import { nonMotorSy } from '../../constants'
 
     render() {
 
-        const { handleSubmit, pristine, submitting, classes } = this.props
+        const { classes } = this.props
         const { answerTrack, noAnswer, modalOpen, modalTitle, modalText, modalWarning } = this.state
+
+        const RenderQuestion = (props) => {
+            const {symptom, shortDescription, description} = props
+            return (
+                <div className={classes.questionContainer}>
+                    <span className={classes.questionHead}>{symptom}</span>
+                    <Button className={classes.helpButton} onClick={() => this.handleModalOpen(symptom, description) }>
+                        <HelpIcon color="primary" className={classes.helpIcon}/>
+                    </Button>
+                    <br />
+                    <span className={classes.questionText} >
+                        {shortDescription}
+                    </span>
+                </div>
+            )
+        }
+
+        const RenderButtons = (props) => {
+            const { index, symptomKey } = props
+            return (
+                <span>
+                    <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", symptomKey)}>
+                        {answerTrack[index] !== "ns" && <span className={classes.questionButtonText} style={{marginTop: -3}}>not sure</span> }
+                        {answerTrack[index] === "ns" && <span className={classes.unsureIcon}>?</span>}
+                    </Button>
+
+                    <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", symptomKey)}>
+                        {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
+                        {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
+                    </Button>
+
+                    <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", symptomKey)}>
+                        {answerTrack[index] !== "yes" && <span className={classes.questionButtonText}>yes</span> }
+                        {answerTrack[index] === "yes" && <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  /> }
+                    </Button>
+                </span>
+            )
+        }
 
         return (
             <section>
@@ -102,34 +140,17 @@ import { nonMotorSy } from '../../constants'
                                 <Grid container spacing={24}>
 
                                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                                        <div className={classes.questionContainer}>
-
-                                                <span className={classes.questionHead}>{sy.symptom}</span>
-                                                <Button className={classes.helpButton} onClick={() => this.handleModalOpen(sy.symptom, sy.description) }>
-                                                    <HelpIcon color="primary" className={classes.helpIcon}/>
-                                                </Button>
-                                            <br />
-                                            <span className={classes.questionText} >
-                                                {sy.shortDescription}
-                                            </span>
-                                        </div>
+                                        <RenderQuestion symptom={sy.symptom} shortDescription={sy.shortDescription} description={sy.description} />
                                     </Grid>
 
                                     <Grid item xs={12} sm={12} md={12} lg={6}>
-                                        <Button type="button" className={classes.questionButton} style={{marginRight: 0, borderColor: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "ns", sy.key)}>
-                                            <span className={classes.questionButtonText} style={{color: answerTrack[index] === "ns" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} >not sure</span>
-                                        </Button>
-                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "no" ? QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "no", sy.key)}>
-                                            {answerTrack[index] !== "no" && <span className={classes.questionButtonText}>no</span> }
-                                            {answerTrack[index] === "no" && <CloseIcon className={classes.closeIcon} /> }
-                                        </Button>
-                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[index] === "yes" ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, "yes", sy.key)}>
-                                        <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  />
-                                        </Button>
+                                        <RenderButtons index={index} symptomKey={sy.key} />
                                     </Grid>
 
                                 </Grid>
+
                                 <br />
+                                
                             </div>
                         )
                     }) }

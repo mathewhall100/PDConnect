@@ -42,7 +42,6 @@ class Connects extends Component {
                 <br />
                 <br />
                 <div className={classes.homepageContainer}>
-                    {/* <Grid container className={classes.homepageFixedWidthContent} > */}
                     <Grid container spacing={24}>
                         <Grid item md={1} lg={1} xs={1}></Grid>
                         <Grid item md={10} lg={10} xs={10} >
@@ -52,28 +51,6 @@ class Connects extends Component {
                             <br />
                             
                             <Grid container spacing={24}>
-
-                                {/* <Grid item md={4} lg={4} xs={12}>
-                                    <div className={classes.connectHeader}>
-                                   
-                                        
-                                        <Grid item xs={12}>
-                                            <img className={classes.socialIcon} src={fbIcon} alt="facebook icon" />
-                                            <img className={classes.socialIcon} src={twitterIcon} alt="twitter icon" />
-                                            <img className={classes.socialIcon} src={instagramIcon} alt="instagram icon" />
-                                            <img className={classes.socialIcon} src={youtubeIcon} alt="youtube icon" />
-                                        </Grid>
-                                    </div>
-                                </Grid>
-
-                                <Grid item md={5} lg={5} xs={12} className={classes.connectDescriptionContainer}>
-                                    <div className={classes.description}> 
-                                         <br />
-                                        Join us to learn more about the latest Parkinsons disease treatment from pharmaceutical companies world wide
-                                </div>
-                                </Grid> */}
-
-                                {/* <Grid item md={3} lg={3} xs={12} className={classes.connectRight}> */}
                                     <div className={classes.connectSubscribe}>
                                     <br />
                                         <TextField
@@ -88,7 +65,6 @@ class Connects extends Component {
                                         <br />
                                         <Button variant='outlined' className={classes.homepageButton} >Subscribe </Button>
                                     </div>
-                                {/* </Grid> */}
 
                             </Grid>
                         </Grid>

@@ -41,7 +41,7 @@ function getStepContent(){
         case '/user/account' : {
             objStepperContent = {
                 stepperCount: '',
-                pageName: 'Create Account',
+                pageName: 'Create account',
                 title: `Create an account to enjoy the benefits as below!`,
                 pageImg: `${accountImg}`,
                 subtitle: `You will be able to receive notification to edit your medications, and symptoms so you are always on top of the new treatments available!`,
@@ -64,41 +64,30 @@ function getStepContent(){
         case '/user/user_about':
             objStepperContent = {
                 stepperCount : 1,
-                pageName : 'About you',
+                pageName : 'About You',
                 title: `Let's get started! Tell us a bit about you.`,
                 pageImg  : `${meImg}`,
                 subtitle : `This is important information which we use to individualise the information we provide to you.`,
-                nextPage : `/user/user_life`,
+                nextPage : `/user/user_family`,
                 prevPage : `/user/user_start`,
-            }
-            return objStepperContent;
-        case '/user/user_life':
-            objStepperContent = {
-                stepperCount: 2,
-                pageName: 'Your day-to-day activities',
-                title: `Tell us a little about how Parkinson disease affects your day-to-day activities`,
-                pageImg: `${lifestyleImg}`,
-                subtitle: `Please check the box next to the description that best describes how your Parkinson disease has affected your normal day-to-day activities over the past month.`,
-                nextPage: `/user/user_family`,
-                prevPage: `/user/user_about`,
             }
             return objStepperContent;
         case '/user/user_family':
             objStepperContent = {
-                stepperCount: 3,
-                pageName: 'Your family',
-                title: `Tell us about any relatives you may have with Parkinson disease?`,
+                stepperCount: 2,
+                pageName: 'Your Family',
+                title: `Tell us about any relatives you may have with Parkinson disease.`,
                 pageImg: `${familyImg}`,
                 subtitle: `Select the boxes on the family tree below to indicate family members diagnosed with Parkinson disease. `,
                 nextPage: `/user/user_meds`,
-                prevPage: `/user/user_life`,
+                prevPage: `/user/user_about`,
             }
             return objStepperContent;
         case '/user/user_meds':
             objStepperContent = {
-                stepperCount: 4,
+                stepperCount: 3,
                 pageName: 'Medications',
-                title: `Awesome, you're half way through! Now, what medications do you take for Parkinson disease?`,
+                title: `Now, what medications do you take for Parkinson disease?`,
                 pageImg: `${medsImg}`,
                 subtitle: `Click the circles to indicate which medications you are currently taking for Parkinson disease, or select "none" if you don't take any.`,
                 nextPage: `/user/user_surgery`,
@@ -107,19 +96,30 @@ function getStepContent(){
             return objStepperContent;
         case '/user/user_surgery':
             objStepperContent = {
-                stepperCount: 5,
+                stepperCount: 4,
                 pageName: 'Surgery or Procedures',
                 title: `Have you ever had any surgery or procedures to treat Parkinson disease?`,
                 pageImg: `${surgeryImg}`,
                 subtitle: `Some patients have had surgery or precideures performed to treat their Parkinson disease. Tell us if you have ever had any of the surgeries or procedures opposite. `,
-                nextPage: `/user/user_motorsy`,
+                nextPage: `/user/user_life`,
                 prevPage: `/user/user_meds`,
+            }
+            return objStepperContent;
+            case '/user/user_life':
+            objStepperContent = {
+                stepperCount: 5,
+                pageName: "Day-To-Day Activities",
+                title: `Awesome, you're over half way through! ON this page we'd like to know a little about your day-to-day activities`,
+                pageImg: `${lifestyleImg}`,
+                subtitle: `Please check the box next to the description that best describes how your Parkinson disease has affected your normal day-to-day activities over the past month.`,
+                nextPage: `/user/user_motorsy`,
+                prevPage: `/user/user_surgery`,
             }
             return objStepperContent;
         case '/user/user_motorsy':
             objStepperContent = {
                 stepperCount: 6,
-                pageName: 'Symptoms (Motor)',
+                pageName: 'Motor Symptoms',
                 title: `Almost done! Now about your symptoms of Parkinson disease`,
                 pageImg: `${motorImg}`,
                 subtitle: `Patients with Parkinson disease experience a wide range of possible symptoms. Tell us about any symptoms you may have experienced over the past month by clicking the circles opposite.`,
@@ -130,7 +130,7 @@ function getStepContent(){
         case '/user/user_nonmotorsy':
             objStepperContent = {
                 stepperCount: 7,
-                pageName: 'Symptoms (Non Motor)',
+                pageName: 'Other Symptoms',
                 title: `Final question! About any other symptoms of Parkinson disease not related to movement`,
                 pageImg: `${nonMotorImg}`,
                 subtitle: `Patients with Parkinson disease sometimes also have other symptoms which are not related to movement. Tell us if any of the following have bothered you over the past month.`,

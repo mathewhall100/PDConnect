@@ -26,11 +26,15 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
 
     state = {
         showBox: [1],
+        noAgree: false,
         redirectAddress : '/user/user_account'
     }
 
     handleCreateProfile() {
-        this.props.history.push(this.state.redirectAddress)
+        if (this.props.stepper.agree) {
+            this.props.history.push(this.state.redirectAddress)
+        }
+        else {this.setState({noAgree: true}) }
     }
 
     handleShowBox = (index) => {
@@ -50,7 +54,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
     render() {
 
         const { classes, userAbout, userFamily, userADL, userMeds, userSurgery, userMotorSy, userNonMotorSy, stepper: { agree } } = this.props
-        const { showBox } = this.state
+        const { showBox, noAgree } = this.state
 
         const RenderBoxHeader = (props) => {
             return (
@@ -82,15 +86,6 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                                 <li style={{marginLeft: "20px"}}>First diagnosed with Parkinson disease: {userAbout.yearDiagnosed}</li>
                                 <li style={{marginLeft: "20px"}}>Began treatment for Parkinson disease: {userAbout.yearTreatment}</li>
 
-                            </ul>
-                        : null }
-                    </div> }
-
-                    <RenderBoxHeader title="My day-to-day activities" number={1} link="/user/user_life" />
-                    {showBox[1] && <div>
-                        {userADL ?
-                            <ul>
-                                <li style={{marginLeft: "20px"}}>{PDADLs.filter(adl => adl.key === userADL)[0].title}</li>
                             </ul>
                         : null }
                     </div> }
@@ -142,6 +137,15 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                         : null }
                     </div> }
 
+                    <RenderBoxHeader title="My day-to-day activities" number={1} link="/user/user_life" />
+                    {showBox[1] && <div>
+                        {userADL ?
+                            <ul>
+                                <li style={{marginLeft: "20px"}}>{PDADLs.filter(adl => adl.key === userADL)[0].title.slice(3)}</li>
+                            </ul>
+                        : null }
+                    </div> }
+
                     <RenderBoxHeader title="Current motor symptoms" number={5} link="/user/user_motorsy"/>
                     {showBox[5] && <div>
                         {userMotorSy ? userMotorSy.length > 0 ?
@@ -176,8 +180,8 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
 
                 <br />
 
-                <Button type="button" disabled={this.props.stepper.agree ? false : true } type="variant" className={classes.userNavButtonRight} onClick={() => this.handleCreateProfile()}>CREATE MY PROFILE AND CONTINUE</Button>
-                {this.props.stepper.agree === false ? "*You need to agree to the term and condition in order to continue" : null}
+                <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleCreateProfile()}>CREATE MY PROFILE AND CONTINUE</Button>
+                {this.props.stepper.agree === false ? <span style={{color: noAgree ? "red" : null }}>*You need to agree to the term and condition in order to continue.</span>: null}
                 </div>
 
             </section>

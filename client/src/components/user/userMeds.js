@@ -108,11 +108,12 @@ class UserMeds extends Component {
              modalMedOpen: false
         });
      };
-    handleMedModalOpen = (title, images) => {
+    handleMedModalOpen = (title, images, text) => {
         console.log(title);
          this.setState({
              modalTitle : title,
              modalImages : images,
+             modalText : text,
              modalOpen: false,
              modalMedOpen: true
         });
@@ -130,7 +131,7 @@ class UserMeds extends Component {
 
                     <Grid container spacing={0}>
                         <Grid item xs={12} sm={8}>
-                            <div className={classes.headerQuestion}>None</div>
+                            <div className={classes.headerQuestion} style={{position: "relative", top: "10px"}}>None</div>
                             <br />
                         </Grid>
                         <Grid item xs={12} sm={4}>
@@ -140,15 +141,17 @@ class UserMeds extends Component {
                         </Grid>
                     </Grid>
                     <br />
-                     <p className={classes.sectionTitle}>Or, Select all that apply from the following list (scroll down to view all).</p>
+                     {/* <p className={classes.sectionTitle}>Or, Select all that apply from the following list (scroll down to view all).</p> */}
 
 
                     {medGroups.map((group, index) => {
 
                         return (
                             <div key={index}>
-
                                 <hr className={classes.hr}/>
+                                <p className={classes.sectionTitle}>{group.text}</p>
+                                <br />
+                               
 
                                 {meds.filter(med => med.class === group.class).map((med, index) => {
                                     console.log(med);
@@ -161,7 +164,7 @@ class UserMeds extends Component {
                                                 <Grid item xs={12} sm={8} >
                                                     <div style={{minHeight: "60px"}}>
                                                         <span className={classes.questionHead}>{med.generic}</span>
-                                                        <Button className={classes.helpButton} onClick={() => this.handleMedModalOpen(med.generic, med.images) }>
+                                                        <Button className={classes.helpButton} onClick={() => this.handleMedModalOpen(med.generic, med.images, med.description) }>
                                                             <HelpIcon color="primary" className={classes.helpIcon} />
                                                          </Button>
                                                         <br />
@@ -208,6 +211,7 @@ class UserMeds extends Component {
                 { modalMedOpen && <UserMedsModal
                     modalOpen={modalMedOpen}
                     modalTitle={modalTitle}
+                    modalText={modalText}
                     modalImages={modalImages}
                     modalWarning={false}
                 /> }

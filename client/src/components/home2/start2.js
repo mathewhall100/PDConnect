@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button'
 import { home2Stylesheet } from '../../styles';
 class Start extends Component {
 
@@ -15,14 +16,17 @@ class Start extends Component {
                     <Grid item xs={10}>
                         <br />
                         <br />
-                        <div className={classes.homeSubTitle}>
-                            Our Aim
-                        </div>
+                        {/* <div className={classes.homeSubTitle}>
+                            Aim
+                        </div> */}
                         <br />
                         <div className={classes.description} style={{textAlign: "justify"}}>
-                           PD Connect offers a personalised portal for patients with Parkinson disease, their relatives and carers, connecting them to current and new treatments, clinical trials and focus groups as well as up to date knowledge and developments in the field. Our aim is to provide individualised information and resources to empower patients with Parkinson disease to a healthier life. 
+                          <span style={{fontSize: "24px", fontWeight: "bold"}}>Our aim </span>is to connect patients with Parkinson disease, their families and carers, to personalised resources that help them live a healthier, fuller life. First take our short survey to tell us a bit about youself and your parkinson disease, then our PDConnect algorithm will match you to knowledge of current and upcoming treatments for you, clinical trials recruiting patients like you and to focus groups that pay for your veiws and opinions.  
                         </div>
                         <br />
+                            <div className={classes.buttonContainer} style={{textAlign: "center"}}>
+                                <Button variant='outlined' className={classes.homepageButton} onClick={() => this.handleConnectToday()}>Find out more </Button>
+                            </div>
                         <br />
                         <br />
                     </Grid>

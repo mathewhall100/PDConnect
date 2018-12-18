@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Hero2 from '../components/home2/hero2';
 import Start2 from '../components/home2/start2';
-import About2 from '../components/home2/about2';
+import Feature2 from '../components/home2/feature2';
 import Focus2 from '../components/home2/focus2';
 import Promise2 from '../components/home2/promise2';
 import Endorsement2 from '../components/home2/endorsements2';
@@ -25,7 +25,7 @@ class Home extends Component {
                     <Hero2/>
                     <Start2/>  
                     <Promise2/>
-                    <About2/>
+                    <Feature2/>
                     <Focus2/>
                     <Endorsement2 />
                     <Connect2 />

@@ -51,6 +51,7 @@ class UserMedsModal extends Component  {
                     {modalTitle}
                 </Typography>
                 <hr />
+                {modalText}
                 <Typography variant="subtitle1" id="simple-modal-description">
                 {modalImages ? 
                     modalImages.map((img, index) => {
