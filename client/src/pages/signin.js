@@ -8,9 +8,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 
 import { userStylesheet } from '../styles';
-import { submitCredsInfo } from '../actions/CredsActions';
+import { submitCredsInfo, submitUserAbout, submitUserFamily, submitUserLife, submitUserMeds, submitUserSurgery, submitUserMotorSy, submitUserNonMotorSy } from '../actions/index.js';
 import FormText from '../components/forms/FormText';
 import FormPassword from '../components/forms/FormTextPassword';
+import loginAPI from '../utils/loginAPI';
+ 
 
 class SignIn extends Component {
 
@@ -25,8 +27,51 @@ class SignIn extends Component {
 
     submit(values) {
         console.log("values : ", values);
-        this.props.submitCredsInfo(values)
-        this.props.history.push(this.state.redirectAddress)
+        
+
+        // search for user
+        loginAPI.findByLogin({
+            email: values.email,
+            password: values.password}
+            )
+            .then(result => {
+                const user = result.data
+                if (user.length > 0) {
+                    console.log("User found: ", user)
+            
+                    // Load store with user info and data then go  on to service page
+                    this.loadStore(user[0])
+                    this.props.history.push(this.state.redirectAddress)
+                } else {
+                    console.log("User not found")
+                    // do something else
+                }
+            })
+            .catch(err => {
+                console.log("OOPS! Fatal error occurred and your request could not be completed")
+                console.log(err)
+            }) 
+    }
+
+    loadStore(user) {
+        console.log("load store: ", user)
+        this.props.submitCredsInfo({
+            email: user.email,
+            password: user.password
+        })
+        this.props.submitUserAbout({
+            age: user.age,
+            sex: user.sex,
+            race: user.race,
+            yearDiagnosed: user.year_diagnosis,
+            yearTreatment: user.year_treatment
+        })
+        this.props.submitUserFamily(user.user_data_ref.family)
+        this.props.submitUserMeds(user.user_data_ref.meds)
+        this.props.submitUserSurgery(user.user_data_ref.surgeries)
+        this.props.submitUserLife(user.user_data_ref.adl)
+        this.props.submitUserMotorSy(user.user_data_ref.motor_symptoms)
+        this.props.submitUserNonMotorSy(user.user_data_ref.non_motor_symptoms)
     }
 
     render() {
@@ -83,7 +128,17 @@ function validate(values) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ submitCredsInfo }, dispatch);
+    return bindActionCreators({ 
+        submitCredsInfo,
+        submitUserAbout,
+        submitUserFamily,
+        submitUserLife, 
+        submitUserMeds, 
+        submitUserSurgery, 
+        submitUserMotorSy, 
+        submitUserNonMotorSy 
+    
+    }, dispatch);
 }
 
 const mapStateToProps = (state) => {

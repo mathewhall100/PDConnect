@@ -3,7 +3,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
 import { home2Stylesheet } from '../../styles';
+
 class Start extends Component {
+
+    handleFindOutMore() {
+        
+    }
 
     render() {
         const { classes } = this.props;
@@ -21,11 +26,11 @@ class Start extends Component {
                         </div> */}
                         <br />
                         <div className={classes.description} style={{textAlign: "justify"}}>
-                          <span style={{fontSize: "24px", fontWeight: "bold"}}>Our aim </span>is to connect patients with Parkinson disease, their families and carers, to personalised resources that help them live a healthier, fuller life. First take our short survey to tell us a bit about youself and your parkinson disease, then our PDConnect algorithm will match you to knowledge of current and upcoming treatments for you, clinical trials recruiting patients like you and to focus groups that pay for your veiws and opinions.  
+                          <span style={{fontSize: "24px", fontWeight: "bold"}}>Our aim </span>is to connect patients with Parkinson disease, their families and carers, to personalised resources that help them live a healthier life. First take our short survey to tell us a bit about youself and your Parkinson disease, then our PDConnect algorithm will match you to knowledge of current and upcoming treatments, clinical trials recruiting patients like you and focus groups that pay for your veiws and opinions.  
                         </div>
                         <br />
                             <div className={classes.buttonContainer} style={{textAlign: "center"}}>
-                                <Button variant='outlined' className={classes.homepageButton} onClick={() => this.handleConnectToday()}>Find out more </Button>
+                                <Button variant='outlined' className={classes.homepageButton} onClick={() => this.handleFindOutMore()}>Find out more </Button>
                             </div>
                         <br />
                         <br />

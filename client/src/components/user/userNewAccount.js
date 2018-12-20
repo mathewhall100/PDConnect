@@ -13,6 +13,8 @@ import { updateStepperCount } from '../../actions/index.js'
 import FormText from '../forms/FormText';
 import FormPassword from '../forms/FormTextPassword';
 
+import userAPI from "../../utils/userAPI.js"
+
 class UserNewAccount extends Component {
 
     state = {
@@ -27,6 +29,31 @@ class UserNewAccount extends Component {
     submit(values) {
         console.log("values : ", values);
         this.props.submitCredsInfo(values)
+
+        // save profile in database 'pdconnectdb' in user_info & user_data collections 
+        userAPI.createUser({ 
+            date_registered: new Date(),
+            email: values.email,
+            password: values.password,
+            age: this.props.userAbout.age,
+            sex: this.props.userAbout.sex,
+            race: this.props.userAbout.race,
+            year_diagnosis: this.props.userAbout.yearDiagnosed,
+            year_treatment: this.props.userAbout.yearTreatment,
+            family: this.props.userFamily,
+            meds: this.props.userMeds,
+            surgeries: this.props.userSurgery,
+            adl: this.props.userADL,
+            motor_symptoms: this.props.userMotorSy,
+            non_motor_symptoms: this.props.userNonMotorSy
+        })
+        .then(res => console.log("res.data: ", res.data))
+        .catch(err => {
+            console.log(`OOPS! A fatal problem occurred and your request could not be completed`)
+            console.log(err)
+        })
+
+        // Move on to services page
         this.props.history.push(this.state.redirectAddress)
     }
 
@@ -100,13 +127,21 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = (state) => {
     console.log("state ", state)
     return {
+        userAbout: state.about,
+        userADL: state.adl.adl,
+        userFamily: state.family.family,
+        userMeds: state.meds.meds,
+        userSurgery: state.surgery.surgery,
+        userMotorSy: state.motorSy.motorSy,
+        userNonMotorSy: state.nonMotorSy.nonMotorSy,
+        review : state.review,
         accountResponse: state.accountResponse
     }
 }
 
 const formData = {
     form: 'userNewAccountForm',
-    validate
+    //validate
 }
 
 UserNewAccount = reduxForm(formData)(UserNewAccount)

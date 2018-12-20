@@ -31,6 +31,7 @@ class FadeMenu extends React.Component {
             mouseOverButton: false,
             mouseOverMenu: false });
     };
+
     handleRedirect = (url) => {
         this.setState({
             anchorEl: null,
@@ -38,9 +39,11 @@ class FadeMenu extends React.Component {
             this.props.history.push(url);
         })
     }
+
     enterButton = () => {
         this.setState({ mouseOverButton: true });
     }
+
     leaveButton = () => {
         // Set a timeout so that the menu doesn't close before the user has time to
         // move their mouse over it
@@ -70,7 +73,7 @@ class FadeMenu extends React.Component {
         return (
             <React.Fragment>
                 <Button
-                    className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }}
+                    className={classes.topBarBtn} style={{ float: "right", marginTop: "30px"}}
                     aria-owns={open ? 'fade-menu' : undefined}
                     aria-haspopup="true"
                     onClick={this.handleClick}
@@ -92,7 +95,7 @@ class FadeMenu extends React.Component {
                     }}
                     TransitionComponent={Fade}
                 >
-                    <MenuItem disable="true" style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}><AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;MY ACCOUNT</MenuItem> <hr style={{margin: 0, padding: 0}}/>
+                    <MenuItem disable="true" style={{width:"125px", color: "black", fontSize: "14px", fontWeight: "bold", position: "relative", left: "-5px"}} onClick={()=> this.handleRedirect('/profile')}><AccountIcon style={{ fontSize: "24px", color: PRIMARY_COLOR }} /> &nbsp;&nbsp;MY ACCOUNT</MenuItem> <hr style={{margin: 0, padding: 0}}/>
                     <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/profile')}>VIEW</MenuItem>
                     <MenuItem style={{width:"110px", color: "black", fontSize: "14px", fontWeight: "bold"}} onClick={()=> this.handleRedirect('/setting')}>SETTINGS</MenuItem>
 

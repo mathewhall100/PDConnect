@@ -2,6 +2,7 @@ import {
     USER_ACCOUNT
 } from './types';
 import mailerAPI from '../utils/mailerAPI';
+import axios from 'axios'
 
 export const submitUserAccount = (objEmail) => {
     console.log("submitting user account : ", objEmail);

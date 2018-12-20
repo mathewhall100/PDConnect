@@ -31,7 +31,7 @@ class ResultTabsWithBadge extends Component  {
             <span className={classes.tabBar}>
                 {tabs.map((tab, index) =>  {
                     return (
-                        <span className={tabSelected === index ? classes.tabButtonSelected : classes.tabButtonLeft} onClick={() => this.handleTabClick(index)}>{tab.text}
+                        <span key={index} className={tabSelected === index ? classes.tabButtonSelected : classes.tabButtonLeft} onClick={() => this.handleTabClick(index)}>{tab.text}
                             <Badge className={classes.badge} badgeContent={tab.badgeContent} color="primary"> 
                                 <span> </span>
                             </Badge> 

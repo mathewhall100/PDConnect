@@ -9,9 +9,6 @@ import dbsImg from '../../images/dbs.png';
 import rytaryImg from '../../images/rytary.jpg';
 import focusGroupImg from '../../images/focus_group.png';
 
-//const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
-
 class Connects extends Component {
 
 
@@ -44,9 +41,6 @@ class Connects extends Component {
                             <div style={{paddingLeft: "20px", paddingTop: "20px"}}>
                                 Participating in paid focus groups is a good way to have your say about new ideas and products for Parkinson disease and get paid to do it. Many companies pay focus group participants for their time and views on their products, marketing materials and on their latest innovations. Voluteering for focus groups is quick and easy and we'll get you connected!
                             </div>
-                            {/* <Grid item xs={12} className={classes.buttonContainer}>
-                                <Button variant='outlined' className={classes.homepageButton}>Find the closest focus group</Button>
-                             </Grid> */}
                         </Grid>
 
                         <Grid item md={5} xs={12} className={classes.aboutImgContainer}>

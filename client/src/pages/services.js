@@ -195,9 +195,9 @@ class UserServices extends Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={12} md={8}>
                         <div className={classes.serviceMainContainer}>
-                            <h1 style={{color: PRIMARY_COLOR}}>Congratulations!</h1>
+                            <h1 style={{color: PRIMARY_COLOR}}>Thank you for sharing your profile with us.</h1>
                             <br />
-                            <h5>Thank you for sharing your profile with us. Based on the information you entered, we have found the following services personalized to you:</h5>
+                            <h5>Based on the information you entered, we have found the following services personalized to you:</h5>
                             <br />
 
                             <RenderServiceListItem

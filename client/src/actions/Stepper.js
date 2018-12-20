@@ -53,7 +53,7 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 'Hello!',
                 pageName: `Let's get you connected`,
-                title: ``,
+                title: `To ...`,
                 pageImg: `${accountImg}`,
                 subtitle: ``,
                 nextPage : `/user/user_about`,

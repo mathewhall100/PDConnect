@@ -14,7 +14,9 @@ import DashboardIcon from '@material-ui/icons/Dashboard'
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { home2Stylesheet, PRIMARY_COLOR } from '../styles.js';
+
 import AccountButton from '../components/accountButton';
+
 class AppBar extends Component {
 
     handleNav = (redirectAddress) => {

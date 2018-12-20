@@ -4,6 +4,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 require('dotenv').config();
 
 // Configure body parser for AJAX requests
@@ -17,6 +18,21 @@ if (process.env.NODE_ENV === "production") {
 
 // Add routes, both API and view
 app.use(routes);
+
+// Set up promises with mongoose
+mongoose.Promise = global.Promise
+
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/pdconnectdb", { useNewURLParser: true })
+  .then(
+    (res) => {
+      console.log("Connected to database 'pdconnectdb' successfully.")
+    }
+  ).catch(() => {
+    console.log("Connction to database failed.")
+})
+
+
 
 // Send every request to the React app
 // Define any API routes before this runs
