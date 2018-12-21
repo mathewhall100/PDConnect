@@ -137,7 +137,8 @@ handleError = (error, doc, next) => {
 
 // add post types that will be handled by error code (e.g. save, findOneAndUpdate etc)
 user_infoSchema.post('save', handleError);
+user_infoSchema.post('findOneAndUpdate', handleError);
 
-const User_info = mongoose.model('User_info', user_infoSchema);
+const user_info = mongoose.model('user_info', user_infoSchema);
 
-module.exports = User_info
+module.exports = user_info

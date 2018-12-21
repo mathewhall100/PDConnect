@@ -51,16 +51,17 @@ module.exports = {
         )
         user.save()
         .then(resInfo => {
-            user = new db.user_data({
-                    user_info_ref: resInfo._id,
-                    user_info_id: resInfo._id,
+            user = new db.user_data( {  
+                user_info_ref: resInfo._id,
+                user_info_id: resInfo._id,
+                data: [{
                     family: d.family,
                     meds: d.meds,
                     surgeries: d.surgeries,
                     adl: d.adl,
                     motor_symptoms: d.motor_symptoms,
-                    non_motor_symptoms: d.non_motor_symptoms }
-            )
+                    non_motor_symptoms: d.non_motor_symptoms }]
+                })
             user.save()
             .then(resData => {
                 db.user_info

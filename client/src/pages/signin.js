@@ -66,12 +66,12 @@ class SignIn extends Component {
             yearDiagnosed: user.year_diagnosis,
             yearTreatment: user.year_treatment
         })
-        this.props.submitUserFamily(user.user_data_ref.family)
-        this.props.submitUserMeds(user.user_data_ref.meds)
-        this.props.submitUserSurgery(user.user_data_ref.surgeries)
-        this.props.submitUserLife(user.user_data_ref.adl)
-        this.props.submitUserMotorSy(user.user_data_ref.motor_symptoms)
-        this.props.submitUserNonMotorSy(user.user_data_ref.non_motor_symptoms)
+        this.props.submitUserFamily(user.user_data_ref.data[0].family)
+        this.props.submitUserMeds(user.user_data_ref.data[0].meds)
+        this.props.submitUserSurgery(user.user_data_ref.data[0].surgeries)
+        this.props.submitUserLife(user.user_data_ref.data[0].adl)
+        this.props.submitUserMotorSy(user.user_data_ref.data[0].motor_symptoms)
+        this.props.submitUserNonMotorSy(user.user_data_ref.data[0].non_motor_symptoms)
     }
 
     render() {

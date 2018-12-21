@@ -5,14 +5,12 @@ import { reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
-
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Badge from '@material-ui/core/Badge'
 
 import { resultStylesheet, PRIMARY_COLOR, SECONDARY_COLOR } from '../styles';
 import SocMedBox from '../components/commons/socMedBox'
-
 import assessImg from '../images/avatar/services/assess.png';
 import focusImg from '../images/avatar/services/focus.png';
 import learnImg from '../images/avatar/services/learn.png';
