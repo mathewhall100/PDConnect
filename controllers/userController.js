@@ -24,7 +24,7 @@ module.exports = {
         console.log("User_info controller called to 'fetch all'")
         db.user_info
         .find( {id} )
-        .populate("user_data_ref")
+        .populate("user_data_ref",  "user_account_ref")
         .then(result=> {
             console.log("RESULT:", result)
             res.json(result)
@@ -51,7 +51,7 @@ module.exports = {
         )
         user.save()
         .then(resInfo => {
-            user = new db.user_data( {  
+            user = new db.user_data({  
                 user_info_ref: resInfo._id,
                 user_info_id: resInfo._id,
                 data: [{
@@ -64,24 +64,38 @@ module.exports = {
                 })
             user.save()
             .then(resData => {
-                db.user_info
-                .findOneAndUpdate(
-                    {_id: resInfo._id},
-                    {$set: {
-                        "user_data_ref": resData._id,
-                        "user_data_id": resData._id
-                    }}
-                )
-                .then(resRef => {
-                    console.log("RESULT INFO: ", resInfo)
-                    console.log("RESULT DATA: ", resData)
-                    console.log("RESULT REF: ", resRef)
-                    res.json(resInfo + resData + resRef)
-                 })  
-            })
-            .catch(err => {
-                console.log(`CONTROLLER ERROR: ${err}`)
-                res.status(422).json(err)
+                user = new db.user_account({
+                    member_status: "bronze",
+                    points: [{
+                        points_current: 100, 
+                        points_change: 0,
+                        change_reason: "" }]
+                    })
+                user.save()
+                .then(resAcct => {
+                    db.user_info
+                    .findOneAndUpdate(
+                        {_id: resInfo._id},
+                        {$set: {
+                            "user_data_ref": resData._id,
+                            "user_data_id": resData._id,
+                            "user_account_ref": resAcct._id,
+                            "user_account_id": resAcct._id 
+                        }}
+                    )
+                    .then(resRef => {
+                        console.log("RESULT INFO: ", resInfo)
+                        console.log("RESULT DATA: ", resData)
+                        console.log("RESULT ACCOUNT: ", resAcct)
+                        console.log("RESULT REF: ", resRef)
+
+                        res.json(resInfo + resData + resAcct + resRef)
+                    })  
+                    .catch(err => {
+                        console.log(`CONTROLLER ERROR: ${err}`)
+                        res.status(422).json(err)
+                    })  
+                })
             })
         })
     }

@@ -5,7 +5,9 @@ const user_infoSchema = new Schema({
 
     date_registered: {type: Date, default: Date.now},
     user_data_ref: {type: Schema.Types.ObjectId, ref: 'user_data'},
-    user_data_id: {type:String },
+    user_data_id: {type: String },
+    user_account_ref: {type: Schema.Types.ObjectId, ref: 'user_account'},
+    user_account_id: {type: String },
 
     email: { type: String, required: [true, "Error: email address required"],
         validate: {
