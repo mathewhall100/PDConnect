@@ -20,6 +20,7 @@ import {userStylesheet } from '../../styles';
 import { updateStepperCount, submitUserAbout, submitReview} from '../../actions/index.js'
 import UserModal from '../commons/userModal'
 
+
  class UserAbout extends Component {
 
     state = {
@@ -85,7 +86,7 @@ import UserModal from '../commons/userModal'
 
                 <div>
 
-                    <span>
+                    <span >
                         <FormControl variant="outlined"  style={{width: `${width}`}}>
                             <Select
                                 displayEmpty={true}
@@ -104,10 +105,6 @@ import UserModal from '../commons/userModal'
                             </Select>
                         </FormControl>
                     </span>
-
-                    {/* { (pristine || error) && <Button className={classes.helpButton}  onClick={() => this.handleModalOpen(label, label)}>
-                        <HelpIcon color="primary" className={classes.helpIcon}/>
-                    </Button> } */}
 
                     <span>
                         {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px", color: "green"}}/> : ''}
@@ -138,7 +135,7 @@ import UserModal from '../commons/userModal'
                                 width={"150px"}
                                 modal={1}
                             >
-                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select age</span></MenuItem>
+                                <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select age</span></MenuItem>
                                 {age.map(item =>
                                 <MenuItem key={item.value} value={item.value} >{item.text}</MenuItem>
                                 )}
@@ -153,7 +150,7 @@ import UserModal from '../commons/userModal'
                             width={"150px"}
                             modal={2}
                         >
-                            <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select sex</span></MenuItem>
+                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select sex</span></MenuItem>
                             {sex.map(item =>
                             <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                             )}
@@ -168,7 +165,7 @@ import UserModal from '../commons/userModal'
                                 width={"380px"}
                                 modal={3}
                             >
-                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select race/ethnicity</span></MenuItem>
+                                <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select race/ethnicity</span></MenuItem>
                                 {raceEthnicity.map(item =>
                                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                 )}
@@ -183,7 +180,7 @@ import UserModal from '../commons/userModal'
                                 width={"150px"}
                                 modal={4}
                             >
-                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select year</span></MenuItem>
+                                <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select year</span></MenuItem>
                                 {years.map(item =>
                                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                 )}
@@ -198,7 +195,7 @@ import UserModal from '../commons/userModal'
                                 width={"150px"}
                                 modal={5}
                             >
-                                <MenuItem value="" disabled ><span style={{color: "grey", fontSize: "18px", fontWeight: "normal"}}>Select year</span></MenuItem>
+                                <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select year</span></MenuItem>
                                 {years.map(item =>
                                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
                                 )}

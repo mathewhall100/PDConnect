@@ -74,13 +74,17 @@ export const userStylesheet = theme => ({
         fontFamily : 'Muli'
     },
     labelText: {
-        fontSize: "23px"
+        fontSize: "23px",
     },
     selectLabel: {
         height: "45px",
         color: "black",
         fontWeight: "bold",
-        backgroundColor: "white !important",
+    },
+    selectMenuItem: {
+        color: "grey", 
+        fontSize: "18px", 
+        fontWeight: "normal",
     },
     title: {
         fontSize: '32px',
@@ -676,6 +680,7 @@ export const resultStylesheet = theme => ({
         }
     },
     resultActionBtn : {
+        fontWeight: "bold",
         padding: 0,
         backgroundColor: "#F8F8F8 !important",
         border: "2px solid #F8F8F8",

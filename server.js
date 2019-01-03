@@ -1,7 +1,8 @@
 const express = require("express");
+const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
-const app = express();
+
 const routes = require("./routes");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -31,8 +32,6 @@ mongoose.connect(
   ).catch(() => {
     console.log("Connction to database failed.")
 })
-
-
 
 // Send every request to the React app
 // Define any API routes before this runs

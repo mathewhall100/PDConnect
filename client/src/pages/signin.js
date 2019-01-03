@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -22,7 +22,6 @@ class SignIn extends Component {
 
     componentDidMount() {
         window.scroll(0, 0)
-
     }
 
     submit(values) {

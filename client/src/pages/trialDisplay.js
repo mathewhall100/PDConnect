@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 
 import ResultTabs from '../components/commons/resultTabs'
-import ResultPrintButton from '../components/commons/resultPrintBtn'
 import ResultTitle from '../components/commons/resultTitle'
 import ResultInfoSubTitle from '../components/commons/resultInfoSubTitle'
 import ResultDisplayVideo from '../components/commons/resultDisplayVideo'
 import ResultInfoText from '../components/commons/resultInfoText'
-import ResultInfoSubText from '../components/commons/resultInfoSubText'
 import ResultInfoBullets from '../components/commons/resultInfoBullets'
-import SocMedBox from '../components/commons/socMedBox'
-import AccountBox from '../components/commons/accountBox'
-import EmailBox from '../components/commons/emailBox'
-import {resultStylesheet } from '../styles';
+import { resultStylesheet } from '../styles';
 import { trialsInfo } from '../infoFiles/trialsInfo'
 
 

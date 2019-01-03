@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
 import Badge from '@material-ui/core/Badge'
 
 import { resultStylesheet, PRIMARY_COLOR, SECONDARY_COLOR } from '../styles';
@@ -152,8 +150,8 @@ class UserServices extends Component {
 
     render() {
 
-        const { handleSubmit, classes, badgeContent } = this.props
-        const { listItemHover, treatmentResults, trialResults, focusGroupResults } = this.state
+        const { classes } = this.props
+        const { treatmentResults, trialResults, focusGroupResults } = this.state
 
         const beforeStyle = {
             display: 'table'

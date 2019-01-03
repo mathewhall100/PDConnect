@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Route, Switch } from "react-router-dom";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { Route, Switch } from "react-router-dom";
 
 import UserStart from '../components/user/userStart';
 import UserAbout from '../components/user/userAbout';
@@ -16,7 +17,6 @@ import UserNonMotorSy from '../components/user/userNonMotorSy';
 import UserReview from '../components/user/userReview';
 import UserNewAccount from '../components/user/userNewAccount';
 import UserAccount from '../components/user/userAccount';
-import UserServices from './services';
 import NotFound from './notFound';
 
 import Stepper from '../components/stepper';
