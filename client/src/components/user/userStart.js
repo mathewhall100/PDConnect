@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -22,7 +22,7 @@ class UserStart extends Component {
         this.props.updateStepperCount()
     }
 
-    handleGo(){
+    handleGo() {
         this.props.history.push(this.state.redirectAddress)
     }
 
@@ -45,39 +45,35 @@ class UserStart extends Component {
         const { classes } = this.props
 
         return (
-            <section>
-                <div className={classes.componentBox} style={{marginTop: "75px"}}>
-                    <span  style={{fontWeight: "bold", fontSize: "23px"}}>First, however, we need to know a bit about you, how Parkinson disease affects you, and about your treatment.</span>
-                    <br />
-                    <br />
-                    <p>This is important as it allows us so to tailor the information and services we provide specifically to you and to be of most relevance to you.</p>
+            <div className={classes.componentBox} style={{marginTop: "75px"}}>
+                <span  style={{fontWeight: "bold", fontSize: "23px"}}>First, however, we need to know a bit about you, how Parkinson disease affects you, and about your treatment.</span>
+                <br />
+                <br />
+                <p>This is important as it allows us so to tailor the information and services we provide specifically to you and to be of most relevance to you.</p>
 
-                    <br />
+                <br />
 
-                    <div style={{border: "2px solid", borderColor: PRIMARY_COLOR, borderRadius: "4px", backgroundColor: "#eeeeee", padding: "20px", textAlign: "justify"}}>
-                        <p className={classes.stepperSubtitle} style={{fontWeight: "bold", textAlign: "center"}}>Important message!</p>
-                        <p>This site is intended for use by patients with Parkinson disease, their family and carers and the following pages will guide you through telling us about yourself, about how Parkinson disease affects you and about your treatment.
-                            <span style={{fontWeight: "bold"}}> We take your privacy very seriously and will not sell or share any information about you without asking you first. </span>
-                            <span style={{position: "relative", top: "10px"}}><br />
-                                Read our
-                                <Modal buttonLabel="Data Privacy Policy" modalTitle={<span>Privacy Policy<hr /></span>} modalContent={<PrivacyPolicy />} />
-                            </span>
-                        </p>
-                    </div>
-
-                    <br />
-                    <br />
-
-                    <div style={{textAlign: "center"}}>
-                        <Button type="button" className={classes.startPageButton} style={{width: "50%"}} onClick={() => this.handleGo()}>Ok, Let's go</Button>
-                        <br /><br />
-                    </div>
-
+                <div style={{border: "2px solid", borderColor: PRIMARY_COLOR, borderRadius: "4px", backgroundColor: "#eeeeee", padding: "20px", textAlign: "justify"}}>
+                    <p className={classes.stepperSubtitle} style={{fontWeight: "bold", textAlign: "center"}}>Important message!</p>
+                    <p>This site is intended for use by patients with Parkinson disease, their family and carers and the following pages will guide you through telling us about yourself, about how Parkinson disease affects you and about your treatment.
+                        <span style={{fontWeight: "bold"}}> We take your privacy very seriously and will not sell or share any information about you without asking you first. </span>
+                        <span style={{position: "relative", top: "10px"}}><br />
+                            Read our
+                            <Modal buttonLabel="Data Privacy Policy" modalTitle={<span>Privacy Policy<hr /></span>} modalContent={<PrivacyPolicy />} />
+                        </span>
+                    </p>
                 </div>
 
-            </section>
+                <br />
+                <br />
 
-        );
+                <div style={{textAlign: "center"}}>
+                    <Button type="button" className={classes.startPageButton} style={{width: "50%"}} onClick={() => this.handleGo()}>Ok, Let's go</Button>
+                    <br /><br />
+                </div>
+
+            </div>
+        )
     }
 }
 

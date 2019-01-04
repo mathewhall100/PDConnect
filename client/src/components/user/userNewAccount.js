@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -66,24 +66,24 @@ class UserNewAccount extends Component {
 
             <p className={classes.sectionTitle}>Enter your e-mail address and a password to set up your account. </p>
 
-                <div>
+                <React.Fragment>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                         <br />
                         <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>E-mail</label>
+                        <br />
                         <FormText title='email' name='email' label='' placeholder="e.g. john.doe@gmail.com"/>
                         <br />
                         <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>Password</label>
+                        <br />
                         <FormPassword title='password' name='password' label='' placeholder="8 or more characters"/>
                         <br />
                         <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>Re-enter password</label>
+                        < br />
                         <FormPassword title='password' name='confirmPassword' label='' placeholder="passwords must match"/>
-
-                        <br />
+                        <br /><br />
                         <Button type="submit" type="variant" className={classes.userNavButtonRight} >SET UP MY ACCOUNT</Button>
-
                     </form>
-
-                </div>
+                </React.Fragment>
 
             </div>
 
@@ -91,7 +91,7 @@ class UserNewAccount extends Component {
     }
 }
 
-function validate(values) {
+function validate (values) {
     const errors = {}
     if (!values.email) {
         errors.email = '*required'
@@ -116,7 +116,6 @@ function validate(values) {
     if(values.confirmPassword && values.confirmPassword.length > 8 && values.password !== values.confirmPassword){
         errors.confirmPassword = '*Passwords must match.'
     }
-
     return errors
 }
 
@@ -141,7 +140,7 @@ const mapStateToProps = (state) => {
 
 const formData = {
     form: 'userNewAccountForm',
-    //validate
+    validate
 }
 
 UserNewAccount = reduxForm(formData)(UserNewAccount)

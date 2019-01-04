@@ -40,22 +40,22 @@ class UserModal extends Component  {
 
         return (
             <Modal
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            open={modalOpen}
-            onClose={this.handleClose}
-        >
-            <div style={this.getModalStyle()}  className={classes.paper}>
-                    <label style={{ float: 'right' }}><CancelIcon style={{ color: 'red', cursor: 'pointer', fontSize: "35px", position: "relative", top: "-18px", left: "18px"}} onClick={this.handleClose} /> </label>
-                <Typography variant="h6" id="modal-title" style={{color: modalWarning ? "red" : "grey"}}>
-                    {modalTitle}
-                </Typography>
-                <hr />
-                <Typography variant="subtitle1" id="simple-modal-description">
-                    {modalText}
-                </Typography>
-            </div>
-    </Modal>
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={modalOpen}
+                onClose={this.handleClose}
+            >
+                <div style={this.getModalStyle()}  className={classes.paper}>
+                        <label style={{ float: 'right' }}><CancelIcon style={{ color: 'red', cursor: 'pointer', fontSize: "35px", position: "relative", top: "-18px", left: "18px"}} onClick={this.handleClose} /> </label>
+                    <Typography variant="h6" id="modal-title" style={{color: modalWarning ? "red" : "grey"}}>
+                        {modalTitle}
+                    </Typography>
+                    <hr />
+                    <Typography variant="subtitle1" id="simple-modal-description">
+                        {modalText}
+                    </Typography>
+                </div>
+            </Modal>
         )
     }
 }

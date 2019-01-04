@@ -5,29 +5,21 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-import HelpIcon from '@material-ui/icons/Help';
 import DoneIcon from '@material-ui/icons/Done';
 
 import { age, sex, raceEthnicity, years } from '../../constants';
 import {userStylesheet } from '../../styles';
 import { updateStepperCount, submitUserAbout, submitReview} from '../../actions/index.js'
-import UserModal from '../commons/userModal'
 
 
  class UserAbout extends Component {
 
     state = {
-        modalOpen: false,
-        modalTitle: '',
-        modalDescription : '',
-        modalwarning: false,
         redirectAddress : '/user/user_family',
     }
 
@@ -49,38 +41,21 @@ import UserModal from '../commons/userModal'
     submit(values) {
         console.log("values : " , values);
         this.props.submitUserAbout(values)
-        if(this.props.review.redirect){
+        if (this.props.review.redirect){
             this.props.submitReview(false);
             this.props.history.push('/user/user_review');
-        }else{
+        } else {
             this.props.history.push(this.state.redirectAddress)
         }
     }
 
-    handleClearForm() {
-        console.log("clear form")
-        this.props.reset()
-    }
-
-    handleModalOpen = (title, text) => {
-        console.log(title);
-         this.setState({
-             modalTitle : title,
-             modalText : text,
-             modalWarning : false,
-             modalOpen: true
-        });
-     };
-
-
     render() {
 
-        const { handleSubmit, pristine, submitting, classes } = this.props
-        const { modalOpen, modalTitle, modalText, modalWarning } = this.state
+        const { handleSubmit, classes } = this.props
 
         const RenderSelect = (field) => {
 
-            const {input, label, width, modal, meta: { pristine, touched, error }, children, ...custom} = field
+            const { input, width, meta: { pristine, touched, error }, children } = field
 
             return (
 
@@ -88,17 +63,17 @@ import UserModal from '../commons/userModal'
 
                     <span >
                         <FormControl variant="outlined"  style={{width: `${width}`}}>
-                            <Select
+                            <Select 
                                 displayEmpty={true}
                                 {...input}
-                                onSelect={(event, index, value) => input.onChange(value)}
+                                onSelect={(value) => input.onChange(value)}
                                 children={children}
-                                {...custom}
                                 input={
                                     <OutlinedInput
                                         className={classes.selectLabel}
                                         name=' '
                                         id="outlined"
+                                        
                                     />
                                 }
                             >
@@ -129,76 +104,41 @@ import UserModal from '../commons/userModal'
                         <br />
 
                         <h4 className={classes.questionHead} >How old are you?</h4>
-                        <Field
-                                name="age"
-                                component={RenderSelect}
-                                width={"150px"}
-                                modal={1}
-                            >
-                                <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select age</span></MenuItem>
-                                {age.map(item =>
-                                <MenuItem key={item.value} value={item.value} >{item.text}</MenuItem>
-                                )}
+                        <Field name="age" component={RenderSelect} width={"150px"} >
+                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select age</span></MenuItem>
+                            {age.map(item => <MenuItem key={item.value} value={item.value} >{item.text}</MenuItem> )}
                         </Field>
 
                         <br />
 
                         <h4 className={classes.questionHead} >What is your sex?</h4>
-                        <Field
-                            name="sex"
-                            component={RenderSelect}
-                            width={"150px"}
-                            modal={2}
-                        >
+                        <Field name="sex" component={RenderSelect} width={"150px"} >
                             <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select sex</span></MenuItem>
-                            {sex.map(item =>
-                            <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                            )}
+                            {sex.map(item => <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem> )}
                         </Field>
 
                         <br />
 
                         <h4 className={classes.questionHead} >What do you consider yourself?</h4>
-                        <Field
-                                name="race"
-                                component={RenderSelect}
-                                width={"380px"}
-                                modal={3}
-                            >
-                                <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select race/ethnicity</span></MenuItem>
-                                {raceEthnicity.map(item =>
-                                <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                                )}
+                        <Field name="race" component={RenderSelect} width={"380px"} >
+                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select race/ethnicity</span></MenuItem>
+                            {raceEthnicity.map(item => <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem> )}
                         </Field>
 
                         <br />
 
                         <h4 className={classes.questionHead} >When were you first diagnosed with Parkinson disease?</h4>
-                        <Field
-                                name="yearDiagnosed"
-                                component={RenderSelect}
-                                width={"150px"}
-                                modal={4}
-                            >
-                                <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select year</span></MenuItem>
-                                {years.map(item =>
-                                <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                                )}
+                        <Field name="yearDiagnosed" component={RenderSelect} width={"150px"} >
+                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select year</span></MenuItem>
+                            {years.map(item => <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem> )}
                         </Field>
 
                         <br />
 
                         <h4 className={classes.questionHead}>When did you start treatment for Parkinson Disease?</h4>
-                        <Field
-                                name="yearTreatment"
-                                component={RenderSelect}
-                                width={"150px"}
-                                modal={5}
-                            >
-                                <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select year</span></MenuItem>
-                                {years.map(item =>
-                                <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
-                                )}
+                        <Field name="yearTreatment" component={RenderSelect} width={"150px"} >
+                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select year</span></MenuItem>
+                            {years.map(item => <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem> )}
                         </Field>
                         <br />
 
@@ -207,13 +147,6 @@ import UserModal from '../commons/userModal'
                     </form>
 
                 </div>
-
-                { modalOpen && <UserModal
-                    modalOpen={modalOpen}
-                    modalTitle={modalTitle}
-                    modalText={modalText}
-                    modalWarning={modalWarning}
-                /> }
 
             </div>
 

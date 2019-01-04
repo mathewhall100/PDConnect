@@ -37,8 +37,6 @@ class SignIn extends Component {
                 const user = result.data
                 if (user.length > 0) {
                     console.log("User found: ", user)
-            
-                    // Load store with user info and data then go  on to service page
                     this.loadStore(user[0])
                     this.props.history.push(this.state.redirectAddress)
                 } else {
@@ -78,10 +76,9 @@ class SignIn extends Component {
         const { handleSubmit, classes } = this.props
 
         return (
-
             <div className={classes.root}>
 
-                <div style={{marginTop: "75px", maxWidth: "600px", margin: "75px auto"}}>
+                <div style={{maxWidth: "600px", margin: "75px auto"}}>
 
                 <h3 className={classes.stepperPageName} style={{fontFamily: "muli"}}>Sign In To Your Account </h3>
 
@@ -89,20 +86,20 @@ class SignIn extends Component {
                         <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
                             <br />
                             <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>E-mail</label>
+                            <br />
                             <FormText title='email' name='email' label='' placeholder="e.g. john.doe@gmail.com" width="80%"/>
                             <br />
                             <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>Password</label>
+                            <br />
                             <FormPassword title='password' name='password' label='' width="60%" />
                             <br />
                             <br />
-                            <Button type="submit" type="variant" className={classes.userNavButtonRight} >SUBMIT</Button>
+                            <Button type="submit" className={classes.userNavButtonRight} >SUBMIT</Button>
                         </form>
-
                     </div>
 
                 </div>
             </div>
-
         );
     }
 }
@@ -115,7 +112,7 @@ function validate(values) {
         values.email &&
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
-        errors.email = '*Invalid email address'
+        errors.email = '*Invalid email'
     }
     if (!values.password) {
         errors.password = '*Required'

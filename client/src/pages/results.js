@@ -17,6 +17,7 @@ import ResultMainSubTitle from '../components/commons/resultMainSubTitle'
 import { resultStylesheet, PRIMARY_COLOR } from '../styles';
 
 
+
 class Results extends Component {
 
     state = {
@@ -77,30 +78,27 @@ class Results extends Component {
                 </div>
 
         const ActionMenuButton = props => 
-                <span>
-                    <Button className={classes.resultActionBtn} >{props.menuItemIcon} &nbsp;&nbsp;{props.menuItemText}</Button><br />
-                </span>
+                <React.Fragment>
+                    <Button className={classes.resultActionBtn}>{props.menuItemIcon} &nbsp;&nbsp;{props.menuItemText}</Button><br />
+                </React.Fragment>
 
         const RenderActionMenuItem = props => <ActionMenuButton {...props} />
 
         const RenderGenericActionMenuItems = () => 
-                <div>
+                <React.Fragment>
                     <ActionMenuButton style={{marginTop: "0px"}} menuItemIcon={<BookmarkIcon style={{color: PRIMARY_COLOR}} />} menuItemText="Bookmark" />
                     <ActionMenuButton menuItemIcon={<PrintIcon style={{color: PRIMARY_COLOR}} />} menuItemText="Print" />
                     <ActionMenuButton menuItemIcon={<SendIcon style={{color: PRIMARY_COLOR}} />} menuItemText="Email" />
                     <ActionMenuButton style={{marginBottom: "20px"}} menuItemIcon={<ShareIcon style={{color: PRIMARY_COLOR}} />} menuItemText="Share" />
-                </div>
+                </React.Fragment>
 
         const RenderVideo = props => 
                 <iframe width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
                     src={props.mediaLink}>
                 </iframe>
 
-        const RenderImage = props => 
-                <img width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
-                    src={props.mediaLink}>
-                </img>
-
+        const RenderImage = props =>  <img src={props.mediaLink} width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}} />
+                    
         const RenderHandleMoreInfoButton = props => 
                 <div style={{margin: "10px 20px 20px 20px"}}>
                     <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo(props.type, props.item)}>Find Out More</Button>
@@ -125,16 +123,17 @@ class Results extends Component {
                     </Grid>
                 </div>
 
+        const RenderBackButton = () => 
+            <Link to="/services">
+                <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "27px"}} >BACK</Button>
+            </Link>
+
 
         // component return
         return (
             <div className={classes.root}>
 
-                <Link to="/services">
-                    <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "27px"}} >
-                        BACK
-                    </Button>
-                </Link>
+                <RenderBackButton />
 
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={12} md={12}>
@@ -143,7 +142,7 @@ class Results extends Component {
                             tabs={[
                                 {text: "TREATMENTS", badgeContent: treatmentResults.length},
                                 {text: "TRIALS", badgeContent: trialResults.length},
-                                {text: "FOCUS GROUPS", badgeContent: 0},
+                                {text: "FOCUS GROUPS", badgeContent: 0}, // when present replace with groupResults.length
                             ]}
                             tabStart={tabSelected}
                             handleTabClick={this.handleTabClick}
@@ -151,7 +150,7 @@ class Results extends Component {
 
                         {tabSelected === 0 && <div className={classes.resultContainer}>
                             {treatmentResults.length > 0 ?
-                                <span>
+                                <React.Fragment>
                                     <RenderTitle title="Treatments to discuss with your doctor" />
                                     {treatmentResults.map((treatment, index) => {
                                         return (
@@ -167,19 +166,19 @@ class Results extends Component {
                                             /> 
                                         )
                                     }) } 
-                                </span>
+                                </React.Fragment>
                             : 
-                                <span>
+                                <React.Fragment>
                                     <RenderTitle title="We couldn't match your profile with any treatments." />
                                     <br />
                                     <ResultMainSubTitle text="Try updating or adding more information to your profile to help us find suitable treatments for you, or check back soon for new treatments." />
-                                </span>
+                                </React.Fragment>
                             }
                         </div> }
 
                         {tabSelected === 1 && <div className={classes.resultContainer}>
                             {trialResults.length > 0 ?
-                                <span>
+                                <React.Fragment>
                                     <RenderTitle title="Clinical Trials to consider volunteering for" />
                                     {trialResults.map((trial, index) => {
                                         return (
@@ -195,19 +194,19 @@ class Results extends Component {
                                             /> 
                                         )
                                     }) }
-                                </span>
+                                </React.Fragment>
                             : 
-                                <span>
+                                <React.Fragment>
                                     <RenderTitle title="We couldn't match your profile with any clinical trials" />
                                     <br />
                                     <ResultMainSubTitle text="Try updating or adding more information to your profile to help us find suitable clinical trials for you, or check back soon for new trials." />
-                                </span>
+                                </React.Fragment>
                                 }
                         </div> }
 
                         {tabSelected === 2 &&  <div className={classes.resultContainer}>
                         {/* {groupResults.length > 0 ?
-                                <span>
+                                <React.Fragment>
                                     <RenderTitle title="Focus groups you might participate in" />
                                     {groupResults.map((group, index) => {
                                         return (
@@ -223,13 +222,13 @@ class Results extends Component {
                                             /> 
                                         )
                                     }) }
-                                </span>
+                                </React.Fragment>
                             :  */}
-                                <span>
+                                <React.Fragment>
                                     <RenderTitle title="We couldn't match your profile with any focus groups." />
                                     <br />
                                     <ResultMainSubTitle text="Try updating or adding more information to your profile to help us find suitable focus groups for you, or check back soon for new focus groups." />
-                                </span>
+                                </React.Fragment>
 
                                 {/* } */}
                         </div> }

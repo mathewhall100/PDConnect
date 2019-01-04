@@ -91,7 +91,6 @@ class UserAccount extends Component {
                     </Grid>
                     <Grid item xs={3}>
                         <Button type="button" variant='outlined' className={classes.nextButton} onClick={() => this.handleBack()}>BACK</Button>
-                        {/* <Button type="button" className={classes.backButton} onClick={() => this.handleClearForm()}>CLEAR</Button>   */}
                     </Grid>
                     <Grid item xs={3}></Grid>
                     <Grid item xs={3}></Grid>
@@ -107,31 +106,10 @@ class UserAccount extends Component {
             <div className={classes.componentBox} >
                 <div>
                     <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
-                        <br />
-                        <label>E-mail : </label><br/>
-                        {/* <Field
-                            name="email"
-                            component={this.renderTextField}
-                            label="E-mail Address"
-                        /><br /> */}
-
-                        <FormText title='email' name='email' label='e-mail address' />
-                        <label>Password : </label><br />
+                        {/* <FormText title='email' name='email' label='e-mail address' />
                         <FormPassword title='password' name='password' label='password' />
-                        <label>Confirm Password : </label><br />
-                        <FormPassword title='confirmPassword' name='confirmPassword' label='confirm password' />
-                        {/*<label>Password : </label><br/>
-                        <Field
-                            name="password"
-                            component={this.renderTextField}
-                            label="Password"
-                        /><br/>
-                        <label>Confirm Password : </label><br />
-                        <Field
-                            name="confirmPassword"
-                            component={this.renderTextField}
-                            label="Confirm Password"
-                        />*/}
+                        <FormPassword title='confirmPassword' name='confirmPassword' label='confirm password' /> */}
+
                         <BottomNav />
 
                     </form>

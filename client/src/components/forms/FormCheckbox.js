@@ -6,7 +6,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 class FormCheckbox extends Component {
 
     renderCheckbox = ({input, label}) => {
-        console.log("here");
         return (
 
             <FormControlLabel
