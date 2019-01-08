@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { startCase } from 'lodash'
 import { withStyles } from '@material-ui/core/styles';
 
-// import {resultStylesheet } from '../../styles';
-const PRIMARY_COLOR = '#2F5597';
+import { PRIMARY_COLOR } from '../../themes.js';
 
-const styles = theme => ({
+const styles = () => ({
     title: {
         fontSize: '26px',
         fontWeight: 'bold',
@@ -15,15 +14,14 @@ const styles = theme => ({
     },
 })
 
-    class ResultTitle extends Component  {
-        render() {
-            const { classes, text} = this.props
-            return (
-                    <h1 className={classes.title}>{startCase(text)}</h1>
-            )
-        }
+class ResultTitle extends Component  {
+    render() {
+        const { classes, text} = this.props
+        return (
+                <h1 className={classes.title}>{startCase(text)}</h1>
+        )
     }
+}
 
-// ResultTitle = withStyles(resultStylesheet)(ResultTitle)
 ResultTitle = withStyles(styles)(ResultTitle)
 export default ResultTitle

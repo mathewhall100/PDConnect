@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { startCase } from 'lodash'
 import { withStyles } from '@material-ui/core/styles';
 
-import {resultStylesheet } from '../../styles';
+const styles = () => ({
+    infoSubText: {
+        padding: "20px 20px 10px 20px",
+        fontSize: "15px",
+        lineheight: "30px",
+        textAlign: "justify"
+    },
+})
 
     class ResultInfoSubText extends Component  {
         render() {
@@ -13,5 +19,5 @@ import {resultStylesheet } from '../../styles';
         }
     }
 
-ResultInfoSubText = withStyles(resultStylesheet)(ResultInfoSubText)
+ResultInfoSubText = withStyles(styles)(ResultInfoSubText)
 export default ResultInfoSubText

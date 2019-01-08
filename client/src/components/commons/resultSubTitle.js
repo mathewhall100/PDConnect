@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
-import {resultStylesheet } from '../../styles';
+const style = () => ({ 
+    subtitle: {
+        fontSize: '19px',
+        fontWeight: "bold",
+        lineHeight: "26px",
+        margin: "20px",
+    },
+})
 
     class ResultMainSubTitle extends Component  {
         render() {
@@ -12,5 +19,5 @@ import {resultStylesheet } from '../../styles';
         }
     }
 
-ResultMainSubTitle = withStyles(resultStylesheet)(ResultMainSubTitle)
+ResultMainSubTitle = withStyles(style)(ResultMainSubTitle)
 export default ResultMainSubTitle

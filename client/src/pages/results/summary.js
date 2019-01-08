@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -12,11 +12,14 @@ import SendIcon from '@material-ui/icons/Send'
 import ShareIcon from '@material-ui/icons/Share'
 import ContactMailIcon from '@material-ui/icons/ContactMail'
 
-import ResultTabsWithBadge from '../components/commons/resultTabsWithBadge'
-import ResultMainSubTitle from '../components/commons/resultMainSubTitle'
-import { resultStylesheet, PRIMARY_COLOR } from '../styles';
-
-
+import ResultTabsWithBadge from '../../components/tabs/resultTabsWithBadge'
+import ResultTitle from '../../components/commons/resultTitle'
+import ResultSubTitle from '../../components/commons/resultSubTitle'
+import ResultDisplayMedia from '../../components/commons/resultDisplayMedia'
+import ResultBackButton from '../../components/buttons/resultBackButton'
+import ResultMoreInfoButton from '../../components/buttons/resultMoreInfoButton'
+import { resultStyles } from './resultStyles';
+import { PRIMARY_COLOR } from '../../themes'
 
 class Results extends Component {
 
@@ -24,7 +27,6 @@ class Results extends Component {
         tabSelected: 0,
         treatmentResults: [],
         trialResults: [],
-        redirect: false,
     }
 
     componentDidMount() {
@@ -48,15 +50,15 @@ class Results extends Component {
         this.setState({tabSelected: tab})
     }
 
-    handleMoreInfo(type, item) {
-        console.log(type, " ", item)
-        const redirectAddress = `${type}:${item}`
-        this.props.history.push(redirectAddress)
-    }
-
     handleTabClick = (tab) => {
         console.log("tab: ", tab)
         this.setState({tabSelected: tab})
+    }
+
+    handleMoreInfo = (type, item) => {
+        console.log(type, " ", item)
+        const redirectAddress = `${type}:${item}`
+        this.props.history.push(redirectAddress)
     }
 
 
@@ -65,79 +67,68 @@ class Results extends Component {
         const { treatmentResults, trialResults, classes } = this.props
         const { tabSelected } = this.state
 
-        const RenderTitle = props => <h1 className={classes.title}>{props.title}</h1>
-
-        const RenderText = props => 
-                <div className={classes.resultTextBox}>
-                    <div className={classes.resultTitle}>
-                        {props.name}
-                    </div>
-                    <div className={classes.resultText}>
-                        {props.summary}
-                    </div>
-                </div>
-
-        const ActionMenuButton = props => 
-                <React.Fragment>
-                    <Button className={classes.resultActionBtn}>{props.menuItemIcon} &nbsp;&nbsp;{props.menuItemText}</Button><br />
-                </React.Fragment>
-
-        const RenderActionMenuItem = props => <ActionMenuButton {...props} />
-
-        const RenderGenericActionMenuItems = () => 
-                <React.Fragment>
-                    <ActionMenuButton style={{marginTop: "0px"}} menuItemIcon={<BookmarkIcon style={{color: PRIMARY_COLOR}} />} menuItemText="Bookmark" />
-                    <ActionMenuButton menuItemIcon={<PrintIcon style={{color: PRIMARY_COLOR}} />} menuItemText="Print" />
-                    <ActionMenuButton menuItemIcon={<SendIcon style={{color: PRIMARY_COLOR}} />} menuItemText="Email" />
-                    <ActionMenuButton style={{marginBottom: "20px"}} menuItemIcon={<ShareIcon style={{color: PRIMARY_COLOR}} />} menuItemText="Share" />
-                </React.Fragment>
-
-        const RenderVideo = props => 
-                <iframe width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}}
-                    src={props.mediaLink}>
-                </iframe>
-
-        const RenderImage = props =>  <img src={props.mediaLink} width="240" height="180" style={{marginTop: "26px", marginLeft: "20px"}} />
-                    
-        const RenderHandleMoreInfoButton = props => 
-                <div style={{margin: "10px 20px 20px 20px"}}>
-                    <Button type="button" className={classes.button} onClick={() => this.handleMoreInfo(props.type, props.item)}>Find Out More</Button>
-                </div>
+        const RenderActionMenu = (props) => {
+            const ActionMenuButton = props => <Button className={classes.resultBoxActionBtn}>{props.menuItemIcon} &nbsp;&nbsp;{props.menuItemText}</Button>
+                return (
+                    <React.Fragment>
+                        <ActionMenuButton {...props} /><br />
+                        <ActionMenuButton menuItemIcon={<BookmarkIcon />} menuItemText="Bookmark" /><br />
+                        <ActionMenuButton menuItemIcon={<PrintIcon />} menuItemText="Print" /><br />
+                        <ActionMenuButton menuItemIcon={<SendIcon />} menuItemText="Email" /><br />
+                        <ActionMenuButton menuItemIcon={<ShareIcon />} menuItemText="Share" /><br />
+                    </React.Fragment>
+                )
+        }
 
         const RenderPageEntries = props => 
                 <div className={classes.resultBox}>
                     <Grid container spacing={8}>
+
                         <Grid item xs={12} sm={12} md={6}>
-                            <RenderText {...props} />
-                            <RenderHandleMoreInfoButton {...props} />
+                            <div className={classes.resultBoxTextBox}> 
+                                <div className={classes.resultBoxTitle}>
+                                    {props.name}
+                                </div>
+                                <div className={classes.resultBoxText}>
+                                    {props.summary}
+                                </div>
+                            </div>
+                            <ResultMoreInfoButton {...props} handleMoreInfo={this.handleMoreInfo} />
                         </Grid>
+
                         <Grid item xs={12} sm={12} md={4}>
-                            {props.mediaType === "video" ? <RenderVideo {...props} /> : <RenderImage {...props}/> }
+                            <br/>
+                            <ResultDisplayMedia {...props} width={240} height={180}  />    
                         </Grid>
                         <Grid item xs={12} sm={12} md={2}>
                             <br />
-                            <RenderActionMenuItem {...props} />
-                            <RenderGenericActionMenuItems />
+                            <RenderActionMenu {...props}/>
                             <br />
                         </Grid>
+
                     </Grid>
                 </div>
 
-        const RenderBackButton = () => 
-            <Link to="/services">
-                <Button type="button" className={classes.resultBackButton} style={{position: "relative", top: "27px"}} >BACK</Button>
-            </Link>
-
+        const RenderNoMatches = props => {
+            const title =`We were unable to match your profile with any ${props.tabText} .`
+            const text=`Try updating or adding more information to your profile to help us find suitable ${props.tabText} for you, or check back soon for new ${props.tabText}.`
+            return (
+                <React.Fragment>
+                    <ResultTitle text={title} />
+                    <br />
+                    <ResultSubTitle text={text} />
+                </React.Fragment>
+                )
+        }
 
         // component return
         return (
-            <div className={classes.root}>
-
-                <RenderBackButton />
-
+            <div className={classes.resultRoot}>
+                <br />
+                <br />
                 <Grid container spacing={24}>
-                    <Grid item xs={12} sm={12} md={12}>
-
+                    <Grid item xs={12} sm={12} md={12}> 
+                    
                         <ResultTabsWithBadge
                             tabs={[
                                 {text: "TREATMENTS", badgeContent: treatmentResults.length},
@@ -147,11 +138,13 @@ class Results extends Component {
                             tabStart={tabSelected}
                             handleTabClick={this.handleTabClick}
                         />
+                        
+                        <ResultBackButton targetUrl="/services" />
 
                         {tabSelected === 0 && <div className={classes.resultContainer}>
                             {treatmentResults.length > 0 ?
                                 <React.Fragment>
-                                    <RenderTitle title="Treatments to discuss with your doctor" />
+                                    <ResultTitle text="Treatments to discuss with your doctor" />
                                     {treatmentResults.map((treatment, index) => {
                                         return (
                                             <RenderPageEntries key={index}
@@ -167,19 +160,13 @@ class Results extends Component {
                                         )
                                     }) } 
                                 </React.Fragment>
-                            : 
-                                <React.Fragment>
-                                    <RenderTitle title="We couldn't match your profile with any treatments." />
-                                    <br />
-                                    <ResultMainSubTitle text="Try updating or adding more information to your profile to help us find suitable treatments for you, or check back soon for new treatments." />
-                                </React.Fragment>
-                            }
+                            : <RenderNoMatches tabText="treatments" /> }
                         </div> }
 
                         {tabSelected === 1 && <div className={classes.resultContainer}>
                             {trialResults.length > 0 ?
                                 <React.Fragment>
-                                    <RenderTitle title="Clinical Trials to consider volunteering for" />
+                                    <ResultTitle text="Clinical Trials to consider volunteering for" />
                                     {trialResults.map((trial, index) => {
                                         return (
                                             <RenderPageEntries key={index}
@@ -195,19 +182,14 @@ class Results extends Component {
                                         )
                                     }) }
                                 </React.Fragment>
-                            : 
-                                <React.Fragment>
-                                    <RenderTitle title="We couldn't match your profile with any clinical trials" />
-                                    <br />
-                                    <ResultMainSubTitle text="Try updating or adding more information to your profile to help us find suitable clinical trials for you, or check back soon for new trials." />
-                                </React.Fragment>
+                            : <RenderNoMatches tabText="clinical trials" /> 
                                 }
                         </div> }
 
                         {tabSelected === 2 &&  <div className={classes.resultContainer}>
                         {/* {groupResults.length > 0 ?
                                 <React.Fragment>
-                                    <RenderTitle title="Focus groups you might participate in" />
+                                    <ResultTitle text="Focus groups you might participate in" />
                                     {groupResults.map((group, index) => {
                                         return (
                                             <RenderPageEntries key={index}
@@ -223,18 +205,12 @@ class Results extends Component {
                                         )
                                     }) }
                                 </React.Fragment>
-                            :  */}
-                                <React.Fragment>
-                                    <RenderTitle title="We couldn't match your profile with any focus groups." />
-                                    <br />
-                                    <ResultMainSubTitle text="Try updating or adding more information to your profile to help us find suitable focus groups for you, or check back soon for new focus groups." />
-                                </React.Fragment>
+                            : */}
+                            <RenderNoMatches tabText="focus groups" /> 
 
-                                {/* } */}
                         </div> }
 
                     </Grid>
-
                 </Grid>
             </div>
         )
@@ -252,6 +228,6 @@ const mapStateToProps = (state) => {
   };
 
 Results = withRouter(Results)
-Results = withStyles(resultStylesheet)(Results)
+Results = withStyles(resultStyles)(Results)
 Results = connect(mapStateToProps)(Results)
 export default Results

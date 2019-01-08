@@ -1,6 +1,6 @@
+// stylesheet for common styles of form components
 
-
-export const formStylesheet = theme => ({
+export const formStylesheet = () => ({
     textFieldError: {
         fontSize: "14px", 
         color: "red", 

@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import { startCase } from 'lodash'
 import { withStyles } from '@material-ui/core/styles';
 
-import {resultStylesheet } from '../../styles';
-
-    class ResultInfoBullets extends Component  {
-        render() {
-            const { classes, bullet} = this.props
-            return (
-                <ul  className={classes.infoBullets}>
-                    <li>{bullet}</li>
-                </ul>
-            )
-        }
+const styles =  () => ({
+    infoBullets: {
+        padding: "0 20px 0 60px",
+        fontSize: "18px",
+        fontWeight: "bold"
     }
+})
 
-ResultInfoBullets = withStyles(resultStylesheet)(ResultInfoBullets)
+class ResultInfoBullets extends Component  {
+    render() {
+        const { bullet, classes } = this.props
+        return (
+            <ul  className={classes.infoBullets}>
+                <li>{bullet}</li>
+            </ul>
+        )
+    }
+}
+
+ResultInfoBullets = withStyles(styles)(ResultInfoBullets)
 export default ResultInfoBullets
+

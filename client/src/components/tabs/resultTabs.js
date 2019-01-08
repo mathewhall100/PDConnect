@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import {resultStylesheet } from '../../styles';
+import {resultTabsStylesheet} from './resultTabsStyles';
+
 
 class ResultTabs extends Component  {
 
@@ -20,9 +21,9 @@ class ResultTabs extends Component  {
 
         return (
             <span className={classes.tabBar}>
-                {tabs.map((tab, index) =>  {
+                {tabs.map((tab, idx) =>  {
                     return (
-                        <span className={tabSelected === index ? classes.tabButtonSelected : classes.tabButtonLeft} onClick={() => this.handleTabClick(index)}>{tab}</span>
+                        <span key={idx} className={tabSelected === idx ? classes.tabButtonSelected : classes.tabButtonLeft} onClick={() => this.handleTabClick(idx)}>{tab}</span>
                     )
                 }) }
             </span>
@@ -31,5 +32,5 @@ class ResultTabs extends Component  {
 }
 
 
-ResultTabs = withStyles(resultStylesheet)(ResultTabs)
+ResultTabs = withStyles(resultTabsStylesheet)(ResultTabs)
 export default ResultTabs

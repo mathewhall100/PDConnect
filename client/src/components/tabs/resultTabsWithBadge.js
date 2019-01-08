@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import {resultStylesheet } from '../../styles';
 import Badge from '@material-ui/core/Badge';
+import {resultTabsStylesheet } from './resultTabsStyles.js';
+
 
 class ResultTabsWithBadge extends Component  {
 
@@ -44,5 +45,5 @@ class ResultTabsWithBadge extends Component  {
 }
 
 
-ResultTabsWithBadge = withStyles(resultStylesheet)(ResultTabsWithBadge)
+ResultTabsWithBadge = withStyles(resultTabsStylesheet)(ResultTabsWithBadge)
 export default ResultTabsWithBadge

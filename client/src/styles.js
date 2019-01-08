@@ -378,42 +378,42 @@ export const resultStylesheet = theme => ({
         margin: 'auto',
         padding: "0 40px 40px 40px"
     },
-    appBar: {
-        width: "100%",
-        height: "60px",
-        // backgroundColor: PRIMARY_COLOR,
-        // backgroundImage: PRIMARY_COLOR_GRADIENT_FADE_DOWN,
-        marginBottom: "30px",
-        padding: "10px 0 20px 0",
-        color: PRIMARY_COLOR,
-        fontSize: "28px",
-        fontWeight: "bold",
-        // borderRadius: "5px"
-    },
-    tabBar: {
-        height: "80px",
-        backgroundColor: "#eeeeee"
-    },
-    title: {
+    // appBar: {
+    //     width: "100%",
+    //     height: "60px",
+    //     // backgroundColor: PRIMARY_COLOR,
+    //     // backgroundImage: PRIMARY_COLOR_GRADIENT_FADE_DOWN,
+    //     marginBottom: "30px",
+    //     padding: "10px 0 20px 0",
+    //     color: PRIMARY_COLOR,
+    //     fontSize: "28px",
+    //     fontWeight: "bold",
+    //     // borderRadius: "5px"
+    // },
+    // tabBar: {
+    //     height: "80px",
+    //     backgroundColor: "#eeeeee"
+    // },
+    Title: {
         fontSize: '26px',
-        fontWeight: 'bold',
-        color : PRIMARY_COLOR,
+        fontWeight: PRIMARY_COLOR,
+        color : 'red',
         lineHeight: '1.6',
         textAlign: "center",
     },
-    subtitle: {
-        fontSize: '18px',
-        fontWeight: "bold",
-        lineHeight: "26px",
-        margin: "20px",
-    },
-    tabTitle: {
-        fontSize: '22px',
-        fontWeight: 'bold',
-        lineHeight: '1.6',
-        textAlign: "center",
-        padding: "10px",
-    },
+    // subtitle: {
+    //     fontSize: '18px',
+    //     fontWeight: "bold",
+    //     lineHeight: "26px",
+    //     margin: "20px",
+    // },
+    // tabTitle: {
+    //     fontSize: '22px',
+    //     fontWeight: 'bold',
+    //     lineHeight: '1.6',
+    //     textAlign: "center",
+    //     padding: "10px",
+    // },
     resultContainer: {
         minHeight: "865px",
         padding: "30px",
@@ -421,94 +421,94 @@ export const resultStylesheet = theme => ({
         borderRadius: "0 5px 5px 5px",
         backgroundColor: "#F8F8F8",
     },
-    tabBar: {
-        position: "relative",
-        top: "-10px",
-        fontSize: "16px",
-        fontWeight: "bold"
-    },
-    tabButtonLeft: {
-        padding: "12px 34px 12px 20px",
-        borderTop: "2px solid lightgrey",
-        borderLeft: "2px solid lightgrey",
-        borderRight: "1px solid lightgrey",
-        borderBottom: "none",
-        borderRadius: "5px 5px 0 0",
-        backgroundColor: "white",
-        position: "relative",
-        top: "1px",
-        '&:hover': {
-            cursor: "pointer",
-            color: PRIMARY_COLOR
-        }
-    },
-    tabButtonMiddle: {
-        padding: "12px 34px 12px 20px",
-        borderTop: "2px solid lightgrey",
-        borderLeft: "1px solid lightgrey",
-        borderRight: "1px solid lightgrey",
-        borderBottom: "none",
-        borderRadius: "5px 5px 0 0",
-        backgroundColor: "white",
-        position: "relative",
-        top: "1px",
-        '&:hover': {
-            cursor: "pointer",
-            color: PRIMARY_COLOR
-        }
-    },
-    tabButtonRight: {
-        padding: "12px 34px 12px 20px",
-        borderTop: "2px solid lightgrey",
-        borderLeft: "1px solid lightgrey",
-        borderRight: "2px solid lightgrey",
-        borderBottom: "none",
-        borderRadius: "5px 5px 0 0",
-        backgroundColor: "white",
-        position: "relative",
-        top: "1px",
-        '&:hover': {
-            cursor: "pointer",
-            color: PRIMARY_COLOR
-        }
-    },
-    tabButtonSelected: {
-        padding: "12px 34px 12px 20px",
-        borderTop: "2px solid lightgrey",
-        borderLeft: "2px solid lightgrey",
-        borderRight: "2px solid lightgrey",
-        borderBottom: "2px solid #F8F8F8",
-        borderRadius: "5px 5px 0 0",
-        backgroundColor: "#F8F8F8",
-        color: PRIMARY_COLOR,
-        position: "relative",
-        top: "1px",
-        '&:hover': {
-            cursor: "pointer"
-        }
-    },
+    // tabBar: {
+    //     position: "relative",
+    //     top: "-10px",
+    //     fontSize: "16px",
+    //     fontWeight: "bold"
+    // },
+    // tabButtonLeft: {
+    //     padding: "12px 34px 12px 20px",
+    //     borderTop: "2px solid lightgrey",
+    //     borderLeft: "2px solid lightgrey",
+    //     borderRight: "1px solid lightgrey",
+    //     borderBottom: "none",
+    //     borderRadius: "5px 5px 0 0",
+    //     backgroundColor: "white",
+    //     position: "relative",
+    //     top: "1px",
+    //     '&:hover': {
+    //         cursor: "pointer",
+    //         color: PRIMARY_COLOR
+    //     }
+    // },
+    // tabButtonMiddle: {
+    //     padding: "12px 34px 12px 20px",
+    //     borderTop: "2px solid lightgrey",
+    //     borderLeft: "1px solid lightgrey",
+    //     borderRight: "1px solid lightgrey",
+    //     borderBottom: "none",
+    //     borderRadius: "5px 5px 0 0",
+    //     backgroundColor: "white",
+    //     position: "relative",
+    //     top: "1px",
+    //     '&:hover': {
+    //         cursor: "pointer",
+    //         color: PRIMARY_COLOR
+    //     }
+    // },
+    // tabButtonRight: {
+    //     padding: "12px 34px 12px 20px",
+    //     borderTop: "2px solid lightgrey",
+    //     borderLeft: "1px solid lightgrey",
+    //     borderRight: "2px solid lightgrey",
+    //     borderBottom: "none",
+    //     borderRadius: "5px 5px 0 0",
+    //     backgroundColor: "white",
+    //     position: "relative",
+    //     top: "1px",
+    //     '&:hover': {
+    //         cursor: "pointer",
+    //         color: PRIMARY_COLOR
+    //     }
+    // },
+    // tabButtonSelected: {
+    //     padding: "12px 34px 12px 20px",
+    //     borderTop: "2px solid lightgrey",
+    //     borderLeft: "2px solid lightgrey",
+    //     borderRight: "2px solid lightgrey",
+    //     borderBottom: "2px solid #F8F8F8",
+    //     borderRadius: "5px 5px 0 0",
+    //     backgroundColor: "#F8F8F8",
+    //     color: PRIMARY_COLOR,
+    //     position: "relative",
+    //     top: "1px",
+    //     '&:hover': {
+    //         cursor: "pointer"
+    //     }
+    // },
     badge: {
         position: "relative",
         top: "-10px",
         left: "17px"
     },
-    resultBox: {
-        border: "1px solid grey",
-        borderRadius: "5px",
-        margin: "20px",
-    },
-    resultTextBox: {
-        minHeight: "130px"
-    },
-    resultTitle: {
-        fontWeight: "bold",
-        margin: "20px",
-        fontSize: "20px"
-    },
-    resultText: {
-        margin: "20px",
-        fontSize: "18px"
-    },
+    // resultBox: {
+    //     border: "1px solid grey",
+    //     borderRadius: "5px",
+    //     margin: "20px",
+    // },
+    // resultTextBox: {
+    //     minHeight: "130px"
+    // },
+    // resultTitle: {
+    //     fontWeight: "bold",
+    //     margin: "20px",
+    //     fontSize: "20px"
+    // },
+    // resultText: {
+    //     margin: "20px",
+    //     fontSize: "18px"
+    // },
     button: {
         width: "190px",
         height: "30px",
@@ -543,16 +543,16 @@ export const resultStylesheet = theme => ({
             color: "#000080"
         }
     },
-    printButton: {
-        float: "right",
-        margin: "-20px -20px 0 0",
-        color: "black",
-        fontWeight: "bold",
-        backgroundColor: "lightgrey",
-        '&:hover': {
-            backgroundColor: "#bbbbbb",
-        }
-    },
+    // printButton: {
+    //     float: "right",
+    //     margin: "-20px -20px 0 0",
+    //     color: "black",
+    //     fontWeight: "bold",
+    //     backgroundColor: "lightgrey",
+    //     '&:hover': {
+    //         backgroundColor: "#bbbbbb",
+    //     }
+    // },
     emailContainer: {
         border: "2px solid lightgrey",
         borderRadius: "5px",
@@ -567,64 +567,64 @@ export const resultStylesheet = theme => ({
         padding: "20px 0 20px 25px",
         marginBottom: "40px"
     },
-    socMedContainer: {
-        backgroundColor: "#F8F8F8",
-        border: "2px solid lightgrey",
-        borderRadius: "5px",
-        padding: "10px 0 20px 20px",
+    // socMedContainer: {
+    //     backgroundColor: "#F8F8F8",
+    //     border: "2px solid lightgrey",
+    //     borderRadius: "5px",
+    //     padding: "10px 0 20px 20px",
 
-    },
-    socMedText: {
-        fontSize: "20px",
-        fontWeight: "bold",
-        fontFamily: 'muli',
-        position: "relative",
-        top: "7px",
-        color: PRIMARY_COLOR,
-    },
-    socialIcon : {
-        height : '30px',
-        width : '30px',
-        borderRadius : '3px',
-        margin : '10px 5px 0 5px',
-        '&:hover': {
-            height: "36px",
-            width: "36px",
-            cursor: "pointer",
-            margin: "7px 2px -3px 2px"
+    // },
+    // socMedText: {
+    //     fontSize: "20px",
+    //     fontWeight: "bold",
+    //     fontFamily: 'muli',
+    //     position: "relative",
+    //     top: "7px",
+    //     color: PRIMARY_COLOR,
+    // },
+    // socialIcon : {
+    //     height : '30px',
+    //     width : '30px',
+    //     borderRadius : '3px',
+    //     margin : '10px 5px 0 5px',
+    //     '&:hover': {
+    //         height: "36px",
+    //         width: "36px",
+    //         cursor: "pointer",
+    //         margin: "7px 2px -3px 2px"
 
-        }
-    },
+    //     }
+    // },
     serviceIcon: {
         maxWidth: '50px',
         maxHeight: '50px',
         margin: '5px',
     },
-    infoTitle: {
-        textAlign: "center",
-        textWeight: "bold",
-        color: PRIMARY_COLOR
-    },
-    infoText: {
-        padding: "20px 20px 10px 20px",
-        fontSize: "18px",
-        lineheight: "30px",
-        textAlign: "justify"
-    },
-    infoSubText: {
-        padding: "20px 20px 10px 20px",
-        fontSize: "15px",
-        lineheight: "30px",
-        textAlign: "justify"
-    },
-    mediaBox: {
-        margin: "10px 20px 20px 0"
-    },
-    infoBullets: {
-        padding: "0 20px 0 60px",
-        fontSize: "18px",
-        fontWeight: "bold"
-    },
+    // infoTitle: {
+    //     textAlign: "center",
+    //     textWeight: "bold",
+    //     color: PRIMARY_COLOR
+    // },
+    // infoText: {
+    //     padding: "20px 20px 10px 20px",
+    //     fontSize: "18px",
+    //     lineheight: "30px",
+    //     textAlign: "justify"
+    // },
+    // infoSubText: {
+    //     padding: "20px 20px 10px 20px",
+    //     fontSize: "15px",
+    //     lineheight: "30px",
+    //     textAlign: "justify"
+    // },
+    // mediaBox: {
+    //     margin: "10px 20px 20px 0"
+    // },
+    // infoBullets: {
+    //     padding: "0 20px 0 60px",
+    //     fontSize: "18px",
+    //     fontWeight: "bold"
+    // },
     listItems: {
         marginTop: 0,
         marginLeft: "-20px",
@@ -679,16 +679,16 @@ export const resultStylesheet = theme => ({
             borderBottom: "2px solid #BF9000",
         }
     },
-    resultActionBtn : {
-        fontWeight: "bold",
-        padding: 0,
-        backgroundColor: "#F8F8F8 !important",
-        border: "2px solid #F8F8F8",
-        '&:focus': {outline: 'none' },
-        '&:hover': {
-            borderBottom: "2px solid #BF9000",
-        }
-    },
+    // resultActionBtn : {
+    //     fontWeight: "bold",
+    //     padding: 0,
+    //     backgroundColor: "#F8F8F8 !important",
+    //     border: "2px solid #F8F8F8",
+    //     '&:focus': {outline: 'none' },
+    //     '&:hover': {
+    //         borderBottom: "2px solid #BF9000",
+    //     }
+    // },
 
 })
 

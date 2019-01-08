@@ -5,44 +5,43 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Modal from '../components/commons/modal';
-import { updateStepperCount, updateTermAgreement } from '../actions/Stepper';
-import { userStylesheet, PRIMARY_COLOR } from '../styles';
-import BottomNav from '../components/commons/userBottomNav'
-import FormCheckbox from './forms/FormCheckbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+
+import Modal from '../components/commons/modal';
+import BottomNav from '../components/commons/userBottomNav'
 import Terms from '../components/commons/terms'
 import PrivacyPolicy from '../components/commons/privacyPolicy'
+import { updateStepperCount, updateTermAgreement } from '../actions/Stepper';
+import { userStylesheet, PRIMARY_COLOR } from '../styles';
 
 const styles = theme => ({
     container: {
         width: '100%',
     },
     button: {
-        marginTop: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
+        //marginTop: theme.spacing.unit,
+        //marginRight: theme.spacing.unit,
     },
     actionsContainer: {
-        marginBottom: theme.spacing.unit * 2,
+        //marginBottom: theme.spacing.unit * 2,
     },
     resetContainer: {
-        padding: theme.spacing.unit * 3,
+        //padding: theme.spacing.unit * 3,
     },
 });
 
 class VerticalLinearStepper extends React.Component {
     state = {
-        activeStep: 0,
         redirectAddress: '/user/user_account',
         checkedAgreement: false,
     };
+
     componentDidMount() {
         this.props.updateStepperCount();
     }
+
     handleChange = name => event => {
         this.setState({ [name]: event.target.checked }, () => {
             this.props.updateTermAgreement(this.state.checkedAgreement);
@@ -52,11 +51,11 @@ class VerticalLinearStepper extends React.Component {
     render() {
         const { classes, onPage, stepper } = this.props;
         const { stepperCount, pageImg, totalSteps, pageName, title, subtitle} = stepper;
-        const { activeStep } = this.state;
 
         const ExtraText = () => {
             if (stepperCount < 8) {
                 return null
+
             } else if (stepperCount === 8) {
                 return (
                     <div style={{marginRight: "10px"}}>
@@ -66,10 +65,8 @@ class VerticalLinearStepper extends React.Component {
                             <span className={classes.stepperSubtitle}>
                                 Please read our
                                 <Modal buttonLabel="Terms & Conditions" modalTitle={<span>PDConnect Terms and Conditions<hr /></span>} modalContent={< Terms />} />
-                                {/*<span className={classes.profileTermsButton}>Terms & Conditions</span> */}
                                 and
                                 <Modal buttonLabel="Data Privacy Policy" modalTitle={<span>PD Connect Data Privacy Policy<hr /></span>} modalContent={<PrivacyPolicy />}/>
-                                {/*<span className={classes.profileTermsButton}>Data Privacy Policy</span> */}
                             </span>
                             <br />
                             <br />
@@ -91,6 +88,7 @@ class VerticalLinearStepper extends React.Component {
                         <hr className={classes.hr} style={{marginRight: 0}}/>
                     </div>
                 )
+
             } else if (stepperCount === "Finally...") {
                 return (
                     <div className={classes.listItems} style={{marginTop: "-15px", marginBottom: "-15px"}} >
@@ -103,6 +101,7 @@ class VerticalLinearStepper extends React.Component {
                         </ul>
                     </div>
                 )
+
             } else if (stepperCount=== "Hello!") {
                 return (
                     <div className={classes.listItems} >
@@ -146,7 +145,6 @@ class VerticalLinearStepper extends React.Component {
                         </Grid>
                         <Grid item xs={12}>
                             <h2 className={classes.stepperTitle}>{title}</h2>
-
                         </Grid>
                         <Grid item xs={12}>
                             <span className={classes.stepperSubtitle}>{subtitle}</span>
