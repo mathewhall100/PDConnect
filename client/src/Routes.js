@@ -4,7 +4,7 @@ import Homepage from './pages/home2';
 import User from './pages/user';
 import SignIn from './pages/signin';
 import Result from './pages/results/summary';
-import Services from './pages/services';
+import Services from './pages/services/services';
 import TreatmentDisplay from './pages/results/treatments';
 import TrialDisplay from './pages/results/trials';
 import NotFound from './pages/notFound';

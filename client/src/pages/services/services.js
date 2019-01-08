@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -7,17 +7,18 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'
 import Badge from '@material-ui/core/Badge'
 
-import { resultStylesheet, PRIMARY_COLOR, SECONDARY_COLOR } from '../styles';
-import SocMedBox from '../components/commons/socMedBox'
-import assessImg from '../images/avatar/services/assess.png';
-import focusImg from '../images/avatar/services/focus.png';
-import learnImg from '../images/avatar/services/learn.png';
-import monitorImg from '../images/avatar/services/monitor.png';
-import treatmentImg from '../images/avatar/services/treatments.png';
-import trialsImg from '../images/avatar/services/trials.png';
-import { testApomorphine, testBotTox, testDBS, testDroxidopa, testDuopa, testNILO, testNuplazid, testRytary, testSPARK } from '../functions';
-import { submitTrialResult, submitTreatmentResult, submitFocusGroupResult } from '../actions/ResultAction';
 
+import SocMedBox from '../../components/commons/socMedBox'
+import assessImg from '../../images/avatar/services/assess.png';
+import focusImg from '../../images/avatar/services/focus.png';
+import learnImg from '../../images/avatar/services/learn.png';
+import monitorImg from '../../images/avatar/services/monitor.png';
+import treatmentImg from '../../images/avatar/services/treatments.png';
+import trialsImg from '../../images/avatar/services/trials.png';
+import { testApomorphine, testBotTox, testDBS, testDroxidopa, testDuopa, testNILO, testNuplazid, testRytary, testSPARK } from '../../functions';
+import { submitTrialResult, submitTreatmentResult, submitFocusGroupResult } from '../../actions/ResultAction';
+import { serviceStyles } from './serviceStyles.js' 
+import { PRIMARY_COLOR } from '../../themes'
 
 class UserServices extends Component {
 
@@ -184,17 +185,16 @@ class UserServices extends Component {
         }
 
         return (
-            <div className={classes.root}>
+            <div className={classes.servicesRoot}>
 
                <br />
 
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={12} md={8}>
                         <div className={classes.serviceMainContainer}>
-                            <h1 style={{color: PRIMARY_COLOR}}>Thank you for sharing your profile with us.</h1>
+                            <h1 className={classes.servicePageTitle}>Thank you for sharing your profile with us.</h1>
                             <br />
                             <h5>Based on the information you entered, we have found the following services personalized to you:</h5>
-                            <br />
 
                             <RenderServiceListItem
                                  avatar={treatmentImg} 
@@ -248,8 +248,8 @@ class UserServices extends Component {
                         <br />
                         
                         <div className={classes.serviceSideContainer}>
-                            <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My Bookmarks</h3>
-                            <hr className={classes.hr} />
+                            <h3 className={classes.serviceSideHeader}>My Bookmarks</h3>
+                            <hr className={classes.sideHr} />
 
                             <span style={beforeStyle}></span>
                             <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/activity')}>View Bookmarks</h5>
@@ -259,18 +259,18 @@ class UserServices extends Component {
 
                         <div className={classes.serviceSideContainer}>
 
-                            <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My Account</h3>
-                            <hr className={classes.hr} />
+                            <h3 className={classes.serviceSideHeader}>My Account</h3>
+                            <br />
 
                             <span style={beforeStyle}></span>
-                            <h5 style={{float: "right", fontSize: "19px"}}>Bronze member</h5> 
+                            <h5 className={classes.serviceSideText}>Bronze member</h5> 
                             <span style={afterStyle}></span>
 
                             <span style={beforeStyle}></span>
-                            <h5 style={{float: "right", fontSize: "19px"}}>You have 100 connect points</h5> 
+                            <h5 className={classes.serviceSideText}>You have 100 connect points</h5> 
                             <span style={afterStyle}></span>
 
-                            <hr style={{margin: "9px 0 13px 0"}}/>
+                            <hr className={classes.sideHr} />
 
                             <span style={beforeStyle}></span>
                             <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/activity')}>View account</h5>
@@ -284,18 +284,18 @@ class UserServices extends Component {
 
                         <div className={classes.serviceSideContainer}>
 
-                            <h3 style={{textAlign: "center", color: PRIMARY_COLOR}}>My profile</h3>
-                            <hr className={classes.hr} />
+                            <h3 className={classes.serviceSideHeader}>My profile</h3>
+                            <br />
 
                             <span style={beforeStyle}></span>
-                            <h5 style={{float: "right", fontSize: "19px"}}>Your profile is 70% complete</h5>
+                            <h5 className={classes.serviceSideText}>Your profile is 70% complete</h5>
                             <span style={afterStyle}></span>
 
                             <span style={beforeStyle}></span>
-                            <h5 style={{float: "right", fontSize: "19px"}}>Next update due: Dec 2018</h5>
+                            <h5 className={classes.serviceSideText}>Next update due: Dec 2018</h5>
                             <span style={afterStyle}></span>
 
-                            <hr style={{margin: "9px 0 13px 0"}}/>
+                            <hr className={classes.sideHr} />
 
                             <span style={beforeStyle}></span>
                             <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile')}>View profile </h5>
@@ -309,8 +309,6 @@ class UserServices extends Component {
         );
     }
 }
-
-
 
 const mapStateToProps = (state) => {
     console.log("state ", state)
@@ -331,6 +329,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 UserServices = withRouter(UserServices)
-UserServices = withStyles(resultStylesheet)(UserServices)
+UserServices = withStyles(serviceStyles)(UserServices)
 UserServices = connect(mapStateToProps, mapDispatchToProps)(UserServices)
 export default UserServices

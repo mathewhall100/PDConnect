@@ -1,5 +1,6 @@
 
 import { MAXWIDTH, MINHEIGHT, PRIMARY_COLOR } from '../../themes'
+
 export const resultStyles = () => ({
     
     resultRoot: {

@@ -1,25 +1,36 @@
-import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import {resultStylesheet } from '../../styles';
+import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = () => ({
+    textStyle: {
+        color: "black", 
+                fontFamily: "times",
+                padding: "10px",
+                fontSize: "17px"
+    },
+    centerText: {
+        textAlign: "center"
+    },
+    boldText: {
+        fontweight: "bold"
+    }
+})
 
 class PrivacyPolicy extends Component  {
 
     render () {   
+
+        const { classes } = this.props
         
         return (
-            <div  style={{
-                color: "black", 
-                fontFamily: "times",
-                padding: "10px",
-                fontSize: "17px" }}
-            >
+            <div className={classes.textStyle}>
 
-                <h1 style={{textAlign: "center"}}>
+                <h1 className={classes.centerText}>
                     PD Connect
                 </h1>
                 <br />
 
-                <h4 style={{fontWeight: "bold"}}>
+                <h4 className={classes.boldText} >
                     Privacy Policy
                 </h4>
                 <br />
@@ -129,6 +140,5 @@ class PrivacyPolicy extends Component  {
     }
 }
 
-
-PrivacyPolicy = withStyles(resultStylesheet)(PrivacyPolicy)
+PrivacyPolicy = withStyles(styles)(PrivacyPolicy)
 export default PrivacyPolicy;
