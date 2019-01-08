@@ -13,7 +13,7 @@ const styles = () => ({
         fontSize: "14px",
         fontWeight: "bold",
         position: "relative", 
-        top: "-25px",
+        top: "-22px",
         backgroundColor: PRIMARY_COLOR,
         color: "white",
         '&:hover': {

@@ -68,15 +68,21 @@ class Results extends Component {
         const { tabSelected } = this.state
 
         const RenderActionMenu = (props) => {
-            const ActionMenuButton = props => <Button className={classes.resultBoxActionBtn}>{props.menuItemIcon} &nbsp;&nbsp;{props.menuItemText}</Button>
+
+            const ActionMenuButton = props => 
+                <Button className={classes.actionMenuBtn}>
+                    <span className={classes.actionMenuIcon}>{props.menuItemIcon}&nbsp;</span> 
+                    <span className={classes.actionMenuText}>&nbsp;{props.menuItemText}</span>
+                </Button>
+
                 return (
-                    <React.Fragment>
+                    <div className={classes.actionMenuBox}>
                         <ActionMenuButton {...props} /><br />
                         <ActionMenuButton menuItemIcon={<BookmarkIcon />} menuItemText="Bookmark" /><br />
                         <ActionMenuButton menuItemIcon={<PrintIcon />} menuItemText="Print" /><br />
                         <ActionMenuButton menuItemIcon={<SendIcon />} menuItemText="Email" /><br />
                         <ActionMenuButton menuItemIcon={<ShareIcon />} menuItemText="Share" /><br />
-                    </React.Fragment>
+                    </div>
                 )
         }
 
@@ -154,7 +160,7 @@ class Results extends Component {
                                                 item={treatment.key}
                                                 mediaType="video"
                                                 mediaLink={treatment.mediaLnk1}
-                                                menuItemIcon={<PaymentIcon style={{color: PRIMARY_COLOR}} />} 
+                                                menuItemIcon={<PaymentIcon />} 
                                                 menuItemText="Am I covered?"
                                             /> 
                                         )
@@ -176,7 +182,7 @@ class Results extends Component {
                                                 item={trial.key}
                                                 mediaType="video"
                                                 mediaLink={trial.mediaLnk1}
-                                                menuItemIcon={<ContactMailIcon style={{color: PRIMARY_COLOR}} />} 
+                                                menuItemIcon={<ContactMailIcon />} 
                                                 menuItemText="Contact trial"
                                             /> 
                                         )
@@ -199,7 +205,7 @@ class Results extends Component {
                                                 item={group.key}
                                                 mediaType="video"
                                                 mediaLink={group.mediaLnk1}
-                                                menuItemIcon={<ContactIcon style={{color: PRIMARY_COLOR}} />} 
+                                                menuItemIcon={<ContactIcon />} 
                                                 menuItemText="Contact group"
                                             /> 
                                         )

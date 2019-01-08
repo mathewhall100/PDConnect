@@ -71,9 +71,9 @@ class TrialDisplay extends Component {
                 <div className={classes.resultContainer}>
                     <ResultTitle text={trial.name} />
                     <br />
-                    <ResultInfo subtitle="Recruitment" text={trial.recruitment} />
                     <Grid container spacing={24}>
                         <Grid item xs={12} sm={12} md={6}>
+                            <ResultInfo subtitle="Recruitment" text={trial.recruitment} />
                             <ResultInfo subtitle="Who can volunteer?" text={trial.eligable} />
                             {trial.eligableBullets.map((bullet, index) => { return (<ResultInfoBullets key={index} bullet={bullet} />) }) } 
                         </Grid>
