@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import fbIcon from '../../images/socialMedia/facebook.png';
 import instagramIcon from '../../images/socialMedia/instagram.png';
 import twitterIcon from '../../images/socialMedia/twitter.png';
 import googleIcon from '../../images/socialMedia/google+.png';
 import whatsappIcon from '../../images/socialMedia/whatsapp.png';
-import linkedinIcon from '../../images/socialMedia/linkedin.png';
-import skypeIcon from '../../images/socialMedia/skype.png';
+// import linkedinIcon from '../../images/socialMedia/linkedin.png';
+// import skypeIcon from '../../images/socialMedia/skype.png';
 import { PRIMARY_COLOR } from '../../themes.js'
 
 const style = () => ({
@@ -40,7 +40,7 @@ const style = () => ({
     },
 })
 
-class SocMedBox extends Component  {
+class SocMedBox extends PureComponent  {
     render() {
         const { classes, title } = this.props
         const socIcons = [

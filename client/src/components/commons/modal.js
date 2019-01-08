@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -11,7 +11,7 @@ import CancelIcon from '@material-ui/icons/Cancel'
 import { userStylesheet } from '../../styles';
 
 
-class SimpleModal extends React.Component {
+class SimpleModal extends Component {
     state = {
         open: false,
     };

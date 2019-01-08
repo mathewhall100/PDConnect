@@ -18,9 +18,9 @@ import trialsImg from '../../images/avatar/services/trials.png';
 import { testApomorphine, testBotTox, testDBS, testDroxidopa, testDuopa, testNILO, testNuplazid, testRytary, testSPARK } from '../../functions';
 import { submitTrialResult, submitTreatmentResult, submitFocusGroupResult } from '../../actions/ResultAction';
 import { serviceStyles } from './serviceStyles.js' 
-import { PRIMARY_COLOR } from '../../themes'
 
-class UserServices extends Component {
+
+class Services extends Component {
 
     state = {
         redirectAddress: '',
@@ -184,6 +184,7 @@ class UserServices extends Component {
             )
         }
 
+        // Services component return
         return (
             <div className={classes.servicesRoot}>
 
@@ -328,7 +329,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ submitTreatmentResult, submitTrialResult, submitFocusGroupResult }, dispatch);
 }
 
-UserServices = withRouter(UserServices)
-UserServices = withStyles(serviceStyles)(UserServices)
-UserServices = connect(mapStateToProps, mapDispatchToProps)(UserServices)
-export default UserServices
+Services = withRouter(Services)
+Services = withStyles(serviceStyles)(Services)
+Services = connect(mapStateToProps, mapDispatchToProps)(Services)
+export default Services

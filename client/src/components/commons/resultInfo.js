@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { PRIMARY_COLOR } from '../../themes.js'
 
@@ -16,7 +16,7 @@ const styles = () => ({
     },
 })
 
-    class ResultInfo extends Component  {
+    class ResultInfo extends PureComponent  {
         render() {
             const { classes, subtitle='', text=''} = this.props
             return (

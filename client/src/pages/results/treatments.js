@@ -118,7 +118,7 @@ class TreatmentDisplay extends Component {
             </React.Fragment>
 
 
-        // component 
+        // TreatmentDisplay component return
         return (
             <div className={classes.resultRoot}> 
 

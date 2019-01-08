@@ -77,7 +77,6 @@ export const serviceStyles = () => ({
     serviceSideContainer: {
         border: "2px solid lightgrey",
         borderRadius: "5px",
-        backgroundColor: "white",
         padding: "20px 20px 10px 20px",
         marginBottom: "30px",
         backgroundColor: "#F8F8F8",

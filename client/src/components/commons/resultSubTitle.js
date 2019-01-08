@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 const style = () => ({ 
@@ -10,7 +10,7 @@ const style = () => ({
     },
 })
 
-    class ResultMainSubTitle extends Component  {
+    class ResultMainSubTitle extends PureComponent  {
         render() {
             const { classes, text} = this.props
             return (

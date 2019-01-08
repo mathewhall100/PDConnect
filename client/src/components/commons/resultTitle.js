@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { startCase } from 'lodash'
 import { withStyles } from '@material-ui/core/styles';
 
@@ -14,7 +14,7 @@ const styles = () => ({
     },
 })
 
-class ResultTitle extends Component  {
+class ResultTitle extends PureComponent  {
     render() {
         const { classes, text} = this.props
         return (

@@ -58,7 +58,8 @@ class TrialDisplay extends Component {
                             <ResultInfo subtitle="What is involved?" text={trial.involved} />
                         </Grid>
                         <Grid item xs={12} sm={12} md={6}>
-                            <ResultInfo text="Study protocol." />
+                            <ResultInfo subtitle="Study protocol." />
+                            <br />
                             {trial.involvedBullets.map((bullet, index) => { return (<ResultInfoBullets key={index} bullet={bullet} />) }) }      
                         </Grid>
                     </Grid>
@@ -70,7 +71,6 @@ class TrialDisplay extends Component {
             return (
                 <div className={classes.resultContainer}>
                     <ResultTitle text={trial.name} />
-                    <br />
                     <Grid container spacing={24}>
                         <Grid item xs={12} sm={12} md={6}>
                             <ResultInfo subtitle="Recruitment" text={trial.recruitment} />
@@ -123,7 +123,7 @@ class TrialDisplay extends Component {
         }
 
 
-        // component return
+        // TrialDisplay component return
         return (
             <div className={classes.resultRoot}> 
             <br />

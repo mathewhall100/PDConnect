@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles =  () => ({
@@ -9,7 +9,7 @@ const styles =  () => ({
     }
 })
 
-class ResultInfoBullets extends Component  {
+class ResultInfoBullets extends PureComponent  {
     render() {
         const { bullet, classes } = this.props
         return (

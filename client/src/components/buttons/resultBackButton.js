@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
@@ -25,7 +25,7 @@ const styles = () => ({
     }
 })
 
-class resultBackButton extends Component  {
+class resultBackButton extends PureComponent  {
     render() {
         const { classes, targetUrl} = this.props
         return (

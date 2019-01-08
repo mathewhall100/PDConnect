@@ -19,9 +19,8 @@ import ResultDisplayMedia from '../../components/commons/resultDisplayMedia'
 import ResultBackButton from '../../components/buttons/resultBackButton'
 import ResultMoreInfoButton from '../../components/buttons/resultMoreInfoButton'
 import { resultStyles } from './resultStyles';
-import { PRIMARY_COLOR } from '../../themes'
 
-class Results extends Component {
+class ResultSummary extends Component {
 
     state = {
         tabSelected: 0,
@@ -127,7 +126,7 @@ class Results extends Component {
                 )
         }
 
-        // component return
+        // ResultsSummary component return
         return (
             <div className={classes.resultRoot}>
                 <br />
@@ -233,7 +232,7 @@ const mapStateToProps = (state) => {
     }
   };
 
-Results = withRouter(Results)
-Results = withStyles(resultStyles)(Results)
-Results = connect(mapStateToProps)(Results)
-export default Results
+ResultSummary = withRouter(ResultSummary)
+ResultSummary = withStyles(resultStyles)(ResultSummary)
+ResultSummary = connect(mapStateToProps)(ResultSummary)
+export default ResultSummary

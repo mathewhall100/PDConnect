@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = () => ({
@@ -16,7 +16,7 @@ const styles = () => ({
     }
 })
 
-class PrivacyPolicy extends Component  {
+class PrivacyPolicy extends PureComponent  {
 
     render () {   
 

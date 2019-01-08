@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import { PRIMARY_COLOR } from '../../themes.js'
@@ -23,7 +23,7 @@ const styles = () => ({
     }
 })
 
-class resultMoreInfoButton extends Component  {
+class resultMoreInfoButton extends PureComponent  {
 
     handleMoreInfo = (type, item) => {
         this.props.handleMoreInfo(type, item)
