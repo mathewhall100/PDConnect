@@ -4,7 +4,7 @@ import "./App.css";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import  AppBar from './components/AppBar';
-import Footer from './components/home/footer';
+import Footer from './components/footer';
 
 class App extends Component {
   render() {

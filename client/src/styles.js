@@ -418,53 +418,11 @@ export const home2Stylesheet = theme => ({
         margin: 'auto',
     },
 
-
-    
-    
-    
-    paper: {
-        position: 'absolute',
-        width: theme.spacing.unit * 40,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-    },
-    footerContainer: {
-        padding: '45px 20px 15px 20px',
-        marginTop: '60px',
-        backgroundColor : 'lightgrey',
-        borderTop: "2px solid",
-        borderColor: PRIMARY_COLOR,
-    },
-    footerCenter: {
-        maxWidth: MAXWIDTH,
-        padding: "0 20px 0 40px",
-        margin: '0 auto',
-    },
-    socialIcon: {
-        height: '45px',
-        width: '45px',
-        borderRadius: '5px',
-        margin: '0 5px 0 5px',
-    },
-    footerAppStore : {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: '1200px',
-        textAlign : 'left',
-    },
-    footerDownloadImg: {
-        padding: '15px 20px 15px 0',
-        maxWidth: '225px',
-        width: "90%",
-        maxHeight: 'auto',
-    },
-    footerLogo: {
-        height: '90px',
-        width: '90px',
-        margin: '0px 20px 0 0',
-        [theme.breakpoints.down('xs')]: {
-            display: 'none',
-        },
-    },
+    // paper: {
+    //     position: 'absolute',
+    //     width: theme.spacing.unit * 40,
+    //     backgroundColor: theme.palette.background.paper,
+    //     boxShadow: theme.shadows[5],
+    //     padding: theme.spacing.unit * 4,
+    // },
 });
