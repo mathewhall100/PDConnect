@@ -1,22 +1,62 @@
-import React, {Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
+import React, {Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import { withStyles } from '@material-ui/core/styles'
+import { connect } from 'react-redux'
 
-import Logo from '../images/PDC_logo_square.png';
-import Button from '@material-ui/core/Button';
+import Logo from '../images/PDC_logo_square.png'
+import Button from '@material-ui/core/Button'
 import HomeIcon from '@material-ui/icons/Home'
 import AccountIcon from '@material-ui/icons/AccountCircle'
 import DescriptionIcon from '@material-ui/icons/Description'
-import AddIcon from '@material-ui/icons/Add'
 import HelpIcon from '@material-ui/icons/Help'
 import DashboardIcon from '@material-ui/icons/Dashboard'
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import { home2Stylesheet, PRIMARY_COLOR } from '../styles.js';
 
-import AccountButton from '../components/accountButton';
+import { PRIMARY_COLOR, MAXWIDTH, MINHEIGHT } from '../themes.js'
+import AccountButton from '../components/accountButton'
 
+const styles = (theme) => ({  
+    topNavContainer: {
+        height: "100px",
+        width: "100%",
+        borderBottom: "1px solid rgba(47,85,121,0.2)",
+        borderOpacity: 0.5,
+        boxShadow: "0 1px 2px 0 rgba(47, 85, 121, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.0)",
+    },
+    topNav: {
+        maxWidth: MAXWIDTH,
+        minHeight: MINHEIGHT,
+        margin: 'auto',
+        padding: "0 40px 40px 40px",
+        margin: '0 auto',
+        [theme.breakpoints.down('xs')]: {
+            marginTop: '10px',
+        },
+    },    
+    topNavLogo: {
+        height: '80px',
+        width: '80px',
+        margin: '10px 0 10px 0',
+    },
+    topBarBtn: {
+        color: "black !important", 
+        fontWeight: "bold",
+        fontSize: "15px",
+        backgroundColor: "white !important",
+        margin: "30px 0 0 55px",
+        border: "2px solid #ffffff",
+        padding: 0,
+        float: "right", 
+        '&:focus': { outline: 'none' },
+        '&:hover': { borderBottom: "2px solid #BF9000" },
+        [theme.breakpoints.down('xs')]: {
+            margin: "30px 0 0 10px",
+        },
+    },
+    topBarBtnIcon: {
+        fontSize: "24px", 
+        color: PRIMARY_COLOR
+    }
+})
 class AppBar extends Component {
 
     handleNav = (redirectAddress) => {
@@ -25,47 +65,12 @@ class AppBar extends Component {
 
 
     render () {
-        const { classes, userCreds } = this.props;
+        const { classes, userCreds } = this.props
 
-        const RenderAccountButtons = () => {
-            return (
-
-                  userCreds.email && userCreds.password ?
-
-                <span>
-
-                    <AccountButton />
-
-                    <Button type="button" className={classes.topBarBtn}  style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/profile') }} >
-                        <DescriptionIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Profile
-                    </Button>
-
-                    <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/services') }} >
-                        <DashboardIcon style={{fontSize: "24px", fontSize: "26px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Services
-                    </Button>
-
-                    <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/services') }} >
-                        <HomeIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Home
-                    </Button>
-
-                </span>
-
-                 :
-
-                <span>
-
-                    <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleNav('/signin') }} >
-                         <AccountIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;Sign in
-                    </Button>
-
-                    <Button type="button" className={classes.topBarBtn} style={{ float: "right", marginTop: "30px" }} onClick={() => { this.handleSignIn('/faq') }} >
-                        <HelpIcon style={{fontSize: "24px", color: PRIMARY_COLOR}}/> &nbsp;&nbsp;FAQ
-                    </Button>
-
-                </span>
-
-            )
-        }
+        const RenderAccountButton = props => 
+             <Button type="button" className={classes.topBarBtn} onClick={() => { this.handleNav(props.redirectUrl) }} >
+                <span className={classes.topBarBtnIcon}>{props.icon}</span> &nbsp;&nbsp;{props.text}
+            </Button>
 
         return(
             <nav>
@@ -74,7 +79,23 @@ class AppBar extends Component {
 
                         <a href="/"><img src={Logo} className={classes.topNavLogo} alt='PD Connect' /></a>
 
-                        <RenderAccountButtons />
+                        { userCreds.email && userCreds.password ?
+
+                            <span>
+                                <AccountButton />
+                                
+                                <RenderAccountButton redirectUrl="/profile" icon={<DescriptionIcon />} text="profile" />
+                                <RenderAccountButton redirectUrl="/services" icon={<DashboardIcon />} text="services" />
+                                <RenderAccountButton redirectUrl="/services" icon={<HomeIcon />} text="home" />
+                            </span>
+
+                            :
+
+                            <span>
+                                <RenderAccountButton redirectUrl="/signin" icon={<AccountIcon />} text="Sign in" />
+                                <RenderAccountButton redirectUrl="/faq" icon={<HelpIcon />} text="FAQ" />
+                            </span>
+                        }
 
                     </div>
                 </div>
@@ -91,6 +112,6 @@ const mapStateToProps = (state) => {
   };
 
 AppBar = withRouter(AppBar)
-AppBar = withStyles(home2Stylesheet)(AppBar)
+AppBar = withStyles(styles)(AppBar)
 AppBar = connect(mapStateToProps)(AppBar)
 export default  AppBar
