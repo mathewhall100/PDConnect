@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Hero from '../components/home/hero';
-import Promise from '../components/home/promise';
-import Connects from '../components/home/connect';
-import Endorsement from '../components/home/endorsement';
-import About from '../components/home/about';
-import Start from '../components/home/start';
+import Hero from '../src/components/home/hero';
+import Promise from '../src/components/home/promise';
+import Connects from '../src/components/home/connect';
+import Endorsement from '../src/components/home/endorsement';
+import About from '../src/components/home/about';
+import Start from '../src/components/home/start';
 import Button from '@material-ui/core/Button';
 import background1 from '../images/andy-kelly-402111-unsplash.jpg';
-import { stylesheet } from '../styles';
+import { stylesheet } from '../src/styles';
 
 const styles = theme => ({
     root: {

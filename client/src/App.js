@@ -4,7 +4,7 @@ import "./App.css";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import  AppBar from './components/AppBar';
-import Footer2 from './components/home2/footer2';
+import Footer from './components/home/footer';
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
           <div className='content-holder'>
             <Routes {...this.props} />
           </div>
-        <Footer2 />
+        <Footer />
       </div>
     );
   }

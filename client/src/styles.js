@@ -1,5 +1,4 @@
-import pillBottlesImg from './images/pill_bottle.jpg';
-import tabletReportHandsImg from './images/tablet_report_hands.jpg';
+
 import { bold } from 'ansi-colors';
 
 {/*import heartShapeImg from './images/heartshapepills.jpeg';
@@ -418,182 +417,17 @@ export const home2Stylesheet = theme => ({
         textAlign: 'right',
         margin: 'auto',
     },
-    HeroTitle : {
-        fontSize : '76px',
-        color : 'black',
-        fontWeight : 'bolder',
-        lineHeight : '1.5',
-        fontFamily: "muli"
-    },
-    homeSubTitle: {
-        fontSize : '44px',
-        color : 'black',
-        fontWeight : 'bolder',
-        lineHeight : '1.5',
-        fontFamily: "muli",
-        textAlign: "center"
-    },
-    HeroWhiteTitle : {
-        fontSize: '34px',
-        color: 'white',
-        fontWeight: 'bolder',
-        lineHeight: '3',
-    },
-    description : {
-        fontSize : '22px',
-    },
-    homepageContainer : {
-        maxWidth: "1360px",
-        margin: "0 auto",
-        [theme.breakpoints.down('sm')]: {
-            paddingTop: '50px',
-            paddingBottom : '50px',
-        },
-    },
-    startContainer : {
-        margin: "50px 0 50px 0",
-        alignItems : 'center',
-    },
-    buttonContainer : {
-        paddingTop : '20px',
-        margin : 'auto',
-    },
-    mobileImg : {
-        display : 'none',
-        [theme.breakpoints.down('sm')]: {
-            display: 'block',
-            textAlign: 'center',
-            margin: 'auto',
-            minHeight: '250px',
-            alignItems: 'middle',
-            padding : '40px 0 40px 0',
-        },
-    },
-    homepageButton : {
-        backgroundColor: "lightgrey",
-        fontSize : '18px',
-        fontWeight: "bold",
-        color: PRIMARY_COLOR,
-        border: "2px solid #000080",
-        // float : 'right',
-        // textTransform : 'capitalize',
-        '&:hover': {
-            color: 'white',
-            backgroundColor: PRIMARY_COLOR
-        }
-    },
-    heroRotateText: {
-        margin: 'auto',
-        alignItems: 'center',
-    },
-    heroImg : {
-        borderColor :'solid 1px grey',
-        borderRadius: " 10px",
-        width : '90%',
-        marginTop: "30px"
 
-    },
-    heroAppStore : {
-        margin : '00px 0 00px 0',
-        width : '100%',
-    },
-    heroDownloadImg : {
-        padding : '30px 50px 30px 0',
-        width : '45%',
-        maxHeight : 'auto',
-    },
-    treatmentImg: {
-        maxWidth: '90%',
-        textAlign : 'right',
-    },
-    aboutItemContainer : {
-        alignItems : 'middle',
-        minHeight: '250px',
-    },
-    aboutContentContainer : {
-        paddingTop : '30px',
-    },
-    aboutImgContainer: {
-        textAlign: 'right',
-        [theme.breakpoints.down('sm')]: {
-            display : 'none',
-        },
-    },
-    promiseTitle: {
-        fontSize: '23px',
-        margin: 'auto',
-        paddingTop :'15px',
-        textAlign: 'center',
-        color: 'white',
-    },
-    promiseCube : {
-        minHeight : '250px',
-        padding : '20px 20px 20px 20px',
-        [theme.breakpoints.down('md')]: {
-            margin : '15px',
-            minHeight: '190px',
-        },
-    },
-    promiseRowContainer : {
-        display : 'flex',
-        justifyContent : 'center',
-    },
-    promiseIconContainer : {
-        textAlign : 'center',
-    },
-    promiseIcon : {
-        maxWidth : '50px',
-        maxHeight: '50px',
-        margin: '20px',
-    },
-    promiseHeader: {
-        color: 'white',
-    },
-    promiseDescription : {
-        color : 'white',
-        fontSize : '16px',
-        textAlign : 'center',
-        maxWidth: '70%',
-        textAlign: 'center !important',
-        margin: 'auto',
-    },
-    promiseSecondHeader: {
-        color: SECONDARY_COLOR,
-    },
-    promiseListItem : {
-        display: 'block',
-        textAlign : 'center',
-    },
-    bigAvatar: {
-        width: '100px',
-        height: '100px',
-    },
-    avatarContainer: {
-        textAlign: '-webkit-center',
-    },
-    wow : {
-        background: PRIMARY_COLOR_HOVER,
-        width: '100%',
-        height : '350px',
-        margin: '20px 0 20px 0',
-        '&:hover': {
-            height: '350px',
-            background: SECONDARY_COLOR,
-            color : `${PRIMARY_COLOR} !important`,
-        },
-        [theme.breakpoints.down('md')]: {
-            margin: '15px',
-            minHeight: '200px',
 
-        },
-    },
-    connectHeader : {
-        display: 'block',
-        fontSize: '30px',
-        color: 'black',
-        margin: 'auto',
-        padding: '40px 0 40px 0',
-        textAlign: 'center',
+    
+    
+    
+    paper: {
+        position: 'absolute',
+        width: theme.spacing.unit * 40,
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing.unit * 4,
     },
     footerContainer: {
         padding: '45px 20px 15px 20px',
@@ -612,18 +446,6 @@ export const home2Stylesheet = theme => ({
         width: '45px',
         borderRadius: '5px',
         margin: '0 5px 0 5px',
-    },
-    paper: {
-        position: 'absolute',
-        width: theme.spacing.unit * 40,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
-    },
-    connectSubscribe: {
-        display: 'grid',
-        width: "400px",
-        margin: "0 auto"
     },
     footerAppStore : {
         marginLeft: 'auto',

@@ -1,84 +1,95 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import { stylesheet } from '../../styles';
-import noSellIcon from '../../images/avatar/no-coin.png';
-import secureIcon from '../../images/avatar/secure.png';
-import checkIcon from '../../images/avatar/check.png';
-import treatmentInfoIcon from '../../images/avatar/healtcare2.png';
-import reminderIcon from '../../images/avatar/reminder.png';
-import notificationIcon from '../../images/avatar/pushNotification.png';
+import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import HomepageSubtitle from './homepageSubtitle'
+import noSellIcon from '../../images/avatar/no-coin.png'
+import secureIcon from '../../images/avatar/secure.png'
+import treatmentInfoIcon from '../../images/avatar/healtcare2.png'
+import { PRIMARY_COLOR, PRIMARY_COLOR_HOVER, SECONDARY_COLOR } from '../../themes'
+
+const styles = (theme) => ({    
+    
+    promiseCube : {
+        minHeight : '250px',
+        padding : '20px 20px 20px 20px',
+        [theme.breakpoints.down('md')]: {
+            margin : '15px',
+            minHeight: '190px',
+        },
+    },
+    promiseTitle: {
+        fontSize: '23px',
+        margin: 'auto',
+        paddingTop :'15px',
+        textAlign: 'center',
+        color: 'white',
+    },
+    promiseIconContainer : {
+        textAlign : 'center',
+    },
+    promiseIcon : {
+        maxWidth : '50px',
+        maxHeight: '50px',
+        margin: '20px',
+    },
+    promiseDescription : {
+        color : 'white',
+        fontSize : '16px',
+        textAlign : 'center',
+        maxWidth: '70%',
+        margin: 'auto',
+    },
+    wow : {
+        background: PRIMARY_COLOR_HOVER,
+
+        height : '350px',
+        margin: '20px 0 20px 0',
+        '&:hover': {
+            height: '350px',
+            background: SECONDARY_COLOR,
+            color : `${PRIMARY_COLOR} !important`,
+        },
+        [theme.breakpoints.down('md')]: {
+            margin: '15px',
+            minHeight: '200px',
+
+        },
+    }
+})
 
 class Promises extends Component {
 
     render() {
-        const { classes } = this.props;
+        const { classes } = this.props
+
+        const RenderPromise = props => 
+
+                <Grid  xs={12} item md={4} lg={4} className={classes.promiseCube}>
+                    <div className={classes.wow} style={{ transition: 'all .7s ease'}}>
+                        <div className={classes.promiseTitle}>{props.title}</div>
+                        <div className={classes.promiseIconContainer}>
+                            <img className={classes.promiseIcon} src={props.icon} alt={props.altTxt} />
+                        </div>
+                        <div className={classes.promiseDescription}>{props.text}</div>
+                    </div>
+                </Grid>
+
+        const promises = [
+            {title: "Your data is secure", icon: secureIcon, altTxt: "secure data", text: "We treat security very seriously and any personal health information you give us is stored in accordance with data protection law, the Health Information Portability and Accountability Act (HIPAA) and on secure servers." },
+            {title: "Your data is private", icon: noSellIcon, altTxt: "we do not sell data", text: "We take your data privacy very seriously and we will never share or sell your data to any third party without asking you first."},
+            {title: "Our information is up to date", icon: treatmentInfoIcon, altTxt: "secure data", text: "Our website aims to provide you with the latest and most up-to-date information about Parkinson treatments, clinical trials and other knowledge areas and we will make every effort to ensure the information we provide to you is accurate and regularly audited and updated."}
+        ]
+
         return (
-            <div style={{position: "relative", height: "auto"}}>
-                <div className={classes.parallaxPromise}></div>
-                <Grid item xs={12} className={classes.promiseHeaderContainer}>
-                    <h2 className={classes.homepageHeader}>PD Connect Features</h2>
-                    <hr />
+            <React.Fragment>
+                <HomepageSubtitle text="Our promise"  color="#FFF"/> 
+                <br />
+                <Grid container spacing={24} className={classes.promiseRowContainer} >
+                    { promises.map((promise, idx) => <RenderPromise key={idx} title={promise.title} icon={promise.icon} altTxt={promise.altTxt} text={promise.text} /> )}
                 </Grid>
-                <Grid container className={classes.promiseContainer1}>
-                    
-                    <Grid item md={2} lg={2} xs={1}></Grid>
-                    <Grid item md={2} lg={2} xs={12} className={classes.promiseCube}>
-                        <div className={classes.promiseTitle}>Secure Web/Mobile Application</div>
-                        <div className={classes.promiseIconContainer}>
-                        <img className={classes.promiseIcon} src={secureIcon} alt="secure data" />
-                        </div>
-                        <div className={classes.promiseDescription}>Your personal information is safely secured with us with our SSL that linked between a web server and browser. </div>
-                    </Grid>
-                    <Grid item md={2} lg={2} xs={12} className={classes.promiseCube}>
-                        <div className={classes.promiseTitle}>No Data Selling</div>
-                        <div className={classes.promiseIconContainer}>
-                            <img className={classes.promiseIcon} src={noSellIcon} alt="we do not sell data" />
-                        </div>
-                        <div className={classes.promiseDescription}>We do not share or worse, sell your personal information for any reason.</div>
-                    </Grid>
-                    <Grid item md={2} lg={2} xs={12} className={classes.promiseCube}>
-                        <div className={classes.promiseTitle}>Treatment Information</div>
-                        <div className={classes.promiseIconContainer}>
-                            <img className={classes.promiseIcon} src={treatmentInfoIcon} alt="secure data" />
-                        </div>
-                        <div className={classes.promiseDescription}>Providing you the easy to read and understand treatment information with as detailed as possible.</div>
-                    </Grid>
-                    <Grid item md={2} lg={2} xs={1}></Grid>
-                </Grid>
-                <Grid container className={classes.promiseContainer2}>
-                    <Grid item md={2} lg={2} xs={1}></Grid>
-                    <Grid item md={2} lg={2} xs={12} className={classes.promiseCube}>
-                        <div className={classes.promiseTitle}>Up-to-date Treatment</div>
-                        <div className={classes.promiseIconContainer}>
-                            <img className={classes.promiseIcon} src={checkIcon} alt="up to date treatment" />
-                        </div>
-                        <div className={classes.promiseDescription}>Constant updating the list of treatment for Parkinsons disease.</div>
-                    </Grid>
-                    <Grid item md={2} lg={2} xs={12} className={classes.promiseCube}>
-                        <div className={classes.promiseTitle}>Reminder</div>
-                        <div className={classes.promiseIconContainer}>
-                            <img className={classes.promiseIcon} src={reminderIcon} alt="Reminder " />
-                        </div>
-                        <div className={classes.promiseDescription}>We want to get the most out of this application, therefore, we will remind you to update your Parkinsons symptoms and side effects after a duration.</div>
-                    </Grid>
-                    <Grid item md={2} lg={2} xs={12} className={classes.promiseCube}>
-                        <div className={classes.promiseTitle}>Mobile Notification</div>
-                        <div className={classes.promiseIconContainer}>
-                            <img className={classes.promiseIcon} src={notificationIcon} alt="Push Notification" />
-                        </div>
-                        <div className={classes.promiseDescription}>Notify you when a suitable treatment or clinical trial can be apply to you.</div>
-                    </Grid>
-                    <Grid item md={2} lg={2} xs={1}></Grid>
-                </Grid>
-            </div>
-            
+            </React.Fragment>
         )
     }
 }
-Promises = withStyles(stylesheet)(Promises)
+Promises = withStyles(styles)(Promises)
 export default Promises;
