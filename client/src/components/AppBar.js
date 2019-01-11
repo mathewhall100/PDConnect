@@ -72,34 +72,31 @@ class AppBar extends Component {
             </Button>
 
         return(
-            <nav>
-                <div className={classes.topNavContainer}>
-                    <div className={classes.topNavContent}>
+            <div className={classes.topNavContainer}>
+                <div className={classes.topNavContent}>
 
-                        <a href="/"><img src={Logo} className={classes.topNavLogo} alt='PD Connect' /></a>
+                    <a href="/"><img src={Logo} className={classes.topNavLogo} alt='PD Connect' /></a>
 
-                        { userCreds.email && userCreds.password ?
+                    { userCreds.email && userCreds.password ?
 
-                            <span>
-                                <AccountButton />
-                                
-                                <RenderAccountButton redirectUrl="/profile" icon={<DescriptionIcon />} text="profile" />
-                                <RenderAccountButton redirectUrl="/services" icon={<DashboardIcon />} text="services" />
-                                <RenderAccountButton redirectUrl="/services" icon={<HomeIcon />} text="home" />
-                            </span>
+                        <span>
+                            <AccountButton />
+                            
+                            <RenderAccountButton redirectUrl="/profile" icon={<DescriptionIcon />} text="profile" />
+                            <RenderAccountButton redirectUrl="/services" icon={<DashboardIcon />} text="services" />
+                            <RenderAccountButton redirectUrl="/services" icon={<HomeIcon />} text="home" />
+                        </span>
 
-                            :
+                        :
 
-                            <span>
-                                <RenderAccountButton redirectUrl="/signin" icon={<AccountIcon />} text="Sign in" />
-                                <RenderAccountButton redirectUrl="/faq" icon={<HelpIcon />} text="FAQ" />
-                            </span>
-                        }
+                        <span>
+                            <RenderAccountButton redirectUrl="/signin" icon={<AccountIcon />} text="Sign in" />
+                            <RenderAccountButton redirectUrl="/faq" icon={<HelpIcon />} text="FAQ" />
+                        </span>
+                    }
 
-                    </div>
                 </div>
-            </nav>
-            
+            </div>
         )
     }
 }

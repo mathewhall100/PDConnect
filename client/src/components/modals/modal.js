@@ -10,6 +10,7 @@ import { userStylesheet } from '../../styles';
 
 
 class SimpleModal extends Component {
+    
     state = {
         open: false,
     };

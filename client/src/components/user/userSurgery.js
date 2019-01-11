@@ -3,17 +3,12 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { withStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
-
-import {userComponentStyles } from './userComponentStyles'
-import {QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../themes'
 import { submitUserSurgery, updateStepperCount, submitReview} from '../../actions/index.js'
-import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
 import BtnPlusModal from '../commons/buttonPlusModal'
 import UserNavButton from '../buttons/userNavButton'
 import UserSectionHead from '../texts/userSectionHead'
+import UserDisplayQuestion from './userDisplayQuestion'
+
 import Hr from '../commons/userHr'
 import { procedures } from '../../constants'
 
@@ -23,7 +18,7 @@ import { procedures } from '../../constants'
     state = {
         answerArray: [],
         answerTrack: [],
-        noAnswer: false,
+        answerNone: false,
         warningModal: false,
         redirectAddress : '/user/user_life',
     }
@@ -33,22 +28,18 @@ import { procedures } from '../../constants'
         this.props.updateStepperCount()
         const index = this.props.userTrack
         if (index && index.length > 0) {
-            console.log("index: ", index)
             this.setState({
                 answerTrack: index,
                 answerArray: this.props.userSurgery,
                 answerNone: false
             })
         } else if (this.props.userAnswerNone) {
-            console.log(this.props.userAnswerNone)
-            this.setState({
-                answerNone: true
-            })
+            this.setState({ answerNone: true})
         }
     }
 
     handleNext = () => {
-        console.log("submit - meds:, ", this.state.answerArray)
+        console.log("submit - surgeries:, ", this.state.answerArray)
         if (this.state.answerNone || this.state.answerArray.length > 0) {
              this.props.submitUserSurgery(this.state.answerArray, this.state.answerTrack, this.state.answerNone)
             if (this.props.review.redirect) {
@@ -62,7 +53,7 @@ import { procedures } from '../../constants'
         }
     }
 
-    handleAnswerSelect = (index, key) => {
+    handleAnswerSelect = (index, choice="", key) => {
         console.log("handleAnswerselect : ", key)
         this.setState({modalOpen: false})
         let tempTrack = this.state.answerTrack
@@ -70,9 +61,7 @@ import { procedures } from '../../constants'
         const tempIndex = tempArray.indexOf(key)
 
         if (tempIndex < 0) {tempArray.push(key)}
-        else if (tempTrack[index] === true && tempIndex >= 0) {
-            tempArray.splice(tempIndex, 1)
-        }
+        else if (tempTrack[index] === true && tempIndex >= 0) { tempArray.splice(tempIndex, 1) }
         tempTrack[index] = !tempTrack[index]
 
         this.setState({
@@ -94,48 +83,41 @@ import { procedures } from '../../constants'
 
     render() {
 
-        const { classes } = this.props
         const { answerTrack, answerNone, warningModal } = this.state
 
         return (
             <React.Fragment>
 
-                <Grid container spacing={24}>
+                <UserDisplayQuestion
+                    type="single"
+                    title="None" 
+                    questionText=""
+                    modalText=""
+                    modalImages=""
+                    index={0}
+                    active={answerNone}
+                    questionKey=""
+                    handleSelect={this.handleNoneSelect}
+                />
 
-                    <Grid item xs={12} sm={12} md={12} lg={7}>
-                        <div className={classes.headerQuestion}>None</div><br />
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={12} lg={5}>
-                            <Button type="button" className={classes.questionButton} style={{borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
-                            <QuestionButtonIcons answerConditional={answerNone} />
-                        </Button>
-                    </Grid>
-
-                </Grid>
                 <br />
                 <UserSectionHead text="Or, Select any that you have had from the following list" />
                 <Hr full={true}/><br />
 
                 {procedures.map((proc, index) => {
                     return (
-                        <Grid container spacing={24} key={index}>
-
-                            <Grid item xs={12} sm={12} md={12} lg={7}>
-                                <div className={classes.questionContainer}>
-                                    <span className={classes.questionHead}>{proc.procedure}</span>
-                                    <BtnPlusModal btnType="help" modalTitle={proc.procedure} modalText={proc.description} modalWarning={false} /><br />
-                                    <span className={classes.questionText}>{proc.shortDescription}</span>
-                                </div>
-                            </Grid>
-
-                            <Grid item xs={12} sm={12} md={12} lg={5}>
-                                <Button type="button" className={classes.questionButton} style={{borderColor: answerTrack[index] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(index, proc.key)}>
-                                    <QuestionButtonIcons answerConditional = {answerTrack[index]} />
-                                </Button>
-                            </Grid>
-
-                        </Grid>
+                        <div key={index}>
+                            <UserDisplayQuestion
+                                type="single"
+                                title={proc.procedure} 
+                                questionText={proc.shortDescription} 
+                                modalText={proc.description} 
+                                index={index}
+                                active={answerTrack[index]}
+                                questionKey={proc.key} 
+                                handleSelect={this.handleAnswerSelect}
+                                />
+                        </div>
                     )
                 }) }
 
@@ -166,6 +148,5 @@ const mapStateToProps = (state) => {
 
 
 UserSurgery = withRouter(UserSurgery)
-UserSurgery = withStyles(userComponentStyles)(UserSurgery)
 UserSurgery = connect(mapStateToProps, mapDispatchToProps)(UserSurgery)
 export default UserSurgery

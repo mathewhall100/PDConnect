@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Field } from 'redux-form';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField'
 import DoneIcon from '@material-ui/icons/Done';
 import { formStylesheet } from './formStyles'
 
-class FormText extends Component {  
+class FormText extends PureComponent {  
 
     renderTextField = (field) => {
 

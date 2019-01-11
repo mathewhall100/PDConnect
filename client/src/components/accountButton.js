@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -48,7 +48,7 @@ const styles = () => ({
     }
 })
 
-class FadeMenu extends React.Component {
+class FadeMenu extends Component {
     state = {
         anchorEl: null,
         open : false,

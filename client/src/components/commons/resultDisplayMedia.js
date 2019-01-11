@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
@@ -8,7 +8,7 @@ const styles = () => ({
     }
 })
    
-class ResultDisplayMedia extends Component  {
+class ResultDisplayMedia extends PureComponent  {
 
     render() {
         const { mediaType, mediaLink, width, height, classes } = this.props

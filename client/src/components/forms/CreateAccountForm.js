@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import FormText from './FormText'
 import FormPassword from './FormTextPassword'
@@ -12,7 +12,7 @@ const styles= () => ({
     }
 })
 
-class CreateAccountForm extends Component { 
+class CreateAccountForm extends PureComponent { 
 
     submit(values) {
         this.props.submit(values)

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Field } from 'redux-form';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -7,7 +7,7 @@ import DoneIcon from '@material-ui/icons/Done';
 import { formStylesheet } from './formStyles'
 
 
-class FormTextPassword extends Component {  
+class FormTextPassword extends PureComponent {  
 
     renderTextField = (field) => {
 

@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ArrowUp from '@material-ui/icons/ExpandLess';
 import ArrowDown from '@material-ui/icons/ExpandMore';
 
-import { SECONDARY_COLOR } from '../../themes';
+import { SECONDARY_COLOR, WARNING_COLOR } from '../../themes';
 import { PDADLs, meds, procedures, motorSy, nonMotorSy } from '../../constants'
 import { updateStepperCount, submitReview } from '../../actions/index.js'
 import UserNavButton from '../buttons/userNavButton'
@@ -206,7 +206,7 @@ const styles = () => ({
                 <UserNavButton type="button" width="100%" text="CREATE MY PROFILE AND CONTINUE" handleBtn={this.handleCreateProfile} />
                 
                 <br /><br />
-                {agree === false ? <span style={{color: noAgree ? "red" : null, fontWeight: noAgree ? "bold" : null}}>*You need to agree to the term and condition in order to continue.</span>: null}
+                {agree === false ? <span style={{color: noAgree ? WARNING_COLOR : null, fontWeight: noAgree ? "bold" : null}}>*You need to agree to the term and condition in order to continue.</span>: null}
 
              </React.Fragment>
         )

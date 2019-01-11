@@ -9,7 +9,7 @@ export const submitUserSurgery = (objUserSurgery, objUserTrack, objUserAnswerNon
     return (dispatch) => {
         dispatch({
             type: USER_SURGERY,
-            payload: {surgery: objUserSurgery, track: objUserTrack, AnswerNone: objUserAnswerNone}
+            payload: {surgery: objUserSurgery, track: objUserTrack, answerNone: objUserAnswerNone}
         })
     }
 }

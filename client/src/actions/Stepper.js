@@ -125,7 +125,7 @@ function getStepContent(){
                 pageImg: `${motorImg}`,
                 subtitle: `Patients with Parkinson disease experience a wide range of possible symptoms. Tell us about any symptoms you may have experienced over the past month by clicking the circles opposite.`,
                 nextPage: `/user/user_nonmotorsy`,
-                prevPage: `/user/user_surgery`,
+                prevPage: `/user/user_life`,
             }
             return objStepperContent;
         case '/user/user_nonmotorsy':

@@ -14,6 +14,7 @@ const styles = theme => ({
         padding: theme.spacing.unit * 4,
     },
 });
+
 class SimpleModal extends React.Component {
     state = {
         open: false,

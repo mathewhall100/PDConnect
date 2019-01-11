@@ -1,21 +1,53 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { reduxForm, Field } from 'redux-form';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import { reduxForm, Field } from 'redux-form'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { withStyles } from '@material-ui/core/styles';
-import UserNavButton from '../buttons/userNavButton'
-import FormControl from '@material-ui/core/FormControl';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
-import DoneIcon from '@material-ui/icons/Done';
+import { withStyles } from '@material-ui/core/styles'
+import FormControl from '@material-ui/core/FormControl'
+import OutlinedInput from '@material-ui/core/OutlinedInput'
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
+import DoneIcon from '@material-ui/icons/Done'
 
-import { age, sex, raceEthnicity, years } from '../../constants';
-import { userComponentStyles } from './userComponentStyles';
+import { age, sex, raceEthnicity, years } from '../../constants'
 import { updateStepperCount, submitUserAbout, submitReview} from '../../actions/index.js'
-import UserSectionHead from '../texts/userSectionHead';
+import UserSectionHead from '../texts/userSectionHead'
+import UserNavButton from '../buttons/userNavButton'
+import { QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR, WARNING_COLOR } from '../../themes'
+
+const styles = () => ({
+    questionLabel: {
+        fontSize: "17px",
+        fontWeight: "bold"
+    },
+    selectLabel: {
+        height: "45px",
+        color: "black",
+        fontWeight: "bold"
+    },
+    selectMenuItem: {
+        color: "grey", 
+        fontSize: "18px", 
+        fontWeight: "normal"
+    },
+    doneIcon: {
+        fontSize: "36px",
+        fontWeight: "bold",
+        color: QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR,
+        padding: 0,
+        marginLeft: "12px"
+    },
+    errorText: {
+        fontSize: "15px",
+        color: WARNING_COLOR,
+        position: "relative",
+        left: "-25px",
+        top: "35px"
+    }
+
+})
 
 
  class UserAbout extends Component {
@@ -36,15 +68,15 @@ import UserSectionHead from '../texts/userSectionHead';
     handleInitialize() {
         const initData = this.props.userAbout
         console.log("in handle init, init data is : ", initData);
-        this.props.initialize(initData);
+        this.props.initialize(initData)
     }
 
     submit(values) {
-        console.log("values : " , values);
+        console.log("values : " , values)
         this.props.submitUserAbout(values)
         if (this.props.review.redirect){
-            this.props.submitReview(false);
-            this.props.history.push('/user/user_review');
+            this.props.submitReview(false)
+            this.props.history.push('/user/user_review')
         } else {
             this.props.history.push(this.state.redirectAddress)
         }
@@ -58,27 +90,25 @@ import UserSectionHead from '../texts/userSectionHead';
             const { input, width, meta: { pristine, touched, error }, children } = field
             return (
                 <div>
-                    <span >
-                        <FormControl variant="outlined"  style={{width: `${width}`}}>
-                            <Select 
-                                displayEmpty={true}
-                                {...input}
-                                onSelect={(value) => input.onChange(value)}
-                                children={children}
-                                input={
-                                    <OutlinedInput
-                                        className={classes.selectLabel}
-                                        name=' '
-                                        id="outlined"
-                                    />
-                                }
-                            >
-                            </Select>
-                        </FormControl>
-                    </span>
-                  
-                    {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px", color: "green"}}/> : ''}
-                    <span className={classes.errorText} style={{position: "relative", top: "5px", left: "20px"}}>{touched ? error : ''} </span>
+                    <FormControl variant="outlined" style={{width: `${width}`}}>
+                        <Select 
+                            displayEmpty={true}
+                            {...input}
+                            onSelect={(value) => input.onChange(value)}
+                            children={children}
+                            input={
+                                <OutlinedInput
+                                    className={classes.selectLabel}
+                                    name=' '
+                                    id="outlined"
+                                />
+                            }
+                        >
+                        </Select>
+                    </FormControl>
+
+                    {!pristine && !error ? <DoneIcon className={classes.doneIcon} /> : ''}
+                    <span className={classes.errorText}>{touched ? error : ''}</span>
                         
                 </div>
             )
@@ -87,7 +117,7 @@ import UserSectionHead from '../texts/userSectionHead';
         const RenderQuestion = props => 
             <React.Fragment>
                 <br />
-                <h4 className={classes.questionHead} >{props.label}</h4>
+                <h4 className={classes.questionLabel} >{props.label}</h4>
                 <Field name={props.name} component={RenderSelect} width={props.width} >
                     <MenuItem value="" disabled ><span className={classes.selectMenuItem}>{props.firstMenuItem}</span></MenuItem>
                     {props.menuItems.map(item => <MenuItem key={item.value} value={item.value} >{item.text}</MenuItem> )}
@@ -168,6 +198,6 @@ const formData = {
 
 UserAbout = reduxForm(formData)(UserAbout)
 UserAbout = withRouter(UserAbout)
-UserAbout = withStyles(userComponentStyles)(UserAbout)
+UserAbout = withStyles(styles)(UserAbout)
 UserAbout = connect(mapStateToProps, mapDispatchToProps)(UserAbout)
 export default UserAbout

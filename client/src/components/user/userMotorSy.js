@@ -1,24 +1,14 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
-import CloseIcon from '@material-ui/icons/Close';
-
-import { userComponentStyles } from './userComponentStyles';
-import {QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR, QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../themes';
 import {updateStepperCount, submitUserMotorSy, submitReview } from '../../actions/index.js'
-import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
-import { motorSy } from '../../constants'
-import BtnPlusModal from '../commons/buttonPlusModal'
 import UserNavButton from '../buttons/userNavButton'
 import UserSectionHead from '../texts/userSectionHead'
+import UserDisplayQuestion from './userDisplayQuestion'
 import Hr from '../commons/userHr'
-
-const MOTOR_FLUCT_KEYS = ["earlyoff", "suddenoff", "morningbrady", "freezing"]
+import { motorSy, MOTOR_FLUCT_KEYS } from '../../constants'
 
 
  class UserMotorSy extends Component {
@@ -81,54 +71,7 @@ const MOTOR_FLUCT_KEYS = ["earlyoff", "suddenoff", "morningbrady", "freezing"]
 
     render() {
 
-        const { classes } = this.props
         const { answerTrack, displaySub } = this.state
-
-        const RenderQuestions = (props) => 
-                <Grid container spacing={24}>
-                    <Grid item xs={12} sm={12} md={12} lg={6}>
-                        <RenderQuestion {...props} />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={12} lg={6}>
-                        <RenderButtons {...props} />
-                    </Grid>
-                </Grid> 
-
-
-        const RenderQuestion = (props) => {
-            const {symptom, shortDescription, description} = props
-            return (
-                <div className={classes.questionContainer}>
-                    <span className={classes.questionHead}>{symptom}</span>
-                    <BtnPlusModal btnType="help" modalTitle={symptom} modalText={description} modalWarning={false}/><br />
-                    <span className={classes.questionText}>{shortDescription}</span>
-                </div>
-            )
-        }
-
-        const RenderButtons = (props) => {
-            const { index, symptomKey } = props
-            
-            const RenderButton = (props) => 
-                <Button type="button" 
-                    className={classes.questionButton} 
-                    style={{borderColor: answerTrack[index] === props.answer ? props.color : null}} 
-                    onClick={() => this.handleAnswerSelect(index, props.answer, symptomKey)}
-                >
-                    {answerTrack[index] !== props.answer && <span className={classes.questionButtonText} style={{marginTop: -3}}>{props.text}</span> }
-                    {answerTrack[index] === props.answer && props.icon}
-                </Button>
-
-            const buttons = [
-                { answer: "ns", color: {QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR}, icon: <span className={classes.unsureIcon}>?</span>, txt: "not sure"},
-                { answer: "no", color: {QUESTION_BUTTON_ACTIVE_SECONDARY_COLOR}, icon: <CloseIcon className={classes.closeIcon} />, txt: "no" },
-                { answer: "yes", color: {QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR}, icon: <QuestionButtonIcons answerConditional={answerTrack[index] === "yes" ? true : false}  />, txt: "yes"}
-            ]
-
-            return (
-                buttons.map((btn, index) => <RenderButton key={index} answer={btn.answer} color={btn.color} icon={btn.icon} text={btn.txt} /> )
-            )
-        }
 
         return (
             <React.Fragment>
@@ -139,16 +82,41 @@ const MOTOR_FLUCT_KEYS = ["earlyoff", "suddenoff", "morningbrady", "freezing"]
                     return (
                         <React.Fragment key={index}>
 
-                            { sy.display === "main" && <RenderQuestions symptom={sy.symptom} shortDescription={sy.shortDescription} description={sy.description} index={index} symptomKey={sy.key} /> }
+                            { sy.display === "main" && 
+                                <UserDisplayQuestion 
+                                    type="set"
+                                    title={sy.symptom} 
+                                    questionText={sy.shortDescription} 
+                                    modalText={sy.description} 
+                                    index={index} 
+                                    answer={answerTrack[index]}
+                                    symptomKey={sy.key} 
+                                    handleSelect={this.handleAnswerSelect}
+                                /> 
+                            }
 
-                            { sy.display === "sub" && displaySub && <span>
-                                {index === 5 && <span>
-                                    <Hr full={true}/> 
-                                    <UserSectionHead text="OK, tell us a bit more about your motor fluctations. Do you have any of the following problems?" />
-                                </span> }
-                                <RenderQuestions symptom={sy.symptom} shortDescription={sy.shortDescription} description={sy.description} index={index} symptomKey={sy.key} />
-                                {index === 8 && <Hr full={true}/>}
-                            </span> }
+                            { sy.display === "sub" && displaySub && 
+                                <span>
+                                    {index === 5 && <span>
+                                        <Hr full={true}/> 
+                                        <UserSectionHead text="OK, tell us a bit more about your motor fluctations. Do you have any of the following problems?" />
+                                    </span> }
+
+                                    <UserDisplayQuestion 
+                                        type="set"
+                                        title={sy.symptom} 
+                                        questionText={sy.shortDescription} 
+                                        modalText={sy.description} 
+                                        index={index} 
+                                        answer={answerTrack[index]}
+                                        symptomKey={sy.key} 
+                                        handleSelect={this.handleAnswerSelect}
+                                    />
+
+                                    {index === 8 && <Hr full={true}/>}
+
+                                </span> 
+                            }
 
                         </React.Fragment>
                     )
@@ -178,6 +146,5 @@ const mapStateToProps = (state) => {
 
 
 UserMotorSy = withRouter(UserMotorSy)
-UserMotorSy = withStyles(userComponentStyles)(UserMotorSy)
 UserMotorSy = connect(mapStateToProps, mapDispatchToProps)(UserMotorSy)
 export default UserMotorSy

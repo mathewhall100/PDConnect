@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Field } from 'redux-form'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-class FormCheckbox extends Component {
+class FormCheckbox extends PureComponent {
 
     renderCheckbox = ({input, label}) => {
         return (
