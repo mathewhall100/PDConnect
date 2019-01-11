@@ -22,10 +22,9 @@ const styles = (theme) => ({
         borderOpacity: 0.5,
         boxShadow: "0 1px 2px 0 rgba(47, 85, 121, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.0)",
     },
-    topNav: {
+    topNavContent: {
         maxWidth: MAXWIDTH,
         minHeight: MINHEIGHT,
-        margin: 'auto',
         padding: "0 40px 40px 40px",
         margin: '0 auto',
         [theme.breakpoints.down('xs')]: {
@@ -75,7 +74,7 @@ class AppBar extends Component {
         return(
             <nav>
                 <div className={classes.topNavContainer}>
-                    <div className={classes.topNav}>
+                    <div className={classes.topNavContent}>
 
                         <a href="/"><img src={Logo} className={classes.topNavLogo} alt='PD Connect' /></a>
 

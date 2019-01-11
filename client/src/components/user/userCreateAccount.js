@@ -6,12 +6,12 @@ import { bindActionCreators } from 'redux';
 
 import { submitCredsInfo } from '../../actions/CredsActions';
 import { updateStepperCount } from '../../actions/index.js'
+import userAPI from "../../utils/userAPI.js"
 import CreateAccountForm from '../forms/CreateAccountForm';
 import UserNavButton from '../buttons/userNavButton'
-import UserSectionHead from '../texts/userSectionHead'
-import userAPI from "../../utils/userAPI.js"
+import UserSectionHead from '../texts/userSectionHead';
 
-class UserNewAccount extends Component {
+class CreateAccount extends Component {
 
     state = {
         redirectAddress: '/services'
@@ -48,21 +48,23 @@ class UserNewAccount extends Component {
             console.log(`OOPS! A fatal problem occurred and your request could not be completed`)
             console.log(err)
         })
+
+        // Move on to services page
         this.props.history.push(this.state.redirectAddress)
     }
 
     render() {
         const { handleSubmit } = this.props
         return (
-            <React.Fragment >
+            <React.Fragment>
 
-                <UserSectionHead text = "Enter your e-mail address and a password to set up your account." />
+                <UserSectionHead text="Enter your e-mail address and a password to create your account." />
 
                 <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}> 
                     <CreateAccountForm submit={this.submit}/>
-                    <UserNavButton type="submit" width="100%" text="SET UP MY ACCOUNT" />
+                    <UserNavButton type="submit" width="100%" text="CREATE MY ACCOUNT"  />
                 </form>
-
+                
             </React.Fragment>
         );
     }
@@ -120,7 +122,7 @@ const formData = {
     validate
 }
 
-UserNewAccount = reduxForm(formData)(UserNewAccount)
-UserNewAccount = withRouter(UserNewAccount)
-UserNewAccount = connect(mapStateToProps, mapDispatchToProps)(UserNewAccount)
-export default UserNewAccount
+CreateAccount = reduxForm(formData)(CreateAccount)
+CreateAccount = withRouter(CreateAccount)
+CreateAccount = connect(mapStateToProps, mapDispatchToProps)(CreateAccount)
+export default CreateAccount

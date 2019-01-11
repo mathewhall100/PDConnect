@@ -13,7 +13,7 @@ export const testDBS= (userAbout, userMotorSy, userNonMotorSy) => {
     console.log("testDBS")
     if (userAbout && userMotorSy && userNonMotorSy) {
         let test1, test2, test3, test4, test5 
-        test1 = parseInt(userAbout.yearDiagnosed) < 2014 ? true : false
+        test1 = parseInt(userAbout.yearDiagnosed, 10) < 2014 ? true : false
         test2 = userMotorSy.filter(symptom => symptom === "suddenoff")
         test3 = userMotorSy.filter(symptom => symptom === "freezing")
         test4 = userMotorSy.filter(symptom => symptom ===  "dyskinesia")
@@ -91,8 +91,8 @@ export const testSPARK = (userAbout, userMeds) => {
     console.log("testSpark")
     if (userAbout && userMeds) {
         let test1, test2, test3
-        test1 = (parseInt(userAbout.age) > 40 && parseInt(userAbout.age) < 81 ) ? true : false
-        test2 = parseInt(userAbout.yearDiagnosed) > 2015 ? true : false
+        test1 = (parseInt(userAbout.age, 10) > 40 && parseInt(userAbout.age, 10) < 81 ) ? true : false
+        test2 = parseInt(userAbout.yearDiagnosed, 10) > 2015 ? true : false
         test3 = userMeds.length < 1 ? true : false
 
         console.log("spark: ", test1, test2, test3)
@@ -106,8 +106,8 @@ export const testNILO = (userAbout, userMeds) => {
     console.log("testNILO")
     if (userAbout && userMeds) {
         let test1, test2, test3 
-        test1 = (parseInt(userAbout.age) > 40 && parseInt(userAbout.age) < 80 ) ? true : false
-        test2 = parseInt(userAbout.yearDiagnosed) < 2013 ? true : false
+        test1 = (parseInt(userAbout.age, 10) > 40 && parseInt(userAbout.age, 10) < 80 ) ? true : false
+        test2 = parseInt(userAbout.yearDiagnosed, 10) < 2013 ? true : false
         test3 = userMeds.length > 0 ? true : false
 
         console.log("spark: ", test1, test2, test3)

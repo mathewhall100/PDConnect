@@ -7,11 +7,41 @@ import { startCase } from 'lodash'
 import { withStyles } from '@material-ui/core/styles';
 import ArrowUp from '@material-ui/icons/ExpandLess';
 import ArrowDown from '@material-ui/icons/ExpandMore';
-import Button from '@material-ui/core/Button'
 
-import {userStylesheet } from '../../styles';
+import { SECONDARY_COLOR } from '../../themes';
 import { PDADLs, meds, procedures, motorSy, nonMotorSy } from '../../constants'
 import { updateStepperCount, submitReview } from '../../actions/index.js'
+import UserNavButton from '../buttons/userNavButton'
+import UserSectionHead from '../texts/userSectionHead'
+
+const styles = () => ({
+    profileSectionHeader: {
+        lineHeight: 2,
+        fontSize: "17px",
+        fontWeight: "bold",
+    },
+    profileEditBtn: {
+        float: "right", 
+        backgroundColor: "white",
+        color: 'black',
+        fontWeight: "bold",
+        fontSize: "14px",
+        marginLeft: "10px",
+        '&:hover': {
+            color: SECONDARY_COLOR,
+            cursor : 'pointer',
+        }
+    },
+    profileArrowBtn: {
+        float: "right"
+    },
+    profileArrowIcon: {
+        fontSize: "32"
+    },
+    li: {
+        marginLeft: "20px"
+    }
+})
 
 
  class UserReview extends Component {
@@ -27,7 +57,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
         redirectAddress : '/user/user_account'
     }
 
-    handleCreateProfile() {
+    handleCreateProfile = () => {
         if (this.props.stepper.agree) {
             this.props.history.push(this.state.redirectAddress)
         }
@@ -54,31 +84,32 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
         const { showBox, noAgree } = this.state
 
         const RenderBoxHeader = props => 
-                <div className={classes.profileSectionHeader}>
-                    {props.title}
-                    <span className={classes.profileBoxButton} style={{float: "right", marginTop: "5px", marginLeft: "15px"}}  onClick={() => { this.redirectStuff(props.link)}}>
+                <div>
+                    <span className={classes.profileSectionHeader}>{props.title}</span>
+                    <span className={classes.profileEditBtn} onClick={() => { this.redirectStuff(props.link)}}>
                         EDIT 
                     </span>
-                    <span className={classes.profileBoxButton} style={{float: "right"}} onClick={() => this.handleShowBox(props.number)}>
-                        {showBox[props.number] ? <ArrowUp style={{ fontSize: "32"}} /> : <ArrowDown style={{ fontSize: "32" }} /> }
+                    <span className={classes.profileArrowBtn} onClick={() => this.handleShowBox(props.number)}>
+                        {showBox[props.number] ? 
+                            <ArrowUp className={classes.profileArrowBtn} /> 
+                        : 
+                            <ArrowDown className={classes.profileArrowBtn} /> }
                     </span>
                 </div>
 
-
         return (
-            <div className={classes.componentBox} style={{marginTop: "75px"}}>
+            <React.Fragment>
 
-                <p className={classes.sectionTitle}>Please check your entries below and click 'edit' to make changes. Then click 'CREATE MY PROFILE AND CONTINUE'. </p>
+                <UserSectionHead text="Please check your entries below and click 'edit' to make changes. Then click 'CREATE MY PROFILE AND CONTINUE'." /><br />
 
                 <RenderBoxHeader title="About me" number={0} link="/user/user_about"/>
                 {showBox[0] && <div>
                     {userAbout && userAbout.age ?
                         <ul>
-                            <li style={{marginLeft: "20px"}}>{userAbout.age} years old {startCase(userAbout.sex)}</li>
-                            <li style={{marginLeft: "20px"}}>{userAbout.race}</li>
-                            <li style={{marginLeft: "20px"}}>First diagnosed with Parkinson disease: {userAbout.yearDiagnosed}</li>
-                            <li style={{marginLeft: "20px"}}>Began treatment for Parkinson disease: {userAbout.yearTreatment}</li>
-
+                            <li>{userAbout.age} years old {startCase(userAbout.sex)}</li>
+                            <li>{userAbout.race}</li>
+                            <li>First diagnosed with Parkinson disease: {userAbout.yearDiagnosed}</li>
+                            <li>Began treatment for Parkinson disease: {userAbout.yearTreatment}</li>
                         </ul>
                     : null }
                 </div> }
@@ -89,7 +120,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                         <ul>
                             {userFamily.map((item, index) => {
                                 return (
-                                    <li style={{marginLeft: "20px"}} key={index}>A {item}</li>
+                                    <li key={index}>A {item}</li>
                                 )
                             }) }
                         </ul>
@@ -105,7 +136,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                             {userMeds.map((item, index) => {
                                 let med = meds.filter(med => med.key === item)[0].generic
                                 return (
-                                    <li key={index} style={{marginLeft: "20px"}}>{med}</li>
+                                    <li key={index} >{med}</li>
                                 )
                             }) }
                         </ul>
@@ -121,7 +152,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                             {userSurgery.map((item, index) => {
                                 let proc = procedures.filter(pr => pr.key === item)[0].procedure
                                 return (
-                                    <li key={index} style={{marginLeft: "20px"}}>{proc}</li>
+                                    <li key={index} >{proc}</li>
                                 )
                             }) }
                         </ul>
@@ -134,7 +165,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                 {showBox[1] && <div>
                     {userADL ?
                         <ul>
-                            <li style={{marginLeft: "20px"}}>{PDADLs.filter(adl => adl.key === userADL)[0].title.slice(3)}</li>
+                            <li>{PDADLs.filter(adl => adl.key === userADL)[0].title.slice(3)}</li>
                         </ul>
                     : null }
                 </div> }
@@ -146,7 +177,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                             {userMotorSy.map((item, index) => {
                                 let symptom = motorSy.filter(sy => sy.key === item)[0].symptom
                                 return (
-                                    <li key={index} style={{marginLeft: "20px"}}>{symptom}</li>
+                                    <li key={index} >{symptom}</li>
                                 )
                             }) }
                         </ul>
@@ -162,7 +193,7 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                             {userNonMotorSy.map((item, index) => {
                                 let symptom = nonMotorSy.filter(sy => sy.key === item)[0].symptom
                                 return (
-                                    <li key={index} style={{marginLeft: "20px"}}>{symptom}</li>
+                                    <li key={index} >{symptom}</li>
                                 )
                             }) }
                         </ul>
@@ -171,13 +202,13 @@ import { updateStepperCount, submitReview } from '../../actions/index.js'
                     : null }
                 </div> }
 
-                <br />
+                <br /><br ></br>
+                <UserNavButton type="button" width="100%" text="CREATE MY PROFILE AND CONTINUE" handleBtn={this.handleCreateProfile} />
+                
+                <br /><br />
+                {agree === false ? <span style={{color: noAgree ? "red" : null, fontWeight: noAgree ? "bold" : null}}>*You need to agree to the term and condition in order to continue.</span>: null}
 
-                <Button type="button" className={classes.userNavButtonRight} onClick={() => this.handleCreateProfile()}>CREATE MY PROFILE AND CONTINUE</Button>
-
-                {agree === false ? <span style={{color: noAgree ? "red" : null }}>*You need to agree to the term and condition in order to continue.</span>: null}
-
-             </div>
+             </React.Fragment>
         )
     }
 }
@@ -203,6 +234,6 @@ const mapStateToProps = (state =>{
 })
 
 UserReview = withRouter(UserReview)
-UserReview = withStyles(userStylesheet)(UserReview)
+UserReview = withStyles(styles)(UserReview)
 UserReview = connect(mapStateToProps, mapDispatchToProps)(UserReview)
 export default UserReview

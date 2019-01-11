@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import Homepage from './pages/home/home';
-import User from './pages/user';
-import SignIn from './pages/signin';
+import User from './pages/user/user';
+import SignIn from './pages/auth/signIn';
 import Result from './pages/results/summary';
 import Services from './pages/services/services';
 import TreatmentDisplay from './pages/results/treatments';
 import TrialDisplay from './pages/results/trials';
-import NotFound from './pages/notFound';
+import NotFound from './pages/auth/notFound';
 
 import { connect } from 'react-redux';
 import { updateStepperCount } from './actions/Stepper';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import DoneIcon from '@material-ui/icons/Done';
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
-import {userStylesheet } from '../../styles';
+import {userComponentStyles } from '../user/userComponentStyles';
 
 class QuestionButtonIcon extends Component  {
 
@@ -20,5 +20,5 @@ class QuestionButtonIcon extends Component  {
     }
 }
 
-QuestionButtonIcon = withStyles(userStylesheet)(QuestionButtonIcon)
+QuestionButtonIcon = withStyles(userComponentStyles)(QuestionButtonIcon)
 export default QuestionButtonIcon

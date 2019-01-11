@@ -15,7 +15,7 @@ import learnImg from '../../images/avatar/services/learn.png';
 import monitorImg from '../../images/avatar/services/monitor.png';
 import treatmentImg from '../../images/avatar/services/treatments.png';
 import trialsImg from '../../images/avatar/services/trials.png';
-import { testApomorphine, testBotTox, testDBS, testDroxidopa, testDuopa, testNILO, testNuplazid, testRytary, testSPARK } from '../../functions';
+import { testApomorphine, testBotTox, testDBS, testDroxidopa, testDuopa, testNILO, testNuplazid, testRytary, testSPARK } from '../../functions/logicFunctions';
 import { submitTrialResult, submitTreatmentResult, submitFocusGroupResult } from '../../actions/ResultAction';
 import { serviceStyles } from './serviceStyles.js' 
 

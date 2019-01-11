@@ -1,25 +1,21 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { withRouter, Link, Redirect} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import Modal from '@material-ui/core/Modal';
-import HelpIcon from '@material-ui/icons/Help';
-import DoneIcon from '@material-ui/icons/Done';
-import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 
-import { activity_level } from '../../constants';
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
 import { updateStepperCount, submitUserLife, submitReview } from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
-import UserModal from '../commons/userModal'
+import BtnPlusModal from '../commons/buttonPlusModal'
+import UserNavButton from '../buttons/userNavButton'
+import UserSectionHead from '../texts/userSectionHead'
 import { PDADLs } from '../../constants'
+import { QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../themes'
+import { userComponentStyles } from './userComponentStyles'
 
 
  class UserLife extends Component {
@@ -33,10 +29,7 @@ import { PDADLs } from '../../constants'
 
     state = {
         activeBtn: [],
-        modalOpen: false,
-        modalWarning: false,
-        modalTitle : '',
-        modalText : '',
+        warningModal: false,
         redirectAddress : '/user/user_motorsy',
     }
 
@@ -60,8 +53,7 @@ import { PDADLs } from '../../constants'
                 this.props.history.push(this.state.redirectAddress)
             }
         } else {
-            this.setState({modalWarning: true})
-            this.handleModalOpen("This question is important!", "Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." )
+            this.setState({warningModal: false}, () => this.setState({warningModal: true}) )
         }
     }
 
@@ -70,27 +62,15 @@ import { PDADLs } from '../../constants'
         this.setState({activeBtn: []})
     }
 
-    handleModalOpen = (title, text) => {
-        console.log(title);
-         this.setState({
-             modalTitle : title,
-             modalText : text,
-             modalOpen: true
-        });
-     };
-
-
     render() {
 
-        const { handleSubmit, pristine, submitting, classes } = this.props
-        const { activeBtn, modalOpen, modalTitle, modalText, modalWarning  } = this.state
+        const { classes } = this.props
+        const { activeBtn, warningModal } = this.state
 
         return (
-            <section>
-                <div className={classes.componentBox} >
+            <React.Fragment>
 
-                    <p className={classes.sectionTitle}>Select the most accurate answer below</p>
-                    <br />
+                    <UserSectionHead text="Select the most accurate answer below" /><br />
 
                     {PDADLs.map((question, index) => {
                         return (
@@ -99,10 +79,7 @@ import { PDADLs } from '../../constants'
                                     <Grid item xs={12} sm={8} md={8}>
                                         <div className={classes.questionContainer} >
                                             <span className={classes.questionHead}>{question.title}</span>
-                                            <Button type="button" id="modalBtn" className={classes.helpButton} style={{position: "relative", top: "-5px", outline: "none"}} onClick={() => this.handleModalOpen(PDADLs[index].title, PDADLs[index].text)}>
-                                                <HelpIcon color="primary" className={classes.helpIcon}/>
-                                                 {/* &nbsp;&nbsp;examples */}
-                                            </Button>
+                                            <BtnPlusModal btnType="help" btnLabel=""  modalTitle={PDADLs[index].title} modalText={PDADLs[index].text} modalWarning={false} /><br />
                                         </div>
                                     </Grid>
 
@@ -120,19 +97,12 @@ import { PDADLs } from '../../constants'
                         )
                     }) }
 
-                    <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
+                    <br />
+                    <UserNavButton type="button" width="100%" text="SAVE AND CONTINUE" handleBtn={this.handleNext} />
 
-                </div>
+                    { warningModal && <BtnPlusModal btnType="none" modalTitle="This question is important!" modalText="Many treatments and clinical trials in Parkinson disease are only appropriate for patients affected by Parkinson disease to a certain degree or in a certain way. Answering this question is importnat as it helps us further individualize the treatments and trials we suggest may be appropriate for you." modalWarning={true} /> }
 
-                { modalOpen && <UserModal
-                    modalOpen={modalOpen}
-                    modalTitle={modalTitle}
-                    modalText={modalText}
-                    modalWarning={modalWarning}
-                /> }
-
-            </section>
-
+            </React.Fragment>
         );
     }
 }
@@ -152,6 +122,6 @@ const mapStateToProps = (state =>{
 })
 
 UserLife = withRouter(UserLife)
-UserLife = withStyles(userStylesheet)(UserLife)
+UserLife = withStyles(userComponentStyles)(UserLife)
 UserLife = connect(mapStateToProps, mapDispatchToProps)(UserLife)
 export default UserLife

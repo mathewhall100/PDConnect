@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button'
-import Modal from '../commons/modal';
-import { userStylesheet, PRIMARY_COLOR } from '../../styles';
+import BtnPlusModal from '../commons/buttonPlusModal'
+import UserNavButton from '../buttons/userNavButton'
+import { PRIMARY_COLOR } from '../../themes';
 import { updateStepperCount } from '../../actions/index.js'
 import PrivacyPolicy from '../commons/privacyPolicy'
+
+const styles =() => ({
+    
+})
 
 
 class UserStart extends Component {
@@ -22,30 +26,17 @@ class UserStart extends Component {
         this.props.updateStepperCount()
     }
 
-    handleGo() {
-        this.props.history.push(this.state.redirectAddress)
-    }
+    handleGo = () => { this.props.history.push(this.state.redirectAddress) }
 
-    handleBack() {
-        this.props.history.push('/')
-    }
-
-    handleModalOpen = (title, text) => {
-        console.log(title);
-         this.setState({
-             modalTitle : title,
-             modalText : text,
-             modalOpen: true
-        });
-     };
-
+    handleBack = () => { this.props.history.push('/') }
 
     render() {
 
         const { classes } = this.props
 
         return (
-            <div className={classes.componentBox} style={{marginTop: "75px"}}>
+            <React.Fragment>
+                
                 <span  style={{fontWeight: "bold", fontSize: "23px"}}>First, however, we need to know a bit about you, how Parkinson disease affects you, and about your treatment.</span>
                 <br />
                 <br />
@@ -59,7 +50,7 @@ class UserStart extends Component {
                         <span style={{fontWeight: "bold"}}> We take your privacy very seriously and will not sell or share any information about you without asking you first. </span>
                         <span style={{position: "relative", top: "10px"}}><br />
                             Read our
-                            <Modal buttonLabel="Data Privacy Policy" modalTitle={<span>Privacy Policy<hr /></span>} modalContent={<PrivacyPolicy />} />
+                            <BtnPlusModal btnType="terms" buttonLabel="Data Privacy Policy" modalTitle={<span>Privacy Policy</span>} modalText={<PrivacyPolicy /> } modalWarning={false}/>
                         </span>
                     </p>
                 </div>
@@ -68,11 +59,10 @@ class UserStart extends Component {
                 <br />
 
                 <div style={{textAlign: "center"}}>
-                    <Button type="button" className={classes.startPageButton} style={{width: "50%"}} onClick={() => this.handleGo()}>Ok, Let's go</Button>
-                    <br /><br />
+                    <UserNavButton handleBtn={this.handleGo} type="button" width="50%" text="OK, LET'S GO" />
                 </div>
 
-            </div>
+            </React.Fragment>
         )
     }
 }
@@ -83,6 +73,6 @@ function mapDispatchToProps(dispatch) {
 
 
 UserStart = withRouter(UserStart)
-UserStart = withStyles(userStylesheet)(UserStart)
+UserStart = withStyles(styles)(UserStart)
 UserStart = connect(null, mapDispatchToProps)(UserStart)
 export default UserStart

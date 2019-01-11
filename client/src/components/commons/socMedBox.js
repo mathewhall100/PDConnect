@@ -11,13 +11,13 @@ import { PRIMARY_COLOR } from '../../themes.js'
 
 const style = () => ({
 
-    socMedContainer: {
+    container: {
         backgroundColor: "#F8F8F8",
         border: "2px solid lightgrey",
         borderRadius: "5px",
         padding: "10px 0 20px 20px",
     },
-    socMedText: {
+    text: {
         fontSize: "20px",
         fontWeight: "bold",
         fontFamily: 'muli',
@@ -25,7 +25,7 @@ const style = () => ({
         top: "7px",
         color: PRIMARY_COLOR,
     },
-    socialIcon : {
+    icon : {
         height : '30px',
         width : '30px',
         borderRadius : '3px',
@@ -49,17 +49,12 @@ class SocMedBox extends PureComponent  {
             {icon: instagramIcon, alt: "insragram icon"},
             {icon: whatsappIcon, alt: "whatsapp icon"},
             {icon: googleIcon, alt: "google icon"}
-    ]
-
-        const SocialIcon = props =>
-            <React.Fragment>
-                <img className={classes.socialIcon} src={props.icon} alt={props.alt} />
-            </React.Fragment>
+        ]
 
         return (
-            <div className={classes.socMedContainer}>
-                <span className={classes.socMedText}>&nbsp;{title}</span>
-                {socIcons.map((icon, idx) => <SocialIcon key={idx} icon={icon.icon} alt={icon.alt} />) }
+            <div className={classes.container}>
+                <span className={classes.text}>&nbsp;{title}</span>
+                {socIcons.map((icon, idx) => <img key={idx} className={classes.icon} src={icon.icon} alt={icon.alt} /> )}
             </div>
         )
     }

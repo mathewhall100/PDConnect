@@ -38,14 +38,15 @@ export const updateTermAgreement = (tf) => {
 function getStepContent(){
     let objStepperContent = {};
     switch (window.location.pathname) {
-        case '/user/account' : {
+        case '/user/create_account' : {
             objStepperContent = {
-                stepperCount: '',
-                pageName: 'Create account',
-                title: `Create an account to enjoy the benefits as below!`,
+                stepperCount: "Great,",
+                pageName: "Let's Create An Account For you!",
+                title: ``,
                 pageImg: `${accountImg}`,
-                subtitle: `You will be able to receive notification to edit your medications, and symptoms so you are always on top of the new treatments available!`,
-                prevPage: `/`,
+                subtitle: ``,
+                nextPage: '/services',
+                prevPage: `/services`,
             }
             return objStepperContent;
         }
@@ -100,7 +101,7 @@ function getStepContent(){
                 pageName: 'Surgery or Procedures',
                 title: `Have you ever had any surgery or procedures to treat Parkinson disease?`,
                 pageImg: `${surgeryImg}`,
-                subtitle: `Some patients have had surgery or precideures performed to treat their Parkinson disease. Tell us if you have ever had any of the surgeries or procedures opposite. `,
+                subtitle: `Some patients have had surgery or procedures to treat their Parkinson disease. Tell us if you have ever had any of the surgeries or procedures opposite. `,
                 nextPage: `/user/user_life`,
                 prevPage: `/user/user_meds`,
             }
@@ -109,7 +110,7 @@ function getStepContent(){
             objStepperContent = {
                 stepperCount: 5,
                 pageName: "Day-To-Day Activities",
-                title: `Awesome, you're over half way through! ON this page we'd like to know a little about your day-to-day activities`,
+                title: `Awesome, you're over half way through! On this page we'd like to know a little about your day-to-day activities`,
                 pageImg: `${lifestyleImg}`,
                 subtitle: `Please check the box next to the description that best describes how your Parkinson disease has affected your normal day-to-day activities over the past month.`,
                 nextPage: `/user/user_motorsy`,

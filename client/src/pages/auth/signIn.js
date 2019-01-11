@@ -7,17 +7,25 @@ import { bindActionCreators } from 'redux';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 
-import { userStylesheet } from '../styles';
-import { submitCredsInfo, submitUserAbout, submitUserFamily, submitUserLife, submitUserMeds, submitUserSurgery, submitUserMotorSy, submitUserNonMotorSy } from '../actions/index.js';
-import FormText from '../components/forms/FormText';
-import FormPassword from '../components/forms/FormTextPassword';
-import loginAPI from '../utils/loginAPI';
+import { authStyles } from './authStyles';
+import { submitCredsInfo, 
+         submitUserAbout, 
+         submitUserFamily, 
+         submitUserLife, 
+         submitUserMeds, 
+         submitUserSurgery, 
+         submitUserMotorSy, 
+         submitUserNonMotorSy } from '../../actions/index.js';
+import FormText from '../../components/forms/FormText';
+import FormPassword from '../../components/forms/FormTextPassword';
+import loginAPI from '../../utils/loginAPI';
  
 
 class SignIn extends Component {
 
     state = {
-        redirectAddress: '/services'
+        redirectAddress: '/services',
+        noUser: false
     }
 
     componentDidMount() {
@@ -27,7 +35,6 @@ class SignIn extends Component {
     submit(values) {
         console.log("values : ", values);
         
-
         // search for user
         loginAPI.findByLogin({
             email: values.email,
@@ -41,7 +48,7 @@ class SignIn extends Component {
                     this.props.history.push(this.state.redirectAddress)
                 } else {
                     console.log("User not found")
-                    // do something else
+                    this.setState({noUser: true})
                 }
             })
             .catch(err => {
@@ -74,33 +81,36 @@ class SignIn extends Component {
     render() {
 
         const { handleSubmit, classes } = this.props
+        const { noUser } = this.state
 
         return (
             <div className={classes.root}>
 
-                <div style={{maxWidth: "600px", margin: "75px auto"}}>
+                <div className={classes.container}>
 
-                <h3 className={classes.stepperPageName} style={{fontFamily: "muli"}}>Sign In To Your Account </h3>
+                <h3 className={classes.title}>Sign In To Your Account </h3>
 
-                    <div>
-                        <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
-                            <br />
-                            <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>E-mail</label>
-                            <br />
-                            <FormText title='email' name='email' label='' placeholder="e.g. john.doe@gmail.com" width="80%"/>
-                            <br />
-                            <label style={{fontWeight: "bold", position: "relative", top: "15px", fontSize: "18px"}}>Password</label>
-                            <br />
-                            <FormPassword title='password' name='password' label='' width="60%" />
-                            <br />
-                            <br />
-                            <Button type="submit" className={classes.userNavButtonRight} >SUBMIT</Button>
-                        </form>
-                    </div>
+                    <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
+                        <br />
+                        <label className={classes.label}>E-mail</label>
+                        <br />
+                        <FormText title='email' name='email' label='' placeholder="e.g. john.doe@gmail.com" width="80%"/>
+                        <br />
+                        <label className={classes.label}>Password</label>
+                        <br />
+                        <FormPassword title='password' name='password' label='' width="60%" />
+                        <br />
+                        <br />
+                        <Button type="submit" className={classes.submitBtn} >SUBMIT</Button>
+                    </form>
 
+                    <span className={classes.errorTxt}>{ noUser && <span>Incorrect email or password.</span>} </span>
+                    <span ><a className={classes.messageTxt} href='/'>Forgotten password?</a></span>
+                    
                 </div>
             </div>
         );
+
     }
 }
 
@@ -151,6 +161,6 @@ const formData = {
 
 SignIn = reduxForm(formData)(SignIn)
 SignIn = withRouter(SignIn)
-SignIn = withStyles(userStylesheet)(SignIn)
+SignIn = withStyles(authStyles)(SignIn)
 SignIn = connect(mapStateToProps, mapDispatchToProps)(SignIn)
 export default SignIn

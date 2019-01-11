@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reset, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import FormText from '../forms/FormText';

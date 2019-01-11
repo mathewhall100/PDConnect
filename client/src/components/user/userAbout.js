@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button'
+import UserNavButton from '../buttons/userNavButton'
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -13,8 +13,9 @@ import Select from '@material-ui/core/Select';
 import DoneIcon from '@material-ui/icons/Done';
 
 import { age, sex, raceEthnicity, years } from '../../constants';
-import {userStylesheet } from '../../styles';
+import { userComponentStyles } from './userComponentStyles';
 import { updateStepperCount, submitUserAbout, submitReview} from '../../actions/index.js'
+import UserSectionHead from '../texts/userSectionHead';
 
 
  class UserAbout extends Component {
@@ -54,13 +55,9 @@ import { updateStepperCount, submitUserAbout, submitReview} from '../../actions/
         const { handleSubmit, classes } = this.props
 
         const RenderSelect = (field) => {
-
             const { input, width, meta: { pristine, touched, error }, children } = field
-
             return (
-
                 <div>
-
                     <span >
                         <FormControl variant="outlined"  style={{width: `${width}`}}>
                             <Select 
@@ -73,83 +70,58 @@ import { updateStepperCount, submitUserAbout, submitReview} from '../../actions/
                                         className={classes.selectLabel}
                                         name=' '
                                         id="outlined"
-                                        
                                     />
                                 }
                             >
                             </Select>
                         </FormControl>
                     </span>
-
-                    <span>
-                        {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px", color: "green"}}/> : ''}
-                    </span>
-
-                    <span className={classes.errorText} style={{position: "relative", top: "5px", left: "20px"}}>
-                            {touched ? error : ''}
-                    </span>
-
+                  
+                    {!pristine && !error ? <DoneIcon className={classes.doneIcon} style={{marginLeft: "5px", color: "green"}}/> : ''}
+                    <span className={classes.errorText} style={{position: "relative", top: "5px", left: "20px"}}>{touched ? error : ''} </span>
+                        
                 </div>
             )
         };
 
+        const RenderQuestion = props => 
+            <React.Fragment>
+                <br />
+                <h4 className={classes.questionHead} >{props.label}</h4>
+                <Field name={props.name} component={RenderSelect} width={props.width} >
+                    <MenuItem value="" disabled ><span className={classes.selectMenuItem}>{props.firstMenuItem}</span></MenuItem>
+                    {props.menuItems.map(item => <MenuItem key={item.value} value={item.value} >{item.text}</MenuItem> )}
+                </Field>
+             </React.Fragment>
 
+        const questions = [
+            { label: "How old are you?", name: "age", width: "150px", firstMenuItem: "Select Age", menuItems: age },
+            { label: "What is your sex?", name: "sex", width: "150px", firstMenuItem: "Select Sex", menuItems: sex },
+            { label: "What do you consider yourself?", name: "race", width: "380px", firstMenuItem: "Select race/ethnicity", menuItems: raceEthnicity },
+            { label: "When were you first diagnosed with Parkinson disease?", name: "yearDiagnosed", width: "150px", firstMenuItem: "Select year", menuItems: years },
+            { label: "When did you start treatment for Parkinson Disease?", name: "yearTreatment", width: "150px", firstMenuItem: "Select year", menuItems: years }
+        ]
+
+        // component return
         return (
-            <div className={classes.componentBox} >
+            <React.Fragment>
+                
+                <UserSectionHead text="Please select an entry for each box." />
 
-                <p className={classes.sectionTitle}>Please select an entry for each box</p>
+                <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
+                    {questions.map((question, idx) => 
+                        <RenderQuestion key={idx}
+                            label={question.label} 
+                            name={question.name} 
+                            width={question.width}
+                            firstMenuItem={question.firstMenuItem} 
+                            menuItems={question.menuItems} /> 
+                    )}
+                    <br /><br />
+                    <UserNavButton type="submit" width="100%" text="SAVE AND CONTINUE" />
+                </form>
 
-                <div>
-                    <form autoComplete='off' onSubmit={handleSubmit(this.submit.bind(this))}>
-                        <br />
-
-                        <h4 className={classes.questionHead} >How old are you?</h4>
-                        <Field name="age" component={RenderSelect} width={"150px"} >
-                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select age</span></MenuItem>
-                            {age.map(item => <MenuItem key={item.value} value={item.value} >{item.text}</MenuItem> )}
-                        </Field>
-
-                        <br />
-
-                        <h4 className={classes.questionHead} >What is your sex?</h4>
-                        <Field name="sex" component={RenderSelect} width={"150px"} >
-                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select sex</span></MenuItem>
-                            {sex.map(item => <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem> )}
-                        </Field>
-
-                        <br />
-
-                        <h4 className={classes.questionHead} >What do you consider yourself?</h4>
-                        <Field name="race" component={RenderSelect} width={"380px"} >
-                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select race/ethnicity</span></MenuItem>
-                            {raceEthnicity.map(item => <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem> )}
-                        </Field>
-
-                        <br />
-
-                        <h4 className={classes.questionHead} >When were you first diagnosed with Parkinson disease?</h4>
-                        <Field name="yearDiagnosed" component={RenderSelect} width={"150px"} >
-                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select year</span></MenuItem>
-                            {years.map(item => <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem> )}
-                        </Field>
-
-                        <br />
-
-                        <h4 className={classes.questionHead}>When did you start treatment for Parkinson Disease?</h4>
-                        <Field name="yearTreatment" component={RenderSelect} width={"150px"} >
-                            <MenuItem value="" disabled ><span className={classes.selectMenuItem}>Select year</span></MenuItem>
-                            {years.map(item => <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem> )}
-                        </Field>
-                        <br />
-
-                        <Button type="submit" type="variant" className={classes.userNavButtonRight}>SAVE AND CONTINUE</Button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
+            </React.Fragment>
         );
     }
 }
@@ -196,6 +168,6 @@ const formData = {
 
 UserAbout = reduxForm(formData)(UserAbout)
 UserAbout = withRouter(UserAbout)
-UserAbout = withStyles(userStylesheet)(UserAbout)
+UserAbout = withStyles(userComponentStyles)(UserAbout)
 UserAbout = connect(mapStateToProps, mapDispatchToProps)(UserAbout)
 export default UserAbout

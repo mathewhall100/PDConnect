@@ -52,8 +52,6 @@ class FadeMenu extends React.Component {
     state = {
         anchorEl: null,
         open : false,
-        redirect : false,
-        redirectUrl : '',
         mouseOverButton: false,
         mouseOverMenu: false,
     };
@@ -68,20 +66,18 @@ class FadeMenu extends React.Component {
     handleClose = () => {
         this.setState({ anchorEl: null,
             mouseOverButton: false,
-            mouseOverMenu: false });
+            mouseOverMenu: false })
     };
 
     handleRedirect = (url) => {
         this.setState({
             anchorEl: null,
         }, () => {
-            this.props.history.push(url);
+            this.props.history.push(url)
         })
     }
 
-    enterButton = () => {
-        this.setState({ mouseOverButton: true });
-    }
+    enterButton = () => { this.setState({ mouseOverButton: true }) }
 
     leaveButton = () => {
         // Set a timeout so that the menu doesn't close before the user has time to
@@ -91,25 +87,21 @@ class FadeMenu extends React.Component {
         }, 333);
     }
 
-    enterMenu = () => {
-        this.setState({ mouseOverMenu: true });
-    }
+    enterMenu = () => { this.setState({ mouseOverMenu: true }) }
 
     leaveMenu = () => {
         setTimeout(() => {
-            this.setState({ mouseOverMenu: false });
+            this.setState({ mouseOverMenu: false })
         }, 333);
     }
 
-    handleLogout() {
-        console.log("logging out...");
-    }
+    handleLogout() { console.log("logging out...") }
 
     render() {
-        const { anchorEl, redirect, redirectUrl } = this.state;
-        const { classes } = this.props;
+        const { anchorEl } = this.state
+        const { classes } = this.props
 
-        const open = this.state.mouseOverButton || this.state.mouseOverMenu;
+        const open = this.state.mouseOverButton || this.state.mouseOverMenu
 
         return (
             <React.Fragment>
@@ -123,7 +115,7 @@ class FadeMenu extends React.Component {
                     onMouseLeave={this.leaveButton}
                     onMouseOver ={this.handleClick}
                 >
-                    <AccountIcon   className={classes.topBarBtnIcon} /> &nbsp;&nbsp;MY ACCOUNT
+                    <AccountIcon className={classes.topBarBtnIcon} /> &nbsp;&nbsp;MY ACCOUNT
                 </Button>
 
                 <Menu

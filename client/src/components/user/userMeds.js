@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
-import { withRouter, Link, Redirect} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react'
+import { withRouter} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
-import HelpIcon from '@material-ui/icons/Help';
 
-import {userStylesheet, QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../styles';
+import { userComponentStyles } from './userComponentStyles'
+import {QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR } from '../../themes'
 import { updateStepperCount, submitUserMeds, submitReview} from '../../actions/index.js'
 import QuestionButtonIcons from '../commons/userQuestionButtonIcons'
-import UserModal from '../commons/userModal'
-import UserMedsModal from '../commons/userMedsModal'
+import BtnPlusModal from '../commons/buttonPlusModal'
+import UserNavButton from '../buttons/userNavButton'
+import UserSectionHead from '../texts/userSectionHead'
+import Hr from '../commons/userHr'
 import {meds, medGroups } from '../../constants'
 
 
@@ -22,11 +24,7 @@ class UserMeds extends Component {
         answerArray: [],
         answerTrack: [],
         answerNone: false,
-        modalMedOpen : false,
-        modalOpen : false,
-        modalTitle : '',
-        modalText : '',
-        modalImgaes : [],
+        warningModal: false,
         redirectAddress : '/user/user_surgery',
     }
 
@@ -60,14 +58,12 @@ class UserMeds extends Component {
                 this.props.history.push(this.state.redirectAddress)
             }
         } else {
-            this.setState({modalWarning: true})
-            this.handleModalOpen("This question is important!","To suggest treatments you may benefit from we need to know what medications you currently take for Parkinson disease. Also, participation in many clinical trials and focus groups depends on how you are currently treated. Please take the time to tell us about the medications you take for Parkinson disease or select 'none' if you do not take any")
-            }
+            this.setState({warningModal: false}, () => this.setState({warningModal: true}) )
+        }
     }
 
     handleAnswerSelect = (index, key) => {
         console.log("handleAnswerselect : ", key)
-        this.setState({modalOpen: false, modalMedOpen: false})
         let tempTrack = this.state.answerTrack
         let tempArray = this.state.answerArray
         const tempIndex = tempArray.indexOf(key)
@@ -82,8 +78,6 @@ class UserMeds extends Component {
             answerNone: false,
             answerTrack: tempTrack,
             answerArray: tempArray,
-            modalOpen: false,
-            modalMedOpen: false
         })
     }
 
@@ -91,7 +85,6 @@ class UserMeds extends Component {
         console.log('answerNone')
         this.setState({
             modalOpen: false,
-            modalMedOpen: false,
             answerNone: true,
             answerTrack: [],
             answerArray: []
@@ -99,125 +92,80 @@ class UserMeds extends Component {
         })
     }
 
-    handleModalOpen = (title, text) => {
-        console.log(title);
-         this.setState({
-             modalTitle : title,
-             modalText : text,
-             modalOpen: true,
-             modalMedOpen: false
-        });
-     };
-    handleMedModalOpen = (title, images, text) => {
-        console.log(title);
-         this.setState({
-             modalTitle : title,
-             modalImages : images,
-             modalText : text,
-             modalOpen: false,
-             modalMedOpen: true
-        });
-     };
-
-
     render() {
 
-        const { handleSubmit, pristine, submitting, classes } = this.props
-        const { answerTrack, answerNone, modalOpen, modalMedOpen, modalTitle, modalText, modalImages, modalWarning } = this.state
+        const { classes } = this.props
+        const { answerTrack, answerNone, warningModal } = this.state
 
         return (
-            <section >
-                <div className={classes.componentBox} >
+            <React.Fragment>
 
-                    <Grid container spacing={0}>
-                        <Grid item xs={12} sm={8}>
-                            <div className={classes.headerQuestion} style={{position: "relative", top: "10px"}}>None</div>
-                            <br />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                             <Button type="button" className={classes.questionButton} style={{borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
-                                <QuestionButtonIcons answerConditional={answerNone} />
-                            </Button>
-                        </Grid>
+                <Grid container spacing={24}>
+                    <Grid item xs={12} sm={8}>
+                        <div className={classes.headerQuestion} style={{position: "relative", top: "10px"}}>None</div>
+                        <br />
                     </Grid>
-                    <br />
-                     {/* <p className={classes.sectionTitle}>Or, Select all that apply from the following list (scroll down to view all).</p> */}
+                    <Grid item xs={12} sm={4}>
+                            <Button type="button" className={classes.questionButton} style={{borderColor: answerNone ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleNoneSelect()}>
+                            <QuestionButtonIcons answerConditional={answerNone} />
+                        </Button>
+                    </Grid>
+                </Grid>
+                <br />
+                {/* <UserSectionHead text="Or, Select all that apply from the following list (scroll down to view all)." /> */}
 
 
-                    {medGroups.map((group, index) => {
+                {medGroups.map((group, index) => {
 
-                        return (
-                            <div key={index}>
-                                <hr className={classes.hr}/>
-                                <p className={classes.sectionTitle}>{group.text}</p>
-                                <br />
-                               
+                    return (
+                        <div key={index}>
+                            <Hr full={true}/>
+                            <UserSectionHead text={group.text} /><br />
+                            
+                            {meds.filter(med => med.class === group.class).map((med, idx) => {
+                                const answerIndex = meds.findIndex(medication => medication.generic === med.generic)
+                                return (
+                                    <div key={idx}>
+                                        <Grid container spacing={24}>
 
-                                {meds.filter(med => med.class === group.class).map((med, index) => {
-                                    console.log(med);
-                                    const answerIndex = meds.findIndex(medication => medication.generic == med.generic)
-
-                                    return (
-
-                                        <div key={index}>
-                                            <Grid container spacing={24}>
-                                                <Grid item xs={12} sm={8} >
-                                                    <div style={{minHeight: "60px"}}>
-                                                        <span className={classes.questionHead}>{med.generic}</span>
-                                                        <Button className={classes.helpButton} onClick={() => this.handleMedModalOpen(med.generic, med.images, med.description) }>
-                                                            <HelpIcon color="primary" className={classes.helpIcon} />
-                                                         </Button>
-                                                        <br />
-                                                        {med.trade.length > 0 && <span className={classes.questionText}>(
-                                                            {med.trade.map((trade, index) => {
-                                                                return (
-                                                                    <span key={index} className={classes.questionText}>
-                                                                        {trade}
-                                                                        {index === med.trade.length-1 ? "" : ", "}
-                                                                    </span>
-                                                                )
-
-                                                             }) }
-                                                             )
-                                                        </span> }
-                                                    </div>
-                                                </Grid>
-                                                <Grid item xs={12} sm={4} >
-                                                         <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[answerIndex] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.key)}>
-                                                            <QuestionButtonIcons answerConditional={answerTrack[answerIndex]} />
-                                                        </Button>
-                                                </Grid>
+                                            <Grid item xs={12} sm={8} >
+                                                <div style={{minHeight: "60px"}}>
+                                                    <span className={classes.questionHead}>{med.generic}</span>
+                                                    <BtnPlusModal btnType="help" btnLabel="" modalTitle={med.generic} modalText={med.description} modalWarning={false} modalImages={med.images}/><br />
+                                                    {med.trade.length > 0 && <span className={classes.questionText}>
+                                                        {med.trade.map((trade, idx) => {
+                                                            return (
+                                                                <span key={idx} className={classes.questionText}>
+                                                                    {trade}
+                                                                    {index === med.trade.length-1 ? "" : ", "}
+                                                                </span>
+                                                            )
+                                                        }) }
+                                                    </span> }
+                                                </div>
                                             </Grid>
-                                            <br />
-                                        </div>
-                                    )
-                                }) }
-                            </div>
-                        )
 
+                                            <Grid item xs={12} sm={4} >
+                                                        <Button type="button" className={classes.questionButton}  style={{borderColor: answerTrack[answerIndex] ? QUESTION_BUTTON_ACTIVE_PRIMARY_COLOR : null}} onClick={() => this.handleAnswerSelect(answerIndex, med.key)}>
+                                                        <QuestionButtonIcons answerConditional={answerTrack[answerIndex]} />
+                                                    </Button>
+                                            </Grid>
+
+                                        </Grid>
+                                        <br />
+                                    </div>
+                                )
+                            }) }
+                        </div>
+                    )
                 }) }
 
-                <Button type="button" type="variant" className={classes.userNavButtonRight} onClick={() => this.handleNext()}>SAVE AND CONTINUE</Button>
+                <br />
+                <UserNavButton type="button" width="100%" text="SAVE AND CONTINUE" handleBtn={this.handleNext} />
 
-                </div>
+                 { warningModal && <BtnPlusModal btnType="none" modalTitle="This question is important!" modalText="To suggest treatments you may benefit from we need to know what medications you currently take for Parkinson disease. Also, participation in many clinical trials and focus groups depends on how you are currently treated. Please take the time to tell us about the medications you take for Parkinson disease or select 'none' if you do not take any" modalWarning={true} /> }
 
-                { modalOpen && <UserModal
-                    modalOpen={modalOpen}
-                    modalTitle={modalTitle}
-                    modalText={modalText}
-                    modalWarning={modalWarning}
-                /> }
-
-                { modalMedOpen && <UserMedsModal
-                    modalOpen={modalMedOpen}
-                    modalTitle={modalTitle}
-                    modalText={modalText}
-                    modalImages={modalImages}
-                    modalWarning={false}
-                /> }
-
-            </section>
-
+            </React.Fragment>
         );
     }
 }
@@ -238,6 +186,6 @@ const mapStateToProps = (state) => {
 }
 
 UserMeds = withRouter(UserMeds)
-UserMeds = withStyles(userStylesheet)(UserMeds)
+UserMeds = withStyles(userComponentStyles)(UserMeds)
 UserMeds = connect(mapStateToProps, mapDispatchToProps)(UserMeds)
 export default UserMeds
