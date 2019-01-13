@@ -12,7 +12,7 @@ import ResultInfoBullets from '../../components/commons/resultInfoBullets'
 import ResultBackButton from '../../components/buttons/resultBackButton'
 import { resultStyles } from './resultStyles';
 import { treatmentsInfo } from '../../infoFiles/treatmentsInfo'
-import apomorphineGraph from '../../img/apomorphineMedia1.PNG' //replace
+import apomorphineGraph from '../../images/apomorphineMedia1.PNG' //replace
 
 
 class TreatmentDisplay extends Component {

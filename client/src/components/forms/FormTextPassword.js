@@ -24,7 +24,6 @@ class FormTextPassword extends PureComponent {
                     style={{width: `${field.width}`}}
                     type="password"
                     placeholder={`${placeholder}`}
-                    autoComplete="current-password"
                 />
 
                  {touched && <span className={classes.textFieldError}> 
