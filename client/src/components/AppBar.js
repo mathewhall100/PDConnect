@@ -25,7 +25,7 @@ const styles = (theme) => ({
     topNavContent: {
         maxWidth: MAXWIDTH,
         minHeight: MINHEIGHT,
-        padding: "0 40px 40px 40px",
+        padding: "0 30px 40px 40px",
         margin: '0 auto',
         [theme.breakpoints.down('xs')]: {
             marginTop: '10px',

@@ -1,12 +1,12 @@
 
-import { MAXWIDTH, MINHEIGHT, PRIMARY_COLOR, SECONDARY_COLOR } from '../../themes'
+import { MAXWIDTH, MINHEIGHT, PRIMARY_COLOR, SECONDARY_COLOR, APP_PADDING, APP_MARGIN } from '../../themes'
 
 export const serviceStyles = () => ({
     servicesRoot: {
         maxWidth: MAXWIDTH,
         minHeight : MINHEIGHT,
-        margin: 'auto',
-        padding: "0 40px 40px 40px"
+        margin: APP_MARGIN,
+        padding: APP_PADDING
     },
     serviceMainContainer: {
         minHeight: "600px",
@@ -17,8 +17,8 @@ export const serviceStyles = () => ({
         color: PRIMARY_COLOR
     },
     serviceListBox: {
-        margin: "10px 0 10px 0",
-        padding: "10px",
+        margin: "12px 0 12px 0",
+        padding: "10px 10px 16px 10px",
         border: "2px solid white",
         '&:hover': {
             borderRadius: "5px",
@@ -28,16 +28,13 @@ export const serviceStyles = () => ({
         }
     },
     serviceListHeader: {
-        fontSize: "18px",
+        fontSize: "19px",
         fontWeight: "bold"
     },
     serviceListText: {
-        fontSize: "16px",
+        fontSize: "17px",
     },
-    hr: {
-        backgroundColor: SECONDARY_COLOR,
-        opacity: 0.3
-    },
+
     sideHr: {
         margin: "10px 0 15px 0"
     },
@@ -67,7 +64,6 @@ export const serviceStyles = () => ({
     serviceIcon: {
         maxWidth: '50px',
         maxHeight: '50px',
-        margin: '5px',
     },
     badge: {
         position: "relative",
@@ -80,20 +76,5 @@ export const serviceStyles = () => ({
         padding: "20px 20px 10px 20px",
         marginBottom: "30px",
         backgroundColor: "#F8F8F8",
-    },
-    emailContainer: {
-        border: "2px solid lightgrey",
-        borderRadius: "5px",
-        backgroundColor: "#F8F8F8",
-        padding: "20px 10px 20px 25px",
-        marginBottom: "40px"
-    },
-    accountContainer: {
-        border: "2px solid lightgrey",
-        borderRadius: "5px",
-        backgroundColor: "#F8F8F8",
-        padding: "20px 0 20px 25px",
-        marginBottom: "40px"
-    },
-
+    }
 })

@@ -15,7 +15,7 @@ import Terms from '../commons/terms'
 import PrivacyPolicy from '../commons/privacyPolicy'
 import { updateStepperCount, updateTermAgreement } from '../../actions/Stepper';
 import { PRIMARY_COLOR } from '../../themes';
-import Hr from "../commons/userHr"
+import Hr from "../commons/Hr"
 
 const styles = () => ({
     stepperContainer : {
@@ -68,7 +68,7 @@ class UserStepper extends React.Component {
 
         const ExtraText = () => {
 
-            if (stepperCount < 8) {
+            if (stepperCount === !isNaN && stepperCount < 8) {
                 return null
 
             } else if (stepperCount === 8) {

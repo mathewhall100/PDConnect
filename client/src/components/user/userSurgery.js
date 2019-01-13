@@ -8,8 +8,7 @@ import BtnPlusModal from '../commons/buttonPlusModal'
 import UserNavButton from '../buttons/userNavButton'
 import UserSectionHead from '../texts/userSectionHead'
 import UserDisplayQuestion from './userDisplayQuestion'
-
-import Hr from '../commons/userHr'
+import Hr from '../commons/Hr'
 import { procedures } from '../../constants'
 
 

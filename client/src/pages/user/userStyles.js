@@ -1,13 +1,13 @@
 // Styles for user page
 
-import { MAXWIDTH, MINHEIGHT } from '../../themes'
+import { MAXWIDTH, MINHEIGHT, APP_MARGIN, APP_PADDING} from '../../themes'
 
 export const userStyles = () => ({
     root: {
         maxWidth: MAXWIDTH,
         minHeight : MINHEIGHT,
-        margin: 'auto',
-        padding: "0 20px 40px 40px"
+        margin: APP_MARGIN,
+        padding: APP_PADDING
     },
     componentBox : {
         marginTop: "60px",

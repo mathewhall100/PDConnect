@@ -10,7 +10,7 @@ import { PRIMARY_COLOR, MAXWIDTH } from '../themes'
 
 const styles = (theme) => ({
     footerContainer: {
-        padding: '45px 20px 15px 20px',
+        paddingTop: "40px",
         marginTop: '60px',
         backgroundColor : 'lightgrey',
         borderTop: "2px solid",
@@ -18,7 +18,7 @@ const styles = (theme) => ({
     },
     footerCenter: {
         maxWidth: MAXWIDTH,
-        padding: "0 20px 0 40px",
+        padding: "0 12px 0 42px",
         margin: '0 auto',
     },
     footerLogo: {
@@ -41,6 +41,7 @@ const styles = (theme) => ({
         color: "#000",
         fontWeight: "bold",
         fontSize: "16px",
+        textAlign: "center",
         [theme.breakpoints.down('md')]: {
             marginTop: "5px",
             fontSize: "14px"
@@ -66,10 +67,12 @@ const styles = (theme) => ({
         },
     },
     footerAppStore : {
-        margin: '-8px auto 20px auto',
+        float: "right",
+        marginTop: "-8px",
         fontWeight: "bold", 
         fontSize: "20px", 
         [theme.breakpoints.down('md')]: {
+            float: "none",
             margin: '0 auto'
         },
         [theme.breakpoints.down('sm')]: {
@@ -78,7 +81,7 @@ const styles = (theme) => ({
     },
     footerDownloadImg: {
         padding: '15px 20px 15px 0',
-        maxWidth: '225px',
+        maxWidth: '200px',
         maxHeight: 'auto',
         [theme.breakpoints.down('md')]: {
             maxWidth: "165px",

@@ -12,18 +12,18 @@ class UserDisplayQuestion extends PureComponent  {
     }
 
     render() {
-        const { type, title, questionText, modalText, modalImages, answer, symptomKey, questionKey, active, index } = this.props
+        const { type } = this.props
 
         const GetButtons = () => {
             if (type === "set") {
-                return <DisplayQuestionButtonSet answer={answer} symptomKey={symptomKey} index={index} handleSelect={this.handleSelect}/>
+                return <DisplayQuestionButtonSet {...this.props}/>
             } else if (type === "single") {
-                return <DisplayQuestionButton index={index} active={active} questionKey={questionKey} handleSelect={this.handleSelect}/>
+                return <DisplayQuestionButton {...this.props}/>
             } else return null
         }
 
         const GetSplit = () => {
-            if (type === "set") {return 6} else {return 7}
+            if (type === "set") {return 6} else {return 8}
         }
 
 
@@ -31,7 +31,7 @@ class UserDisplayQuestion extends PureComponent  {
 
             <Grid container spacing={24}>
                 <Grid item xs={12} sm={12} md={12} lg={GetSplit()}>
-                    <DisplayQuestionText title={title} questionText={questionText} modalText={modalText} modalImages={modalImages} />
+                    <DisplayQuestionText {...this.props} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={12-GetSplit()}>
                     {GetButtons()}

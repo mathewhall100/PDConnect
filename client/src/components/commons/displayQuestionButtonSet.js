@@ -21,19 +21,15 @@ const styles = () => ({
         marginLeft: "20px",
         position: "relative",
         top: "5px",
+        outline : "none !important",
          '&:hover': {
              backgroundColor: "white",
          },
-         '&:focus': {
-             outline : "none !important"
-         },
-         '&:active': {
-             outline: "none !important"
-         }
     },
     questionButtonText: {
         fontWeight:"bold",
-        color: QUESTION_BUTTON_DEFAULT_COLOR
+        color: QUESTION_BUTTON_DEFAULT_COLOR,
+        marginTop: "-2px"
     },
     unsureIcon: {
         fontSize: "48px",
@@ -67,8 +63,7 @@ class DisplayQuestionButtonSet extends PureComponent  {
                 style={{borderColor: answer === props.option ? props.color : null}} 
                 onClick={() => this.handleSelect(index, props.option, symptomKey)}
             >
-                {answer !== props.option && <span className={classes.questionButtonText} style={{marginTop: -3}}>{props.text}</span> }
-                {answer === props.option && props.icon}
+                {answer !== props.option ? <span className={classes.questionButtonText}>{props.text}</span> : props.icon}
             </Button>
 
         const buttons = [

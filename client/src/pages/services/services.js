@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import Badge from '@material-ui/core/Badge'
 
 
-import SocMedBox from '../../components/commons/socMedBox'
+import Sidebar from '../../components/sidebar/sidebar'
 import assessImg from '../../images/avatar/services/assess.png';
 import focusImg from '../../images/avatar/services/focus.png';
 import learnImg from '../../images/avatar/services/learn.png';
@@ -18,6 +18,7 @@ import trialsImg from '../../images/avatar/services/trials.png';
 import { testApomorphine, testBotTox, testDBS, testDroxidopa, testDuopa, testNILO, testNuplazid, testRytary, testSPARK } from '../../functions/logicFunctions';
 import { submitTrialResult, submitTreatmentResult, submitFocusGroupResult } from '../../actions/ResultAction';
 import { serviceStyles } from './serviceStyles.js' 
+import Hr from '../../components/commons/Hr'
 
 
 class Services extends Component {
@@ -149,40 +150,56 @@ class Services extends Component {
         this.setState({ focusGroupResults: focusGroupResults })
     }
 
+    getText = (start, number, end) => {
+        let text = start.concat(" ").concat(number ? number : "no").concat(" " + end)
+        return text
+    }
+
     render() {
 
         const { classes } = this.props
         const { treatmentResults, trialResults, focusGroupResults } = this.state
 
-        const beforeStyle = {
-            display: 'table'
-          };
-
-          const afterStyle = {
-            ...beforeStyle,
-            clear: 'both'
-          };
-
         const RenderServiceListItem = (props) => {
+            const { index, avatar, header, badgeContent, text, redirectAddress } = props
             return (
-                <div className={classes.serviceListBox} onClick={() => this.handleServiceRedirect(props.redirectAddress)}>
-                    <Grid container spacing={8} >
-                        <Grid item xs={12} sm={2}>
-                            <img className={classes.serviceIcon} src={props.avatar} alt={props.header} />
-                           
+                <React.Fragment>
+
+                    <div className={classes.serviceListBox} onClick={() => this.handleServiceRedirect(redirectAddress)}>
+                        <Grid container spacing={8} >
+
+                            <Grid item xs={12} sm={2}>
+                                <img className={classes.serviceIcon} src={avatar} alt={header} />
+                            </Grid>
+
+                            <Grid item xs={12} sm={10}>
+                                <span className={classes.serviceListHeader}>{header}</span> 
+                                {badgeContent && <Badge className={classes.badge} badgeContent={badgeContent} color="primary"> 
+                                    <span> </span>
+                                </Badge> }
+                                <br />
+                                <span className={classes.serviceListText}>{text}</span>
+                            </Grid>
+
                         </Grid>
-                        <Grid item xs={12} sm={10}>
-                            <span className={classes.serviceListHeader}>{props.header}</span> 
-                            {props.badgeContent && <Badge className={classes.badge} badgeContent={props.badgeContent} color="primary"> 
-                                <span> </span>
-                            </Badge> }
-                            <br />
-                            <span className={classes.serviceListText}>{props.text}</span>
-                        </Grid>
-                    </Grid>
-                </div>
+                    </div>
+
+                    {HrPosn.includes(index) ? <Hr /> : null }
+
+                </React.Fragment>
             )
         }
+
+        const serviceList = [
+            {avatar: treatmentImg, header: "View treatments",  badgeContent: `${treatmentResults.length}` , text: this.getText("We have found", treatmentResults.length, "treatments that may benefit you and to discuss with your doctor"), redirectAddress: "/results:treatments" },
+            {avatar: trialsImg, header: "View clinical trials",  badgeContent: `${trialResults.length}` , text: this.getText("We have matched you with", trialResults.length, "clinical trials currently recruiting volunteers"), redirectAddress: "/results:trials" },
+            {avatar: focusImg, header: "View focus groups",  badgeContent: "0" , text: this.getText("There are", focusGroupResults.length, "focus groups looking for participants like you"), redirectAddress: "/results:focusgroups" },
+            {avatar: learnImg, header: "Learn about your Parkinson disease",  badgeContent: "" , text: "Knowledge articles aand videos tailored to you", redirectAddress: "/services" },
+            {avatar: monitorImg, header: "Monitor my symptoms",  badgeContent: "" , text: "Use this site or our mobile app to monitor your symptoms", redirectAddress: "/services" },
+            {avatar: assessImg, header: "Assess my wellness",  badgeContent: "" , text: "Complete a wellness questionnaire designed for Parkinson patients." , redirectAddress: "/services" }
+        ]
+
+        const HrPosn = [3, 5]
 
         // Services component return
         return (
@@ -193,118 +210,34 @@ class Services extends Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={12} md={8}>
                         <div className={classes.serviceMainContainer}>
-                            <h1 className={classes.servicePageTitle}>Thank you for sharing your profile with us.</h1>
-                            <br />
+
+                            <h1 className={classes.servicePageTitle}>Thank you for sharing your profile with us.</h1> <br />
+                           
                             <h5>Based on the information you entered, we have found the following services personalized to you:</h5>
 
-                            <RenderServiceListItem
-                                 avatar={treatmentImg} 
-                                 header="View treatments" 
-                                 badgeContent={`${treatmentResults.length}`} 
-                                 text={`We have found ${treatmentResults.length > 0 ? treatmentResults.length : "no"} treatments that may benefit you and to disucss with your doctor`} 
-                                 redirectAddress="/results:treatments" 
-                            />
-
-                            <RenderServiceListItem 
-                                avatar={trialsImg} 
-                                header="View clinical trials" 
-                                badgeContent={`${trialResults.length}`} 
-                                text={`We have matched you with ${trialResults.length > 0 ? trialResults.length : "no"} clinical trials currently recruiting volunteers`} 
-                                redirectAddress="/results:trials" 
-                            />
-                            <RenderServiceListItem 
-                                avatar={focusImg} 
-                                header="View focus groups" 
-                                badgeContent="0" 
-                                text={`There are ${focusGroupResults.length > 0 ? focusGroupResults.length : "no"} focus groups looking for participants like you`} 
-                                redirectAddress="/results:focusgroups" 
-                            />
-                            <RenderServiceListItem 
-                                avatar={learnImg} 
-                                header="Learn about your Parkinson disease"  
-                                text="Knowledge articles aand videos tailored to you"
-                             />
-
-                            <hr className={classes.hr} />
-
-                            <RenderServiceListItem 
-                                avatar={monitorImg} 
-                                header="Monitor my symptoms" 
-                                text="Use this site or our mobile app to monitor your symptoms" 
-                            />
-                            <RenderServiceListItem 
-                                avatar={assessImg} 
-                                header="Assess my welllness" 
-                                text="Complete a wellness questionnaire designed for Parkinson patients." 
-                            />
-
-                            <hr className={classes.hr} />
+                            { serviceList.map((service, index) => {
+                                return (
+                                    <RenderServiceListItem
+                                        key={index}
+                                        index={index}
+                                        avatar={service.avatar} 
+                                        header={service.header}
+                                        badgeContent={service.badgeContent}
+                                        text={service.text} 
+                                        redirectAddress={service.redirectAddress}
+                                    />
+                                )
+                            }) }
 
                         </div>
                     </Grid>
 
                     <Grid item xs={12} sm={12} md={4}>
-                        <br />
-                        <SocMedBox title="Share this site: "/>
-                        <br />
-                        
-                        <div className={classes.serviceSideContainer}>
-                            <h3 className={classes.serviceSideHeader}>My Bookmarks</h3>
-                            <hr className={classes.sideHr} />
 
-                            <span style={beforeStyle}></span>
-                            <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/activity')}>View Bookmarks</h5>
-                            <span style={afterStyle}></span>
-
-                        </div>
-
-                        <div className={classes.serviceSideContainer}>
-
-                            <h3 className={classes.serviceSideHeader}>My Account</h3>
-                            <br />
-
-                            <span style={beforeStyle}></span>
-                            <h5 className={classes.serviceSideText}>Bronze member</h5> 
-                            <span style={afterStyle}></span>
-
-                            <span style={beforeStyle}></span>
-                            <h5 className={classes.serviceSideText}>You have 100 connect points</h5> 
-                            <span style={afterStyle}></span>
-
-                            <hr className={classes.sideHr} />
-
-                            <span style={beforeStyle}></span>
-                            <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/activity')}>View account</h5>
-                            <span style={afterStyle}></span>
-
-                            <span style={beforeStyle}></span>
-                            <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/account/earn')}>Earn points</h5>
-                            <span style={afterStyle}></span>
-                            
-                        </div>
-
-                        <div className={classes.serviceSideContainer}>
-
-                            <h3 className={classes.serviceSideHeader}>My profile</h3>
-                            <br />
-
-                            <span style={beforeStyle}></span>
-                            <h5 className={classes.serviceSideText}>Your profile is 70% complete</h5>
-                            <span style={afterStyle}></span>
-
-                            <span style={beforeStyle}></span>
-                            <h5 className={classes.serviceSideText}>Next update due: Dec 2018</h5>
-                            <span style={afterStyle}></span>
-
-                            <hr className={classes.sideHr} />
-
-                            <span style={beforeStyle}></span>
-                            <h5 className={classes.serviceSideLink} onClick={() => this.handleServiceRedirect('/profile')}>View profile </h5>
-                            <span style={afterStyle}></span>
-
-                        </div>
+                        <Sidebar />
 
                     </Grid>
+
                 </Grid>
             </div>
         );

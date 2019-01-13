@@ -7,6 +7,10 @@
 export const MAXWIDTH = '1280px';
 export const MINHEIGHT = '920px';
 
+// App margins & paddings
+export const APP_MARGIN = '0 auto';
+export const APP_PADDING = '0 30px 40px 40px';
+
 // Theme colors
 export const PRIMARY_COLOR = '#2F5597';
 export const PRIMARY_COLOR_HOVER = '#4d6591';

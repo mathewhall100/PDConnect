@@ -1,13 +1,13 @@
 
-import { MAXWIDTH, MINHEIGHT, PRIMARY_COLOR } from '../../themes'
+import { MAXWIDTH, MINHEIGHT, PRIMARY_COLOR, APP_MARGIN, APP_PADDING } from '../../themes'
 
 export const resultStyles = () => ({
     
     resultRoot: {
         maxWidth: MAXWIDTH,
         minHeight : MINHEIGHT,
-        margin: 'auto',
-        padding: "0 40px 40px 40px"
+        margin: APP_MARGIN,
+        padding: APP_PADDING
     },
     resultContainer: {
         minHeight: "865px",
