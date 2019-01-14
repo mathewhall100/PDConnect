@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import { PRIMARY_COLOR } from '../../themes.js'
 
-const styles = () => ({
+const styles = (theme) => ({
     buttonStyle: {
         float: "right",
         paddingTop: '6px',
@@ -17,6 +17,9 @@ const styles = () => ({
         top: "-22px",
         backgroundColor: PRIMARY_COLOR,
         color: "white",
+        [theme.breakpoints.down('sm')]: {
+            top: "-45px"
+        },
         '&:hover': {
             border: "2px solid #000080",
             backgroundColor: "lightgrey",

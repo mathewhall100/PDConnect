@@ -2,9 +2,18 @@
 import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = () => ({
+const styles = (theme) => ({
     mediaPosn: {
-        margin: "10px 20px 20px 0"
+        margin: "10px 20px 20px 0",
+        textAlign: "center",
+        [theme.breakpoints.down('md')]: {
+            margin: "60px 20px 0 0",
+            textAlign: "center"
+        },
+        [theme.breakpoints.down('sm')]: {
+            margin: "0 20px",
+            textAlign: "center"
+        }
     }
 })
    

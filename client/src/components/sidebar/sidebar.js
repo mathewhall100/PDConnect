@@ -19,7 +19,7 @@ class Sidebar extends (Component) {
             <div className={classes.sidebarContainer}>
 
                 <div className={classes.sideBox}>
-                    <SocMedIcons title="Share: "/>
+                    <SocMedIcons title="Share :"/>
                 </div>
                 
                 <div className={classes.sideBox}>

@@ -3,7 +3,7 @@ import { PRIMARY_COLOR } from '../../themes'
 
 export const sideBarStyles = () => ({
     sidebarContainer: {
-        marginTop: "35px"
+        marginTop: "30px"
     },
     sideBox: {
         border: "2px solid lightgrey",

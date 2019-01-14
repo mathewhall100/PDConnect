@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { PRIMARY_COLOR } from '../../themes.js'
 
-const styles = () => ({
+const styles = (theme) => ({
     infoTitle: {
         textAlign: "center",
         textWeight: "bold",
@@ -12,8 +12,11 @@ const styles = () => ({
         padding: "20px 20px 10px 20px",
         fontSize: "18px",
         lineheight: "30px",
-        textAlign: "justify"
-    },
+        textAlign: "justify",
+        [theme.breakpoints.down('md')]: {
+            paddingT: "0 20px 0 20px"
+        }
+    }
 })
 
     class ResultInfo extends PureComponent  {

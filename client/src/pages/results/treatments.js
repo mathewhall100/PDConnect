@@ -16,10 +16,11 @@ import apomorphineGraph from '../../images/apomorphineMedia1.PNG' //replace
 
 
 class TreatmentDisplay extends Component {
-
-    state = {
-        tabSelected: 0,
-    }
+ 
+        state = {
+            tabSelected: 0,
+            screenWidth: false,
+        }
 
     componentDidMount() {
         window.scroll(0,0)
@@ -27,17 +28,43 @@ class TreatmentDisplay extends Component {
         const item = locn.substr(locn.lastIndexOf(':') + 1)
         const treatment = treatmentsInfo.filter(t => t.key === item)[0]
         this.setState({treatment: treatment})
+
+        window.addEventListener("resize", this.mediaResize)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.mediaResize)
+    }
+
+    mediaResize = () => {
+        this.setState({screenWidth: window.innerWidth})
     }
 
     handleTabClick = (tab) => {
         this.setState({tabSelected: tab})
     }
 
+    getWidth = () => {
+        let screenWidth = this.state.screenWidth
+        if (screenWidth > 1285) {return 340}
+        else if (screenWidth > 960) {return 250}
+        else if (screenWidth > 526) {return 340}
+        else  {return 250}
+    }
+
+    getHeight = () => {
+        let screenWidth = this.state.screenWidth
+        if (screenWidth > 1285) {return 255}
+        else if (screenWidth > 960) {return (250/340)*255}
+        else if (screenWidth > 526) {return 255}
+        else  {return (250/340)*255}
+    }
+
 
     render() {
 
         const { classes } = this.props
-        const { treatment, tabSelected } = this.state
+        const { treatment, tabSelected, mediaResize } = this.state
 
         const RenderOverview = () => 
             <React.Fragment>
@@ -47,7 +74,7 @@ class TreatmentDisplay extends Component {
                     </Grid>
                     <Grid item xs={12} sm={12} md={6}>
                         <br />
-                        <ResultDisplayMedia mediaType="video" mediaLink={treatment.mediaLnk1} width={340} height={255} /> 
+                        <ResultDisplayMedia mediaType="video" mediaLink={treatment.mediaLnk1} width={this.getWidth()} height={this.getHeight()} /> 
                     </Grid>
                 </Grid>
                 <ResultInfo subtitle="Description" text={treatment.description} />
@@ -64,7 +91,7 @@ class TreatmentDisplay extends Component {
                     <Grid item xs={12} sm={12} md={6}>
                         <br />
                         {treatment.mediaLnk2 ? 
-                            treatment.mediaLnk2.map((lnk, idx) => { return ( <ResultDisplayMedia key={idx } mediaType="video" mediaLink={lnk} width={340} height={255} /> ) })
+                            treatment.mediaLnk2.map((lnk, idx) => { return ( <ResultDisplayMedia key={idx } mediaType="video" mediaLink={lnk} width={this.getWidth()} height={this.getHeight()} /> ) })
                             :
                             null }
                     </Grid>
@@ -83,7 +110,7 @@ class TreatmentDisplay extends Component {
                                 </Grid>
                                 <Grid item xs={12} sm={12} md={6}>
                                     <br />
-                                    <ResultDisplayMedia mediaType="image" mediaLink={apomorphineGraph} width={340} height={255}   />                             
+                                    <ResultDisplayMedia mediaType="image" mediaLink={apomorphineGraph} width={this.getWidth()} height={this.getHeight()}   />                             
                                 </Grid>
                             </Grid>
                         ) 
@@ -129,8 +156,7 @@ class TreatmentDisplay extends Component {
                 
                     {treatment && <Grid item xs={12} sm={12} md={8}>
                         <ResultTabs tabs={["OVERVIEW", "PATIENT STORIES", "EVIDENCE", "RISKS", "MORE"]} handleTabClick={this.handleTabClick} />   
-                        <ResultBackButton targetUrl="/results:treatments"/>
-
+                            <ResultBackButton targetUrl="/results:treatments"/>
                         <div className={classes.resultContainer}>
                             <ResultTitle text={treatment.name} />
                             {tabSelected === 0 && <RenderOverview /> }

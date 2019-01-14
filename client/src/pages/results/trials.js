@@ -26,10 +26,38 @@ class TrialDisplay extends Component {
         const trial = trialsInfo.filter(t => t.key === item)[0]
         console.log(trial)
         this.setState({trial: trial})
+
+        window.addEventListener("resize", this.mediaResize)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.mediaResize)
+    }
+
+    mediaResize = () => {
+        this.setState({screenWidth: window.innerWidth})
     }
 
     handleTabClick = tab => {
         this.setState({tabSelected: tab})
+    }
+
+    getWidth = () => {
+        console.log("getwidth", this.state.screenWidth)
+        let screenWidth = this.state.screenWidth
+        if (screenWidth > 1200) {return 340}
+        else if (screenWidth > 960) {return 250}
+        else if (screenWidth > 526) {return 340}
+        else  {return 250}
+    }
+
+    getHeight = () => {
+        console.log("getwidth", this.state.screenWidth)
+        let screenWidth = this.state.screenWidth
+        if (screenWidth > 1200) {return 255}
+        else if (screenWidth > 960) {return (250/340)*255}
+        else if (screenWidth > 526) {return 255}
+        else  {return (250/340)*255}
     }
 
     render() {
@@ -47,7 +75,7 @@ class TrialDisplay extends Component {
                         </Grid>
                         <Grid item xs={12} sm={12} md={6}>
                             <br />
-                            <ResultDisplayMedia mediaType="video" mediaLink={trial.mediaLnk1} width={340} height={255}/>    
+                            <ResultDisplayMedia mediaType="video" mediaLink={trial.mediaLnk1} width={this.getWidth()} height={this.getHeight()}/>    
                         </Grid>
                     </Grid>
                     <br />

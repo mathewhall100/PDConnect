@@ -1,7 +1,7 @@
 
 import { MAXWIDTH, MINHEIGHT, PRIMARY_COLOR, APP_MARGIN, APP_PADDING } from '../../themes'
 
-export const resultStyles = () => ({
+export const resultStyles = (theme) => ({
     
     resultRoot: {
         maxWidth: MAXWIDTH,
@@ -20,6 +20,9 @@ export const resultStyles = () => ({
         border: "1px solid grey",
         borderRadius: "5px",
         margin: "20px",
+        [theme.breakpoints.down('sm')]: {
+            margin: "20px 5px 25px 0"
+        }
     },
     resultBoxTextBox: {
         minHeight: "130px"
@@ -35,16 +38,17 @@ export const resultStyles = () => ({
     },
     actionMenuBox: {
         marginRight: "10px", 
-        padding: "8px 5px 5px 10px"
+        padding: "8px 5px 5px 10px",
+        [theme.breakpoints.down('md')]: {
+            margin: "0 10px 0 10px"
+        }
     },
     actionMenuBtn : {
         backgroundColor: "#F8F8F8 !important",
         padding: 0,
         border: "2px solid #F8F8F8",
-        '&:focus': {outline: 'none' },
-        '&:hover': {
-            borderBottom: "2px solid #BF9000",
-        }
+        '&:focus': { outline: 'none' },
+        '&:hover': { borderBottom: "2px solid #BF9000" }
     },
     actionMenuIcon: {
         color: 'black'
@@ -52,6 +56,5 @@ export const resultStyles = () => ({
     actionMenuText: {
         fontWeight: "bold",
         color: PRIMARY_COLOR,
-    }
-
+    },
 })
