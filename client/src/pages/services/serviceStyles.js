@@ -1,9 +1,10 @@
 
-import { MAXWIDTH, MINHEIGHT, PRIMARY_COLOR, SECONDARY_COLOR, APP_PADDING, APP_MARGIN } from '../../themes'
+import { MAXWIDTH, MINHEIGHT, PRIMARY_COLOR, SECONDARY_COLOR, APP_PADDING, APP_MARGIN, MINWIDTH } from '../../themes'
 
 export const serviceStyles = () => ({
     servicesRoot: {
         maxWidth: MAXWIDTH,
+        minWidth: MINWIDTH,
         minHeight : MINHEIGHT,
         margin: APP_MARGIN,
         padding: APP_PADDING

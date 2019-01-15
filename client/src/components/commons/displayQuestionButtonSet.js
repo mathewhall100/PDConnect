@@ -9,7 +9,7 @@ import {
     QUESTION_BUTTON_ACTIVE_TERTIARY_COLOR} from '../../themes';
 import DisplayQuestionButtonIcon from './displayQuestionButtonIcon'
 
-const styles = () => ({
+const styles = (theme) => ({
     questionButton: {
         float: "right",
         width: "50px",
@@ -25,6 +25,15 @@ const styles = () => ({
          '&:hover': {
              backgroundColor: "white",
          },
+         [theme.breakpoints.down('md')]: {
+            top: "-15px"
+        },
+         [theme.breakpoints.down('sm')]: {
+            top: "5px"
+        },
+         [theme.breakpoints.down('xs')]: {
+            top: "-15px"
+        },
     },
     questionButtonText: {
         fontWeight:"bold",

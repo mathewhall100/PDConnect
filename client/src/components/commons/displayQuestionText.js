@@ -3,10 +3,10 @@ import { withStyles } from '@material-ui/core/styles'
 
 import BtnPlusModal from './buttonPlusModal'
 
-const styles = () => ({
+const styles = (theme) => ({
     questionContainerMost: {
         minHeight: "80px",
-        marginBottom: "10px"
+        marginBottom: "10px",
     },
     questionContainerMeds: {
         minHeight: "60px",

@@ -1,10 +1,11 @@
 // Styles for user page
 
-import { MAXWIDTH, MINHEIGHT, APP_MARGIN, APP_PADDING} from '../../themes'
+import { MAXWIDTH, MINWIDTH, MINHEIGHT, APP_MARGIN, APP_PADDING } from '../../themes'
 
 export const userStyles = (theme) => ({
     root: {
         maxWidth: MAXWIDTH,
+        minWidth: MINWIDTH,
         minHeight : MINHEIGHT,
         margin: APP_MARGIN,
         padding: APP_PADDING,
@@ -22,7 +23,8 @@ export const userStyles = (theme) => ({
     displayBottomNav: {
         display: "none",
         [theme.breakpoints.down('sm')]: {
-            display: "block"
+            display: "block",
+            textAlign: "center"
         }
     }
     

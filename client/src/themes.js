@@ -5,6 +5,7 @@
 
 // Page widths
 export const MAXWIDTH = '1280px';
+export const MINWIDTH = '400px'
 export const MINHEIGHT = '920px';
 
 // App margins & paddings

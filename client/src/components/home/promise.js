@@ -10,12 +10,24 @@ import { PRIMARY_COLOR, PRIMARY_COLOR_HOVER, SECONDARY_COLOR } from '../../theme
 const styles = (theme) => ({    
     
     promiseCube : {
-        minHeight : '250px',
-        padding : '20px 20px 20px 20px',
-        [theme.breakpoints.down('md')]: {
+        minHeight : '100%',
+        margin: "15px",
+        padding: "10px 0 30px 0",
+        background: PRIMARY_COLOR_HOVER,
+        transition: 'all .7s ease',
+        '&:hover': {
+            background: SECONDARY_COLOR,
+            color : `${PRIMARY_COLOR} !important`,
+        },       
+        [theme.breakpoints.down('sm')]: {
+            minHeight: "250px",
             margin : '15px',
-            minHeight: '190px',
-        },
+            padding: "10 0 30px 0"
+        }
+    },
+    promiseRowContainer: {
+        width: "100%",
+        padding: "0 40px 20px 40px"
     },
     promiseTitle: {
         fontSize: '23px',
@@ -39,22 +51,6 @@ const styles = (theme) => ({
         maxWidth: '70%',
         margin: 'auto',
     },
-    wow : {
-        background: PRIMARY_COLOR_HOVER,
-
-        height : '350px',
-        margin: '20px 0 20px 0',
-        '&:hover': {
-            height: '350px',
-            background: SECONDARY_COLOR,
-            color : `${PRIMARY_COLOR} !important`,
-        },
-        [theme.breakpoints.down('md')]: {
-            margin: '15px',
-            minHeight: '200px',
-
-        },
-    }
 })
 
 class Promises extends Component {
@@ -64,8 +60,8 @@ class Promises extends Component {
 
         const RenderPromise = props => 
 
-                <Grid  xs={12} item md={4} lg={4} className={classes.promiseCube}>
-                    <div className={classes.wow} style={{ transition: 'all .7s ease'}}>
+                <Grid item sm={12} md={4} lg={4} >
+                    <div className={classes.promiseCube}>
                         <div className={classes.promiseTitle}>{props.title}</div>
                         <div className={classes.promiseIconContainer}>
                             <img className={classes.promiseIcon} src={props.icon} alt={props.altTxt} />
@@ -84,9 +80,11 @@ class Promises extends Component {
             <React.Fragment>
                 <HomepageSubtitle text="Our promise"  color="#FFF"/> 
                 <br />
-                <Grid container spacing={24} className={classes.promiseRowContainer} >
-                    { promises.map((promise, idx) => <RenderPromise key={idx} title={promise.title} icon={promise.icon} altTxt={promise.altTxt} text={promise.text} /> )}
-                </Grid>
+                <div className={classes.promiseRowContainer}>
+                    <Grid container spacing={24} >
+                        { promises.map((promise, idx) => <RenderPromise key={idx} title={promise.title} icon={promise.icon} altTxt={promise.altTxt} text={promise.text} /> )}
+                    </Grid>
+                </div>
             </React.Fragment>
         )
     }
