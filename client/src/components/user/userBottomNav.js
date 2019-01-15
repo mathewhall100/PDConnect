@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { withRouter, } from 'react-router-dom';
+import React, { Component } from 'react'
+import { withRouter, } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import {submitReview } from '../../actions/index.js'
 import UserNavButton from '../buttons/userNavButton'
 
-const styles = () => ({
+const styles = (theme) => ({
     navFloatRight: {
         float: "right",
     },
@@ -27,8 +27,8 @@ class BottomNav extends Component  {
 
     handleRedirect = () => {
         if (this.props.review.redirect) {
-            this.props.submitReview(false);
-            this.props.history.push('/user/user_review');
+            this.props.submitReview(false)
+            this.props.history.push('/user/user_review')
         } else {
             this.props.history.push(this.props.stepper.prevPage)
         }
@@ -40,13 +40,6 @@ class BottomNav extends Component  {
         const { classes, review : { redirect }} = this.props;
         const { skipBtn } = this.state
 
-        const SecondButton = () => 
-            <span className={classes.navFloatRight}>
-                <Link to={"/services"} className={classes.link}>
-                        <UserNavButton type="button" width="100%" text="SKIP FOR NOW" handleBtn={this.handleRedirect}/>
-                </Link>
-            </span>
-
         return (
             <React.Fragment>
 
@@ -54,7 +47,12 @@ class BottomNav extends Component  {
 
                 { !redirect && <UserNavButton type="button" width="20%" text="BACK" handleBtn={this.handleRedirect} /> }
 
-                { skipBtn && <SecondButton /> }
+                { skipBtn && 
+                    <span className={classes.navFloatRight}>
+                        <Link to={"/services"} className={classes.link}>
+                            <UserNavButton type="button" width="100%" text="SKIP FOR NOW" handleBtn={this.handleRedirect}/>
+                        </Link>
+                    </span> }
 
             </React.Fragment>
         )

@@ -56,5 +56,5 @@ export const resultStyles = (theme) => ({
     actionMenuText: {
         fontWeight: "bold",
         color: PRIMARY_COLOR,
-    },
+    }
 })

@@ -12,7 +12,7 @@ import SendIcon from '@material-ui/icons/Send'
 import ShareIcon from '@material-ui/icons/Share'
 import ContactMailIcon from '@material-ui/icons/ContactMail'
 
-import ResultTabsWithBadge from '../../components/tabs/resultTabsWithBadge'
+import ResultNav from '../../components/navs/resultNavigation'
 import ResultTitle from '../../components/commons/resultTitle'
 import ResultSubTitle from '../../components/commons/resultSubTitle'
 import ResultDisplayMedia from '../../components/commons/resultDisplayMedia'
@@ -49,7 +49,7 @@ class ResultSummary extends Component {
         this.setState({tabSelected: tab})
     }
 
-    handleTabClick = (tab) => {
+   swapTab = (tab) => {
         console.log("tab: ", tab)
         this.setState({tabSelected: tab})
     }
@@ -134,14 +134,14 @@ class ResultSummary extends Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12} sm={12} md={12}> 
                     
-                        <ResultTabsWithBadge
+                        <ResultNav
                             tabs={[
                                 {text: "TREATMENTS", badgeContent: treatmentResults.length},
                                 {text: "TRIALS", badgeContent: trialResults.length},
-                                {text: "FOCUS GROUPS", badgeContent: 0}, // when present replace with groupResults.length
+                                {text: "FOCUS GROUPS", badgeContent: "0"}, // when present replace with groupResults.length
                             ]}
                             tabStart={tabSelected}
-                            handleTabClick={this.handleTabClick}
+                            tabClicked={this.swapTab}
                         />
                         
                         <ResultBackButton targetUrl="/services" />
@@ -212,7 +212,6 @@ class ResultSummary extends Component {
                                 </React.Fragment>
                             : */}
                             <RenderNoMatches tabText="focus groups" /> 
-
                         </div> }
 
                     </Grid>

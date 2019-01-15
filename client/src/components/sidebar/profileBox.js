@@ -16,16 +16,16 @@ class ProfileBox extends Component {
 
              <h3 className={classes.sideBoxHeader}>My profile</h3>
 
-                 <SideBoxTextRight>
-                    <h5 className={classes.sideBoxText}>Your profile is 70% complete</h5>
-                    <h5 className={classes.sideBoxText}>Next update due: Dec 2018</h5>
+            <SideBoxTextRight>
+                <h5 className={classes.sideBoxText}>Your profile is 70% complete</h5>
+                <h5 className={classes.sideBoxText}>Next update due: Dec 2018</h5>
 
-                    <Hr full={true}/>
+                <Hr full={true}/>
 
-                    <div className={classes.sideBoxLinkSeparater}>
-                        <a className={classes.sideBoxLink} href='/servcies'>View profile</a>
-                    </div>
-                    </SideBoxTextRight>
+                <div className={classes.sideBoxLinkSeparater}>
+                    <a className={classes.sideBoxLink} href='/servcies'>View profile</a>
+                </div>
+            </SideBoxTextRight>
         
         </React.Fragment>
     )

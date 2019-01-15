@@ -14,10 +14,10 @@ const styles = (theme) => ({
         fontSize: "14px",
         fontWeight: "bold",
         position: "relative", 
-        top: "-22px",
+        top: "-45px",
         backgroundColor: PRIMARY_COLOR,
         color: "white",
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             top: "-45px"
         },
         '&:hover': {

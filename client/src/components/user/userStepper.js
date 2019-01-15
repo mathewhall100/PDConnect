@@ -17,7 +17,7 @@ import { updateStepperCount, updateTermAgreement } from '../../actions/Stepper';
 import { PRIMARY_COLOR } from '../../themes';
 import Hr from "../commons/Hr"
 
-const styles = () => ({
+const styles = (theme) => ({
     stepperContainer : {
         width : '100%',
         marginRight: "40px",
@@ -43,6 +43,12 @@ const styles = () => ({
         marginBottom: "-15px",
         marginLeft: "-18px"
     },
+    displayBottomNav: {
+        display: "block",
+        [theme.breakpoints.down('sm')]: {
+            display: "none"
+        }
+    }
 
 });
 
@@ -160,7 +166,11 @@ class UserStepper extends React.Component {
                         </Grid>
                     </Grid>
 
-                    {( (stepperCount < 8 || isNaN(stepperCount)) && stepperCount !== "Hello!") && <BottomNav />  }
+                    { (stepperCount < 8 || isNaN(stepperCount) && stepperCount !== "Hello!") && 
+                        <div className={classes.displayBottomNav} >
+                            <BottomNav />  
+                        </div>
+                    }
 
                 </div>
             :

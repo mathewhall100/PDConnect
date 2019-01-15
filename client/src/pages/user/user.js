@@ -21,8 +21,8 @@ import NotFound from '../auth/notFound';
 
 import Stepper from '../../components/user/userStepper';
 import { updateStepperCount } from '../../actions/Stepper';
+import BottomNav from '../../components/user/userBottomNav'
 import { userStyles } from './userStyles';
-
 
 class User extends Component {
 
@@ -53,6 +53,11 @@ class User extends Component {
                                 <Route path="/notfound" component={NotFound} />
                                 <Route component={NotFound} />
                             </Switch>
+
+                            <div className={classes.displayBottomNav} >
+                                <BottomNav />  
+                            </div>
+
                         </div>
                     </Grid>
 

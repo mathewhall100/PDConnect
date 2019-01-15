@@ -12,7 +12,7 @@ import HelpIcon from '@material-ui/icons/Help'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 
 import { PRIMARY_COLOR, MAXWIDTH, MINHEIGHT } from '../themes.js'
-import AccountButton from '../components/accountButton'
+import AccountButton from './AccountButton'
 
 const styles = (theme) => ({  
     topNavContainer: {
@@ -27,14 +27,11 @@ const styles = (theme) => ({
         minHeight: MINHEIGHT,
         padding: "0 30px 40px 40px",
         margin: '0 auto',
-        [theme.breakpoints.down('xs')]: {
-            marginTop: '10px',
-        },
     },    
     topNavLogo: {
         height: '80px',
         width: '80px',
-        margin: '10px 0 10px 0',
+        margin: '10px 0 10px 0'
     },
     topBarBtn: {
         color: "black !important", 
@@ -47,16 +44,33 @@ const styles = (theme) => ({
         float: "right", 
         '&:focus': { outline: 'none' },
         '&:hover': { borderBottom: "2px solid #BF9000" },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
             margin: "30px 0 0 10px",
         },
     },
     topBarBtnIcon: {
         fontSize: "24px", 
         color: PRIMARY_COLOR
-    }
+    },
 })
 class AppBar extends Component {
+
+    state = {
+        screenWidth: 1600
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.topBarResize)
+        this.topBarResize()
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.topBarResize)
+    }
+
+    topBarResize = () => {
+        this.setState({screenWidth: window.innerWidth})
+    }
 
     handleNav = (redirectAddress) => {
         this.props.history.push(redirectAddress)
@@ -65,6 +79,7 @@ class AppBar extends Component {
 
     render () {
         const { classes, userCreds } = this.props
+        const { screenWidth } = this.state
 
         const RenderAccountButton = props => 
              <Button type="button" className={classes.topBarBtn} onClick={() => { this.handleNav(props.redirectUrl) }} >
@@ -82,9 +97,9 @@ class AppBar extends Component {
                         <span>
                             <AccountButton />
                             
-                            <RenderAccountButton redirectUrl="/profile" icon={<DescriptionIcon />} text="profile" />
-                            <RenderAccountButton redirectUrl="/services" icon={<DashboardIcon />} text="services" />
-                            <RenderAccountButton redirectUrl="/services" icon={<HomeIcon />} text="home" />
+                            <RenderAccountButton redirectUrl="/profile" icon={<DescriptionIcon />} text={screenWidth > 820 ? "profile" : null} />
+                            <RenderAccountButton redirectUrl="/services" icon={<DashboardIcon />} text={screenWidth > 820 ? "services" : null} />
+                            <RenderAccountButton redirectUrl="/services" icon={<HomeIcon />} text={screenWidth > 820 ? "home" : null} />
                         </span>
 
                         :

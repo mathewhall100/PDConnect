@@ -8,7 +8,7 @@ import AccountIcon from '@material-ui/icons/AccountCircle'
 import Fade from '@material-ui/core/Fade'
 import { PRIMARY_COLOR } from '../themes.js'
 
-const styles = () => ({
+const styles = (theme) => ({
     topBarBtn: {
         color: "black !important", 
         fontWeight: "bold",
@@ -21,7 +21,10 @@ const styles = () => ({
         '&:focus': { outline: 'none' },
         '&:hover': {
             borderBottom: "2px solid #BF9000",
-        }
+        },
+        [theme.breakpoints.down('sm')]: {
+            margin: "30px 0 0 10px",
+        },
     },
     topBarBtnIcon: {
         fontSize: "24px", 
@@ -55,6 +58,21 @@ class FadeMenu extends Component {
         mouseOverButton: false,
         mouseOverMenu: false,
     };
+
+    state = {
+        screenWidth: 1600
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.topBarResize)
+        this.topBarResize()
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.topBarResize)
+    }
+
+    topBarResize = () => { this.setState({screenWidth: window.innerWidth}) }
 
     handleClick = event => {
         this.setState({
@@ -98,7 +116,7 @@ class FadeMenu extends Component {
     handleLogout() { console.log("logging out...") }
 
     render() {
-        const { anchorEl } = this.state
+        const { anchorEl, screenWidth } = this.state
         const { classes } = this.props
 
         const open = this.state.mouseOverButton || this.state.mouseOverMenu
@@ -115,7 +133,7 @@ class FadeMenu extends Component {
                     onMouseLeave={this.leaveButton}
                     onMouseOver ={this.handleClick}
                 >
-                    <AccountIcon className={classes.topBarBtnIcon} /> &nbsp;&nbsp;MY ACCOUNT
+                    <AccountIcon className={classes.topBarBtnIcon} /> &nbsp;&nbsp;{screenWidth > 820 ? "MY ACCOUNT" : null} 
                 </Button>
 
                 <Menu
